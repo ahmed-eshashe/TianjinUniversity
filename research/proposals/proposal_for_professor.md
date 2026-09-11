@@ -114,8 +114,8 @@ The lab has established strength in visual perception and manipulation learning.
 
 | Target | Timeline | Focus |
 |:-------|:---------|:------|
-| **IEEE RA-L / IROS 2028** | Submit Mar 2028 | Full system design, on-tool sensing, phase-aware control, and experimental benchmark. |
-| **ICRA 2029** (Follow-up) | Submit Sep 2028 | Extended multi-food manipulation, generalization analysis, and demonstration-guided trajectory tuning. |
+| **IEEE RA-L / IROS 2028** | Submit Early 2028 (Year 2) | Core system design, on-tool sensing, phase-aware control, and preliminary benchmarks. |
+| **IEEE ICRA / T-RO 2029** | Submit Late 2028 / Early 2029 (Year 3) | Advanced multi-food generalization, vision-tactile integration, stability proofs, and comprehensive experimental dataset. |
 
 ### Conference Fit
 
@@ -123,21 +123,24 @@ This work sits at the intersection of contact-rich manipulation, tactile and for
 
 ---
 
-## 7. Timeline
+## 7. Timeline (3-Year Program)
 
-| Period | Milestone |
-|:-------|:---------|
-| **Oct to Nov 2026** | Literature review, sensor selection, and mechanical adapter design. |
-| **Dec 2026** | Rapid proof-of-concept prototype for initial signal acquisition. |
-| **Jan 2027** | Embedded firmware development for signal filtering and phase transition detection. |
-| **Feb 2027** | Integration with lab manipulator arm and ROS 2 environment for preliminary cutting trials. |
-| **Mar to Apr 2027** | Controller refinement, tuning passivity layer, and transition timing. |
-| **May 2027** | Integration with visual perception for automated cut placement. |
-| **Jun to Jul 2027** | Refined hardware revision with custom electronics and durable casing. |
-| **Aug to Oct 2027** | Full experimental trials and cross-food generalization testing. |
-| **Nov 2027 to Jan 2028** | Experimental data analysis and manuscript preparation. |
-| **Feb to Mar 2028** | Submission to RA-L / IROS 2028. |
-| **Apr to Jun 2028** | Master's thesis completion and defense. |
+### Year 1: Coursework, Fundamentals & Early Prototyping (2026 to 2027)
+- **Fall 2026**: Complete Master's core coursework; in-depth literature review on cutting dynamics, impedance control, and contact mechanics; initial sensor bench testing.
+- **Spring 2027**: Complete remaining coursework; mechanical design of tool interface; rapid breadboard/Nucleo prototype for preliminary force and vibration signal acquisition.
+- **Summer 2027**: Transition to full-time lab research; initial data collection of blade-food contact signatures; define baseline experimental protocols.
+
+### Year 2: System Development, Integration & First Publication (2027 to 2028)
+- **Fall 2027**: Custom hardware revision with embedded sensing; firmware development for on-board filtering and phase transition detection; preliminary robot integration.
+- **Winter 2027 to 2028**: Implement phase-switching impedance control and virtual energy tank passivity architecture; conduct primary cutting trials on tomatoes.
+- **Spring 2028**: Prepare and submit initial manuscript to **IEEE RA-L / IROS 2028**; integrate visual perception for automated cut trajectory generation.
+- **Summer 2028**: Refine controller based on initial review feedback; expand vision-force handoff testing.
+
+### Year 3: Scaling, Multi-Food Generalization & Thesis Defense (2028 to 2029)
+- **Fall 2028**: Large-scale multi-food generalization campaign across varying food textures, skin toughness, and blade sharpness levels; long-term durability testing.
+- **Winter 2028 to 2029**: Manuscript preparation and submission for second milestone paper (**IEEE ICRA / T-RO 2029**).
+- **Spring 2029**: Final system polish, packaging open-source hardware/software releases, and writing Master's thesis.
+- **May to June 2029**: Master's thesis defense and graduation.
 
 ---
 
