@@ -68,9 +68,9 @@ Phase transitions are detected using on-tool signals: the force derivative captu
 
 The control system follows the vision-planned trajectory with phase-dependent compliance:
 
-$$\mathbf{M}_d \ddot{\tilde{\mathbf{x}}} + \mathbf{D}_d^{(q)} \dot{\tilde{\mathbf{x}}} + \mathbf{K}_d^{(q)} \tilde{\mathbf{x}} = \mathbf{F}_{ext}$$
+    M_d · ẍ_tilde + D_d(q) · ẋ_tilde + K_d(q) · x_tilde = F_ext
 
-where $q \in \{1, 2, 3, 4\}$ denotes the active phase, and $\tilde{\mathbf{x}} = \mathbf{x} - \mathbf{x}_d$ represents deviation from the planned path.
+where q in {1, 2, 3, 4} denotes the active phase, and x_tilde = x - x_d represents deviation from the planned path.
 
 *Note: Phase-shifting and variable impedance switching across discrete contact fractures is an active area of research.* Discontinuous adjustments to stiffness and damping risk injecting artificial energy into the loop. To address this, a virtual energy tank framework will be investigated to guarantee passivity: an auxiliary energy state tracks accumulated dissipation and gates parameter transitions, ensuring formal stability under measurement noise and unmodeled disturbances.
 
