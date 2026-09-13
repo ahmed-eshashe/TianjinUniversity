@@ -16,3 +16,8 @@ This directory serves as the structured knowledge base for Master's research in 
 
 ### 4. Literature Survey (`research/literature_survey/`)
 *(Incoming papers and state-of-the-art taxonomies)*
+
+### 5. Simulation & Training Methodology (`research/simulation/`)
+- [`training_approach_comparison.md`](simulation/training_approach_comparison.md): Comparison of Imitation Learning vs Vision-Based RL vs Traditional Control for DOM, including a staged hybrid strategy and realistic timelines.
+- [`simulator_pipeline.md`](simulation/simulator_pipeline.md): Explanation of the MuJoCo + Isaac Sim hybrid architecture — why two engines, Real-to-Sim, Sim-to-Real, data collection strategies, and RL vs VLA training models.
+- [`isaac_lab_vs_mujoco_isaac_sim.md`](simulation/isaac_lab_vs_mujoco_isaac_sim.md): Head-to-head platform comparison between Isaac Lab (NVIDIA unified) and MuJoCo + Isaac Sim (hybrid), with DOM-specific verdict and scorecard.

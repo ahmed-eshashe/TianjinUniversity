@@ -1,0 +1,11 @@
+# Simulation & Training Methodology
+
+This folder documents the simulation infrastructure, training approach decisions, and simulator comparisons for the DOM (dual-arm tomato cutting) project.
+
+## Contents
+
+| File | Description |
+|---|---|
+| [`training_approach_comparison.md`](training_approach_comparison.md) | Comparison of Imitation Learning vs Vision-Based RL vs Traditional Control, with DOM-specific verdict |
+| [`simulator_pipeline.md`](simulator_pipeline.md) | Explanation of the MuJoCo + Isaac Sim hybrid architecture, Real-to-Sim, Sim-to-Real, data collection, and RL vs VLA training |
+| [`isaac_lab_vs_mujoco_isaac_sim.md`](isaac_lab_vs_mujoco_isaac_sim.md) | Detailed comparison between Isaac Lab (unified) and MuJoCo + Isaac Sim (hybrid) platforms |
