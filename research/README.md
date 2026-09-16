@@ -15,7 +15,7 @@ This directory serves as the structured knowledge base for Master's research in 
 - [`vision_tactile_fusion_cutting.md`](architectures/vision_tactile_fusion_cutting.md): Hierarchical control architecture combining 30 Hz Vision Trajectory Generation with 1 kHz On-Tool Force-Driven Impedance Regulation.
 
 ### 4. Literature Survey (`research/literature_survey/`)
-*(Incoming papers and state-of-the-art taxonomies)*
+- [`adept_and_robot_foundation_models.md`](literature_survey/adept_and_robot_foundation_models.md): Comprehensive survey of the **ADEPT** pre-training/post-training framework (CoRL 2026), open-source foundation models (**LeRobot**, **Octo**, **OpenVLA**), the *"Android for Robots"* paradigm (**OpenMind OM1**, **Isaac Lab**), and strategic roadmap for DEX-ROB Lab.
 
 ### 5. Simulation & Training Methodology (`research/simulation/`)
 - [`training_approach_comparison.md`](simulation/training_approach_comparison.md): Comparison of Imitation Learning vs Vision-Based RL vs Traditional Control for DOM, including a staged hybrid strategy and realistic timelines.

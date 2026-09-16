@@ -160,6 +160,14 @@ Beyond laboratory research, there is clear practical potential in compact automa
 
 Such kiosks provide an engaging visual experience while maintaining high consistency and operational efficiency, running autonomously with minimal on-site staffing requirements. The sensor integration, control techniques, and food-handling methods developed in this research serve as the core technical foundation for such applications.
 
+### 8.3 Future Work: Toward Foundation Models & A Unified Manipulation Skill Library
+
+Looking beyond specialized cutting controllers, this research establishes the foundational sensory and motor primitives for culinary tool use that can be integrated into broader **Embodied AI Foundation Models**:
+
+- **Pre-Trained Skill Libraries (ADEPT Paradigm)**: Drawing from recent breakthroughs in dexterous pre-training such as **ADEPT** (Lee et al., CoRL 2026), our cutting dynamics and impedance controllers can be encapsulated as reusable motor priors. Instead of training food preparation behaviors from scratch, downstream applications can post-train on top of these verified contact-rich skills.
+- **Open-Source Model Integration**: Experimental cutting trajectories and multi-modal contact data will be structured to interface with open-source foundation platforms—including **Hugging Face LeRobot**, **Octo (Open X-Embodiment)**, and **OpenVLA**. This connects specialized cutting mechanics to generalized language-conditioned manipulation (*"slice the tomato into 5mm rings"*).
+- **Unified Robot Operating Infrastructure**: In synergy with the laboratory's ongoing work on hardware-agnostic teleoperation (*Open TeleDex*) and emerging unified OS initiatives (e.g., *OpenMind OM1* and *NVIDIA Isaac Lab*), these manipulation skills can be retargeted seamlessly across diverse robotic embodiments, from tabletop single-arm manipulators to dual-arm humanoid platforms (DexCatch).
+
 ---
 
 I would welcome the opportunity to discuss this direction further and refine the plan according to your suggestions.
