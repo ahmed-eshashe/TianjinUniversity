@@ -112,34 +112,36 @@ The lab has established strength in visual perception and manipulation learning.
 
 ## 6. Publication Plan
 
-| Target | Timeline | Focus |
-|:-------|:---------|:------|
-| **IEEE RA-L / IROS 2028** | Submit Early 2028 (Year 2) | Core system design, on-tool sensing, phase-aware control, and preliminary benchmarks. |
-| **IEEE ICRA / T-RO 2029** | Submit Late 2028 / Early 2029 (Year 3) | Advanced multi-food generalization, vision-tactile integration, stability proofs, and comprehensive experimental dataset. |
+The research is structured around a two-stage publication strategy advancing from baseline physical mechanics to scalable foundation-model adaptation:
+
+| Target | Timeline | Core Focus & Methodology |
+|:-------|:---------|:-------------------------|
+| **Paper 1: IEEE RA-L / IROS 2028** | Submit Early 2028 (Year 2) | **Adaptive Slicing of Deformable Objects via Traditional RL & Phase-Aware Impedance Control**<br>Focuses on on-tool sensing (TacBlade), fracture transition mechanics, hybrid vision-force control, and baseline reinforcement learning benchmarks on soft deformable produce (tomatoes). |
+| **Paper 2: IEEE ICRA / T-RO 2029** | Submit Late 2028 / Early 2029 (Year 3) | **Scaling Deformable Manipulation via Pre-Trained Foundation Dexterity (The ADEPT Approach)**<br>Applies the ADEPT paradigm (pre-training foundational manipulation priors in Isaac Lab, structured post-training with BC distillation and critic warm-up to prevent policy collapse, full-joint geometric fabrics, and visuo-tactile student distillation) to achieve zero-shot generalized slicing across heterogeneous foods. |
 
 ### Conference Fit
 
-This work sits at the intersection of contact-rich manipulation, tactile and force sensing, and compliant robot control, all of which are core topics at IROS and ICRA. Combining an explicit physical mechanics formulation with embedded hardware implementation and practical food robotics benchmarks provides a balanced, publishable submission.
+This work sits at the intersection of contact-rich manipulation, tactile and force sensing, and compliant robot control, all of which are core topics at IROS and ICRA. Combining an explicit physical mechanics formulation with embedded hardware implementation and modern foundation-model RL adaptation provides a balanced, high-impact submission pipeline.
 
 ---
 
 ## 7. Timeline (3-Year Program)
 
 ### Year 1: Coursework, Fundamentals & Early Prototyping (2026 to 2027)
-- **Fall 2026**: Complete Master's core coursework; in-depth literature review on cutting dynamics, impedance control, and contact mechanics; initial sensor bench testing.
+- **Fall 2026**: Complete Master's core coursework; in-depth literature review on cutting dynamics, impedance control, contact mechanics, and foundational dexterity frameworks (ADEPT); initial sensor bench testing.
 - **Spring 2027**: Complete remaining coursework; mechanical design of tool interface; rapid breadboard/Nucleo prototype for preliminary force and vibration signal acquisition.
 - **Summer 2027**: Transition to full-time lab research; initial data collection of blade-food contact signatures; define baseline experimental protocols.
 
-### Year 2: System Development, Integration & First Publication (2027 to 2028)
+### Year 2: System Development, Integration & First Publication (Paper 1) (2027 to 2028)
 - **Fall 2027**: Custom hardware revision with embedded sensing; firmware development for on-board filtering and phase transition detection; preliminary robot integration.
-- **Winter 2027 to 2028**: Implement phase-switching impedance control and virtual energy tank passivity architecture; conduct primary cutting trials on tomatoes.
-- **Spring 2028**: Prepare and submit initial manuscript to **IEEE RA-L / IROS 2028**; integrate visual perception for automated cut trajectory generation.
-- **Summer 2028**: Refine controller based on initial review feedback; expand vision-force handoff testing.
+- **Winter 2027 to 2028**: Implement phase-switching impedance control and traditional RL benchmark policies; conduct primary cutting trials on deformable produce (tomatoes).
+- **Spring 2028**: Prepare and submit **Paper 1** to **IEEE RA-L / IROS 2028** (*Adaptive Slicing of Deformable Objects via Traditional RL & Phase-Aware Impedance Control*); integrate visual perception for automated cut trajectory generation.
+- **Summer 2028**: Refine controller based on review feedback; set up large-scale GPU simulation in NVIDIA Isaac Lab for foundation model pre-training.
 
-### Year 3: Scaling, Multi-Food Generalization & Thesis Defense (2028 to 2029)
-- **Fall 2028**: Large-scale multi-food generalization campaign across varying food textures, skin toughness, and blade sharpness levels; long-term durability testing.
-- **Winter 2028 to 2029**: Manuscript preparation and submission for second milestone paper (**IEEE ICRA / T-RO 2029**).
-- **Spring 2029**: Final system polish, packaging open-source hardware/software releases, and writing Master's thesis.
+### Year 3: ADEPT Paradigm Scaling, Multi-Food Generalization & Thesis Defense (Paper 2) (2028 to 2029)
+- **Fall 2028**: Deploy the **ADEPT pre-training and post-training pipeline** in Isaac Lab; pre-train foundational tool-use priors, apply conservative RL post-training across diverse food geometries, and distill into onboard visuo-tactile students.
+- **Winter 2028 to 2029**: Complete real-world multi-food zero-shot transfer trials; prepare and submit **Paper 2** to **IEEE ICRA / T-RO 2029** (*Scaling Deformable Manipulation via Pre-Trained Foundation Dexterity*).
+- **Spring 2029**: Final system polish, packaging open-source hardware/software releases (compatible with LeRobot / Open X-Embodiment), and writing Master's thesis.
 - **May to June 2029**: Master's thesis defense and graduation.
 
 ---

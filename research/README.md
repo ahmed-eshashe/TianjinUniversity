@@ -21,3 +21,8 @@ This directory serves as the structured knowledge base for Master's research in 
 - [`training_approach_comparison.md`](simulation/training_approach_comparison.md): Comparison of Imitation Learning vs Vision-Based RL vs Traditional Control for DOM, including a staged hybrid strategy and realistic timelines.
 - [`simulator_pipeline.md`](simulation/simulator_pipeline.md): Explanation of the MuJoCo + Isaac Sim hybrid architecture — why two engines, Real-to-Sim, Sim-to-Real, data collection strategies, and RL vs VLA training models.
 - [`isaac_lab_vs_mujoco_isaac_sim.md`](simulation/isaac_lab_vs_mujoco_isaac_sim.md): Head-to-head platform comparison between Isaac Lab (NVIDIA unified) and MuJoCo + Isaac Sim (hybrid), with DOM-specific verdict and scorecard.
+
+### 6. Resources & Papers (`research/resources/`)
+- [`README.md`](resources/README.md): Master resource index containing downloaded literature, open-source repositories, and the two-paper thesis strategy.
+- [`papers/ADEPT_CoRL2026.pdf`](resources/papers/ADEPT_CoRL2026.pdf): Full local PDF of the seminal CoRL 2026 paper on foundational dexterity pre-training and post-training.
+
