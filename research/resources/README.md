@@ -1,4 +1,4 @@
-﻿# Research Resources, Papers & Open-Source Repositories
+# Research Resources, Papers & Open-Source Repositories
 
 This directory contains external reference papers, foundational open-source repositories, and technical resources supporting research at **DEX-ROB Lab (Tianjin University)**.
 
@@ -15,34 +15,52 @@ This directory contains external reference papers, foundational open-source repo
 
 ---
 
-## 2. Core Open-Source Repositories & Foundation Platforms
+## 2. Core Open-Source Repositories & Toolchains
 
-The following open-source frameworks represent the cutting edge of the *"Android for Robots"* and generalist foundation model paradigm:
+### 2.1 Tools for Paper 1: Traditional Reinforcement Learning & Simulation
 
-### 1. [Hugging Face LeRobot](https://github.com/huggingface/lerobot)
-* **GitHub:** `https://github.com/huggingface/lerobot`
-* **Hugging Face Hub:** `https://huggingface.co/lerobot`
-* **Role:** Standardized PyTorch implementations of state-of-the-art imitation learning (ACT, Diffusion Policy), hosted pre-trained weights, and shared real-world robotics datasets.
+These tools form the core operational stack for Paper 1 (Dual-Arm Tomato Slicing with PPO/SAC):
 
-### 2. [Octo (Open X-Embodiment)](https://github.com/octo-models/octo)
-* **GitHub:** `https://github.com/octo-models/octo`
-* **Project Page:** `https://octo-models.github.io/`
-* **Role:** Generalist 93M-parameter diffusion policy pre-trained across 800k+ trajectories and 22 robot types. Used to bootstrap new manipulation tasks without starting from scratch.
-
-### 3. [OpenVLA](https://github.com/openvla/openvla)
-* **GitHub:** `https://github.com/openvla/openvla`
-* **Project Page:** `https://openvla.github.io/`
-* **Role:** 7-billion parameter open-source Vision-Language-Action (VLA) foundation model. Connects natural language prompts (*"slice the tomato"*) to robot control, fine-tunable on consumer GPUs (LoRA).
-
-### 4. [OpenMind OM1](https://github.com/OpenMind/OM1)
-* **GitHub:** `https://github.com/OpenMind/OM1`
-* **Website:** `https://openmind.com`
-* **Role:** Open-source, hardware-agnostic AI operating system ("Android for Robots"). Modular runtime and Hardware Abstraction Layer (HAL) decoupling AI brains from physical robot hardware.
-
-### 5. [NVIDIA Isaac Lab](https://github.com/isaac-sim/IsaacLab)
+#### 1. [NVIDIA Isaac Lab](https://github.com/isaac-sim/IsaacLab)
 * **GitHub:** `https://github.com/isaac-sim/IsaacLab`
 * **Documentation:** `https://isaac-sim.github.io/IsaacLab/`
-* **Role:** Unified modular framework for GPU-accelerated robot learning and reinforcement learning in Isaac Sim, powering large-scale multi-environment simulation.
+* **Role:** Primary simulation platform. Unified modular framework for GPU-accelerated robot learning in Isaac Sim, running 512–1024 parallel environments on PhysX 5.
+
+#### 2. [SkRL (Reinforcement Learning Library)](https://github.com/Toni-SM/skrl)
+* **GitHub:** `https://github.com/Toni-SM/skrl`
+* **Documentation:** `https://skrl.readthedocs.io/`
+* **Role:** Modular RL library with native Isaac Lab integration. Implements GPU-parallel PPO and SAC trainers, MLP policy architectures, and WandB experiment logging.
+
+#### 3. Essential Traditional RL Reference Sites:
+* **[OpenAI Spinning Up in Deep RL](https://spinningup.openai.com/):** Gold-standard theory, equations, and code implementations for PPO, SAC, and continuous action spaces.
+* **[Gymnasium Documentation](https://gymnasium.farama.org/):** Standard API for environment interactions (`step()`, `reset()`, spaces).
+* **[Weights & Biases (WandB)](https://wandb.ai/):** Real-time monitoring and logging of reward curves and policy convergence.
+* **[Hydra Configuration Framework](https://hydra.cc/):** YAML-based hyperparameter configuration and CLI experiment sweeps.
+
+---
+
+### 2.2 Tools for Paper 2: Foundation Models & Generalist Dexterity
+
+These frameworks represent the *"Android for Robots"* and generalist foundation model paradigm for Year 3 scaling:
+
+#### 1. [Hugging Face LeRobot](https://github.com/huggingface/lerobot)
+* **GitHub:** `https://github.com/huggingface/lerobot`
+* **Role:** Standardized PyTorch implementations of state-of-the-art imitation learning (ACT, Diffusion Policy) and shared real-world datasets.
+
+#### 2. [Octo (Open X-Embodiment)](https://github.com/octo-models/octo)
+* **GitHub:** `https://github.com/octo-models/octo`
+* **Project Page:** `https://octo-models.github.io/`
+* **Role:** Generalist 93M-parameter diffusion policy pre-trained across 800k+ trajectories.
+
+#### 3. [OpenVLA](https://github.com/openvla/openvla)
+* **GitHub:** `https://github.com/openvla/openvla`
+* **Project Page:** `https://openvla.github.io/`
+* **Role:** 7-billion parameter open-source Vision-Language-Action (VLA) foundation model.
+
+#### 4. [OpenMind OM1](https://github.com/OpenMind/OM1)
+* **GitHub:** `https://github.com/OpenMind/OM1`
+* **Website:** `https://openmind.com`
+* **Role:** Open-source, hardware-agnostic AI operating system and Hardware Abstraction Layer (HAL).
 
 ---
 

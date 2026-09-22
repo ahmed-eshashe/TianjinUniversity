@@ -21,8 +21,18 @@ This directory serves as the structured knowledge base for Master's research in 
 - [`training_approach_comparison.md`](simulation/training_approach_comparison.md): Comparison of Imitation Learning vs Vision-Based RL vs Traditional Control for DOM, including a staged hybrid strategy and realistic timelines.
 - [`simulator_pipeline.md`](simulation/simulator_pipeline.md): Explanation of the MuJoCo + Isaac Sim hybrid architecture — why two engines, Real-to-Sim, Sim-to-Real, data collection strategies, and RL vs VLA training models.
 - [`isaac_lab_vs_mujoco_isaac_sim.md`](simulation/isaac_lab_vs_mujoco_isaac_sim.md): Head-to-head platform comparison between Isaac Lab (NVIDIA unified) and MuJoCo + Isaac Sim (hybrid), with DOM-specific verdict and scorecard.
+- [`rl_software_tools.md`](simulation/rl_software_tools.md): Full 7-layer software stack for traditional RL-based DOM (Isaac Lab, SkRL, ROS 2, WandB, Hydra).
+- [`rl_data_sources_and_mdp_formulation.md`](simulation/rl_data_sources_and_mdp_formulation.md): Comprehensive mathematical MDP formulation (33D state, 6D action, 7-part reward), piecewise fracture mechanics, and sensor integration.
+- [`beginner_robotics_rl_setup_guide.md`](simulation/beginner_robotics_rl_setup_guide.md): Practical onboarding guide for beginners: intuitive mental model, minimal 4-tool stack, step-by-step WSL2/Isaac Lab setup on laptop, and verification tests.
 
 ### 6. Resources & Papers (`research/resources/`)
 - [`README.md`](resources/README.md): Master resource index containing downloaded literature, open-source repositories, and the two-paper thesis strategy.
 - [`papers/ADEPT_CoRL2026.pdf`](resources/papers/ADEPT_CoRL2026.pdf): Full local PDF of the seminal CoRL 2026 paper on foundational dexterity pre-training and post-training.
+
+### 7. Reports & Milestones (`research/reports/`)
+- [`bimanual_dom_pipeline_report.md`](reports/bimanual_dom_pipeline_report.md): **Primary Review Document (Markdown)**. Enhanced comprehensive technical report preserving 100% of pipeline mechanics, DRL formulations, and hardware benchmarking, featuring the embedded Figure 1 architecture diagram.
+- [`report1_enhanced.docx`](reports/report1_enhanced.docx): **Enhanced Word Document** (475 KB). Features executive typography, styled callout boxes, striped spec tables, running headers/footers, and embedded Figure 1.
+- [`figures/fig1_system_architecture.png`](reports/figures/fig1_system_architecture.png): End-to-end 5-stage Bimanual DOM system pipeline diagram.
+- [`weekly_report_2026_09_19.md`](reports/weekly_report_2026_09_19.md) / [`.docx`](reports/weekly_report_2026_09_19.docx) / [`.pdf`](reports/weekly_report_2026_09_19.pdf): Previous weekly sprint report.
+
 
