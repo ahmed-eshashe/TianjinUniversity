@@ -136,3 +136,10 @@ To verify everything is working properly on your GPU, run these two quick tests:
 | **Stage 1 (Week 1)** | **Familiarization** | Run pre-built tutorial scripts. Learn how an Isaac Lab script loads an asset (`RigidObjectCfg`). |
 | **Stage 2 (Weeks 2–3)** | **The Tomato Scene** | Spawn a table, import the tomato 3D mesh, attach the knife to the robot wrist, and test moving it downward. |
 | **Stage 3 (Weeks 4–6)** | **RL Training** | Hook up the reward function ($R_{pen}, P_{crush}, P_{slam}$) and let PPO train for 2–4 hours until it slices cleanly. |
+
+---
+
+## 6. Two-Person Team Collaboration (Option A)
+
+For teams of two researchers working concurrently without blocking each other, refer to:
+- [`two_person_parallel_workflow.md`](two_person_parallel_workflow.md): Detailed subsystem division between **Person A (Active Slicing Arm & Fracture Lead)** and **Person B (Compliant Holding Arm & Perception Lead)**, 8-week timeline, modular codebase architecture, and IEEE RA-L co-authorship plan.

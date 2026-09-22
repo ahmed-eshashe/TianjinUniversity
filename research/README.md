@@ -24,6 +24,7 @@ This directory serves as the structured knowledge base for Master's research in 
 - [`rl_software_tools.md`](simulation/rl_software_tools.md): Full 7-layer software stack for traditional RL-based DOM (Isaac Lab, SkRL, ROS 2, WandB, Hydra).
 - [`rl_data_sources_and_mdp_formulation.md`](simulation/rl_data_sources_and_mdp_formulation.md): Comprehensive mathematical MDP formulation (33D state, 6D action, 7-part reward), piecewise fracture mechanics, and sensor integration.
 - [`beginner_robotics_rl_setup_guide.md`](simulation/beginner_robotics_rl_setup_guide.md): Practical onboarding guide for beginners: intuitive mental model, minimal 4-tool stack, step-by-step WSL2/Isaac Lab setup on laptop, and verification tests.
+- [`two_person_parallel_workflow.md`](simulation/two_person_parallel_workflow.md): Two-person parallel work breakdown (Option A: Subsystem Split between Slicing Arm and Holding Arm), single-arm mocking, 8-week timeline, modular code architecture, and IEEE RA-L co-authorship plan.
 
 ### 6. Resources & Papers (`research/resources/`)
 - [`README.md`](resources/README.md): Master resource index containing downloaded literature, open-source repositories, and the two-paper thesis strategy.
