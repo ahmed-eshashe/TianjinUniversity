@@ -683,10 +683,9 @@ html_content = r"""<!DOCTYPE html>
 output_path = "/home/omen/Downloads/CS285_Lecture1_Beginner_Guide.pdf"
 backup_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture1_Beginner_Guide.pdf"
 
-print("Compiling Enhanced PDF with WeasyPrint...")
-html = weasyprint.HTML(string=html_content)
-html.write_pdf(output_path)
-print(f"Saved: {output_path} ({os.path.getsize(output_path)} bytes)")
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import render_utils
 
-shutil.copyfile(output_path, backup_path)
-print(f"Copied to: {backup_path}")
+render_utils.build_pdf(html_content, output_path, backup_path)
+

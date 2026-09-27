@@ -302,7 +302,7 @@ html_content = r"""<!DOCTYPE html>
 </p>
 <div class="formula" style="border: 2px solid #2563eb; background: #eff6ff;">
   <b>The Policy Gradient Theorem (REINFORCE):</b><br>
-  \nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \left( \sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t} | s_{i,t}) \right) \left( \sum_{t=1}^T r(s_{i,t}, a_{i,t}) \right)
+  $$\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \left( \sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t} | s_{i,t}) \right) \left( \sum_{t=1}^T r(s_{i,t}, a_{i,t}) \right)$$
 </div>
 
 <div class="callout intuition">
@@ -426,7 +426,7 @@ html_content = r"""<!DOCTYPE html>
 </p>
 <div class="formula" style="border: 2px solid #10b981; background: #ecfdf5;">
   <b>Reward-to-Go Policy Gradient:</b><br>
-  \nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t} | s_{i,t}) \left( \sum_{t'=t}^T r(s_{i,t'}, a_{i,t'}) \right)
+  $$\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t} | s_{i,t}) \left( \sum_{t'=t}^T r(s_{i,t'}, a_{i,t'}) \right)$$
 </div>
 
 <div class="page-break"></div>
@@ -437,7 +437,7 @@ html_content = r"""<!DOCTYPE html>
   <b>(Slides 36–45 &amp; Spinning Up ch09)</b> In *Spinning Up in Deep RL*, Joshua Achiam unifies all policy gradient methods into a single universal template:
 </p>
 <div class="formula">
-  \nabla_\theta J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t | s_t) \, \Phi_t \right]
+  $$\nabla_\theta J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \nabla_\theta \log \pi_\theta(a_t | s_t) \, \Phi_t \right]$$
 </div>
 <p>
   Achiam identifies the <b>5 valid choices of $\Phi_t$</b>, proving they all share the exact same mathematical expectation and differ only in variance:
@@ -482,7 +482,8 @@ html_content = r"""<!DOCTYPE html>
 
 <h3>5.1 The EGLP Lemma (Why Baselines are Unbiased)</h3>
 <div class="formula" style="border: 2px solid #3b82f6; background: #eff6ff;">
-  <b>The Expected Grad-Log-Prob (EGLP) Lemma:</b> &nbsp; \mathbb{E}_{x \sim P_\theta} \left[ \nabla_\theta \log P_\theta(x) \right] = 0
+  <b>The Expected Grad-Log-Prob (EGLP) Lemma:</b><br>
+  $$\mathbb{E}_{x \sim P_\theta} \left[ \nabla_\theta \log P_\theta(x) \right] = 0$$
 </div>
 <p>
   Because $\mathbb{E}_{a \sim \pi}[\nabla \log \pi(a|s)] = 0$, any state baseline $b(s_t)$ factors out: $\mathbb{E}[\nabla \log \pi(a|s) b(s)] = b(s) \cdot 0 = 0$.
@@ -607,10 +608,9 @@ def compute_policy_gradient_loss(policy, states, actions, rewards_to_go, baselin
 output_path = "/home/omen/Downloads/CS285_Lecture5_Beginner_Guide.pdf"
 backup_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture5_Beginner_Guide.pdf"
 
-print("Compiling Enhanced Lecture 5 PDF with WeasyPrint...")
-html = weasyprint.HTML(string=html_content)
-html.write_pdf(output_path)
-print(f"Saved: {output_path} ({os.path.getsize(output_path)} bytes)")
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import render_utils
 
-shutil.copyfile(output_path, backup_path)
-print(f"Copied to: {backup_path}")
+render_utils.build_pdf(html_content, output_path, backup_path)
+

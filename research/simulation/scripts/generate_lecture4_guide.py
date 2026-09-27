@@ -478,10 +478,12 @@ html_content = r"""<!DOCTYPE html>
 
 <h3>4.2 The Bellman Equations</h3>
 <div class="formula" style="border: 2px solid #3b82f6; background: #eff6ff;">
-  <b>Bellman Expectation Equation for V:</b> &nbsp; V^\pi(s) = \mathbb{E}_{a \sim \pi, s' \sim P} \left[ r(s, a) + \gamma V^\pi(s') \right]
+  <b>Bellman Expectation Equation for V:</b><br>
+  $$V^\pi(s) = \mathbb{E}_{a \sim \pi, s' \sim P} \left[ r(s, a) + \gamma V^\pi(s') \right]$$
 </div>
 <div class="formula" style="border: 2px solid #10b981; background: #ecfdf5;">
-  <b>Bellman Optimality Equation for Q:</b> &nbsp; Q^*(s, a) = \mathbb{E}_{s' \sim P} \left[ r(s, a) + \gamma \max_{a'} Q^*(s', a') \right]
+  <b>Bellman Optimality Equation for Q:</b><br>
+  $$Q^*(s, a) = \mathbb{E}_{s' \sim P} \left[ r(s, a) + \gamma \max_{a'} Q^*(s', a') \right]$$
 </div>
 
 <div class="callout silent-bug">
@@ -628,10 +630,9 @@ html_content = r"""<!DOCTYPE html>
 output_path = "/home/omen/Downloads/CS285_Lecture4_Beginner_Guide.pdf"
 backup_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture4_Beginner_Guide.pdf"
 
-print("Compiling Enhanced Lecture 4 PDF with WeasyPrint...")
-html = weasyprint.HTML(string=html_content)
-html.write_pdf(output_path)
-print(f"Saved: {output_path} ({os.path.getsize(output_path)} bytes)")
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import render_utils
 
-shutil.copyfile(output_path, backup_path)
-print(f"Copied to: {backup_path}")
+render_utils.build_pdf(html_content, output_path, backup_path)
+

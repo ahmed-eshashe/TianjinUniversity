@@ -368,7 +368,7 @@ html_content = r"""<!DOCTYPE html>
   Maintain <b>two separate Critic networks</b> ($Q_{\phi_1}$ and $Q_{\phi_2}$) with independent initializations. When computing the Bellman target, always evaluate both and take the <b>minimum</b>:
 </p>
 <div class="formula" style="border: 2px solid #2563eb; background: #eff6ff;">
-  y_t = r_t + \gamma \min \Big( Q_{\bar{\phi}_1}(s_{t+1}, \tilde{a}_{t+1}),\, Q_{\bar{\phi}_2}(s_{t+1}, \tilde{a}_{t+1}) \Big)
+  $$y_t = r_t + \gamma \min \Big( Q_{\bar{\phi}_1}(s_{t+1}, \tilde{a}_{t+1}),\, Q_{\bar{\phi}_2}(s_{t+1}, \tilde{a}_{t+1}) \Big)$$
 </div>
 <p>
   Taking the minimum injects controlled pessimism, completely eliminating overestimation bias.
@@ -574,10 +574,9 @@ def compute_sac_losses(actor, q1, q2, target_q1, target_q2, log_alpha, batch, ga
 output_path = "/home/omen/Downloads/CS285_Lecture8_Beginner_Guide.pdf"
 backup_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture8_Beginner_Guide.pdf"
 
-print("Compiling Enhanced Lecture 8 PDF with WeasyPrint...")
-html = weasyprint.HTML(string=html_content)
-html.write_pdf(output_path)
-print(f"Saved: {output_path} ({os.path.getsize(output_path)} bytes)")
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import render_utils
 
-shutil.copyfile(output_path, backup_path)
-print(f"Copied to: {backup_path}")
+render_utils.build_pdf(html_content, output_path, backup_path)
+

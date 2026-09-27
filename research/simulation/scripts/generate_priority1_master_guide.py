@@ -1,7 +1,7 @@
 import os
 import weasyprint
 
-html_doc = """<!DOCTYPE html>
+html_doc = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -387,32 +387,32 @@ html_doc = """<!DOCTYPE html>
   Prof. Levine explains how RL bypasses this dilemma entirely. We take the gradient of the <i>expected reward</i> using the <b>log-derivative trick</b>:
 </p>
 <div class="formula">
-  ∇<sub>θ</sub> J(θ) &nbsp; ≈ &nbsp; <sup>1</sup>/<sub>N</sub> ∑<sub>i=1</sub><sup>N</sup> ∑<sub>t=0</sub><sup>T</sup> &nbsp; <b>∇<sub>θ</sub> log π<sub>θ</sub>(a<sub>i,t</sub> | s<sub>i,t</sub>)</b> &nbsp; • &nbsp; <b>Q̂<sub>i,t</sub></b>
+  $$\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \sum_{t=0}^T \nabla_\theta \log \pi_\theta(\mathbf{a}_{i,t} \mid \mathbf{s}_{i,t}) \, \hat{Q}_{i,t}$$
 </div>
 
 <div class="callout intuition">
   <div class="callout-title">💡 Plain English: Trial and Error Formalized</div>
   <p>
     Look at the two halves of that formula:
-    <br>1. <b>∇<sub>θ</sub> log π<sub>θ</sub>(a | s):</b> Which direction in weight space makes action <i>a</i> more probable?
-    <br>2. <b>Q̂ (The Score / Multiplier):</b> How good was that action?
+    <br>1. <b>$\nabla_\theta \log \pi_\theta(a \mid s)$:</b> Which direction in weight space makes action $a$ more probable?
+    <br>2. <b>$\hat{Q}$ (The Score / Multiplier):</b> How good was that action?
     <br><br>
-    <b>The whole algorithm is just:</b> If an action led to a clean cut with low crushing force, <b>Q̂ is positive</b>, so we nudge the weights to make that action more likely. If the action caused a high crushing penalty, <b>Q̂ is negative</b>, so we nudge the weights in the opposite direction!
+    <b>The whole algorithm is just:</b> If an action led to a clean cut with low crushing force, <b>$\hat{Q}$ is positive</b>, so we nudge the weights to make that action more likely. If the action caused a high crushing penalty, <b>$\hat{Q}$ is negative</b>, so we nudge the weights in the opposite direction!
   </p>
 </div>
 
 <h3>3.3 Continuous Gaussian Policies for Robot Control</h3>
 <p>
-  In games like Pong, actions are discrete (up or down). But in your dual-arm setup, the robot must output continuous real numbers (e.g., downward feed rate = 2.45 mm/s, stiffness ΔK = 350 N/m).
+  In games like Pong, actions are discrete (up or down). But in your dual-arm setup, the robot must output continuous real numbers (e.g., downward feed rate = 2.45 mm/s, stiffness $\Delta K = 350$ N/m).
 </p>
 <p>
-  Levine shows how to parameterize a <b>Continuous Gaussian Policy</b>: The neural network takes the 33-dimensional state <b>s</b><sub>t</sub> and outputs the <b>mean μ<sub>θ</sub>(s)</b> and <b>standard deviation σ<sub>θ</sub>(s)</b> of a normal distribution:
+  Levine shows how to parameterize a <b>Continuous Gaussian Policy</b>: The neural network takes the 33-dimensional state $\mathbf{s}_t$ and outputs the <b>mean $\mu_\theta(\mathbf{s})$</b> and <b>standard deviation $\sigma_\theta(\mathbf{s})$</b> of a normal distribution:
 </p>
 <div class="formula">
-  π<sub>θ</sub>(<b>a</b> | <b>s</b>) &nbsp; = &nbsp; <sup>1</sup>/<sub>√(2πσ²)</sub> &nbsp; exp( - <sup>(<b>a</b> - μ<sub>θ</sub>(<b>s</b>))²</sup> / <sub>2σ²</sub> )
+  $$\pi_\theta(\mathbf{a} \mid \mathbf{s}) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(\mathbf{a} - \mu_\theta(\mathbf{s}))^2}{2\sigma^2} \right)$$
 </div>
 <p>
-  When training in Isaac Lab, the robot samples its actions: <b>a<sub>t</sub> ~ N(μ<sub>θ</sub>(s<sub>t</sub>), σ<sub>θ</sub>(s<sub>t</sub>))</b>. The noise σ allows the robot to explore different knife motions!
+  When training in Isaac Lab, the robot samples its actions: $\mathbf{a}_t \sim \mathcal{N}(\mu_\theta(\mathbf{s}_t), \sigma_\theta(\mathbf{s}_t))$. The noise $\sigma$ allows the robot to explore different knife motions!
 </p>
 
 <h3>3.4 Reducing Noise: Causality &amp; Baselines</h3>
@@ -476,7 +476,7 @@ html_doc = """<!DOCTYPE html>
   How does the Critic learn to predict the future? It uses <b>Temporal Difference (TD) error</b>:
 </p>
 <div class="formula">
-  δ<sub>t</sub> &nbsp; = &nbsp; r(<b>s</b><sub>t</sub>, <b>a</b><sub>t</sub>) &nbsp; + &nbsp; γ V<sub>ϕ</sub>(<b>s</b><sub>t+1</sub>) &nbsp; - &nbsp; V<sub>ϕ</sub>(<b>s</b><sub>t</sub>)
+  $$\delta_t = r(\mathbf{s}_t, \mathbf{a}_t) + \gamma V_\phi(\mathbf{s}_{t+1}) - V_\phi(\mathbf{s}_t)$$
 </div>
 <p>
   <i>"My prediction right now should match the reward I just got plus my prediction of what happens next."</i> The Critic minimizes this error using standard mean-squared error (MSE) regression.
@@ -491,10 +491,10 @@ html_doc = """<!DOCTYPE html>
   <li><b>Full Monte Carlo (Rollouts only):</b> Zero bias, but massive variance (noisy).</li>
 </ul>
 <p>
-  GAE blends them using a decay parameter <b>λ ∈ [0, 1]</b>:
+  GAE blends them using a decay parameter <b>$\lambda \in [0, 1]$</b>:
 </p>
 <div class="formula">
-  Â<sub>t</sub><sup>GAE</sup> &nbsp; = &nbsp; ∑<sub>l=0</sub><sup>∞</sup> (γ λ)<sup>l</sup> &nbsp; δ<sub>t+l</sub>
+  $$\hat{A}_t^{\text{GAE}} = \sum_{l=0}^\infty (\gamma \lambda)^l \delta_{t+l}$$
 </div>
 <div class="callout robotics">
   <div class="callout-title">⚙️ SkRL Configuration Mapping</div>
@@ -513,11 +513,11 @@ html_doc = """<!DOCTYPE html>
 
 <h3>5.1 The Continuous Action Trap: Why DQN Breaks on Robots</h3>
 <p>
-  In Q-learning, the optimal action is chosen via: <b>a* = arg max<sub>a</sub> Q(s, a)</b>.
+  In Q-learning, the optimal action is chosen via: <b>$a^* = \arg\max_a Q(s, a)$</b>.
 </p>
 <ul>
-  <li><b>In Atari Games:</b> There are only 4 buttons (Up, Down, Left, Right). You calculate Q(s, a) for all 4, and pick the highest. Easy!</li>
-  <li><b>On a Robot Arm:</b> Actions are continuous 6-dimensional vectors of real numbers (e.g., torques ∈ [-10.0, +10.0]). Finding the maximum across infinite continuous values at 1,000 Hz is impossible!</li>
+  <li><b>In Atari Games:</b> There are only 4 buttons (Up, Down, Left, Right). You calculate $Q(s, a)$ for all 4, and pick the highest. Easy!</li>
+  <li><b>On a Robot Arm:</b> Actions are continuous 6-dimensional vectors of real numbers (e.g., torques $\in [-10.0, +10.0]$). Finding the maximum across infinite continuous values at 1,000 Hz is impossible!</li>
 </ul>
 <p>
   <b>The Fix:</b> Instead of searching for the max action by brute force, train an <b>Actor network</b> to directly output the action that maximizes the Critic's Q-value!
@@ -528,7 +528,7 @@ html_doc = """<!DOCTYPE html>
   In traditional RL, the robot only cares about reward points. In <b>Maximum Entropy RL</b>, the objective adds an <b>entropy bonus</b>:
 </p>
 <div class="formula">
-  J(π) &nbsp; = &nbsp; ∑<sub>t</sub> E [ r(<b>s</b><sub>t</sub>, <b>a</b><sub>t</sub>) &nbsp; + &nbsp; <b>α H(π( • | s<sub>t</sub>))</b> ]
+  $$J(\pi) = \sum_t \mathbb{E}\left[ r(\mathbf{s}_t, \mathbf{a}_t) + \alpha \mathcal{H}(\pi(\cdot \mid \mathbf{s}_t)) \right]$$
 </div>
 
 <div class="callout intuition">
@@ -595,13 +595,13 @@ html_doc = """<!DOCTYPE html>
   PPO solves policy collapse by introducing a "speed limiter" on policy updates. It defines the <b>importance sampling ratio</b>:
 </p>
 <div class="formula">
-  r<sub>t</sub>(θ) &nbsp; = &nbsp; <sup>π<sub>θ</sub>(<b>a</b><sub>t</sub> | <b>s</b><sub>t</sub>)</sup> / <sub>π<sub>θ<sub>old</sub></sub>(<b>a</b><sub>t</sub> | <b>s</b><sub>t</sub>)</sub>
+  $$r_t(\theta) = \frac{\pi_\theta(\mathbf{a}_t \mid \mathbf{s}_t)}{\pi_{\theta_{\text{old}}}(\mathbf{a}_t \mid \mathbf{s}_t)}$$
 </div>
 <p>
   This ratio measures how much the new policy deviates from the old policy that collected the data. PPO's loss function is:
 </p>
 <div class="formula">
-  L<sup>CLIP</sup>(θ) &nbsp; = &nbsp; Ê<sub>t</sub> [ min( r<sub>t</sub>(θ) Â<sub>t</sub>, &nbsp; <b>clip(r<sub>t</sub>(θ), 1 - ε, 1 + ε)</b> Â<sub>t</sub> ) ]
+  $$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}_t \right) \right]$$
 </div>
 
 <!-- SVG Diagram: The PPO Clipping Mechanism -->
@@ -819,10 +819,9 @@ algorithm:
 PDF_OUT_DOWNLOADS = "/home/omen/Downloads/CS285_Priority1_Master_Robotics_Guide.pdf"
 PDF_OUT_REPO = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Priority1_Master_Robotics_Guide.pdf"
 
-print("Compiling Polished Master Handbook with WeasyPrint...")
-weasyprint.HTML(string=html_doc).write_pdf(PDF_OUT_DOWNLOADS)
-weasyprint.HTML(string=html_doc).write_pdf(PDF_OUT_REPO)
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import render_utils
 
-print("Master Handbook PDF generated successfully!")
-print(f"1. {PDF_OUT_DOWNLOADS} ({os.path.getsize(PDF_OUT_DOWNLOADS)} bytes)")
-print(f"2. {PDF_OUT_REPO} ({os.path.getsize(PDF_OUT_REPO)} bytes)")
+render_utils.build_pdf(html_doc, PDF_OUT_DOWNLOADS, PDF_OUT_REPO)
+

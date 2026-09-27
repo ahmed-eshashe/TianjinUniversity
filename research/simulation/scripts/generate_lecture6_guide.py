@@ -416,7 +416,7 @@ html_content = r"""<!DOCTYPE html>
 </p>
 <div class="formula" style="border: 2px solid #10b981; background: #ecfdf5;">
   <b>The GAE Advantage Formula:</b><br>
-  \hat{A}_t^{\text{GAE}(\gamma, \lambda)} = (1 - \lambda) \sum_{k=1}^\infty \lambda^{k-1} \hat{A}_t^{(k)} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l}^V
+  $$\hat{A}_t^{\text{GAE}(\gamma, \lambda)} = (1 - \lambda) \sum_{k=1}^\infty \lambda^{k-1} \hat{A}_t^{(k)} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \delta_{t+l}^V$$
 </div>
 
 <!-- SVG Diagram: Exponential Falloff of GAE -->
@@ -474,13 +474,13 @@ html_content = r"""<!DOCTYPE html>
   Because $\tanh$ is a non-linear change of variables, the probability density changes! By the change of variables formula:
 </p>
 <div class="formula">
-  P(a|s) = P(u|s) \cdot \left| \det \left( \frac{da}{du} \right) \right|^{-1}
+  $$P(a|s) = P(u|s) \cdot \left| \det \left( \frac{da}{du} \right) \right|^{-1}$$
 </div>
 <p>
   Taking the logarithm:
 </p>
 <div class="formula" style="border: 2px solid #c084fc; background: #fdf4ff;">
-  \log \pi(a|s) = \log \mu(u|s) - \sum_{i=1}^d \log \big( 1 - \tanh^2(u_i) + \epsilon \big)
+  $$\log \pi(a|s) = \log \mu(u|s) - \sum_{i=1}^d \log \big( 1 - \tanh^2(u_i) + \epsilon \big)$$
 </div>
 <p>
   Omitting this Jacobian correction term is a classic silent failure that distorts entropy calculations and policy gradient updates!
@@ -588,10 +588,9 @@ def compute_gae(rewards, values, next_values, dones, gamma=0.99, lam=0.95):
 output_path = "/home/omen/Downloads/CS285_Lecture6_Beginner_Guide.pdf"
 backup_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture6_Beginner_Guide.pdf"
 
-print("Compiling Enhanced Lecture 6 PDF with WeasyPrint...")
-html = weasyprint.HTML(string=html_content)
-html.write_pdf(output_path)
-print(f"Saved: {output_path} ({os.path.getsize(output_path)} bytes)")
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import render_utils
 
-shutil.copyfile(output_path, backup_path)
-print(f"Copied to: {backup_path}")
+render_utils.build_pdf(html_content, output_path, backup_path)
+
