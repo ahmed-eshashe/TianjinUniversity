@@ -1,18 +1,18 @@
 import os
-import weasyprint
 import shutil
+import render_utils
 
 html_content = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Mastering Robot Learning & The Closed Loop: Beginner's Guide to CS285 Lecture 1</title>
+<title>Mastering Robot Learning & The Closed Loop: Definitive Guide to CS285 Lecture 1</title>
 <style>
   @page {
     size: A4;
-    margin: 18mm 16mm 20mm 16mm;
+    margin: 16mm 14mm 18mm 14mm;
     @top-right {
-      content: "CS285 Lecture 1: Foundations & Robotics Closed Loop";
+      content: "CS285 Lecture 1: Foundations, MDPs & The RL Landscape";
       font-size: 8pt;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #64748b;
@@ -28,15 +28,15 @@ html_content = r"""<!DOCTYPE html>
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #1e293b;
-    line-height: 1.58;
-    font-size: 10pt;
+    line-height: 1.56;
+    font-size: 9.8pt;
   }
 
   /* Header Block */
   .header-block {
     border-bottom: 2px solid #2563eb;
-    padding-bottom: 16px;
-    margin-bottom: 20px;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
   }
   .course-tag {
     display: inline-block;
@@ -59,7 +59,7 @@ html_content = r"""<!DOCTYPE html>
   }
   .subtitle {
     color: #475569;
-    font-size: 10.5pt;
+    font-size: 10.2pt;
     margin: 0 0 10px 0;
     font-weight: 500;
   }
@@ -72,9 +72,9 @@ html_content = r"""<!DOCTYPE html>
 
   h2 {
     color: #1e3a8a;
-    font-size: 13pt;
+    font-size: 12.5pt;
     font-weight: 700;
-    margin-top: 22px;
+    margin-top: 20px;
     margin-bottom: 8px;
     border-left: 4px solid #2563eb;
     padding-left: 8px;
@@ -83,9 +83,9 @@ html_content = r"""<!DOCTYPE html>
 
   h3 {
     color: #0f172a;
-    font-size: 10.8pt;
+    font-size: 10.5pt;
     font-weight: 700;
-    margin-top: 15px;
+    margin-top: 14px;
     margin-bottom: 5px;
     page-break-after: avoid;
   }
@@ -98,15 +98,15 @@ html_content = r"""<!DOCTYPE html>
   /* Callout Boxes */
   .callout {
     padding: 10px 14px;
-    margin: 11px 0;
+    margin: 10px 0;
     border-radius: 6px;
-    font-size: 9.5pt;
+    font-size: 9.3pt;
     page-break-inside: avoid;
   }
   .callout p { margin: 0; }
   .callout-title {
     font-weight: 700;
-    font-size: 9pt;
+    font-size: 8.8pt;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 4px;
@@ -147,7 +147,45 @@ html_content = r"""<!DOCTYPE html>
   }
   .silent-bug .callout-title { color: #be185d; }
 
-  /* Math display */
+  .code-container {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
+    font-size: 8.4pt;
+    line-height: 1.45;
+    page-break-inside: avoid;
+    overflow-x: auto;
+  }
+  .code-container pre { margin: 0; }
+  .code-comment { color: #94a3b8; font-style: italic; }
+  .code-keyword { color: #38bdf8; font-weight: bold; }
+  .code-func { color: #a78bfa; }
+  .code-string { color: #4ade80; }
+  .code-dim { color: #fbbf24; }
+
+  .algorithm-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #475569;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    page-break-inside: avoid;
+  }
+  .algorithm-header {
+    font-weight: 800;
+    font-size: 9.5pt;
+    color: #0f172a;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
   .formula {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
@@ -155,18 +193,16 @@ html_content = r"""<!DOCTYPE html>
     padding: 8px 12px;
     margin: 10px 0;
     text-align: center;
-    font-family: "Cambria Math", "Times New Roman", serif;
-    font-size: 10.8pt;
+    font-size: 10.5pt;
     color: #0f172a;
     page-break-inside: avoid;
   }
 
-  /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
     margin: 12px 0;
-    font-size: 9.2pt;
+    font-size: 8.8pt;
     page-break-inside: avoid;
   }
   th {
@@ -174,11 +210,11 @@ html_content = r"""<!DOCTYPE html>
     color: #0f172a;
     font-weight: 700;
     text-align: left;
-    padding: 7px 10px;
+    padding: 7px 9px;
     border-bottom: 2px solid #cbd5e1;
   }
   td {
-    padding: 6px 10px;
+    padding: 6px 9px;
     border-bottom: 1px solid #e2e8f0;
     vertical-align: top;
   }
@@ -194,12 +230,12 @@ html_content = r"""<!DOCTYPE html>
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    padding: 12px 14px;
-    margin: 14px 0;
+    padding: 10px 14px;
+    margin: 12px 0;
     page-break-inside: avoid;
   }
-  .quiz-q { font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-  .quiz-a { color: #334155; font-size: 9.3pt; margin-top: 4px; border-top: 1px dashed #cbd5e1; padding-top: 4px; }
+  .quiz-q { font-weight: 700; color: #0f172a; margin-bottom: 5px; }
+  .quiz-a { color: #334155; font-size: 9pt; margin-top: 4px; border-top: 1px dashed #cbd5e1; padding-top: 4px; }
 
   .page-break { page-break-before: always; }
 </style>
@@ -208,484 +244,551 @@ html_content = r"""<!DOCTYPE html>
 
 <!-- Header Block -->
 <div class="header-block">
-  <span class="course-tag">UC Berkeley CS 185/285 • Lecture 1 Enhanced Study Guide</span>
-  <h1>Mastering Robot Learning &amp; The Closed Loop</h1>
-  <div class="subtitle">Deep Foundations: (T, P, E) Formulation, Compounding Errors, Daniel Wolpert's Motor Control, The Bitter Lesson &amp; Bi-Manual Tomato Slicing</div>
+  <span class="course-tag">UC Berkeley CS 185/285 • Lecture 1 Masterclass Study Guide</span>
+  <h1>Mastering Robot Learning &amp; The Closed-Loop Paradigm</h1>
+  <div class="subtitle">Complete Mathematical &amp; Conceptual Foundations: (T, P, E) Formalism, Quadratic Compounding Errors, Continuous MDPs &amp; POMDPs, Trajectory Factorization, and the Modern RL Landscape</div>
   <div class="meta-bar">
     <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley)</span>
-    <span><b>Companion:</b> DEX-ROB Lab, Tianjin University</span>
-    <span><b>Frameworks:</b> Goodfellow (T, P, E) + Achiam (Spinning Up)</span>
+    <span><b>Curriculum:</b> Berkeley CS285 + Sutton &amp; Barto + Spinning Up</span>
+    <span><b>Scope:</b> General RL Theory &amp; Continuous Physical Manipulation</span>
   </div>
 </div>
 
 <!-- SECTION 0 -->
-<h2>0. The "Mental Map": Why Does Lecture 1 Matter for Robotics?</h2>
+<h2>0. The Executive Mental Map: Why Does Reinforcement Learning Exist?</h2>
 <p>
-  When engineers first attempt to program robots for delicate manipulation tasks—like grasping a slippery fruit, peeling an egg, or slicing a soft tomato—their instinct is to design an <b>explicit recipe</b>: <i>"Move down 10 millimeters, measure force, if force exceeds 5 Newtons, pause and slide sideways."</i>
+  When human software engineers approach a robotics or control problem—such as autonomous drone flight, legged locomotion over rough terrain, or delicate surgical manipulation—their initial instinct is to engineer an <b>explicit recipe</b>:
+  <i>"Read joint encoders; calculate kinematics; if contact force exceeds 5.0 Newtons, execute a linear trajectory offset."</i>
 </p>
 <p>
-  In the real physical world, this classical engineering approach collapses. Tomatoes differ in skin cuticle toughness, internal turgor pressure, flesh viscoelasticity, and curvature. Prof. Sergey Levine opens CS 285 with a radical paradigm shift: <b>we should not hardcode robotic behavior; robots must learn from trial, error, and physical sensory feedback.</b>
+  In the real physical world, this classical hand-crafted approach invariably breaks down. Physical systems exhibit contact non-linearities, stiction, hysteresis, latency, sensor noise, and deformable physics that cannot be captured in closed-form equations. Prof. Sergey Levine opens CS285 with a profound paradigm shift: <b>intelligent motor behavior cannot be hand-coded; it must be discovered through closed-loop interaction, evaluative feedback, and continuous adaptation.</b>
 </p>
 
-<!-- SVG Diagram: The 4 Themes of Lecture 1 -->
+<!-- SVG Diagram: The 5 Pillars of Lecture 1 -->
 <div class="diagram-container">
-<svg width="680" height="90" viewBox="0 0 680 90">
-  <rect x="5" y="10" width="155" height="70" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="82" y="36" font-size="9.5" font-weight="700" fill="#1e40af" text-anchor="middle">1. SL vs. RL</text>
-  <text x="82" y="52" font-size="8.5" fill="#475569" text-anchor="middle">i.i.d. Labels vs.</text>
-  <text x="82" y="66" font-size="8.5" fill="#475569" text-anchor="middle">Closed-Loop Control</text>
+<svg width="690" height="90" viewBox="0 0 690 90">
+  <rect x="5" y="10" width="128" height="70" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="69" y="36" font-size="9" font-weight="700" fill="#1e40af" text-anchor="middle">1. SL vs. RL</text>
+  <text x="69" y="52" font-size="8.2" fill="#475569" text-anchor="middle">i.i.d. Labels vs.</text>
+  <text x="69" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Closed-Loop Control</text>
 
-  <rect x="175" y="10" width="155" height="70" rx="6" fill="#fdf4ff" stroke="#c084fc" stroke-width="1.5"/>
-  <text x="252" y="36" font-size="9.5" font-weight="700" fill="#6b21a8" text-anchor="middle">2. Philosophy of Movement</text>
-  <text x="252" y="52" font-size="8.5" fill="#475569" text-anchor="middle">Daniel Wolpert &amp;</text>
-  <text x="252" y="66" font-size="8.5" fill="#475569" text-anchor="middle">The Bitter Lesson</text>
+  <rect x="141" y="10" width="128" height="70" rx="6" fill="#fdf4ff" stroke="#c084fc" stroke-width="1.5"/>
+  <text x="205" y="36" font-size="9" font-weight="700" fill="#6b21a8" text-anchor="middle">2. Error Drift</text>
+  <text x="205" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Ross &amp; Bagnell Proof</text>
+  <text x="205" y="66" font-size="8.2" fill="#475569" text-anchor="middle">O(ε T²) Distribution Shift</text>
 
-  <rect x="345" y="10" width="155" height="70" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="422" y="36" font-size="9.5" font-weight="700" fill="#065f46" text-anchor="middle">3. The Feedback Loop</text>
-  <text x="422" y="52" font-size="8.5" fill="#475569" text-anchor="middle">Observations, Actions &amp;</text>
-  <text x="422" y="66" font-size="8.5" fill="#475569" text-anchor="middle">Sensory Feedback</text>
+  <rect x="277" y="10" width="128" height="70" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="341" y="36" font-size="9" font-weight="700" fill="#065f46" text-anchor="middle">3. MDPs &amp; POMDPs</text>
+  <text x="341" y="52" font-size="8.2" fill="#475569" text-anchor="middle">The 6-Tuple &amp; 8-Tuple</text>
+  <text x="341" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Belief State Dynamics</text>
 
-  <rect x="515" y="10" width="155" height="70" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="592" y="36" font-size="9.5" font-weight="700" fill="#92400e" text-anchor="middle">4. Credit Assignment</text>
-  <text x="592" y="52" font-size="8.5" fill="#475569" text-anchor="middle">Why Rupturing at t=180</text>
-  <text x="592" y="66" font-size="8.5" fill="#475569" text-anchor="middle">is Blamed on t=80</text>
+  <rect x="413" y="10" width="128" height="70" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="477" y="36" font-size="9" font-weight="700" fill="#92400e" text-anchor="middle">4. Trajectory Math</text>
+  <text x="477" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Chain Rule Factorization</text>
+  <text x="477" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Markovian Independence</text>
+
+  <rect x="549" y="10" width="136" height="70" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="617" y="36" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">5. The Grand Taxonomy</text>
+  <text x="617" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Model-Free vs Based</text>
+  <text x="617" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Value vs Policy vs AC</text>
 </svg>
 </div>
 
 <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
 
 <!-- PART 1 -->
-<h2>Part 1: Supervised Learning vs. Reinforcement Learning</h2>
+<h2>Part 1: The Core Paradigm Shift — Supervised Learning vs. Reinforcement Learning</h2>
 <p>
-  <b>(Slides 8–18, Spoken Transcript 05:10–14:20)</b> The vast majority of modern AI (ChatGPT, computer vision, voice recognition) is built upon <b>Supervised Learning</b>. Levine explains why supervised learning fundamentally fails when applied to autonomous robot manipulation.
+  The overwhelming majority of breakthrough AI systems (large language models, object recognition networks, speech transcribers) are powered by <b>Supervised Learning (SL)</b>. In this part, we examine why the mathematical assumptions underlying supervised learning completely fail when applied to sequential decision-making agents.
 </p>
 
-<h3>1.1 The Goodfellow (T, P, E) Formalization for Robotics</h3>
+<h3>1.1 The Goodfellow (T, P, E) Formalization for Intelligent Agents</h3>
 <p>
-  In the *Deep Learning* textbook (Goodfellow, Bengio &amp; Courville, ch05), every learning system is rigorously formalized by three elements: <b>Task (T)</b>, <b>Performance Measure (P)</b>, and <b>Experience (E)</b>.
+  In the canonical <i>Deep Learning</i> framework (Goodfellow, Bengio &amp; Courville, Chapter 5), any machine learning algorithm is defined by a triad: a <b>Task (T)</b>, a <b>Performance Measure (P)</b>, and <b>Experience (E)</b>.
 </p>
-<ul>
-  <li><b>Task (T):</b> Control a dual-arm manipulator equipped with a TacBlade knife to slice through deformable organic tomatoes without causing crushing, bruising, or fluid rupture.</li>
-  <li><b>Performance Measure (P):</b> $J(\pi) = \mathbb{E}[\sum r_t]$, where rewards reward downward penetration depth while severely penalizing high compressive forces ($F_z > 8\text{ N}$) and volumetric deformation.</li>
-  <li><b>Experience (E):</b> Closed-loop physical trajectories $\tau = (s_0, a_0, r_0, s_1, \dots)$ generated via interaction in GPU simulation (Isaac Lab).</li>
-</ul>
+
+<div class="intuition">
+  <div class="callout-title">The Foundational Contrast: Instructive vs. Evaluative Feedback</div>
+  <p>
+    <b>Supervised Learning receives Instructive Feedback:</b> The training signal specifies the exact ground-truth action or label $y^*$ that should have been produced: <i>"The correct steering angle was exactly +14.2 degrees."</i> Loss gradients point directly toward this known target.<br><br>
+    <b>Reinforcement Learning receives Evaluative Feedback:</b> The training signal is purely evaluative: a scalar score $r \in \mathbb{R}$ indicating how good or bad the outcome was: <i>"Reward = -50 (the vehicle slipped off the tarmac)."</i> The environment does not tell the agent what action would have been better; the agent must infer this through trial and error.
+  </p>
+</div>
 
 <table>
   <thead>
     <tr>
-      <th style="width: 20%;">Dimension</th>
-      <th style="width: 40%;">Supervised Machine Learning</th>
-      <th style="width: 40%;">Reinforcement Learning (RL)</th>
+      <th style="width: 18%;">Dimension</th>
+      <th style="width: 41%;">Supervised Learning (SL)</th>
+      <th style="width: 41%;">Reinforcement Learning (RL)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b>Data Assumption</b></td>
-      <td><b>i.i.d.</b> (Independent &amp; Identically Distributed). Each image or text token has no causal impact on the next sample.</td>
-      <td><b>Non-i.i.d. &amp; Sequential.</b> Every action chosen by the robot alters the physical world, dictating what sensor reading comes next.</td>
+      <td><b>Data Independence</b></td>
+      <td><b>i.i.d. Assumption:</b> Samples $(x_i, y_i) \sim \mathcal{D}$ are independently and identically distributed. Sample $x_t$ has zero causal influence on $x_{t+1}$.</td>
+      <td><b>Non-i.i.d. Sequential Dynamics:</b> Actions actively change the physical state: $s_{t+1} \sim P(\cdot|s_t, a_t)$. Data collection is causally coupled to the agent's current policy.</td>
     </tr>
     <tr>
       <td><b>Supervision Signal</b></td>
-      <td><b>Direct Ground-Truth Labels:</b> A human tells the network the exact target class (e.g., "Cat" or "Dog").</td>
-      <td><b>Scalar Evaluative Reward:</b> No one tells the robot what motor torque was correct; it only receives a numerical score indicating success or failure.</td>
-    </tr>
-    <tr>
-      <td><b>Error Compounding</b></td>
-      <td>Errors are localized: $\text{Error} \propto \epsilon T$.</td>
-      <td><b>Quadratic Compounding:</b> Ross &amp; Bagnell proved errors compound quadratically $\mathcal{O}(\epsilon T^2)$ under distribution shift!</td>
-    </tr>
-    <tr>
-      <td><b>Autonomous Discovery</b></td>
-      <td>Limited by human demonstrations. The model cannot exceed the skill of the teacher.</td>
-      <td><b>Emergent Strategies:</b> Discovers novel, counter-intuitive physical techniques (like "Move 37" in AlphaGo).</td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="callout intuition">
-  <div class="callout-title">Plain-English Intuition: The Math Exam vs. The Bicycle</div>
-  <p>
-    <b>Supervised learning</b> is like studying for an exam with an answer key: you guess an answer, check the back of the book, and correct your mistake. 
-    <b>Reinforcement learning</b> is like learning to ride a bicycle. Nobody can hand you a mathematical answer key for how many micro-Newtons of force your left leg should exert when leaning 3 degrees to the right. You must get on the bike, wobble, feel your balance, fall over (negative reward), adjust, and eventually discover equilibrium through trial-and-error.
-  </p>
-</div>
-
-<div class="callout warning-box">
-  <div class="callout-title">The Compounding Error Theorem (Ross &amp; Bagnell, 2011)</div>
-  <p>
-    If an imitation learning policy makes an error with probability $\epsilon$ at each step, the expected number of mistakes over a trajectory of length $T$ is not $\epsilon T$, but $\mathcal{O}(\epsilon T^2)$. Why? The first small mistake drives the knife into an unobserved contact angle; because the policy was never trained on recovering from this angle, it makes another mistake immediately, cascading exponentially until the tomato explodes.
-  </p>
-</div>
-
-<div class="page-break"></div>
-
-<!-- PART 2 -->
-<h2>Part 2: The Philosophy of Movement &amp; The Bitter Lesson</h2>
-<p>
-  <b>(Slides 24–35, Spoken Transcript 15:30–28:45)</b> Sergey Levine touches upon two profound intellectual pillars that justify why robotic reinforcement learning is the ultimate testbed for artificial intelligence.
-</p>
-
-<h3>2.1 Daniel Wolpert's Motor Control Postulate</h3>
-<p>
-  Neuroscientist Daniel Wolpert posed a famous biological question: <i>"Why do trees not have brains, while sea squirts and humans do?"</i>
-</p>
-<p>
-  The juvenile sea squirt swims freely through the ocean looking for a suitable rock to attach to. It possesses a rudimentary nervous system and brain. However, the moment it anchors itself permanently to a rock, <b>it digests its own brain</b>. Why? Because it will never move again!
-</p>
-<div class="formula">
-  <b>Wolpert's Principle:</b> "The brain exists for one reason and one reason only: to produce adaptable and complex movement."
-</div>
-<p>
-  Sensory perception (vision, touch, sound) is completely useless unless it influences an action that changes the physical world. In robotics, vision and tactile sensing exist solely to guide the motors.
-</p>
-
-<!-- SVG Diagram: Sea Squirt to Dual-Arm Robot -->
-<div class="diagram-container">
-<svg width="680" height="120" viewBox="0 0 680 120">
-  <rect x="20" y="15" width="190" height="90" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="115" y="40" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">The Sea Squirt</text>
-  <text x="115" y="60" font-size="9" fill="#64748b" text-anchor="middle">Swims ➔ Has Brain</text>
-  <text x="115" y="78" font-size="9" fill="#ef4444" text-anchor="middle">Anchors ➔ Consumes Brain</text>
-  <text x="115" y="94" font-size="8" fill="#94a3b8" text-anchor="middle">(No movement = No brain needed)</text>
-
-  <line x1="220" y1="60" x2="250" y2="60" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <rect x="255" y="15" width="190" height="90" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="350" y="40" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Sensory Perception</text>
-  <text x="350" y="60" font-size="9" fill="#1e3a8a" text-anchor="middle">TacBlade Tactile Array</text>
-  <text x="350" y="78" font-size="9" fill="#1e3a8a" text-anchor="middle">Acoustic Audio Burst</text>
-  <text x="350" y="94" font-size="8" fill="#3b82f6" text-anchor="middle">(Sensing without action is useless)</text>
-
-  <line x1="455" y1="60" x2="485" y2="60" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <rect x="490" y="15" width="180" height="90" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="580" y="40" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">Active Motor Control</text>
-  <text x="580" y="60" font-size="9" fill="#047857" text-anchor="middle">Modulate Feed Rate</text>
-  <text x="580" y="78" font-size="9" fill="#047857" text-anchor="middle">Vary Joint Impedance</text>
-  <text x="580" y="94" font-size="8" fill="#10b981" text-anchor="middle">(Adaptable Physical Impact)</text>
-</svg>
-</div>
-
-<h3>2.2 Rich Sutton's "Bitter Lesson" (2019)</h3>
-<p>
-  Rich Sutton (the father of modern RL) observed that 70 years of AI history prove a painful truth: <b>human engineering heuristics always lose in the long run to methods that leverage general computation, learning, and search.</b>
-</p>
-<ul>
-  <li>In Computer Vision: Handcrafted SIFT and HOG features were crushed by Deep Convolutional Networks.</li>
-  <li>In Chess &amp; Go: Deep Blue's hand-tuned evaluation functions were crushed by AlphaZero's self-play RL search.</li>
-  <li>In Robotics: Hand-crafted PID tables and finite state machines for contact transitions are consistently outperformed by end-to-end deep RL policies trained in massive GPU simulations (Isaac Lab).</li>
-</ul>
-
-<div class="callout math-box">
-  <div class="callout-title">The Bitter Lesson Formula for Robotics</div>
-  <p>
-    <b>Intelligence = Scalable Representation Learning (Deep Nets) + General Optimization (Reinforcement Learning)</b><br>
-    Instead of handcrafting rules like <i>"If skin is hard, saw at 4 Hz"</i>, provide the robot with rich multi-modal sensors (TacBlade + Force + Sound) and let policy gradient optimization discover the optimal sawing dynamics.
-  </p>
-</div>
-
-<div class="page-break"></div>
-
-<!-- PART 3 -->
-<h2>Part 3: The Sensorimotor Closed Loop in Continuous Robotics</h2>
-<p>
-  <b>(Slides 18–23, Spoken Transcript 29:00–41:10)</b> Sergey Levine defines the formal feedback loop governing reinforcement learning. Every robotic task is modeled as an ongoing dialogue between the <b>Agent</b> (the policy) and the <b>Environment</b> (the physics engine or physical hardware).
-</p>
-
-<!-- SVG Diagram: The Full Robotic Feedback Loop -->
-<div class="diagram-container">
-<svg width="680" height="200" viewBox="0 0 680 200">
-  <!-- Agent Box -->
-  <rect x="230" y="15" width="220" height="65" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="340" y="40" font-size="12" font-weight="700" fill="#1e40af" text-anchor="middle">AGENT (Neural Policy π_θ)</text>
-  <text x="340" y="58" font-size="9" fill="#3b82f6" text-anchor="middle">SkRL MLP: 33-dim State ➔ 6-dim Action</text>
-
-  <!-- Environment Box -->
-  <rect x="230" y="120" width="220" height="65" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
-  <text x="340" y="145" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">ENVIRONMENT (Physical World)</text>
-  <text x="340" y="163" font-size="9" fill="#64748b" text-anchor="middle">Isaac Lab / Real Dual Arms + Tomato Flesh</text>
-
-  <!-- Action Arrow -->
-  <path d="M 450 48 L 560 48 L 560 152 L 450 152" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
-  <text x="575" y="95" font-size="10" font-weight="700" fill="#2563eb" text-anchor="start">ACTION a_t</text>
-  <text x="575" y="110" font-size="8.5" fill="#475569" text-anchor="start">Δz feed, v_saw,</text>
-  <text x="575" y="123" font-size="8.5" fill="#475569" text-anchor="start">Impedance ΔK, ΔD</text>
-
-  <!-- Observation & Reward Arrow -->
-  <path d="M 230 152 L 120 152 L 120 48 L 230 48" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow-green)"/>
-  <text x="105" y="85" font-size="10" font-weight="700" fill="#047857" text-anchor="end">OBSERVATION s_t+1</text>
-  <text x="105" y="100" font-size="8.5" fill="#475569" text-anchor="end">EE Pose, TacBlade F/T,</text>
-  <text x="105" y="113" font-size="8.5" fill="#475569" text-anchor="end">Acoustic Rupture Burst</text>
-  <text x="105" y="130" font-size="10" font-weight="700" fill="#d97706" text-anchor="end">REWARD r_t</text>
-  <text x="105" y="145" font-size="8.5" fill="#475569" text-anchor="end">Progress - Crush Penalty</text>
-
-  <defs>
-    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
-    </marker>
-    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
-    </marker>
-  </defs>
-</svg>
-</div>
-
-<h3>3.1 The 4 Components of the Robotics Loop</h3>
-<ol>
-  <li>
-    <b>The State / Observation ($s_t \in \mathcal{S}$):</b> The snapshot of sensory reality at time-step $t$. In your research, this includes robot joint encoders, end-effector pose, 6-axis forces from the knife blade, tactile contact patch distribution, and the acoustic microphone signal.
-  </li>
-  <li>
-    <b>The Action ($a_t \in \mathcal{A}$):</b> The motor commands chosen by the neural network. In low-level robotics, this can be raw joint torques; in compliant manipulation, it is task-space velocity adjustments and impedance controller stiffness/damping offsets.
-  </li>
-  <li>
-    <b>The Transition Dynamics ($\mathcal{P}(s_{t+1} | s_t, a_t)$):</b> The laws of physics governing how the knife interacts with the fruit. In simulation, this is simulated via FEM / mesh particles in Isaac Lab. In the real world, it is the physical mechanics of soft tissue rupture.
-  </li>
-  <li>
-    <b>The Reward Function ($r_t = \mathcal{R}(s_t, a_t, s_{t+1})$):</b> The engineering metric that scores performance. It rewards downward tissue penetration and penalizes excessive lateral deformation (crushing) and high contact forces.
-  </li>
-</ol>
-
-<div class="callout silent-bug">
-  <div class="callout-title">Spinning Up Diagnostic: The Silent Failure of Static Trajectories</div>
-  <p>
-    Joshua Achiam warns: *Broken RL code runs fine; the agent just never learns.* In robotics, if your environment omits the knife's velocity or force rates from the observation vector, the Markov property is violated. The policy cannot distinguish whether a 5 N force is a gentle initial touch or a dangerous crushing surge. The code runs without crashing, but the robot's performance will plateau permanently at near-zero reward!
-  </p>
-</div>
-
-<div class="page-break"></div>
-
-<!-- PART 4 -->
-<h2>Part 4: The Credit Assignment Problem Unpacked</h2>
-<p>
-  <b>(Slides 36–42, Spoken Transcript 42:15–53:30)</b> Sergey Levine identifies the <b>Credit Assignment Problem</b> as the central mathematical and practical hurdle in reinforcement learning.
-</p>
-
-<h3>4.1 The Anatomy of Delayed Consequences</h3>
-<p>
-  In a standard cutting episode lasting 200 time-steps (approx. 3.3 seconds at 60 Hz control frequency):
-</p>
-<ul>
-  <li><b>Time-steps 1 to 30:</b> The knife approaches the tomato and touches the surface cuticle gently ($r_t \approx +0.1$).</li>
-  <li><b>Time-steps 31 to 90:</b> The knife presses down. The cuticle stretches elastically. The policy chooses <i>not</i> to saw laterally, merely pushing down with increasing force.</li>
-  <li><b>Time-steps 91 to 140:</b> Internal hydrostatic pressure builds inside the tomato pulp. Normal force exceeds 12 Newtons.</li>
-  <li><b>Time-step 180:</b> The skin suddenly rips unpredictably along the side wall, spilling seeds and juice. The tomato collapses into pulp. The episode terminates with a catastrophic failure penalty ($r_{180} = -50$).</li>
-</ul>
-
-<!-- SVG Diagram: The Credit Assignment Timeline -->
-<div class="diagram-container">
-<svg width="680" height="150" viewBox="0 0 680 150">
-  <!-- Timeline Line -->
-  <line x1="40" y1="70" x2="640" y2="70" stroke="#94a3b8" stroke-width="3"/>
-
-  <!-- Step t=10 -->
-  <circle cx="90" cy="70" r="8" fill="#3b82f6"/>
-  <text x="90" y="50" font-size="9.5" font-weight="700" fill="#1e40af" text-anchor="middle">t = 10</text>
-  <text x="90" y="95" font-size="8.5" fill="#475569" text-anchor="middle">Touch Skin</text>
-  <text x="90" y="108" font-size="8.5" fill="#10b981" text-anchor="middle">r = +0.1</text>
-
-  <!-- Step t=80 -->
-  <circle cx="270" cy="70" r="10" fill="#f59e0b"/>
-  <text x="270" y="45" font-size="9.5" font-weight="700" fill="#b45309" text-anchor="middle">t = 80 (CRITICAL ERROR)</text>
-  <text x="270" y="95" font-size="8.5" fill="#475569" text-anchor="middle">Overpressured Downward</text>
-  <text x="270" y="108" font-size="8.5" fill="#d97706" text-anchor="middle">Zero Sawing Action!</text>
-
-  <!-- Step t=140 -->
-  <circle cx="450" cy="70" r="8" fill="#64748b"/>
-  <text x="450" y="50" font-size="9.5" font-weight="700" fill="#334155" text-anchor="middle">t = 140</text>
-  <text x="450" y="95" font-size="8.5" fill="#475569" text-anchor="middle">Pressure Surges</text>
-  <text x="450" y="108" font-size="8.5" fill="#64748b" text-anchor="middle">r = 0.0</text>
-
-  <!-- Step t=180 -->
-  <circle cx="590" cy="70" r="11" fill="#ef4444"/>
-  <text x="590" y="45" font-size="9.5" font-weight="700" fill="#991b1b" text-anchor="middle">t = 180 (CATASTROPHE)</text>
-  <text x="590" y="95" font-size="8.5" fill="#ef4444" text-anchor="middle">Tomato Explodes!</text>
-  <text x="590" y="108" font-size="8.5" fill="#ef4444" font-weight="700" text-anchor="middle">r = -50.0</text>
-
-  <!-- Attribution Arrow -->
-  <path d="M 580 30 C 450 -10, 350 -10, 280 30" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow-red)"/>
-  <text x="410" y="12" font-size="9" font-weight="700" fill="#dc2626" text-anchor="middle">Credit Assignment: Blame propagated back to t=80</text>
-
-  <defs>
-    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
-    </marker>
-  </defs>
-</svg>
-</div>
-
-<h3>4.2 Why Naive Learning Fails</h3>
-<p>
-  If you use a simple trial-and-error method without temporal credit assignment, the algorithm will see the $-50$ penalty at $t=180$ and penalize whatever action was taken at $t=180$ (e.g., a tiny blade adjustment). But the action at $t=180$ was innocent! The true culprit was the policy's failure to begin sawing at $t=80$.
-</p>
-<p>
-  <b>How CS 285 Solves This:</b> In upcoming lectures, we will see that RL algorithms solve credit assignment using two mathematical tools:
-</p>
-<ol>
-  <li><b>Reward-to-Go (Lecture 5):</b> Discounting future returns backward so actions are judged by everything that occurs after them.</li>
-  <li><b>Value Functions &amp; Temporal Difference Learning (Lectures 6 &amp; 8):</b> Training a "Critic" neural network to predict expected future disaster before it happens, providing immediate step-by-step guidance.</li>
-</ol>
-
-<div class="page-break"></div>
-
-<!-- PART 5 -->
-<h2>Part 5: Master Case Study for Paper 1 (Dual-Arm Slicing)</h2>
-<p>
-  How does the foundation laid in Lecture 1 directly translate to your Master's thesis at Tianjin University?
-</p>
-
-<h3>5.1 The Dual-Arm Setup</h3>
-<p>
-  In your experimental and simulation framework:
-</p>
-<ul>
-  <li><b>Primary Arm (Manipulator):</b> Holds the custom instrumented <b>TacBlade</b> sensory knife. Responsible for vertical feed, lateral high-frequency sawing, and roll angle adjustments.</li>
-  <li><b>Secondary Arm (Support):</b> Holds a soft/compliant gripper that stabilizes the tomato. Must apply sufficient normal force to prevent slipping, but not so much force that it squishes the lateral flesh.</li>
-</ul>
-
-<!-- SVG Diagram: Dual Arm Setup -->
-<div class="diagram-container">
-<svg width="680" height="160" viewBox="0 0 680 160">
-  <!-- Left Arm Box -->
-  <rect x="30" y="20" width="180" height="120" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="120" y="45" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">Primary Arm (Knife)</text>
-  <text x="120" y="65" font-size="8.5" fill="#334155" text-anchor="middle">• TacBlade F/T Sensing</text>
-  <text x="120" y="80" font-size="8.5" fill="#334155" text-anchor="middle">• Acoustic Microphones</text>
-  <text x="120" y="95" font-size="8.5" fill="#334155" text-anchor="middle">• Δz Feed + v_saw Speed</text>
-  <text x="120" y="110" font-size="8.5" fill="#2563eb" text-anchor="middle">Task-Space Impedance</text>
-
-  <!-- Middle Fruit Box -->
-  <rect x="250" y="35" width="180" height="90" rx="45" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
-  <text x="340" y="75" font-size="12" font-weight="800" fill="#991b1b" text-anchor="middle">Deformable Tomato</text>
-  <text x="340" y="92" font-size="8.5" fill="#b91c1c" text-anchor="middle">Skin Cuticle + Pulp FEM</text>
-
-  <!-- Right Arm Box -->
-  <rect x="470" y="20" width="180" height="120" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="560" y="45" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">Secondary Arm (Gripper)</text>
-  <text x="560" y="65" font-size="8.5" fill="#334155" text-anchor="middle">• Tactile Grip Fingers</text>
-  <text x="560" y="80" font-size="8.5" fill="#334155" text-anchor="middle">• F_hold Normal Force</text>
-  <text x="560" y="95" font-size="8.5" fill="#334155" text-anchor="middle">• Adaptive Counter-Torque</text>
-  <text x="560" y="110" font-size="8.5" fill="#059669" text-anchor="middle">Slip Prevention</text>
-</svg>
-</div>
-
-<h3>5.2 Translating the 4 Dilemmas into RL Specifications</h3>
-<table>
-  <thead>
-    <tr>
-      <th style="width: 25%;">Lecture 1 Dilemma</th>
-      <th style="width: 35%;">Physical Tomato Cutting Manifestation</th>
-      <th style="width: 40%;">Isaac Lab / SkRL Engineering Solution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>Non-i.i.d. Dynamics</b></td>
-      <td>Depressing the blade creates internal fluid pressure; previous feed rates alter current tissue elasticity.</td>
-      <td>Include past force derivative $\dot{F}_z$ and feed velocity $v_z$ in the 33-dimensional observation vector.</td>
-    </tr>
-    <tr>
-      <td><b>Compounding Distribution Shift</b></td>
-      <td>A slight knife tilt creates asymmetric cutting drag; human demonstration replay jams the blade.</td>
-      <td>Train policy with Domain Randomization across 4,096 parallel Isaac Lab environments (randomize tomato stiffness, size, friction).</td>
+      <td><b>Instructive Ground-Truth:</b> Direct vector gradient $\nabla_\theta \mathcal{L}(f_\theta(x), y)$ pointing toward the correct output.</td>
+      <td><b>Scalar Evaluative Reward:</b> Only a scalar $r_t \in \mathbb{R}$. No direction of improvement is provided; exploration is required.</td>
     </tr>
     <tr>
       <td><b>Credit Assignment</b></td>
-      <td>Tomato ruptures at step 180 because holding force at step 30 was too loose, causing the fruit to roll.</td>
-      <td>Use GAE-$\lambda$ ($\lambda=0.95$) with discount factor $\gamma=0.99$ to correctly credit early stabilizing actions.</td>
+      <td><b>Instantaneous:</b> Error is evaluated immediately on the current sample. No future consequences exist.</td>
+      <td><b>Delayed &amp; Temporal:</b> An action taken at step $t=10$ may cause catastrophic failure at step $t=150$. The agent must assign credit across time.</td>
     </tr>
     <tr>
-      <td><b>Emergent Behaviors</b></td>
-      <td>Human engineers cannot formulate the exact frequency to alternate sawing directions during cuticle breach.</td>
-      <td>RL autonomously discovers the resonant sawing frequency that minimizes vertical penetration force.</td>
+      <td><b>Performance Ceiling</b></td>
+      <td>Bounded by the teacher/dataset: The model cannot exceed the proficiency of human annotators.</td>
+      <td><b>Superhuman Discovery:</b> By exploring beyond human intuitions, agents discover novel optimal control strategies (e.g., AlphaGo Move 37).</td>
     </tr>
   </tbody>
 </table>
 
-<div class="page-break"></div>
-
-<!-- PART 6: SELF-TEST QUIZ -->
-<h2>Part 6: Interactive Tablet Self-Test Quiz (Test Your Understanding)</h2>
+<h3>1.2 The Distribution Shift Catastrophe: Ross &amp; Bagnell's $\mathcal{O}(\epsilon T^2)$ Compounding Error Proof</h3>
 <p>
-  Before proceeding to Lecture 4, answer these 3 diagnostic questions. Tap to check your mental model:
+  Why can't we simply train robots using <b>Behavioral Cloning (BC)</b>—recording a human teleoperating a robot and training a supervised neural network $\pi_\theta(a|s)$ via mean squared error on human actions?
+</p>
+<p>
+  In 2011, Stéphane Ross and J. Andrew Bagnell published a mathematical proof showing why naive behavioral cloning fails catastrophically in sequential domains.
 </p>
 
-<div class="quiz-box">
-  <div class="quiz-q">Question 1: Why does a standard supervised imitation policy (trained on 100 human demonstrations) fail when cutting a tomato that is 10% softer than the training set?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> Under softer fruit, the knife indents deeper under identical feed velocity. This places the robot in an out-of-distribution state never seen in human demonstrations. Because supervised learning does not reason about consequences, errors compound quadratically ($\mathcal{O}(\epsilon T^2)$), driving the knife into unrecoverable crushing forces.
-  </div>
+<div class="math-box">
+  <div class="callout-title">Theorem: Quadratic Compounding of Errors in Open-Loop Imitation</div>
+  <p>
+    Suppose an imitation learning policy $\pi_\theta$ has a per-step error probability bounded by $\epsilon$ under the expert's state distribution $d_{\pi^*}(s)$:
+    $$\mathbb{E}_{s \sim d_{\pi^*}} \left[ \mathbb{I}(\pi_\theta(s) \ne \pi^*(s)) \right] \le \epsilon$$
+    In an episode of length $T$, the expected number of errors committed by the policy scales not as $\mathcal{O}(\epsilon T)$, but as:
+    $$\mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=1}^T \mathbb{I}(\pi_\theta(s_t) \ne \pi^*(s_t)) \right] \le \epsilon T + (1 - (1-\epsilon)^T) T \approx \mathcal{O}(\epsilon T^2)$$
+  </p>
 </div>
 
-<div class="quiz-box">
-  <div class="quiz-q">Question 2: According to Daniel Wolpert's motor control thesis, what would happen if a robot had a trillion parameters of vision models but no closed-loop motor action feedback?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> Like the anchored sea squirt, the perception system is functionally useless. Intelligence in biological and robotic systems exists solely to produce adaptable movements that alter the physical environment. High-dimensional sensing (TacBlade) is justified only because its real-time signals modulate motor impedance at 60 Hz.
-  </div>
-</div>
+<p>
+  <b>The Intuitive Mechanism of Failure:</b>
+</p>
+<ol>
+  <li>At time $t=0$, the robot starts in an expert state. With probability $(1 - \epsilon)$, it takes the expert action. With probability $\epsilon$, it makes a minor error.</li>
+  <li>Once an error occurs, the robot transitions to an <i>unfamiliar state</i> outside the expert's training distribution $d_{\pi^*}(s)$.</li>
+  <li>Because the supervised dataset contains <b>zero demonstrations showing how to recover from mistakes</b> (an expert never makes silly mistakes), the network has never seen this state. Its predictions become arbitrary.</li>
+  <li>Arbitrary actions lead to even more severe errors, pushing the robot further into unknown space. Once it leaves the training track, it stays off the track for all remaining $(T - t)$ steps. Integrating over time produces quadratic error growth $\mathcal{O}(\epsilon T^2)$.</li>
+</ol>
 
-<div class="quiz-box">
-  <div class="quiz-q">Question 3: If an RL policy receives a reward of -50 at step 180 when the fruit collapses, why is it mathematically invalid to simply penalize the action taken at step 180?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> Due to the Credit Assignment Problem: the structural collapse at step 180 was caused by excessive compressive loading at step 80 without adequate lateral sawing. Penalizing step 180 punishes an innocent blade micro-adjustment while leaving the true causal error uncorrected. Temporal discounting ($\gamma$) and value functions ($V(s)$) are required to propagate blame backward.
-  </div>
+<div class="robotics">
+  <div class="callout-title">Robotics Physical Reality: The Slicing Recovery Dilemma</div>
+  <p>
+    Consider an autonomous dual-arm surgical robot slicing soft liver tissue or an industrial arm slicing meat. If behavioral cloning is used and the blade slips by 2 mm, the robot enters a geometric and tactile configuration that the expert surgeon never demonstrated. A pure supervised network will often continue pressing down, tearing the specimen. In contrast, <b>Reinforcement Learning experiences its own blunders during training</b>, thereby learning stabilizing feedback controllers that self-correct before catastrophic rupture.
+  </p>
 </div>
 
 <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
 
-<!-- PART 7: THESIS DEFENSE -->
-<h2>Part 7: Thesis Defense Master Cheatsheet (Lecture 1 Focus)</h2>
+<!-- PART 2 -->
+<h2>Part 2: Mathematical Foundations of Markov Decision Processes (MDPs)</h2>
+<p>
+  To solve sequential decision-making problems mathematically, we formalize the interaction between agent and environment as a <b>Markov Decision Process (MDP)</b>.
+</p>
 
-<div class="callout intuition">
-  <div class="callout-title">Q1: "Why not use classical Model-Predictive Control (MPC) with an analytical physics model?"</div>
+<h3>2.1 The Formal MDP 6-Tuple</h3>
+<p>
+  A Markov Decision Process is formally defined by the tuple $\mathcal{M} = (\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma, \rho_0)$:
+</p>
+
+<div class="formula">
+  $$\mathcal{M} = \big\langle \mathcal{S},\; \mathcal{A},\; \mathcal{P},\; \mathcal{R},\; \gamma,\; \rho_0 \big\rangle$$
+</div>
+
+<ul>
+  <li><b>$\mathcal{S}$ (State Space):</b> The set of all possible valid environmental states. In continuous robotics, $\mathcal{S} \subseteq \mathbb{R}^{d_s}$ consists of joint angles, angular velocities, end-effector poses, contact forces, and target object positions.</li>
+  <li><b>$\mathcal{A}$ (Action Space):</b> The set of all valid commands the agent can emit. In continuous control, $\mathcal{A} \subseteq \mathbb{R}^{d_a}$ represents motor torques, desired joint velocities, or impedance setpoints.</li>
+  <li><b>$\mathcal{P}(s'|s, a)$ (Transition Probability Kernel):</b> A conditional probability density function describing environmental physics:
+    $$\mathcal{P}(s' \mid s, a) = \Pr(s_{t+1} = s' \mid s_t = s, a_t = a)$$
+    In deterministic physical simulators, this is a Dirac delta distribution $\delta(s' - f(s, a))$.</li>
+  <li><b>$\mathcal{R}(s, a)$ or $\mathcal{R}(s, a, s')$ (Reward Function):</b> A scalar function mapping transitions to real numbers: $\mathcal{R}: \mathcal{S} \times \mathcal{A} \to \mathbb{R}$. Represents the immediate desirability of taking action $a$ in state $s$.</li>
+  <li><b>$\gamma \in [0, 1)$ (Discount Factor):</b> A geometric attenuation factor that weights immediate rewards relative to future rewards. Prevents infinite returns in continuing tasks and models temporal uncertainty.</li>
+  <li><b>$\rho_0(s)$ (Initial State Distribution):</b> A probability density over starting states: $\rho_0(s) = \Pr(s_0 = s)$.</li>
+</ul>
+
+<h3>2.2 The Markov Property: Definition &amp; Mathematical Consequences</h3>
+
+<div class="math-box">
+  <div class="callout-title">The Markov Property (Memorylessness)</div>
   <p>
-    <b>Answer:</b> "Classical MPC requires an accurate, differentiable mathematical model of system dynamics. Soft fruit slicing involves elastoplastic finite deformation, fracture mechanics of the skin cuticle, non-linear fluid extrusion, and complex friction transitions. Creating an analytical model accurate enough for 1 kHz MPC is mathematically intractable. Reinforcement learning treats the physics as a black-box simulator, learning closed-loop sensorimotor coordination directly through trial-and-error."
+    A stochastic transition process possesses the <b>Markov Property</b> if and only if the conditional probability distribution of future states depends solely upon the present state and action, and is conditionally independent of all historical states and actions:
+    $$\Pr(s_{t+1} \mid s_t, a_t, s_{t-1}, a_{t-1}, \dots, s_0, a_0) = \Pr(s_{t+1} \mid s_t, a_t)$$
   </p>
 </div>
 
-<div class="callout intuition">
-  <div class="callout-title">Q2: "Why not use Behavioral Cloning (Imitation Learning) from human teleoperation?"</div>
+<p>
+  <b>Why is the Markov Property revolutionary for machine learning?</b><br>
+  If a process is non-Markovian, an optimal policy would need to take as input the <i>entire infinite history</i> of all past observations: $a_t \sim \pi(a_t | s_0, a_0, s_1, a_1, \dots, s_t)$. The dimensionality of the input space would grow linearly with time, rendering function approximation impossible. 
+  Under the Markov assumption, the state $s_t$ is a <b>sufficient statistic</b> of the past. The agent needs to examine only $s_t$ to act optimally.
+</p>
+
+<h3>2.3 Trajectory Probability Distribution: Complete Mathematical Derivation</h3>
+<p>
+  Let a trajectory $\tau$ be an ordered sequence of states and actions over a finite horizon $T$:
+  $$\tau = (s_0, a_0, s_1, a_1, \dots, s_{T-1}, a_{T-1}, s_T)$$
+  Under a parameterized stochastic policy $\pi_\theta(a|s)$, what is the exact probability density $p_\theta(\tau)$ of observing this sequence?
+</p>
+
+<div class="formula">
+  <b>Step-by-Step Derivation of Trajectory Probability:</b><br>
+  $$p_\theta(\tau) = \Pr(s_0, a_0, s_1, a_1, \dots, s_T)$$
+  $$\text{Applying the General Probability Chain Rule:}$$
+  $$p_\theta(\tau) = \Pr(s_0) \prod_{t=0}^{T-1} \Pr(a_t \mid s_0, \dots, s_t, a_0, \dots, a_{t-1}) \cdot \Pr(s_{t+1} \mid s_0, \dots, s_t, a_0, \dots, a_t)$$
+  $$\text{Applying Policy Independence } a_t \sim \pi_\theta(a_t|s_t) \text{ and Markov Transition } s_{t+1} \sim \mathcal{P}(s_{t+1}|s_t, a_t):$$
+  $$p_\theta(\tau) = \rho_0(s_0) \prod_{t=0}^{T-1} \pi_\theta(a_t \mid s_t) \, \mathcal{P}(s_{t+1} \mid s_t, a_t)$$
+</div>
+
+<p>
+  Taking the natural logarithm of both sides yields an additive decomposition that is crucial for policy gradient methods:
+</p>
+
+<div class="formula">
+  $$\log p_\theta(\tau) = \log \rho_0(s_0) + \sum_{t=0}^{T-1} \log \pi_\theta(a_t \mid s_t) + \sum_{t=0}^{T-1} \log \mathcal{P}(s_{t+1} \mid s_t, a_t)$$
+</div>
+
+<div class="intuition">
+  <div class="callout-title">The Miracle of the Log Trajectory Derivative</div>
   <p>
-    <b>Answer:</b> "Behavioral cloning suffers from cascading compounding errors. When a human teleoperates the robot, they operate at 5–10 Hz visual feedback, which is too slow to capture the sub-millisecond tactile and acoustic rupture dynamics. Furthermore, if a physical tomato deviates even slightly from the human demonstration, the imitation policy encounters an out-of-distribution state and fails catastrophically without corrective recovery behaviors."
+    Notice what happens when we differentiate $\log p_\theta(\tau)$ with respect to policy parameters $\theta$:
+    $$\nabla_\theta \log p_\theta(\tau) = \sum_{t=0}^{T-1} \nabla_\theta \log \pi_\theta(a_t \mid s_t)$$
+    The environmental transition dynamics $\mathcal{P}(s_{t+1} \mid s_t, a_t)$ and initial distribution $\rho_0(s_0)$ <b>completely disappear</b> because they do not depend on $\theta$! This single algebraic property is why model-free reinforcement learning is possible without knowing environmental physics.
   </p>
 </div>
 
-<div class="callout intuition">
-  <div class="callout-title">Q3: "How does your system address the Credit Assignment problem during the 200-step slicing trajectory?"</div>
+<h3>2.4 Partially Observable MDPs (POMDPs) &amp; Belief States</h3>
+<p>
+  In real-world applications, the robot almost never observes the true physical state $s_t$. Instead, it receives high-dimensional, noisy, or occluded <b>observations</b> $o_t$ (e.g., RGB camera frames, tactile sensor readings). This is formalized as a <b>POMDP</b>:
+</p>
+
+<div class="formula">
+  $$\mathcal{M}_{\text{POMDP}} = \big\langle \mathcal{S},\; \mathcal{A},\; \mathcal{P},\; \mathcal{R},\; \Omega,\; \mathcal{O},\; \gamma,\; \rho_0 \big\rangle$$
+</div>
+
+<ul>
+  <li><b>$\Omega$ (Observation Space):</b> The space of sensory inputs available to the agent ($o_t \in \Omega$).</li>
+  <li><b>$\mathcal{O}(o|s)$ (Emission Probability):</b> The conditional probability of receiving observation $o$ given underlying true state $s$: $\Pr(o_t = o \mid s_t = s)$.</li>
+</ul>
+
+<div class="warning-box">
+  <div class="callout-title">The POMDP Non-Markovian Trap</div>
   <p>
-    <b>Answer:</b> "We address credit assignment through two mechanisms: (1) a multi-objective dense reward formulation that rewards incremental penetration progress while penalizing excessive compressive force and radial deformation at every control step, and (2) Generalized Advantage Estimation (GAE) within PPO, which propagates terminal success or failure back through intermediate states using a learned Critic value function."
+    While true states $s_t$ satisfy the Markov property, raw observations $o_t$ <b>do not</b>! A single video frame shows the position of a robotic arm, but reveals zero information about its velocity or contact acceleration. Acting purely on $o_t$ violates the Markov assumption.
   </p>
 </div>
 
-<div class="callout intuition">
-  <div class="callout-title">Q4: "What is Daniel Wolpert's postulate and how does it justify your TacBlade sensory design?"</div>
+<p>
+  <b>How Practitioners Solve POMDPs in Modern Deep RL:</b>
+</p>
+<ol>
+  <li><b>Frame Stacking (Heuristic Markovization):</b> Concatenate the last $k$ frames: $\tilde{s}_t = [o_t, o_{t-1}, \dots, o_{t-k+1}]$. Finite differencing between frames allows a feedforward network to infer velocity and acceleration (used in classic Atari DQN).</li>
+  <li><b>Recurrent Policies (Memory-Based):</b> Equip the policy network with an internal recurrent hidden state $h_t = \text{LSTM}(h_{t-1}, o_t)$ or an Attention/Transformer buffer. The hidden state $h_t$ serves as a learned approximation of the true <b>Belief State</b> $b_t(s) = \Pr(s_t = s \mid o_0, a_0, \dots, o_t)$.</li>
+  <li><b>Asymmetric Actor-Critic (Isaac Gym / Robotics):</b> In simulation, give the Critic network access to privileged true state $s_t$ (exact friction, mass, internal mesh stress), while the Actor network is restricted to noisy deployable observations $o_t$.</li>
+</ol>
+
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+
+<!-- PART 3 -->
+<h2>Part 3: The Complete Modern RL Landscape &amp; Taxonomy</h2>
+<p>
+  All reinforcement learning algorithms share the common objective of maximizing expected cumulative return:
+  $$J(\theta) = \mathbb{E}_{\tau \sim p_\theta(\tau)} \left[ \sum_{t=0}^T \gamma^t r(s_t, a_t) \right]$$
+  However, algorithms diverge sharply in *how* they approximate and optimize this objective. Below is the master taxonomy of modern RL.
+</p>
+
+<!-- SVG Diagram: Modern RL Taxonomy Tree -->
+<div class="diagram-container">
+<svg width="690" height="230" viewBox="0 0 690 230">
+  <!-- Root Node -->
+  <rect x="255" y="10" width="180" height="34" rx="5" fill="#1e3a8a" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="345" y="32" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">Reinforcement Learning</text>
+
+  <!-- Connectors to Branches -->
+  <path d="M 345 44 L 345 60 L 165 60 L 165 80" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M 345 44 L 345 60 L 525 60 L 525 80" stroke="#64748b" stroke-width="2" fill="none"/>
+
+  <!-- Level 1: Model-Free vs Model-Based -->
+  <rect x="80" y="80" width="170" height="32" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8"/>
+  <text x="165" y="101" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">Model-Free RL</text>
+
+  <rect x="440" y="80" width="170" height="32" rx="5" fill="#fdf4ff" stroke="#c084fc" stroke-width="1.8"/>
+  <text x="525" y="101" font-size="10" font-weight="700" fill="#6b21a8" text-anchor="middle">Model-Based RL</text>
+
+  <!-- Model-Free Connectors -->
+  <path d="M 165 112 L 165 130 L 60 130 L 60 150" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M 165 112 L 165 150" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M 165 112 L 165 130 L 270 130 L 270 150" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+
+  <!-- Level 2: Model-Free Sub-branches -->
+  <rect x="5" y="150" width="110" height="65" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="60" y="168" font-size="8.8" font-weight="700" fill="#0f172a" text-anchor="middle">Policy-Based</text>
+  <text x="60" y="184" font-size="7.8" fill="#475569" text-anchor="middle">Optimize π directly</text>
+  <text x="60" y="196" font-size="7.5" fill="#2563eb" text-anchor="middle">REINFORCE, VPG</text>
+
+  <rect x="120" y="150" width="95" height="65" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="167" y="168" font-size="8.8" font-weight="700" fill="#0f172a" text-anchor="middle">Value-Based</text>
+  <text x="167" y="184" font-size="7.8" fill="#475569" text-anchor="middle">Learn Q*(s, a)</text>
+  <text x="167" y="196" font-size="7.5" fill="#2563eb" text-anchor="middle">DQN, Double DQN</text>
+
+  <rect x="220" y="150" width="105" height="65" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="272" y="168" font-size="8.8" font-weight="700" fill="#065f46" text-anchor="middle">Actor-Critic</text>
+  <text x="272" y="184" font-size="7.8" fill="#047857" text-anchor="middle">Policy + Value</text>
+  <text x="272" y="196" font-size="7.5" fill="#059669" text-anchor="middle">PPO, TRPO, SAC</text>
+
+  <!-- Model-Based Connectors -->
+  <path d="M 525 112 L 525 130 L 440 130 L 440 150" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  <path d="M 525 112 L 525 130 L 610 130 L 610 150" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+
+  <!-- Level 2: Model-Based Sub-branches -->
+  <rect x="380" y="150" width="120" height="65" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="440" y="168" font-size="8.8" font-weight="700" fill="#0f172a" text-anchor="middle">Known Model</text>
+  <text x="440" y="184" font-size="7.8" fill="#475569" text-anchor="middle">Physics / Rules Known</text>
+  <text x="440" y="196" font-size="7.5" fill="#7c3aed" text-anchor="middle">AlphaZero, MPC</text>
+
+  <rect x="550" y="150" width="120" height="65" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="610" y="168" font-size="8.8" font-weight="700" fill="#0f172a" text-anchor="middle">Learned Model</text>
+  <text x="610" y="184" font-size="7.8" fill="#475569" text-anchor="middle">Neural Dynamics s'=f(s,a)</text>
+  <text x="610" y="196" font-size="7.5" fill="#7c3aed" text-anchor="middle">World Models, MBPO</text>
+</svg>
+</div>
+
+<h3>3.1 Comprehensive Algorithm Paradigm Comparison</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 17%;">Paradigm</th>
+      <th style="width: 25%;">Core Mathematical Mechanism</th>
+      <th style="width: 23%;">Key Strengths</th>
+      <th style="width: 20%;">Core Weaknesses</th>
+      <th style="width: 15%;">Iconic Algorithms</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Value-Based</b></td>
+      <td>Solves Bellman Optimality Equation: $Q^*(s, a) = \mathbb{E}[r + \gamma \max_{a'} Q^*(s', a')]$. Action chosen greedily: $a = \operatorname{argmax}_a Q(s, a)$.</td>
+      <td>Highly sample efficient; naturally off-policy; can reuse past historical data via replay buffer.</td>
+      <td>Intractable for high-dimensional continuous action spaces (computing $\max_{a}$ requires inner optimization).</td>
+      <td>DQN, Double DQN, Rainbow, Categorical 51.</td>
+    </tr>
+    <tr>
+      <td><b>Policy-Based</b></td>
+      <td>Directly optimizes parameterized policy $\pi_\theta(a|s)$ via gradient ascent: $\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)$.</td>
+      <td>Seamlessly scales to high-dimensional continuous action spaces; guarantees smooth policy evolution.</td>
+      <td>Extremely high gradient variance; sample inefficient; can get trapped in local optima.</td>
+      <td>REINFORCE, Vanilla Policy Gradient (VPG).</td>
+    </tr>
+    <tr>
+      <td><b>Actor-Critic (Hybrid)</b></td>
+      <td>The <b>Actor</b> $\pi_\theta(a|s)$ updates policy parameters; the <b>Critic</b> $V_\phi(s)$ or $Q_\phi(s, a)$ learns baseline/value to reduce gradient variance.</td>
+      <td>Combines the stability of policy gradients with the variance reduction of value functions. State of the art.</td>
+      <td>Two interacting networks can introduce optimization instability; hyperparameter sensitive.</td>
+      <td>PPO, TRPO, A2C, SAC, TD3.</td>
+    </tr>
+    <tr>
+      <td><b>Model-Based</b></td>
+      <td>Learns an explicit neural model of environment dynamics $\hat{s}_{t+1} = f_\psi(s_t, a_t)$ and plans trajectories using trajectory rollouts.</td>
+      <td>Unmatched sample efficiency (orders of magnitude fewer physical steps needed).</td>
+      <td>Model exploitation: Policies exploit simulation errors and hallucinations in the learned world model.</td>
+      <td>MBPO, DreamerV3, MuZero, PlaNet.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+
+<!-- PART 4 -->
+<h2>Part 4: Production Engineering with Gymnasium &amp; PyTorch</h2>
+<p>
+  To bridge theory and software engineering, below is the production-grade implementation of a clean, vectorized RL environment interaction loop in modern Python (`gymnasium` + `torch`).
+</p>
+
+<div class="code-container">
+<pre><span class="code-keyword">import</span> torch
+<span class="code-keyword">import</span> torch.nn <span class="code-keyword">as</span> nn
+<span class="code-keyword">import</span> gymnasium <span class="code-keyword">as</span> gym
+<span class="code-keyword">from</span> torch.distributions.normal <span class="code-keyword">import</span> Normal
+
+<span class="code-comment"># 1. Define a Continuous Gaussian Policy Network</span>
+<span class="code-keyword">class</span> <span class="code-func">ContinuousGaussianPolicy</span>(nn.Module):
+    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(self, obs_dim: int, act_dim: int):
+        <span class="code-func">super</span>().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(obs_dim, 64),
+            nn.Tanh(),
+            nn.Linear(64, 64),
+            nn.Tanh(),
+            nn.Linear(64, act_dim)  <span class="code-comment"># Outputs action mean mu(s)</span>
+        )
+        <span class="code-comment"># Log standard deviation initialized as learnable parameter</span>
+        self.log_std = nn.Parameter(torch.zeros(act_dim))
+
+    <span class="code-keyword">def</span> <span class="code-func">forward</span>(self, obs: torch.Tensor):
+        <span class="code-comment"># obs shape: [Batch_Size, obs_dim]</span>
+        mu = self.net(obs)                         <span class="code-comment"># Shape: [Batch_Size, act_dim]</span>
+        std = torch.exp(self.log_std)              <span class="code-comment"># Shape: [act_dim]</span>
+        dist = Normal(mu, std)                     <span class="code-comment"># Diagonal Gaussian</span>
+        <span class="code-keyword">return</span> dist
+
+<span class="code-comment"># 2. Production Vectorized Rollout Loop</span>
+<span class="code-keyword">def</span> <span class="code-func">collect_rollouts</span>(env, policy: nn.Module, steps_per_env: int, num_envs: int):
+    obs, info = env.reset()                        <span class="code-comment"># obs shape: [num_envs, obs_dim]</span>
+    
+    trajectory_buffer = {<span class="code-string">"obs"</span>: [], <span class="code-string">"actions"</span>: [], <span class="code-string">"rewards"</span>: [], <span class="code-string">"dones"</span>: []}
+    
+    <span class="code-keyword">for</span> step <span class="code-keyword">in</span> <span class="code-func">range</span>(steps_per_env):
+        obs_tensor = torch.as_tensor(obs, dtype=torch.float32)
+        
+        <span class="code-keyword">with</span> torch.no_grad():
+            dist = policy(obs_tensor)
+            action = dist.sample()                 <span class="code-comment"># Action shape: [num_envs, act_dim]</span>
+            log_prob = dist.log_prob(action).sum(dim=-1) <span class="code-comment"># Sum over action dims!</span>
+            
+        action_numpy = action.cpu().numpy()
+        next_obs, rewards, terminated, truncated, infos = env.step(action_numpy)
+        dones = terminated | truncated             <span class="code-comment"># Boolean done mask [num_envs]</span>
+        
+        <span class="code-comment"># Store transition with explicit dimensionality preservation</span>
+        trajectory_buffer[<span class="code-string">"obs"</span>].append(obs_tensor)
+        trajectory_buffer[<span class="code-string">"actions"</span>].append(action)
+        trajectory_buffer[<span class="code-string">"rewards"</span>].append(torch.as_tensor(rewards, dtype=torch.float32).view(-1, 1))
+        trajectory_buffer[<span class="code-string">"dones"</span>].append(torch.as_tensor(dones, dtype=torch.float32).view(-1, 1))
+        
+        obs = next_obs
+        
+    <span class="code-keyword">return</span> trajectory_buffer
+</pre>
+</div>
+
+<div class="silent-bug">
+  <div class="callout-title">The Multi-Dimensional Action Log-Prob Summation Bug</div>
   <p>
-    <b>Answer:</b> "Wolpert established that biological nervous systems evolved exclusively to produce adaptable physical movements. In our robotic system, the TacBlade tactile array and acoustic sensors are not mere passive observation tools; their real-time signals are fed directly into the RL policy at 60 Hz to dynamically alter the impedance parameters ($K_z, D_z$) and sawing velocity, proving that high-dimensional perception is tightly coupled to active closed-loop motor control."
+    When using `torch.distributions.Normal(mu, std)`, calling `dist.log_prob(action)` returns a tensor of shape `[Batch_Size, act_dim]`. 
+    <b>A fatal bug:</b> If you forget `.sum(dim=-1)`, your loss function will treat each action dimension as an independent training example in the batch dimension! The policy will update incorrectly. Because the joint density of independent variables is the product of their marginals $P(a) = \prod_i P(a_i)$, the log probability must be the sum across action dimensions:
+    $$\log \pi_\theta(a|s) = \sum_{i=1}^{d_a} \log \pi_\theta(a_i \mid s)$$
   </p>
 </div>
 
-<div class="callout intuition">
-  <div class="callout-title">Q5: "How does Rich Sutton's 'Bitter Lesson' apply to your Isaac Lab simulation pipeline?"</div>
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+
+<!-- PART 5 -->
+<h2>Part 5: Practitioner's Debugging Playbook &amp; Common Pitfalls</h2>
+
+<h3>5.1 Pitfall 1: Violating the Markov Assumption via Unobserved Quantities</h3>
+<p>
+  <b>Symptom:</b> The RL agent reaches a performance plateau far below human level, oscillating endlessly between two conflicting actions in what appears to be the same state.
+</p>
+<p>
+  <b>Root Cause:</b> The environment state is partially observed. For example, in robot manipulation, feeding only end-effector position $(x, y, z)$ without linear velocity $(\dot{x}, \dot{y}, \dot{z})$ or contact force $(F_x, F_y, F_z)$ makes the system non-Markovian. Two identical positions have completely different physical futures depending on whether the arm is accelerating downward or retracting upward.
+</p>
+<p>
+  <b>Remedy:</b> Augment the state representation. Always include:
+</p>
+<ul>
+  <li>First-order temporal derivatives (velocities, angular rates).</li>
+  <li>Contact and force-torque sensor histories (or tactile arrays).</li>
+  <li>Previous action buffer $a_{t-1}$ to account for actuator latency and delay.</li>
+</ul>
+
+<h3>5.2 Pitfall 2: Reward Hacking &amp; The "Cobra Effect"</h3>
+<p>
+  <b>Symptom:</b> The agent achieves massive numerical reward scores, but its physical behavior is bizarre, destructive, or useless.
+</p>
+<p>
+  <b>Root Cause:</b> <i>Goodhart's Law:</i> "When a measure becomes a target, it ceases to be a good measure." In an infamous OpenAI experiment, an agent trained to steer a boat in a circular race discovered that spinning in tight circles knocking over targets yielded an infinite reward loop without ever finishing the race!
+</p>
+<div class="warning-box">
+  <div class="callout-title">Robotics Slicing Reward Hacking Example</div>
   <p>
-    <b>Answer:</b> "The Bitter Lesson proves that general methods leveraging massive computation and learning outperform handcrafted domain rules. Rather than manually tuning PID gains for 10 different tomato varieties, we leverage 4,096 parallel environments in Isaac Lab on an NVIDIA GPU, allowing the RL policy to search across millions of simulated cuts and autonomously discover robust, emergent slicing strategies."
+    If you reward downward knife velocity: $r_t = v_z$, the robot will slam the blade through the specimen into the metallic cutting board at maximum motor speed (+1000 reward), destroying both the blade and the cutting board! 
+    <b>Fix:</b> Use <b>Potential-Based Reward Shaping</b> (Ng et al., 1999) $F(s, s') = \gamma \Phi(s') - \Phi(s)$, which is mathematically guaranteed not to alter the set of optimal policies $\pi^*$.
   </p>
 </div>
 
-<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
-<div style="text-align: center; font-size: 8.5pt; color: #64748b;">
-  CS 285 Lecture 1 Comprehensive Study Guide • Prepared for DEX-ROB Lab, Tianjin University
+<h3>5.3 Pitfall 3: Inappropriate Discount Factor $\gamma$</h3>
+<p>
+  The effective planning horizon of an agent is approximately given by:
+  $$H_{\text{eff}} \approx \frac{1}{1 - \gamma}$$
+  If $\gamma = 0.9$, $H_{\text{eff}} \approx 10$ steps. The robot becomes completely myopic, unable to take a temporary penalty (retracting the blade to adjust angle) to achieve long-term success. Conversely, if $\gamma = 0.999$, $H_{\text{eff}} \approx 1000$ steps; value estimates suffer from extreme variance and slow learning.
+</p>
+
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+
+<!-- PART 6 -->
+<h2>Part 6: Multi-Domain Case Studies</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">Domain</th>
+      <th style="width: 28%;">State Space $\mathcal{S}$</th>
+      <th style="width: 24%;">Action Space $\mathcal{A}$</th>
+      <th style="width: 28%;">Reward Structure $\mathcal{R}$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Classic Control (Inverted Pendulum)</b></td>
+      <td>Cart position $x$, velocity $\dot{x}$, pole angle $\theta$, angular velocity $\dot{\theta}$ ($\mathbb{R}^4$).</td>
+      <td>Horizontal push force $F \in [-10, 10]\text{ N}$ ($\mathbb{R}^1$).</td>
+      <td>$+1.0$ for every step the pole angle remains upright ($|\theta| < 12^\circ$). Zero otherwise.</td>
+    </tr>
+    <tr>
+      <td><b>Locomotion (MuJoCo HalfCheetah)</b></td>
+      <td>17-dim continuous vector: root height, angles, and velocities of thighs, shins, feet.</td>
+      <td>6-dim continuous motor torques applied to hinge joints ($\mathbb{R}^6$).</td>
+      <td>$r_t = v_x - 0.1 \|a_t\|_2^2$ (Forward velocity reward minus control effort penalty).</td>
+    </tr>
+    <tr>
+      <td><b>Robotic Manipulation (Dual-Arm Slicing)</b></td>
+      <td>Joint angles $(q_1, q_2)$, velocities $(\dot{q}_1, \dot{q}_2)$, blade tactile force $F_z$, mesh deformation depth.</td>
+      <td>7-dim impedance setpoints (desired pose offset $\Delta x, \Delta R$ and stiffness $K_p$).</td>
+      <td>Progress along cut trajectory minus tissue crushing force penalties ($F_z > 8\text{ N}$) and lateral shear.</td>
+    </tr>
+    <tr>
+      <td><b>LLM Alignment (RLHF / PPO)</b></td>
+      <td>Prompt text tokens $x$ concatenated with generated response tokens $y_{1:t-1}$.</td>
+      <td>Next-token selection over vocabulary $\mathcal{V}$ ($|\mathcal{A}| \approx 32,000$ to $128,000$).</td>
+      <td>Scalar score from Bradley-Terry Reward Model minus KL penalty: $R_{\text{human}}(x, y) - \beta D_{\text{KL}}(\pi_\theta \| \pi_{\text{ref}})$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+
+<!-- PART 7 -->
+<h2>Part 7: Conceptual Mastery &amp; Exam Challenge</h2>
+
+<div class="quiz-box">
+  <div class="quiz-q">Question 1: If an environment has deterministic dynamics $s_{t+1} = f(s_t, a_t)$, does the agent's policy need to be deterministic to act optimally?</div>
+  <div class="quiz-a">
+    <b>Answer:</b> No. In fact, an optimal deterministic policy $\pi^*(s)$ is always guaranteed to exist for any fully-observable MDP with deterministic or stochastic dynamics (Bellman, 1957). However, during <i>learning</i>, a stochastic policy (such as a Gaussian policy $\pi_\theta(a|s) = \mathcal{N}(\mu, \sigma^2)$) is strictly necessary to drive exploration and ensure non-zero gradient support across the action space.
+  </div>
+</div>
+
+<div class="quiz-box">
+  <div class="quiz-q">Question 2: Why do environmental transition probabilities $\mathcal{P}(s_{t+1}|s_t, a_t)$ vanish when we compute the gradient of the log trajectory distribution $\nabla_\theta \log p_\theta(\tau)$?</div>
+  <div class="quiz-a">
+    <b>Answer:</b> Because of the product-to-sum property of logarithms: $\log p_\theta(\tau) = \log \rho_0(s_0) + \sum \log \pi_\theta(a_t|s_t) + \sum \log \mathcal{P}(s_{t+1}|s_t, a_t)$. When we take the partial derivative $\frac{\partial}{\partial \theta}$, terms that do not contain $\theta$ are treated as constants and their derivative is identically zero: $\nabla_\theta \log \mathcal{P}(s_{t+1}|s_t, a_t) = 0$.
+  </div>
+</div>
+
+<div class="quiz-box">
+  <div class="quiz-q">Question 3: In behavioral cloning, what is the primary factor that causes the error to compound quadratically $\mathcal{O}(\epsilon T^2)$ rather than linearly $\mathcal{O}(\epsilon T)$?</div>
+  <div class="quiz-a">
+    <b>Answer:</b> Distribution shift (covariate shift). In supervised learning, test samples are drawn from the same distribution as training samples. In closed-loop systems, an error at step $t$ shifts the future states $s_{t+1}, \dots, s_T$ into regions of state space that the expert demonstrator never visited. The agent encounters unfamiliar states where its error rate is far higher than $\epsilon$, remaining off-track for the remaining duration of the episode.
+  </div>
 </div>
 
 </body>
 </html>
 """
 
-output_path = "/home/omen/Downloads/CS285_Lecture1_Beginner_Guide.pdf"
-backup_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture1_Beginner_Guide.pdf"
-
-import sys
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import render_utils
-
-render_utils.build_pdf(html_content, output_path, backup_path)
-
+if __name__ == "__main__":
+    pdf_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture1_Beginner_Guide.pdf"
+    backup_path = "/home/omen/Downloads/CS285_Lecture1_Beginner_Guide.pdf"
+    render_utils.build_pdf(html_content, pdf_path, backup_path)
