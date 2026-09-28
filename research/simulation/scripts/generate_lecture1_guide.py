@@ -29,10 +29,9 @@ html_content = r"""<!DOCTYPE html>
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #1e293b;
     line-height: 1.56;
-    font-size: 9.6pt;
+    font-size: 9.5pt;
   }
 
-  /* Header Block */
   .header-block {
     border-bottom: 2px solid #2563eb;
     padding-bottom: 14px;
@@ -103,7 +102,6 @@ html_content = r"""<!DOCTYPE html>
     margin-bottom: 3px;
   }
 
-  /* Callout Boxes */
   .callout {
     padding: 10px 14px;
     margin: 10px 0;
@@ -158,7 +156,6 @@ html_content = r"""<!DOCTYPE html>
   }
   .code-box .callout-title { color: #475569; }
 
-  /* Formula display */
   .formula {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
@@ -172,7 +169,6 @@ html_content = r"""<!DOCTYPE html>
     page-break-inside: avoid;
   }
 
-  /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -204,18 +200,6 @@ html_content = r"""<!DOCTYPE html>
   .page-break {
     page-break-before: always;
   }
-
-  .badge {
-    display: inline-block;
-    padding: 1px 5px;
-    border-radius: 3px;
-    font-size: 7.5pt;
-    font-weight: 600;
-  }
-  .badge-blue { background: #dbeafe; color: #1e40af; }
-  .badge-green { background: #d1fae5; color: #065f46; }
-  .badge-amber { background: #fef3c7; color: #92400e; }
-  .badge-red { background: #fee2e2; color: #991b1b; }
 </style>
 </head>
 <body>
@@ -224,109 +208,159 @@ html_content = r"""<!DOCTYPE html>
 <div class="header-block">
   <span class="course-tag">CS285 Lecture 1 • Zero-to-Hero Field Manual</span>
   <h1>Foundations of Reinforcement Learning &amp; The Closed Loop</h1>
-  <div class="subtitle">From Absolute Beginner to Master: Intuition, Parameter Anatomy, Everyday Analogies, and The Core Mathematics of Decision Making</div>
+  <div class="subtitle">A Comprehensive, Intuitive Textbook: Physical Actuation, State Representation, Markov Formulations, and Multi-Domain Case Studies</div>
   <div class="meta-bar">
     <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley RAIL Lab)</span>
-    <span><b>Focus:</b> Closed-Loop Control, MDPs, POMDPs, &amp; The Modern RL Landscape</span>
+    <span><b>Target Audience:</b> Complete Beginners to Advanced Robotics Practitioners</span>
   </div>
 </div>
 
-<!-- SECTION 1: THE CORE INTUITION -->
-<h2>1. What is Reinforcement Learning? (The "Zero-to-Hero" Intuition)</h2>
+<!-- SECTION 1: THE CORE PHILOSOPHY -->
+<h2>1. What is Reinforcement Learning? (The Bicycle Analogy)</h2>
 <p>
-  Imagine you want to teach a toddler how to ride a bicycle. How would you do it?
+  Imagine you want to teach a child how to ride a bicycle. How does the human brain actually learn?
 </p>
 <ul>
-  <li><b>The Supervised Learning Way:</b> You sit the child at a desk and show them 10,000 flashcards. Card 1: <i>"If you lean 2° left, contract your right quadricep by 14 Newtons."</i> The child memorizes all the cards, sits on the bicycle, wobbles 2.1° to the left, enters a situation not on any flashcard, panics, and crashes.</li>
-  <li><b>The Reinforcement Learning Way:</b> You put a helmet on the child and hold the seat. The child pushes the pedals. When they balance and coast forward, they feel a rush of excitement (<b>Reward</b>). When they wobble and scrape their knee, it hurts (<b>Penalty</b>). Nobody gave the child mathematical formulas for gyroscopic precession. Through <i>trial, error, and feedback</i>, the child's brain automatically builds an intuitive control policy.</li>
+  <li><b>The Supervised Learning Fallacy:</b> You sit the child down in front of a whiteboard and show them 50,000 flashcards. 
+    Flashcard #1: <i>"If your bike tilts 2.1° left, apply 14.5 Newtons of torque to the right handlebar."</i> 
+    The child memorizes all 50,000 cards. But when they get on the bike, a gust of wind tilts them 2.3° left. 
+    Because 2.3° was never on any flashcard, the child panics, freezes, and crashes.
+  </li>
+  <li><b>The Reinforcement Learning Way:</b> You put a helmet on the child and give them a gentle push. 
+    The child pedals. When they balance and coast forward smoothly, their brain experiences a surge of dopamine (<b>Positive Reward</b>). 
+    When they lean too far, lose balance, and scrape their knee on the pavement, it hurts (<b>Negative Reward / Penalty</b>). 
+    Nobody explained the laws of angular momentum or gyroscopic precession to the child. 
+    Through <b>interaction, consequence, and trial-and-error</b>, the child's nervous system automatically wires a feedback control loop.
+  </li>
 </ul>
 
 <div class="callout intuition">
-  <div class="callout-title">💡 The Core Philosophy: Learning by Interaction</div>
+  <div class="callout-title">💡 Core Takeaway: Consequences vs Answers</div>
   <p>
-    <b>Reinforcement Learning is not about memorizing answers. It is about learning consequences.</b> 
-    In supervised learning, an external teacher tells you the "correct answer" for every input. 
-    In RL, there is no teacher. There is only a <i>scorekeeper</i> (the environment) that gives you a numerical reward or penalty after you act. The agent must figure out which actions caused the reward.
+    <b>Supervised learning teaches an AI what an expert would do. Reinforcement learning teaches an AI what happens when it acts.</b>
+    In robotics, we don't know the "correct" millivolt command for every motor in every microsecond. We only know what goal we want to achieve (e.g., slice a tomato cleanly without squishing the pulp). RL allows the machine to discover the control law itself.
   </p>
 </div>
 
-<!-- DIAGRAM 1: THE AGENT-ENVIRONMENT CLOSED LOOP -->
+<!-- DIAGRAM 1: THE CLOSED LOOP -->
 <div class="diagram-container">
 <svg width="600" height="110" viewBox="0 0 600 110">
-  <!-- Agent Box -->
   <rect x="30" y="20" width="200" height="70" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
   <text x="130" y="45" font-size="11" font-weight="700" fill="#1e40af" text-anchor="middle">AGENT (Robot Brain)</text>
-  <text x="130" y="62" font-size="8.5" fill="#475569" text-anchor="middle">Neural Network Policy $\pi_\theta(a|s)$</text>
-  <text x="130" y="76" font-size="7.5" fill="#64748b" text-anchor="middle">Learns from experience</text>
+  <text x="130" y="62" font-size="8.5" fill="#475569" text-anchor="middle">Neural Policy Network $\pi_\theta(a|s)$</text>
+  <text x="130" y="76" font-size="7.5" fill="#64748b" text-anchor="middle">Runs on RTX GPU via PyTorch</text>
 
-  <!-- Forward Arrow: Action -->
   <path d="M 230,40 L 360,40" fill="none" stroke="#2563eb" stroke-width="2.5"/>
   <polygon points="360,40 350,34 350,46" fill="#2563eb"/>
   <text x="295" y="32" font-size="9" font-weight="700" fill="#1d4ed8" text-anchor="middle">Action $a_t$</text>
-  <text x="295" y="52" font-size="7.5" fill="#64748b" text-anchor="middle">(Torque, Velocity, Steering)</text>
+  <text x="295" y="52" font-size="7.5" fill="#64748b" text-anchor="middle">(Torques, Feed Rates, Stiffness)</text>
 
-  <!-- Environment Box -->
   <rect x="370" y="20" width="200" height="70" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
   <text x="470" y="45" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">ENVIRONMENT (Physical World)</text>
-  <text x="470" y="62" font-size="8.5" fill="#475569" text-anchor="middle">Physics, Objects, Sensors</text>
+  <text x="470" y="62" font-size="8.5" fill="#475569" text-anchor="middle">Physics, Objects, Deformable Tissue</text>
   <text x="470" y="76" font-size="7.5" fill="#64748b" text-anchor="middle">NVIDIA Isaac Sim / Real World</text>
 
-  <!-- Feedback Arrow: State & Reward -->
   <path d="M 370,80 L 230,80" fill="none" stroke="#10b981" stroke-width="2.5"/>
   <polygon points="230,80 240,74 240,86" fill="#10b981"/>
   <text x="300" y="73" font-size="9" font-weight="700" fill="#047857" text-anchor="middle">State $s_{t+1}$ &amp; Reward $r_t$</text>
-  <text x="300" y="94" font-size="7.5" fill="#64748b" text-anchor="middle">(Sensory observations &amp; score)</text>
+  <text x="300" y="94" font-size="7.5" fill="#64748b" text-anchor="middle">(F/T Sensor, Kinematics, Score)</text>
 </svg>
 </div>
 
-<!-- SECTION 2: WHY IMITATION FAILS -->
-<h2>2. Why Not Just Copy Human Experts? (The Imitation Trap)</h2>
+<div class="page-break"></div>
+
+<!-- SECTION 2: HARDWARE-TO-RL PRIMER -->
+<h2>2. Hardware-to-RL Primer: How Physical Robots Connect to Math</h2>
 <p>
-  A common beginner question is: <i>"Why don't we just record a human expert operating the robot and train a neural network to mimic the human?"</i> 
-  This is called <b>Behavioral Cloning (Imitation Learning)</b>. While it sounds simple, it suffers from a fatal mathematical problem: <b>Covariate Shift</b>.
+  Before writing equations, an engineer must understand how physical hardware actually interfaces with neural network tensors. 
+  A robot does not "think" in abstract states—it has physical copper wire coils, optical encoder discs, and strain gauges.
 </p>
 
+<h3>2.1 The Actuation Hierarchy: From Voltage to Compliance</h3>
+<p>
+  When your neural network outputs an action $a_t \in [-1, 1]^6$, how does that number become physical movement? 
+  Robots operate across a multi-layer control hierarchy:
+</p>
+<ul>
+  <li><b>Level 0 (Pulse Width Modulation - PWM):</b> At the lowest level, transistors rapidly switch $24\text{V}$ or $48\text{V}$ DC power to the brushless motor windings at $20\text{ kHz}$.</li>
+  <li><b>Level 1 (Field-Oriented Current Control):</b> Motor current is directly proportional to output motor torque: $\tau = K_t \cdot I$. Current loops run on dedicated embedded microcontrollers at $10\text{ kHz}$.</li>
+  <li><b>Level 2 (Joint Impedance Control):</b> In delicate soft object manipulation (like tomato cutting), commanding raw torques causes violent instability, while commanding pure positions crushes the fruit. Instead, we use <b>Impedance Control</b>:
+    <div class="formula">$$\tau = K_{\text{stiff}} \cdot (q_{\text{desired}} - q_{\text{actual}}) + D_{\text{damp}} \cdot (\dot{q}_{\text{desired}} - \dot{q}_{\text{actual}})$$</div>
+    Here, the robot acts like a virtual spring-damper. If the blade hits a tough tomato skin, it pushes firmly; if the skin suddenly ruptures, the compliance prevents the knife from slamming into the table!
+  </li>
+  <li><b>Level 3 (The RL Policy Layer):</b> Your RL network runs at $50\text{ Hz}$ or $100\text{ Hz}$. It does not output raw voltages; it dynamically modulates the <b>desired feed velocity $\Delta v$</b> and <b>stiffness adjustments $\Delta K$</b>!</li>
+</ul>
+
+<!-- DIAGRAM: ACTUATION STACK -->
+<div class="diagram-container">
+<svg width="600" height="90" viewBox="0 0 600 90">
+  <rect x="20" y="25" width="120" height="45" rx="5" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="44" font-size="8.5" font-weight="700" fill="#1e40af" text-anchor="middle">RL Policy (SkRL)</text>
+  <text x="80" y="58" font-size="7.5" fill="#475569" text-anchor="middle">50 Hz • Action $a_t$</text>
+
+  <path d="M 140,47 L 175,47" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="175,47 167,42 167,52" fill="#2563eb"/>
+
+  <rect x="175" y="25" width="125" height="45" rx="5" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="237" y="44" font-size="8.5" font-weight="700" fill="#065f46" text-anchor="middle">Impedance Controller</text>
+  <text x="237" y="58" font-size="7.5" fill="#475569" text-anchor="middle">1 kHz • $K \Delta x + D \Delta v$</text>
+
+  <path d="M 300,47 L 335,47" fill="none" stroke="#10b981" stroke-width="2"/>
+  <polygon points="335,47 327,42 327,52" fill="#10b981"/>
+
+  <rect x="335" y="25" width="115" height="45" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="392" y="44" font-size="8.5" font-weight="700" fill="#92400e" text-anchor="middle">Current / Torque Loop</text>
+  <text x="392" y="58" font-size="7.5" fill="#475569" text-anchor="middle">10 kHz • $\tau = K_t I$</text>
+
+  <path d="M 450,47 L 485,47" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <polygon points="485,47 477,42 477,52" fill="#f59e0b"/>
+
+  <rect x="485" y="25" width="95" height="45" rx="5" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
+  <text x="532" y="44" font-size="8.5" font-weight="700" fill="#0f172a" text-anchor="middle">Motor Coils</text>
+  <text x="532" y="58" font-size="7.5" fill="#64748b" text-anchor="middle">Physical Motion</text>
+</svg>
+</div>
+
+<h3>2.2 Sensor Normalization: Why Raw Numbers Destroy Neural Networks</h3>
+<p>
+  In your robot, joint angles are measured in radians (typically $[-3.14, +3.14]$). 
+  Meanwhile, contact forces are measured in Newtons (e.g. $[0, 45]$ N), and acoustic bursts are raw sensor counts (e.g. $[0, 32768]$).
+</p>
 <div class="callout warning-box">
-  <div class="callout-title">🚗 The Passenger in the Racecar Analogy</div>
+  <div class="callout-title">⚠️ The Magnitude Trap</div>
   <p>
-    Imagine you spend 100 hours watching a Formula 1 champion drive around a track. The champion drives perfectly, staying exactly on the racing line. You memorize every steering motion.
-    <br><br>
-    Now you get behind the wheel. On turn 3, your hands shake slightly, and the car drifts <b>just 5 cm onto the dirt shoulder</b>. 
-    You freeze. Why? <b>Because in 100 hours of watching the champion, you never once saw what to do on the dirt shoulder!</b> The champion never made a mistake, so you never learned how to recover from one. You slide into the wall.
+    If you pass raw unnormalized numbers into an MLP, the gradient with respect to the acoustic burst ($32,000$) will be <b>10,000 times larger</b> than the gradient for joint angles ($0.12$). 
+    The network will completely ignore joint angles and become unstable. 
+    <b>Every observation channel must be standardized</b>: subtract running mean $\mu_{\text{obs}}$ and divide by standard deviation $\sigma_{\text{obs}}$ so all inputs enter the network with mean $0$ and variance $1$.
   </p>
 </div>
 
-<!-- DIAGRAM 2: DRIFT OF DOOM VS CLOSED LOOP -->
-<div class="diagram-container">
-<svg width="600" height="120" viewBox="0 0 600 120">
-  <!-- Open Loop: Behavioral Cloning -->
-  <text x="140" y="18" font-size="9.5" font-weight="700" fill="#b91c1c" text-anchor="middle">Behavioral Cloning: Compounding Drift $\mathcal{O}(\epsilon T^2)$</text>
-  <path d="M 30,50 Q 80,45 130,48" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
-  <text x="60" y="40" font-size="7.5" fill="#64748b">Expert Path</text>
-  <!-- Robot drifting off -->
-  <path d="M 30,50 Q 70,55 110,75 Q 150,105 240,115" fill="none" stroke="#ef4444" stroke-width="2.5"/>
-  <circle cx="110" cy="75" r="4" fill="#ef4444"/>
-  <text x="145" y="70" font-size="7.5" font-weight="700" fill="#b91c1c">Tiny 2mm error!</text>
-  <text x="210" y="105" font-size="8" font-weight="700" fill="#dc2626">CATASTROPHIC CRASH</text>
+<div class="page-break"></div>
 
-  <!-- Vertical separator -->
-  <line x1="290" y1="10" x2="290" y2="115" stroke="#cbd5e1" stroke-width="1.5"/>
+<!-- SECTION 3: THE IMITATION TRAP -->
+<h2>3. The Imitation Trap &amp; Compounding Error (Covariate Shift)</h2>
+<p>
+  Why can't we simply collect human teleoperation demonstrations and train an imitation model? 
+  This approach—<b>Behavioral Cloning</b>—fails because of an inevitable mathematical phenomenon: <b>Covariate Shift</b>.
+</p>
 
-  <!-- Closed Loop: Reinforcement Learning -->
-  <text x="445" y="18" font-size="9.5" font-weight="700" fill="#047857" text-anchor="middle">Reinforcement Learning: Closed-Loop Recovery $\mathcal{O}(\epsilon T)$</text>
-  <path d="M 320,50 Q 420,45 560,48" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4"/>
-  <text x="350" y="40" font-size="7.5" fill="#64748b">Desired Target Path</text>
-  <!-- RL path with self-correction -->
-  <path d="M 320,50 Q 360,65 400,68 Q 440,70 480,52 Q 520,45 560,48" fill="none" stroke="#10b981" stroke-width="2.5"/>
-  <circle cx="400" cy="68" r="4" fill="#f59e0b"/>
-  <text x="400" y="85" font-size="7.5" font-weight="700" fill="#d97706">Wobble detected</text>
-  <text x="490" y="40" font-size="7.5" font-weight="700" fill="#047857">Active Recovery!</text>
-</svg>
+<div class="callout warning-box">
+  <div class="callout-title">🏎️ The Racecar Passenger Analogy</div>
+  <p>
+    Imagine you ride passenger with an elite racecar driver for 500 hours. The driver stays glued to the ideal racing line. 
+    You record every steering angle. 
+    Then, you sit in the driver's seat. On lap 1, you sneeze, and the car drifts <b>just 5 centimeters onto the wet gravel shoulder</b>.
+    <br><br>
+    What happens? <b>You crash immediately!</b> 
+    Why? Because in 500 hours of watching the expert, <i>the expert never once drove onto the gravel shoulder</i>! 
+    You have zero training data for gravel recovery. 
+    You turn the wheel the wrong way, slide further, panic, and roll the car.
+  </p>
 </div>
 
-<h3>2.1 The Mathematics of Compounding Error: Ross &amp; Bagnell (2011)</h3>
+<h3>3.1 Ross &amp; Bagnell Compounding Error Proof in Plain English</h3>
 <p>
-  Ross &amp; Bagnell formally proved why open-loop imitation learning fails over long horizons $T$:
+  In 2011, Stephane Ross and J. Andrew Bagnell published the seminal theorem proving why open-loop behavioral cloning fails over long horizons $T$:
 </p>
 <div class="formula">
   $$\text{Open-Loop Imitation Error} \le \frac{1}{2} \epsilon T^2 = \mathcal{O}(\epsilon T^2) \quad \text{vs.} \quad \text{Closed-Loop RL Error} \le \epsilon T = \mathcal{O}(\epsilon T)$$
@@ -336,41 +370,41 @@ html_content = r"""<!DOCTYPE html>
 <table>
   <thead>
     <tr>
-      <th style="width: 15%;">Symbol</th>
+      <th style="width: 15%;">Parameter</th>
       <th style="width: 20%;">Formal Name</th>
       <th style="width: 35%;">Plain English Meaning</th>
       <th style="width: 15%;">Example Value</th>
-      <th style="width: 15%;">Impact of Parameter</th>
+      <th style="width: 15%;">Physical Effect</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>$\epsilon$</b></td>
       <td>Per-Step Error Rate</td>
-      <td>The probability that the policy makes a small mistake on any given single timestep.</td>
-      <td>$0.01$ (1% chance per step)</td>
-      <td>Lower is better, but in the real world $\epsilon$ is never zero due to sensor noise.</td>
+      <td>Probability that the policy makes a small mistake on any given single timestep.</td>
+      <td>$0.01$ (1% error chance)</td>
+      <td>Even an elite 99% accurate model has $\epsilon = 0.01$.</td>
     </tr>
     <tr>
       <td><b>$T$</b></td>
       <td>Episode Time Horizon</td>
-      <td>The total number of control steps from start to finish.</td>
-      <td>$500$ steps ($10$ seconds at $50$ Hz)</td>
-      <td>As $T$ grows, open-loop error explodes quadratically ($T^2$), while RL stays linear!</td>
+      <td>Total number of control timesteps in the task.</td>
+      <td>$500$ steps ($10$ seconds)</td>
+      <td>As $T$ grows, $T^2$ explodes exponentially!</td>
     </tr>
     <tr>
       <td><b>$\mathcal{O}(\epsilon T^2)$</b></td>
       <td>Quadratic Compounding</td>
       <td>Once an error happens, all future steps are off-distribution, creating a snowball effect.</td>
       <td>For $T=100$: $\approx 50$ total mistakes!</td>
-      <td>Guarantees failure in complex robotics tasks like peeling, slicing, or peg insertion.</td>
+      <td>Guarantees catastrophic failure in continuous robotics.</td>
     </tr>
     <tr>
       <td><b>$\mathcal{O}(\epsilon T)$</b></td>
-      <td>Linear Bounded Error</td>
-      <td>Because the policy learned closed-loop recovery, each error is corrected immediately.</td>
+      <td>Linear Error Bound</td>
+      <td>Because RL practices recovery during training, mistakes do not compound.</td>
       <td>For $T=100$: $\approx 1$ mistake total!</td>
-      <td>The fundamental reason RL succeeds where behavioral cloning fails.</td>
+      <td>The fundamental mathematical reason RL is mandatory.</td>
     </tr>
   </tbody>
 </table>
@@ -378,69 +412,131 @@ html_content = r"""<!DOCTYPE html>
 <div class="callout math-box">
   <div class="callout-title">📝 Plain English Translation of the Equation</div>
   <p>
-    <b>"If a robot does not know how to correct its own mistakes, a 1% error at step 10 will ruin the entire 500-step task ($T^2$). Reinforcement learning forces the robot to practice recovering from mistakes, keeping total errors strictly proportional to time ($T$)."</b>
+    <b>"If an agent only mimics an expert without learning self-correction, a 1% error early on cascades into 50 mistakes by the end of the episode ($\mathcal{O}(\epsilon T^2)$). Reinforcement learning forces the robot to explore its own mistakes and learn recovery policies, keeping errors strictly proportional to time ($\mathcal{O}(\epsilon T)$)."</b>
   </p>
 </div>
 
 <div class="page-break"></div>
 
-<!-- SECTION 3: THE MDP FORMALISM -->
-<h2>3. The Language of RL: The Markov Decision Process (MDP)</h2>
+<!-- SECTION 4: FOUR REAL-WORLD CASE STUDIES -->
+<h2>4. Four Real-World Case Studies: How RL Formulates Diverse Problems</h2>
 <p>
-  To solve problems with math, we need a standardized language. Every reinforcement learning problem on Earth is modeled as a <b>Markov Decision Process (MDP)</b>, defined by a 6-tuple: $\mathcal{M} = \langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma, \rho_0 \rangle$.
+  To become a true RL expert, you must realize that <b>every sequential decision problem on Earth uses the exact same MDP framework</b>. 
+  Below are four completely different engineering domains mapped side-by-side:
 </p>
 
-<!-- PARAMETER ANATOMY TABLE 2: MDP TUPLE -->
+<table>
+  <thead>
+    <tr>
+      <th style="width: 16%;">Domain</th>
+      <th style="width: 28%;">State Space ($s_t$)</th>
+      <th style="width: 24%;">Action Space ($a_t$)</th>
+      <th style="width: 32%;">Reward Function ($r_t$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1. Soft Fruit Slicing (Our Lab's Research)</b></td>
+      <td><b>$\mathbb{R}^{33}$ Vector:</b> Dual-arm joint angles/velocities (14), knife pose/velocity (9), tomato pose (7), TacBlade F/T (6), acoustic burst (1).</td>
+      <td><b>$\mathbb{R}^6$ Continuous:</b> Downward feed rate $\Delta v_z$, lateral sawing speed $v_{\text{slice}}$, stiffness delta $\Delta K$, damping $\Delta D$, grip force.</td>
+      <td>$+5.0 \times \text{Penetration} + 2.0 \times \text{Sawing} - 4.0 \times (\text{Force} - 8\text{N})^2 - 0.05 \times \text{Jitter} + 100 \times \text{Success}$.</td>
+    </tr>
+    <tr>
+      <td><b>2. Autonomous Vehicle (Tesla / Waymo)</b></td>
+      <td><b>Multimodal:</b> LiDAR point cloud, surround cameras, ego velocity $v$, acceleration $a$, distance to lane boundaries, lead vehicle speed.</td>
+      <td><b>$\mathbb{R}^2$ Continuous:</b> Steering wheel angle $\delta \in [-30^\circ, +30^\circ]$, throttle/brake pedal pressure $\in [-1.0, +1.0]$.</td>
+      <td>$+1.0 \times \text{Speed} - 10.0 \times \text{LaneDeparture} - 5.0 \times \text{Jerk} - 1000 \times \text{Collision}$.</td>
+    </tr>
+    <tr>
+      <td><b>3. ChatGPT Alignment (RLHF / PPO)</b></td>
+      <td><b>Discrete Tokens:</b> Conversation prompt history + tokens generated so far: $(w_1, w_2, \dots, w_k)$ embedded in $\mathbb{R}^{4096}$.</td>
+      <td><b>Vocabulary Categorical:</b> Selection of next word token from a vocabulary of $50,000$ discrete token IDs.</td>
+      <td>$\text{RewardModelScore}(x, y) - \beta \cdot D_{\text{KL}}(\pi_\theta \,\|\, \pi_{\text{ref}})$ (Helpfulness score minus drift from base model).</td>
+    </tr>
+    <tr>
+      <td><b>4. Quadruped Locomotion (Boston Dynamics / Unitree)</b></td>
+      <td><b>$\mathbb{R}^{48}$ Vector:</b> 12 joint positions &amp; velocities (24), base orientation quaternion &amp; gyro (7), commanded velocity (3), foot contacts (4).</td>
+      <td><b>$\mathbb{R}^{12}$ Continuous:</b> Target joint motor position offsets commanded to PD motor controllers.</td>
+      <td>$+2.0 \times \text{ForwardVelocity} - 1.0 \times \text{LateralDrift} - 0.5 \times \text{TorqueSquared} - 100 \times \text{Fall}$.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout intuition">
+  <div class="callout-title">💡 The Grand Synthesis</div>
+  <p>
+    Look closely at that table. Whether an AI is driving a 2-ton car at 70 mph, writing an essay in ChatGPT, making a four-legged robot run across rocky terrain, or delicately slicing a ripe tomato with a dual-arm robot: 
+    <b>The underlying mathematical algorithm (PPO or SAC) is 100% IDENTICAL!</b> 
+    Only the definitions of State, Action, and Reward change.
+  </p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 5: THE FORMAL MDP -->
+<h2>5. The Markov Decision Process (MDP) Anatomy Dictionary</h2>
+<p>
+  Every reinforcement learning problem is formally specified as an MDP: $\mathcal{M} = \langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma, \rho_0 \rangle$.
+</p>
+
+<!-- PARAMETER ANATOMY TABLE 2 -->
 <table>
   <thead>
     <tr>
       <th style="width: 12%;">Symbol</th>
       <th style="width: 18%;">Formal Name</th>
       <th style="width: 38%;">Plain English Meaning</th>
-      <th style="width: 32%;">Real-World Robotics Example (Tomato Slicing)</th>
+      <th style="width: 18%;">Example Value</th>
+      <th style="width: 14%;">Tuning / Impact</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>$\mathcal{S}$</b></td>
-      <td>State Space ($s_t$)</td>
-      <td>The complete snapshot of everything happening in the environment right now.</td>
-      <td>33 numbers: Dual-arm joint angles, knife position, blade contact forces, acoustic burst.</td>
+      <td>State Space</td>
+      <td>The complete physical snapshot of everything happening right now.</td>
+      <td>$\mathbb{R}^{33}$ (Joints, Knife, Forces)</td>
+      <td>Must include velocities!</td>
     </tr>
     <tr>
       <td><b>$\mathcal{A}$</b></td>
-      <td>Action Space ($a_t$)</td>
-      <td>The choices available to the robot at this microsecond.</td>
-      <td>6 numbers: Downward feed rate, sawing velocity, stiffness delta $\Delta K$, damping delta $\Delta D$.</td>
+      <td>Action Space</td>
+      <td>The motor controls available to the robot at this microsecond.</td>
+      <td>$\mathbb{R}^6$ continuous actions</td>
+      <td>Continuous for robots.</td>
     </tr>
     <tr>
       <td><b>$\mathcal{P}$</b></td>
-      <td>Transition Dynamics $P(s_{t+1} \mid s_t, a_t)$</td>
-      <td>The rules of physics. <i>"If the world is in state $s$ and you take action $a$, where will you end up next?"</i></td>
-      <td>Isaac Sim PhysX 5 solver: Computes friction, fruit deformation, and blade penetration.</td>
+      <td>Transition Dynamics</td>
+      <td>The rules of physics: where you land next after taking action $a$.</td>
+      <td>$P(s_{t+1} \mid s_t, a_t)$</td>
+      <td>Unknown in real world.</td>
     </tr>
     <tr>
       <td><b>$\mathcal{R}$</b></td>
-      <td>Reward Function $r(s_t, a_t)$</td>
-      <td>The scorecard. A single number telling the robot how well it did on this exact step.</td>
-      <td>$+5.0$ for cutting downward, $+2.0$ for sawing shear, $-4.0$ for crushing forces $>8$ N.</td>
+      <td>Reward Function</td>
+      <td>The scoreboard: points awarded for progress, penalties for crushing.</td>
+      <td>$r(s_t, a_t) \in [-10, +10]$</td>
+      <td>Dense shaping needed.</td>
     </tr>
     <tr>
       <td><b>$\gamma$</b></td>
-      <td>Discount Factor ($\gamma \in [0, 1)$)</td>
-      <td>The <b>Patience Meter</b>. How much does the robot care about future rewards versus immediate rewards?</td>
-      <td>$\gamma = 0.99$: The robot values completing the cut at step 300 almost as much as step 1.</td>
+      <td>Discount Factor</td>
+      <td><b>The Patience Meter:</b> how much future points matter relative to today.</td>
+      <td>$\gamma = 0.99$</td>
+      <td>High for long tasks.</td>
     </tr>
     <tr>
       <td><b>$\rho_0$</b></td>
-      <td>Initial State Distribution</td>
-      <td>Where does the world start when an episode resets?</td>
-      <td>Randomized tomato placement on cutting board $\pm 2$ cm, initial blade height $5$ cm.</td>
+      <td>Initial Distribution</td>
+      <td>Where the world starts when an episode begins or resets.</td>
+      <td>Tomato position $\pm 2$ cm</td>
+      <td>Domain randomization.</td>
     </tr>
   </tbody>
 </table>
 
-<h3>3.1 The Markov Property: The "Goldfish Memory" Rule</h3>
+<h3>5.1 The Markov Property: The "Goldfish Memory" Rule</h3>
 <div class="callout intuition">
   <div class="callout-title">🐟 The Goldfish Memory Rule Explained</div>
   <p>
@@ -450,231 +546,301 @@ html_content = r"""<!DOCTYPE html>
     $$\mathbb{P}(s_{t+1} \mid s_t, a_t, s_{t-1}, a_{t-1}, \dots, s_0, a_0) = \mathbb{P}(s_{t+1} \mid s_t, a_t)$$
   </div>
   <p>
-    <b>Plain English:</b> <i>"The future depends ONLY on where you are right now, NOT on how you got here."</i>
+    <b>Plain English:</b> <i>"The future depends ONLY on where you are right now, NOT on the historical journey that brought you here."</i>
     <br><br>
-    Imagine you are driving a car and you see a snapshot of the speedometer reading <b>60 mph</b>. 
-    Can you predict where the car will be in 1 second? <b>Yes!</b> You don't need to know if the car started in Paris, New York, or Beijing 3 hours ago. The current speed and heading contain everything needed to predict the next second.
+    Imagine you look at a photograph of a baseball suspended in mid-air at coordinates $(x=10, y=5, z=2)$. 
+    Can you predict where the ball will be in 0.1 seconds? 
+    <b>No!</b> The ball could be flying forward at $95\text{ mph}$, dropping straight down, or rising from a bounce. 
+    A photograph of position alone is <b>Non-Markovian</b>!
     <br><br>
-    <b>Crucial Robotics Rule:</b> If your robot state only included knife position $z=4.0$ cm, you do <i>not</i> know if the blade is plunging downward at high speed or retracting upward! To satisfy the Markov property, your state <b>must include velocities and contact forces</b> ($\dot{q}, v, F_z$).
+    However, if your state includes position AND velocity vector $(\dot{x}, \dot{y}, \dot{z})$, you can calculate the exact parabola. 
+    <b>In robotics, state vectors MUST contain first-order velocities ($\dot{q}, v$) and contact force rates ($\dot{F}$) to satisfy the Markov property!</b>
   </p>
 </div>
 
-<h3>3.2 Trajectory Probability Factorization</h3>
-<p>
-  A complete episode (trajectory) is a sequence of states and actions: $\tau = (s_0, a_0, s_1, a_1, \dots, s_T)$. Using the chain rule of probability and the Markov property:
-</p>
+<h3>5.2 Trajectory Probability Factorization</h3>
 <div class="formula">
   $$\mathbb{P}(\tau \mid \theta) = \rho_0(s_0) \prod_{t=0}^{T-1} \pi_\theta(a_t \mid s_t) P(s_{t+1} \mid s_t, a_t)$$
 </div>
+<p>
+  <b>Plain English Translation:</b> <i>"The probability of an entire 500-step robot experiment is simply the initial placement of the tomato, multiplied by every decision the robot chose, multiplied by how physics reacted at each step."</i>
+</p>
 
-<!-- PARAMETER ANATOMY TABLE 3 -->
+<div class="page-break"></div>
+
+<!-- SECTION 6: POMDP -->
+<h2>6. Partially Observable MDPs (POMDPs): Driving with Fogged Glass</h2>
+<p>
+  In textbook theory, we assume the agent sees the true state $s_t$. 
+  In real-world robotics, this is almost never true. Real robots operate in a <b>Partially Observable Markov Decision Process (POMDP)</b>.
+</p>
+
+<div class="callout warning-box">
+  <div class="callout-title">🌫️ The Foggy Windshield Analogy</div>
+  <p>
+    Imagine driving a car in a blizzard where your windshield is 90% fogged over. 
+    You cannot see the true physical state of the road. 
+    You only receive <b>noisy observations $o_t$</b>: the blurred headlights of a car ahead and the vibration of the tires on ice.
+    <br><br>
+    In soft tomato slicing:
+    <br>• <b>True State $s_t$ (Unobservable):</b> The exact internal viscoelastic stress tensor inside the tomato flesh, the micro-crack propagation in the skin cuticle, and the pulp turgor pressure.
+    <br>• <b>Observation $o_t$ (What we actually measure):</b> A 6-axis F/T load cell reading at the blade root, an acoustic piezoelectric voltage, and an RGB-D camera view.
+  </p>
+</div>
+
+<h3>6.1 The POMDP 8-Tuple: $\mathcal{M}_{\text{POMDP}} = \langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \Omega, \mathcal{O}, \gamma, \rho_0 \rangle$</h3>
 <table>
   <thead>
     <tr>
-      <th style="width: 25%;">Component</th>
-      <th style="width: 35%;">Who Controls It?</th>
-      <th style="width: 40%;">Plain English Meaning</th>
+      <th style="width: 15%;">New Symbol</th>
+      <th style="width: 25%;">Formal Name</th>
+      <th style="width: 60%;">Physical Meaning in Robotics</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b>$\rho_0(s_0)$</b></td>
-      <td>Environment (Nature)</td>
-      <td>Where the robot starts at timestep zero.</td>
+      <td><b>$\Omega$</b></td>
+      <td>Observation Space</td>
+      <td>The space of sensory readings the robot can actually record through physical sensors.</td>
     </tr>
     <tr>
-      <td><b>$\pi_\theta(a_t \mid s_t)$</b></td>
-      <td><b>The Robot Brain (YOU!)</b></td>
-      <td>The probability that your neural network chooses action $a_t$ given sensor state $s_t$.</td>
-    </tr>
-    <tr>
-      <td><b>$P(s_{t+1} \mid s_t, a_t)$</b></td>
-      <td>Environment (Physics)</td>
-      <td>How the physical world responds to your action. (Usually unknown and non-differentiable!).</td>
+      <td><b>$\mathcal{O}(o_t \mid s_t)$</b></td>
+      <td>Emission Probability</td>
+      <td>Sensor noise model: <i>"Given the true physical state $s_t$, what noisy voltage reading $o_t$ will the sensor output?"</i></td>
     </tr>
   </tbody>
 </table>
 
-<div class="callout math-box">
-  <div class="callout-title">📝 Plain English Translation of the Equation</div>
-  <p>
-    <b>"The total probability of an entire 500-step robot experiment is simply the probability of where it started, multiplied by every decision the robot made, multiplied by how the laws of physics responded at each step."</b>
-  </p>
-</div>
+<h3>6.2 How Modern Robotics Solves Partial Observability</h3>
+<p>
+  How do we control a robot when we cannot see the true state? We use two standard engineering solutions:
+</p>
+<ol>
+  <li><b>Frame Stacking / History Buffers:</b> Instead of feeding only the current sensor reading $o_t$, stack the last $K=3$ readings: $[o_t, o_{t-1}, o_{t-2}]$. This implicitly encodes velocity and acceleration!</li>
+  <li><b>Recurrent Neural Networks (LSTM / GRU / Transformer):</b> The network maintains an internal hidden memory vector $h_t$ that acts as a <b>belief state</b>, remembering contact history across time.</li>
+</ol>
 
 <div class="page-break"></div>
 
-<!-- SECTION 4: CONCRETE NUMERICAL WALKTHROUGH -->
-<h2>4. Concrete Numerical Walkthrough: 3 Steps in a Robot Slicing Episode</h2>
+<!-- SECTION 7: CONCRETE 5-STEP WALKTHROUGH -->
+<h2>7. Concrete Numerical Walkthrough: 5 Timesteps in Robot Slicing</h2>
 <p>
-  Let's see actual numbers! Suppose our robot is cutting a tomato with discount factor <b>$\gamma = 0.99$</b>.
+  Let's observe an actual robot executing 5 continuous steps with discount factor <b>$\gamma = 0.99$</b>:
 </p>
 
-<!-- STEP-BY-STEP TABLE -->
 <table>
   <thead>
     <tr>
-      <th style="width: 8%;">Step ($t$)</th>
-      <th style="width: 28%;">Current State $s_t$</th>
-      <th style="width: 24%;">Action Chosen $a_t$</th>
-      <th style="width: 25%;">Physics Outcome &amp; Sensor Feedback</th>
+      <th style="width: 8%;">Step</th>
+      <th style="width: 28%;">Sensor State $s_t$</th>
+      <th style="width: 24%;">Action Executed $a_t$</th>
+      <th style="width: 25%;">Physics Response</th>
       <th style="width: 15%;">Reward $r_t$</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>$t=0$</b></td>
-      <td>$z = 5.0$ cm (Above fruit)<br>$v_z = 0.0$ m/s, $F_z = 0.0$ N</td>
-      <td>Feed rate: $+2.0$ mm/s<br>Stiffness: $1000$ N/m</td>
-      <td>Knife moves downward in free air. No contact yet.</td>
-      <td><b>$r_0 = +0.2$</b><br><small>(Approach reward)</small></td>
+      <td>$z = 5.0$ cm, $v_z = 0.0$ mm/s<br>$F_z = 0.0$ N, $E_{\text{burst}} = 0.0$</td>
+      <td>Feed: $+2.5$ mm/s<br>Sawing: $0.0$ mm/s</td>
+      <td>Knife plunges through air. Zero resistance.</td>
+      <td><b>$r_0 = +0.2$</b><br><small>(Approach bonus)</small></td>
     </tr>
     <tr>
       <td><b>$t=1$</b></td>
-      <td>$z = 4.8$ cm (Skin contact)<br>$v_z = -2.0$ mm/s, $F_z = 3.5$ N</td>
-      <td>Feed: $+1.5$ mm/s<br>Sawing: $+25.0$ mm/s</td>
-      <td>Lateral sawing initiates! Skin shear stress concentrates at blade edge.</td>
-      <td><b>$r_1 = +2.5$</b><br><small>(Sawing progress bonus)</small></td>
+      <td>$z = 4.75$ cm, $v_z = -2.5$ mm/s<br>$F_z = 3.2$ N (Skin contact!)</td>
+      <td>Feed: $+1.0$ mm/s<br>Sawing: $+20.0$ mm/s</td>
+      <td>Blade engages tomato cuticle. Lateral shear begins.</td>
+      <td><b>$r_1 = +2.4$</b><br><small>(Sawing progress)</small></td>
     </tr>
     <tr>
       <td><b>$t=2$</b></td>
-      <td>$z = 4.6$ cm (Tough skin resistance)<br>$v_z = -1.0$ mm/s, $F_z = 9.8$ N</td>
-      <td>Feed: $+3.0$ mm/s (Too aggressive!)<br>Stiffness: $1200$ N/m</td>
-      <td><b>Excess force penalty!</b> $F_z = 9.8$ N exceeds $8.0$ N threshold. Tomato pulp squishes slightly.</td>
-      <td><b>$r_2 = -1.8$</b><br><small>(Pulp crush penalty)</small></td>
+      <td>$z = 4.65$ cm, $v_z = -1.0$ mm/s<br>$F_z = 6.8$ N, $E_{\text{burst}} = 0.1$</td>
+      <td>Feed: $+1.5$ mm/s<br>Sawing: $+25.0$ mm/s</td>
+      <td>High friction resistance. Skin stretches elastically.</td>
+      <td><b>$r_2 = +2.8$</b><br><small>(Shear progress)</small></td>
+    </tr>
+    <tr>
+      <td><b>$t=3$</b></td>
+      <td>$z = 4.50$ cm, $v_z = -1.5$ mm/s<br>$F_z = 7.9$ N, $E_{\text{burst}} = \mathbf{0.95}$</td>
+      <td>Feed: $+0.5$ mm/s (Softened!)<br>Sawing: $+30.0$ mm/s</td>
+      <td><b>SKIN PUNCTURE BURST!</b> Acoustic sensor spikes. Knife penetrates cuticle without crushing!</td>
+      <td><b>$r_3 = +15.0$</b><br><small>(Puncture triumph!)</small></td>
+    </tr>
+    <tr>
+      <td><b>$t=4$</b></td>
+      <td>$z = 4.20$ cm, $v_z = -3.0$ mm/s<br>$F_z = 2.1$ N (Pulp drop)</td>
+      <td>Feed: $+3.0$ mm/s<br>Sawing: $+15.0$ mm/s</td>
+      <td>Knife slices easily through soft locular pulp gel. Resistance drops 70%.</td>
+      <td><b>$r_4 = +4.5$</b><br><small>(Pulp slicing)</small></td>
     </tr>
   </tbody>
 </table>
 
-<h3>4.1 Calculating the Total Discounted Return ($G_0$)</h3>
-<p>
-  How good was this 3-step sequence for the robot? We compute the <b>Discounted Return $G_0$</b> starting from step 0:
-</p>
+<h3>7.1 Calculating Total Discounted Return $G_0$</h3>
 <div class="formula">
-  $$G_0 = r_0 + \gamma \cdot r_1 + \gamma^2 \cdot r_2 = 0.2 + (0.99 \times 2.5) + (0.99^2 \times -1.8)$$
+  $$G_0 = \sum_{t=0}^4 \gamma^t r_t = 0.2 + (0.99 \times 2.4) + (0.99^2 \times 2.8) + (0.99^3 \times 15.0) + (0.99^4 \times 4.5)$$
 </div>
 <div class="formula">
-  $$G_0 = 0.2 + 2.475 - 1.764 = \mathbf{+0.911}$$
+  $$G_0 = 0.20 + 2.376 + 2.744 + 14.555 + 4.323 = \mathbf{+24.198}$$
 </div>
 <p>
-  <b>Why $\gamma = 0.99$?</b> Notice that $\gamma^2 = 0.9801$. The penalty at step 2 was multiplied by $0.9801$, so the robot cares almost as much about step 2 as step 0. If $\gamma = 0.1$, the penalty would be multiplied by $0.01 = -0.018$, making the robot myopic and careless about future crushing!
+  <b>Why this number matters:</b> Notice how the $+15.0$ puncture reward at step 3 contributed $+14.555$ to step 0. 
+  Because $\gamma = 0.99$, the robot at step 0 knows that moving down into contact is extraordinarily valuable because it unlocks the puncture bonus at step 3!
 </p>
 
-<!-- SECTION 5: THE COMPLETE RL FAMILY TREE -->
-<h2>5. The Landscape of Modern RL: Where Does Everything Fit?</h2>
+<div class="page-break"></div>
+
+<!-- SECTION 8: DIARY OF A TRAINING RUN -->
+<h2>8. "Diary of a Training Run": What Actually Happens Inside the Computer</h2>
 <p>
-  When reading papers, you will hear terms like <i>Model-Free, Actor-Critic, Q-Learning, PPO, SAC</i>. Here is how they all connect:
+  When you launch <code>python train.py</code> in NVIDIA Isaac Lab, what does the agent experience over 1,000,000 steps? 
+  Here is the chronological biography of a neural network learning to slice tomatoes:
 </p>
 
-<!-- DIAGRAM 3: RL TAXONOMY TREE -->
-<div class="diagram-container">
-<svg width="600" height="150" viewBox="0 0 600 150">
-  <!-- Root -->
-  <rect x="230" y="5" width="140" height="28" rx="5" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-  <text x="300" y="23" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">REINFORCEMENT LEARNING</text>
+<!-- TRAINING LOG TABLE -->
+<table>
+  <thead>
+    <tr>
+      <th style="width: 18%;">Training Phase</th>
+      <th style="width: 27%;">Policy Behavior (The Robot)</th>
+      <th style="width: 27%;">Critic Behavior (The Evaluator)</th>
+      <th style="width: 28%;">Diagnostic Curve Sign</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Phase 1: Pure Chaos<br>(Steps 0 – 5,000)</b></td>
+      <td>Weights are randomly initialized. The robot flails violently, slams the blade into the board, or shoots up into the air. 100% of tomatoes are crushed.</td>
+      <td>Critic outputs random numbers near $0.0$. Has no idea what anything is worth. $V(s) \approx 0 \pm 0.5$.</td>
+      <td><b>Entropy is high</b> ($\approx 2.5$). Reward is heavily negative ($\approx -50$). Value loss is small because targets are all noisy.</td>
+    </tr>
+    <tr>
+      <td><b>Phase 2: The Coward Trap<br>(Steps 5,000 – 30,000)</b></td>
+      <td>The robot discovers that crushing the tomato gives a huge penalty ($-50$). 
+        To avoid this, <b>it freezes the blade 2 mm above the tomato skin</b>! It gets $+0.5$ approach reward and stops.</td>
+      <td>Critic learns: <i>"Hovering above the fruit is great! Value = +5."</i></td>
+      <td>Reward plateaus at a low positive value ($\approx +3.0$). <b>Local Minimum trap!</b> Entropy begins dropping.</td>
+    </tr>
+    <tr>
+      <td><b>Phase 3: The First Puncture<br>(Steps 30,000 – 100,000)</b></td>
+      <td>Due to entropy noise, one robot out of 1,024 accidentally saws laterally while pressing down, puncturing the skin (+15 reward!).</td>
+      <td>Critic experiences a massive TD error ($\delta \approx +12$). Value estimates along that trajectory spike upward!</td>
+      <td><b>KL divergence spikes</b> as policy rapidly shifts weights toward sawing motion. Reward jumps from $+3 \to +25$.</td>
+    </tr>
+    <tr>
+      <td><b>Phase 4: Master Convergence<br>(Steps 100,000 – 500,000)</b></td>
+      <td>Policy coordinates dual arms: holding arm stabilizes fruit compliance while cutting arm executes steady $25\text{ mm/s}$ sawing shear.</td>
+      <td>Critic predictions match true discounted returns with 95% accuracy.</td>
+      <td><b>Explained variance $\to 0.95$</b>. Policy loss stabilizes near zero. 99.2% cut success rate across all 1,024 parallel envs!</td>
+    </tr>
+  </tbody>
+</table>
 
-  <!-- Level 1: Model-Free vs Model-Based -->
-  <line x1="300" y1="33" x2="160" y2="52" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="300" y1="33" x2="440" y2="52" stroke="#64748b" stroke-width="1.5"/>
+<div class="page-break"></div>
 
-  <rect x="80" y="52" width="160" height="26" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="160" y="69" font-size="9" font-weight="700" fill="#1d4ed8" text-anchor="middle">MODEL-FREE RL (Our Focus!)</text>
+<!-- SECTION 9: PYTORCH VECTORIZED CODE -->
+<h2>9. PyTorch Vectorized Simulation Loop (Isaac Lab Production Blueprint)</h2>
+<p>
+  Below is the complete, production-grade Python script running 1,024 parallel environments on GPU:
+</p>
 
-  <rect x="360" y="52" width="160" height="26" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="440" y="69" font-size="9" font-weight="700" fill="#475569" text-anchor="middle">MODEL-BASED RL</text>
+<div class="callout code-box">
+  <div class="callout-title">🐍 Complete Isaac Lab Parallel Stepping Loop (`run_simulation.py`)</div>
+<pre style="margin: 0; padding: 0;">
+import torch
+import torch.nn as nn
 
-  <!-- Level 2: Three Branches of Model-Free -->
-  <line x1="160" y1="78" x2="60" y2="100" stroke="#3b82f6" stroke-width="1.5"/>
-  <line x1="160" y1="78" x2="160" y2="100" stroke="#3b82f6" stroke-width="1.5"/>
-  <line x1="160" y1="78" x2="260" y2="100" stroke="#3b82f6" stroke-width="1.5"/>
+# 1. Configuration Constants
+NUM_ENVS = 1024         # 1,024 parallel simulation instances on RTX GPU
+STATE_DIM = 33          # 33-dimensional sensory observation vector
+ACTION_DIM = 6          # 6-dimensional continuous motor actions
+HORIZON = 500           # 500 steps per episode (10 seconds at 50 Hz)
+GAMMA = 0.99            # Discount factor
 
-  <!-- Policy-Based -->
-  <rect x="10" y="100" width="100" height="42" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
-  <text x="60" y="116" font-size="8" font-weight="700" fill="#b45309" text-anchor="middle">Policy-Based</text>
-  <text x="60" y="128" font-size="7" fill="#78350f" text-anchor="middle">Lecture 5</text>
-  <text x="60" y="138" font-size="6.5" fill="#92400e" text-anchor="middle">(REINFORCE)</text>
+# 2. Vectorized Observation Normalizer (Running Mean & Variance)
+class RunningObservationNormalizer:
+    def __init__(self, shape):
+        self.mean = torch.zeros(shape, device="cuda")
+        self.var = torch.ones(shape, device="cuda")
+        self.count = 1e-4
 
-  <!-- Value-Based -->
-  <rect x="115" y="100" width="90" height="42" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.2"/>
-  <text x="160" y="116" font-size="8" font-weight="700" fill="#047857" text-anchor="middle">Value-Based</text>
-  <text x="160" y="128" font-size="7" fill="#065f46" text-anchor="middle">Lectures 4 &amp; 8</text>
-  <text x="160" y="138" font-size="6.5" fill="#064e3b" text-anchor="middle">(Q-Learning, DQN)</text>
+    def normalize(self, obs):
+        # Update running stats online
+        batch_mean = obs.mean(dim=0)
+        batch_var = obs.var(dim=0, unbiased=False)
+        self.mean = 0.99 * self.mean + 0.01 * batch_mean
+        self.var = 0.99 * self.var + 0.01 * batch_var
+        return (obs - self.mean) / torch.sqrt(self.var + 1e-8)
 
-  <!-- Actor-Critic -->
-  <rect x="210" y="100" width="110" height="42" rx="4" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
-  <text x="265" y="116" font-size="8" font-weight="700" fill="#be185d" text-anchor="middle">Actor-Critic (Hybrid)</text>
-  <text x="265" y="128" font-size="7" fill="#9d174d" text-anchor="middle">Lectures 6 &amp; 10</text>
-  <text x="265" y="138" font-size="6.5" font-weight="700" fill="#831843" text-anchor="middle">(PPO &amp; SAC!)</text>
-</svg>
+# 3. Main Vectorized Execution Loop
+def run_parallel_rollout(env, policy, normalizer):
+    raw_obs = env.reset()  # Shape: (1024, 33)
+    total_rewards = torch.zeros(NUM_ENVS, device="cuda")
+
+    for step in range(HORIZON):
+        # Standardize observations to mean 0, variance 1
+        norm_obs = normalizer.normalize(raw_obs)
+
+        # Policy forward pass: Generates continuous actions in [-1, +1]
+        with torch.no_grad():
+            actions = policy(norm_obs)  # Shape: (1024, 6)
+
+        # Step physics forward by 20 milliseconds across all 1,024 envs simultaneously
+        next_raw_obs, rewards, dones, info = env.step(actions)
+
+        # Accumulate episodic scores
+        total_rewards += rewards
+
+        # Advance state pointer
+        raw_obs = next_raw_obs
+
+    print(f"Rollout complete! Mean return across 1024 robots: {total_rewards.mean().item():.2f}")
+    return total_rewards
+</pre>
 </div>
 
 <div class="page-break"></div>
 
-<!-- SECTION 6: PYTORCH IMPLEMENTATION -->
-<h2>6. The Vectorized Simulation Loop in PyTorch (Isaac Lab Style)</h2>
+<!-- SECTION 10: PRACTITIONER'S CHECKLIST -->
+<h2>10. Practitioner's Failure Modes &amp; Debugging Checklist (Top 5 Traps)</h2>
 <p>
-  How does this look in real Python code? In modern robotics (NVIDIA Isaac Lab), we run <b>1,024 parallel environments simultaneously on one GPU</b>:
-</p>
-
-<div class="callout code-box">
-  <div class="callout-title">🐍 Vectorized Gym / Isaac Lab Stepping Loop</div>
-<pre style="margin: 0; padding: 0;">
-import torch
-
-# 1. Initialize 1,024 parallel robot environments on GPU
-num_envs = 1024
-states = env.reset()  # Shape: (1024, 33) -> 1,024 robots observing 33 sensor channels
-
-total_rewards = torch.zeros(num_envs, device="cuda")
-
-for step in range(500):  # 500-step episode (10 seconds)
-    # 2. Policy forward pass: Robot Brain chooses 6-DoF continuous motor actions
-    with torch.no_grad():
-        actions = policy_network(states)  # Shape: (1024, 6)
-
-    # 3. Step physics simulation forward by 20 milliseconds (50 Hz)
-    next_states, rewards, dones, infos = env.step(actions)
-    # next_states: (1024, 33), rewards: (1024,), dones: (1024,) bool
-
-    # 4. Accumulate rewards across all parallel environments
-    total_rewards += rewards
-
-    # 5. Reset environments that finished (knife hit board or tomato crushed)
-    states = next_states
-
-print(f"Average Return across 1024 robots: {total_rewards.mean().item():.2f}")
-</pre>
-</div>
-
-<!-- SECTION 7: PRACTITIONER'S CHECKLIST -->
-<h2>7. Practitioner's Failure Modes &amp; Debugging Checklist</h2>
-<p>
-  When training your first RL agent in Isaac Lab, 90% of failures stem from these three classic beginner traps:
+  When training your first robot in Isaac Lab, 95% of issues trace back to these five classic bugs:
 </p>
 
 <table>
   <thead>
     <tr>
-      <th style="width: 25%;">Failure Mode</th>
-      <th style="width: 35%;">Why It Happens</th>
+      <th style="width: 22%;">Failure Mode</th>
+      <th style="width: 38%;">The Silent Symptom (What Goes Wrong)</th>
       <th style="width: 40%;">How to Fix It Immediately</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>1. Observation Scale Explosion</b></td>
-      <td>Joint angles are in radians $[-3, +3]$, but contact forces are in Newtons $[0, 50]$ N. The neural network ignores joint angles and fixates on the large force numbers.</td>
-      <td><b>Standardize observations:</b> Use a running mean and variance wrapper (e.g., <code>RunningMeanStd</code>) so every state dimension has mean $0$ and variance $1$.</td>
+      <td>Acoustic counts are $30,000$ while joint angles are $0.1$ radians. Gradients for acoustic counts blow up, joint gradients vanish.</td>
+      <td>Always wrap observations in <code>RunningObservationNormalizer</code> to clamp inputs to $[-5.0, +5.0]$.</td>
     </tr>
     <tr>
-      <td><b>2. The Discount Factor Horizon Trap</b></td>
-      <td>Setting $\gamma = 0.9$ means the effective planning horizon is only $H = \frac{1}{1 - \gamma} = \frac{1}{0.1} = 10$ steps. The robot cannot plan a 300-step cut!</td>
-      <td>Set <b>$\gamma = 0.99$</b> for slicing tasks ($H = 100$ steps), or $\gamma = 0.995$ for long manipulation trajectories.</td>
+      <td><b>2. The Horizon Mismatch Trap</b></td>
+      <td>Setting $\gamma = 0.90$ gives an effective planning horizon of only $H = \frac{1}{1 - \gamma} = 10$ steps. The robot cannot plan a 300-step cut!</td>
+      <td>Set <b>$\gamma = 0.99$</b> ($H = 100$ steps) or $\gamma = 0.995$ for long contact tasks.</td>
     </tr>
     <tr>
-      <td><b>3. Partial Observability (POMDP) Trap</b></td>
-      <td>Passing only blade position $z$ without velocity $\dot{z}$ violates the Markov property. The agent cannot distinguish moving down from retracting up.</td>
-      <td>Always include <b>first-order velocities</b> ($\dot{q}, v_{\text{knife}}$) and <b>historical observation buffers</b> (e.g., stacking last 3 frames).</td>
+      <td><b>3. Partial Observability (POMDP) Violation</b></td>
+      <td>Passing knife height $z$ without vertical velocity $\dot{z}$. The policy cannot tell if the blade is plunging downward or retracting upward.</td>
+      <td>Always stack the last 3 observation frames: $[o_t, o_{t-1}, o_{t-2}]$ or include full velocity vectors.</td>
+    </tr>
+    <tr>
+      <td><b>4. Reward Scale Asymmetry</b></td>
+      <td>Penetration reward gives $+0.1$ per step, but crushing penalty gives $-100.0$. The robot becomes terrified and refuses to touch the fruit.</td>
+      <td>Ensure reward components are balanced within the same order of magnitude (e.g. progress $\in [0, 5]$, penalty $\in [-4, 0]$).</td>
+    </tr>
+    <tr>
+      <td><b>5. Asynchronous Tensor Device Bug</b></td>
+      <td>Sim is running on <code>cuda:0</code>, but actions or observation normalizer are accidentally created on <code>cpu</code>. Causes massive host-device transfer bottlenecks, dropping FPS from $15,000$ to $200$.</td>
+      <td>Ensure all tensors, buffers, and model weights are strictly instantiated on <code>device="cuda"</code>.</td>
     </tr>
   </tbody>
 </table>

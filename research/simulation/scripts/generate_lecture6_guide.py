@@ -29,7 +29,7 @@ html_content = r"""<!DOCTYPE html>
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #1e293b;
     line-height: 1.56;
-    font-size: 9.6pt;
+    font-size: 9.5pt;
   }
 
   .header-block {
@@ -208,19 +208,20 @@ html_content = r"""<!DOCTYPE html>
 <div class="header-block">
   <span class="course-tag">CS285 Lecture 6 • Zero-to-Hero Field Manual</span>
   <h1>Actor-Critic Architectures &amp; Generalized Advantage Estimation (GAE)</h1>
-  <div class="subtitle">From Scratch to Mastery: Replacing Noisy Full Rollouts with a Learned Critic and Finding the Optimal Bias-Variance Balance</div>
+  <div class="subtitle">A Comprehensive, Intuitive Textbook: Replacing Noisy Rollouts with Instant Critic Feedback, The Bias-Variance Dial, and Privileged Simulation</div>
   <div class="meta-bar">
     <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley RAIL Lab)</span>
-    <span><b>Focus:</b> The Dual Network Architecture, Temporal Difference Learning, &amp; GAE-$\lambda$</span>
+    <span><b>Target Audience:</b> Complete Beginners to Advanced Robotics Practitioners</span>
   </div>
 </div>
 
 <!-- SECTION 1: CORE INTUITION -->
 <h2>1. What is Actor-Critic? (The Theater Director Analogy)</h2>
 <p>
-  In Lecture 5, we learned REINFORCE: the robot runs an entire 500-step episode to the end, sums up all rewards, and updates its policy. 
-  This is called a <b>Monte Carlo method</b>. While mathematically unbiased, it is agonizingly noisy. If one small wobble happens at step 450, the entire return is ruined.
-  Can we get immediate feedback at <i>every single step</i>? Yes! We introduce a second neural network: <b>The Critic</b>.
+  In Lecture 5, we studied REINFORCE (Monte Carlo policy gradients). 
+  In REINFORCE, the robot runs a full 500-step episode to the end, sums up all rewards, and updates its policy. 
+  While mathematically unbiased, it is agonizingly noisy. If one small contact wobble occurs at step 480, the entire trajectory return is ruined.
+  Can we get immediate microsecond feedback at <i>every single step</i>? Yes! We introduce a second neural network: <b>The Critic</b>.
 </p>
 
 <div class="callout intuition">
@@ -237,7 +238,7 @@ html_content = r"""<!DOCTYPE html>
   </ul>
   <p>
     In deep RL:
-    <br>• <b>The Actor ($\pi_\theta$):</b> Chooses the motor actions ($a_t$).
+    <br>• <b>The Actor ($\pi_\theta$):</b> Proposes the continuous motor actions ($a_t$).
     <br>• <b>The Critic ($V_\phi$):</b> Evaluates how good the resulting state is, providing immediate advantage scores to guide the Actor!
   </p>
 </div>
@@ -245,42 +246,38 @@ html_content = r"""<!DOCTYPE html>
 <!-- DIAGRAM 1: ACTOR-CRITIC ARCHITECTURE -->
 <div class="diagram-container">
 <svg width="600" height="120" viewBox="0 0 600 120">
-  <!-- Sensor State -->
   <rect x="20" y="35" width="130" height="50" rx="6" fill="#f8fafc" stroke="#475569" stroke-width="1.5"/>
   <text x="85" y="56" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">Sensor State $s_t$</text>
   <text x="85" y="72" font-size="8" fill="#64748b" text-anchor="middle">33D Sensor Vector</text>
 
-  <!-- Fork arrows -->
   <path d="M 150,50 L 210,25" fill="none" stroke="#2563eb" stroke-width="2"/>
   <polygon points="210,25 201,23 206,31" fill="#2563eb"/>
 
   <path d="M 150,70 L 210,95" fill="none" stroke="#f59e0b" stroke-width="2"/>
   <polygon points="210,95 206,89 201,97" fill="#f59e0b"/>
 
-  <!-- Actor Box -->
   <rect x="210" y="5" width="200" height="45" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
   <text x="310" y="24" font-size="10" font-weight="700" fill="#1e40af" text-anchor="middle">THE ACTOR $\pi_\theta(a \mid s)$</text>
   <text x="310" y="38" font-size="7.5" fill="#475569" text-anchor="middle">Outputs motor action $a_t \in \mathbb{R}^6$</text>
 
-  <!-- Critic Box -->
   <rect x="210" y="70" width="200" height="45" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
   <text x="310" y="89" font-size="10" font-weight="700" fill="#92400e" text-anchor="middle">THE CRITIC $V_\phi(s)$</text>
   <text x="310" y="103" font-size="7.5" fill="#475569" text-anchor="middle">Predicts expected future value $V(s) \in \mathbb{R}^1$</text>
 
-  <!-- Actor output arrow -->
   <line x1="410" y1="27" x2="480" y2="27" stroke="#2563eb" stroke-width="2"/>
   <polygon points="480,27 472,22 472,32" fill="#2563eb"/>
   <text x="535" y="31" font-size="9" font-weight="700" fill="#1e40af">Robot Motors</text>
 
-  <!-- Critic output arrow -->
   <line x1="410" y1="92" x2="480" y2="92" stroke="#f59e0b" stroke-width="2"/>
   <polygon points="480,92 472,87 472,97" fill="#f59e0b"/>
   <text x="535" y="96" font-size="9" font-weight="700" fill="#92400e">Advantage $\hat{A}_t$</text>
 </svg>
 </div>
 
+<div class="page-break"></div>
+
 <!-- SECTION 2: TEMPORAL DIFFERENCE LEARNING -->
-<h2>2. Temporal Difference (TD) Learning: Updating Beliefs Mid-Flight</h2>
+<h2>2. Temporal Difference (TD) Learning: The Road Trip Traffic Jam</h2>
 <div class="callout intuition">
   <div class="callout-title">🚗 The Road Trip Traffic Jam Analogy</div>
   <p>
@@ -293,7 +290,7 @@ html_content = r"""<!DOCTYPE html>
   </p>
 </div>
 
-<h3>2.1 The 1-Step TD Error $\delta_t$ (Parameter Anatomy)</h3>
+<h3>2.1 The 1-Step TD Residual Error $\delta_t$ (Parameter Anatomy)</h3>
 <div class="formula">
   $$\delta_t = r(s_t, a_t) + \gamma V_\phi(s_{t+1}) - V_\phi(s_t)$$
 </div>
@@ -339,14 +336,59 @@ html_content = r"""<!DOCTYPE html>
 <div class="callout math-box">
   <div class="callout-title">📝 Plain English Translation of the TD Error</div>
   <p>
-    <b>"TD Error is the surprise factor: (Reality right now + What you predict for tomorrow) MINUS (What you predicted yesterday). If $\delta > 0$, you did better than expected. If $\delta < 0$, you did worse!"</b>
+    <b>"TD Error is the surprise factor: (Reality right now + What you predict for tomorrow) MINUS (What you predicted yesterday). If $\delta > 0$, things went better than expected. If $\delta < 0$, things went worse!"</b>
   </p>
 </div>
 
 <div class="page-break"></div>
 
-<!-- SECTION 3: THE BIAS-VARIANCE DILEMMA -->
-<h2>3. The Bias-Variance Dilemma: Why Neither Extreme Works</h2>
+<!-- SECTION 3: FOUR MULTI-DOMAIN CASE STUDIES -->
+<h2>3. Four Real-World Case Studies for Actor-Critic</h2>
+<p>
+  Let's observe how the Actor and Critic interact across four diverse engineering systems:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 16%;">Domain</th>
+      <th style="width: 28%;">What Does the Actor ($\pi_\theta$) Do?</th>
+      <th style="width: 28%;">What Does the Critic ($V_\phi$) Do?</th>
+      <th style="width: 28%;">What the Advantage ($\hat{A}$) Tells the Actor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1. Soft Fruit Slicing (Our Lab's Research)</b></td>
+      <td>Outputs continuous feed velocity $\Delta v_z$ and lateral sawing shear $v_{\text{slice}}$.</td>
+      <td>Predicts remaining cumulative score to complete cut without fruit crushing.</td>
+      <td><i>"Increasing lateral sawing reduced normal force by 3N. That was +4.5 points better than average. DO IT MORE!"</i></td>
+    </tr>
+    <tr>
+      <td><b>2. Autonomous Car (Highway Driving)</b></td>
+      <td>Outputs continuous steering angle and pedal pressure.</td>
+      <td>Predicts remaining travel safety margin and time-to-arrival.</td>
+      <td><i>"Braking gently early prevented an emergency stop later. Advantage = +8.2."</i></td>
+    </tr>
+    <tr>
+      <td><b>3. ChatGPT Alignment (RLHF / PPO)</b></td>
+      <td>Samples the next word token from 50,000 vocabulary words.</td>
+      <td>Predicts final human satisfaction rating of the completed paragraph.</td>
+      <td><i>"Adding that clarification sentence boosted user satisfaction. Advantage = +1.8."</i></td>
+    </tr>
+    <tr>
+      <td><b>4. Quadruped Robot (Locomotion)</b></td>
+      <td>Outputs target joint angles for all 12 leg motors.</td>
+      <td>Predicts remaining time the robot will stay upright over rocky terrain.</td>
+      <td><i>"Extending the right front leg absorbed the step impact smoothly. Advantage = +5.0."</i></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- SECTION 4: THE BIAS-VARIANCE DILEMMA -->
+<h2>4. The Bias-Variance Dilemma: The Core Trade-off in Machine Learning</h2>
 <p>
   When training the Actor, we face a fundamental trade-off:
 </p>
@@ -357,7 +399,7 @@ html_content = r"""<!DOCTYPE html>
   </li>
   <li><b>Pure 1-Step TD (Critic only):</b> Use only 1 step of reality + Critic's prediction.
     <br>• <b>Variance: MINIMAL.</b> You only look 1 step into the future, so random noise cannot accumulate.
-    <br>• <b>Bias: HIGH.</b> Early in training, the Critic's neural network outputs nonsense guesses. If the Critic is wrong, the Actor learns bad motions.
+    <br>• <b>Bias: HIGH.</b> Early in training, the Critic's neural network outputs nonsense guesses. If the Critic is wrong, the Actor learns bad habits.
   </li>
 </ul>
 
@@ -366,18 +408,15 @@ html_content = r"""<!DOCTYPE html>
 <svg width="600" height="85" viewBox="0 0 600 85">
   <line x1="50" y1="40" x2="550" y2="40" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
 
-  <!-- Left: TD(0) -->
   <circle cx="80" cy="40" r="10" fill="#3b82f6"/>
   <text x="80" y="22" font-size="8.5" font-weight="700" fill="#1d4ed8" text-anchor="middle">TD(0) [$\lambda = 0$]</text>
   <text x="80" y="62" font-size="7.5" fill="#475569" text-anchor="middle">Low Variance</text>
   <text x="80" y="74" font-size="7.5" font-weight="700" fill="#b91c1c" text-anchor="middle">HIGH BIAS</text>
 
-  <!-- Sweet spot: GAE -->
   <circle cx="450" cy="40" r="12" fill="#10b981"/>
   <text x="450" y="20" font-size="9" font-weight="700" fill="#047857" text-anchor="middle">GAE [$\lambda = 0.95$] SWEET SPOT</text>
   <text x="450" y="62" font-size="7.5" font-weight="700" fill="#047857" text-anchor="middle">Optimal Variance-Bias Balance</text>
 
-  <!-- Right: Monte Carlo -->
   <circle cx="520" cy="40" r="10" fill="#f59e0b"/>
   <text x="520" y="22" font-size="8.5" font-weight="700" fill="#b45309" text-anchor="middle">Monte Carlo [$\lambda = 1$]</text>
   <text x="520" y="62" font-size="7.5" fill="#475569" text-anchor="middle">Zero Bias</text>
@@ -385,8 +424,8 @@ html_content = r"""<!DOCTYPE html>
 </svg>
 </div>
 
-<!-- SECTION 4: GAE-LAMBDA -->
-<h2>4. Generalized Advantage Estimation (GAE-$\lambda$): The Blending Slider</h2>
+<!-- SECTION 5: GAE-LAMBDA -->
+<h2>5. Generalized Advantage Estimation (GAE-$\lambda$): The Blending Slider</h2>
 <p>
   John Schulman et al. (2015) invented <b>GAE</b> to smoothly interpolate between TD(0) and Monte Carlo using a single tuning parameter <b>$\lambda \in [0, 1]$</b>:
 </p>
@@ -435,11 +474,30 @@ html_content = r"""<!DOCTYPE html>
 
 <div class="page-break"></div>
 
-<!-- SECTION 5: CONCRETE NUMERICAL WALKTHROUGH -->
-<h2>5. Concrete Numerical Walkthrough: Calculating GAE by Hand</h2>
+<!-- SECTION 6: PRIVILEGED ASYMMETRIC ACTOR-CRITIC -->
+<h2>6. Privileged Simulation: The Asymmetric Actor-Critic Superpower</h2>
 <p>
-  Let's calculate GAE for a 3-step sequence with <b>$\gamma = 0.99$</b> and <b>$\lambda = 0.95$</b>. 
-  Notice that $\gamma \lambda = 0.99 \times 0.95 = \mathbf{0.9405}$.
+  One of the greatest breakthroughs in modern robot learning (used by Boston Dynamics, ETH Zurich, and our lab) is <b>Asymmetric Actor-Critic</b>:
+</p>
+
+<div class="callout robotics">
+  <div class="callout-title">🤖 The Open-Book Exam Analogy</div>
+  <p>
+    When a student takes an exam, they must do it closed-book. 
+    However, when the <b>professor grades the exam</b>, the professor has the complete teacher's answer key!
+    <br><br>
+    <b>In NVIDIA Isaac Sim:</b>
+    <br>• <b>The Critic ($V_\phi$):</b> Trains with privileged, ground-truth physics information that is impossible to measure on a real robot: the exact internal pulp deformation mesh, true fruit center of mass, unobservable friction coefficients, and blade-skin contact stress.
+    <br>• <b>The Actor ($\pi_\theta$):</b> Only receives sensor readings available on the physical robot: joint angles, 6-axis F/T load cell, and acoustic bursts.
+    <br><br>
+    Because the Critic is discarded after training, the Actor deploys to physical Franka robot arms with <b>zero sim-to-real transfer penalty</b>!
+  </p>
+</div>
+
+<!-- SECTION 7: CONCRETE NUMERICAL WALKTHROUGH -->
+<h2>7. Concrete Numerical Walkthrough: Calculating GAE by Hand</h2>
+<p>
+  Let's calculate GAE for a 3-step sequence with <b>$\gamma = 0.99$</b> and <b>$\lambda = 0.95$</b> ($\gamma \lambda = \mathbf{0.9405}$):
 </p>
 
 <table>
@@ -477,25 +535,46 @@ html_content = r"""<!DOCTYPE html>
   </tbody>
 </table>
 
-<div class="callout intuition">
-  <div class="callout-title">💡 The Backward Recursion Magic</div>
-  <p>
-    Notice how GAE is computed <b>backwards from the end of the episode to the beginning</b>:
-    <br><code>Advantage[t] = delta[t] + (gamma * lambda) * Advantage[t+1]</code>.
-    <br>This simple recursive formula takes only 5 lines of PyTorch code and runs in microseconds on GPU!
-  </p>
-</div>
+<div class="page-break"></div>
 
-<!-- SECTION 6: PYTORCH IMPLEMENTATION -->
-<h2>6. Vectorized GAE Implementation in PyTorch</h2>
+<!-- SECTION 8: DIARY OF AN ACTOR-CRITIC TRAINING RUN -->
+<h2>8. "Diary of a Training Run" (TensorBoard Diagnostics)</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">Diagnostic Metric</th>
+      <th style="width: 35%;">Healthy Value Behavior</th>
+      <th style="width: 45%;">What a Warning Sign Means</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Explained Variance</b></td>
+      <td>Starts at $0.0$, steadily climbs to $0.80 - 0.95$.</td>
+      <td>If negative ($<0.0$), the Critic is predicting <i>worse</i> than random chance. Increase Critic learning rate!</td>
+    </tr>
+    <tr>
+      <td><b>Critic Value Loss</b></td>
+      <td>Decreases steadily, stabilizes near residual task noise.</td>
+      <td>If exploding toward $10^6$, check for unmasked terminal states or missing target network detach!</td>
+    </tr>
+    <tr>
+      <td><b>Mean Advantage</b></td>
+      <td>Strictly centered around $0.0 \pm 0.05$.</td>
+      <td>If mean advantage drifts to $+10.0$, advantage normalization was omitted.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- SECTION 9: PYTORCH IMPLEMENTATION -->
+<h2>9. Vectorized GAE Implementation in PyTorch</h2>
 
 <div class="callout code-box">
-  <div class="callout-title">🐍 Complete PyTorch GAE Function</div>
+  <div class="callout-title">🐍 Vectorized PyTorch GAE Function (`gae.py`)</div>
 <pre style="margin: 0; padding: 0;">
 import torch
 
 def compute_gae(rewards, values, next_values, dones, gamma=0.99, gae_lambda=0.95):
-    # Compute Generalized Advantage Estimation across time steps T for B environments.
     # rewards, values, next_values, dones: Tensors of shape (T, B)
     T, B = rewards.shape
     advantages = torch.zeros_like(rewards)
@@ -510,37 +589,39 @@ def compute_gae(rewards, values, next_values, dones, gamma=0.99, gae_lambda=0.95
         last_gae = delta + gamma * gae_lambda * non_terminal * last_gae
         advantages[t] = last_gae
 
-    # Target values for training the Critic: Returns = Advantages + Values
+    # Target returns for Critic MSE training: Returns = Advantages + Values
     returns = advantages + values
     return advantages, returns
 </pre>
 </div>
 
-<!-- SECTION 7: PRACTITIONER'S CHECKLIST -->
-<h2>7. Practitioner's Failure Modes &amp; Debugging Checklist</h2>
+<div class="page-break"></div>
+
+<!-- SECTION 10: PRACTITIONER'S CHECKLIST -->
+<h2>10. Practitioner's Failure Modes &amp; Debugging Checklist</h2>
 <table>
   <thead>
     <tr>
       <th style="width: 25%;">Failure Mode</th>
-      <th style="width: 35%;">The Silent Bug</th>
-      <th style="width: 40%;">How to Fix It</th>
+      <th style="width: 35%;">The Hidden Symptom</th>
+      <th style="width: 40%;">How to Fix It Immediately</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>1. Learning Rate Mismatch</b></td>
-      <td>If Critic learning rate equals Actor learning rate ($\alpha_c = \alpha_a$), the Critic cannot track policy changes fast enough. Its value estimates lag, feeding garbage advantages to the Actor.</td>
-      <td>Make the Critic slightly faster or larger: in SkRL, train the Critic with <b>$\alpha_c = 1\times 10^{-3}$</b> while Actor uses $\alpha_a = 3\times 10^{-4}$.</td>
+      <td>Critic cannot track policy shifts fast enough. Advantage estimates lag reality.</td>
+      <td>Train the Critic with <b>$\alpha_c = 1\times 10^{-3}$</b> while Actor uses $\alpha_a = 3\times 10^{-4}$.</td>
     </tr>
     <tr>
       <td><b>2. Forgetting Advantage Normalization</b></td>
-      <td>If rewards are large ($+100$), advantages will be huge ($\hat{A} \sim 80$). Gradient updates will be gigantic, causing policy weights to explode.</td>
-      <td>Always normalize advantages across the batch before updating the policy: <code>advantages = (advantages - mean) / (std + 1e-8)</code>.</td>
+      <td>Un-normalized advantages cause gradient norms to swing between $0.1$ and $1000$.</td>
+      <td>Always normalize across batch: <code>adv = (adv - adv.mean()) / (adv.std() + 1e-8)</code>.</td>
     </tr>
     <tr>
       <td><b>3. Episode Boundary Bleed</b></td>
-      <td>If an environment finishes at step $t$ and resets, failing to zero out <code>last_gae</code> allows the previous episode's rewards to bleed into the new tomato!</td>
-      <td>Always multiply <code>last_gae</code> by <code>(1.0 - done)</code> at episode resets.</td>
+      <td>Failing to zero out <code>last_gae</code> at resets allows rewards from a finished tomato to bleed into a new tomato.</td>
+      <td>Always multiply <code>last_gae</code> by <code>(1.0 - done.float())</code>.</td>
     </tr>
   </tbody>
 </table>
