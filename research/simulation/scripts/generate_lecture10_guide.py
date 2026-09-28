@@ -6,13 +6,13 @@ html_content = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Mastering Advanced Policy Gradients & PPO: Definitive Guide to CS285 Lecture 10</title>
+<title>CS285 Lecture 10: Zero-to-Hero Guide to Advanced Policy Gradients & PPO</title>
 <style>
   @page {
     size: A4;
     margin: 16mm 14mm 18mm 14mm;
     @top-right {
-      content: "CS285 Lecture 10: Advanced Policy Gradients, TRPO & PPO";
+      content: "CS285 Lecture 10 • Zero-to-Hero Guide to PPO & Trust Regions";
       font-size: 8pt;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #64748b;
@@ -29,7 +29,7 @@ html_content = r"""<!DOCTYPE html>
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #1e293b;
     line-height: 1.56;
-    font-size: 9.8pt;
+    font-size: 9.6pt;
   }
 
   .header-block {
@@ -51,7 +51,7 @@ html_content = r"""<!DOCTYPE html>
   }
   h1 {
     color: #0f172a;
-    font-size: 20pt;
+    font-size: 19pt;
     font-weight: 800;
     margin: 0 0 6px 0;
     line-height: 1.25;
@@ -73,7 +73,7 @@ html_content = r"""<!DOCTYPE html>
     color: #1e3a8a;
     font-size: 12.5pt;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 18px;
     margin-bottom: 8px;
     border-left: 4px solid #2563eb;
     padding-left: 8px;
@@ -82,10 +82,10 @@ html_content = r"""<!DOCTYPE html>
 
   h3 {
     color: #0f172a;
-    font-size: 10.5pt;
+    font-size: 10.2pt;
     font-weight: 700;
-    margin-top: 14px;
-    margin-bottom: 5px;
+    margin-top: 12px;
+    margin-bottom: 4px;
     page-break-after: avoid;
   }
 
@@ -94,11 +94,19 @@ html_content = r"""<!DOCTYPE html>
     text-align: justify;
   }
 
+  ul, ol {
+    margin: 0 0 8px 0;
+    padding-left: 18px;
+  }
+  li {
+    margin-bottom: 3px;
+  }
+
   .callout {
     padding: 10px 14px;
     margin: 10px 0;
     border-radius: 6px;
-    font-size: 9.3pt;
+    font-size: 9.2pt;
     page-break-inside: avoid;
   }
   .callout p { margin: 0; }
@@ -138,59 +146,25 @@ html_content = r"""<!DOCTYPE html>
   }
   .warning-box .callout-title { color: #b91c1c; }
 
-  .silent-bug {
-    background: #fdf2f8;
-    border-left: 4px solid #db2777;
-    color: #831843;
-  }
-  .silent-bug .callout-title { color: #be185d; }
-
-  .code-container {
-    background: #0f172a;
-    color: #e2e8f0;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 10px 0;
-    font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
-    font-size: 8.4pt;
-    line-height: 1.45;
-    page-break-inside: avoid;
-    overflow-x: auto;
-  }
-  .code-container pre { margin: 0; }
-  .code-comment { color: #94a3b8; font-style: italic; }
-  .code-keyword { color: #38bdf8; font-weight: bold; }
-  .code-func { color: #a78bfa; }
-  .code-string { color: #4ade80; }
-
-  .algorithm-box {
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-left: 4px solid #475569;
-    border-radius: 6px;
-    padding: 12px 16px;
-    margin: 12px 0;
+  .code-box {
+    background: #f1f5f9;
+    border-left: 4px solid #64748b;
+    color: #1e293b;
+    font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+    font-size: 8pt;
     page-break-inside: avoid;
   }
-  .algorithm-header {
-    font-weight: 800;
-    font-size: 9.5pt;
-    color: #0f172a;
-    border-bottom: 1px solid #cbd5e1;
-    padding-bottom: 6px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+  .code-box .callout-title { color: #475569; }
 
   .formula {
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 6px;
-    padding: 8px 12px;
-    margin: 10px 0;
+    padding: 7px 12px;
+    margin: 8px 0;
     text-align: center;
-    font-size: 10.5pt;
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 10pt;
     color: #0f172a;
     page-break-inside: avoid;
   }
@@ -198,8 +172,8 @@ html_content = r"""<!DOCTYPE html>
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 12px 0;
-    font-size: 8.8pt;
+    margin: 10px 0;
+    font-size: 8.6pt;
     page-break-inside: avoid;
   }
   th {
@@ -207,11 +181,11 @@ html_content = r"""<!DOCTYPE html>
     color: #0f172a;
     font-weight: 700;
     text-align: left;
-    padding: 7px 9px;
+    padding: 5px 8px;
     border-bottom: 2px solid #cbd5e1;
   }
   td {
-    padding: 6px 9px;
+    padding: 5px 8px;
     border-bottom: 1px solid #e2e8f0;
     vertical-align: top;
   }
@@ -219,352 +193,358 @@ html_content = r"""<!DOCTYPE html>
 
   .diagram-container {
     text-align: center;
-    margin: 12px 0;
+    margin: 10px 0;
     page-break-inside: avoid;
   }
 
-  .quiz-box {
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 12px 0;
-    page-break-inside: avoid;
+  .page-break {
+    page-break-before: always;
   }
-  .quiz-q { font-weight: 700; color: #0f172a; margin-bottom: 5px; }
-  .quiz-a { color: #334155; font-size: 9pt; margin-top: 4px; border-top: 1px dashed #cbd5e1; padding-top: 4px; }
-
-  .page-break { page-break-before: always; }
 </style>
 </head>
 <body>
 
 <!-- Header Block -->
 <div class="header-block">
-  <span class="course-tag">UC Berkeley CS 185/285 • Lecture 10 Masterclass Study Guide</span>
-  <h1>Mastering Advanced Policy Gradients &amp; PPO</h1>
-  <div class="subtitle">Complete Mathematical &amp; Algorithmic Foundations: Policy Collapse, Kakade-Langford Monotonic Improvement Guarantee, Natural Policy Gradients, Fisher Information Matrix, TRPO, Clipped Surrogate PPO, and Isaac Lab Scaling</div>
+  <span class="course-tag">CS285 Lecture 10 • Zero-to-Hero Field Manual</span>
+  <h1>Proximal Policy Optimization (PPO) &amp; Trust Regions</h1>
+  <div class="subtitle">From Scratch to Mastery: Understanding Why Reinforcement Learning Collapses, How Clipping Saves It, and Why PPO Rules Modern Robotics</div>
   <div class="meta-bar">
-    <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley)</span>
-    <span><b>Curriculum:</b> Berkeley CS285 + Schulman et al. (TRPO/PPO) + Achiam (Spinning Up)</span>
-    <span><b>Scope:</b> General Trust Region Optimization &amp; Robotics Slicing</span>
+    <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley RAIL Lab)</span>
+    <span><b>Focus:</b> Policy Collapse, Kakade-Langford Bounds, TRPO, &amp; The PPO Clipped Objective</span>
   </div>
 </div>
 
-<!-- SECTION 0 -->
-<h2>0. The Executive Mental Map: Why Does Lecture 10 Exist?</h2>
+<!-- SECTION 1: THE NIGHTMARE OF POLICY COLLAPSE -->
+<h2>1. What is Policy Collapse? (The Student Burning Their Books)</h2>
 <p>
-  In Lecture 5 and Lecture 6, we derived the Policy Gradient Theorem and learned how to calculate policy updates via gradient ascent: $\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)$.
-</p>
-<p>
-  <b>The Fatal Flaw of Standard Gradient Steps:</b> In supervised learning, taking a step with a learning rate that is slightly too large causes a temporary bump in test error; the next mini-batch corrects it. <b>In reinforcement learning, the policy generates its own future training data.</b>
-</p>
-<p>
-  If a single oversized gradient step pushes the policy into a destructive regime (e.g., slamming the knife into the cutting table or pitching a drone upside down), <b>every rollout collected in the next iteration will fail completely</b>. The neural network receives zero reward across the entire batch, variance explodes, and the policy enters an unrecoverable catastrophic collapse.
-</p>
-<p>
-  <b>Lecture 10 introduces Trust Region Policy Optimization (TRPO) and Proximal Policy Optimization (PPO):</b> the algorithms that place a rigorous mathematical "safety leash" on policy updates, guaranteeing monotonic policy improvement and enabling reliable robot learning in massively parallel simulators.
+  In supervised machine learning (like image classification), if you choose a learning rate that is too high, the loss spikes on epoch 12. 
+  You don't panic. On epoch 13, the network sees more normal images, and the loss recovers.
+  <b>In Reinforcement Learning, an oversized learning rate causes instant, permanent death.</b> Why?
 </p>
 
-<!-- SVG Diagram: The 5 Themes of Lecture 10 -->
-<div class="diagram-container">
-<svg width="690" height="90" viewBox="0 0 690 90">
-  <rect x="5" y="10" width="128" height="70" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-  <text x="69" y="36" font-size="9" font-weight="700" fill="#991b1b" text-anchor="middle">1. Policy Collapse</text>
-  <text x="69" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Why Bad Steps</text>
-  <text x="69" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Cause Death Spirals</text>
-
-  <rect x="141" y="10" width="128" height="70" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="205" y="36" font-size="9" font-weight="700" fill="#1e40af" text-anchor="middle">2. Monotonic Bounds</text>
-  <text x="205" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Kakade &amp; Langford Proof</text>
-  <text x="205" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Surrogate Lower Bound</text>
-
-  <rect x="277" y="10" width="128" height="70" rx="6" fill="#fdf4ff" stroke="#c084fc" stroke-width="1.5"/>
-  <text x="341" y="36" font-size="9" font-weight="700" fill="#6b21a8" text-anchor="middle">3. Natural Gradient</text>
-  <text x="341" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Fisher Matrix F</text>
-  <text x="341" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Conjugate Gradients</text>
-
-  <rect x="413" y="10" width="128" height="70" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="477" y="36" font-size="9" font-weight="700" fill="#065f46" text-anchor="middle">4. PPO-Clip Engine</text>
-  <text x="477" y="52" font-size="8.2" fill="#475569" text-anchor="middle">min(rA, clip(r)A)</text>
-  <text x="477" y="66" font-size="8.2" fill="#475569" text-anchor="middle">The 4-Quadrant Analysis</text>
-
-  <rect x="549" y="10" width="136" height="70" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="617" y="36" font-size="9" font-weight="700" fill="#92400e" text-anchor="middle">5. Parallel Scaling</text>
-  <text x="617" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Isaac Lab 4096 Envs</text>
-  <text x="617" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Epoch Reuse Paradigm</text>
-</svg>
-</div>
-
-<div class="page-break"></div>
-
-<!-- PART 1 -->
-<h2>Part 1: The Catastrophe of Policy Collapse</h2>
-<p>
-  <b>(Slides 1–15)</b> To understand why standard gradient descent fails in RL, we compare how error recovery functions in Supervised Learning vs. Reinforcement Learning:
-</p>
-
-<!-- SVG Diagram: Supervised vs RL Error Recovery -->
-<div class="diagram-container">
-<svg width="680" height="140" viewBox="0 0 680 140">
-  <rect x="30" y="15" width="290" height="110" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="175" y="38" font-size="10.5" font-weight="700" fill="#1e40af" text-anchor="middle">Supervised Learning (Stable)</text>
-  <text x="175" y="56" font-size="8.2" fill="#475569" text-anchor="middle">Fixed offline dataset (ImageNet)</text>
-  <text x="175" y="72" font-size="8.2" fill="#dc2626" text-anchor="middle">Oversized Step ➔ Bad batch loss</text>
-  <text x="175" y="88" font-size="8.2" fill="#059669" text-anchor="middle">Next Batch: Recovers easily</text>
-  <text x="175" y="104" font-size="8" fill="#3b82f6" text-anchor="middle">Data distribution remains static!</text>
-
-  <rect x="360" y="15" width="290" height="110" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-  <text x="505" y="38" font-size="10.5" font-weight="700" fill="#991b1b" text-anchor="middle">Reinforcement Learning (FRAGILE)</text>
-  <text x="505" y="56" font-size="8.2" fill="#475569" text-anchor="middle">Policy collects its own training data!</text>
-  <text x="505" y="72" font-size="8.2" fill="#dc2626" text-anchor="middle">Oversized Step ➔ Destructive Actions</text>
-  <text x="505" y="88" font-size="8.2" fill="#b91c1c" font-weight="700" text-anchor="middle">Next Batch: 100% Failed Trajectories</text>
-  <text x="505" y="104" font-size="8.2" font-weight="700" fill="#ef4444" text-anchor="middle">CATASTROPHIC COLLAPSE (Irrecoverable)</text>
-</svg>
-</div>
-
-<h3>1.1 The State Distribution Shift Dilemma</h3>
-<p>
-  When updating policy parameters from $\theta_{\text{old}}$ to $\theta$, the true expected performance of the new policy is:
-  $$J(\pi_\theta) = \mathbb{E}_{s \sim d^{\pi_\theta}(s)} \left[ \mathbb{E}_{a \sim \pi_\theta(a|s)} [Q^{\pi_{\text{old}}}(s, a)] \right]$$
-  In practice, we evaluate actions using states sampled from the <b>old policy</b>: $s \sim d^{\pi_{\text{old}}}(s)$. 
-  We are ignoring the fact that changing the policy alters the state visitation distribution!
-  <br><b>Sergey Levine's Core Question:</b> <i>"When is it mathematically valid to approximate $d^{\pi_\theta}(s)$ with $d^{\pi_{\text{old}}}(s)$?"</i>
-  <br><b>The Answer:</b> Only when the probability distributions $\pi_\theta(a|s)$ and $\pi_{\text{old}}(a|s)$ remain extremely close in distribution space, bounded by a <b>Trust Region</b>!
-</p>
-
-<div class="page-break"></div>
-
-<!-- PART 2 -->
-<h2>Part 2: The Kakade-Langford Monotonic Improvement Guarantee</h2>
-<p>
-  <b>(Slides 16–35)</b> In their 2002 paper, Sham Kakade and John Langford proved the fundamental theorem underpinning all modern trust region methods:
-</p>
-
-<div class="math-box">
-  <div class="callout-title">The Exact Policy Value Identity</div>
+<div class="callout warning-box">
+  <div class="callout-title">💥 The Catastrophic RL Death Spiral</div>
   <p>
-    For any two arbitrary policies $\pi$ and $\tilde{\pi}$:
-    $$J(\tilde{\pi}) = J(\pi) + \mathbb{E}_{\tau \sim \tilde{\pi}} \left[ \sum_{t=0}^\infty \gamma^t A^\pi(s_t, a_t) \right] = J(\pi) + \sum_{s} d^{\tilde{\pi}}(s) \sum_{a} \tilde{\pi}(a \mid s) A^\pi(s, a)$$
-    <b>Proof:</b> Express advantage as $A^\pi(s_t, a_t) = r_t + \gamma V^\pi(s_{t+1}) - V^\pi(s_t)$. The infinite sum telescopes:
-    $$\sum_{t=0}^\infty \gamma^t \big( r_t + \gamma V^\pi(s_{t+1}) - V^\pi(s_t) \big) = \sum_{t=0}^\infty \gamma^t r_t - V^\pi(s_0)$$
-    Taking expectations with respect to $\tilde{\pi}$:
-    $$\mathbb{E}_{\tilde{\pi}} \left[ \sum_{t=0}^\infty \gamma^t A^\pi(s_t, a_t) \right] = J(\tilde{\pi}) - \mathbb{E}_{s_0}[V^\pi(s_0)] = J(\tilde{\pi}) - J(\pi)$$
+    In RL, <b>the policy collects its own training data</b>!
+  </p>
+  <ul>
+    <li>Imagine a student studying for an important medical exam.</li>
+    <li>On Friday, the student tries a slightly unusual study method. They take a practice test on Saturday and get a mediocre score.</li>
+    <li>Instead of making a minor 2% adjustment, the student panics, <b>burns all their textbooks, deletes their memory, and forgets how to read</b>!</li>
+    <li>Because they forgot how to read, every practice test they take next week scores a zero. Because every test is a zero, they can never learn anything new.</li>
+  </ul>
+  <p>
+    This is <b>Policy Collapse</b>: if an aggressive gradient update moves network weights into an unstable region, the robot starts flailing wildly. 
+    All 1,024 parallel environments in Isaac Sim generate pure garbage trajectories. 
+    Because the new data is 100% garbage, the next gradient update makes the policy even worse. Training dies permanently!
   </p>
 </div>
 
-<h3>2.1 The Surrogate Lower Bound</h3>
-<p>
-  Because the true state distribution $d^{\tilde{\pi}}(s)$ is unknown, we define the <b>Surrogate Objective</b> using the old state distribution:
-  $$L_\pi(\tilde{\pi}) = J(\pi) + \sum_{s} d^\pi(s) \sum_{a} \tilde{\pi}(a \mid s) A^\pi(s, a)$$
-</p>
+<!-- DIAGRAM 1: POLICY COLLAPSE DEATH SPIRAL -->
+<div class="diagram-container">
+<svg width="600" height="90" viewBox="0 0 600 90">
+  <rect x="20" y="20" width="130" height="50" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="85" y="42" font-size="9" font-weight="700" fill="#1e40af" text-anchor="middle">1. Healthy Policy</text>
+  <text x="85" y="58" font-size="7.5" fill="#475569" text-anchor="middle">Slices tomatoes well</text>
 
-<div class="formula" style="border: 2px solid #2563eb; background: #eff6ff;">
-  <b>The TRPO Monotonic Lower Bound (Schulman et al., 2015):</b><br>
-  $$J(\tilde{\pi}) \ge L_\pi(\tilde{\pi}) - C \cdot D_{\text{KL}}^{\max}(\pi, \tilde{\pi})$$
-  $$\text{where } C = \frac{4\epsilon\gamma}{(1-\gamma)^2} \quad \text{and} \quad D_{\text{KL}}^{\max}(\pi, \tilde{\pi}) = \max_s D_{\text{KL}}\big(\pi(\cdot|s) \,\|\, \tilde{\pi}(\cdot|s)\big)$$
+  <path d="M 150,45 L 190,45" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="190,45 182,40 182,50" fill="#ef4444"/>
+
+  <rect x="190" y="20" width="130" height="50" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="255" y="42" font-size="9" font-weight="700" fill="#b91c1c" text-anchor="middle">2. Oversized Step</text>
+  <text x="255" y="58" font-size="7.5" fill="#7f1d1d" text-anchor="middle">Weights jump into bad zone</text>
+
+  <path d="M 320,45 L 360,45" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="360,45 352,40 352,50" fill="#ef4444"/>
+
+  <rect x="360" y="20" width="130" height="50" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="425" y="42" font-size="9" font-weight="700" fill="#dc2626" text-anchor="middle">3. Garbage Rollouts</text>
+  <text x="425" y="58" font-size="7.5" fill="#991b1b" text-anchor="middle">Robot flails; 0 cuts</text>
+
+  <path d="M 490,45 L 530,45" fill="none" stroke="#7f1d1d" stroke-width="2"/>
+  <polygon points="530,45 522,40 522,50" fill="#7f1d1d"/>
+
+  <rect x="530" y="20" width="60" height="50" rx="6" fill="#450a0a"/>
+  <text x="560" y="42" font-size="8.5" font-weight="700" fill="#ffffff" text-anchor="middle">DEATH</text>
+  <text x="560" y="56" font-size="7" fill="#fca5a5" text-anchor="middle">SPIRAL</text>
+</svg>
 </div>
 
+<!-- SECTION 2: THE PPO SOLUTION & BOWLING BUMPERS -->
+<h2>2. The Solution: PPO &amp; The Bowling Bumpers</h2>
+<div class="callout intuition">
+  <div class="callout-title">🎳 The Bowling Alley Bumpers Analogy</div>
+  <p>
+    When children play bowling, the alley puts up <b>inflatable bumpers</b> along the gutters. 
+    No matter how wildly the child throws the ball, the ball bounces off the bumper, stays in the lane, and hits pins.
+    <br><br>
+    <b>Proximal Policy Optimization (PPO)</b> puts bumpers on neural network updates! 
+    It says: <i>"No matter how enthusiastic the gradient is about an action, the new policy is NEVER allowed to deviate by more than <b>20% ($\epsilon = 0.2$)</b> from the old policy that collected the data."</i>
+  </p>
+</div>
+
+<h3>2.1 The PPO Clipped Surrogate Objective (Parameter Anatomy)</h3>
 <p>
-  <b>The Monotonic Improvement Guarantee:</b> If we maximize the right-hand side, we are guaranteed that true performance $J(\tilde{\pi})$ will monotonically increase at every iteration!
+  First, define the <b>Probability Ratio (The Speedometer)</b>:
 </p>
-
-<div class="page-break"></div>
-
-<!-- PART 3 -->
-<h2>Part 3: From Natural Policy Gradients &amp; TRPO to PPO</h2>
-<p>
-  <b>(Slides 36–52)</b> How do we optimize within a trust region in practice?
-</p>
-
-<h3>3.1 Natural Policy Gradient &amp; The Fisher Information Matrix</h3>
-<p>
-  Standard gradient descent steps in parameter Euclidean space: $\|\Delta \theta\|^2 \le \epsilon$. But in neural networks, a tiny shift in one layer's weight can cause a massive shift in output probabilities, while a large shift in another weight causes zero change!
-  <b>Natural Policy Gradients</b> measure distance directly in probability distribution space using the <b>Fisher Information Matrix (FIM)</b> $F$:
-</p>
-
 <div class="formula">
-  $$F(\theta) = \mathbb{E}_{s \sim d^\pi,\, a \sim \pi} \left[ \nabla_\theta \log \pi_\theta(a \mid s) \, \nabla_\theta \log \pi_\theta(a \mid s)^T \right]$$
-  $$\Delta \theta_{\text{Natural}} \propto F^{-1} \nabla_\theta J(\theta)$$
+  $$r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)}$$
+</div>
+<p>
+  Then, the <b>PPO Clipped Objective (The Bumpers)</b>:
+</p>
+<div class="formula">
+  $$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}_t \right) \right]$$
 </div>
 
-<h3>3.2 TRPO: Trust Region Policy Optimization</h3>
-<p>
-  TRPO solves the constrained optimization problem:
-  $$\max_\theta L_{\theta_{\text{old}}}(\theta) \quad \text{subject to} \quad \bar{D}_{\text{KL}}(\pi_{\theta_{\text{old}}} \,\|\, \pi_\theta) \le \delta$$
-  Using second-order Taylor expansion on the constraint and first-order on the objective, TRPO solves:
-  $$\Delta \theta = \sqrt{\frac{2\delta}{g^T F^{-1} g}} F^{-1} g$$
-  where $g = \nabla_\theta L$. 
-  To avoid inverting the massive $P \times P$ matrix $F$ directly, TRPO uses the <b>Conjugate Gradient (CG)</b> algorithm and <b>Fisher-Vector Products ($F v$)</b>.
-</p>
+<!-- PARAMETER ANATOMY TABLE 1 -->
+<table>
+  <thead>
+    <tr>
+      <th style="width: 15%;">Parameter</th>
+      <th style="width: 22%;">Formal Name</th>
+      <th style="width: 38%;">Plain English Meaning</th>
+      <th style="width: 25%;">Recommended Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>$r_t(\theta)$</b></td>
+      <td>Probability Ratio</td>
+      <td><b>The Speedometer:</b> How much more or less likely is action $a_t$ under the new policy compared to the old policy?</td>
+      <td>$r=1.0$ at start of batch; rises or falls during training.</td>
+    </tr>
+    <tr>
+      <td><b>$\epsilon$</b></td>
+      <td>Clipping Threshold</td>
+      <td><b>The Speed Limit:</b> The maximum allowed percentage change in action probability.</td>
+      <td><b>$\epsilon = 0.2$</b> (Allows $\pm 20\%$ change: $[0.8, 1.2]$).</td>
+    </tr>
+    <tr>
+      <td><b>$\hat{A}_t$</b></td>
+      <td>Advantage Score</td>
+      <td>Was this robot motion better ($\hat{A} > 0$) or worse ($\hat{A} < 0$) than average?</td>
+      <td>Computed via GAE($\lambda = 0.95$).</td>
+    </tr>
+    <tr>
+      <td><b>$\min(\dots)$</b></td>
+      <td>Pessimistic Bound</td>
+      <td>Forces the algorithm to take the more conservative, pessimistic estimate so it never over-promises.</td>
+      <td>Guarantees monotonic policy improvement.</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="warning-box">
-  <div class="callout-title">The Downside of TRPO: Why Robotics Moved to PPO</div>
+<div class="callout math-box">
+  <div class="callout-title">📝 Plain English Translation of the PPO Loss</div>
   <p>
-    While TRPO is theoretically elegant, Conjugate Gradient requires multiple backpropagation passes per step to compute Fisher-vector products. It cannot be combined with first-order optimizers like Adam, struggles with recurrent networks, and is computationally prohibitive when scaling to 4,096 parallel GPU simulation environments in Isaac Lab.
+    <b>"If an action was good ($\hat{A} > 0$), make it more likely—but once you have increased its probability by 20% ($r > 1.2$), STOP pushing and ignore further gradients! If an action was bad ($\hat{A} < 0$), decrease it—but once it dropped by 20% ($r < 0.8$), STOP punishing it!"</b>
   </p>
 </div>
 
 <div class="page-break"></div>
 
-<!-- PART 4 -->
-<h2>Part 4: Proximal Policy Optimization (PPO-Clip) Deconstructed</h2>
+<!-- SECTION 3: THE 4-QUADRANT MATRIX -->
+<h2>3. The 4-Quadrant Matrix: How PPO Responds to Every Situation</h2>
 <p>
-  <b>(Slides 53–70 &amp; Spinning Up ch16)</b> In 2017, John Schulman, Sergey Levine et al. introduced PPO to retain TRPO's monotonic stability while using simple, first-order gradient descent.
+  Every single timestep in an Isaac Lab batch falls into one of four clear quadrants:
 </p>
 
-<h3>4.1 The Clipped Surrogate Objective</h3>
-<p>
-  Define the probability ratio:
-  $$r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)}$$
-</p>
-
-<div class="formula" style="border: 2px solid #10b981; background: #ecfdf5;">
-  <b>The PPO Clipped Surrogate Objective:</b><br>
-  $$L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min \left( r_t(\theta) \hat{A}_t,\; \operatorname{clip}\big(r_t(\theta),\, 1-\epsilon,\, 1+\epsilon\big) \hat{A}_t \right) \right]$$
-</div>
-
-<h3>4.2 The 4-Quadrant Analysis of PPO Clipping</h3>
-
-<!-- SVG Diagram: The 2 PPO Curves -->
+<!-- DIAGRAM 2: PPO CLIPPING ZONES -->
 <div class="diagram-container">
-<svg width="680" height="160" viewBox="0 0 680 160">
-  <rect x="30" y="10" width="290" height="140" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
-  <text x="175" y="32" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">Case 1: Advantage A &gt; 0 (Good Action)</text>
-  
-  <line x1="60" y1="120" x2="290" y2="120" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="60" y1="120" x2="60" y2="45" stroke="#64748b" stroke-width="1.5"/>
-  
-  <line x1="60" y1="110" x2="180" y2="65" stroke="#16a34a" stroke-width="2"/>
-  <line x1="180" y1="65" x2="280" y2="65" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="3"/>
-  
-  <circle cx="180" cy="65" r="4" fill="#dc2626"/>
-  <text x="180" y="55" font-size="8" font-weight="700" fill="#dc2626" text-anchor="middle">Clip: 1 + ε (1.2)</text>
-  <text x="175" y="138" font-size="8" fill="#475569" text-anchor="middle">No extra reward for pushing r &gt; 1.2</text>
+<svg width="600" height="90" viewBox="0 0 600 90">
+  <line x1="40" y1="50" x2="560" y2="50" stroke="#94a3b8" stroke-width="2"/>
 
-  <rect x="360" y="10" width="290" height="140" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
-  <text x="505" y="32" font-size="10" font-weight="700" fill="#b91c1c" text-anchor="middle">Case 2: Advantage A &lt; 0 (Bad Action)</text>
-  
-  <line x1="390" y1="65" x2="620" y2="65" stroke="#64748b" stroke-width="1.5"/>
-  <line x1="390" y1="120" x2="390" y2="45" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Left: Clipped zone -->
+  <rect x="50" y="15" width="140" height="65" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="120" y="42" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">CLIPPED TO ZERO</text>
+  <text x="120" y="58" font-size="7.5" fill="#7f1d1d" text-anchor="middle">$r_t(\theta) &lt; 0.8$ (Dropped &gt;20%)</text>
 
-  <line x1="390" y1="65" x2="480" y2="65" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="3"/>
-  <line x1="480" y1="65" x2="590" y2="110" stroke="#dc2626" stroke-width="2"/>
+  <!-- Middle: Active update zone -->
+  <rect x="210" y="15" width="180" height="65" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <text x="300" y="38" font-size="9.5" font-weight="700" fill="#047857" text-anchor="middle">ACTIVE GRADIENT ZONE</text>
+  <text x="300" y="54" font-size="8.5" font-weight="700" fill="#065f46" text-anchor="middle">$r_t(\theta) \in [0.8, 1.2]$</text>
+  <text x="300" y="68" font-size="7.5" fill="#64748b" text-anchor="middle">Normal learning occurs safely</text>
 
-  <circle cx="480" cy="65" r="4" fill="#2563eb"/>
-  <text x="480" y="55" font-size="8" font-weight="700" fill="#2563eb" text-anchor="middle">Clip: 1 - ε (0.8)</text>
-  <text x="505" y="138" font-size="8" fill="#475569" text-anchor="middle">No penalty reduction below 0.8</text>
+  <!-- Right: Clipped zone -->
+  <rect x="410" y="15" width="140" height="65" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="480" y="42" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">CLIPPED TO ZERO</text>
+  <text x="480" y="58" font-size="7.5" fill="#7f1d1d" text-anchor="middle">$r_t(\theta) &gt; 1.2$ (Grown &gt;20%)</text>
 </svg>
 </div>
 
-<ol>
-  <li><b>Positive Advantage ($A > 0$), Ratio $r \le 1+\epsilon$:</b> Normal policy gradient. The action was good, so we increase its probability.</li>
-  <li><b>Positive Advantage ($A > 0$), Ratio $r > 1+\epsilon$:</b> The objective is <b>clipped</b> to $(1+\epsilon)A$. Gradient $\frac{\partial}{\partial \theta} = 0$. The optimizer is prevented from excessively over-committing to this move!</li>
-  <li><b>Negative Advantage ($A < 0$), Ratio $r \ge 1-\epsilon$:</b> Normal policy gradient. The action was bad, so we decrease its probability.</li>
-  <li><b>Negative Advantage ($A < 0$), Ratio $r < 1-\epsilon$:</b> The objective is <b>clipped</b> to $(1-\epsilon)A$. Gradient $\frac{\partial}{\partial \theta} = 0$. The optimizer is prevented from over-penalizing an already suppressed action!</li>
-</ol>
+<!-- 4 QUADRANT TABLE -->
+<table>
+  <thead>
+    <tr>
+      <th style="width: 15%;">Scenario</th>
+      <th style="width: 20%;">Advantage ($\hat{A}$)</th>
+      <th style="width: 25%;">Ratio Condition ($r_t$)</th>
+      <th style="width: 40%;">What PPO Does (Plain English)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Quadrant 1</b></td>
+      <td><b>$\hat{A} > 0$</b> (Good cut)</td>
+      <td>$r_t \in [1.0, 1.2]$ (Safe increase)</td>
+      <td><b>Normal Positive Gradient:</b> Robot keeps increasing the probability of this successful motion.</td>
+    </tr>
+    <tr>
+      <td><b>Quadrant 2</b></td>
+      <td><b>$\hat{A} > 0$</b> (Good cut)</td>
+      <td>$r_t > 1.2$ (Exceeded 20%)</td>
+      <td><b>Clipped to 0 Gradient:</b> Stop pushing! You already made this action 20% more likely. Don't over-commit.</td>
+    </tr>
+    <tr>
+      <td><b>Quadrant 3</b></td>
+      <td><b>$\hat{A} < 0$</b> (Crushed fruit)</td>
+      <td>$r_t \in [0.8, 1.0]$ (Safe decrease)</td>
+      <td><b>Normal Negative Gradient:</b> Suppresses the probability of this crushing mistake.</td>
+    </tr>
+    <tr>
+      <td><b>Quadrant 4</b></td>
+      <td><b>$\hat{A} < 0$</b> (Crushed fruit)</td>
+      <td>$r_t < 0.8$ (Dropped &gt;20%)</td>
+      <td><b>Clipped to 0 Gradient:</b> Stop punishing! The probability has already dropped significantly. Leave it alone.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- SECTION 4: WHY PPO RULES GPU ROBOTICS -->
+<h2>4. Why PPO Rules GPU Robotics (NVIDIA Isaac Lab)</h2>
+<div class="callout intuition">
+  <div class="callout-title">⚡ The 10x Speedup Secret: Multi-Epoch Data Reuse</div>
+  <p>
+    In vanilla policy gradients (Lecture 5), you simulate 1,024 parallel robots on GPU, take <b>ONE single gradient step</b>, and you MUST throw away all data immediately. Why? Because the data is now off-policy! Generating 10 million transitions to take 1,000 steps wastes 99% of your GPU power.
+    <br><br>
+    <b>Why PPO dominates Isaac Lab:</b> Because PPO's clipping mechanism guarantees safety, you can take the exact same batch of GPU simulation data and train on it for <b>4 to 8 epochs</b> across mini-batches! You extract $8\times$ more learning out of every single simulation frame.
+  </p>
+</div>
 
 <div class="page-break"></div>
 
-<!-- PART 5 -->
-<h2>Part 5: Production Engineering with Isaac Lab &amp; SkRL</h2>
+<!-- SECTION 5: CONCRETE NUMERICAL WALKTHROUGH -->
+<h2>5. Concrete Numerical Walkthrough: 4 Cases with Real Numbers</h2>
+<p>
+  Let's calculate PPO's objective value across four concrete actions with clipping threshold <b>$\epsilon = 0.20$</b>:
+</p>
 
-<div class="code-container">
-<pre><span class="code-comment"># Complete Vectorized PPO Loss Function in PyTorch</span>
-<span class="code-keyword">import</span> torch
-<span class="code-keyword">import</span> torch.nn.functional <span class="code-keyword">as</span> F
+<table>
+  <thead>
+    <tr>
+      <th style="width: 10%;">Case</th>
+      <th style="width: 18%;">Advantage $\hat{A}$</th>
+      <th style="width: 18%;">Ratio $r_t(\theta)$</th>
+      <th style="width: 27%;">Unclipped Term $r_t \hat{A}_t$</th>
+      <th style="width: 27%;">Clipped Term $\text{clip}(r) \hat{A}_t$</th>
+      <th style="width: 15%;">Final Loss</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1. Moderate Win</b></td>
+      <td>$\mathbf{+5.0}$ (Good)</td>
+      <td>$1.10$ ($+10\%$)</td>
+      <td>$1.10 \times 5.0 = 5.50$</td>
+      <td>$1.10 \times 5.0 = 5.50$</td>
+      <td>$\min(5.5, 5.5) = \mathbf{5.50}$</td>
+    </tr>
+    <tr>
+      <td><b>2. Runaway Win</b></td>
+      <td>$\mathbf{+5.0}$ (Good)</td>
+      <td>$1.45$ ($+45\%$)</td>
+      <td>$1.45 \times 5.0 = 7.25$</td>
+      <td>$1.20 \times 5.0 = 6.00$</td>
+      <td>$\min(7.25, 6.0) = \mathbf{6.00}$ (Clipped!)</td>
+    </tr>
+    <tr>
+      <td><b>3. Moderate Loss</b></td>
+      <td>$\mathbf{-4.0}$ (Bad)</td>
+      <td>$0.90$ ($-10\%$)</td>
+      <td>$0.90 \times (-4.0) = -3.60$</td>
+      <td>$0.90 \times (-4.0) = -3.60$</td>
+      <td>$\min(-3.6, -3.6) = \mathbf{-3.60}$</td>
+    </tr>
+    <tr>
+      <td><b>4. Massive Loss</b></td>
+      <td>$\mathbf{-4.0}$ (Bad)</td>
+      <td>$0.65$ ($-35\%$)</td>
+      <td>$0.65 \times (-4.0) = -2.60$</td>
+      <td>$0.80 \times (-4.0) = -3.20$</td>
+      <td>$\min(-2.6, -3.2) = \mathbf{-3.20}$ (Clipped!)</td>
+    </tr>
+  </tbody>
+</table>
 
-<span class="code-keyword">def</span> <span class="code-func">compute_ppo_loss</span>(actor, critic, obs, actions, log_prob_old, returns, advantages, clip_eps=0.2, c_v=0.5, c_ent=0.01):
-    <span class="code-comment"># 1. Evaluate current policy on historical batch</span>
-    dist = actor(obs)
-    log_prob_new = dist.log_prob(actions).sum(dim=-1, keepdim=True)
-    entropy = dist.entropy().sum(dim=-1, keepdim=True).mean()
-    
-    <span class="code-comment"># 2. Probability Ratio r_t(theta)</span>
-    ratio = torch.exp(log_prob_new - log_prob_old)
-    
-    <span class="code-comment"># 3. Clipped Surrogate Policy Loss</span>
+<!-- SECTION 6: PYTORCH IMPLEMENTATION -->
+<h2>6. Complete PyTorch PPO Loss Implementation</h2>
+
+<div class="callout code-box">
+  <div class="callout-title">🐍 Complete PyTorch PPO Clipped Loss with Entropy Bonus</div>
+<pre style="margin: 0; padding: 0;">
+import torch
+import torch.nn as nn
+
+def compute_ppo_loss(log_probs, old_log_probs, advantages, entropy, clip_eps=0.2, c_entropy=0.01):
+    # 1. Compute Probability Ratio: r(theta) = exp(log_prob - old_log_prob)
+    ratio = torch.exp(log_probs - old_log_probs)
+
+    # 2. Unclipped and Clipped Surrogate Objectives
     surr1 = ratio * advantages
     surr2 = torch.clamp(ratio, 1.0 - clip_eps, 1.0 + clip_eps) * advantages
-    actor_loss = -torch.min(surr1, surr2).mean()
-    
-    <span class="code-comment"># 4. Value Loss (MSE with optional clipping)</span>
-    values = critic(obs)
-    critic_loss = c_v * F.mse_loss(values, returns)
-    
-    <span class="code-comment"># 5. Composite Loss</span>
-    total_loss = actor_loss + critic_loss - c_ent * entropy
-    <span class="code-keyword">return</span> total_loss, actor_loss, critic_loss, entropy
+
+    # 3. PPO Policy Loss: Take minimum (pessimistic bound) and negate for optimizer
+    policy_loss = -torch.min(surr1, surr2).mean()
+
+    # 4. Entropy Bonus: Encourages exploration of dynamic impedance values
+    entropy_loss = -c_entropy * entropy.mean()
+
+    total_loss = policy_loss + entropy_loss
+    return total_loss, policy_loss.item(), ratio.mean().item()
 </pre>
 </div>
 
-<div class="silent-bug">
-  <div class="callout-title">The Log-Prob Subtraction vs Ratio Trap</div>
-  <p>
-    Never compute the probability ratio via division: `ratio = pi_new / pi_old`. 
-    Probabilities in continuous spaces or high-dimensional token spaces evaluate to microscopic values like $10^{-45}$, causing immediate division by zero and `NaN`. 
-    Always compute log probabilities and exponentiate their difference:
-    <br><code>ratio = torch.exp(log_prob_new - log_prob_old)</code>
-  </p>
-</div>
+<!-- SECTION 7: PRACTITIONER'S CHECKLIST -->
+<h2>7. Practitioner's Failure Modes &amp; Debugging Checklist</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Failure Mode</th>
+      <th style="width: 35%;">The Hidden Symptom</th>
+      <th style="width: 40%;">How to Fix It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1. KL Divergence Explosion</b></td>
+      <td>Policy changes too rapidly despite clipping. Approximate KL divergence $\text{KL} \approx \text{mean}((\text{ratio} - 1) - \log(\text{ratio}))$ spikes above $0.05$.</td>
+      <td>Use an <b>Adaptive Learning Rate Scheduler</b> (like <code>KLAdaptiveLR</code> in SkRL): if KL $>0.02$, lower learning rate; if KL $<0.005$, increase it.</td>
+    </tr>
+    <tr>
+      <td><b>2. Too Many Epochs Per Batch</b></td>
+      <td>Setting <code>epochs: 20</code> causes the policy to overfit to the batch. The ratio blows past $[0.8, 1.2]$ and 90% of transitions get clipped to zero gradients.</td>
+      <td>In Isaac Lab, set <b><code>epochs: 4</code> or <code>5</code></b>. More epochs provide diminishing returns.</td>
+    </tr>
+    <tr>
+      <td><b>3. Clipping the Critic Target</b></td>
+      <td>Clipping the Value function loss ($V$-clip) was popular in 2018, but recent ablation studies show it actively harms performance in continuous robotics.</td>
+      <td>Leave the Critic unclipped: train $V(s)$ with standard MSE loss.</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="page-break"></div>
-
-<!-- PART 6 -->
-<h2>Part 6: Interactive Tablet Self-Test Quiz</h2>
-
-<div class="quiz-box">
-  <div class="quiz-q">Question 1: In PPO, what happens when an action yields a positive advantage ($A > 0$) and its probability ratio reaches $r_t(\theta) = 1.35$ (with $\epsilon = 0.2$)?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> The ratio $1.35$ exceeds the upper clip boundary $1 + \epsilon = 1.2$. The objective term is clipped to $1.2 \times A$, causing the gradient with respect to policy weights $\theta$ to drop to exactly zero. This prevents the optimizer from aggressively over-committing to this single action.
-  </div>
-</div>
-
-<div class="quiz-box">
-  <div class="quiz-q">Question 2: Why did OpenAI abandon PPO-Penalty (adaptive KL penalty) in favor of PPO-Clip?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> PPO-Penalty requires continuous manual heuristics to scale the penalty coefficient $\beta$. If $\beta$ is tuned incorrectly, updates become either too conservative (freezing learning) or too aggressive (causing collapse). PPO-Clip enforces the trust region boundary directly in the objective with a fixed scalar $\epsilon = 0.2$, requiring zero hyperparameter tuning.
-  </div>
-</div>
-
-<div class="quiz-box">
-  <div class="quiz-q">Question 3: Why does `value_clip: 0.2` matter when the knife breaks through the tomato skin?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> Cuticle rupture causes an abrupt drop in contact forces and a surge in rewards. Without value clipping, the Critic's loss would spike, causing a massive gradient update that distorts value predictions for all non-contact states. Value clipping restricts $V(s)$ updates to within $\pm 0.2$ of previous estimates, preserving value stability.
-  </div>
-</div>
-
-<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
-
-<!-- PART 7: THESIS DEFENSE MASTER CHEATSHEET -->
-<h2>Part 7: Thesis Defense Master Cheatsheet (Lecture 10 Focus)</h2>
-
-<div class="callout intuition">
-  <div class="callout-title">Q1: "What is Policy Collapse, and how does PPO prevent it during training?"</div>
-  <p>
-    <b>Answer:</b> "Policy collapse occurs in reinforcement learning when an oversized gradient step alters policy behavior such that all future rollouts result in failure. Because the policy collects its own training data, the replay buffer is corrupted with catastrophic trajectories, making recovery impossible. PPO prevents this by clipping the probability ratio $r_t(\theta) = \pi_\theta / \pi_{\text{old}}$ within $[1-\epsilon, 1+\epsilon]$ ($\epsilon=0.2$). This bounds the policy update to a local trust region, mathematically preventing destructive updates."
-  </p>
-</div>
-
-<div class="callout intuition">
-  <div class="callout-title">Q2: "Why can PPO perform multiple training epochs on the same rollout batch, while REINFORCE cannot?"</div>
-  <p>
-    <b>Answer:</b> "REINFORCE assumes on-policy data sampled strictly from the current policy distribution. As soon as a single gradient step is taken, the policy changes, rendering the old rollout data off-policy and invalid. PPO incorporates an importance-sampling ratio $r_t(\theta)$ combined with surrogate clipping. This enables the algorithm to safely execute 4 to 8 gradient epochs on the same rollout buffer without causing policy divergence, dramatically increasing sample efficiency."
-  </p>
-</div>
-
-<div class="callout intuition">
-  <div class="callout-title">Q3: "Why choose PPO over TRPO for training in Isaac Lab?"</div>
-  <p>
-    <b>Answer:</b> "TRPO strictly enforces the trust region via a hard KL constraint ($\mathbb{E}[D_{\text{KL}}] \le \delta$), which requires computing the Fisher Information Matrix and solving a quadratic program using Conjugate Gradients. This is computationally expensive and difficult to parallelize on GPUs. PPO achieves equivalent empirical stability through a simple first-order clipped surrogate objective that integrates seamlessly with standard GPU optimizers like Adam."
-  </p>
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0 10px 0;">
+<div style="font-size: 8.5pt; color: #64748b; text-align: center;">
+  <i>CS285 Lecture 10 Zero-to-Hero Guide • DEX-ROB Lab (Tianjin University) • Prof. Shan An</i>
 </div>
 
 </body>
 </html>
 """
 
-if __name__ == "__main__":
-    pdf_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture10_Beginner_Guide.pdf"
-    backup_path = "/home/omen/Downloads/CS285_Lecture10_Beginner_Guide.pdf"
-    render_utils.build_pdf(html_content, pdf_path, backup_path)
+PDF_OUT_DOWNLOADS = "/home/omen/Downloads/CS285_Lecture10_Beginner_Guide.pdf"
+PDF_OUT_REPO = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture10_Beginner_Guide.pdf"
+
+render_utils.build_pdf(html_content, PDF_OUT_DOWNLOADS, PDF_OUT_REPO)

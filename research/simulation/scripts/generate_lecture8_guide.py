@@ -6,13 +6,13 @@ html_content = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Mastering Continuous Q-Learning & Soft Actor-Critic: Definitive Guide to CS285 Lecture 8</title>
+<title>CS285 Lecture 8: Zero-to-Hero Guide to Continuous Q-Learning & Soft Actor-Critic (SAC)</title>
 <style>
   @page {
     size: A4;
     margin: 16mm 14mm 18mm 14mm;
     @top-right {
-      content: "CS285 Lecture 8: Continuous Q-Learning & Soft Actor-Critic";
+      content: "CS285 Lecture 8 • Zero-to-Hero Guide to Continuous Control & SAC";
       font-size: 8pt;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #64748b;
@@ -29,7 +29,7 @@ html_content = r"""<!DOCTYPE html>
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #1e293b;
     line-height: 1.56;
-    font-size: 9.8pt;
+    font-size: 9.6pt;
   }
 
   .header-block {
@@ -51,7 +51,7 @@ html_content = r"""<!DOCTYPE html>
   }
   h1 {
     color: #0f172a;
-    font-size: 20pt;
+    font-size: 19pt;
     font-weight: 800;
     margin: 0 0 6px 0;
     line-height: 1.25;
@@ -73,7 +73,7 @@ html_content = r"""<!DOCTYPE html>
     color: #1e3a8a;
     font-size: 12.5pt;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 18px;
     margin-bottom: 8px;
     border-left: 4px solid #2563eb;
     padding-left: 8px;
@@ -82,10 +82,10 @@ html_content = r"""<!DOCTYPE html>
 
   h3 {
     color: #0f172a;
-    font-size: 10.5pt;
+    font-size: 10.2pt;
     font-weight: 700;
-    margin-top: 14px;
-    margin-bottom: 5px;
+    margin-top: 12px;
+    margin-bottom: 4px;
     page-break-after: avoid;
   }
 
@@ -94,11 +94,19 @@ html_content = r"""<!DOCTYPE html>
     text-align: justify;
   }
 
+  ul, ol {
+    margin: 0 0 8px 0;
+    padding-left: 18px;
+  }
+  li {
+    margin-bottom: 3px;
+  }
+
   .callout {
     padding: 10px 14px;
     margin: 10px 0;
     border-radius: 6px;
-    font-size: 9.3pt;
+    font-size: 9.2pt;
     page-break-inside: avoid;
   }
   .callout p { margin: 0; }
@@ -138,59 +146,25 @@ html_content = r"""<!DOCTYPE html>
   }
   .warning-box .callout-title { color: #b91c1c; }
 
-  .silent-bug {
-    background: #fdf2f8;
-    border-left: 4px solid #db2777;
-    color: #831843;
-  }
-  .silent-bug .callout-title { color: #be185d; }
-
-  .code-container {
-    background: #0f172a;
-    color: #e2e8f0;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 10px 0;
-    font-family: "SF Mono", Monaco, "Cascadia Code", "Courier New", monospace;
-    font-size: 8.4pt;
-    line-height: 1.45;
-    page-break-inside: avoid;
-    overflow-x: auto;
-  }
-  .code-container pre { margin: 0; }
-  .code-comment { color: #94a3b8; font-style: italic; }
-  .code-keyword { color: #38bdf8; font-weight: bold; }
-  .code-func { color: #a78bfa; }
-  .code-string { color: #4ade80; }
-
-  .algorithm-box {
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-left: 4px solid #475569;
-    border-radius: 6px;
-    padding: 12px 16px;
-    margin: 12px 0;
+  .code-box {
+    background: #f1f5f9;
+    border-left: 4px solid #64748b;
+    color: #1e293b;
+    font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+    font-size: 8pt;
     page-break-inside: avoid;
   }
-  .algorithm-header {
-    font-weight: 800;
-    font-size: 9.5pt;
-    color: #0f172a;
-    border-bottom: 1px solid #cbd5e1;
-    padding-bottom: 6px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
+  .code-box .callout-title { color: #475569; }
 
   .formula {
     background: #f8fafc;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 6px;
-    padding: 8px 12px;
-    margin: 10px 0;
+    padding: 7px 12px;
+    margin: 8px 0;
     text-align: center;
-    font-size: 10.5pt;
+    font-family: "Cambria Math", "Times New Roman", serif;
+    font-size: 10pt;
     color: #0f172a;
     page-break-inside: avoid;
   }
@@ -198,8 +172,8 @@ html_content = r"""<!DOCTYPE html>
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 12px 0;
-    font-size: 8.8pt;
+    margin: 10px 0;
+    font-size: 8.6pt;
     page-break-inside: avoid;
   }
   th {
@@ -207,11 +181,11 @@ html_content = r"""<!DOCTYPE html>
     color: #0f172a;
     font-weight: 700;
     text-align: left;
-    padding: 7px 9px;
+    padding: 5px 8px;
     border-bottom: 2px solid #cbd5e1;
   }
   td {
-    padding: 6px 9px;
+    padding: 5px 8px;
     border-bottom: 1px solid #e2e8f0;
     vertical-align: top;
   }
@@ -219,324 +193,341 @@ html_content = r"""<!DOCTYPE html>
 
   .diagram-container {
     text-align: center;
-    margin: 12px 0;
+    margin: 10px 0;
     page-break-inside: avoid;
   }
 
-  .quiz-box {
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 10px 14px;
-    margin: 12px 0;
-    page-break-inside: avoid;
+  .page-break {
+    page-break-before: always;
   }
-  .quiz-q { font-weight: 700; color: #0f172a; margin-bottom: 5px; }
-  .quiz-a { color: #334155; font-size: 9pt; margin-top: 4px; border-top: 1px dashed #cbd5e1; padding-top: 4px; }
-
-  .page-break { page-break-before: always; }
 </style>
 </head>
 <body>
 
 <!-- Header Block -->
 <div class="header-block">
-  <span class="course-tag">UC Berkeley CS 185/285 • Lecture 8 Masterclass Study Guide</span>
-  <h1>Mastering Continuous Q-Learning &amp; Soft Actor-Critic</h1>
-  <div class="subtitle">Complete Mathematical &amp; Algorithmic Foundations: Target Networks, Polyak Averaging, Jensen's Overestimation Bias Proof, Clipped Twin-Q, Maximum Entropy RL Derivation, Dueling Architectures, and Production SAC</div>
+  <span class="course-tag">CS285 Lecture 8 • Zero-to-Hero Field Manual</span>
+  <h1>Continuous Q-Learning &amp; Soft Actor-Critic (SAC)</h1>
+  <div class="subtitle">From Scratch to Mastery: Conquering Continuous Robot Action Spaces, Overcoming the Deadly Triad, and Unleashing Entropy-Driven Curiosity</div>
   <div class="meta-bar">
-    <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley)</span>
-    <span><b>Curriculum:</b> Berkeley CS285 + Haarnoja &amp; Levine (SAC) + Achiam (Spinning Up)</span>
-    <span><b>Scope:</b> General Continuous Off-Policy Control &amp; Robotics Slicing</span>
+    <span><b>Instructor:</b> Prof. Sergey Levine (UC Berkeley RAIL Lab)</span>
+    <span><b>Focus:</b> Continuous $\max Q$, Clipped Double-Q, Target Networks, &amp; MaxEnt RL</span>
   </div>
 </div>
 
-<!-- SECTION 0 -->
-<h2>0. The Executive Mental Map: Why Does Lecture 8 Exist?</h2>
+<!-- SECTION 1: THE CONTINUOUS ACTION TRAP -->
+<h2>1. Why Classic Q-Learning Fails on Robots (The Menu vs The Beach)</h2>
 <p>
-  In Lecture 6, we studied on-policy Actor-Critic methods (like A2C and PPO). On-policy algorithms collect a batch of data, execute gradient updates, and <b>immediately discard the entire dataset</b>.
-</p>
-<p>
-  <b>The Sample Inefficiency Dilemma:</b> Discarding data is acceptable in GPU simulators where data is virtually free. But on a physical robot or in expensive high-fidelity finite-element simulations, throwing away transitions $(s, a, r, s')$ after one glance is unacceptable. We need <b>Off-Policy algorithms</b> that store millions of historical interactions in an <b>Experience Replay Buffer</b> and reuse them thousands of times.
-</p>
-<p>
-  <b>Lecture 8 solves the off-policy puzzle for continuous control:</b> We examine why naive deep Q-learning explodes, how Target Networks and Double Q-learning stabilize optimization, and how <b>Soft Actor-Critic (SAC)</b> blends Q-learning with Maximum Entropy to create the gold-standard off-policy robotics algorithm.
+  In 2015, DeepMind shocked the world with <b>DQN</b> (Deep Q-Networks), beating humans at Atari 2600 video games. 
+  Naturally, roboticists rushed to use DQN on robotic arms. <b>It failed completely.</b> Why?
 </p>
 
-<!-- SVG Diagram: The 5 Themes of Lecture 8 -->
-<div class="diagram-container">
-<svg width="690" height="90" viewBox="0 0 690 90">
-  <rect x="5" y="10" width="128" height="70" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-  <text x="69" y="36" font-size="9" font-weight="700" fill="#1e40af" text-anchor="middle">1. Target Networks</text>
-  <text x="69" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Polyak Averaging</text>
-  <text x="69" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Freezing Moving Targets</text>
-
-  <rect x="141" y="10" width="128" height="70" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-  <text x="205" y="36" font-size="9" font-weight="700" fill="#991b1b" text-anchor="middle">2. Overestimation</text>
-  <text x="205" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Jensen's Inequality</text>
-  <text x="205" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Clipped Twin-Q Solution</text>
-
-  <rect x="277" y="10" width="128" height="70" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-  <text x="341" y="36" font-size="9" font-weight="700" fill="#065f46" text-anchor="middle">3. Continuous Max</text>
-  <text x="341" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Intractable argmax_a</text>
-  <text x="341" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Actor Maximizer (DDPG/SAC)</text>
-
-  <rect x="413" y="10" width="128" height="70" rx="6" fill="#fdf4ff" stroke="#c084fc" stroke-width="1.5"/>
-  <text x="477" y="36" font-size="9" font-weight="700" fill="#6b21a8" text-anchor="middle">4. Max Entropy RL</text>
-  <text x="477" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Reward + α H(π)</text>
-  <text x="477" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Anti-Freezing Exploration</text>
-
-  <rect x="549" y="10" width="136" height="70" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
-  <text x="617" y="36" font-size="9" font-weight="700" fill="#92400e" text-anchor="middle">5. The Deadly Triad</text>
-  <text x="617" y="52" font-size="8.2" fill="#475569" text-anchor="middle">Bootstrapping +</text>
-  <text x="617" y="66" font-size="8.2" fill="#475569" text-anchor="middle">Buffer + Function Approx</text>
-</svg>
-</div>
-
-<div class="page-break"></div>
-
-<!-- PART 1 -->
-<h2>Part 1: Stabilizing Q-Learning — Target Networks &amp; Polyak Averaging</h2>
-<p>
-  <b>(Slides 1–25)</b> In exact tabular Q-learning, the Bellman optimality update is mathematically guaranteed to converge. But when we replace the table with a Deep Neural Network $Q_\theta(s, a)$, training frequently explodes. Why?
-</p>
-
-<h3>1.1 The "Chasing Your Own Tail" Problem</h3>
-<div class="formula">
-  $$\mathcal{L}(\theta) = \mathbb{E}_{(s, a, r, s') \sim \mathcal{D}} \left[ \left( Q_\theta(s, a) - \left[ r + \gamma \max_{a'} Q_\theta(s', a') \right] \right)^2 \right]$$
-</div>
-<p>
-  Notice that network parameters $\theta$ appear in <b>both</b> the prediction $Q_\theta(s, a)$ and the target $r + \gamma \max_{a'} Q_\theta(s', a')$. Every gradient step taken to update the prediction simultaneously shifts the target itself!
-  To break this destabilizing feedback loop, we maintain a secondary set of weights $\bar{\theta}$ called the <b>Target Network</b>:
-  $$y_t = r_t + \gamma \max_{a'} Q_{\bar{\theta}}(s_{t+1}, a')$$
-</p>
-
-<!-- SVG Diagram: Polyak Averaging -->
-<div class="diagram-container">
-<svg width="680" height="120" viewBox="0 0 680 120">
-  <rect x="50" y="15" width="220" height="65" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-  <text x="160" y="38" font-size="10.5" font-weight="700" fill="#1e40af" text-anchor="middle">Online Critic Q_θ(s, a)</text>
-  <text x="160" y="54" font-size="8.2" fill="#3b82f6" text-anchor="middle">Updated via SGD at every step</text>
-  <text x="160" y="68" font-size="8.2" fill="#475569" text-anchor="middle">Fast-moving parameter set</text>
-
-  <path d="M 280 48 L 400 48" stroke="#10b981" stroke-width="2.5"/>
-  <text x="340" y="38" font-size="9" font-weight="700" fill="#047857" text-anchor="middle">Polyak Averaging (τ = 0.005)</text>
-  <text x="340" y="68" font-size="8" fill="#64748b" text-anchor="middle">θ̄ ‹- τ θ + (1 - τ) θ̄</text>
-
-  <rect x="410" y="15" width="220" height="65" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
-  <text x="520" y="38" font-size="10.5" font-weight="700" fill="#065f46" text-anchor="middle">Target Critic Q_θ̄(s, a)</text>
-  <text x="520" y="54" font-size="8.2" fill="#047857" text-anchor="middle">Slowly tracks online network</text>
-  <text x="520" y="68" font-size="8.2" fill="#475569" text-anchor="middle">Generates stable Bellman targets</text>
-</svg>
-</div>
-
-<h3>1.2 Polyak Soft Updates vs. Hard Periodic Copies</h3>
-<p>
-  Instead of hard-copying weights every 10,000 steps (as in original Atari DQN), continuous control algorithms smoothly blend target weights after every training step:
-  $$\bar{\theta} \leftarrow \tau \theta + (1 - \tau) \bar{\theta} \qquad (\text{with } \tau = 0.005)$$
-  This corresponds to an exponential decay half-life of:
-  $$t_{\text{half}} = \frac{\ln(2)}{\tau} = \frac{0.693}{0.005} \approx 138 \text{ gradient steps}$$
-  This prevents abrupt target discontinuities, ensuring smooth impedance gain transitions on physical robotic hardware.
-</p>
-
-<div class="page-break"></div>
-
-<!-- PART 2 -->
-<h2>Part 2: Overestimation Bias &amp; Clipped Double Q-Learning</h2>
-<p>
-  <b>(Slides 26–42)</b> A profound mathematical flaw exists in standard Q-learning: <b>the maximization step systematically overestimates value functions!</b>
-</p>
-
-<h3>2.1 Mathematical Origin of Overestimation (Jensen's Inequality)</h3>
-<div class="math-box">
-  <div class="callout-title">Theorem: Maximization Over Random Variables Induces Positive Bias</div>
+<div class="callout intuition">
+  <div class="callout-title">🏖️ The Restaurant Menu vs The Infinite Beach Analogy</div>
   <p>
-    Let $X_1, X_2, \dots, X_m$ be independent random variables representing noisy value estimates of true values $\mu_1, \dots, \mu_m$, where $X_i = \mu_i + \epsilon_i$ with zero-mean noise $\mathbb{E}[\epsilon_i] = 0$.
-    Because the maximum function $f(x) = \max_i x_i$ is strictly convex, by <b>Jensen's Inequality</b>:
-    $$\mathbb{E}\left[ \max_i X_i \right] \ge \max_i \mathbb{E}[X_i] = \max_i \mu_i$$
+    In Q-learning, the optimal decision rule is: <b>$a^* = \arg\max_{a} Q(s, a)$</b>.
+  </p>
+  <ul>
+    <li><b>In Atari Games (The Restaurant Menu):</b> There are only 4 controller buttons (Up, Down, Left, Right). Finding the $\max$ is like picking dinner from a 4-item menu. You evaluate all 4, find that Pizza has score $9.5$, and order Pizza. Easy!</li>
+    <li><b>On a Robotic Arm (The Infinite Beach):</b> Actions are continuous 6-dimensional vectors of real numbers (e.g. torques $\in [-10.0, +10.0]$ Nm). 
+      Finding the highest $Q$-value is like being dropped on an infinitely large, foggy beach with rolling sand dunes, and being told to find the single highest grain of sand in under <b>1 millisecond</b>! 
+      You cannot check infinite grains of sand in real time!
+    </li>
+  </ul>
+  <p>
+    <b>The Modern Fix (Actor Maximizer):</b> Instead of searching for the highest grain of sand by brute force, train a dedicated <b>Actor network $\pi_\theta(s)$</b> that acts as a compass, outputting the exact coordinates of the highest peak!
   </p>
 </div>
 
-<p>
-  <b>Numerical Demonstration:</b> Suppose two actions have identical true value $Q(s, a_1) = Q(s, a_2) = 0$. Due to function approximation error, the neural network predicts noisy estimates $X_1 \sim \mathcal{N}(0, 1)$ and $X_2 \sim \mathcal{N}(0, 1)$.
-  $$\mathbb{E}[\max(X_1, X_2)] = \frac{1}{\sqrt{\pi}} \approx +0.564 > 0$$
-  Every single Bellman update injects positive error $+0.564$. Bootstrapping propagates this error forward exponentially:
-  $V(s) \to V(s) + \gamma \Delta + \gamma^2 \Delta + \dots \implies$ Q-values explode to $+10,000$, destroying policy gradients!
-</p>
+<!-- DIAGRAM 1: DISCRETE MENU VS CONTINUOUS Q SURFACE -->
+<div class="diagram-container">
+<svg width="600" height="95" viewBox="0 0 600 95">
+  <!-- Left: Discrete Selection -->
+  <rect x="30" y="15" width="220" height="70" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="140" y="32" font-size="9" font-weight="700" fill="#1e40af" text-anchor="middle">ATARI: 4 DISCRETE CHOICES</text>
+  <text x="60" y="55" font-size="8" fill="#475569">Up: 4.2</text>
+  <text x="120" y="55" font-size="8" fill="#475569">Down: 2.1</text>
+  <text x="175" y="55" font-size="8.5" font-weight="700" fill="#10b981">Right: 9.8 (MAX!)</text>
+  <text x="140" y="75" font-size="7.5" fill="#64748b" text-anchor="middle">Simple <code>torch.argmax()</code> across 4 numbers</text>
 
-<h3>2.2 The Clipped Twin-Q Solution (Fujimoto et al., 2018 / Haarnoja et al., SAC)</h3>
-<p>
-  To solve overestimation, maintain <b>two completely independent Critic networks</b> ($Q_{\phi_1}$ and $Q_{\phi_2}$) with separate initializations. When computing the Bellman target, evaluate both and take the <b>minimum</b>:
-</p>
+  <!-- Arrow -->
+  <text x="280" y="52" font-size="12" font-weight="700" fill="#64748b" text-anchor="middle">vs.</text>
 
-<div class="formula" style="border: 2px solid #2563eb; background: #eff6ff;">
-  $$y_t = r_t + \gamma \min \Big( Q_{\bar{\phi}_1}(s_{t+1}, \tilde{a}_{t+1}),\, Q_{\bar{\phi}_2}(s_{t+1}, \tilde{a}_{t+1}) \Big)$$
+  <!-- Right: Continuous Landscape -->
+  <rect x="310" y="15" width="260" height="70" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="440" y="32" font-size="9" font-weight="700" fill="#92400e" text-anchor="middle">ROBOT: INFINITE CONTINUOUS SURFACE</text>
+  <path d="M 330,65 Q 370,35 410,50 Q 450,25 480,45 Q 520,70 550,55" fill="none" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="450" cy="25" r="4" fill="#ef4444"/>
+  <text x="450" y="20" font-size="7.5" font-weight="700" fill="#b91c1c" text-anchor="middle">True Peak $a^*$</text>
+  <text x="440" y="78" font-size="7.5" fill="#78350f" text-anchor="middle">Actor network $\pi_\theta(s)$ climbs directly to the peak!</text>
+</svg>
 </div>
-<p>
-  Taking the minimum injects controlled pessimism, completely neutralizing overestimation bias without requiring slow optimization.
-</p>
+
+<!-- SECTION 2: MAXIMUM ENTROPY RL -->
+<h2>2. Soft Actor-Critic (SAC) &amp; Maximum Entropy Exploration</h2>
+<div class="callout intuition">
+  <div class="callout-title">🥐 The Curious Tourist in Paris Analogy</div>
+  <p>
+    Imagine you visit Paris for two weeks:
+  </p>
+  <ul>
+    <li><b>Standard RL (Reward Only):</b> On your first morning, you find a bakery with decent croissants (Reward $= +5$). You decide this is safe and eat croissants at this exact bakery every single morning for 14 days. You never try baguettes, macarons, or escargot. You get stuck in a boring, mediocre routine.</li>
+    <li><b>Maximum Entropy RL (Reward + Entropy):</b> We pay you a bonus for being <b>curious and unpredictable</b>! You get points for good food, PLUS extra points for trying new alleys and testing diverse bakeries.</li>
+  </ul>
+  <p>
+    <b>Why this is mandatory for robot soft tomato slicing:</b> If a robot only cares about reward, it gets terrified of crushing penalties and freezes the blade 1 mm above the skin! 
+    The <b>Entropy Bonus</b> pays the robot to keep trying different blade angles, sawing speeds, and contact compliance until it discovers clean puncture mechanics!
+  </p>
+</div>
+
+<h3>2.1 The Soft Bellman Objective (Parameter Anatomy)</h3>
+<div class="formula">
+  $$J(\pi) = \sum_{t=0}^T \mathbb{E}_{(s_t, a_t)} \left[ r(s_t, a_t) + \alpha \mathcal{H}(\pi(\cdot \mid s_t)) \right] \quad \text{where} \quad \mathcal{H}(\pi) = \mathbb{E}_{a \sim \pi}[-\log \pi(a \mid s_t)]$$
+</div>
+
+<!-- PARAMETER ANATOMY TABLE 1 -->
+<table>
+  <thead>
+    <tr>
+      <th style="width: 15%;">Parameter</th>
+      <th style="width: 20%;">Formal Name</th>
+      <th style="width: 35%;">Plain English Meaning</th>
+      <th style="width: 15%;">Example Value</th>
+      <th style="width: 15%;">Tuning Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>$r(s_t, a_t)$</b></td>
+      <td>Physical Task Reward</td>
+      <td>Points earned for cutting the tomato cleanly without crushing.</td>
+      <td>$+3.5$ points</td>
+      <td>Primary task objective.</td>
+    </tr>
+    <tr>
+      <td><b>$\alpha$</b></td>
+      <td>Entropy Temperature</td>
+      <td><b>The Curiosity Dial:</b> How much does the robot prioritize exploration versus exploitation?</td>
+      <td>$\alpha = 0.2$ (or auto-tuned)</td>
+      <td>If $\alpha \to 0$, standard RL (freezes); if $\alpha \to \infty$, pure chaotic noise.</td>
+    </tr>
+    <tr>
+      <td><b>$\mathcal{H}(\pi)$</b></td>
+      <td>Shannon Entropy</td>
+      <td>A mathematical measure of how wide, random, and diverse the action distribution is.</td>
+      <td>$1.5$ nats</td>
+      <td>High entropy = wide exploration; Low entropy = laser focus.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout math-box">
+  <div class="callout-title">📝 Plain English Translation of the Soft RL Objective</div>
+  <p>
+    <b>"Do your job as best as possible (maximize reward), but keep your actions as random and diverse as possible (maximize entropy) so you never get stuck in a timid local rut!"</b>
+  </p>
+</div>
 
 <div class="page-break"></div>
 
-<!-- PART 3 -->
-<h2>Part 3: Continuous Actions &amp; The Intractable Max</h2>
+<!-- SECTION 3: THE THREE SUPER-WEAPONS OF SAC -->
+<h2>3. The Three Practical Super-Weapons of SAC</h2>
 <p>
-  <b>(Slides 43–58)</b> In discrete environments (Atari), finding $\max_a Q(s, a)$ requires evaluating the network across 4 actions. In continuous robotics with $a \in \mathbb{R}^6$ (joint torques), finding the continuous global maximum is a non-convex optimization problem that cannot be solved in real-time.
+  Richard Sutton proved that combining <i>Function Approximation</i> + <i>Bootstrapping</i> + <i>Off-Policy Learning</i> creates the <b>Deadly Triad</b>, causing value functions to diverge to infinity. 
+  SAC overcomes the Deadly Triad using three engineering breakthroughs:
+</p>
+
+<h3>3.1 Super-Weapon 1: Experience Replay (The Photo Album)</h3>
+<p>
+  Instead of discarding transitions immediately, SAC saves <b>1,000,000 past transitions</b> $(s_t, a_t, r_t, s_{t+1})$ into a circular buffer. 
+  During training, it samples random mini-batches (e.g. 256 transitions). 
+  This breaks temporal correlation: the network doesn't just learn from what happened 2 milliseconds ago; it remembers mistakes made 30 minutes ago!
+</p>
+
+<h3>3.2 Super-Weapon 2: Polyak Target Networks (The Patient Teacher)</h3>
+<div class="callout intuition">
+  <div class="callout-title">🎯 The Moving Target Analogy</div>
+  <p>
+    If you train a neural network using its own predictions as the target ($y = r + \gamma Q(s', a')$), the target shifts every single gradient update. 
+    It is like trying to shoot a bullseye that vibrates frantically.
+    <br><br>
+    <b>The Polyak Fix:</b> Maintain a separate target network weights $\bar{\theta}$, updated ultra-slowly:
+    <br>$$\bar{\theta} \leftarrow \tau \theta + (1 - \tau) \bar{\theta} \quad \text{with} \quad \tau = 0.005$$
+    Every step, the target moves by only <b>0.5%</b>. The target moves like molasses ($t_{1/2} \approx 138$ steps), giving the network a crystal-clear, steady bullseye to aim at.
+  </p>
+</div>
+
+<h3>3.3 Super-Weapon 3: Clipped Twin-Q (The Two Skeptical Judges)</h3>
+<div class="formula">
+  $$y = r(s, a) + \gamma \left( \min_{j=1,2} Q_{\bar{\theta}_j}(s', a') - \alpha \log \pi(a' \mid s') \right)$$
+</div>
+
+<!-- DIAGRAM 2: CLIPPED DOUBLE-Q MINIMUM -->
+<div class="diagram-container">
+<svg width="600" height="90" viewBox="0 0 600 90">
+  <!-- Critic 1 -->
+  <rect x="50" y="15" width="180" height="30" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="140" y="34" font-size="8.5" font-weight="700" fill="#b91c1c" text-anchor="middle">Critic 1: $Q_1(s', a') = \mathbf{28.0}$ (Delusional!)</text>
+
+  <!-- Critic 2 -->
+  <rect x="50" y="50" width="180" height="30" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="140" y="69" font-size="8.5" font-weight="700" fill="#047857" text-anchor="middle">Critic 2: $Q_2(s', a') = \mathbf{22.0}$ (Realistic)</text>
+
+  <!-- Arrow to Min -->
+  <path d="M 230,47 L 310,47" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <polygon points="310,47 302,42 302,52" fill="#2563eb"/>
+
+  <!-- Min Box -->
+  <rect x="320" y="25" width="240" height="45" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="440" y="44" font-size="9.5" font-weight="700" fill="#1e40af" text-anchor="middle">Clipped Target: $\min(28.0, 22.0) = \mathbf{22.0}$</text>
+  <text x="440" y="60" font-size="8" fill="#1d4ed8" text-anchor="middle">Overestimation bias is instantly eliminated!</text>
+</svg>
+</div>
+
+<div class="callout math-box">
+  <div class="callout-title">📝 Plain English Translation of Clipped Twin-Q</div>
+  <p>
+    <b>"Train two independent Critic networks. When computing future value, always pick the MORE PESSIMISTIC of the two. If one network hallucinates that a risky blade slam is worth 100 points, the second network grounds it back to reality!"</b>
+  </p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- SECTION 4: CONCRETE NUMERICAL WALKTHROUGH -->
+<h2>4. Concrete Numerical Walkthrough: One SAC Bellman Target Update</h2>
+<p>
+  Let's calculate the exact Bellman target for a transition sampled from the replay buffer:
 </p>
 
 <table>
   <thead>
     <tr>
-      <th style="width: 25%;">Approach</th>
-      <th style="width: 35%;">Mechanism</th>
-      <th style="width: 40%;">Pros &amp; Cons for Robotics</th>
+      <th style="width: 10%;">Step</th>
+      <th style="width: 30%;">Variable / Expression</th>
+      <th style="width: 20%;">Value</th>
+      <th style="width: 40%;">Physical Role</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b>Stochastic Optimization (CEM / CMA-ES)</b></td>
-      <td>Sample 1,000 random actions, evaluate $Q(s, a)$, fit Gaussian to top 10%, repeat 3 times.</td>
-      <td>Extremely slow in the inner loop; fails beyond 10–20 action dimensions; unacceptable for real-time 60 Hz execution.</td>
+      <td>1</td>
+      <td>Sampled Reward $r$</td>
+      <td><b>$+4.0$</b></td>
+      <td>Blade penetrated 2 mm deeper into fruit.</td>
     </tr>
     <tr>
-      <td><b>Analytical Q-Functions (NAF)</b></td>
-      <td>Constrain $Q(s, a)$ to be quadratic in $a$: $Q(s,a) = V(s) - \frac{1}{2}(a - \mu)^T P (a - \mu)$.</td>
-      <td>Maximum is analytically $\mu(s)$, but restricts the Critic to simple parabolic shapes; cannot capture contact bifurcations.</td>
+      <td>2</td>
+      <td>Discount Factor $\gamma$</td>
+      <td><b>$0.99$</b></td>
+      <td>Patience meter for future rewards.</td>
     </tr>
     <tr>
-      <td><b>Learned Actor Maximizer (DDPG / SAC)</b></td>
-      <td>Train a separate neural policy $\pi_\theta(s)$ whose explicit objective is to output the action that maximizes $Q(s, a)$.</td>
-      <td><b>The Winning Approach:</b> Computing the maximum requires only a single forward pass through the Actor network $\pi_\theta(s)$!</td>
+      <td>3</td>
+      <td>Entropy Temperature $\alpha$</td>
+      <td><b>$0.2$</b></td>
+      <td>Curiosity weighting factor.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Critic 1 Target $Q_{\bar{\theta}_1}(s', a')$</td>
+      <td><b>$32.5$</b></td>
+      <td>First critic's future prediction.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Critic 2 Target $Q_{\bar{\theta}_2}(s', a')$</td>
+      <td><b>$28.0$</b></td>
+      <td>Second critic's more conservative prediction.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Next Action Log-Prob $\log \pi(a' \mid s')$</td>
+      <td><b>$-1.5$</b></td>
+      <td>Entropy bonus: $-\alpha \log \pi = -0.2(-1.5) = \mathbf{+0.3}$.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Clipped Soft Target $y$</td>
+      <td>$4.0 + 0.99(28.0 + 0.3) = \mathbf{32.017}$</td>
+      <td>Target used to train Critic weights via MSE loss!</td>
     </tr>
   </tbody>
 </table>
 
-<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+<!-- SECTION 5: PYTORCH IMPLEMENTATION -->
+<h2>5. PyTorch SAC Loss Implementation</h2>
 
-<!-- PART 4 -->
-<h2>Part 4: Soft Actor-Critic (SAC) &amp; Maximum Entropy RL</h2>
-<p>
-  <b>(Slides 59–75 &amp; Spinning Up ch19)</b> Soft Actor-Critic modifies the standard objective to maximize both <b>expected reward</b> AND <b>policy entropy $\mathcal{H}(\pi)$</b>:
-</p>
+<div class="callout code-box">
+  <div class="callout-title">🐍 Complete PyTorch Soft Actor-Critic Loss Computation</div>
+<pre style="margin: 0; padding: 0;">
+import torch
+import torch.nn as nn
 
-<div class="formula" style="border: 2px solid #c084fc; background: #fdf4ff;">
-  $$J(\pi) = \sum_{t=0}^T \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \alpha \, \mathcal{H}\big(\pi(\cdot \mid s_t)\big) \right]$$
-</div>
-
-<h3>4.1 The "Anti-Freezing" Phenomenon in Soft Tissue Manipulation</h3>
-<p>
-  Touching delicate biological tissue risks incurring severe negative penalties for crushing or excessive force ($F_z > 8\text{ N}$). Under standard RL, the policy frequently gets trapped in a local minimum where the blade <b>hovers stationary 1 mm above the tissue</b> to collect zero penalties.
-  <br><b>Under Maximum Entropy SAC:</b> A frozen stationary blade has zero entropy ($\mathcal{H} = 0$), which incurs a massive entropy penalty! The robot is compelled to keep vibrating and testing sawing actions, discovering that light lateral sawing punctures the skin cleanly without crushing.
-</p>
-
-<h3>4.2 Automatic Entropy Temperature Tuning ($\alpha$)</h3>
-<p>
-  Rather than keeping temperature $\alpha$ fixed, SAC formulates temperature optimization as a dual constrained optimization problem targeting a heuristic $\bar{\mathcal{H}} = -\dim(\mathcal{A})$:
-</p>
-<div class="formula">
-  $$\mathcal{L}(\alpha) = \mathbb{E}_{a \sim \pi} \left[ -\alpha \big( \log \pi(a \mid s) + \bar{\mathcal{H}} \big) \right]$$
-</div>
-
-<div class="page-break"></div>
-
-<!-- PART 5 -->
-<h2>Part 5: Sutton's Deadly Triad &amp; Production SAC Implementation</h2>
-<p>
-  <b>(Slides 76–88)</b> Richard Sutton proved that divergence in reinforcement learning arises whenever three algorithmic elements are combined simultaneously:
-</p>
-<ol>
-  <li><b>Function Approximation:</b> Deep Neural Networks estimating continuous value landscapes.</li>
-  <li><b>Bootstrapping:</b> Updating value estimates based on other value estimates: $y = r + \gamma Q(s', a')$.</li>
-  <li><b>Off-Policy Learning:</b> Training on historical replay buffer data $\mathcal{D}$ generated by older policies.</li>
-</ol>
-<p>
-  <i>SAC survives the Deadly Triad through four anchors: 1) Target networks, 2) Clipped Twin-Q pessimism, 3) Polyak averaging, and 4) Entropy regularization.</i>
-</p>
-
-<div class="code-container">
-<pre><span class="code-keyword">import</span> torch
-<span class="code-keyword">import</span> torch.nn <span class="code-keyword">as</span> nn
-<span class="code-keyword">import</span> torch.nn.functional <span class="code-keyword">as</span> F
-
-<span class="code-keyword">def</span> <span class="code-func">compute_sac_losses</span>(actor, q1, q2, target_q1, target_q2, log_alpha, batch, gamma=0.99):
+def compute_sac_losses(actor, critic1, critic2, target1, target2, batch, alpha=0.2, gamma=0.99):
     states, actions, rewards, next_states, dones = batch
-    alpha = log_alpha.exp()
 
-    <span class="code-comment"># 1. CRITIC LOSS: Bellman Target using Target Twin-Q</span>
-    <span class="code-keyword">with</span> torch.no_grad():
-        next_actions, next_log_pi = actor.sample(next_states)
-        q1_target = target_q1(next_states, next_actions)
-        q2_target = target_q2(next_states, next_actions)
-        min_next_q = torch.min(q1_target, q2_target) - alpha * next_log_pi
-        y = rewards + gamma * (1.0 - dones) * min_next_q
+    # 1. CRITIC LOSS: Compute Bellman Target using Target Twin-Q
+    with torch.no_grad():
+        next_actions, next_log_probs = actor.sample(next_states)
+        q1_target = target1(next_states, next_actions)
+        q2_target = target2(next_states, next_actions)
+        # Take minimum across twin critics to stop overestimation
+        min_q_target = torch.min(q1_target, q2_target) - alpha * next_log_probs
+        y = rewards + gamma * min_q_target * (1.0 - dones)
 
-    q1_loss = F.mse_loss(q1(states, actions), y)
-    q2_loss = F.mse_loss(q2(states, actions), y)
-    critic_loss = q1_loss + q2_loss
+    # Current Q-values
+    q1_current = critic1(states, actions)
+    q2_current = critic2(states, actions)
+    critic_loss = 0.5 * (nn.functional.mse_loss(q1_current, y) + nn.functional.mse_loss(q2_current, y))
 
-    <span class="code-comment"># 2. ACTOR LOSS: Reparameterized Gradient</span>
-    new_actions, log_pi = actor.sample(states)
-    min_q = torch.min(q1(states, new_actions), q2(states, new_actions))
-    actor_loss = (alpha.detach() * log_pi - min_q).mean()
+    # 2. ACTOR LOSS: Maximize expected Q + Entropy
+    new_actions, log_probs = actor.sample(states)
+    q_new = torch.min(critic1(states, new_actions), critic2(states, new_actions))
+    actor_loss = (alpha * log_probs - q_new).mean()
 
-    <span class="code-comment"># 3. TEMPERATURE LOSS: Target entropy heuristic -dim(A)</span>
-    target_entropy = -float(actions.shape[-1])
-    alpha_loss = -(log_alpha * (log_pi + target_entropy).detach()).mean()
-
-    <span class="code-keyword">return</span> critic_loss, actor_loss, alpha_loss
+    return critic_loss, actor_loss
 </pre>
 </div>
 
-<div class="page-break"></div>
+<!-- SECTION 6: PRACTITIONER'S CHECKLIST -->
+<h2>6. Practitioner's Failure Modes &amp; Debugging Checklist</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Failure Mode</th>
+      <th style="width: 35%;">The Hidden Cause</th>
+      <th style="width: 40%;">How to Fix It</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>1. Target Update Too Fast</b></td>
+      <td>Setting $\tau = 0.05$ instead of $0.005$ moves target networks 10x too quickly. Values diverge to $10^{6}$ within 20,000 steps.</td>
+      <td>Keep $\tau \in [0.005, 0.01]$. In robotics, slower target updates always mean higher stability.</td>
+    </tr>
+    <tr>
+      <td><b>2. Replay Buffer Starvation</b></td>
+      <td>Starting gradient descent before the buffer has collected enough transitions causes the policy to overfit to the first 50 random steps.</td>
+      <td>Collect at least <b>10,000 random exploration steps</b> before starting the first neural network update.</td>
+    </tr>
+    <tr>
+      <td><b>3. Action Bounds Violation</b></td>
+      <td>Continuous robotic motor torques must be strictly bounded to $[-1, +1]$. Forgetting <code>torch.tanh()</code> causes motor commands to spike to infinity.</td>
+      <td>Always use <b>Tanh-squashed Gaussian distributions</b> with proper Jacobian log-prob correction.</td>
+    </tr>
+  </tbody>
+</table>
 
-<!-- PART 6 -->
-<h2>Part 6: Interactive Tablet Self-Test Quiz</h2>
-
-<div class="quiz-box">
-  <div class="quiz-q">Question 1: Why does Clipped Twin-Q use the minimum of two target Q-networks rather than their average?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> Taking the average does not prevent overestimation bias; if both networks have positive noise, their average remains positively biased. Taking the minimum $\min(Q_1, Q_2)$ introduces a mild, controlled underestimation bias that acts as a conservative safety margin, preventing runaway value explosion during contact manipulation.
-  </div>
-</div>
-
-<div class="quiz-box">
-  <div class="quiz-q">Question 2: In SAC, why is the target entropy heuristic set to $-\dim(\mathcal{A})$?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> A standard Gaussian distribution $\mathcal{N}(0, I)$ has entropy $\frac{d}{2}(1 + \ln(2\pi))$. Haarnoja and Levine found empirically that setting target entropy $\bar{\mathcal{H}} = -d$ (where $d = \dim(\mathcal{A})$) scales linearly with action space dimensionality, ensuring sufficient exploration across all 6 motor degrees of freedom without overwhelming the task reward.
-  </div>
-</div>
-
-<div class="quiz-box">
-  <div class="quiz-q">Question 3: How does Polyak averaging ($\tau = 0.005$) stabilize training on physical robots?</div>
-  <div class="quiz-a">
-    <b>Answer:</b> Polyak averaging smoothly blends target network weights with an exponential half-life of $\sim 138$ steps ($\bar{\theta} \leftarrow \tau \theta + (1-\tau)\bar{\theta}$). This prevents the sudden value step-discontinuities that occur during periodic hard target copies, eliminating violent torque spikes at robot arm joints.
-  </div>
-</div>
-
-<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0;">
-
-<!-- PART 7: THESIS DEFENSE MASTER CHEATSHEET -->
-<h2>Part 7: Thesis Defense Master Cheatsheet (Lecture 8 Focus)</h2>
-
-<div class="callout intuition">
-  <div class="callout-title">Q1: "Why does standard Deep Q-Networks (DQN) fail in continuous robotic manipulation?"</div>
-  <p>
-    <b>Answer:</b> "DQN selects actions via $\arg\max_a Q(s, a)$. In discrete games with 4 buttons, this requires 4 forward evaluations. In continuous multi-joint manipulation where the action space is $\mathbb{R}^6$ or $\mathbb{R}^{14}$, finding the continuous global maximum of an arbitrary neural network is an intractable non-convex optimization problem that cannot be solved within our 60 Hz control loop. Algorithms like DDPG and SAC solve this by training a dedicated Actor network to approximate the maximizer directly."
-  </p>
-</div>
-
-<div class="callout robotics">
-  <div class="callout-title">Q2: "Why is Soft Actor-Critic (SAC) considered the gold standard for sample-efficient real-world robot learning?"</div>
-  <p>
-    <b>Answer:</b> "SAC is an off-policy algorithm that reuses historical interactions from an experience replay buffer, requiring orders of magnitude fewer physical environment samples than on-policy PPO. By integrating Maximum Entropy RL with Clipped Twin-Q targets and soft Polyak averaging, SAC maintains active exploration, avoids premature policy freezing, and guarantees robust convergence in contact-rich physical tasks."
-  </p>
+<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 15px 0 10px 0;">
+<div style="font-size: 8.5pt; color: #64748b; text-align: center;">
+  <i>CS285 Lecture 8 Zero-to-Hero Guide • DEX-ROB Lab (Tianjin University) • Prof. Shan An</i>
 </div>
 
 </body>
 </html>
 """
 
-if __name__ == "__main__":
-    pdf_path = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture8_Beginner_Guide.pdf"
-    backup_path = "/home/omen/Downloads/CS285_Lecture8_Beginner_Guide.pdf"
-    render_utils.build_pdf(html_content, pdf_path, backup_path)
+PDF_OUT_DOWNLOADS = "/home/omen/Downloads/CS285_Lecture8_Beginner_Guide.pdf"
+PDF_OUT_REPO = "/media/omen/88D2C6C4D2C6B5AA/TianjinUniversity/research/simulation/CS285_Lecture8_Beginner_Guide.pdf"
+
+render_utils.build_pdf(html_content, PDF_OUT_DOWNLOADS, PDF_OUT_REPO)
