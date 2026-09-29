@@ -26,16 +26,17 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
 3. **The two subsystems merge in Week 5:** Because observation and action interfaces are standardized on Day 1, merging the two arms into a unified bimanual environment takes hours, not weeks.
 
 ```
-                       OPTION A: BIMANUAL SUBSYSTEM DECOUPLING
+                        OPTION A: BIMANUAL SUBSYSTEM DECOUPLING
 ┌──────────────────────────────────────────────────┐  ┌──────────────────────────────────────────────────┐
-│      PERSON A: SLICING ARM & FRACTURE LEAD       │  │    PERSON B: HOLDING ARM & PERCEPTION LEAD       │
-├──────────────────────────────────────────────────┤  ├────────────────────────────────────────────────┤
+│       SHAHD: SLICING ARM & FRACTURE LEAD         │  │    AHMED: HOLDING ARM & TACTILE HARDWARE LEAD    │
+├──────────────────────────────────────────────────┤  ├──────────────────────────────────────────────────┤
 │ • Knife End-Effector & URDF attachment           │  │ • Stabilizing Gripper / Fingertip End-Effector   │
-│ • Volumetric TetMesh & PhysX FEM tearing         │  │ • Soft-body grasp compliance (prevent bruising)  │
-│ • 4-Phase Cutting Force Math (Skin → Pulp → Board│  │ • Tangential slip prevention under blade sawing  │
-│ • Slicing MDP: v_slice, Δv_z, Z-impedance        │  │ • Bimanual Sync MDP: Δx_hold, Δy_hold, F_hold    │
-│ • Reward: R_pen, R_slicing, P_slam               │  │ • Observation space: Tomato pose & deformation   │
-│                                                  │  │ • Macro pre-contact planning (MoveIt 2)          │
+│ • Volumetric TetMesh & PhysX FEM tearing         │  │ • Tactile sensing hardware (rigid-flex / TacEdge)│
+│ • 4-Phase Cutting Force Math (Skin → Pulp → Board│  │ • Soft-body grasp compliance (prevent bruising)  │
+│ • Slicing MDP: v_slice, Δv_z, Z-impedance        │  │ • Tangential slip prevention under blade sawing  │
+│ • Slicing Reward: R_pen, R_slicing, P_slam       │  │ • Holding Sync MDP: Δx_hold, Δy_hold, F_hold      │
+│ • Macro pre-contact planning (MoveIt 2)          │  │ • 1 kHz grasp compliance & slip arrest loop      │
+│                                                  │  │                                                  │
 │ [Unit Test: Slices a tomato clamped to a table]  │  │ [Unit Test: Holds tomato under disturbance force]│
 └────────────────────────┬─────────────────────────┘  └────────────────────────┬─────────────────────────┘
                          │                                                     │
@@ -50,11 +51,11 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
 ---
 
 ## 2. Detailed Role Breakdown
-
-### 2.1 Person A: Active Slicing Arm & Fracture Mechanics Lead
-
+ 
+### 2.1 Shahd: Active Slicing Arm & Fracture Mechanics Lead
+ 
 * **Primary Engineering Mission:** Optimize the knife blade trajectory, downward feed rate, sawing action, and variable impedance to cut through deformable soft tissue cleanly without causing crushing or excessive downward force.
-* **Daily Development Stack:** NVIDIA Isaac Sim / Isaac Lab, Gmsh / fTetWild, PhysX 5 FEM, PyTorch, SkRL.
+* **Daily Development Stack:** NVIDIA Isaac Sim / Isaac Lab, Gmsh / fTetWild, PhysX 5 FEM, PyTorch, SkRL, ROS 2 (MoveIt 2).
 * **Key Theoretical & Mathematical Responsibilities:**
   1. **Volumetric TetMeshing:** Convert hollow tomato surface scans into solid tetrahedral meshes (`.msh` / `.usd`) using Delaunay tetrahedralization in Gmsh.
   2. **PhysX FEM Elasticity & Tearing:**
@@ -71,35 +72,33 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
      - $P_{force\_crush} = -w_{crush} \cdot \max(0, F_z - 8.0\text{ N})^2$
      - $P_{slam} = -w_{slam} \cdot \max(0, \ddot{z}_{blade}) \cdot \mathbb{I}(\text{Phase} == 2)$
 * **Independent Unit Test (Zero Waiting):**  
-  Person A builds an Isaac Lab environment with **one Franka/UR arm holding a knife** and a **tomato clamped in a rigid jig**. Person A trains PPO/SAC to slice cleanly through the clamped tomato without needing the holding arm.
-
+  Shahd builds an Isaac Lab environment with **one Franka/UR arm holding a knife** and a **tomato clamped in a rigid jig**. Shahd trains PPO/SAC to slice cleanly through the clamped tomato without needing the holding arm.
+ 
 ---
-
-### 2.2 Person B: Compliant Holding Arm, Perception & Coordination Lead
-
-* **Primary Engineering Mission:** Stabilize the deformable tomato against the knife's lateral sawing friction and downward penetration forces, ensuring the fruit does not slip, roll, or suffer grasp bruising, while managing the sensory observation pipeline and macro trajectory planning.
-* **Daily Development Stack:** NVIDIA Isaac Lab, PyTorch, SkRL, WandB, ROS 2 (Jazzy), MoveIt 2, OmniGraph.
+ 
+### 2.2 Ahmed: Compliant Holding Arm, Tactile Hardware & Coordination Lead
+ 
+* **Primary Engineering Mission:** Stabilize the deformable tomato against the knife's lateral sawing friction and downward penetration forces, ensuring the fruit does not slip, roll, or suffer grasp bruising, while designing/integrating on-tool tactile sensing hardware (TacEdge / rigid-flex PCB) and closing the 1 kHz grasp compliance loop.
+* **Daily Development Stack:** NVIDIA Isaac Lab, PyTorch, SkRL, WandB, KiCad/Altium, STM32CubeIDE, ROS 2, CAN-FD.
 * **Key Theoretical & Mathematical Responsibilities:**
-  1. **Compliant Grasping Mechanics:**
+  1. **Compliant Grasping Mechanics & Tactile Hardware:**
+     - Design rigid-flex PCB tactile fingertip array (or sensorized gripper fingers) using STM32 + CAN-FD streaming at 1 kHz.
      - Regulate holding normal force $F_{hold}$ strictly within the non-bruising, non-slip operating window:
        $$F_{slip} < F_{hold} < F_{bruise} \quad (1.5\text{ N} < F_{hold} < 5.0\text{ N})$$
-     - Counteract lateral blade drag force $F_x$ via tangential friction modeling ($\mu_{contact} \approx 0.45$).
+     - Counteract lateral blade drag force $F_x$ via tangential friction modeling ($\mu_{contact} \approx 0.45$) and active micro-adjustments ($\Delta x_{hold}$).
   2. **Observation Space Assembly ($\mathcal{S} \subset \mathbb{R}^{33}$):**
      - Dual-arm kinematics: $[\mathbf{q}_{dual}, \dot{\mathbf{q}}_{dual}] \in \mathbb{R}^{14}$.
      - Tool state: $[\mathbf{p}_{knife}, \mathbf{v}_{knife}, \boldsymbol{\omega}_{knife}] \in \mathbb{R}^9$.
      - Tomato state: $[\mathbf{p}_{tomato}, \mathbf{R}_{tomato}] \in \mathbb{R}^7$.
-     - TacBlade sensor feedback: 6-axis force/torque $\mathbf{F}_{TacBlade} \in \mathbb{R}^6$ and acoustic burst energy $E_{burst} \in \mathbb{R}^1$.
+     - Tactile feedback: 3-axis normal/shear wrench + slip metric.
   3. **Holding Action Control ($\mathcal{A}_{hold} \subset \mathbb{R}^2$):**
      - Planar holding position adjustments: $\Delta x_{hold}, \Delta y_{hold} \in [-2, +2]\text{ mm}$.
   4. **Holding & Coordination Rewards:**
      - $P_{sync} = -w_{sync} \cdot \|\mathbf{p}_{hold} - \mathbf{p}_{tomato}\|^2$
      - $P_{bruise} = -w_{bruise} \cdot \max(0, F_{hold} - 5.0\text{ N})^2$
      - $P_{slip} = -w_{slip} \cdot |v_{tomato, x}|$
-  5. **Macro Trajectory Planning & Handoff:**
-     - Configure MoveIt 2 to bring both arms from home position to pre-contact clearance (5–10 mm above fruit).
-     - Implement the dynamic handoff switch triggered when normal contact force exceeds $F_{normal} \ge 0.5\text{ N}$.
 * **Independent Unit Test (Zero Waiting):**  
-  Person B builds an Isaac Lab environment with **one Franka/UR arm with a gripper holding a tomato**. A simulated oscillating disturbance force ($\pm 4\text{ N}$ lateral, $2–8\text{ N}$ downward) is applied to the tomato to simulate the knife's actions. Person B trains the holding policy to keep the tomato stable and upright without bruising.
+  Ahmed builds an Isaac Lab environment with **one Franka/UR arm with a gripper holding a tomato**. A simulated oscillating disturbance force ($\pm 4\text{ N}$ lateral, $2–8\text{ N}$ downward) is applied to the tomato to simulate the knife's actions. Ahmed trains the holding policy to keep the tomato stable and upright without bruising.
 
 ---
 
@@ -108,12 +107,12 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │ WEEKS 1–2: SINGLE-ARM INDEPENDENT PROTOTYPES                                          │
-│   • Person A: Clamped tomato + knife arm + FEM mesh + downward sawing physics.         │
-│   • Person B: Gripper arm + held tomato + disturbance forces + observation manager.    │
+│   • Shahd: Clamped tomato + knife arm + FEM mesh + downward sawing physics.           │
+│   • Ahmed: Gripper arm + held tomato + disturbance forces + tactile/state manager.     │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
 │ WEEKS 3–4: SINGLE-ARM RL BENCHMARKS                                                   │
-│   • Person A: Trains PPO on slicing arm to minimize cutting force and stop slam.       │
-│   • Person B: Trains PPO on holding arm to maintain stable grip under disturbances.    │
+│   • Shahd: Trains PPO on slicing arm to minimize cutting force and stop slam.          │
+│   • Ahmed: Trains PPO on holding arm to maintain stable grip under disturbances.       │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
 │ WEEKS 5–6: THE BIMANUAL MERGER                                                        │
 │   • Combine into a dual-arm Isaac Lab scene (`BimanualTomatoCuttingEnv`).              │
@@ -121,8 +120,8 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
 │   • Run baseline comparisons: Our Method vs Fixed Impedance vs Rigid Position Control. │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
 │ WEEKS 7–8: EXPERIMENTAL FIGURES & MANUSCRIPT DRAFTING                                  │
-│   • Person A writes physics, tearing, and cutting performance sections.                │
-│   • Person B writes bimanual coordination, perception, and holding stability sections. │
+│   • Shahd writes physics, tearing, and cutting performance sections.                   │
+│   • Ahmed writes holding stability, tactile hardware, and coordination sections.       │
 │   • Final review with Prof. Shan An for IEEE RA-L / IROS submission.                   │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -137,19 +136,19 @@ To prevent Git merge conflicts, code is structured into decoupled components:
 src/
 ├── envs/
 │   ├── components/
-│   │   ├── cutting_arm.py          # Person A: Knife kinematics, downward/sawing feed
-│   │   ├── holding_arm.py          # Person B: Gripper kinematics, grasp regulation
-│   │   └── tomato_fem.py           # Person A: PhysX FEM TetMesh asset & tearing schema
+│   │   ├── cutting_arm.py          # Shahd: Knife kinematics, downward/sawing feed
+│   │   ├── holding_arm.py          # Ahmed: Gripper kinematics, grasp regulation
+│   │   └── tomato_fem.py           # Shahd: PhysX FEM TetMesh asset & tearing schema
 │   ├── bimanual_cutting_env.py     # Week 5 Integration: Assembles cutting + holding
 │   └── bimanual_cutting_cfg.py     # Joint scene configuration (dual arms, board, sensors)
 ├── controllers/
-│   ├── slicing_impedance.py        # Person A: 1 kHz variable Z-impedance (K_z, D_z)
-│   └── holding_compliance.py       # Person B: Grasp compliance & slip prevention
+│   ├── slicing_impedance.py        # Shahd: 1 kHz variable Z-impedance (K_z, D_z)
+│   └── holding_compliance.py       # Ahmed: Grasp compliance & slip prevention
 ├── rewards/
-│   ├── slicing_rewards.py          # Person A: R_pen, R_slicing, P_crush, P_slam
-│   └── holding_rewards.py          # Person B: P_sync, P_bruise, P_slip
+│   ├── slicing_rewards.py          # Shahd: R_pen, R_slicing, P_crush, P_slam
+│   └── holding_rewards.py          # Ahmed: P_sync, P_bruise, P_slip
 ├── observations/
-│   └── state_manager.py            # Person B: Assembles 33D observation vector
+│   └── state_manager.py            # Ahmed: Assembles 33D observation vector
 └── train_bimanual.py               # Combined SkRL PPO execution script with WandB
 ```
 
@@ -162,9 +161,9 @@ Every section of the final publication has a primary owner, ensuring equal 50/50
 | Section | Manuscript Heading | Primary Writer | Supporting Reviewer | Key Figures / Tables Contributed |
 | :---: | :--- | :---: | :---: | :--- |
 | **I** | **Introduction** | **Both** | Advisor (Prof. Shan An) | Fig. 1: Bimanual DOM System Architecture |
-| **II** | **Related Work** | **Person B** | Person A | Comparative taxonomy table (DOM & Food Robotics) |
-| **III** | **Deformable Mechanics & Tearing** | **Person A** | Person B | Fig. 2: 4-Phase cutting force curve & FEM stress fields |
-| **IV** | **System Architecture & Control** | **Person B** | Person A | Fig. 3: Control handoff & visuo-tactile sensing loop |
+| **II** | **Related Work** | **Ahmed** | Shahd | Comparative taxonomy table (DOM & Food Robotics) |
+| **III** | **Deformable Mechanics & Tearing** | **Shahd** | Ahmed | Fig. 2: 4-Phase cutting force curve & FEM stress fields |
+| **IV** | **System Architecture & Control** | **Ahmed** | Shahd | Fig. 3: Control handoff & tactile grasp loop |
 | **V** | **MDP Problem Formulation** | **Both** | Advisor | Formal State ($\mathbb{R}^{33}$), Action ($\mathbb{R}^6$), and Reward tables |
 | **VI** | **Experiments & Ablations** | **Both** | Advisor | Fig. 4: WandB PPO convergence curves, cut cross-sections, crush-rate vs. baseline table |
 | **VII**| **Conclusion & Future Work** | **Both** | Advisor | Final summary & Sim-to-Real transition |
@@ -173,14 +172,14 @@ Every section of the final publication has a primary owner, ensuring equal 50/50
 
 ## 6. Day 1 Immediate Action Checklist
 
-### Person A (Slicing Arm & Fracture Lead)
+### Shahd (Slicing Arm & Fracture Lead)
 1. Initialize local Git branch: `git checkout -b dev/cutting-arm`.
 2. Install 3D meshing libraries: `pip install gmsh trimesh`.
 3. Obtain a high-resolution 3D surface mesh of a tomato (`.obj` or `.stl`).
 4. Write a standalone Python script using Gmsh to generate the volumetric solid tetrahedral mesh (`tomato.msh`).
 5. Open Isaac Sim and mount the knife CAD model onto the robot flange to verify tool center point (TCP) transforms.
 
-### Person B (Holding Arm, Perception & Coordination Lead)
+### Ahmed (Holding Arm, Tactile Hardware & Coordination Lead)
 1. Initialize local Git branch: `git checkout -b dev/holding-arm`.
 2. Install RL and experiment logging libraries: `pip install skrl["torch"] wandb hydra-core`.
 3. Set up a free account on [wandb.ai](https://wandb.ai) and run `wandb login`.
