@@ -28,14 +28,14 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
 ```
                         OPTION A: BIMANUAL SUBSYSTEM DECOUPLING
 ┌──────────────────────────────────────────────────┐  ┌──────────────────────────────────────────────────┐
-│       SHAHD: SLICING ARM & FRACTURE LEAD         │  │    AHMED: HOLDING ARM & TACTILE HARDWARE LEAD    │
+│       SHAHD: SLICING ARM & FRACTURE LEAD         │  │    AHMED: HOLDING ARM & PROPRIOCEPTIVE LEAD      │
 ├──────────────────────────────────────────────────┤  ├──────────────────────────────────────────────────┤
 │ • Knife End-Effector & URDF attachment           │  │ • Stabilizing Gripper / Fingertip End-Effector   │
-│ • Volumetric TetMesh & PhysX FEM tearing         │  │ • Tactile sensing hardware (rigid-flex / TacEdge)│
+│ • Volumetric TetMesh & PhysX FEM tearing         │  │ • 1 kHz torque force reconstruction (F_ext)      │
 │ • 4-Phase Cutting Force Math (Skin → Pulp → Board│  │ • Soft-body grasp compliance (prevent bruising)  │
 │ • Slicing MDP: v_slice, Δv_z, Z-impedance        │  │ • Tangential slip prevention under blade sawing  │
 │ • Slicing Reward: R_pen, R_slicing, P_slam       │  │ • Holding Sync MDP: Δx_hold, Δy_hold, F_hold      │
-│ • Macro pre-contact planning (MoveIt 2)          │  │ • 1 kHz grasp compliance & slip arrest loop      │
+│ • Macro pre-contact planning (MoveIt 2)          │  │ • 1 kHz joint torque compliance & slip arrest    │
 │                                                  │  │                                                  │
 │ [Unit Test: Slices a tomato clamped to a table]  │  │ [Unit Test: Holds tomato under disturbance force]│
 └────────────────────────┬─────────────────────────┘  └────────────────────────┬─────────────────────────┘
@@ -76,13 +76,13 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
  
 ---
  
-### 2.2 Ahmed: Compliant Holding Arm, Tactile Hardware & Coordination Lead
+### 2.2 Ahmed: Compliant Holding Arm, Proprioceptive Compliance & Real-Time Control Lead
  
-* **Primary Engineering Mission:** Stabilize the deformable tomato against the knife's lateral sawing friction and downward penetration forces, ensuring the fruit does not slip, roll, or suffer grasp bruising, while designing/integrating on-tool tactile sensing hardware (TacEdge / rigid-flex PCB) and closing the 1 kHz grasp compliance loop.
-* **Daily Development Stack:** NVIDIA Isaac Lab, PyTorch, SkRL, WandB, KiCad/Altium, STM32CubeIDE, ROS 2, CAN-FD.
+* **Primary Engineering Mission:** Stabilize the deformable tomato against the knife's lateral sawing friction and downward penetration forces, ensuring the fruit does not slip, roll, or suffer grasp bruising, using Franka's native 1 kHz joint torque sensing ($\boldsymbol{\tau}_{ext}$), task-space force reconstruction ($\mathbf{F}_{ext}$), and closed-loop grasp compliance.
+* **Daily Development Stack:** NVIDIA Isaac Lab, PyTorch, SkRL, WandB, ROS 2 (Jazzy), `libfranka` (C++), `PREEMPT_RT` Linux.
 * **Key Theoretical & Mathematical Responsibilities:**
-  1. **Compliant Grasping Mechanics & Tactile Hardware:**
-     - Design rigid-flex PCB tactile fingertip array (or sensorized gripper fingers) using STM32 + CAN-FD streaming at 1 kHz.
+  1. **Proprioceptive Contact Force Reconstruction & Grasp Compliance:**
+     - Reconstruct task-space contact wrench from Franka's native joint torque sensors: $\mathbf{F}_{ext} = (\mathbf{J}^T)^\dagger \boldsymbol{\tau}_{ext} \in \mathbb{R}^3$.
      - Regulate holding normal force $F_{hold}$ strictly within the non-bruising, non-slip operating window:
        $$F_{slip} < F_{hold} < F_{bruise} \quad (1.5\text{ N} < F_{hold} < 5.0\text{ N})$$
      - Counteract lateral blade drag force $F_x$ via tangential friction modeling ($\mu_{contact} \approx 0.45$) and active micro-adjustments ($\Delta x_{hold}$).
@@ -90,7 +90,7 @@ Instead, this workflow uses **Subsystem Decoupling and Single-Arm Mocking**:
      - Dual-arm kinematics: $[\mathbf{q}_{dual}, \dot{\mathbf{q}}_{dual}] \in \mathbb{R}^{14}$.
      - Tool state: $[\mathbf{p}_{knife}, \mathbf{v}_{knife}, \boldsymbol{\omega}_{knife}] \in \mathbb{R}^9$.
      - Tomato state: $[\mathbf{p}_{tomato}, \mathbf{R}_{tomato}] \in \mathbb{R}^7$.
-     - Tactile feedback: 3-axis normal/shear wrench + slip metric.
+     - Proprioceptive force feedback: 3D reconstructed contact wrench $\mathbf{F}_{ext} \in \mathbb{R}^3$.
   3. **Holding Action Control ($\mathcal{A}_{hold} \subset \mathbb{R}^2$):**
      - Planar holding position adjustments: $\Delta x_{hold}, \Delta y_{hold} \in [-2, +2]\text{ mm}$.
   4. **Holding & Coordination Rewards:**
@@ -163,7 +163,7 @@ Every section of the final publication has a primary owner, ensuring equal 50/50
 | **I** | **Introduction** | **Both** | Advisor (Prof. Shan An) | Fig. 1: Bimanual DOM System Architecture |
 | **II** | **Related Work** | **Ahmed** | Shahd | Comparative taxonomy table (DOM & Food Robotics) |
 | **III** | **Deformable Mechanics & Tearing** | **Shahd** | Ahmed | Fig. 2: 4-Phase cutting force curve & FEM stress fields |
-| **IV** | **System Architecture & Control** | **Ahmed** | Shahd | Fig. 3: Control handoff & tactile grasp loop |
+| **IV** | **System Architecture & Control** | **Ahmed** | Shahd | Fig. 3: Control handoff & proprioceptive grasp loop |
 | **V** | **MDP Problem Formulation** | **Both** | Advisor | Formal State ($\mathbb{R}^{33}$), Action ($\mathbb{R}^6$), and Reward tables |
 | **VI** | **Experiments & Ablations** | **Both** | Advisor | Fig. 4: WandB PPO convergence curves, cut cross-sections, crush-rate vs. baseline table |
 | **VII**| **Conclusion & Future Work** | **Both** | Advisor | Final summary & Sim-to-Real transition |
