@@ -1,0 +1,732 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="ar5_o6_right">
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0" />
+  </material>
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0" />
+  </material>
+  <material name="green">
+    <color rgba="0.0 0.8 0.0 1.0" />
+  </material>
+  <material name="grey">
+    <color rgba="0.2 0.2 0.2 1.0" />
+  </material>
+  <material name="orange">
+    <color rgba="1.0 0.423529411765 0.0392156862745 1.0" />
+  </material>
+  <material name="brown">
+    <color rgba="0.870588235294 0.811764705882 0.764705882353 1.0" />
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0" />
+  </material>
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0" />
+  </material>
+  <material name="silver">
+    <color rgba="0.5 0.5 0.52 1.0" />
+  </material>
+  <material name="BlackAccent">
+    <color rgba="0.05 0.05 0.05 1.0" />
+  </material>
+  <material name="Beige">
+    <color rgba="1.0 0.784 0.5765 1.0" />
+  </material>
+  <link name="world">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0001 0.0001 0.0001" />
+      </geometry>
+      <material name="white" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0001 0.0001 0.0001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="fixed" type="fixed">
+    <parent link="world" />
+    <child link="AR5_5_07R_W4C4A2_base" />
+  </joint>
+  <link name="AR5_5_07R_W4C4A2_base">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_base.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+      <material name="white" />
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_base.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_1" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_base" />
+    <child link="AR5_5_07R_W4C4A2_link1" />
+    <limit effort="108" lower="-3.1067" upper="3.1067" velocity="3.0543261909900763" />
+    <axis xyz="0 0 1" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+  </joint>
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="AR5_5_07R_W4C4A2_joint_8">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link1">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="2.683" />
+      <inertia ixx="0.00493673" ixy="0.00000160" ixz="-0.00000198" iyy="0.00452344" iyz="0.00000020" izz="0.00432910" />
+      <origin rpy="0 0 0" xyz="-1e-06 0.000621 0.167909" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_2" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_link1" />
+    <child link="AR5_5_07R_W4C4A2_link2" />
+    <limit effort="108" lower="-2.0944" upper="2.0944" velocity="3.0543261909900763" />
+    <axis xyz="0 1 0" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.1745" />
+  </joint>
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="xmate_joint_2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link2">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="2.3" />
+      <inertia ixx="0.01151906" ixy="0.00000246" ixz="0.00000055" iyy="0.00993335" iyz="-0.00082477" izz="0.00435237" />
+      <origin rpy="0 0 0" xyz="2e-05 0.003081 0.10298600000000001" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link2.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_3" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_link2" />
+    <child link="AR5_5_07R_W4C4A2_link3" />
+    <limit effort="66" lower="-3.1067" upper="3.1067" velocity="4.71238898038469" />
+    <axis xyz="0 0 1" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.314" />
+  </joint>
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="xmate_joint_3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link3">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="1.862" />
+      <inertia ixx="0.00519617" ixy="-0.00001270" ixz="0.00035675" iyy="0.00470378" iyz="-0.00003329" izz="0.00266768" />
+      <origin rpy="0 0 0" xyz="0.007089000000000001 0.000655 -0.016514" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link3.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_4" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_link3" />
+    <child link="AR5_5_07R_W4C4A2_link4" />
+    <limit effort="66" lower="-1.0472" upper="2.5307" velocity="5.235987755982989" />
+    <axis xyz="0 1 0" />
+    <origin rpy="0 0 0" xyz="0.01 0.0 0.0" />
+  </joint>
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="xmate_joint_4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link4">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="1.234" />
+      <inertia ixx="0.00389593" ixy="0.00004675" ixz="-0.00016955" iyy="0.00308688" iyz="-0.00046659" izz="0.00188378" />
+      <origin rpy="0 0 0" xyz="-0.007832 0.004208999999999999 0.073402" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_5" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_link4" />
+    <child link="AR5_5_07R_W4C4A2_link5" />
+    <limit effort="19" lower="-3.1067" upper="3.1067" velocity="4.1887902047863905" />
+    <axis xyz="0 0 1" />
+    <origin rpy="0 0 0" xyz="-0.01 0.0 0.272" />
+  </joint>
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="xmate_joint_5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link5">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="1.328" />
+      <inertia ixx="0.00284294" ixy="-0.00001276" ixz="0.00001949" iyy="0.00221035" iyz="-0.00002134" izz="0.00185120" />
+      <origin rpy="0 0 0" xyz="0.000268 -0.0014750000000000002 -0.084143" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link5.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_6" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_link5" />
+    <child link="AR5_5_07R_W4C4A2_link6" />
+    <limit effort="19" lower="-1.0472" upper="1.0472" velocity="4.1887902047863905" />
+    <axis xyz="0 1 0" />
+    <origin rpy="0.0 0.0 0" xyz="0.0 0.0 0.0" />
+  </joint>
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="xmate_joint_6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link6">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="0.93" />
+      <inertia ixx="0.00072274" ixy="0.00000186" ixz="-0.00000123" iyy="0.00087867" iyz="0.00000057" izz="0.00092938" />
+      <origin rpy="0 0 0" xyz="0.0051719999999999995 -0.000614 5.5e-05" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link6.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </collision>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_joint_7" type="revolute">
+    <parent link="AR5_5_07R_W4C4A2_link6" />
+    <child link="AR5_5_07R_W4C4A2_link7" />
+    <limit effort="19" lower="-1.0472" upper="1.0472" velocity="4.1887902047863905" />
+    <axis xyz="1 0 0" />
+    <origin rpy="0.0 0.0 0" xyz="0.0 0.0 0.0" />
+  </joint>
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="xmate_joint_7">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <link name="AR5_5_07R_W4C4A2_link7">
+    <visual>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link7.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+      <material name="white" />
+    </visual>
+    <inertial>
+      <mass value="0.332" />
+      <inertia ixx="0.00052121" ixy="0.00000020" ixz="0.00003808" iyy="0.00079394" iyz="0.00000098" izz="0.00045990" />
+      <origin rpy="0 0 0" xyz="-0.002716 3.1e-05 0.054983" />
+    </inertial>
+    <collision>
+      <geometry>
+        <mesh filename="AR5_right_meshes/AR5_5_07R_W4C4A2_link7.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+    </collision>
+  </link>
+  <link name="AR5_5_07R_W4C4A2_tcp">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0001 0.0001 0.0001" />
+      </geometry>
+      <material name="white" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0001 0.0001 0.0001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.0" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <joint name="AR5_5_07R_W4C4A2_tcp_joint" type="fixed">
+    <parent link="AR5_5_07R_W4C4A2_link7" />
+    <child link="AR5_5_07R_W4C4A2_tcp" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.097" />
+  </joint>
+  <transmission name="trans_thumb_cmc_roll">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rh_thumb_cmc_roll">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_thumb_cmc_roll">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>0.0084</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="trans_index_mcp_pitch">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rh_index_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_index_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>0.0082</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="trans_middle_mcp_pitch">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rh_middle_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_middle_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>0.0082</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="trans_ring_mcp_pitch">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rh_ring_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_ring_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>0.0082</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="trans_pinky_mcp_pitch">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rh_pinky_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_pinky_mcp_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>0.0082</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <transmission name="trans_thumb_cmc_pitch">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rh_thumb_cmc_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor_thumb_cmc_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>0.0144</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <mujoco>
+    <compiler meshdir="L6_right_meshes/" balanceinertia="true" discardvisual="false" />
+    <default>
+      <joint armature="3.4707e-08" damping="5.0" frictionloss="0.5" />
+    </default>
+    <equality>
+      <joint name="rh_couple_index" joint1="rh_index_dip" joint2="rh_index_mcp_pitch" polycoef="0 1.125676 0 0 0 0" />
+      <joint name="rh_couple_middle" joint1="rh_middle_dip" joint2="rh_middle_mcp_pitch" polycoef="0 1.125676 0 0 0 0" />
+      <joint name="rh_couple_ring" joint1="rh_ring_dip" joint2="rh_ring_mcp_pitch" polycoef="0 1.125676 0 0 0 0" />
+      <joint name="rh_couple_pinky" joint1="rh_pinky_dip" joint2="rh_pinky_mcp_pitch" polycoef="0 1.125676 0 0 0 0" />
+      <joint name="rh_couple_thumb" joint1="rh_thumb_dip" joint2="rh_thumb_cmc_pitch" polycoef="0 1.226495 0 0 0 0" />
+    </equality>
+  </mujoco>
+  <gazebo reference="rh_hand_base_link">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="rh_thumb_distal">
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="rh_index_distal">
+    <mu1>1.1</mu1>
+    <mu2>1.1</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="rh_middle_distal">
+    <mu1>1.1</mu1>
+    <mu2>1.1</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="rh_ring_distal">
+    <mu1>1.1</mu1>
+    <mu2>1.1</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="rh_pinky_distal">
+    <mu1>1.1</mu1>
+    <mu2>1.1</mu2>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <joint name="rk_adapter_joint" type="fixed">
+    <parent link="AR5_5_07R_W4C4A2_tcp" />
+    <child link="rh_rk_adapter" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="rh_rk_adapter">
+    <visual>
+      <origin xyz="-0.0315 0.0315 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="../adapter/rk_adapter.STL" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="dark_grey">
+        <color rgba="0.15 0.15 0.17 1.0" />
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.05" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <link name="rh_hand_base_link">
+    <inertial>
+      <origin xyz="-0.00160320773490556 0.000358462699237561 0.0538002704027215" rpy="0 0 0" />
+      <mass value="0.06740077960995" />
+      <inertia ixx="5.22359941041901E-05" ixy="3.0391535852764E-07" ixz="3.88322215371643E-07" iyy="3.33473043513648E-05" iyz="-7.77555280794861E-07" izz="2.28342677422006E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/hand_base_link.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_thumb_metacarpals_base2">
+    <inertial>
+      <origin xyz="0.00162795738393507 0.00276671978336815 -0.00184227725602707" rpy="0 0 0" />
+      <mass value="0.00138591070212997" />
+      <inertia ixx="5.26294625624223E-08" ixy="-3.9288013799604E-09" ixz="2.43766268199571E-09" iyy="4.82623724532942E-08" iyz="3.71867754115443E-09" izz="2.88555522060562E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/thumb_metacarpals_base2.STL" />
+      </geometry>
+      <material name="BlackAccent" />
+    </visual>
+    </link>
+  <link name="rh_thumb_metacarpals">
+    <inertial>
+      <origin xyz="4.24920612856275E-05 -1.67885666835232E-05 0.0228341522590467" rpy="0 0 0" />
+      <mass value="0.0123381607727595" />
+      <inertia ixx="1.10292488693766E-06" ixy="-6.14241939151719E-10" ixz="1.14233108676795E-07" iyy="1.76757658485787E-06" iyz="-4.24576599367025E-10" izz="9.36348143657406E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/thumb_metacarpals.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_thumb_distal">
+    <inertial>
+      <origin xyz="-0.00413690727496815 -4.54842793429222E-07 0.0230097179163771" rpy="0 0 0" />
+      <mass value="0.00763302603723749" />
+      <inertia ixx="1.30546842791578E-06" ixy="-2.61617511029467E-12" ixz="7.19030685242407E-08" iyy="1.22457212713176E-06" iyz="1.66931068485225E-11" izz="2.7729897944409E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/thumb_distal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_index_proximal">
+    <inertial>
+      <origin xyz="-0.00208665596033792 -4.8964990644329E-06 0.0172736718900068" rpy="0 0 0" />
+      <mass value="0.00253178529301663" />
+      <inertia ixx="2.65990159539482E-07" ixy="-3.55165625722842E-11" ixz="4.31046335852167E-08" iyy="2.72915460277804E-07" iyz="1.75935978708959E-10" izz="8.56026306687528E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/index_proximal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_index_distal">
+    <inertial>
+      <origin xyz="0.00658940011630532 -4.59976557022623E-06 0.0194434136420913" rpy="0 0 0" />
+      <mass value="0.00376787129082313" />
+      <inertia ixx="3.22116619426455E-07" ixy="1.03152735699049E-11" ixz="-1.14363506430985E-07" iyy="3.65131844686317E-07" iyz="-1.97263639269362E-10" izz="1.24256890612907E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/index_distal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_middle_proximal">
+    <inertial>
+      <origin xyz="-0.00208661081773556 -4.93451838476378E-06 0.0172736805321904" rpy="0 0 0" />
+      <mass value="0.00253175497594429" />
+      <inertia ixx="2.65989683690695E-07" ixy="-3.58343951791586E-11" ixz="4.31048601085216E-08" iyy="2.72915006047006E-07" iyz="1.75718024412593E-10" izz="8.56020467202518E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/middle_proximal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_middle_distal">
+    <inertial>
+      <origin xyz="0.00658940304809306 -4.5885743593238E-06 0.0194434523296449" rpy="0 0 0" />
+      <mass value="0.00376786259758948" />
+      <inertia ixx="3.221153658306E-07" ixy="1.02639617308432E-11" ixz="-1.14363547272711E-07" iyy="3.65130723083104E-07" iyz="-1.96904618797577E-10" izz="1.24256787913797E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/middle_distal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_ring_proximal">
+    <inertial>
+      <origin xyz="-0.00208654311325356 -4.98538564003281E-06 0.0172736743497407" rpy="0 0 0" />
+      <mass value="0.00253170963529411" />
+      <inertia ixx="2.6598913795678E-07" ixy="-3.62757108675266E-11" ixz="4.31050611555507E-08" iyy="2.72914417061517E-07" iyz="1.75554984053478E-10" izz="8.56012458677515E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/ring_proximal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_ring_distal">
+    <inertial>
+      <origin xyz="0.00658940273069729 -4.56628863591824E-06 0.0194435005686854" rpy="0 0 0" />
+      <mass value="0.0037678395356105" />
+      <inertia ixx="3.22112632437858E-07" ixy="1.01848408913558E-11" ixz="-1.1436348915342E-07" iyy="3.65128262095686E-07" iyz="-1.96145632992445E-10" izz="1.24256284608064E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/ring_distal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_pinky_proximal">
+    <inertial>
+      <origin xyz="-0.00208649034130813 -5.02314582560837E-06 0.0172736680793697" rpy="0 0 0" />
+      <mass value="0.00253167400540778" />
+      <inertia ixx="2.65988718820404E-07" ixy="-3.66012295280295E-11" ixz="4.31052220484445E-08" iyy="2.72913936904813E-07" iyz="1.75447396222308E-10" izz="8.56006424720129E-08" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/pinky_proximal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <link name="rh_pinky_distal">
+    <inertial>
+      <origin xyz="0.00658940431519205 -4.55268314210333E-06 0.0194435341098305" rpy="0 0 0" />
+      <mass value="0.00376782669873412" />
+      <inertia ixx="3.22111112339498E-07" ixy="1.01707985908333E-11" ixz="-1.14363524419061E-07" iyy="3.65126916899176E-07" iyz="-1.95589215866356E-10" izz="1.24256004854426E-07" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/pinky_distal.STL" />
+      </geometry>
+      <material name="silver" />
+    </visual>
+    </link>
+  <joint name="rh_thumb_cmc_yaw" type="revolute">
+    <origin xyz="0.011508 0.022975 0.032794" rpy="0 0 0" />
+    <parent link="rh_hand_base_link" />
+    <child link="rh_thumb_metacarpals_base2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="1.36" effort="100" velocity="1" />
+  </joint>
+  <joint name="rh_thumb_cmc_pitch" type="revolute">
+    <origin xyz="0.0061649 0.010678 -0.004891" rpy="0 -1.1529 -2.0944" />
+    <parent link="rh_thumb_metacarpals_base2" />
+    <child link="rh_thumb_metacarpals" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="0.58" effort="100" velocity="1" />
+  </joint>
+  <joint name="rh_thumb_ip" type="revolute">
+    <origin xyz="0.0037776 0 0.045368" rpy="0 0 0" />
+    <parent link="rh_thumb_metacarpals" />
+    <child link="rh_thumb_distal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.08" effort="100" velocity="1" />
+    <mimic joint="rh_thumb_cmc_pitch" multiplier="1.86" offset="0" />
+  </joint>
+  <joint name="rh_index_mcp_pitch" type="revolute">
+    <origin xyz="0.0024758 0.02419 0.098779" rpy="-0.05236 0 0" />
+    <parent link="rh_hand_base_link" />
+    <child link="rh_index_proximal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.60" effort="100" velocity="1" />
+  </joint>
+  <joint name="rh_index_dip" type="revolute">
+    <origin xyz="-0.0052516 0 0.036625" rpy="0 0 0" />
+    <parent link="rh_index_proximal" />
+    <child link="rh_index_distal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.43" effort="100" velocity="1" />
+    <mimic joint="rh_index_mcp_pitch" multiplier="0.89" offset="0" />
+  </joint>
+  <joint name="rh_middle_mcp_pitch" type="revolute">
+    <origin xyz="0.00052576 0.00634 0.1027" rpy="0 0 0" />
+    <parent link="rh_hand_base_link" />
+    <child link="rh_middle_proximal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.60" effort="100" velocity="1" />
+  </joint>
+  <joint name="rh_middle_dip" type="revolute">
+    <origin xyz="-0.0052516 0 0.036625" rpy="0 0 0" />
+    <parent link="rh_middle_proximal" />
+    <child link="rh_middle_distal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.43" effort="100" velocity="1" />
+    <mimic joint="rh_middle_mcp_pitch" multiplier="0.89" offset="0" />
+  </joint>
+  <joint name="rh_ring_mcp_pitch" type="revolute">
+    <origin xyz="0.0010258 -0.011135 0.098767" rpy="0.05236 0 0" />
+    <parent link="rh_hand_base_link" />
+    <child link="rh_ring_proximal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.60" effort="100" velocity="1" />
+  </joint>
+  <joint name="rh_ring_dip" type="revolute">
+    <origin xyz="-0.0052516 0 0.036625" rpy="0 0 0" />
+    <parent link="rh_ring_proximal" />
+    <child link="rh_ring_distal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.43" effort="100" velocity="1" />
+    <mimic joint="rh_ring_mcp_pitch" multiplier="0.89" offset="0" />
+  </joint>
+  <joint name="rh_pinky_mcp_pitch" type="revolute">
+    <origin xyz="0.0024758 -0.028372 0.092741" rpy="0.087266 0 0" />
+    <parent link="rh_hand_base_link" />
+    <child link="rh_pinky_proximal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.60" effort="100" velocity="1" />
+  </joint>
+  <joint name="rh_pinky_dip" type="revolute">
+    <origin xyz="-0.0052516 0 0.036625" rpy="0 0 0" />
+    <parent link="rh_pinky_proximal" />
+    <child link="rh_pinky_distal" />
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1.43" effort="100" velocity="1" />
+    <mimic joint="rh_pinky_mcp_pitch" multiplier="0.89" offset="0" />
+  </joint>
+  <joint name="hand_mount_joint" type="fixed">
+    <parent link="rh_rk_adapter" />
+    <child link="rh_hand_base_link" />
+    <origin xyz="0 0 0.0215" rpy="0 0 1.5708" />
+  </joint>
+</robot>
