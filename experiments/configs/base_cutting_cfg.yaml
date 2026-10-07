@@ -1,0 +1,57 @@
+# Base Configuration for Isaac Lab Bimanual Tomato Slicing Task
+# DEX-ROB Lab, Tianjin University
+
+env:
+  name: "IsaacLab-TomatoSlicing-v0"
+  num_envs: 128
+  env_spacing: 1.5
+  episode_length_s: 10.0
+  decimation: 4  # 120 Hz physics / 30 Hz policy step
+
+robot:
+  left_arm:
+    type: "ARX_AR5_L6"
+    end_effector: "LinkerHand_O6"
+    usd_path: "research/simulation/assets/robots/ar5_l6/usd_clean/ar5_l6_left.usd"
+    default_joint_positions: [0.0, -0.4, 0.0, 1.2, 0.0, 0.8, 0.0]
+  right_arm:
+    type: "ARX_AR5_L6"
+    end_effector: "Instrumented_Knife"
+    usd_path: "research/simulation/assets/robots/ar5_l6/usd_clean/ar5_l6_right.usd"
+    default_joint_positions: [0.0, -0.2, 0.0, 1.0, 0.0, 0.6, 0.0]
+
+object:
+  type: "DeformableTomato"
+  model: "PhysX5_FEM_Tetrahedral"
+  youngs_modulus_nominal: 70000.0  # 70 kPa
+  poissons_ratio_nominal: 0.45
+  fracture_energy_nominal: 120.0   # J/m^2
+  friction_coefficient: 0.4
+
+domain_randomization:
+  enabled: true
+  youngs_modulus_range: [40000.0, 110000.0]
+  fracture_energy_range: [80.0, 160.0]
+  friction_range: [0.25, 0.55]
+  object_mass_range: [0.12, 0.22] # kg
+
+policy:
+  algorithm: "PPO"
+  framework: "skrl"
+  actor_hidden_dims: [256, 256, 128]
+  critic_hidden_dims: [256, 256, 128]
+  activation: "elu"
+  learning_rate: 3.0e-4
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  action_bounds:
+    residual_velocity_max: 0.05    # m/s
+    residual_stiffness_max: 150.0  # N/m
+
+rewards:
+  weight_progress: 2.0
+  weight_force_efficiency: 1.5
+  weight_crush_penalty: 5.0
+  weight_slip_penalty: 3.0
+  weight_action_smoothness: 0.1

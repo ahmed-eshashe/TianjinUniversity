@@ -1,0 +1,54 @@
+version: "1.0.0"
+project: "Autonomous Bimanual Soft-Body Slicing (Tomato Cutting RL)"
+last_updated: "2026-10-05"
+
+hypotheses:
+  - id: "H1"
+    title: "Tactile-Driven Impedance Adaptation Prevents Object Crushing"
+    statement: "Modulating knife-contact normal and tangential impedance via high-rate tactile/force feedback reduces volumetric tomato crush deformation by at least 40% compared to fixed-stiffness position control across varying tomato ripeness levels."
+    rationale: "Fixed trajectory control applies continuous downward feed regardless of skin resistance, causing high hydrostatic internal pressure and burst before fracture. Impedance control allows sawing motions to initiate shear fracture under lower normal loads."
+    independent_variables:
+      - "Control strategy (Pure Kinematic vs Open-Loop Impedance vs RL-Tuned Active Impedance)"
+      - "Tomato ripeness / elastic modulus (Firm: 120 kPa, Medium: 70 kPa, Soft: 30 kPa)"
+    dependent_variables:
+      - "Peak normal force (N)"
+      - "Max pre-fracture deformation ratio (% of diameter)"
+      - "Pulp burst / fluid leakage occurrences (%)"
+    falsification_condition: "If RL-tuned impedance control fails to reduce peak deformation by >= 30% or results in slicing stall > 20% of trials, H1 is rejected."
+    status: "PLANNED"
+    associated_experiments:
+      - "EXP-001-BASELINE-KINEMATIC"
+      - "EXP-002-IMPEDANCE-FIXED"
+      - "EXP-003-RESIDUAL-RL-TACTILE"
+
+  - id: "H2"
+    title: "Residual Policy Decoupling Accelerates Training Convergence"
+    statement: "Formulating the cutting policy as a residual Cartesian velocity and stiffness delta over a nominal kinematic sawing primitive converges in 5x fewer environment steps than end-to-end 14-DoF joint position or torque RL."
+    rationale: "Nominal sawing kinematics provide a stable global basin of attraction, constraining RL exploration strictly to micro-adjustments around the contact manifold rather than learning basic arm coordination from scratch."
+    independent_variables:
+      - "Action formulation (End-to-End Joint Velocity vs End-to-End Cartesian vs Residual-over-Primitive)"
+    dependent_variables:
+      - "Sample complexity (Environment steps to 85% success)"
+      - "Wall-clock training time (minutes on RTX 5060)"
+      - "Policy reward variance across 5 random seeds"
+    falsification_condition: "If residual formulation requires > 40% of the sample budget of end-to-end RL or achieves lower final cutting success, H2 is rejected."
+    status: "PLANNED"
+    associated_experiments:
+      - "EXP-004-E2E-JOINT-RL"
+      - "EXP-005-E2E-CARTESIAN-RL"
+      - "EXP-006-RESIDUAL-PRIMITIVE-RL"
+
+  - id: "H3"
+    title: "PhysX 5 FEM Fracture Domain Randomization Enables Zero-Shot Transfer"
+    statement: "Training in Isaac Lab with PhysX 5 FEM material parameter randomization (Young's modulus +-40%, rupture toughness +-30%, friction +-50%) produces a policy capable of zero-shot real-world transfer with >= 80% slicing success without real-world fine-tuning."
+    rationale: "Deformable food cutting failure modes in reality stem from heterogeneous toughness distribution. Exposing the policy to a broad distribution of simulated fracture thresholds forces the agent to rely on dynamic force rate-of-change feedback rather than memorized trajectory depth."
+    independent_variables:
+      - "Domain Randomization bounds (None vs Narrow +-10% vs Broad +-40%)"
+    dependent_variables:
+      - "Real-world transfer success rate (%)"
+      - "Sim-to-real transfer performance drop (% degradation)"
+    falsification_condition: "If the randomized policy achieves < 70% success on the physical AR5-L6 setup, H3 is rejected."
+    status: "PLANNED"
+    associated_experiments:
+      - "EXP-007-NO-DR-TRANSFER"
+      - "EXP-008-FULL-DR-TRANSFER"

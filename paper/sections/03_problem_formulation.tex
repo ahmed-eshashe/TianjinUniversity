@@ -1,0 +1,14 @@
+\section{Problem Formulation}
+\label{sec:problem_formulation}
+
+\subsection{Fracture and Cutting Mechanics}
+Let the deformable tomato be parameterized as a volumetric domain $\Omega \subset \mathbb{R}^3$ discretized by tetrahedral elements with material coordinates $\mathbf{X} \in \Omega_0$ and deformed coordinates $\mathbf{x}(\mathbf{X}, t) \in \Omega_t$. The deformation gradient is given by $\mathbf{F} = \frac{\partial \mathbf{x}}{\partial \mathbf{X}}$. The internal stress tensor $\boldsymbol{\sigma}$ follows a Neo-Hookean constitutive model parameterized by initial shear modulus $\mu$ and bulk modulus $\kappa$:
+\begin{equation}
+    \Psi(\mathbf{F}) = \frac{\mu}{2}(I_1 - 3 - 2\ln J) + \frac{\kappa}{2}(J - 1)^2
+\end{equation}
+where $J = \det(\mathbf{F})$ and $I_1 = \text{tr}(\mathbf{F}^T \mathbf{F})$. Rupture and cut propagation occur when the principal normal tensile stress $\sigma_{max}$ exceeds the critical rupture stress $\sigma_c$.
+
+\subsection{Continuous Markov Decision Process}
+The bimanual cutting task is modeled as a Markov Decision Process defined by the tuple $\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma \rangle$. 
+The observation vector $\mathbf{o}_t \in \mathbb{R}^{33}$ captures the tool state, measured contact wrench $\mathbf{F}_{ee}, \mathbf{M}_{ee}$, LinkerHand tactile contact signals $\mathbf{s}_{tactile}$, cutting depth progress $z_{cut}$, and previous action $\mathbf{a}_{t-1}$.
+The action space $\mathbf{a}_t \in \mathbb{R}^6$ specifies residual Cartesian velocities $\Delta \mathbf{v} \in \mathbb{R}^3$ and active Cartesian stiffness adaptations $\Delta \mathbf{K} \in \mathbb{R}^3$.

@@ -1,0 +1,11 @@
+\section{Related Work}
+\label{sec:related_work}
+
+\subsection{Robotic Slicing and Fracture Mechanics}
+Early investigations into robotic cutting primarily focused on rigid food analogs or simplified fracture approximations. Sanchez et al.~\cite{sanchez2021tacblade} demonstrated the utility of tactile feedback during cutting of bio-materials using optical tactile sensors. However, most existing works rely on single-arm setups where the object is rigidly clamped in mechanical vices, precluding natural deformation dynamics encountered during human-like holding.
+
+\subsection{Reinforcement Learning for Contact-Rich Manipulation}
+Model-free reinforcement learning, specifically Proximal Policy Optimization (PPO)~\cite{schulman2017proximal}, has achieved remarkable results in dexterous in-hand manipulation and locomotion. Nevertheless, applying end-to-end RL to cutting leads to excessive sample complexity and unsafe exploration. Residual RL frameworks~\cite{johannink2019residual} mitigate this by learning corrective actions over nominal motion primitives, which we exploit to ensure contact stability.
+
+\subsection{Simulation of Deformable Bodies and Sim-to-Real}
+Recent advancements in GPU physics simulation, notably Isaac Gym and Isaac Lab~\cite{makoviychuk2021isaac}, enable real-time simulation of thousands of parallel environments. With PhysX 5, continuum mechanics and finite element models (FEM) can be executed natively on GPU tensor memory, facilitating systematic domain randomization for sim-to-real policy transfer.

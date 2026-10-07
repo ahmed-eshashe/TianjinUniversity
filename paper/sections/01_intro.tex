@@ -1,0 +1,12 @@
+\section{Introduction}
+\label{sec:intro}
+Robotic manipulation of deformable objects (DOM) has gained substantial attention in surgical robotics, agricultural harvesting, and automated culinary preparation. Among these tasks, food slicing presents a unique scientific challenge: unlike rigid peg-in-hole assembly or non-destructive soft object grasping, cutting inherently induces irreversible structural topological fracture. 
+
+Tomatoes embody a quintessential non-linear deformable material characterized by a high-toughness, flexible outer pericarp skin enclosing soft, fluid-filled locular gel and seeds. Applying classical rigid position control drives the knife downward regardless of surface deformation, creating immense internal hydrostatic pressure that results in crushing and fluid ejection long before skin puncture. Conversely, human chefs adaptively coordinate knife sawing frequency with subtle normal force adjustments based on continuous tactile and kinesthetic feedback.
+
+In this work, we present an autonomous bimanual slicing framework that addresses these challenges through:
+\begin{enumerate}
+    \item A bimanual embodiment utilizing dual ARX AR5-L6 7-DoF arms with LinkerHand O6 adaptive fixturing and high-bandwidth instrumented cutting.
+    \item A hierarchical residual reinforcement learning (RL) policy that superimposes micro-adjustments onto a nominal Cartesian sawing trajectory.
+    \item Realistic GPU-accelerated PhysX 5 FEM deformable simulation in NVIDIA Isaac Lab with domain randomization over fracture energy and elastic moduli.
+\end{enumerate}

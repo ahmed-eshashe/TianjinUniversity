@@ -1,0 +1,166 @@
+version: 1.0.0
+project: Autonomous Bimanual Soft-Body Slicing (Tomato Cutting RL)
+last_updated: '2026-10-05'
+experiments:
+- id: EXP-001-BASELINE-KINEMATIC
+  hypothesis_id: H1
+  name: Pure Kinematic Sawing Baseline
+  description: Open-loop Cartesian sawing trajectory without active force or impedance
+    regulation.
+  status: PLANNED
+  category: BASELINE
+  algorithm: KINEMATIC_OPEN_LOOP
+  environment: IsaacLab-TomatoSlicing-v0
+  num_envs: 64
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp001_kinematic_baseline.yaml
+  primary_metric: slice_success_rate
+  target_metric_value: 0.45
+  failure_criteria: Pulp burst > 40% or tool jam > 25%
+- id: EXP-002-IMPEDANCE-FIXED
+  hypothesis_id: H1
+  name: Fixed-Gain Task-Space Impedance Control
+  description: Classic Cartesian impedance controller with hand-tuned constant stiffness
+    (Kp, Kd).
+  status: PLANNED
+  category: BASELINE
+  algorithm: CLASSICAL_IMPEDANCE
+  environment: IsaacLab-TomatoSlicing-v0
+  num_envs: 64
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp002_fixed_impedance.yaml
+  primary_metric: slice_success_rate
+  target_metric_value: 0.65
+  failure_criteria: Cutting stall on firm tomatoes or crush on soft tomatoes
+- id: EXP-003-RESIDUAL-RL-TACTILE
+  hypothesis_id: H1
+  name: Tactile-Conditioned Residual RL (Proposed Method)
+  description: PPO actor-critic network predicting residual Cartesian velocity and
+    stiffness deltas conditioned on 33D state vector including 6-axis F/T and blade
+    slip.
+  status: PLANNED
+  category: PROPOSED
+  algorithm: RESIDUAL_PPO
+  environment: IsaacLab-TomatoSlicing-v0
+  num_envs: 256
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp003_residual_rl_tactile.yaml
+  primary_metric: slice_success_rate
+  target_metric_value: 0.92
+  failure_criteria: Crush rate > 10% or training divergence
+- id: EXP-004-E2E-JOINT-RL
+  hypothesis_id: H2
+  name: End-to-End 14-DoF Joint Position RL
+  description: Monolithic PPO policy directly outputting 14 joint position targets
+    from raw state.
+  status: PLANNED
+  category: ABLATION
+  algorithm: PPO_E2E_JOINT
+  environment: IsaacLab-TomatoSlicing-v0
+  num_envs: 256
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp004_e2e_joint_rl.yaml
+  primary_metric: sample_efficiency_steps
+  target_metric_value: 20000000
+  failure_criteria: Failure to reach 50% success within 20M steps
+- id: EXP-005-E2E-CARTESIAN-RL
+  hypothesis_id: H2
+  name: End-to-End Cartesian Velocity RL (No Nominal Primitive)
+  description: PPO policy predicting Cartesian velocity from scratch without underlying
+    sawing primitive.
+  status: PLANNED
+  category: ABLATION
+  algorithm: PPO_E2E_CARTESIAN
+  environment: IsaacLab-TomatoSlicing-v0
+  num_envs: 256
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp005_e2e_cartesian_rl.yaml
+  primary_metric: sample_efficiency_steps
+  target_metric_value: 12000000
+  failure_criteria: Erratic air exploration or blade collision
+- id: EXP-006-RESIDUAL-PRIMITIVE-RL
+  hypothesis_id: H2
+  name: Residual over Kinematic Primitive RL
+  description: Evaluates sample convergence speed when residual actions are added
+    to nominal sinusoidal sawing primitive.
+  status: PLANNED
+  category: PROPOSED
+  algorithm: RESIDUAL_PPO
+  environment: IsaacLab-TomatoSlicing-v0
+  num_envs: 256
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp006_residual_primitive.yaml
+  primary_metric: sample_efficiency_steps
+  target_metric_value: 2500000
+  failure_criteria: Sample convergence > 5M steps
+- id: EXP-007-NO-DR-TRANSFER
+  hypothesis_id: H3
+  name: 'Ablation: Policy Trained Without Domain Randomization'
+  description: Residual RL policy trained on single nominal tomato stiffness (Young's
+    modulus = 70 kPa, friction = 0.4).
+  status: PLANNED
+  category: ABLATION
+  algorithm: RESIDUAL_PPO
+  environment: IsaacLab-TomatoSlicing-FixedPhysics-v0
+  num_envs: 256
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp007_no_dr.yaml
+  primary_metric: zero_shot_transfer_success
+  target_metric_value: 0.5
+  failure_criteria: Failure on real tomatoes differing from nominal stiffness
+- id: EXP-008-FULL-DR-TRANSFER
+  hypothesis_id: H3
+  name: Full Domain Randomization of PhysX 5 FEM Parameters
+  description: Residual RL trained with +-40% Young's modulus, +-30% fracture energy,
+    and +-50% friction.
+  status: PLANNED
+  category: PROPOSED
+  algorithm: RESIDUAL_PPO
+  environment: IsaacLab-TomatoSlicing-FullDR-v0
+  num_envs: 256
+  seeds:
+  - 42
+  - 100
+  - 2026
+  - 777
+  - 999
+  config_path: experiments/configs/exp008_full_dr.yaml
+  primary_metric: zero_shot_transfer_success
+  target_metric_value: 0.85
+  failure_criteria: Transfer success < 70%
+

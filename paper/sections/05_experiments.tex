@@ -1,0 +1,22 @@
+\section{Experimental Setup}
+\label{sec:experiments}
+
+\subsection{Simulation Environment in Isaac Lab}
+We instantiate a bimanual cutting workstation in NVIDIA Isaac Lab atop Isaac Sim 6.1.0. The left arm houses an ARX AR5-L6 7-DoF manipulator with the LinkerHand O6 5-finger dexterous hand. The right arm controls the instrumented slicing knife. Deformable tomatoes are simulated using tetrahedral meshes solved via PhysX 5 FEM on GPU tensor cores. 
+
+\subsection{Domain Randomization Parameters}
+To bridge the sim-to-real gap, we apply domain randomization across key mechanical parameters:
+\begin{itemize}
+    \item Tomato Young's Modulus $E \sim \mathcal{U}(30\,\text{kPa}, 150\,\text{kPa})$.
+    \item Surface friction coefficient $\mu \sim \mathcal{U}(0.2, 0.6)$.
+    \item Puncture rupture stress $\sigma_c \sim \mathcal{U}(80\,\text{kPa}, 180\,\text{kPa})$.
+    \item Random initial object pose offsets $\Delta \mathbf{p} \sim \mathcal{N}(\mathbf{0}, (5\,\text{mm})^2 \mathbf{I})$.
+\end{itemize}
+
+\subsection{Baseline Methods for Comparison}
+We compare the proposed tactile residual RL policy against:
+\begin{enumerate}
+    \item \textbf{Kinematic Sawing}: Fixed open-loop trajectory without force feedback (\texttt{EXP-001}).
+    \item \textbf{Fixed Impedance Control}: Classic Cartesian impedance with hand-tuned constant stiffness (\texttt{EXP-002}).
+    \item \textbf{End-to-End Joint RL}: Monolithic 14-DoF PPO policy learning from scratch without kinematic primitive guidance (\texttt{EXP-004}).
+\end{enumerate}

@@ -1,0 +1,83 @@
+version: "1.0.0"
+project: "Autonomous Bimanual Soft-Body Slicing (Tomato Cutting RL)"
+last_updated: "2026-10-07"
+
+project_overview:
+  institution: "Tianjin University (天津大学)"
+  laboratory: "DEX-ROB Lab, School of Electrical & Automation Engineering"
+  advisor: "Prof. Shan An (安山)"
+  lead_researchers:
+    - "Ahmed (Holding Arm & Sim-to-Real Control)"
+    - "Shahd (Slicing Arm & Fracture Mechanics)"
+  current_phase: "SPRINT_1_KINEMATIC_TOOLING_AND_PROPRIOCEPTIVE_OBSERVER"
+  target_venue: "IEEE ICRA 2028 (First Submission Deadline: 2027-09-15)"
+
+milestones:
+  - id: "M1"
+    title: "Robot Asset Stabilization & Kinematic Teleop Verification"
+    target_date: "2026-10-13"
+    status: "COMPLETED"
+    assigned_agent: "simulation_agent"
+    progress_percent: 100
+
+  - id: "M2"
+    title: "Manipulator Jacobian & 1 kHz Proprioceptive Contact Wrench Observer"
+    target_date: "2026-11-17"
+    status: "IN_PROGRESS"
+    assigned_agent: "rl_agent"
+    progress_percent: 60
+
+  - id: "M3"
+    title: "Decoupled Single-Arm Holding RL under Synthetic Sawing Disturbance"
+    target_date: "2027-01-12"
+    status: "PLANNED"
+    assigned_agent: "rl_agent"
+    progress_percent: 0
+
+  - id: "M4"
+    title: "Winter GPU Simulation Sprint & Eureka Automated Reward Optimization"
+    target_date: "2027-02-16"
+    status: "PLANNED"
+    assigned_agent: "training_agent"
+    progress_percent: 0
+
+  - id: "M5"
+    title: "Bimanual Isaac Lab Sim & Baseline Benchmarks (EXP-001..006) [Internal Mid-Term Checkpoint]"
+    target_date: "2027-03-31"
+    status: "PLANNED"
+    assigned_agent: "simulation_agent"
+    progress_percent: 0
+
+  - id: "M6"
+    title: "Dual AR5-L6 Real-Time Testbed & 1 kHz CAN Bus Commissioning"
+    target_date: "2027-06-08"
+    status: "PLANNED"
+    assigned_agent: "ros_agent"
+    progress_percent: 0
+
+  - id: "M7"
+    title: "Sim-to-Real Domain Randomization & 30-Tomato Physical Trials (EXP-007..008)"
+    target_date: "2027-08-10"
+    status: "PLANNED"
+    assigned_agent: "analysis_agent"
+    progress_percent: 0
+
+  - id: "M8"
+    title: "IEEE ICRA 2028 Camera-Ready Manuscript & Video Submission [First Publication Deadline]"
+    target_date: "2027-09-15"
+    status: "PLANNED"
+    assigned_agent: "paper_agent"
+    progress_percent: 0
+
+active_blockers: []
+
+recent_activities:
+  - date: "2026-10-07"
+    agent: "research_lead"
+    action: "Calibrated 49-week master research roadmap, resolved calendar discrepancies, and established Dual-Gate milestone strategy (Gate 1: 2027-03-31, Gate 2: 2027-09-15)."
+  - date: "2026-10-05"
+    agent: "simulation_agent"
+    action: "Stabilized ARX AR5-L6 and LinkerHand O6 USD asset conditioning (armature=0.05/0.005) and verified active teleop."
+  - date: "2026-10-05"
+    agent: "research_lead"
+    action: "Initialized multi-agent architecture, shared research state, and AGENTS.md constitution."

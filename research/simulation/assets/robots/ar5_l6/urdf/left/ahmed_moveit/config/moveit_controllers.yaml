@@ -1,0 +1,32 @@
+# MoveIt uses this configuration for controller management
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - arm_controller
+    - hand_controller
+
+  arm_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - AR5_5_07L_W4C4A2_joint_1
+      - AR5_5_07L_W4C4A2_joint_2
+      - AR5_5_07L_W4C4A2_joint_3
+      - AR5_5_07L_W4C4A2_joint_4
+      - AR5_5_07L_W4C4A2_joint_5
+      - AR5_5_07L_W4C4A2_joint_6
+      - AR5_5_07L_W4C4A2_joint_7
+  hand_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - lh_index_mcp_pitch
+      - lh_middle_mcp_pitch
+      - lh_pinky_mcp_pitch
+      - lh_ring_mcp_pitch
+      - lh_thumb_cmc_yaw
+      - lh_thumb_cmc_pitch

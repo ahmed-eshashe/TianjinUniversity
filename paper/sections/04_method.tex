@@ -1,0 +1,19 @@
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Hierarchical Vision-Tactile Architecture}
+Our architecture operates across two coupled temporal layers:
+\begin{enumerate}
+    \item \textbf{High-Level Kinematic Sawing Primitive ($30\,\text{Hz}$)}: Generates a baseline sinusoidal trajectory along the knife sawing axis $x$ and a nominal downward feed rate along $z$:
+    \begin{equation}
+        \mathbf{v}_{nom}(t) = [A \omega \cos(\omega t), 0, -v_{feed}]^T
+    \end{equation}
+    \item \textbf{Low-Level Residual Impedance Policy ($1\,\text{kHz}$)}: Evaluates policy $\pi_\theta(\mathbf{a}_t \mid \mathbf{o}_t)$ to output $\Delta \mathbf{v}_t$ and stiffness adjustment $\Delta \mathbf{K}_t$, producing the commanded end-effector velocity $\mathbf{v}_{cmd} = \mathbf{v}_{nom} + \Delta \mathbf{v}_t$.
+\end{enumerate}
+
+\subsection{Reward Function Design}
+The composite scalar reward balances cutting throughput against crushing prevention:
+\begin{equation}
+    R_t = w_{p} R_{prog} + w_{e} \frac{|\dot{x}_{saw}|}{F_{z} + \epsilon} - w_{c} \mathbb{I}_{[\epsilon_{strain} > \epsilon_{crit}]} - w_{s} \|\mathbf{a}_t - \mathbf{a}_{t-1}\|^2
+\end{equation}
+where the force-efficiency ratio explicitly rewards shear sawing motion while penalizing excessive downward normal force $F_z$.

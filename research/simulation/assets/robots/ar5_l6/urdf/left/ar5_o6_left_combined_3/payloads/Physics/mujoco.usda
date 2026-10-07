@@ -1,0 +1,292 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "ar5_o6_left"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "ar5_o6_left"
+{
+    over "Physics"
+    {
+        over "AR5_5_07L_W4C4A2_joint_1" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_2" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_3" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_4" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_5" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_6" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_7" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_thumb_cmc_yaw" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_thumb_cmc_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_thumb_ip" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_index_mcp_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_index_dip" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_middle_mcp_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_middle_dip" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_ring_mcp_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_ring_dip" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_pinky_mcp_pitch" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "lh_pinky_dip" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_1_actuator"
+        {
+            uniform double mjc:forceRange:max = 108
+            uniform double mjc:forceRange:min = -108
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_1>
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_2_actuator"
+        {
+            uniform double mjc:forceRange:max = 108
+            uniform double mjc:forceRange:min = -108
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_2>
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_3_actuator"
+        {
+            uniform double mjc:forceRange:max = 66
+            uniform double mjc:forceRange:min = -66
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_3>
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_4_actuator"
+        {
+            uniform double mjc:forceRange:max = 66
+            uniform double mjc:forceRange:min = -66
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_4>
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_5_actuator"
+        {
+            uniform double mjc:forceRange:max = 19
+            uniform double mjc:forceRange:min = -19
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_5>
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_6_actuator"
+        {
+            uniform double mjc:forceRange:max = 19
+            uniform double mjc:forceRange:min = -19
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_6>
+        }
+
+        def MjcActuator "AR5_5_07L_W4C4A2_joint_7_actuator"
+        {
+            uniform double mjc:forceRange:max = 19
+            uniform double mjc:forceRange:min = -19
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/AR5_5_07L_W4C4A2_joint_7>
+        }
+
+        def MjcActuator "lh_thumb_cmc_yaw_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_thumb_cmc_yaw>
+        }
+
+        def MjcActuator "lh_thumb_cmc_pitch_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_thumb_cmc_pitch>
+        }
+
+        def MjcActuator "lh_thumb_ip_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_thumb_ip>
+        }
+
+        def MjcActuator "lh_index_mcp_pitch_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_index_mcp_pitch>
+        }
+
+        def MjcActuator "lh_index_dip_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_index_dip>
+        }
+
+        def MjcActuator "lh_middle_mcp_pitch_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_middle_mcp_pitch>
+        }
+
+        def MjcActuator "lh_middle_dip_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_middle_dip>
+        }
+
+        def MjcActuator "lh_ring_mcp_pitch_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_ring_mcp_pitch>
+        }
+
+        def MjcActuator "lh_ring_dip_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_ring_dip>
+        }
+
+        def MjcActuator "lh_pinky_mcp_pitch_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_pinky_mcp_pitch>
+        }
+
+        def MjcActuator "lh_pinky_dip_actuator"
+        {
+            uniform double mjc:forceRange:max = 100
+            uniform double mjc:forceRange:min = -100
+            custom rel mjc:target
+            append rel mjc:target = </ar5_o6_left/Physics/lh_pinky_dip>
+        }
+    }
+}
+

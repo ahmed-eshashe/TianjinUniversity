@@ -1,0 +1,45 @@
+\documentclass[letterpaper, 10 pt, conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\overrideIEEEmargins
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{\LARGE \bf
+Autonomous Bimanual Soft-Body Slicing: Tactile-Conditioned Residual Reinforcement Learning under Contact Uncertainty
+}
+
+\author{Ahmed$^{*,1}$, Shahd$^{*,1}$, and Shan An$^{\dagger,1}$%
+\thanks{$^{*}$Both authors contributed equally to this work.}%
+\thanks{$^{1}$DEX-ROB Laboratory, School of Electrical and Automation Engineering, Tianjin University, Tianjin 300072, China.}%
+\thanks{$^{\dagger}$Corresponding author: Prof. Shan An (email: {\tt shan.an@tju.edu.cn}).}%
+}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+\begin{abstract}
+Robotic slicing of heterogeneous deformable food items, such as tomatoes, presents formidable challenges due to non-linear material stiffness, rupture mechanics, and severe contact uncertainty. Traditional pure kinematic trajectories frequently lead to excessive compressive deformation and pulp bursting before fracture occurs. In this paper, we propose a hierarchical vision-tactile residual reinforcement learning framework for autonomous bimanual slicing on dual 7-DoF manipulators (ARX AR5-L6) with a dexterous 5-finger fixturing hand (LinkerHand O6). Our approach decouples macro-sawing kinematics from high-frequency ($1\,\text{kHz}$) residual Cartesian impedance adaptation conditioned on 6-axis wrist wrench and fingertip tactile sensors. We validate our framework using GPU-accelerated PhysX 5 FEM simulation in NVIDIA Isaac Lab with extensive domain randomization over hyperelastic material properties. 
+\end{abstract}
+
+\input{sections/01_intro}
+\input{sections/02_related_work}
+\input{sections/03_problem_formulation}
+\input{sections/04_method}
+\input{sections/05_experiments}
+\input{sections/06_results}
+\input{sections/07_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

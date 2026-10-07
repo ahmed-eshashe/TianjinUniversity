@@ -1,0 +1,285 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "ar5_o6_left"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    upAxis = "Z"
+)
+
+over "ar5_o6_left" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    custom rel isaac:physics:robotJoints
+    custom rel isaac:physics:robotLinks
+
+    over "Physics"
+    {
+        over "root_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "fixed" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_2" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_3" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_4" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_5" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_6" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_joint_7" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "AR5_5_07L_W4C4A2_tcp_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "rk_adapter_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "hand_mount_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_thumb_cmc_yaw" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_index_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_middle_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_ring_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_pinky_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_thumb_cmc_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_thumb_ip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_index_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_middle_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_ring_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lh_pinky_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "world" (
+            prepend apiSchemas = ["IsaacLinkAPI"]
+        )
+        {
+            over "AR5_5_07L_W4C4A2_base" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "AR5_5_07L_W4C4A2_link1" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "AR5_5_07L_W4C4A2_link2" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "AR5_5_07L_W4C4A2_link3" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "AR5_5_07L_W4C4A2_link4" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "AR5_5_07L_W4C4A2_link5" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "AR5_5_07L_W4C4A2_link6" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "AR5_5_07L_W4C4A2_link7" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "AR5_5_07L_W4C4A2_tcp" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "lh_rk_adapter" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "lh_hand_base_link" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                        over "lh_thumb_metacarpals_base2" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "lh_thumb_metacarpals" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "lh_thumb_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+                                                        }
+
+                                                        over "lh_index_proximal" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "lh_index_distal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                            }
+                                                        }
+
+                                                        over "lh_middle_proximal" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "lh_middle_distal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                            }
+                                                        }
+
+                                                        over "lh_ring_proximal" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "lh_ring_distal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                            }
+                                                        }
+
+                                                        over "lh_pinky_proximal" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "lh_pinky_distal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
