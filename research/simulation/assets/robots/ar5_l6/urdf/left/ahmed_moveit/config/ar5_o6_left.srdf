@@ -1,94 +1,288 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--This does not replace URDF, and is not an extension of URDF.
-    This is a format for representing semantic information about the robot structure.
-    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
--->
+<?xml version='1.0' encoding='us-ascii'?>
 <robot name="ar5_o6_left">
-    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
-    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
-    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
-    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
-    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    
+    
+    
+    
+    
     <group name="arm">
-        <joint name="AR5_5_07L_W4C4A2_joint_1"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_2"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_3"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_4"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_5"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_6"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_7"/>
+        <joint name="AR5_5_07L_W4C4A2_joint_1" />
+        <joint name="AR5_5_07L_W4C4A2_joint_2" />
+        <joint name="AR5_5_07L_W4C4A2_joint_3" />
+        <joint name="AR5_5_07L_W4C4A2_joint_4" />
+        <joint name="AR5_5_07L_W4C4A2_joint_5" />
+        <joint name="AR5_5_07L_W4C4A2_joint_6" />
+        <joint name="AR5_5_07L_W4C4A2_joint_7" />
     </group>
     <group name="hand">
-        <joint name="lh_index_mcp_pitch"/>
-        <joint name="lh_middle_mcp_pitch"/>
-        <joint name="lh_pinky_mcp_pitch"/>
-        <joint name="lh_ring_mcp_pitch"/>
-        <joint name="lh_thumb_cmc_yaw"/>
-        <joint name="lh_thumb_cmc_pitch"/>
-        <joint name="lh_thumb_ip"/>
-    </group>
-    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+        <joint name="lh_index_mcp_pitch" />
+        <joint name="lh_middle_mcp_pitch" />
+        <joint name="lh_pinky_mcp_pitch" />
+        <joint name="lh_ring_mcp_pitch" />
+        <joint name="lh_thumb_cmc_yaw" />
+        <joint name="lh_thumb_cmc_pitch" />
+        </group>
+    
     <group_state name="start" group="arm">
-        <joint name="AR5_5_07L_W4C4A2_joint_1" value="0"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_2" value="-0.0116"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_3" value="0"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_4" value="-0.2762"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_5" value="-1.9395"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_6" value="0"/>
-        <joint name="AR5_5_07L_W4C4A2_joint_7" value="0"/>
+        <joint name="AR5_5_07L_W4C4A2_joint_1" value="0" />
+        <joint name="AR5_5_07L_W4C4A2_joint_2" value="-0.0116" />
+        <joint name="AR5_5_07L_W4C4A2_joint_3" value="0" />
+        <joint name="AR5_5_07L_W4C4A2_joint_4" value="-0.2762" />
+        <joint name="AR5_5_07L_W4C4A2_joint_5" value="-1.9395" />
+        <joint name="AR5_5_07L_W4C4A2_joint_6" value="0" />
+        <joint name="AR5_5_07L_W4C4A2_joint_7" value="0" />
     </group_state>
     <group_state name="thumps" group="hand">
-        <joint name="lh_index_mcp_pitch" value="1.1227"/>
-        <joint name="lh_middle_mcp_pitch" value="1.3348"/>
-        <joint name="lh_pinky_mcp_pitch" value="1.4674"/>
-        <joint name="lh_ring_mcp_pitch" value="1.4144"/>
-        <joint name="lh_thumb_cmc_pitch" value="0"/>
-        <joint name="lh_thumb_cmc_yaw" value="0"/>
+        <joint name="lh_index_mcp_pitch" value="1.1227" />
+        <joint name="lh_middle_mcp_pitch" value="1.3348" />
+        <joint name="lh_pinky_mcp_pitch" value="1.4674" />
+        <joint name="lh_ring_mcp_pitch" value="1.4144" />
+        <joint name="lh_thumb_cmc_pitch" value="0" />
+        <joint name="lh_thumb_cmc_yaw" value="0" />
     </group_state>
-    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="hand_effector" parent_link="AR5_5_07L_W4C4A2_link7" group="hand" parent_group="arm"/>
-    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
-    <virtual_joint name="base_virtual_joint" type="fixed" parent_frame="base_world" child_link="AR5_5_07L_W4C4A2_base"/>
-    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
-    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link1" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link2" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link3" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link4" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="world" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link2" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link3" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link4" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link5" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link6" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link7" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link3" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link4" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link5" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link6" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link7" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link4" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link5" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link6" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link7" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_link5" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_link6" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_link7" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="AR5_5_07L_W4C4A2_link6" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="AR5_5_07L_W4C4A2_link7" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="AR5_5_07L_W4C4A2_tcp" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="AR5_5_07L_W4C4A2_tcp" reason="Adjacent"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="world" reason="Never"/>
-    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="world" reason="Never"/>
-</robot>
+    
+    <end_effector name="hand_effector" parent_link="AR5_5_07L_W4C4A2_link7" group="hand" parent_group="arm" />
+    
+    <virtual_joint name="base_virtual_joint" type="fixed" parent_frame="base_world" child_link="AR5_5_07L_W4C4A2_base" />
+    
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link1" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link2" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link3" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link4" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="world" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link2" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link3" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link4" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link5" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link6" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_link7" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link3" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link4" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link5" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link6" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_link7" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link4" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link5" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link6" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_link7" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_link5" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_link6" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_link7" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="AR5_5_07L_W4C4A2_link6" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="AR5_5_07L_W4C4A2_link7" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="AR5_5_07L_W4C4A2_tcp" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="AR5_5_07L_W4C4A2_tcp" reason="Adjacent" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="world" reason="Never" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="world" reason="Never" />
+<disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link5" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link6" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="AR5_5_07L_W4C4A2_link7" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_base" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link1" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link2" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link3" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link4" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="AR5_5_07L_W4C4A2_link7" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link5" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link6" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_link7" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_hand_base_link" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="AR5_5_07L_W4C4A2_tcp" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_rk_adapter" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_rk_adapter" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_rk_adapter" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_proximal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_distal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_proximal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_rk_adapter" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_index_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_hand_base_link" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_thumb_metacarpals" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_thumb_distal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_proximal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_distal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_proximal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_thumb_metacarpals_base2" reason="User_Disabled" />
+    <disable_collisions link1="lh_thumb_distal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_proximal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_distal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_proximal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_thumb_metacarpals" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_proximal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_distal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_proximal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_thumb_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_index_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_proximal" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_middle_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_index_distal" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_middle_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_proximal" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_pinky_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_middle_distal" link2="lh_pinky_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_ring_distal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_proximal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_ring_proximal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_proximal" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_ring_distal" reason="User_Disabled" />
+    <disable_collisions link1="lh_pinky_distal" link2="lh_pinky_proximal" reason="User_Disabled" />
+    </robot>

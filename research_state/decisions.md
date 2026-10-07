@@ -49,3 +49,16 @@ This log documents all immutable architectural and scientific decisions. Once ra
 - **Status**: **ACCEPTED**
 - **Decision**: No agent may dispatch commands to physical robot arms, modify core physics parameters silently, or report unverified scientific claims without human verification.
 - **Protocol**: `AI proposes -> AI explains -> HUMAN APPROVES -> AI executes -> AI analyzes -> HUMAN ACCEPTS`.
+
+---
+
+### [ADR-006] Acceptance of Virtual Inertia (Armature) and Base PD Gains for PhysX 5 Stability
+- **Date**: 2026-10-07
+- **Status**: **ACCEPTED**
+- **Decision Makers**: Research Lead Agent, Simulation Agent, User
+- **Context**: The `simulation_agent` modified the AR5-L6 and LinkerHand O6 USD files by adding virtual inertia (`physxJoint:armature = 0.05` for arm, `0.005` for hand) and setting base position drive gains (`stiffness = 400.0`, `damping = 40.0`). The user questioned if these modifications are acceptable for upcoming RL training milestones (Milestone 3).
+- **Decision**: These modifications are approved for use in Isaac Lab RL training. The base PD gains in the USD provide a stable default state, while the armature prevents PhysX 5 solver divergence (explosions) caused by the extreme mass ratio between the heavy arm links and light finger links. 
+- **Consequences**: 
+  1. **Sim-to-Real Gap Risk**: The added armature acts as a virtual low-pass filter on joint accelerations, meaning the simulated arm will dynamically respond differently (more sluggishly) than the physical AR5-L6 at high frequencies (1 kHz). 
+  2. **Mitigation Requirement**: For M3 and M4, the `rl_agent` MUST implement Domain Randomization (DR) on the actuator parameters (e.g., introducing action latency and randomizing mass/inertia properties) to prevent the policy from overfitting to the artificially dampened simulation dynamics. 
+  3. **Action Space Compatibility**: Since ADR-004 specifies an action space of residual active compliance gains ($\Delta K$), the hardcoded USD stiffness/damping values will simply serve as the nominal setpoints or be overridden by Isaac Lab's `ActuatorCfg` during training.

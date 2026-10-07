@@ -6,10 +6,8 @@ controller_manager:
     arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
-
     hand_controller:
-      type: position_controllers/GripperActionController
-
+      type: joint_trajectory_controller/JointTrajectoryController
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -30,6 +28,19 @@ arm_controller:
       - position
       - velocity
     allow_nonzero_velocity_at_trajectory_end: true
+
 hand_controller:
   ros__parameters:
-    joint: lh_index_mcp_pitch
+    joints:
+      - lh_index_mcp_pitch
+      - lh_middle_mcp_pitch
+      - lh_pinky_mcp_pitch
+      - lh_ring_mcp_pitch
+      - lh_thumb_cmc_yaw
+      - lh_thumb_cmc_pitch
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    allow_nonzero_velocity_at_trajectory_end: true

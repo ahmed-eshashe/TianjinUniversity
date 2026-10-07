@@ -56,3 +56,29 @@ We discovered several classic Isaac Sim visual scripting UI traps:
 2. **Missing Target Prim:** The `Articulation Controller` node drops all commands if it doesn't know what to control. *Fix:* Clicked "Add Target" in the Articulation Controller properties and selected the robot's root (`ar5_o6_left_combined`).
 3. **Execution Wire Race Conditions:** The white execution wires were routed in parallel, causing the controller to fire *before* the subscriber updated the data. *Fix:* Rewired the graph sequentially: `Tick` $\rightarrow$ `ROS2 Subscribe Joint State (Exec Out)` $\rightarrow$ `Articulation Controller (Exec In)`.
 4. **Playback State:** The Action Graph `On Playback Tick` node only receives data if the simulation is actively **Playing** (Spacebar), not paused.
+---
+
+## Part 4: Dexterous Hand Specific Challenges (LinkerHand O6)
+
+### 8. The Mimic Joint Planning Crash
+**Error:** Attempting to plan for the dexterous hand instantly failed.
+**Cause:** The LinkerHand O6 URDF contains passive `mimic` joints (e.g., `lh_thumb_ip` mimics `lh_thumb_cmc_pitch`). During the MoveIt Setup Assistant phase, a mimic joint was accidentally included as an active joint in the `hand` planning group. MoveIt's mathematical solvers cannot generate trajectories for passive, mechanically constrained joints and will instantly abort.
+**Solution:** Removed the `lh_thumb_ip` joint from the `hand` planning group and from all predefined group states in `ar5_o6_left.srdf`.
+
+### 9. The Dexterous Hand Self-Collision Abort
+**Error:** MoveIt instantly aborted planning for the hand with `Found a contact between...` or `Start state in collision`.
+**Cause:** Dexterous hands have extremely dense collision meshes. When closing the fingers into a fist (like the `thumps` pose), the finger bounding boxes mathematically intersect with the palm or adjacent fingers. MoveIt's default safety system detects this as a crash and refuses to plan.
+**Solution:** Programmatically disabled self-collisions across the entire robot (hand-vs-hand, arm-vs-arm, hand-vs-arm) in the `ar5_o6_left.srdf` by injecting `<disable_collisions>` tags for all link pairs.
+
+### 10. The Execution Synchronization Failure (`Action client not connected`)
+**Error:** RViz logged `Starting trajectory execution ...` (meaning planning succeeded!), but then immediately threw `Completed trajectory execution with status ABORTED` and `Action client not connected to action server: hand_controller/follow_joint_trajectory`.
+**Cause:** We updated `moveit_controllers.yaml` to expect a full `FollowJointTrajectory` action server, but we forgot to update `ros2_controllers.yaml` (which still told the ROS 2 hardware manager to spawn a single-joint `GripperActionController`).
+**Crucial Trap:** Even after fixing the source file, RViz kept failing. **Why?** ROS 2 `launch` reads configuration files from the `install/` directory, not the source directory. 
+**Solution:** 
+1. Fixed `ros2_controllers.yaml` to configure `hand_controller` as a `joint_trajectory_controller/JointTrajectoryController` listing all 6 active finger joints.
+2. Navigated to the workspace and ran `colcon build` to sync the fixed files to the `install/` directory before restarting RViz.
+
+### 11. The Stiff Fingers Visual Bug (Mimic Joints in Fake Hardware)
+**Error:** In both RViz and Isaac Sim, commanding the fingers to curl resulted in the base knuckles (MCP) rotating, but the middle and tip joints (DIP) remained perfectly straight like stiff wooden boards.
+**Cause:** The fake hardware simulation (`mock_components/GenericSystem`) only calculates and publishes the angles of explicitly defined active joints. Because the passive tip joints were never broadcast to the `/joint_states` topic, both RViz and Isaac Sim assumed their angles were strictly `0.0`.
+**Solution:** Injected the mathematical `<mimic>` parameters directly into the hardware interface definition in `ros2_control.xacro` (e.g., `<param name="mimic">lh_index_mcp_pitch</param>` and `<param name="multiplier">0.89</param>`). This forces the mock hardware manager to compute the unpowered tip angles in real-time and broadcast the full pose.
