@@ -1,0 +1,644 @@
+## Phase 1: FEM Simulation & Soft Bodies
+
+### Differentiable Physics for Soft Bodies in Isaac Sim
+
+#### Summary
+Investigates differentiable physics engines within Isaac Sim to improve gradient-based robot learning for soft body manipulation.
+
+
+---
+
+
+### Sashimi-Bot: Autonomous tri-manual manipulation of slippery fish
+
+#### Summary
+Focuses on autonomous tri-manual manipulation to straighten, cut, and plate slippery fish, demonstrating advanced progress in handling volumetric, deformable food objects.
+
+
+---
+
+
+### ScissorBot: Learning Generalizable Scissor Skill for Paper Cutting via Simulation, Imitation, and Sim2Real
+
+#### Summary
+This research focuses on learning complex scissor-based cutting skills by combining simulation, imitation learning, and sim-to-real deployment strategies.
+
+
+---
+
+
+### TopoCut: Learning Multi-Step Cutting with Spectral Rewards and Discrete Diffusion Policies
+
+
+#### Summary
+Robotic manipulation tasks involving cutting deformable objects remain challenging due to complex topological behaviors, difficulties in perceiving dense object states, and the lack of efficient evaluation methods for cutting outcomes. In this paper, we introduce TopoCut, a comprehensive benchmark for multi-step robotic cutting tasks that integrates a cutting environment and generalized policy learning. TopoCut is built upon three core components: (1) We introduce a high-fidelity simulation environment based on a particle-based elastoplastic solver with compliant von Mises constitutive models, augmented by a novel damage-driven topology discovery mechanism that enables accurate tracking of multiple cutting pieces. (2) We develop a comprehensive reward design that integrates the topology discovery with a pose-invariant spectral reward model based on Laplace-Beltrami eigenanalysis, facilitating consistent and robust assessment of cutting quality. (3) We propose an integrated policy learning pipeline, where a dynamics-informed perception module predicts topological evolution and produces particle-wise, topology-aware embeddings to support PDDP (Particle-based Score-Entropy Discrete Diffusion Policy) for goal-conditioned policy learning. Extensive experiments demonstrate that TopoCut supports trajectory generation, scalable learning, precise evaluation, and strong generalization across diverse object geometries, scales, poses, and cutting goals.
+
+
+---
+
+
+### Deformable Object Manipulation with Isaac Lab and FEM
+
+#### Summary
+Explores hybrid approaches combining fast elastic approximations with high-fidelity FEM for generating ground-truth data in Isaac Lab.
+
+
+---
+
+
+### SoMA: A Real-to-Sim Neural Simulator for Robotic Soft-body Manipulation
+
+#### Summary
+Introduces an action-conditioned neural simulator using 3D Gaussian Splatting to map deformable dynamics and actions into a latent space for soft-body manipulation.
+
+
+---
+
+
+### GaussianFluent: High-Speed Brittle Fracture Simulation using Gaussian Splatting
+
+#### Summary
+Combines Gaussian Splatting with the Continuum Damage Material Point Method to enable high-speed brittle fracture simulation for robotics tasks.
+
+
+---
+
+
+### BladeMaster: Real-Time Robotic Cutting Simulation with Online-Generated Persistent Discontinuities
+
+
+#### Summary
+Cutting changes both the shape and topology of deformable objects, making accurate simulation challenging for robotic manipulation. A simulator must track the cutting tool as a cut develops, preserve the resulting discontinuities after tool withdrawal, and enable newly exposed surfaces to interact with the tool and with each other. Existing formulations often prescribe cut surfaces in advance or couple material separation to auxiliary geometric fields. We introduce BladeMaster, a GPU-accelerated cutting framework based on the total Lagrangian material point method (TLMPM). Our key idea is to encode the cutting history directly on material points through persistent side labels generated online from the blade geometry. These labels govern particle-grid coupling, preserving connectivity within intact material while preventing spurious coupling across cut faces after tool withdrawal. Our formulation supports progressive and intersecting cuts without predefined cut surfaces or particle duplication. Material-material contact enables cut surfaces to recontact and slide against each other without reconnecting, while two-way tool-material coupling allows material reaction forces to influence tool motion. Experiments demonstrate tool-driven cutting followed by manipulation, with faster-than-real-time performance on representative tasks. Project page: https://jango6324.github.io/blademaster/.
+
+
+---
+
+
+### Robot Cooking with Stir-fry: Bimanual Non-prehensile Manipulation of Semi-fluid Objects
+
+#### Summary
+Explores bimanual, non-prehensile manipulation by decoupling dual arms into leader and follower roles, coordinated via a structured transformer.
+
+
+---
+
+
+### Real-to-Sim Robot Policy Evaluation with Gaussian Splatting
+
+#### Summary
+Constructs soft-body digital twins from real-world videos using 3DGS to evaluate how policies learned in simulation correlate with real-world deformable task performance.
+
+
+---
+
+
+### Learning Sim-Grounded Policies for Bimanual Rope Manipulation from Human Teleoperation Data
+
+#### Summary
+Investigates the challenges of learning complex deformable object manipulation from small teleoperation datasets, comparing vision-based vs. state-based policies.
+
+
+---
+
+
+### ALOHA 2: An Enhanced Foundation for Bimanual Robot Learning
+
+#### Summary
+An enhanced workcell for bimanual teleoperation, featuring ROS 2 integration and MuJoCo simulation models for robot learning.
+
+
+---
+
+
+### ADEPT: Autoregressive Dexterous Pre-training and Post-training for Complex Manipulation
+
+
+#### Summary
+ADEPT is a prior (or concurrent) work from our lab (Dex-Rob Lab under Prof. Shan An) establishing a strong baseline for dexterous manipulation using autoregressive models.
+
+##### Key Takeaways for our Bimanual Tomato Slicing
+- Validates our lab's expertise with the LinkerHand O6.
+- Provides a potential imitation learning baseline or feature extractor for our RL pipeline if we choose to incorporate visual foundation models.
+
+
+---
+
+
+### SliceIt!: A Dual Simulator Framework for Learning Compliant Food Slicing
+
+
+#### Summary
+This paper introduces a Real2Sim2Real RL pipeline for compliant food slicing. By pairing a high-fidelity cutting simulator (DiSECt) with a standard robotic simulator (Gazebo), the authors learn a cutting policy that reduces contact forces and safely transfers to a physical robot without requiring expensive, messy, and dangerous real-world RL exploration.
+
+##### Key Takeaways for our Bimanual Tomato Slicing
+- Validates the approach of using FEM-based simulation (like PhysX 5 / DiSECt) to pre-train RL policies.
+- Emphasizes the need for compliant control during the slicing motion.
+- Highlights that single simulators often struggle to couple high-fidelity robot kinematics with high-fidelity fracture mechanics.
+
+
+---
+
+
+### TacEx: GelSight Tactile Simulation in Isaac Sim
+
+#### Summary
+Uses Isaac Sim to simulate soft tactile sensors by embedding soft-body simulators (FEM) to capture contact deformations.
+
+
+---
+
+
+### VTLA: Vision-Tactile-Language-Action Model for Peg-in-Hole
+
+#### Summary
+Focuses on using domain-randomized simulation data to enable robust Sim2Real performance for peg-in-hole tasks using a VTLA model.
+
+
+---
+
+
+### Learning robotic milling strategies based on passive variable operational space interaction control
+
+
+#### Summary
+This paper addresses the problem of robotic cutting during disassembly of products for materials separation and recycling. Waste handling applications differ from milling in manufacturing processes, as they engender considerable variety and uncertainty in the parameters (e.g. hardness) of materials which the robot must cut. To address this challenge, we propose a learning-based approach incorporating elements of interaction control, in which the robot can adapt key parameters, such as feed rate, depth of cut, and mechanical compliance during task execution. We show how a mathematical model of cutting mechanics, embedded in a simulation environment, can be used to rapidly train the system without needing large amounts of data from physical cutting trials. The simulation approach was validated on a real robot setup based on four case study materials with varying structural and mechanical properties. We demonstrate the proposed method minimises process force and path deviations to a level similar to offline optimal planning methods, while the average time to complete a cutting task is within 25% of the optimum, at the expense of reduced volume of material removed per pass. A key advantage of our approach over similar works is that no prior knowledge about the material is required.
+
+
+---
+
+
+### End-to-end example-based sim-to-real RL policy transfer based on neural stylisation with application to robotic cutting
+
+
+#### Summary
+Whereas reinforcement learning has been applied with success to a range of robotic control problems in complex, uncertain environments, reliance on extensive data - typically sourced from simulation environments - limits real-world deployment due to the domain gap between simulated and physical systems, coupled with limited real-world sample availability. We propose a novel method for sim-to-real transfer of reinforcement learning policies, based on a reinterpretation of neural style transfer from image processing to synthesise novel training data from unpaired unlabelled real world datasets. We employ a variational autoencoder to jointly learn self-supervised feature representations for style transfer and generate weakly paired source-target trajectories to improve physical realism of synthesised trajectories. We demonstrate the application of our approach based on the case study of robot cutting of unknown materials. Compared to baseline methods, including our previous work, CycleGAN, and conditional variational autoencoder-based time series translation, our approach achieves improved task completion time and behavioural stability with minimal real-world data. Our framework demonstrates robustness to geometric and material variation, and highlights the feasibility of policy adaptation in challenging contact-rich tasks where real-world reward information is unavailable.
+
+
+---
+
+
+### DiSECt: A Differentiable Simulation Engine for Autonomous Robotic Cutting
+
+
+#### Summary
+Robotic cutting of soft materials is critical for applications such as food processing, household automation, and surgical manipulation. As in other areas of robotics, simulators can facilitate controller verification, policy learning, and dataset generation. Moreover, differentiable simulators can enable gradient-based optimization, which is invaluable for calibrating simulation parameters and optimizing controllers. In this work, we present DiSECt: the first differentiable simulator for cutting soft materials. The simulator augments the finite element method (FEM) with a continuous contact model based on signed distance fields (SDF), as well as a continuous damage model that inserts springs on opposite sides of the cutting plane and allows them to weaken until zero stiffness, enabling crack formation. Through various experiments, we evaluate the performance of the simulator. We first show that the simulator can be calibrated to match resultant forces and deformation fields from a state-of-the-art commercial solver and real-world cutting datasets, with generality across cutting velocities and object instances. We then show that Bayesian inference can be performed efficiently by leveraging the differentiability of the simulator, estimating posteriors over hundreds of parameters in a fraction of the time of derivative-free methods. Finally, we illustrate that control parameters in the simulation can be optimized to minimize cutting forces via lateral slicing motions.   We publish videos and additional results on our project website at https://diff-cutting-sim.github.io.
+
+
+---
+
+
+### DiSECt: A Differentiable Simulation Engine for Autonomous Robotic Cutting
+
+#### Summary
+This work provides a specialized simulation engine for cutting, which is frequently cited in studies involving RL for cutting tasks to help bridge the sim-to-real gap.
+
+
+---
+
+
+### DiSECt: A Differentiable Simulator for Parameter Inference and Control in Robotic Cutting
+
+
+#### Summary
+Robotic cutting of soft materials is critical for applications such as food processing, household automation, and surgical manipulation. As in other areas of robotics, simulators can facilitate controller verification, policy learning, and dataset generation. Moreover, differentiable simulators can enable gradient-based optimization, which is invaluable for calibrating simulation parameters and optimizing controllers. In this work, we present DiSECt: the first differentiable simulator for cutting soft materials. The simulator augments the finite element method (FEM) with a continuous contact model based on signed distance fields (SDF), as well as a continuous damage model that inserts springs on opposite sides of the cutting plane and allows them to weaken until zero stiffness, enabling crack formation. Through various experiments, we evaluate the performance of the simulator. We first show that the simulator can be calibrated to match resultant forces and deformation fields from a state-of-the-art commercial solver and real-world cutting datasets, with generality across cutting velocities and object instances. We then show that Bayesian inference can be performed efficiently by leveraging the differentiability of the simulator, estimating posteriors over hundreds of parameters in a fraction of the time of derivative-free methods. Next, we illustrate that control parameters in the simulation can be optimized to minimize cutting forces via lateral slicing motions. Finally, we conduct experiments on a real robot arm equipped with a slicing knife to infer simulation parameters from force measurements. By optimizing the slicing motion of the knife, we show on fruit cutting scenarios that the average knife force can be reduced by more than 40% compared to a vertical cutting motion. We publish code and additional materials on our project website at https://diff-cutting-sim.github.io.
+
+
+---
+
+
+### Differentiable Simulation of Soft Material Fracture for Robotic Cutting
+
+#### Summary
+Employs a continuous contact formulation and a damage model to predict forces and material deformation during the cutting of soft materials.
+
+
+---
+
+
+### Residual Reinforcement Learning for Robot Control
+
+
+#### Summary
+This paper proposes combining standard analytical controllers (like PID or operational space control) with deep reinforcement learning. The analytical controller acts as a strong prior (the "base policy"), while the RL agent outputs a "residual" action added to the base action. This drastically improves sample efficiency and safety during contact-rich tasks like peg-in-hole.
+
+##### Key Takeaways for our Bimanual Tomato Slicing
+- Forms the architectural basis of our control strategy.
+- We apply this specifically to cutting: base policy executes a saw-like trajectory, residual policy adjusts depth, pressure, and bimanual holding force based on high-frequency haptics.
+
+
+---
+
+
+### TactSpace: Tactile Digital Twins
+
+#### Summary
+Develops FEM-based digital twins of tactile sensors in Isaac Sim, aligning real-world capacitance measurements with simulated deformation data for sim-to-real transfer.
+
+
+---
+
+
+### Tac2Real: Visuotactile Simulation for Contact-Rich Manipulation
+
+#### Summary
+Targets the sim-to-real gap in contact-rich tasks by combining high-throughput parallel simulation with a system called TacAlign to narrow domain gaps.
+
+
+---
+
+
+### Bimanual Deformable Bag Manipulation Using a Structure-of-Interest Based Latent Dynamics Model
+
+#### Summary
+Addresses the challenge of manipulating deformable fabric bags by identifying Structures of Interest (SOIs). Uses a GNN-based latent dynamics model with MPC for precise bimanual manipulation.
+
+
+---
+
+
+### Vision-based approaches for cutting food products: A review
+
+#### Summary
+Provides a comprehensive overview of the challenges in robotic food cutting, including vision, hardware, and control requirements for highly deformable products.
+
+
+---
+
+
+### SliceIt!: A Dual-Simulator Framework for Robotic Food Slicing
+
+#### Summary
+Utilizes a real2sim2real approach calibrating both a high-fidelity cutting simulator and a robotic simulator to train compliant control policies for food slicing.
+
+
+---
+
+
+### SliceIt!: Sim2Real2Sim for compliant cutting of deformable food
+
+#### Summary
+A Sim2Real2Sim framework that calibrates cutting simulators using real-world data to learn compliant control policies, minimizing food waste during training.
+
+
+---
+
+
+### Robotic Slicing of Deformable Objects with Force/Tactile Feedback
+
+
+#### Summary
+This paper investigates the use of force and tactile feedback to actively control the slicing of deformable objects. By closing the loop on contact forces, the robot can adapt its cutting speed and applied pressure to avoid excessively deforming or crushing the object before the cut is achieved.
+
+##### Key Takeaways for our Bimanual Tomato Slicing
+- Confirms Hypothesis 1: Force/tactile feedback is crucial to prevent object rolling/crushing during cutting.
+- Provides a strong baseline methodology against which our RL-based approach should be benchmarked.
+
+
+---
+
+
+### FabricFlowNet: Bimanual Cloth Manipulation with a Flow-based Policy
+
+#### Summary
+Introduces a policy utilizing optical flow as input and action representation for goal-directed cloth manipulation, switching between dual-arm and single-arm actions effectively.
+
+
+---
+
+
+### Robotic Slicing of Fruits and Vegetables: Modeling the Effects of Fracture Toughness and Knife Geometry
+
+#### Summary
+Characterizes the decrease in fracture toughness during slicing compared to pressing, using FEM to model cutting forces and optimize knife motion.
+
+
+---
+
+
+### SORS: A Modular, High-Fidelity Simulator for Soft Robots
+
+#### Summary
+Presents a high-fidelity simulator for soft robots utilizing Isaac Sim and FEM capabilities to model complex soft-body interactions.
+
+
+---
+
+
+## Phase 2: Tactile & Impedance Control
+
+### DPP-IC: Dual Prescribed Performance boundary in impedance control
+
+#### Summary
+Introduces DPP-IC to improve transient and steady-state force tracking accuracy during contact without sacrificing compliance.
+
+
+---
+
+
+### ReTac-ACT: A State-Gated Vision-Tactile Fusion Transformer
+
+#### Summary
+Introduces a state-gated architecture designed to merge vision and tactile inputs for high-precision robotic assembly tasks.
+
+
+---
+
+
+### RoboNinja: Learning an Adaptive Cutting Policy for Multi-Material Objects
+
+#### Summary
+This paper introduces an adaptive policy designed to handle cutting tasks across various materials, addressing the challenge of material uncertainty using reinforcement learning.
+
+
+---
+
+
+### Learning to Shape by Grinding: Cutting-surface-aware Model-based Reinforcement Learning
+
+#### Summary
+This paper proposes an MBRL method for robotic grinding that incorporates a cutting-surface-aware model, allowing the robot to better understand and adapt to the surfaces it creates.
+
+
+---
+
+
+### Periodic robust robotic rock chop via virtual model control
+
+
+#### Summary
+Robotic cutting is a challenging, contact-rich manipulation task where the robot must simultaneously negotiate unknown object mechanics, large contact forces, and precise motion requirements. Our hypothesis is that this complexity can be alleviated through the design of a physically structured virtual-model controller that uses switched virtual mechanisms to generate a robust, rhythmic rock-chop motion for robotic cutting, without requiring pre-planned trajectories or precise environmental information. Motion is generated by the interaction between the environment, the robot's dynamics, and the virtual forces of the switching virtual mechanism, ultimately realized through the available actuation. Through theoretical and numerical analysis, together with experimental validation, we demonstrate that the controlled robot behavior settles into a stable periodic motion. Experiments with a Franka manipulator demonstrate robust cuts across five different vegetables, achieving sub-millimeter slice accuracy for thicknesses from 1 mm to 7 mm at a rate of nearly one cut per second. The controller maintains high performance despite changes in knife shape or cutting board height, and successfully adapts to a different humanoid manipulator, demonstrating robustness and platform independence.
+
+
+---
+
+
+### Constraint-Grounded Reinforcement Learning for Variable Impedance Control in Contact-Rich Robotic Insertion
+
+#### Summary
+Investigates ways to ground RL policies within the constraints of variable impedance control to ensure stable contact-rich insertion.
+
+
+---
+
+
+### TACTIC: Understanding Tactile Encoders for Contact-rich Policies
+
+#### Summary
+A comprehensive study evaluating tactile encoders and fusion strategies, highlighting that optimal fusion depends heavily on the specific contact-rich task.
+
+
+---
+
+
+### Variable Impedance Control and Learning—A Review
+
+#### Summary
+A comprehensive review discussing learning-based and adaptive approaches to variable impedance control for robotic contact tasks.
+
+
+---
+
+
+### Interactive Force-Impedance Control in Contact-Rich Environments
+
+#### Summary
+Proposes a unified framework adapting to interaction power flow for stability and passivity in contact-rich environments.
+
+
+---
+
+
+### Periodic robust robotic rock chop via virtual model control
+
+#### Summary
+Introduces an active virtual-model control scheme that uses tactile feedback to adapt cutting parameters dynamically during knife rocking motions.
+
+
+---
+
+
+### Accelerating Robotic Reinforcement Learning via Parameterized Action Primitives
+
+#### Summary
+A seminal work on defining a library of parameterized primitives to drastically improve exploration efficiency in contact-rich RL tasks.
+
+
+---
+
+
+### Tactile-informed action primitives mitigate jamming in dense clutter
+
+#### Summary
+Addresses the role of continuous contact and tactile feedback in selecting and executing action primitives to avoid jamming in dense environments.
+
+
+---
+
+
+### DA-VIL: Dual-Arm Variable Impedance Learning for Unknown Objects
+
+#### Summary
+A framework that combines policy learning with gradient-based optimization to learn controller gains for stable dual-arm manipulation of complex objects with varying masses.
+
+
+---
+
+
+### Potential-Field Action Representation for Reinforcement Learning in Contact-Rich Manipulation
+
+#### Summary
+Proposes using artificial potential fields as an action space to simplify the learning burden in tasks with discontinuous contact transitions.
+
+
+---
+
+
+### Contact-Rich Dexterous Manipulation Under Mechanical Uncertainty: A Review
+
+
+#### Summary
+This review paper synthesizes recent advancements in handling mechanical uncertainty during contact-rich tasks. It contrasts analytical impedance control with modern data-driven approaches (like RL) for tactile-guided dexterous manipulation. 
+
+##### Key Takeaways for our Bimanual Tomato Slicing
+- Validates the combination of the ARX AR5-L6 arms with the LinkerHand O6.
+- Provides terminology and taxonomy for discussing mechanical uncertainty (e.g., varying tomato skin toughness) in the introduction and related work of our paper.
+
+
+---
+
+
+### Adaptive Cutting Policies with Knife Selection Module for Food
+
+#### Summary
+Presents a perception-manipulation framework incorporating a knife selection module based on preliminary force data, followed by adaptive cutting policies.
+
+
+---
+
+
+### Variable-Damping Impedance Control for Contact Tasks using Deep RL
+
+#### Summary
+Combines deep RL with parameterized policies to adjust damping online, adapting to varying contact phases and environment uncertainties.
+
+
+---
+
+
+### Constant Impedance Force Controllers for Complex Surfaces
+
+#### Summary
+Utilizes force-reference-dependent models to improve tracking consistency on complex surfaces with minimal tuning effort.
+
+
+---
+
+
+### Bunny-VisionPro: Real-Time Bimanual Dexterous Teleoperation for Imitation Learning
+
+#### Summary
+Focuses on a real-time system using VR for dexterous bimanual teleoperation, emphasizing haptic feedback and collision avoidance to improve demonstrations.
+
+
+---
+
+
+### Task-Driven Reinforcement Learning With Action Primitives (TRAPs)
+
+#### Summary
+Incorporates formal methods like Linear Temporal Logic to guide long-horizon manipulation using parameterized action primitives.
+
+
+---
+
+
+### DPTG: Diffusion Policy with Tactile Feasibility Guidance
+
+#### Summary
+Uses tactile sensing as a feasibility guide for diffusion policies, suppressing force spikes and improving stability in contact-rich manipulation.
+
+
+---
+
+
+### Variable Impedance Skill Learning for Contact-Rich Manipulation
+
+#### Summary
+Extends skill-based RL frameworks with variable impedance action spaces to improve real-world robot performance on contact-rich tasks like peg-in-hole insertion.
+
+
+---
+
+
+### GenerativeMPC: Bimanual mobile manipulation with ROS 2 Humble
+
+#### Summary
+A three-layer architecture (VLM-RAG, Whole-Body MPC, Impedance control) for bimanual manipulation running on ROS 2 Humble.
+
+
+---
+
+
+### Leveraging Multimodal Haptic Sensory Data for Robust Cutting
+
+#### Summary
+Discusses using haptic sensory data alongside visual data to infer physical properties of items to adjust cutting parameters in real-time, improving the robustness of robotic cutting tasks.
+
+
+---
+
+
+### Learning robotic cutting from demonstration: Non-holonomic DMPs using the Udwadia-Kalaba method
+
+
+#### Summary
+Dynamic Movement Primitives (DMPs) offer great versatility for encoding, generating and adapting complex end-effector trajectories. DMPs are also very well suited to learning manipulation skills from human demonstration. However, the reactive nature of DMPs restricts their applicability for tool use and object manipulation tasks involving non-holonomic constraints, such as scalpel cutting or catheter steering. In this work, we extend the Cartesian space DMP formulation by adding a coupling term that enforces a pre-defined set of non-holonomic constraints. We obtain the closed-form expression for the constraint forcing term using the Udwadia-Kalaba method. This approach offers a clean and practical solution for guaranteed constraint satisfaction at run-time. Further, the proposed analytical form of the constraint forcing term enables efficient trajectory optimization subject to constraints. We demonstrate the usefulness of this approach by showing how we can learn robotic cutting skills from human demonstration.
+
+
+---
+
+
+## Phase 3: Bimanual Manipulation
+
+### Adaptive Tracking Control of Dual-Arm Robots handling varying mass
+
+#### Summary
+Derives adaptive Jacobian controllers that update model parameters online using only end-effector and joint sensor data, addressing kinematic and dynamic uncertainties.
+
+
+---
+
+
+### Bi-KVIL: Keypoints-based Visual Imitation Learning of Bimanual Manipulation Tasks
+
+#### Summary
+Proposes a framework that extracts hybrid master-slave relationships to model bimanual coordination, generalizing to new objects and scenes.
+
+
+---
+
+
+### Mobile ALOHA: Learning Bimanual Mobile Manipulation using Low-Cost Whole-Body Teleoperation
+
+#### Summary
+Introduces a low-cost, whole-body teleoperation system that allows for collecting demonstration data for complex, mobile, bimanual tasks.
+
+
+---
+
+
+### Quest2ROS2: A ROS 2 framework for bimanual VR teleoperation
+
+#### Summary
+A modular ROS 2 framework that maps VR controller input to dual-arm robot systems for teleoperation and data collection.
+
+
+---
+
+
+### Nonlinear Optimal Control for Dual-Arm Systems under Uncertainty
+
+#### Summary
+Formulates dual-arm dynamics and uses approximate linearization to design feedback controllers that remain stable despite model uncertainties and external perturbations.
+
+
+---
+
+
+### Decoupled Interaction Framework for Bimanual Tasks
+
+#### Summary
+Assigns independent models to each arm with a selective interaction module for coordinated bimanual tasks, improving SOTA performance.
+
+
+---
+
+
+### Adaptive Dynamic Programming for Dual-Arm Reconfigurable Manipulators
+
+#### Summary
+Employs ADP-based coordinated control with adaptive observers to identify unknown dynamic terms online, optimizing performance through neural network policy iteration.
+
+
+---
+
+
+## Other Relevant Papers
+
+### Learning Insertion Primitives with Discrete-Continuous Hybrid Action Space for Robotic Assembly Tasks
+
+#### Summary
+Focuses on the discrete-continuous challenge in assembly, defining primitives by exit conditions such as 'until contact' for precise control.
+
+
+---
+
+
+### PlasticineLab: A Soft-Body Manipulation Benchmark with Differentiable Physics
+
+#### Summary
+A seminal benchmark for soft-body manipulation that leverages differentiable physics to optimize material and contact parameters.
+
+
+---
+

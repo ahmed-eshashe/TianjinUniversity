@@ -52,7 +52,7 @@ AI Proposes ──► AI Explains ──► HUMAN APPROVES ──► AI Executes
 
 ---
 
-## 3. The 9 Specialized Research Agents
+## 3. The 10 Specialized Research Agents
 
 | Agent ID | Persona Title | Primary Responsibility | Key Files Maintained |
 | :--- | :--- | :--- | :--- |
@@ -63,8 +63,9 @@ AI Proposes ──► AI Explains ──► HUMAN APPROVES ──► AI Executes
 | `simulation_agent` | **Isaac Sim / PhysX 5 Specialist** | USD robot/knife/tomato scene composition, PhysX 5 FEM deformable dynamics, domain randomization. | `research/simulation/assets/`, `research/simulation/scripts/` |
 | `training_agent` | **Training & Telemetry Specialist** | Vectorized GPU headless training execution, checkpoint management, SkRL / WandB logging, run isolation. | `experiments/runs/<exp_id>/` |
 | `analysis_agent` | **Scientific Analysis Specialist** | Statistical tests (Mann-Whitney, t-tests), bootstrap confidence intervals, ablation tables, publication plots. | `analysis/`, `experiments/results/` |
-| `ros_agent` | **ROS 2 & Hardware Specialist** | ROS 2 Jazzy node architecture, MoveIt 2 Cartesian planning, 1 kHz RT loop, emergency safety interlocks. | `ros2/`, `scripts/` |
+| `ros_agent` | **ROS 2 & Hardware Specialist** | ROS 2 Jazzy node architecture, MoveIt 2 Cartesian planning, 1 kHz RT loop, emergency safety interlocks, and CAN driver governance. | `ros2/`, `hardware/`, `research_state/hardware.yaml`, `scripts/` |
 | `paper_agent` | **Paper & Manuscript Specialist** | IEEEtran LaTeX writing for ICRA/IROS, mathematical precision, figure/table generation, claim traceability. | `paper/main.tex`, `paper/sections/`, `research_state/paper_claims.yaml` |
+| `doc_agent` | **Documentation & Pedagogy Specialist** | Milestone masterclasses (Markdown + timestamped WeasyPrint PDF), beginner-friendly analogies, weekly reports for Prof. An. | `docs/milestones/*.md`, `docs/milestones/*.pdf`, `docs/DOCUMENTATION_INDEX.md` |
 
 ---
 
@@ -78,6 +79,7 @@ research_state/
 ├── hypotheses.yaml           # Formally stated, falsifiable hypotheses (H1, H2, H3...)
 ├── decisions.md              # Architectural & Scientific Decision Records (ADRs)
 ├── open_questions.md         # Active bottlenecks, sim-to-real uncertainties
+├── hardware.yaml             # Physical hardware datasheets, CAN bus IDs, driver paths
 ├── experiment_matrix.yaml    # Registry of all planned, running, and completed experiments
 ├── paper_claims.yaml         # Every paper claim mapped directly to experiment IDs
 └── project_status.yaml       # Sprint milestones, agent assignments, and progress

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sprint 1 Week 2: Kinematics & Physics Masterclass</title>
+<style>
+
+@page {
+  size: A4;
+  margin: 16mm 14mm 18mm 14mm;
+  @top-left {
+    content: "DEX-ROB Lab • Tianjin University";
+    font-size: 8pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #64748b;
+  }
+  @top-right {
+    content: "Sprint 1 • Sprint 1 Week 2: Kinematics & Physics Masterclass";
+    font-size: 8pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #64748b;
+  }
+  @bottom-left {
+    content: "Generated: 2026-10-08 23:37:42";
+    font-size: 7.5pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #94a3b8;
+  }
+  @bottom-center {
+    content: "Page " counter(page) " of " counter(pages);
+    font-size: 8.5pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #64748b;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+  line-height: 1.56;
+  font-size: 9.5pt;
+}
+
+.header-block {
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.course-tag {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 8pt;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.timestamp-badge {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 600;
+  font-size: 8pt;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  margin-bottom: 6px;
+}
+
+h1 {
+  color: #0f172a;
+  font-size: 19pt;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.subtitle {
+  color: #475569;
+  font-size: 10.2pt;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.meta-grid {
+  display: flex;
+  font-size: 8.5pt;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+h2 {
+  color: #1e3a8a;
+  font-size: 14pt;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-left: 4px solid #2563eb;
+  padding: 8px 10px;
+  background-color: #f8fafc;
+  page-break-after: avoid;
+}
+
+h3 {
+  color: #0f172a;
+  font-size: 11.5pt;
+  font-weight: 700;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 0 0 8px 0;
+  text-align: justify;
+}
+
+ul, ol {
+  margin: 0 0 8px 0;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.callout {
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 6px;
+  font-size: 9.2pt;
+  page-break-inside: avoid;
+}
+
+.callout-title {
+  font-weight: 800;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.callout p {
+  margin: 0;
+}
+
+.intuition {
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  color: #1e3a8a;
+}
+.intuition .callout-title { color: #1d4ed8; }
+
+.action-box {
+  background: #f5f3ff;
+  border-left: 4px solid #8b5cf6;
+  color: #4c1d95;
+}
+.action-box .callout-title { color: #6d28d9; }
+
+.warning-box {
+  background: #fef2f2;
+  border-left: 4px solid #ef4444;
+  color: #7f1d1d;
+}
+.warning-box .callout-title { color: #b91c1c; }
+
+.robotics {
+  background: #ecfdf5;
+  border-left: 4px solid #10b981;
+  color: #064e3b;
+}
+.robotics .callout-title { color: #047857; }
+
+.code-box {
+  background: #1e1e1e;
+  border-left: 4px solid #64748b;
+  color: #d4d4d4;
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 8.5pt;
+  padding: 10px 14px;
+  border-radius: 5px;
+  page-break-inside: avoid;
+  white-space: pre-wrap;
+  margin: 8px 0;
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  background-color: #f1f5f9;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 8.8pt;
+  color: #0f172a;
+}
+
+.page-break {
+  page-break-before: always;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header-block">
+  <span class="course-tag">Sprint 1</span>
+  <span class="timestamp-badge">📅 Created: 2026-10-08 23:37:42</span>
+  <h1>Sprint 1 Week 2: Kinematics & Physics Masterclass</h1>
+  <div class="subtitle">Comprehensive Theory, Step-by-Step Actions, and Lessons Learned</div>
+  <div class="meta-grid">
+    <span><b>Researchers:</b> Ahmed & Shahd &nbsp;|&nbsp; <b>Advisor:</b> Prof. Shan An &nbsp;|&nbsp; <b>Lab:</b> DEX-ROB Lab (Tianjin University)</span>
+  </div>
+</div>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>Welcome to the Masterclass for **Sprint 1, Week 2**! Today we unlock the fundamental kinematics of the AR5 robot, transition from URDF to OpenUSD, and solve the silent bugs that crash PhysX. By the end of this module, you will understand exactly how the robot moves, how we command it, and why the physics engine behaves the way it does.</p></div>
+
+<h2>1. URDF vs OpenUSD: The Paradigm Shift</h2>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>**Why abandon URDF?**<br>Think of URDF like a simple stick-figure drawing. It’s a tree of links and joints. It’s great for basic kinematics but terrible for advanced simulations because it can’t handle closed loops (like parallel linkages) or realistic physics (like squishy tomatoes).<br>**OpenUSD** is like a full 3D CAD engine combined with a database.<br>- **URDF:** 1 robot = 1 XML file. 100 robots = 100 XML files.<br>- **OpenUSD (LIVRPS):** 100 robots = 1 master template, with 100 *non-destructive overrides* (just changing the coordinates of where each robot sits, without copying the 3D meshes).<br>OpenUSD supports **PhysX 5 FEM** (Finite Element Method), which allows us to simulate the complex, deformable physics of cutting a tomato.</p></div>
+
+<h2>2. Isaac Sim Physics: Articulation Roots & The Instanceable Trap</h2>
+
+<div class="callout warning-box"><div class="callout-title">⚠️ Trap & Silent Failure</div><p>**The <code>Instanceable</code> Trap**<br>If you import a robot and click <code>Instanceable</code>, Isaac Sim treats the entire robot as a single rigid block to save memory.<br>**The Silent Failure:** PhysX looks at the robot and sees **zero joints**. When you try to run your Python controller, you get <code>TypeError: object of type 'NoneType' has no len()</code> because PhysX couldn't find the robot's skeleton!</p></div>
+
+<div class="callout action-box"><div class="callout-title">🛠️ Step-by-Step Action: The How</div><p>**How to fix the NoneType Error:**<br>1. Select your robot's top-level <code>Xform</code> (e.g., <code>/World/ar5_robot</code>).<br>2. Scroll down in the Properties tab and **Uncheck <code>Instanceable</code>**.<br>3. Add the <code>ArticulationRootAPI</code> to this parent <code>Xform</code>. This tells PhysX: *"Hey, everything inside this folder is connected by joints. Treat it as a single articulated robot."*</p></div>
+
+<h2>3. Joint Drives: Stiffness vs Damping</h2>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>**What do <code>0.5</code> and <code>0.05</code> mean in ADR-006?**<br>When simulating physical motors, we tune two main properties:<br>1. **Stiffness (400 N·m/rad):** Think of this as a **Virtual Spring**. If the robot arm is pushed away from its target angle, how aggressively does it snap back? High stiffness = rigid arm.<br>2. **Damping (40 N·m·s/rad):** Think of this as **Motor Throttle or Honey**. It opposes the speed of the arm. It prevents the arm from bouncing back and forth (oscillating) like a bungee cord.<br>**Velocity Control Rule:** If you want to control the robot by commanding *speed* (e.g. "spin at 5 rad/s"), you must set **Stiffness = 0** and **Damping > 0**. If stiffness > 0, the robot will try to fight you to stay at a specific angle!</p></div>
+
+<h2>4. The Armature: Virtual Rotor Inertia</h2>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>**Why add <code>0.05</code> armature to the arm and <code>0.005</code> to the hand?**<br>Real robot motors have heavy metal rotors spinning inside them at high speeds, acting like gyroscopes. This makes the robot stable.<br>In simulation, if we don't simulate this rotor mass, a tiny calculation error will cause the robot to vibrate violently and explode (numerical instability).<br>**Armature** adds "virtual weight" to the joint to stabilize the math, acting just like the real metal rotor.</p></div>
+
+<h2>5. ROS 2: Twist, TF, and QoS Profiles</h2>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>**Twist Messages:** How we tell the robot to move in 3D space. It has two parts:<br>- **Linear (x, y, z):** Moving forward/back, left/right, up/down (like a car).<br>- **Angular (x, y, z):** Pitch, Roll, Yaw (tilting or spinning).</p></div>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>**Odometry vs TF (Coordinate Trees):**<br>Think of Odometry as the robot's *GPS tracker*. TF (Transform Framework) is the *family tree* of where every part of the robot is located relative to the base. <code>/odom</code> tells us where the base is in the world, and TF tells us where the knife is relative to the base.</p></div>
+
+<div class="callout warning-box"><div class="callout-title">⚠️ Trap & Silent Failure</div><p>**Quality of Service (QoS): Best Effort vs Reliable**<br>When reading high-speed data (like 1 kHz joint packets):<br>- **Reliable:** Like sending an email. If packet #52 drops, the system stops and waits for it. This causes immense lag in real-time robotics!<br>- **Best Effort:** Like watching a live Twitch stream. If packet #52 drops, who cares? Packet #53 is arriving in 1 millisecond. Keep moving!</p></div>
+
+<h2>6. Kinematics and the Manipulator Jacobian</h2>
+
+<div class="callout intuition"><div class="callout-title">💡 Concept: The Why & Intuition</div><p>**Why do we need the Jacobian?**<br>In the end, we want to know the *forces* acting on the tomato (Contact Wrench: $\mathbf{F}_{ext}$).<br>We can read the electrical currents in the robot's motors, which gives us Joint Torques ($\boldsymbol{\tau}_{ext}$). But how do we convert 6 spinning motors into a straight-line cutting force?<br>**The Jacobian Matrix ($\mathbf{J}$)** is the magic translator. It translates *joint speeds* into *end-effector speeds*.<br>By applying the math formula $\mathbf{F}_{ext} = (\mathbf{J}^T)^\dagger \boldsymbol{\tau}_{ext}$, we convert the motor torques directly into the XYZ cutting force on the tomato!</p></div>
+
+<div class="callout action-box"><div class="callout-title">🛠️ Step-by-Step Action: The How</div><p>**Sprint 1, Week 2 Execution:**<br>We have implemented the exact geometry (D-H parameters) of the AR5 robot in <code>ar5_kinematics.py</code>. This script automatically calculates the Forward Kinematics (where the hand is) and the Jacobian (how to translate forces).<br>This avoids using heavy frameworks like MoveIt for our RL environment, giving us the raw, lightning-fast math needed for training millions of steps in Isaac Sim.</p></div>
+
+
+</body>
+</html>

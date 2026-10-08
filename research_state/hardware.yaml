@@ -1,0 +1,49 @@
+version: "1.0.0"
+category: "HARDWARE_DATABASE"
+last_updated: "2026-10-08"
+
+bimanual_setup:
+  left_arm:
+    model: "ARX AR5-L6"
+    sub_model: "AR5_5_07L_W4C4A2"
+    manufacturer: "ARX Robotics (松延动力)"
+    dof: 7
+    payload_kg: 3.0
+    reach_mm: 650
+    peak_torque_nm: 108.0
+    interface: "SocketCAN"
+    channel: "can0"
+    bitrate_bps: 1000000
+    sdk_path: "hardware/repos/arm/arx5-sdk"
+    can_driver_path: "hardware/repos/arm/ARX_CAN"
+
+  left_hand:
+    model: "LinkerHand O6"
+    manufacturer: "Linker Robotics (灵巧智能)"
+    total_joints: 11
+    active_joints: 6
+    passive_tendon_joints: 5
+    tendon_coupling_ratios:
+      thumb_dip_to_cmc_pitch: 1.226495
+      finger_dip_to_mcp_pitch: 1.125676
+    tactile_sensors: "Fingertip and palm tactile matrix"
+    interface: "SocketCAN"
+    channel: "can1"
+    bitrate_bps: 1000000
+    repos:
+      assembly: "hardware/repos/hand/robot-linkerbot-linker_hand_o6"
+      primitive_can: "hardware/repos/hand/primitive-linkerbot-linker_hand_o6"
+      service_dds: "hardware/repos/hand/linker_hand_service"
+      cpp_sdk: "hardware/repos/hand/linkerhand-cpp-sdk"
+      python_sdk: "hardware/repos/hand/linkerhand-python-sdk"
+
+  right_arm:
+    model: "ARX AR5-L6"
+    sub_model: "AR5_5_07R_W4C4A2"
+    manufacturer: "ARX Robotics (松延动力)"
+    dof: 7
+    payload_kg: 3.0
+    interface: "SocketCAN"
+    channel: "can0"
+    bitrate_bps: 1000000
+    end_effector: "TacBlade (Sensorized Culinary Knife)"

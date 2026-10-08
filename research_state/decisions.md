@@ -62,3 +62,49 @@ This log documents all immutable architectural and scientific decisions. Once ra
   1. **Sim-to-Real Gap Risk**: The added armature acts as a virtual low-pass filter on joint accelerations, meaning the simulated arm will dynamically respond differently (more sluggishly) than the physical AR5-L6 at high frequencies (1 kHz). 
   2. **Mitigation Requirement**: For M3 and M4, the `rl_agent` MUST implement Domain Randomization (DR) on the actuator parameters (e.g., introducing action latency and randomizing mass/inertia properties) to prevent the policy from overfitting to the artificially dampened simulation dynamics. 
   3. **Action Space Compatibility**: Since ADR-004 specifies an action space of residual active compliance gains ($\Delta K$), the hardcoded USD stiffness/damping values will simply serve as the nominal setpoints or be overridden by Isaac Lab's `ActuatorCfg` during training.
+
+---
+
+### [ADR-007] Dexterous Hand Control: FollowJointTrajectory over GripperCommand
+- **Date**: 2026-10-08
+- **Status**: **ACCEPTED**
+- **Context**: The Setup Assistant classified the 6-DoF dexterous hand (LinkerHand O6) as a `GripperCommand`, which is strictly for 1-DoF parallel-jaw claws. This prevented MoveIt from loading the `hand_controller` action server.
+- **Decision**: Rewrote `moveit_controllers.yaml` to classify the hand as a full `FollowJointTrajectory` controller.
+- **Consequences**: Grants MoveIt independent mathematical control over all 6 active knuckles, enabling dexterous manipulation.
+
+---
+
+### [ADR-008] SRDF Self-Collision Exclusion for Dexterous Hand
+- **Date**: 2026-10-08
+- **Status**: **ACCEPTED**
+- **Context**: Closing the fingers into a fist causes mathematically intersecting bounding boxes in the dense collision meshes of the hand. MoveIt's default safety system detected this as a crash (`Start state in collision`) and aborted planning.
+- **Decision**: Generated an exhaustive collision-exclusion matrix, injecting `<disable_collisions>` tags for all 13 hand links into the SRDF.
+- **Consequences**: Legally allows the fingers to touch each other, resolving the self-collision aborts.
+
+---
+
+### [ADR-009] Real-Time Mimic Joint Calculation via ros2_control.xacro
+- **Date**: 2026-10-08
+- **Status**: **ACCEPTED**
+- **Context**: The LinkerHand O6 has powered knuckles (active) and unpowered tip joints linked via tendons (passive mimic joints). Using `mock_components/GenericSystem`, the unpowered tip angles were not broadcast to `/joint_states`, causing Isaac Sim to render them stiff.
+- **Decision**: Injected mathematical mimic tags directly into `ros2_control.xacro`, permanently deleting passive joints from the SRDF planning group, and forcing fake hardware to calculate unpowered tip angles in real-time.
+- **Consequences**: Isaac Sim correctly renders the full joint state of both active and passive joints without planning crashes.
+
+---
+
+### [ADR-010] Sequential Wiring of Isaac Sim Action Graph
+- **Date**: 2026-10-08
+- **Status**: **ACCEPTED**
+- **Context**: Parallel execution wires in the Isaac Sim Action Graph triggered the Subscribe node and Controller simultaneously. The Controller fired before new ROS 2 data finished downloading, causing the physical robot in Isaac Sim to remain stationary despite MoveIt working.
+- **Decision**: Rewired the graph sequentially: `Tick -> Subscribe (Exec Out) -> Controller (Exec In)`.
+- **Consequences**: Eliminates race conditions, ensuring synchronization between MoveIt's command and Isaac Sim's physics execution.
+
+---
+
+### [ADR-011] Physical Hardware Repository Registry & Shared Hardware Database Integration
+- **Date**: 2026-10-08
+- **Status**: **ACCEPTED**
+- **Context**: Bimanual physical deployment requires low-level SocketCAN communication drivers, diagnostic tools, and SDKs for both the ARX AR5-L6 7-DoF arm and the LinkerHand O6 dexterous hand. Agents must have shared, un-siloed access to physical hardware specifications and driver source trees.
+- **Decision**: Established a centralized Hardware Database under `hardware/` (with a shared link `database/hardware`), containing cloned driver repositories for both the arm (`arx5-sdk`, `ARX_CAN`) and the hand (`robot-linkerbot-linker_hand_o6`, `primitive-linkerbot-linker_hand_o6`, `linker_hand_service`, `linkerhand-cpp-sdk`, `linkerhand-python-sdk`), along with complete datasheets and a machine-readable hardware state specification (`research_state/hardware.yaml`).
+- **Consequences**: Enables `ros_agent`, `simulation_agent`, and `rl_agent` to share validated kinematic limits, CAN bus identifiers, and real-time SocketCAN drivers without duplicate or fragmented assumptions.
+

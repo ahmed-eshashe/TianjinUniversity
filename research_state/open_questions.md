@@ -32,4 +32,13 @@ This document tracks unresolved scientific, mechanical, and implementation chall
 ### [OQ-003] AR5-L6 Low-Level Impedance Mode via CAN Bus
 - **Problem**: The ARX AR5-L6 arm driver operates via CAN bus. We need to verify whether the embedded joint controller supports direct motor current / feedforward torque commands $\tau_{cmd}$ at 1 kHz with deterministic PREEMPT_RT timing, or if commands must pass via position/velocity setpoints.
 - **Assigned Agents**: `ros_agent`
-- **Action Item**: Inspect ARX CAN communication protocol in lab SDK and test round-trip latency.
+## 4. Milestone 3 (RL Environment) Transition
+### [OQ-004] Handling Mimic Joints in Isaac Lab Actuator Configurations
+- **Problem**: In M2, we solved passive tip joints by injecting mimic calculations into `mock_components/GenericSystem` (ros2_control) so RViz and Isaac Sim display them correctly. In M3, as we move into Isaac Lab for headless RL training, we need to ensure `ActuatorCfg` properly mirrors these passive tendon relationships without causing PhysX 5 solver divergence or requiring active torque outputs for the passive joints.
+- **Assigned Agents**: `rl_agent`, `simulation_agent`
+- **Action Item**: Verify if Isaac Lab supports native mimic joints or if we must define custom implicit joint constraints for the LinkerHand O6.
+
+### [OQ-005] Bridging Domain Randomization (DR) with Artificial Dampening
+- **Problem**: According to [ADR-006], the AR5-L6 USD heavily utilizes virtual inertia (`physxJoint:armature = 0.05`) and PD gains to prevent explosions. This artificially dampens high-frequency dynamics. How do we structure the DR distributions (e.g., mass, inertia, friction, latency) in Isaac Lab to ensure the policy can generalize back to the un-dampened physical arm?
+- **Assigned Agents**: `rl_agent`
+- **Action Item**: Design the initial `DomainRandomizationCfg` matrix for M3 to explicitly account for virtual inertia overcompensation.
