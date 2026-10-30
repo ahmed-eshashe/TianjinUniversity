@@ -1,0 +1,70 @@
+{
+  "side": "slice",
+  "mode": "shear_xy_negative",
+  "scope": "exact finite-length bulk spring static continuation; fully prescribed outer surface; no contact or dynamics",
+  "requested_levels": [
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "stages": [
+    {
+      "strain": 0.02,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 18,
+      "force_residual_fraction": 3.2917511550973183e-07,
+      "energy_j": 1.657703007655759e-05,
+      "min_cell_volume_ratio": 0.9165694953194485,
+      "inverted_cell_count": 0,
+      "volume_ratio": 1.0000127680966662,
+      "min_spring_length_ratio": 0.9857200717429486,
+      "least_preconditioned_tangent_eigenvalue": 0.36358405721033743,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.05,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 17,
+      "force_residual_fraction": 1.3761835859274567e-06,
+      "energy_j": 0.0001036970385604405,
+      "min_cell_volume_ratio": 0.7928636679930857,
+      "inverted_cell_count": 0,
+      "volume_ratio": 1.0000292687098917,
+      "min_spring_length_ratio": 0.9644470460684619,
+      "least_preconditioned_tangent_eigenvalue": 0.36489218140076685,
+      "eigen_status": "converged",
+      "flags": [
+        "nonlinear_equilibrium_not_converged"
+      ],
+      "passed_static_screen": false
+    }
+  ],
+  "all_requested_levels_passed": false,
+  "first_flagged_strain": 0.05,
+  "interface_springs_included": false,
+  "damage_evolution_enabled": false,
+  "source_hashes": {
+    "rl/offline_tomato_large_strain.py": "ac22cd42cea84aa70a5593a23708b20b41b1aa5e39aece9991b9f6e8a0bb2d0f",
+    "rl/tomato_nonlinear_checks.py": "f67319f22dd5ee9822a5115a822e6e0bc973ff1a96c4885b734d2ee0d8f6a234",
+    "runs/offline/tomato_surfaces_03/surface_design.json": "7980595a98fe4f90e17e184431230818bed3872542f33340e1820f8d5f63b2ee",
+    "runs/offline/tomato_surface_mechanics_04/mass_stiffness_assignments.json": "c1b77f10ddae6d8fed38361bed4987e54df8098ec2a0baac95442264dbd54a4a"
+  },
+  "runtime_s": 0.3464087930005917,
+  "peak_rss_bytes": 129933312,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true,
+    "blas_threads": 1
+  },
+  "simulator_imports_or_launches": false,
+  "training": false
+}

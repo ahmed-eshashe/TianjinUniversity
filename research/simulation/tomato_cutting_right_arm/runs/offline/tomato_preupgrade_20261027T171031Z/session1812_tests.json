@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-10-27T18:12:42.034412+00:00",
+  "tests": 7,
+  "passed": false,
+  "output": "test_closed_positive_solids (test_tomato_two_piece_coupon.TwoPieceTests.test_closed_positive_solids) ... ERROR\ntest_counts (test_tomato_two_piece_coupon.TwoPieceTests.test_counts) ... ok\ntest_disabled (test_tomato_two_piece_coupon.TwoPieceTests.test_disabled) ... ok\ntest_fresh_description (test_tomato_two_piece_coupon.TwoPieceTests.test_fresh_description) ... ok\ntest_gap_and_fixtures (test_tomato_two_piece_coupon.TwoPieceTests.test_gap_and_fixtures) ... ok\ntest_modern_explicit_margin_gap (test_tomato_two_piece_coupon.TwoPieceTests.test_modern_explicit_margin_gap) ... ok\ntest_no_bridge (test_tomato_two_piece_coupon.TwoPieceTests.test_no_bridge) ... ok\n\n======================================================================\nERROR: test_closed_positive_solids (test_tomato_two_piece_coupon.TwoPieceTests.test_closed_positive_solids)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_two_piece_coupon.py\", line 15, in test_closed_positive_solids\n    audit_closed_surface(d['positions_m'][8*side:8*side+8],\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupon_trajectory.py\", line 34, in audit_closed_surface\n    if not math.isfinite(volume) or volume<=0:raise ValueError('Nonpositive oriented volume')\n                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Nonpositive oriented volume\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nFAILED (errors=1)\n",
+  "elapsed_s": 0.0034730099996522767,
+  "native_runtime_validated": false,
+  "mechanical_calls": 0,
+  "source_sha256": {
+    "rl/tomato_two_piece_coupon.py": "22f51b0d031464d6594c1479db0228fd3c67209d2824ca3c1b296fa2baf9dfb4",
+    "rl/tests/test_tomato_two_piece_coupon.py": "2a9818c50af2466915bdfa3df79ac198b8760a579f4650a5899c9b19d010e967"
+  }
+}

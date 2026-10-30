@@ -1,0 +1,1137 @@
+{
+  "scope": "Independent original-mesh near-contact proposals; no physical validation",
+  "source_run": "runs/rl/phase3/palm_seating_04",
+  "supported_sample": {
+    "handle_height_m": 0.9118453011754308,
+    "handle_in_palm_m": [
+      0.07794269357560524,
+      0.017028024457179422,
+      0.099229104851052
+    ],
+    "contacts": [
+      {
+        "part": "thumb",
+        "body": "right_rh_thumb_distal",
+        "force_n": 3.176363229751587,
+        "on_handle": true,
+        "point_world_m": [
+          -2.2038700580596924,
+          -1.5379058122634888,
+          0.9117012619972229
+        ],
+        "normal_world": [
+          0.8912162780761719,
+          -0.44873741269111633,
+          -0.06609237939119339
+        ],
+        "radial_vector": [
+          0.018489925500774947,
+          -0.00330594234442024
+        ],
+        "curl_rad": 0.0,
+        "proximal": false,
+        "distance_from_tip_m": 0.009704829863808044
+      },
+      {
+        "part": "index",
+        "body": "right_rh_index_distal",
+        "force_n": 2.9606099128723145,
+        "on_handle": true,
+        "point_world_m": [
+          -2.231476068496704,
+          -1.518394947052002,
+          0.9187412858009338
+        ],
+        "normal_world": [
+          -0.8792814016342163,
+          0.42006126046180725,
+          0.22452767193317413
+        ],
+        "radial_vector": [
+          -0.015595080820492683,
+          -0.00706919857450334
+        ],
+        "curl_rad": 1.631930410861969,
+        "proximal": false,
+        "distance_from_tip_m": 0.0004699584766377843
+      }
+    ],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 0.7090451121330261,
+    "support_clearance_m": -2.3398038057953485e-05,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "knife_friction_by_hand_body_n": {
+      "right_rh_thumb_distal": [
+        -0.2992144227027893,
+        -0.3807700276374817,
+        -1.4494708776474
+      ],
+      "right_rh_index_distal": [
+        0.21523517370224,
+        0.844549298286438,
+        -0.7371482253074646
+      ],
+      "right_rh_middle_distal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_ring_distal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_pinky_distal": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "phase": "adaptive_supported_clearance",
+    "control_step": 611,
+    "sim_s": 30.55,
+    "q_rad": [
+      -0.9962587952613831,
+      -1.5557689666748047,
+      1.1203525066375732,
+      1.4851303100585938,
+      -1.2131516933441162,
+      -0.011703800410032272,
+      0.2262805849313736,
+      0.8588147759437561,
+      0.1429869830608368,
+      0.8634557723999023,
+      0.9160614013671875,
+      0.9160648584365845,
+      0.8801082968711853
+    ],
+    "palm_world_m": [
+      -2.2228324440809315,
+      -1.5048596314770952,
+      0.9973099454257193
+    ],
+    "knife_pose_xyzw": [
+      -2.1648762226104736,
+      -1.4458147287368774,
+      0.9218448400497437,
+      0.07025060057640076,
+      -0.04098977521061897,
+      0.5062049627304077,
+      0.858569324016571
+    ],
+    "in_place_motion": {
+      "footprint_margin_m": 0.028988871133929006,
+      "centre_xy_shift_m": 0.02660143168990794,
+      "rotation_deg": 9.433655990811076,
+      "within_bounds": true
+    },
+    "estimated_hand_drive_torque_nm": [
+      0.03507146239280701,
+      0.5179485082626343,
+      0.22466249763965607,
+      0.0008462277473881841,
+      0.0008301787311211228,
+      0.000703707686625421
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "predicted_wrap_found": true,
+  "candidates": [
+    {
+      "score": 1.072541345032569,
+      "finger_degrees": {
+        "index": 70,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 60
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.031999999999999994,
+        0.033000000000000015,
+        0.08100000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.006023667933845678,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0019978556821259163,
+        "right_rh_thumb_metacarpals": 0.0016988428487961504,
+        "right_rh_thumb_metacarpals_base2": 0.03006305655256885,
+        "right_rh_index_distal": -0.0009692123651631607,
+        "right_rh_index_proximal": 0.004936181885765931,
+        "right_rh_middle_distal": 0.0023329140201903548,
+        "right_rh_middle_proximal": 0.011315406722227236,
+        "right_rh_ring_distal": 0.0005924148368648963,
+        "right_rh_ring_proximal": 0.009464429298373232,
+        "right_rh_pinky_distal": 0.01071817072828371,
+        "right_rh_pinky_proximal": 0.008401932454984232,
+        "right_rh_hand_base_link": 3.421038437853574e-05
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.072541345032569,
+      "finger_degrees": {
+        "index": 70,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.031999999999999994,
+        0.033000000000000015,
+        0.08100000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.006023667933845678,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0019978556821259163,
+        "right_rh_thumb_metacarpals": 0.0016988428487961504,
+        "right_rh_thumb_metacarpals_base2": 0.03006305655256885,
+        "right_rh_index_distal": -0.0009692123651631607,
+        "right_rh_index_proximal": 0.004936181885765931,
+        "right_rh_middle_distal": 0.0023329140201903548,
+        "right_rh_middle_proximal": 0.011315406722227236,
+        "right_rh_ring_distal": 0.0005924148368648963,
+        "right_rh_ring_proximal": 0.009464429298373232,
+        "right_rh_pinky_distal": 0.004321711334265246,
+        "right_rh_pinky_proximal": 0.006988145325308802,
+        "right_rh_hand_base_link": 3.421038437853574e-05
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.2122682227867227,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 60,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.026000000000000006,
+        0.08300000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.00828653318741801,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0011274212557488908,
+        "right_rh_thumb_metacarpals": 0.003552922400556352,
+        "right_rh_thumb_metacarpals_base2": 0.033340455352534194,
+        "right_rh_index_distal": 0.002151275292733401,
+        "right_rh_index_proximal": 0.004868300753680006,
+        "right_rh_middle_distal": -0.0009444851317337299,
+        "right_rh_middle_proximal": 0.00940922659555568,
+        "right_rh_ring_distal": 0.010373650847111088,
+        "right_rh_ring_proximal": 0.011041902056830692,
+        "right_rh_pinky_distal": 0.0010297506049035537,
+        "right_rh_pinky_proximal": 0.005278446427363248,
+        "right_rh_hand_base_link": 0.0020666832564431165
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.2122682227867227,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.026000000000000006,
+        0.08300000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.00828653318741801,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0011274212557488908,
+        "right_rh_thumb_metacarpals": 0.003552922400556352,
+        "right_rh_thumb_metacarpals_base2": 0.033340455352534194,
+        "right_rh_index_distal": 0.002151275292733401,
+        "right_rh_index_proximal": 0.004868300753680006,
+        "right_rh_middle_distal": -0.0009444851317337299,
+        "right_rh_middle_proximal": 0.00940922659555568,
+        "right_rh_ring_distal": 0.0039017735946609983,
+        "right_rh_ring_proximal": 0.009452060413919744,
+        "right_rh_pinky_distal": 0.0010297506049035537,
+        "right_rh_pinky_proximal": 0.005278446427363248,
+        "right_rh_hand_base_link": 0.0020666832564431165
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.2295698811345728,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 60,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.02900000000000001,
+        0.08600000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.010889189631627105,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0018286750571673508,
+        "right_rh_thumb_metacarpals": 0.006045365711013301,
+        "right_rh_thumb_metacarpals_base2": 0.03560977814113977,
+        "right_rh_index_distal": -4.512107575528612e-05,
+        "right_rh_index_proximal": 0.002462220952990521,
+        "right_rh_middle_distal": 0.009793223413201602,
+        "right_rh_middle_proximal": 0.010472826579699203,
+        "right_rh_ring_distal": 0.001632452076771193,
+        "right_rh_ring_proximal": 0.00705127934253575,
+        "right_rh_pinky_distal": -0.000970408133464648,
+        "right_rh_pinky_proximal": 0.0028783281154528065,
+        "right_rh_hand_base_link": 0.002311497070453146
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.2295698811345728,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 65,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.02900000000000001,
+        0.08600000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.010889189631627105,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0018286750571673508,
+        "right_rh_thumb_metacarpals": 0.006045365711013301,
+        "right_rh_thumb_metacarpals_base2": 0.03560977814113977,
+        "right_rh_index_distal": -4.512107575528612e-05,
+        "right_rh_index_proximal": 0.002462220952990521,
+        "right_rh_middle_distal": 0.0033483233046085747,
+        "right_rh_middle_proximal": 0.008841495248227332,
+        "right_rh_ring_distal": 0.001632452076771193,
+        "right_rh_ring_proximal": 0.00705127934253575,
+        "right_rh_pinky_distal": -0.000970408133464648,
+        "right_rh_pinky_proximal": 0.0028783281154528065,
+        "right_rh_hand_base_link": 0.002311497070453146
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.251207117660637,
+      "finger_degrees": {
+        "index": 60,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03299999999999999,
+        0.03100000000000001,
+        0.08200000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.007269315979334889,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0014543565183910596,
+        "right_rh_thumb_metacarpals": 0.002476332724661863,
+        "right_rh_thumb_metacarpals_base2": 0.03159227968460405,
+        "right_rh_index_distal": 0.010299876825712956,
+        "right_rh_index_proximal": 0.0073021196415324965,
+        "right_rh_middle_distal": 0.0008036906961223916,
+        "right_rh_middle_proximal": 0.010515986182143437,
+        "right_rh_ring_distal": -0.0009368084976195817,
+        "right_rh_ring_proximal": 0.008666838844444594,
+        "right_rh_pinky_distal": 0.0027794611037016415,
+        "right_rh_pinky_proximal": 0.006260188506395814,
+        "right_rh_hand_base_link": 0.0010714407920102281
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.251207117660637,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03299999999999999,
+        0.03100000000000001,
+        0.08200000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.007269315979334889,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0014543565183910596,
+        "right_rh_thumb_metacarpals": 0.002476332724661863,
+        "right_rh_thumb_metacarpals_base2": 0.03159227968460405,
+        "right_rh_index_distal": 0.0038994511425733958,
+        "right_rh_index_proximal": 0.00585729693355784,
+        "right_rh_middle_distal": 0.0008036906961223916,
+        "right_rh_middle_proximal": 0.010515986182143437,
+        "right_rh_ring_distal": -0.0009368084976195817,
+        "right_rh_ring_proximal": 0.008666838844444594,
+        "right_rh_pinky_distal": 0.0027794611037016415,
+        "right_rh_pinky_proximal": 0.006260188506395814,
+        "right_rh_hand_base_link": 0.0010714407920102281
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.529306414571137,
+      "finger_degrees": {
+        "index": 60,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 45,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08100000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.006237851331145405,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.001646649768985509,
+        "right_rh_thumb_metacarpals": 0.0016935918956210438,
+        "right_rh_thumb_metacarpals_base2": 0.03168064413563239,
+        "right_rh_index_distal": 0.010283534733809191,
+        "right_rh_index_proximal": 0.008266710312676444,
+        "right_rh_middle_distal": 0.0007873485033392108,
+        "right_rh_middle_proximal": 0.011381169859298296,
+        "right_rh_ring_distal": -0.0009531508240330777,
+        "right_rh_ring_proximal": 0.009532942487036407,
+        "right_rh_pinky_distal": 0.002695991871136935,
+        "right_rh_pinky_proximal": 0.0071806354638910205,
+        "right_rh_hand_base_link": 0.0019454619903019124
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.529306414571137,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 45,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08100000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.006237851331145405,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.001646649768985509,
+        "right_rh_thumb_metacarpals": 0.0016935918956210438,
+        "right_rh_thumb_metacarpals_base2": 0.03168064413563239,
+        "right_rh_index_distal": 0.003883108835837548,
+        "right_rh_index_proximal": 0.006774822835225909,
+        "right_rh_middle_distal": 0.0007873485033392108,
+        "right_rh_middle_proximal": 0.011381169859298296,
+        "right_rh_ring_distal": -0.0009531508240330777,
+        "right_rh_ring_proximal": 0.009532942487036407,
+        "right_rh_pinky_distal": 0.002695991871136935,
+        "right_rh_pinky_proximal": 0.0071806354638910205,
+        "right_rh_hand_base_link": 0.0019454619903019124
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.611886788115328,
+      "finger_degrees": {
+        "index": 60,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 17,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08100000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.006359579189872067,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0018807602710451798,
+        "right_rh_thumb_metacarpals": 0.0021928311769136982,
+        "right_rh_thumb_metacarpals_base2": 0.03160862118281548,
+        "right_rh_index_distal": 0.010283534733809191,
+        "right_rh_index_proximal": 0.008266710312676444,
+        "right_rh_middle_distal": 0.0007873485033392108,
+        "right_rh_middle_proximal": 0.011381169859298296,
+        "right_rh_ring_distal": -0.0009531508240330777,
+        "right_rh_ring_proximal": 0.009532942487036407,
+        "right_rh_pinky_distal": 0.002695991871136935,
+        "right_rh_pinky_proximal": 0.0071806354638910205,
+        "right_rh_hand_base_link": 0.0019454619903019124
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.611886788115328,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 70,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 17,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08100000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.006359579189872067,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0018807602710451798,
+        "right_rh_thumb_metacarpals": 0.0021928311769136982,
+        "right_rh_thumb_metacarpals_base2": 0.03160862118281548,
+        "right_rh_index_distal": 0.003883108835837548,
+        "right_rh_index_proximal": 0.006774822835225909,
+        "right_rh_middle_distal": 0.0007873485033392108,
+        "right_rh_middle_proximal": 0.011381169859298296,
+        "right_rh_ring_distal": -0.0009531508240330777,
+        "right_rh_ring_proximal": 0.009532942487036407,
+        "right_rh_pinky_distal": 0.002695991871136935,
+        "right_rh_pinky_proximal": 0.0071806354638910205,
+        "right_rh_hand_base_link": 0.0019454619903019124
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.6251271572298998,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 60,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 45,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.026000000000000006,
+        0.08300000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.007744524789878748,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0023237185785602733,
+        "right_rh_thumb_metacarpals": 0.0036514768723174273,
+        "right_rh_thumb_metacarpals_base2": 0.0334124782625568,
+        "right_rh_index_distal": 0.002151275292733401,
+        "right_rh_index_proximal": 0.004868300753680006,
+        "right_rh_middle_distal": -0.0009444851317337299,
+        "right_rh_middle_proximal": 0.00940922659555568,
+        "right_rh_ring_distal": 0.010373650847111088,
+        "right_rh_ring_proximal": 0.011041902056830692,
+        "right_rh_pinky_distal": 0.0010297506049035537,
+        "right_rh_pinky_proximal": 0.005278446427363248,
+        "right_rh_hand_base_link": 0.0020666832564431165
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.6251271572298998,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 45,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.026000000000000006,
+        0.08300000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.007744524789878748,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0023237185785602733,
+        "right_rh_thumb_metacarpals": 0.0036514768723174273,
+        "right_rh_thumb_metacarpals_base2": 0.0334124782625568,
+        "right_rh_index_distal": 0.002151275292733401,
+        "right_rh_index_proximal": 0.004868300753680006,
+        "right_rh_middle_distal": -0.0009444851317337299,
+        "right_rh_middle_proximal": 0.00940922659555568,
+        "right_rh_ring_distal": 0.0039017735946609983,
+        "right_rh_ring_proximal": 0.009452060413919744,
+        "right_rh_pinky_distal": 0.0010297506049035537,
+        "right_rh_pinky_proximal": 0.005278446427363248,
+        "right_rh_hand_base_link": 0.0020666832564431165
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.7491766752765343,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 65,
+        "ring": 65,
+        "pinky": 60
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08700000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.011528310942290787,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0022454870255190235,
+        "right_rh_thumb_metacarpals": 0.00717527994786106,
+        "right_rh_thumb_metacarpals_base2": 0.03659206158472916,
+        "right_rh_index_distal": -0.0009269813141727645,
+        "right_rh_index_proximal": 0.0013577254716744466,
+        "right_rh_middle_distal": 0.0023729302620557197,
+        "right_rh_middle_proximal": 0.007738284423130522,
+        "right_rh_ring_distal": 0.0006570590575759316,
+        "right_rh_ring_proximal": 0.00594886874825068,
+        "right_rh_pinky_distal": 0.004201367477896872,
+        "right_rh_pinky_proximal": 0.0036076585644777767,
+        "right_rh_hand_base_link": 0.0023511137319243425
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.7652173611978204,
+      "finger_degrees": {
+        "index": 60,
+        "middle": 65,
+        "ring": 65,
+        "pinky": 60
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.028000000000000008,
+        0.08900000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.01318727162596145,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0027971254093041497,
+        "right_rh_thumb_metacarpals": 0.008936608754841951,
+        "right_rh_thumb_metacarpals_base2": 0.038205385009160556,
+        "right_rh_index_distal": 0.003721121091491947,
+        "right_rh_index_proximal": 0.0014579139197817004,
+        "right_rh_middle_distal": 0.0007870650723065115,
+        "right_rh_middle_proximal": 0.00603565086383176,
+        "right_rh_ring_distal": -0.0009119450220115982,
+        "right_rh_ring_proximal": 0.004247631288275669,
+        "right_rh_pinky_distal": 0.002664039111401603,
+        "right_rh_pinky_proximal": 0.0019848525003676246,
+        "right_rh_hand_base_link": 0.0025003269601980987
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.7964384294603124,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 60,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 17,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08300000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.00794239626107407,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0025924359300563346,
+        "right_rh_thumb_metacarpals": 0.00406729448566584,
+        "right_rh_thumb_metacarpals_base2": 0.033267471173902545,
+        "right_rh_index_distal": 0.0022242594645185687,
+        "right_rh_index_proximal": 0.004969123714042088,
+        "right_rh_middle_distal": -0.0008715009617155656,
+        "right_rh_middle_proximal": 0.009511672944390329,
+        "right_rh_ring_distal": 0.010446635009984107,
+        "right_rh_ring_proximal": 0.011140144381590979,
+        "right_rh_pinky_distal": 0.0010989040276483814,
+        "right_rh_pinky_proximal": 0.005379149814670185,
+        "right_rh_hand_base_link": 0.002080679237509389
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.7964384294603124,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 70,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 17,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.027000000000000007,
+        0.08300000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.00794239626107407,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0025924359300563346,
+        "right_rh_thumb_metacarpals": 0.00406729448566584,
+        "right_rh_thumb_metacarpals_base2": 0.033267471173902545,
+        "right_rh_index_distal": 0.0022242594645185687,
+        "right_rh_index_proximal": 0.004969123714042088,
+        "right_rh_middle_distal": -0.0008715009617155656,
+        "right_rh_middle_proximal": 0.009511672944390329,
+        "right_rh_ring_distal": 0.003974757766379983,
+        "right_rh_ring_proximal": 0.009552777159638766,
+        "right_rh_pinky_distal": 0.0010989040276483814,
+        "right_rh_pinky_proximal": 0.005379149814670185,
+        "right_rh_hand_base_link": 0.002080679237509389
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.8299909142396225,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 60,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 45,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.033000000000000015,
+        0.08600000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.010651755683962483,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.002903284489202497,
+        "right_rh_thumb_metacarpals": 0.00575002181378996,
+        "right_rh_thumb_metacarpals_base2": 0.0353898643366358,
+        "right_rh_index_distal": 0.00023211986658955297,
+        "right_rh_index_proximal": 0.0028655127944388487,
+        "right_rh_middle_distal": 0.010085160064693677,
+        "right_rh_middle_proximal": 0.010866054459856403,
+        "right_rh_ring_distal": 0.0019243887639118912,
+        "right_rh_ring_proximal": 0.007454146325411838,
+        "right_rh_pinky_distal": -0.0007132533278327441,
+        "right_rh_pinky_proximal": 0.0033807791176478433,
+        "right_rh_hand_base_link": 0.0023674809947182365
+      },
+      "predicted_simultaneous_contacts": true
+    },
+    {
+      "score": 1.8299909142396225,
+      "finger_degrees": {
+        "index": 65,
+        "middle": 65,
+        "ring": 65,
+        "pinky": 65
+      },
+      "thumb_pitch_deg": 18,
+      "thumb_yaw_deg": 45,
+      "handle_in_hand_m": [
+        0.03399999999999999,
+        0.033000000000000015,
+        0.08600000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.74703914997476,
+          -0.39528730028963294,
+          -0.5344908405526893
+        ],
+        [
+          -0.2721356800327974,
+          -0.9153961440327089,
+          0.2966345750972619
+        ],
+        [
+          -0.6065267348254925,
+          -0.07614361246867511,
+          -0.7914085356010165
+        ]
+      ],
+      "minimum_board_gap_m": 0.010651755683962483,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.002903284489202497,
+        "right_rh_thumb_metacarpals": 0.00575002181378996,
+        "right_rh_thumb_metacarpals_base2": 0.0353898643366358,
+        "right_rh_index_distal": 0.00023211986658955297,
+        "right_rh_index_proximal": 0.0028655127944388487,
+        "right_rh_middle_distal": 0.003640259984681246,
+        "right_rh_middle_proximal": 0.009244525720943218,
+        "right_rh_ring_distal": 0.0019243887639118912,
+        "right_rh_ring_proximal": 0.007454146325411838,
+        "right_rh_pinky_distal": -0.0007132533278327441,
+        "right_rh_pinky_proximal": 0.0033807791176478433,
+        "right_rh_hand_base_link": 0.0023674809947182365
+      },
+      "predicted_simultaneous_contacts": true
+    }
+  ]
+}

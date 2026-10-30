@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 115, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 96, in main
+    least=float(eigsh(pre@h@pre,k=1,which='SA',return_eigenvectors=False,tol=1e-5,maxiter=800)[0])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 1778, in eigsh
+    params.iterate()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 624, in iterate
+    self._raise_no_convergence()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 421, in _raise_no_convergence
+    raise ArpackNoConvergence(f"No convergence ({num_iter} iterations, "
+scipy.sparse.linalg._eigen.arpack.arpack.ArpackNoConvergence: ARPACK error -1: No convergence (801 iterations, 0/1 eigenvectors converged)

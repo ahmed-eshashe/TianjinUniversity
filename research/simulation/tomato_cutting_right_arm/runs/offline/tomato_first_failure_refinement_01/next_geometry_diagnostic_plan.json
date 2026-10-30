@@ -1,0 +1,29 @@
+{
+  "status": "planned_only_no_candidate_curve_implemented",
+  "purpose": "Saved-state geometry-only diagnostic of contact-compatible cubic interpolation; not a physical trajectory or acceptance backend.",
+  "scope": [
+    "Verify fresh UTC, readable quota below45 percent used, free common locks, all qualified source/state hashes and no unresolved stability frontier. Stop near hard deadline.",
+    "Read current swept-path and paired-failure results. Preserve all endpoint labels, main checkpoint and separate histories.",
+    "First test Hermite endpoint positions/derivatives, fixed support and guide velocities, analytic interior gap minima, activation knots and deliberately penetrating examples.",
+    "On the seven saved accepted/rejected intervals only, construct contact-compatible endpoint velocities by projecting the chord onto endpoint active-contact derivative constraints with existing support/guide velocities zero. Fail closed on inconsistent constraints or unsupported activation changes.",
+    "Store cubic coefficients in new files with source and endpoint hashes. Never overwrite endpoint positions or accepted work/damage/history.",
+    "Split the prescribed curve at all original contact activation knots. Evaluate quartic gap extrema using derivative roots plus endpoints; cross-check witness rows and independent Cartesian polygon clipping. Sampling alone does not qualify continuous clearance.",
+    "Report original linear and candidate cubic minimum gaps side by side. Keep originally rejected paths rejected.",
+    "Do not adopt the curve for mechanics: intermediate equilibrium, constitutive evolution, energy/work and continuous volume/surface checks remain missing. Any adoption requires separate explicit qualification."
+  ],
+  "physical_laws_changed": false,
+  "acceptance_thresholds_changed": false,
+  "advance_main_history": false,
+  "no_simulator_or_training": true,
+  "serial_only": true,
+  "caps": {
+    "address_space_bytes": 536870912,
+    "cpu_seconds": 45,
+    "alarm_seconds": 55,
+    "parent_timeout_seconds": 60,
+    "threads": 1,
+    "max_calls_per_batch": 12
+  },
+  "hard_deadline_utc": "2026-10-26T04:54:40+00:00",
+  "fallback": "If geometry diagnostic fails, diagnose without changing gates; main path may continue only through independently passing original small-step mechanics."
+}

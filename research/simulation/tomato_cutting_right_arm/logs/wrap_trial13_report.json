@@ -1,0 +1,788 @@
+{
+  "passed": false,
+  "lift_passed": true,
+  "wrap_grasp": {
+    "passed": false,
+    "inner_finger_contacts": [],
+    "contact_details": [
+      {
+        "body": "right_rh_hand_base_link",
+        "force_n": 0.4424474239349365,
+        "distance_from_fingertip_m": null,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.015247123356155553,
+          0.022893890709297978,
+          0.07286000095893957
+        ]
+      },
+      {
+        "body": "right_rh_hand_base_link",
+        "force_n": 5.2110676765441895,
+        "distance_from_fingertip_m": null,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.0158616464264073,
+          -0.016648548562196313,
+          0.05898753999643491
+        ]
+      },
+      {
+        "body": "right_rh_hand_base_link",
+        "force_n": 5.394013404846191,
+        "distance_from_fingertip_m": null,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.015021428844426515,
+          0.02219914334458445,
+          0.06997103432315444
+        ]
+      },
+      {
+        "body": "right_rh_thumb_metacarpals",
+        "force_n": 4.008643627166748,
+        "distance_from_fingertip_m": null,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.03372535009376398,
+          0.05278557030302009,
+          0.06118256476865742
+        ]
+      },
+      {
+        "body": "right_rh_index_distal",
+        "force_n": 3.9631154537200928,
+        "distance_from_fingertip_m": 0.0010267403559148375,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.04278815237969363,
+          0.022811246109633525,
+          0.07287751954329234
+        ]
+      },
+      {
+        "body": "right_rh_middle_distal",
+        "force_n": 4.028509140014648,
+        "distance_from_fingertip_m": 0.000986071865622655,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.0365306268611901,
+          0.006331641919797829,
+          0.07383476533834386
+        ]
+      },
+      {
+        "body": "right_rh_ring_distal",
+        "force_n": 3.510326623916626,
+        "distance_from_fingertip_m": 0.0008961805346066332,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.03691992475584022,
+          -0.009617460485793853,
+          0.06974391434947784
+        ]
+      },
+      {
+        "body": "right_rh_pinky_distal",
+        "force_n": 3.4167673587799072,
+        "distance_from_fingertip_m": 0.0010331621660427254,
+        "inner_finger_contact": false,
+        "point_in_hand_m": [
+          0.038899901283393566,
+          -0.02587504961553906,
+          0.06435599936465569
+        ]
+      }
+    ],
+    "checks": {
+      "palm_contact": true,
+      "thumb_contact": true,
+      "at_least_two_contacts_away_from_tips": false,
+      "at_least_three_fingers_contact": true,
+      "at_least_three_fingers_curled": true,
+      "handle_near_palm": true,
+      "wrap_retained_during_hold": false
+    },
+    "proximal_contacts": [],
+    "finger_contacts": [
+      "index",
+      "middle",
+      "ring",
+      "pinky"
+    ],
+    "curled_fingers": [
+      "index",
+      "middle",
+      "ring",
+      "pinky"
+    ],
+    "handle_in_hand_m": [
+      0.03299246987928226,
+      -0.016756015021917568,
+      0.05763929495987536
+    ]
+  },
+  "controller_type": "Scripted IK and joint-drive targets; no RL training",
+  "final_knife_rotation_world": [
+    [
+      0.2895558578620995,
+      0.5933193794457574,
+      0.7510855604735353
+    ],
+    [
+      -0.9565742055933184,
+      0.15190254203692377,
+      0.2487798362332288
+    ],
+    [
+      0.03351409212935885,
+      -0.7905047322418897,
+      0.6115382849273813
+    ]
+  ],
+  "initial_handle_world_m": [
+    -2.2626926453553637,
+    -1.7618007401896119,
+    0.8719522994596122
+  ],
+  "knife_path": "/Indoor/RZ/SM_kitchen_knife_02",
+  "duplicate_knife_created": false,
+  "grasp_attachment_created": false,
+  "knife_collision": "Separate blade and handle hulls on the existing rigid body",
+  "configuration": {
+    "require_wrap": true,
+    "lift_pitch_deg": 0.0,
+    "approach_axis": "z",
+    "stance_seed": "work/grasp_stance_top_clear.json",
+    "pinky_close_deg": null,
+    "overhang_edge": -0.035,
+    "handle_overhang": true,
+    "seat_distance": 0.0,
+    "lift_height": 0.03,
+    "lift_support_close_deg": null,
+    "support_fingers": "middle-ring",
+    "support_close_deg": 70.0,
+    "pad_stiffness": 15000.0,
+    "pad_damping": 60.0,
+    "torsional_radius": 0.006,
+    "thumb_torque": 1.0,
+    "thumb_stiffness": 10.0,
+    "static_friction": 1.2,
+    "dynamic_friction": 1.0,
+    "air_hand_test": false,
+    "lift_close_deg": null,
+    "inspect_hand": false,
+    "adjust_stance": true,
+    "finger_stiffness": 3.0,
+    "thumb_contact_force": 4.0,
+    "finger_contact_force": 4.0,
+    "closure_speed": 6.0,
+    "close_camera": false,
+    "force_closure": true,
+    "close_thumb_pitch_deg": 33.0,
+    "insert_distance": 0.0,
+    "prethumb_yaw_deg": 0.0,
+    "approach_clearance": 0.08,
+    "finger_torque": 0.3,
+    "contact_descent": false,
+    "thumb_pitch_deg": 10.0,
+    "thumb_yaw_deg": 60.0,
+    "tilt_deg": 0,
+    "palm_height": 0.045,
+    "finger_offset": 0.035,
+    "preclose_deg": 0.0,
+    "handle_offset": 0.015,
+    "close_deg": 90.0,
+    "gui": false,
+    "interactive": false
+  },
+  "board_shift_m": [
+    -0.07701616339420998,
+    0.12508202617616762,
+    -0.0
+  ],
+  "stance": {
+    "root_yaw_deg": 3.5046620747772765,
+    "root_offset_xy": [
+      0.0943038653225478,
+      -0.06278893865861987
+    ],
+    "roll_deg": -5,
+    "orientation": [
+      [
+        0.0,
+        0.5243078043623611,
+        -0.8515288170606562
+      ],
+      [
+        0.0,
+        -0.8515288170606562,
+        -0.524307804362361
+      ],
+      [
+        -1.0000000000000002,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "closure_contact_details": [
+    {
+      "body": "right_rh_hand_base_link",
+      "force_n": 6.113301753997803,
+      "point_world": [
+        -2.228834629058838,
+        -1.7389270067214966,
+        0.9010043144226074
+      ],
+      "normal": [
+        0.03710756450891495,
+        0.026107683777809143,
+        0.9989701509475708
+      ],
+      "relative_to_handle_knife_frame": [
+        0.0009217469876305739,
+        -0.014315749376553957,
+        0.00945640079213136
+      ]
+    },
+    {
+      "body": "right_rh_hand_base_link",
+      "force_n": 4.033047676086426,
+      "point_world": [
+        -2.217646837234497,
+        -1.7778652906417847,
+        0.9016830921173096
+      ],
+      "normal": [
+        0.03710756450891495,
+        0.026107683777809143,
+        0.9989701509475708
+      ],
+      "relative_to_handle_knife_frame": [
+        0.041431581417932704,
+        -0.014343896654991029,
+        0.008578960263774828
+      ]
+    },
+    {
+      "body": "right_rh_thumb_metacarpals",
+      "force_n": 4.005077362060547,
+      "point_world": [
+        -2.1940701007843018,
+        -1.7991055250167847,
+        0.8828831315040588
+      ],
+      "normal": [
+        0.9819711446762085,
+        0.1716337352991104,
+        0.07921305298805237
+      ],
+      "relative_to_handle_knife_frame": [
+        0.06808138517669265,
+        0.01113982112884056,
+        0.009482655201399747
+      ]
+    },
+    {
+      "body": "right_rh_index_distal",
+      "force_n": 4.025296211242676,
+      "point_world": [
+        -2.2197728157043457,
+        -1.7798097133636475,
+        0.8738765120506287
+      ],
+      "normal": [
+        -0.7517781257629395,
+        -0.24772924184799194,
+        -0.6111136078834534
+      ],
+      "relative_to_handle_knife_frame": [
+        0.04184798939887557,
+        0.006065294525722574,
+        -0.010520725045747456
+      ]
+    },
+    {
+      "body": "right_rh_middle_distal",
+      "force_n": 3.5337648391723633,
+      "point_world": [
+        -2.2292582988739014,
+        -1.766225814819336,
+        0.8801326751708984
+      ],
+      "normal": [
+        -0.7409290671348572,
+        -0.24548596143722534,
+        -0.6251087784767151
+      ],
+      "relative_to_handle_knife_frame": [
+        0.02627233984279727,
+        -0.002362475191085802,
+        -0.010430691073370905
+      ]
+    },
+    {
+      "body": "right_rh_ring_distal",
+      "force_n": 3.2256205081939697,
+      "point_world": [
+        -2.2342464923858643,
+        -1.7505812644958496,
+        0.8799014091491699
+      ],
+      "normal": [
+        -0.7409290671348572,
+        -0.24548596143722534,
+        -0.6251087784767151
+      ],
+      "relative_to_handle_knife_frame": [
+        0.00985317021218677,
+        -0.0026760391433349206,
+        -0.010422971048842673
+      ]
+    },
+    {
+      "body": "right_rh_pinky_distal",
+      "force_n": 3.4463231563568115,
+      "point_world": [
+        -2.2380518913269043,
+        -1.7338722944259644,
+        0.8777410387992859
+      ],
+      "normal": [
+        -0.7517781257629395,
+        -0.24772924184799194,
+        -0.6111136078834534
+      ],
+      "relative_to_handle_knife_frame": [
+        -0.007293737106830111,
+        -0.0005973141086847824,
+        -0.010443307440164354
+      ]
+    }
+  ],
+  "knife_board_force_n": 0.0,
+  "lift_m": 0.02991799812727669,
+  "relative_slip_m": 0.00026830263340234814,
+  "relative_slip_frame": "hand",
+  "hold_seconds": 3,
+  "closure_contacts_n": {
+    "right_rh_hand_base_link": 10.146349906921387,
+    "right_rh_thumb_metacarpals": 4.005077362060547,
+    "right_rh_index_distal": 4.025296211242676,
+    "right_rh_middle_distal": 3.5337648391723633,
+    "right_rh_ring_distal": 3.2256202697753906,
+    "right_rh_pinky_distal": 3.4463231563568115
+  },
+  "final_contacts_n": {
+    "right_rh_hand_base_link": 11.047528266906738,
+    "right_rh_thumb_metacarpals": 4.008643627166748,
+    "right_rh_index_distal": 3.963115692138672,
+    "right_rh_middle_distal": 4.028509140014648,
+    "right_rh_ring_distal": 3.510326385498047,
+    "right_rh_pinky_distal": 3.416767120361328
+  },
+  "hold_samples": [
+    {
+      "height": 0.913358062138307,
+      "contacts": {
+        "right_rh_hand_base_link": 10.685656547546387,
+        "right_rh_thumb_metacarpals": 4.002851963043213,
+        "right_rh_index_distal": 4.001448631286621,
+        "right_rh_middle_distal": 3.793165922164917,
+        "right_rh_ring_distal": 3.433915376663208,
+        "right_rh_pinky_distal": 3.264450788497925
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.685656547546387,
+      "thumb_contact_n": 4.002851963043213,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137173334524786,
+      "contacts": {
+        "right_rh_hand_base_link": 10.715734481811523,
+        "right_rh_thumb_metacarpals": 3.9945218563079834,
+        "right_rh_index_distal": 3.9803848266601562,
+        "right_rh_middle_distal": 3.746840238571167,
+        "right_rh_ring_distal": 3.4118497371673584,
+        "right_rh_pinky_distal": 3.196479558944702
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.715734481811523,
+      "thumb_contact_n": 3.9945218563079834,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137627260576627,
+      "contacts": {
+        "right_rh_hand_base_link": 10.797037124633789,
+        "right_rh_thumb_metacarpals": 3.9684698581695557,
+        "right_rh_index_distal": 3.9977610111236572,
+        "right_rh_middle_distal": 3.7726001739501953,
+        "right_rh_ring_distal": 3.4389665126800537,
+        "right_rh_pinky_distal": 3.20278000831604
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.797037124633789,
+      "thumb_contact_n": 3.9684698581695557,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137704869749697,
+      "contacts": {
+        "right_rh_hand_base_link": 10.625752449035645,
+        "right_rh_thumb_metacarpals": 4.022799491882324,
+        "right_rh_index_distal": 3.9803128242492676,
+        "right_rh_middle_distal": 3.7680366039276123,
+        "right_rh_ring_distal": 3.409682035446167,
+        "right_rh_pinky_distal": 3.214284896850586
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.625752449035645,
+      "thumb_contact_n": 4.022799491882324,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137704663141017,
+      "contacts": {
+        "right_rh_hand_base_link": 10.720136642456055,
+        "right_rh_thumb_metacarpals": 3.9963769912719727,
+        "right_rh_index_distal": 4.006586074829102,
+        "right_rh_middle_distal": 3.820101022720337,
+        "right_rh_ring_distal": 3.4063565731048584,
+        "right_rh_pinky_distal": 3.172290086746216
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.720136642456055,
+      "thumb_contact_n": 3.9963769912719727,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137730077953543,
+      "contacts": {
+        "right_rh_hand_base_link": 10.686452865600586,
+        "right_rh_thumb_metacarpals": 4.008932590484619,
+        "right_rh_index_distal": 3.9842817783355713,
+        "right_rh_middle_distal": 3.835763692855835,
+        "right_rh_ring_distal": 3.402599334716797,
+        "right_rh_pinky_distal": 3.153608560562134
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.686452865600586,
+      "thumb_contact_n": 4.008932590484619,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137697559135962,
+      "contacts": {
+        "right_rh_hand_base_link": 10.529749870300293,
+        "right_rh_thumb_metacarpals": 4.013350009918213,
+        "right_rh_index_distal": 4.037010669708252,
+        "right_rh_middle_distal": 3.7742409706115723,
+        "right_rh_ring_distal": 3.333325147628784,
+        "right_rh_pinky_distal": 3.1149818897247314
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.529749870300293,
+      "thumb_contact_n": 4.013350009918213,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137720606689408,
+      "contacts": {
+        "right_rh_hand_base_link": 10.691035270690918,
+        "right_rh_thumb_metacarpals": 3.9722468852996826,
+        "right_rh_index_distal": 4.02340030670166,
+        "right_rh_middle_distal": 3.77724027633667,
+        "right_rh_ring_distal": 3.333047389984131,
+        "right_rh_pinky_distal": 3.143986463546753
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.691035270690918,
+      "thumb_contact_n": 3.9722468852996826,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137726172166922,
+      "contacts": {
+        "right_rh_hand_base_link": 10.743494987487793,
+        "right_rh_thumb_metacarpals": 4.035762310028076,
+        "right_rh_index_distal": 3.9792399406433105,
+        "right_rh_middle_distal": 3.7489495277404785,
+        "right_rh_ring_distal": 3.325670003890991,
+        "right_rh_pinky_distal": 3.129272699356079
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.743494987487793,
+      "thumb_contact_n": 4.035762310028076,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.913773533198142,
+      "contacts": {
+        "right_rh_hand_base_link": 10.590415000915527,
+        "right_rh_thumb_metacarpals": 3.9933247566223145,
+        "right_rh_index_distal": 4.0145158767700195,
+        "right_rh_middle_distal": 3.7691879272460938,
+        "right_rh_ring_distal": 3.369908094406128,
+        "right_rh_pinky_distal": 3.1148171424865723
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.590415000915527,
+      "thumb_contact_n": 3.9933247566223145,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137705347791424,
+      "contacts": {
+        "right_rh_hand_base_link": 10.622101783752441,
+        "right_rh_thumb_metacarpals": 3.990807294845581,
+        "right_rh_index_distal": 4.002754211425781,
+        "right_rh_middle_distal": 3.7383856773376465,
+        "right_rh_ring_distal": 3.312537908554077,
+        "right_rh_pinky_distal": 3.161853790283203
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.622101783752441,
+      "thumb_contact_n": 3.990807294845581,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137787663850344,
+      "contacts": {
+        "right_rh_hand_base_link": 10.738032341003418,
+        "right_rh_thumb_metacarpals": 3.9598703384399414,
+        "right_rh_index_distal": 4.015842914581299,
+        "right_rh_middle_distal": 3.7163119316101074,
+        "right_rh_ring_distal": 3.3089113235473633,
+        "right_rh_pinky_distal": 3.2035839557647705
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.738032341003418,
+      "thumb_contact_n": 3.9598703384399414,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137789594369242,
+      "contacts": {
+        "right_rh_hand_base_link": 10.879857063293457,
+        "right_rh_thumb_metacarpals": 3.972313642501831,
+        "right_rh_index_distal": 4.000640392303467,
+        "right_rh_middle_distal": 3.7111945152282715,
+        "right_rh_ring_distal": 3.2990550994873047,
+        "right_rh_pinky_distal": 3.229522943496704
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.879857063293457,
+      "thumb_contact_n": 3.972313642501831,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137805562029571,
+      "contacts": {
+        "right_rh_hand_base_link": 10.84875202178955,
+        "right_rh_thumb_metacarpals": 4.004639148712158,
+        "right_rh_index_distal": 3.9909465312957764,
+        "right_rh_middle_distal": 3.758631467819214,
+        "right_rh_ring_distal": 3.320389747619629,
+        "right_rh_pinky_distal": 3.2594034671783447
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.84875202178955,
+      "thumb_contact_n": 4.004639148712158,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137834789208253,
+      "contacts": {
+        "right_rh_hand_base_link": 10.784599304199219,
+        "right_rh_thumb_metacarpals": 4.043754577636719,
+        "right_rh_index_distal": 3.97566556930542,
+        "right_rh_middle_distal": 3.729769706726074,
+        "right_rh_ring_distal": 3.3411214351654053,
+        "right_rh_pinky_distal": 3.1352529525756836
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.784599304199219,
+      "thumb_contact_n": 4.043754577636719,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137864607929312,
+      "contacts": {
+        "right_rh_hand_base_link": 10.84662914276123,
+        "right_rh_thumb_metacarpals": 4.023938179016113,
+        "right_rh_index_distal": 3.9586782455444336,
+        "right_rh_middle_distal": 3.7393505573272705,
+        "right_rh_ring_distal": 3.3237674236297607,
+        "right_rh_pinky_distal": 3.1655728816986084
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.84662914276123,
+      "thumb_contact_n": 4.023938179016113,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137857961216287,
+      "contacts": {
+        "right_rh_hand_base_link": 11.001758575439453,
+        "right_rh_thumb_metacarpals": 4.000393867492676,
+        "right_rh_index_distal": 3.973252534866333,
+        "right_rh_middle_distal": 3.7276737689971924,
+        "right_rh_ring_distal": 3.4413583278656006,
+        "right_rh_pinky_distal": 3.271653413772583
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 11.001758575439453,
+      "thumb_contact_n": 4.000393867492676,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137867174060614,
+      "contacts": {
+        "right_rh_hand_base_link": 11.061726570129395,
+        "right_rh_thumb_metacarpals": 4.001707553863525,
+        "right_rh_index_distal": 3.9822592735290527,
+        "right_rh_middle_distal": 3.7313318252563477,
+        "right_rh_ring_distal": 3.4515647888183594,
+        "right_rh_pinky_distal": 3.2861382961273193
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 11.061726570129395,
+      "thumb_contact_n": 4.001707553863525,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.913787683896688,
+      "contacts": {
+        "right_rh_hand_base_link": 11.044023513793945,
+        "right_rh_thumb_metacarpals": 3.9888675212860107,
+        "right_rh_index_distal": 4.006777286529541,
+        "right_rh_middle_distal": 3.8819849491119385,
+        "right_rh_ring_distal": 3.4288439750671387,
+        "right_rh_pinky_distal": 3.304032325744629
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 11.044023513793945,
+      "thumb_contact_n": 3.9888675212860107,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137886406167245,
+      "contacts": {
+        "right_rh_hand_base_link": 10.972380638122559,
+        "right_rh_thumb_metacarpals": 4.0171403884887695,
+        "right_rh_index_distal": 3.97473406791687,
+        "right_rh_middle_distal": 3.8905885219573975,
+        "right_rh_ring_distal": 3.415107011795044,
+        "right_rh_pinky_distal": 3.3047311305999756
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.972380638122559,
+      "thumb_contact_n": 4.0171403884887695,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137891213223353,
+      "contacts": {
+        "right_rh_hand_base_link": 11.151521682739258,
+        "right_rh_thumb_metacarpals": 4.013020038604736,
+        "right_rh_index_distal": 3.990187168121338,
+        "right_rh_middle_distal": 3.8632640838623047,
+        "right_rh_ring_distal": 3.400468587875366,
+        "right_rh_pinky_distal": 3.322514295578003
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 11.151521682739258,
+      "thumb_contact_n": 4.013020038604736,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137916586151349,
+      "contacts": {
+        "right_rh_hand_base_link": 11.091429710388184,
+        "right_rh_thumb_metacarpals": 3.992403984069824,
+        "right_rh_index_distal": 3.962057590484619,
+        "right_rh_middle_distal": 4.027007102966309,
+        "right_rh_ring_distal": 3.367335319519043,
+        "right_rh_pinky_distal": 3.3106820583343506
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 11.091429710388184,
+      "thumb_contact_n": 3.992403984069824,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137917549443897,
+      "contacts": {
+        "right_rh_hand_base_link": 10.975784301757812,
+        "right_rh_thumb_metacarpals": 4.058482646942139,
+        "right_rh_index_distal": 3.922421455383301,
+        "right_rh_middle_distal": 3.9550602436065674,
+        "right_rh_ring_distal": 3.4119246006011963,
+        "right_rh_pinky_distal": 3.348470449447632
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 10.975784301757812,
+      "thumb_contact_n": 4.058482646942139,
+      "curled_fingers": 4
+    },
+    {
+      "height": 0.9137943803670494,
+      "contacts": {
+        "right_rh_hand_base_link": 11.13481616973877,
+        "right_rh_thumb_metacarpals": 4.0057148933410645,
+        "right_rh_index_distal": 3.9405179023742676,
+        "right_rh_middle_distal": 3.9841246604919434,
+        "right_rh_ring_distal": 3.448547601699829,
+        "right_rh_pinky_distal": 3.346463918685913
+      },
+      "board_force_n": 0.0,
+      "inner_finger_contacts": [],
+      "palm_contact_n": 11.13481616973877,
+      "thumb_contact_n": 4.0057148933410645,
+      "curled_fingers": 4
+    }
+  ],
+  "max_contact_n": 11.537558555603027,
+  "thumb_pitch_deg": 10.0,
+  "thumb_yaw_deg": 60.0,
+  "tilt_deg": 0,
+  "palm_height_setting_m": 0.045,
+  "finger_offset_setting_m": 0.035,
+  "handle_offset_setting_m": 0.015,
+  "finger_torque_limit_nm": 0.3,
+  "mimic_followers_passive": true,
+  "static_friction": 1.2,
+  "dynamic_friction": 1.0,
+  "knife_mass_kg": 0.25,
+  "limitations": [
+    "Provisional rigid-body grip and friction settings; not calibrated to hardware",
+    "Robot self-collision disabled",
+    "Simplified kitchen materials and nearby kitchen collisions only"
+  ]
+}

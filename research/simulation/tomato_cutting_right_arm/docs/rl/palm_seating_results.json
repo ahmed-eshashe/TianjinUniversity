@@ -1,0 +1,1395 @@
+{
+  "date_local": "2026-10-19",
+  "controller": "Scripted native physical diagnostic; no trained policy or camera perception",
+  "firm_grasp_passed": false,
+  "phase3_complete": false,
+  "full_training_started": false,
+  "attachments_created": false,
+  "knife_pose_commands_during_episode": 0,
+  "criteria_sha256": "81b8d50fe0b4b3857c52b9143e4760d87d8cab1a948b80ab377cd3c74102fe05",
+  "preservation": {
+    "source_robot_unchanged": true,
+    "accepted_baselines_unchanged": true,
+    "frozen_criteria_unchanged": true
+  },
+  "cases": [
+    {
+      "run": "runs/rl/phase3/palm_seating_01",
+      "mode": "coordinated",
+      "result": {
+        "passed": false,
+        "phase": "coordinated_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Physics-substep excessive robot contact stop",
+        "controls": 773,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 52.08712027999991,
+        "samples": 51,
+        "peak_rss_gb": 2.517434368,
+        "min_available_ram_gb": 9.052381184,
+        "peak_gpu_used_mib": 683.0,
+        "min_gpu_free_mib": 7468.0
+      },
+      "max_handle_rise_m": 0.010898056665078149,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 9289.7197265625,
+      "substep_event": {
+        "contacts": [
+          {
+            "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+            "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+            "force_n": 9289.7197265625
+          },
+          {
+            "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+            "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+            "force_n": 9289.7197265625
+          },
+          {
+            "body": "/Indoor/RZ/SM_kitchen_knife_02",
+            "other": "/Indoor/RZ/SM_kitchen_Board",
+            "force_n": 2.41013765335083
+          }
+        ]
+      },
+      "latest_seating_progress": {
+        "iteration": 49,
+        "descent_m": 0.024643723463436795,
+        "sample": {
+          "handle_height_m": 0.8750708028068718,
+          "handle_in_palm_m": [
+            0.04398345581189155,
+            0.012011258614246527,
+            0.1294493401349139
+          ],
+          "contacts": [],
+          "blade_contact": false,
+          "unsafe_contact": false,
+          "support_force_n": 2.413175582885742,
+          "support_clearance_m": -0.0003610077003536327,
+          "attachment": false,
+          "joint_limit_violation": false,
+          "contact_buffer_full": false,
+          "dropped": false,
+          "knife_friction_by_hand_body_n": {
+            "right_rh_middle_proximal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_middle_distal": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "phase": "coordinated_palm_seating",
+          "control_step": 773,
+          "sim_s": 38.650000000000006,
+          "q_rad": [
+            -1.1037688255310059,
+            -1.5008777379989624,
+            1.1550406217575073,
+            1.5077956914901733,
+            -1.1795698404312134,
+            -0.08916981518268585,
+            0.40214961767196655,
+            0.8707408308982849,
+            0.545947253704071,
+            1.4829392433166504,
+            1.4829416275024414,
+            1.482943058013916,
+            1.4829487800598145
+          ],
+          "palm_world_m": [
+            -2.2154582586630394,
+            -1.4981930004492505,
+            0.9463238686678712
+          ],
+          "knife_pose_xyzw": [
+            -2.208477735519409,
+            -1.417630910873413,
+            0.87581467628479,
+            0.057764358818531036,
+            0.01592511683702469,
+            0.5504864454269409,
+            0.8326911330223083
+          ],
+          "in_place_motion": {
+            "footprint_margin_m": 0.02132894368770777,
+            "centre_xy_shift_m": 0.012483290082203325,
+            "rotation_deg": 0.7733396941520125,
+            "within_bounds": true
+          },
+          "estimated_hand_drive_torque_nm": [
+            -0.0021177895832806826,
+            -0.0178283229470253,
+            0.0017983349971473217,
+            0.0017952993512153625,
+            0.001789976842701435,
+            0.001787577522918582
+          ],
+          "metric": {
+            "success": false,
+            "wrapped": false,
+            "lifted": false,
+            "supported": true,
+            "unsafe_seen": false,
+            "hold_s": 0.0,
+            "slip_m": 0.0,
+            "fingers": [],
+            "inner_fingers": [],
+            "enclosed": false,
+            "opposed": false
+          }
+        }
+      },
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_02",
+      "mode": "coordinated",
+      "result": {
+        "passed": false,
+        "phase": "supported_in_place_tilt",
+        "training": false,
+        "reason": "RuntimeError: Physics-substep excessive robot contact stop",
+        "controls": 607,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 38.80094020000024,
+        "samples": 38,
+        "peak_rss_gb": 2.510835712,
+        "min_available_ram_gb": 9.032216576,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.0031871391704720864,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 4063.75244140625,
+      "substep_event": {
+        "contacts": [
+          {
+            "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+            "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+            "force_n": 4063.75244140625
+          },
+          {
+            "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+            "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+            "force_n": 4063.75244140625
+          },
+          {
+            "body": "/Indoor/RZ/SM_kitchen_knife_02",
+            "other": "/Indoor/RZ/SM_kitchen_Board",
+            "force_n": 2.452516555786133
+          }
+        ]
+      },
+      "latest_seating_progress": null,
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_03",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "supported_in_place_tilt",
+        "training": false,
+        "reason": "RuntimeError: Opposed supported pinch lost; closing/motion stopped early",
+        "controls": 489,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 31.639335784000195,
+        "samples": 31,
+        "peak_rss_gb": 2.516443136,
+        "min_available_ram_gb": 8.992260096,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.0008955707846557415,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": null,
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_04",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "coordinated_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Supported clearance/opposed pinch lost during seating; motion stopped early",
+        "controls": 619,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 41.92743380699994,
+        "samples": 41,
+        "peak_rss_gb": 2.514731008,
+        "min_available_ram_gb": 9.011011584,
+        "peak_gpu_used_mib": 675.0,
+        "min_gpu_free_mib": 7476.0
+      },
+      "max_handle_rise_m": 0.0367839556969809,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": null,
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_05",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "coordinated_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Supported clearance/opposed pinch lost during seating; motion stopped early",
+        "controls": 627,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 42.88233659799971,
+        "samples": 42,
+        "peak_rss_gb": 2.523602944,
+        "min_available_ram_gb": 8.93806592,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.03676473661838686,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": {
+        "iteration": 3,
+        "descent_m": 0.0018254552849019667,
+        "sample": {
+          "handle_height_m": 0.9065297574464699,
+          "handle_in_palm_m": [
+            0.08057374561487037,
+            0.01704966988678777,
+            0.10162519301786246
+          ],
+          "contacts": [
+            {
+              "part": "thumb",
+              "body": "right_rh_thumb_distal",
+              "force_n": 0.26208487153053284,
+              "on_handle": true,
+              "point_world_m": [
+                -2.204836130142212,
+                -1.5384553670883179,
+                0.9076183438301086
+              ],
+              "normal_world": [
+                0.8335321545600891,
+                -0.5513883829116821,
+                -0.034569863229990005
+              ],
+              "radial_vector": [
+                0.01851221625082401,
+                -0.004297990230492996
+              ],
+              "curl_rad": 0.0,
+              "proximal": false,
+              "distance_from_tip_m": 0.007366230007139277
+            }
+          ],
+          "blade_contact": false,
+          "unsafe_contact": false,
+          "support_force_n": 0.43467769026756287,
+          "support_clearance_m": -1.972105842851235e-05,
+          "attachment": false,
+          "joint_limit_violation": false,
+          "contact_buffer_full": false,
+          "dropped": false,
+          "knife_friction_by_hand_body_n": {
+            "right_rh_thumb_distal": [
+              0.008425956591963768,
+              0.0224809218198061,
+              -0.15540742874145508
+            ],
+            "right_rh_index_distal": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "phase": "coordinated_palm_seating",
+          "control_step": 627,
+          "sim_s": 31.35,
+          "q_rad": [
+            -1.000486135482788,
+            -1.555067539215088,
+            1.1213527917861938,
+            1.4845205545425415,
+            -1.2120652198791504,
+            -0.012042269110679626,
+            0.23008711636066437,
+            0.8585522174835205,
+            0.14626702666282654,
+            0.8619334697723389,
+            0.9721037149429321,
+            0.9721096754074097,
+            0.9361491203308105
+          ],
+          "palm_world_m": [
+            -2.2228686656844463,
+            -1.5048876219632483,
+            0.9954844901408173
+          ],
+          "knife_pose_xyzw": [
+            -2.1653828620910645,
+            -1.4450633525848389,
+            0.9152969121932983,
+            0.062276970595121384,
+            -0.03681964799761772,
+            0.5068684816360474,
+            0.8589821457862854
+          ],
+          "in_place_motion": {
+            "footprint_margin_m": 0.029486100698569384,
+            "centre_xy_shift_m": 0.025999459123415555,
+            "rotation_deg": 9.01090373756393,
+            "within_bounds": true
+          },
+          "estimated_hand_drive_torque_nm": [
+            0.03235524147748947,
+            0.4862614870071411,
+            0.22735093533992767,
+            -0.006273040547966957,
+            -0.0062908027321100235,
+            -0.006409715861082077
+          ],
+          "metric": {
+            "success": false,
+            "wrapped": false,
+            "lifted": false,
+            "supported": true,
+            "unsafe_seen": false,
+            "hold_s": 0.0,
+            "slip_m": 0.0,
+            "fingers": [],
+            "inner_fingers": [],
+            "enclosed": false,
+            "opposed": false
+          }
+        }
+      },
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_06",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "coordinated_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Knife left bounded central footprint/3 cm translation/20 degree rotation limit",
+        "controls": 636,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 40.8026730040001,
+        "samples": 40,
+        "peak_rss_gb": 2.514464768,
+        "min_available_ram_gb": 8.984338432,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.03676473661838686,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": {
+        "iteration": 4,
+        "descent_m": 0.0023906058538936126,
+        "sample": {
+          "handle_height_m": 0.9111863874055294,
+          "handle_in_palm_m": [
+            0.07852624181326379,
+            0.0167128323104415,
+            0.095169296223068
+          ],
+          "contacts": [
+            {
+              "part": "thumb",
+              "body": "right_rh_thumb_distal",
+              "force_n": 3.377781867980957,
+              "on_handle": true,
+              "point_world_m": [
+                -2.200385808944702,
+                -1.539176106452942,
+                0.9086960554122925
+              ],
+              "normal_world": [
+                0.896591067314148,
+                -0.4428594410419464,
+                -9.065861377166584e-05
+              ],
+              "radial_vector": [
+                0.018473837323458028,
+                -0.003385860334683454
+              ],
+              "curl_rad": 0.0,
+              "proximal": false,
+              "distance_from_tip_m": 0.009786301486804823
+            },
+            {
+              "part": "index",
+              "body": "right_rh_index_distal",
+              "force_n": 3.1828043460845947,
+              "on_handle": true,
+              "point_world_m": [
+                -2.227487564086914,
+                -1.520205020904541,
+                0.9187607765197754
+              ],
+              "normal_world": [
+                -0.8495377898216248,
+                0.39436617493629456,
+                0.35037246346473694
+              ],
+              "radial_vector": [
+                -0.015803380145079902,
+                -0.0057430461278076
+              ],
+              "curl_rad": 1.7540549635887146,
+              "proximal": false,
+              "distance_from_tip_m": 0.00012670828609338824
+            }
+          ],
+          "blade_contact": false,
+          "unsafe_contact": false,
+          "support_force_n": 0.6085661053657532,
+          "support_clearance_m": -0.00018774015513389752,
+          "attachment": false,
+          "joint_limit_violation": false,
+          "contact_buffer_full": false,
+          "dropped": false,
+          "knife_friction_by_hand_body_n": {
+            "right_rh_thumb_distal": [
+              -0.09082482755184174,
+              -0.18348196148872375,
+              -1.9414889812469482
+            ],
+            "right_rh_index_distal": [
+              -0.3312905430793762,
+              0.1417103111743927,
+              -0.9627742767333984
+            ],
+            "right_rh_middle_distal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_ring_distal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_pinky_distal": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "phase": "coordinated_palm_seating",
+          "control_step": 636,
+          "sim_s": 31.8,
+          "q_rad": [
+            -1.0017470121383667,
+            -1.5550872087478638,
+            1.1217975616455078,
+            1.48428475856781,
+            -1.2115635871887207,
+            -0.011826900765299797,
+            0.23092065751552582,
+            0.8676778674125671,
+            0.11906048655509949,
+            0.928071916103363,
+            0.9866657853126526,
+            0.9866712093353271,
+            0.9507101774215698
+          ],
+          "palm_world_m": [
+            -2.222878721210109,
+            -1.5050047841584517,
+            0.9949193395718257
+          ],
+          "knife_pose_xyzw": [
+            -2.1609420776367188,
+            -1.4474589824676514,
+            0.9200761318206787,
+            0.12686730921268463,
+            -0.007096446119248867,
+            0.5034039616584778,
+            0.8546571135520935
+          ],
+          "in_place_motion": {
+            "footprint_margin_m": 0.02471785392694592,
+            "centre_xy_shift_m": 0.02997255621303489,
+            "rotation_deg": 10.316999842563925,
+            "within_bounds": true
+          },
+          "estimated_hand_drive_torque_nm": [
+            0.007546291220933199,
+            0.5913645029067993,
+            0.22140856087207794,
+            -0.0025681410916149616,
+            -0.0025844029150903225,
+            -0.0027009686455130577
+          ],
+          "metric": {
+            "success": false,
+            "wrapped": false,
+            "lifted": false,
+            "supported": true,
+            "unsafe_seen": false,
+            "hold_s": 0.0,
+            "slip_m": 0.0,
+            "fingers": [],
+            "inner_fingers": [],
+            "enclosed": false,
+            "opposed": false
+          }
+        }
+      },
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_07",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "physical_pinch_recentering",
+        "training": false,
+        "reason": "RuntimeError: Opposed supported pinch lost; closing/motion stopped early",
+        "controls": 658,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 42.86588474099972,
+        "samples": 42,
+        "peak_rss_gb": 2.510974976,
+        "min_available_ram_gb": 8.985051136,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.036833626985350976,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": null,
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_08",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "coordinated_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Supported clearance/opposed pinch lost during seating; motion stopped early",
+        "controls": 644,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 42.899142197999936,
+        "samples": 42,
+        "peak_rss_gb": 2.516721664,
+        "min_available_ram_gb": 8.983404544,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.0367821884927616,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": {
+        "iteration": 4,
+        "descent_m": 0.0018690369910702165,
+        "sample": {
+          "handle_height_m": 0.9012974552414267,
+          "handle_in_palm_m": [
+            0.08525846393032889,
+            0.01667141114995537,
+            0.10549684443122254
+          ],
+          "contacts": [],
+          "blade_contact": false,
+          "unsafe_contact": false,
+          "support_force_n": 0.37643593549728394,
+          "support_clearance_m": -0.0001185100235704395,
+          "attachment": false,
+          "joint_limit_violation": false,
+          "contact_buffer_full": false,
+          "dropped": false,
+          "knife_friction_by_hand_body_n": {
+            "right_rh_thumb_distal": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "phase": "coordinated_palm_seating",
+          "control_step": 636,
+          "sim_s": 31.8,
+          "q_rad": [
+            -1.0025887489318848,
+            -1.532212495803833,
+            1.1191257238388062,
+            1.4289348125457764,
+            -1.2303310632705688,
+            -0.0140412962064147,
+            0.13915157318115234,
+            0.8657759428024292,
+            0.1495276242494583,
+            0.8830382823944092,
+            0.9251345992088318,
+            0.9251429438591003,
+            0.8891807794570923
+          ],
+          "palm_world_m": [
+            -2.2286324740107863,
+            -1.5014243757135575,
+            0.995440908434649
+          ],
+          "knife_pose_xyzw": [
+            -2.168116807937622,
+            -1.4421831369400024,
+            0.908210039138794,
+            0.09252498298883438,
+            -0.00995689257979393,
+            0.511432945728302,
+            0.8542695641517639
+          ],
+          "in_place_motion": {
+            "footprint_margin_m": 0.031740959179788586,
+            "centre_xy_shift_m": 0.023439800912312965,
+            "rotation_deg": 7.422939268475247,
+            "within_bounds": true
+          },
+          "estimated_hand_drive_torque_nm": [
+            -0.005055854097008705,
+            0.44939321279525757,
+            0.13933348655700684,
+            -0.0004127137362957001,
+            -0.0004327651113271713,
+            -0.0005505261942744255
+          ],
+          "metric": {
+            "success": false,
+            "wrapped": false,
+            "lifted": false,
+            "supported": true,
+            "unsafe_seen": false,
+            "hold_s": 0.0,
+            "slip_m": 0.0,
+            "fingers": [],
+            "inner_fingers": [],
+            "enclosed": false,
+            "opposed": false
+          }
+        }
+      },
+      "hand_frame_audit": null
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_09",
+      "mode": "adaptive",
+      "result": {
+        "passed": false,
+        "phase": "coordinated_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Supported clearance/opposed pinch lost during seating; motion stopped early",
+        "controls": 630,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 41.89396528500038,
+        "samples": 41,
+        "peak_rss_gb": 2.512891904,
+        "min_available_ram_gb": 8.996585472,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.03676473661838686,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": {
+        "iteration": 3,
+        "descent_m": 0.0019035341841214803,
+        "sample": {
+          "handle_height_m": 0.9106175108749506,
+          "handle_in_palm_m": [
+            0.07836862812717238,
+            0.01685856176763804,
+            0.0973470016498044
+          ],
+          "contacts": [
+            {
+              "part": "thumb",
+              "body": "right_rh_thumb_distal",
+              "force_n": 3.3914806842803955,
+              "on_handle": true,
+              "point_world_m": [
+                -2.202949047088623,
+                -1.5380548238754272,
+                0.9094622135162354
+              ],
+              "normal_world": [
+                0.8920508623123169,
+                -0.4505196213722229,
+                -0.03574053570628166
+              ],
+              "radial_vector": [
+                0.018478580718036573,
+                -0.003386607860993267
+              ],
+              "curl_rad": 0.0,
+              "proximal": false,
+              "distance_from_tip_m": 0.009747695314141727
+            },
+            {
+              "part": "index",
+              "body": "right_rh_index_distal",
+              "force_n": 3.123626232147217,
+              "on_handle": true,
+              "point_world_m": [
+                -2.2305357456207275,
+                -1.5187089443206787,
+                0.9172282218933105
+              ],
+              "normal_world": [
+                -0.8679493069648743,
+                0.40751901268959045,
+                0.28388768434524536
+              ],
+              "radial_vector": [
+                -0.01579158757324517,
+                -0.005797956715500066
+              ],
+              "curl_rad": 1.6896878480911255,
+              "proximal": false,
+              "distance_from_tip_m": 0.00012390548453338618
+            }
+          ],
+          "blade_contact": false,
+          "unsafe_contact": false,
+          "support_force_n": 0.6118023991584778,
+          "support_clearance_m": -9.642047155533628e-05,
+          "attachment": false,
+          "joint_limit_violation": false,
+          "contact_buffer_full": false,
+          "dropped": false,
+          "knife_friction_by_hand_body_n": {
+            "right_rh_thumb_distal": [
+              -0.10834106802940369,
+              -0.08739212155342102,
+              -1.6024911403656006
+            ],
+            "right_rh_index_distal": [
+              -0.2975130081176758,
+              0.06967422366142273,
+              -1.0096237659454346
+            ],
+            "right_rh_middle_distal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_ring_distal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_pinky_distal": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "phase": "coordinated_palm_seating",
+          "control_step": 627,
+          "sim_s": 31.35,
+          "q_rad": [
+            -1.0024268627166748,
+            -1.5536564588546753,
+            1.1210415363311768,
+            1.4796243906021118,
+            -1.2124568223953247,
+            -0.011473574675619602,
+            0.22742688655853271,
+            0.8641668558120728,
+            0.13082924485206604,
+            0.8940152525901794,
+            0.97210294008255,
+            0.9721089005470276,
+            0.9361486434936523
+          ],
+          "palm_world_m": [
+            -2.2237264358498474,
+            -1.5044893404492437,
+            0.9954064112415978
+          ],
+          "knife_pose_xyzw": [
+            -2.163987398147583,
+            -1.4459983110427856,
+            0.9198681712150574,
+            0.09600231051445007,
+            -0.023882195353507996,
+            0.5062507390975952,
+            0.8566933274269104
+          ],
+          "in_place_motion": {
+            "footprint_margin_m": 0.02788014288599827,
+            "centre_xy_shift_m": 0.027351290246144487,
+            "rotation_deg": 8.886439667886222,
+            "within_bounds": true
+          },
+          "estimated_hand_drive_torque_nm": [
+            0.017622020095586777,
+            0.5557745695114136,
+            0.23801842331886292,
+            -0.006270132958889008,
+            -0.006287750788033009,
+            -0.00640670582652092
+          ],
+          "metric": {
+            "success": false,
+            "wrapped": false,
+            "lifted": false,
+            "supported": true,
+            "unsafe_seen": false,
+            "hold_s": 0.0,
+            "slip_m": 0.0,
+            "fingers": [],
+            "inner_fingers": [],
+            "enclosed": false,
+            "opposed": false
+          }
+        }
+      },
+      "hand_frame_audit": {
+        "bodies": [
+          {
+            "body": "right_rh_rk_adapter",
+            "position_error_m": 2.907107967523036e-07,
+            "angle_error_rad": 6.645331875103342e-07
+          },
+          {
+            "body": "right_rh_thumb_metacarpals_base2",
+            "position_error_m": 4.90497882909923e-07,
+            "angle_error_rad": 6.209997761777347e-07
+          },
+          {
+            "body": "right_rh_thumb_metacarpals",
+            "position_error_m": 4.416656605769193e-07,
+            "angle_error_rad": 6.152522478271276e-07
+          },
+          {
+            "body": "right_rh_thumb_distal",
+            "position_error_m": 2.780275397532758e-07,
+            "angle_error_rad": 6.88860726694499e-07
+          },
+          {
+            "body": "right_rh_index_proximal",
+            "position_error_m": 3.5670836760283904e-07,
+            "angle_error_rad": 6.079108937097855e-07
+          },
+          {
+            "body": "right_rh_index_distal",
+            "position_error_m": 3.7462810460799984e-07,
+            "angle_error_rad": 5.702399853431167e-07
+          },
+          {
+            "body": "right_rh_middle_proximal",
+            "position_error_m": 3.95230161085647e-07,
+            "angle_error_rad": 4.158059798789117e-07
+          },
+          {
+            "body": "right_rh_middle_distal",
+            "position_error_m": 5.352342073748509e-07,
+            "angle_error_rad": 3.8807844649510986e-07
+          },
+          {
+            "body": "right_rh_ring_proximal",
+            "position_error_m": 4.5574913417688274e-07,
+            "angle_error_rad": 4.125605342465808e-07
+          },
+          {
+            "body": "right_rh_ring_distal",
+            "position_error_m": 3.182661284877741e-07,
+            "angle_error_rad": 4.292240852529833e-07
+          },
+          {
+            "body": "right_rh_pinky_proximal",
+            "position_error_m": 2.7956494985426656e-07,
+            "angle_error_rad": 3.9456621284588404e-07
+          },
+          {
+            "body": "right_rh_pinky_distal",
+            "position_error_m": 3.5254386273952677e-07,
+            "angle_error_rad": 3.623145370867468e-07
+          },
+          {
+            "body": "right_rh_hand_base_link",
+            "position_error_m": 2.4021501293677855e-07,
+            "angle_error_rad": 5.692210761316559e-07
+          }
+        ],
+        "max_position_error_m": 5.352342073748509e-07,
+        "max_angle_error_rad": 6.88860726694499e-07,
+        "actual_joint_rad": {
+          "left_AR5_5_07L_W4C4A2_joint_1": 4.939669815939851e-05,
+          "right_AR5_5_07R_W4C4A2_joint_1": -0.9962587952613831,
+          "left_AR5_5_07L_W4C4A2_joint_2": 0.011163515038788319,
+          "right_AR5_5_07R_W4C4A2_joint_2": -1.5557689666748047,
+          "left_AR5_5_07L_W4C4A2_joint_3": 1.0338319953007158e-05,
+          "right_AR5_5_07R_W4C4A2_joint_3": 1.1203525066375732,
+          "left_AR5_5_07L_W4C4A2_joint_4": 0.003032649401575327,
+          "right_AR5_5_07R_W4C4A2_joint_4": 1.4851303100585938,
+          "left_AR5_5_07L_W4C4A2_joint_5": -1.39090607262915e-05,
+          "right_AR5_5_07R_W4C4A2_joint_5": -1.2131516933441162,
+          "left_AR5_5_07L_W4C4A2_joint_6": 0.00017414263857062906,
+          "right_AR5_5_07R_W4C4A2_joint_6": -0.011703800410032272,
+          "left_AR5_5_07L_W4C4A2_joint_7": 5.533604863217079e-08,
+          "right_AR5_5_07R_W4C4A2_joint_7": 0.2262805849313736,
+          "left_lh_thumb_cmc_yaw": -4.872792707527607e-12,
+          "left_lh_index_mcp_pitch": -3.299701888137031e-14,
+          "left_lh_middle_mcp_pitch": -5.515614701756934e-15,
+          "left_lh_ring_mcp_pitch": 2.6644895569916116e-06,
+          "left_lh_pinky_mcp_pitch": 5.15722331329016e-06,
+          "right_rh_thumb_cmc_yaw": 0.8588147759437561,
+          "right_rh_index_mcp_pitch": 0.8634557723999023,
+          "right_rh_middle_mcp_pitch": 0.9160614013671875,
+          "right_rh_ring_mcp_pitch": 0.9160648584365845,
+          "right_rh_pinky_mcp_pitch": 0.8801082968711853,
+          "left_lh_thumb_cmc_pitch": -3.4032817796542103e-12,
+          "left_lh_index_dip": -2.5207605642597886e-14,
+          "left_lh_middle_dip": -5.181072898249981e-16,
+          "left_lh_ring_dip": 2.371509708609665e-06,
+          "left_lh_pinky_dip": 4.59011243947316e-06,
+          "right_rh_thumb_cmc_pitch": 0.1429869830608368,
+          "right_rh_index_dip": 0.7684746384620667,
+          "right_rh_middle_dip": 0.815294623374939,
+          "right_rh_ring_dip": 0.8152977228164673,
+          "right_rh_pinky_dip": 0.7832963466644287,
+          "left_lh_thumb_ip": 8.959917252582272e-09,
+          "right_rh_thumb_ip": 0.2659512162208557
+        }
+      }
+    },
+    {
+      "run": "runs/rl/phase3/palm_seating_10",
+      "mode": "mesh-guided",
+      "result": {
+        "passed": false,
+        "phase": "mesh_guided_palm_seating",
+        "training": false,
+        "reason": "RuntimeError: Knife left bounded central footprint/3 cm translation/20 degree rotation limit",
+        "controls": 632,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 72.09997758600002,
+        "samples": 70,
+        "peak_rss_gb": 2.516455424,
+        "min_available_ram_gb": 8.94025728,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "max_handle_rise_m": 0.03676473661838686,
+      "palm_handle_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_final_oracle_hold_s": 0.0,
+      "max_stop_contact_n": 0.0,
+      "substep_event": {},
+      "latest_seating_progress": {
+        "fraction": 0.0625,
+        "proposal": {
+          "score": 1.072541345032569,
+          "finger_degrees": {
+            "index": 70,
+            "middle": 70,
+            "ring": 70,
+            "pinky": 60
+          },
+          "thumb_pitch_deg": 18,
+          "thumb_yaw_deg": 40,
+          "handle_in_hand_m": [
+            0.031999999999999994,
+            0.033000000000000015,
+            0.08100000000000002
+          ],
+          "hand_rotation_world": [
+            [
+              0.74703914997476,
+              -0.39528730028963294,
+              -0.5344908405526893
+            ],
+            [
+              -0.2721356800327974,
+              -0.9153961440327089,
+              0.2966345750972619
+            ],
+            [
+              -0.6065267348254925,
+              -0.07614361246867511,
+              -0.7914085356010165
+            ]
+          ],
+          "minimum_board_gap_m": 0.006023667933845678,
+          "gaps_m": {
+            "right_rh_thumb_distal": 0.0019978556821259163,
+            "right_rh_thumb_metacarpals": 0.0016988428487961504,
+            "right_rh_thumb_metacarpals_base2": 0.03006305655256885,
+            "right_rh_index_distal": -0.0009692123651631607,
+            "right_rh_index_proximal": 0.004936181885765931,
+            "right_rh_middle_distal": 0.0023329140201903548,
+            "right_rh_middle_proximal": 0.011315406722227236,
+            "right_rh_ring_distal": 0.0005924148368648963,
+            "right_rh_ring_proximal": 0.009464429298373232,
+            "right_rh_pinky_distal": 0.01071817072828371,
+            "right_rh_pinky_proximal": 0.008401932454984232,
+            "right_rh_hand_base_link": 3.421038437853574e-05
+          },
+          "predicted_simultaneous_contacts": true
+        },
+        "sample": {
+          "handle_height_m": 0.9032792322037198,
+          "handle_in_palm_m": [
+            0.07819749557001325,
+            0.01710116558607517,
+            0.09877999387157038
+          ],
+          "contacts": [
+            {
+              "part": "thumb",
+              "body": "right_rh_thumb_distal",
+              "force_n": 3.3110005855560303,
+              "on_handle": true,
+              "point_world_m": [
+                -2.199824333190918,
+                -1.5359030961990356,
+                0.9038230180740356
+              ],
+              "normal_world": [
+                0.887641429901123,
+                -0.4596026837825775,
+                -0.02929205261170864
+              ],
+              "radial_vector": [
+                0.018485015155802875,
+                -0.0033309569399367577
+              ],
+              "curl_rad": 0.0,
+              "proximal": false,
+              "distance_from_tip_m": 0.00961023997849355
+            },
+            {
+              "part": "index",
+              "body": "right_rh_index_distal",
+              "force_n": 3.0642049312591553,
+              "on_handle": true,
+              "point_world_m": [
+                -2.2274162769317627,
+                -1.5156532526016235,
+                0.9089187383651733
+              ],
+              "normal_world": [
+                -0.8752028346061707,
+                0.43637940287590027,
+                0.20878946781158447
+              ],
+              "radial_vector": [
+                -0.015795431496723494,
+                -0.0058138536961046105
+              ],
+              "curl_rad": 1.6483002305030823,
+              "proximal": false,
+              "distance_from_tip_m": 0.00013122118124253568
+            }
+          ],
+          "blade_contact": false,
+          "unsafe_contact": false,
+          "support_force_n": 0.6025624871253967,
+          "support_clearance_m": -1.5364232298087366e-05,
+          "attachment": false,
+          "joint_limit_violation": false,
+          "contact_buffer_full": false,
+          "dropped": false,
+          "knife_friction_by_hand_body_n": {
+            "right_rh_thumb_distal": [
+              -0.032523445785045624,
+              0.02065795660018921,
+              -1.3096935749053955
+            ],
+            "right_rh_index_distal": [
+              -0.3275112211704254,
+              -0.17604756355285645,
+              -1.0049129724502563
+            ],
+            "right_rh_middle_distal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_ring_distal": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "right_rh_pinky_distal": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "phase": "mesh_guided_palm_seating",
+          "control_step": 631,
+          "sim_s": 31.55,
+          "q_rad": [
+            -1.0053777694702148,
+            -1.5311977863311768,
+            1.1245379447937012,
+            1.4721355438232422,
+            -1.2131884098052979,
+            -0.022419117391109467,
+            0.19692116975784302,
+            0.8580663800239563,
+            0.1397046148777008,
+            0.8721171617507935,
+            0.991497278213501,
+            0.991502046585083,
+            0.9464923739433289
+          ],
+          "palm_world_m": [
+            -2.220874618981559,
+            -1.4995905164298193,
+            0.9880225634401124
+          ],
+          "knife_pose_xyzw": [
+            -2.159796714782715,
+            -1.4439406394958496,
+            0.9113085269927979,
+            0.05629557743668556,
+            -0.03514570742845535,
+            0.5020632743835449,
+            0.8622807264328003
+          ],
+          "in_place_motion": {
+            "footprint_margin_m": 0.024076933006473844,
+            "centre_xy_shift_m": 0.02917548131178438,
+            "rotation_deg": 9.386608395637717,
+            "within_bounds": true
+          },
+          "estimated_hand_drive_torque_nm": [
+            0.005698851775377989,
+            0.5602999925613403,
+            0.2647300958633423,
+            -0.006895528174936771,
+            -0.0069083888083696365,
+            -0.005347678437829018
+          ],
+          "metric": {
+            "success": false,
+            "wrapped": false,
+            "lifted": false,
+            "supported": true,
+            "unsafe_seen": false,
+            "hold_s": 0.0,
+            "slip_m": 0.0,
+            "fingers": [],
+            "inner_fingers": [],
+            "enclosed": false,
+            "opposed": false
+          }
+        }
+      },
+      "hand_frame_audit": {
+        "bodies": [
+          {
+            "body": "right_rh_rk_adapter",
+            "position_error_m": 2.907107967523036e-07,
+            "angle_error_rad": 6.645331875103342e-07
+          },
+          {
+            "body": "right_rh_thumb_metacarpals_base2",
+            "position_error_m": 4.90497882909923e-07,
+            "angle_error_rad": 6.209997761777347e-07
+          },
+          {
+            "body": "right_rh_thumb_metacarpals",
+            "position_error_m": 4.416656605769193e-07,
+            "angle_error_rad": 6.152522478271276e-07
+          },
+          {
+            "body": "right_rh_thumb_distal",
+            "position_error_m": 2.780275397532758e-07,
+            "angle_error_rad": 6.88860726694499e-07
+          },
+          {
+            "body": "right_rh_index_proximal",
+            "position_error_m": 3.5670836760283904e-07,
+            "angle_error_rad": 6.079108937097855e-07
+          },
+          {
+            "body": "right_rh_index_distal",
+            "position_error_m": 3.7462810460799984e-07,
+            "angle_error_rad": 5.702399853431167e-07
+          },
+          {
+            "body": "right_rh_middle_proximal",
+            "position_error_m": 3.95230161085647e-07,
+            "angle_error_rad": 4.158059798789117e-07
+          },
+          {
+            "body": "right_rh_middle_distal",
+            "position_error_m": 5.352342073748509e-07,
+            "angle_error_rad": 3.8807844649510986e-07
+          },
+          {
+            "body": "right_rh_ring_proximal",
+            "position_error_m": 4.5574913417688274e-07,
+            "angle_error_rad": 4.125605342465808e-07
+          },
+          {
+            "body": "right_rh_ring_distal",
+            "position_error_m": 3.182661284877741e-07,
+            "angle_error_rad": 4.292240852529833e-07
+          },
+          {
+            "body": "right_rh_pinky_proximal",
+            "position_error_m": 2.7956494985426656e-07,
+            "angle_error_rad": 3.9456621284588404e-07
+          },
+          {
+            "body": "right_rh_pinky_distal",
+            "position_error_m": 3.5254386273952677e-07,
+            "angle_error_rad": 3.623145370867468e-07
+          },
+          {
+            "body": "right_rh_hand_base_link",
+            "position_error_m": 2.4021501293677855e-07,
+            "angle_error_rad": 5.692210761316559e-07
+          }
+        ],
+        "max_position_error_m": 5.352342073748509e-07,
+        "max_angle_error_rad": 6.88860726694499e-07,
+        "actual_joint_rad": {
+          "left_AR5_5_07L_W4C4A2_joint_1": 4.939669815939851e-05,
+          "right_AR5_5_07R_W4C4A2_joint_1": -0.9962587952613831,
+          "left_AR5_5_07L_W4C4A2_joint_2": 0.011163515038788319,
+          "right_AR5_5_07R_W4C4A2_joint_2": -1.5557689666748047,
+          "left_AR5_5_07L_W4C4A2_joint_3": 1.0338319953007158e-05,
+          "right_AR5_5_07R_W4C4A2_joint_3": 1.1203525066375732,
+          "left_AR5_5_07L_W4C4A2_joint_4": 0.003032649401575327,
+          "right_AR5_5_07R_W4C4A2_joint_4": 1.4851303100585938,
+          "left_AR5_5_07L_W4C4A2_joint_5": -1.39090607262915e-05,
+          "right_AR5_5_07R_W4C4A2_joint_5": -1.2131516933441162,
+          "left_AR5_5_07L_W4C4A2_joint_6": 0.00017414263857062906,
+          "right_AR5_5_07R_W4C4A2_joint_6": -0.011703800410032272,
+          "left_AR5_5_07L_W4C4A2_joint_7": 5.533604863217079e-08,
+          "right_AR5_5_07R_W4C4A2_joint_7": 0.2262805849313736,
+          "left_lh_thumb_cmc_yaw": -4.872792707527607e-12,
+          "left_lh_index_mcp_pitch": -3.299701888137031e-14,
+          "left_lh_middle_mcp_pitch": -5.515614701756934e-15,
+          "left_lh_ring_mcp_pitch": 2.6644895569916116e-06,
+          "left_lh_pinky_mcp_pitch": 5.15722331329016e-06,
+          "right_rh_thumb_cmc_yaw": 0.8588147759437561,
+          "right_rh_index_mcp_pitch": 0.8634557723999023,
+          "right_rh_middle_mcp_pitch": 0.9160614013671875,
+          "right_rh_ring_mcp_pitch": 0.9160648584365845,
+          "right_rh_pinky_mcp_pitch": 0.8801082968711853,
+          "left_lh_thumb_cmc_pitch": -3.4032817796542103e-12,
+          "left_lh_index_dip": -2.5207605642597886e-14,
+          "left_lh_middle_dip": -5.181072898249981e-16,
+          "left_lh_ring_dip": 2.371509708609665e-06,
+          "left_lh_pinky_dip": 4.59011243947316e-06,
+          "right_rh_thumb_cmc_pitch": 0.1429869830608368,
+          "right_rh_index_dip": 0.7684746384620667,
+          "right_rh_middle_dip": 0.815294623374939,
+          "right_rh_ring_dip": 0.8152977228164673,
+          "right_rh_pinky_dip": 0.7832963466644287,
+          "left_lh_thumb_ip": 8.959917252582272e-09,
+          "right_rh_thumb_ip": 0.2659512162208557
+        }
+      }
+    }
+  ],
+  "memory": {
+    "reserves_weakened": false,
+    "warnings": 0,
+    "peak_process_ram_gb": 2.523602944,
+    "min_available_ram_gb": 8.93806592,
+    "peak_total_gpu_mib": 683.0
+  }
+}

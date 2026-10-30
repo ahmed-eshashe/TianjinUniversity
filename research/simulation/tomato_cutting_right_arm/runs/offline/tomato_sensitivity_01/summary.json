@@ -1,0 +1,119 @@
+{
+  "scope": "one-factor-at-a-time offline sensitivity; no parameter/mesh interaction grid",
+  "mechanical_paths": 40,
+  "load_stages": 240,
+  "all_selected_paths_pass": true,
+  "bulk_mesh_sizes_mm": [
+    4.5,
+    5,
+    6
+  ],
+  "surface_angular_segments_tested": [
+    32,
+    64,
+    128
+  ],
+  "mesh_preparation_rejections": {
+    "bulk4": "coincident material/tether node",
+    "surface32": "closed-volume approximation exceeds unchanged 1 percent gate"
+  },
+  "mesh_comparisons": [
+    {
+      "mesh": "bulk4p5",
+      "paths": 4,
+      "max_energy_change": 0.07744412623663488,
+      "max_reaction_change": 0.08527701748663086,
+      "comparison_target_met": true
+    },
+    {
+      "mesh": "bulk6",
+      "paths": 4,
+      "max_energy_change": 0.10823650525291473,
+      "max_reaction_change": 0.1258311704574666,
+      "comparison_target_met": false
+    },
+    {
+      "mesh": "surface128",
+      "paths": 4,
+      "max_energy_change": 0.016852036999935982,
+      "max_reaction_change": 0.02358529396860909,
+      "comparison_target_met": true
+    }
+  ],
+  "parameter_sensitivity": [
+    {
+      "name": "baseline",
+      "paths": 4,
+      "minimum_j": 0.22244256978867838,
+      "max_energy_change": 0.0,
+      "max_reaction_change": 0.0
+    },
+    {
+      "name": "modulus2500",
+      "paths": 4,
+      "minimum_j": 0.12135900996701751,
+      "max_energy_change": 0.04695808282069214,
+      "max_reaction_change": 0.13157679220577823
+    },
+    {
+      "name": "modulus40000",
+      "paths": 4,
+      "minimum_j": 0.33451266910893485,
+      "max_energy_change": 0.03185377753269414,
+      "max_reaction_change": 0.0982360324993019
+    },
+    {
+      "name": "activation035",
+      "paths": 4,
+      "minimum_j": 0.19054879768888294,
+      "max_energy_change": 0.07047158029669942,
+      "max_reaction_change": 0.1948520531331983
+    },
+    {
+      "name": "activation065",
+      "paths": 4,
+      "minimum_j": 0.2643306080435402,
+      "max_energy_change": 0.11078348310638342,
+      "max_reaction_change": 0.21634158883859822
+    },
+    {
+      "name": "floor005",
+      "paths": 4,
+      "minimum_j": 0.20759063145002452,
+      "max_energy_change": 0.01393139469996263,
+      "max_reaction_change": 0.03408062646143206
+    },
+    {
+      "name": "floor020",
+      "paths": 4,
+      "minimum_j": 0.3031432105896906,
+      "max_energy_change": 0.0126966387296783,
+      "max_reaction_change": 0.049338854010859245
+    }
+  ],
+  "minimum_j_all": 0.12135900996701751,
+  "minimum_tangent_eigenvalue": 0.027436675194496777,
+  "maximum_force_residual": 9.491670627044318e-08,
+  "mechanics_runtime_s": 144.6074055340032,
+  "mesh_preparation_runtime_s": 32.943167577002896,
+  "peak_rss_bytes": 247513088,
+  "reaction_finite_difference_checks": 28,
+  "mesh_independence_demonstrated": false,
+  "physical_material_calibrated": false,
+  "existing_files_verified": 190,
+  "changed_existing_files": [],
+  "memory_guard_controller_grasp_criteria_unchanged": true,
+  "source_hashes": {
+    "rl/offline_tomato_sensitivity_mesh.py": "98b598094f1fbde60d4963be1175895d64145e28e18b04d97986cbb3b242fd74",
+    "rl/offline_tomato_sensitivity_path.py": "b5749f817163e52effb42ca7b63fa8bb3589dd223d08cc19e44255365be3d0c6",
+    "rl/tomato_layout.py": "10a115828a2cc1ca8c4af0b817e746537c5526569e7b81a96466adfd6669eef2",
+    "rl/tomato_surfaces.py": "71cd419cf7372f2de8d7980bae05cd9a0e60309f99ac994d6d3ab452860e75d0",
+    "rl/offline_tomato_surfaces.py": "c11163c9ffcf653da388b22b0ae02fcd00fbd42e2d6341e43e6139004a599cbc",
+    "rl/tomato_surface_mechanics.py": "f1ece5f2d319c319d76c22f215174f57d6d91a787e94e27589c82e5afc41f49b",
+    "rl/tomato_nonlinear_checks.py": "bada0d08fdfb8091bc264e7f9653a4c6000f3e473e4bef43c012855a89d5c8d6",
+    "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62"
+  },
+  "simulator_imports_or_launches": false,
+  "training": false,
+  "runtime_model_activated": false
+}

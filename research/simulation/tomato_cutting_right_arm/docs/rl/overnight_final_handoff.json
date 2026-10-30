@@ -1,0 +1,105 @@
+{
+  "stopped_utc": "2026-10-26T04:52:47.615743+00:00",
+  "stop_reason": "deadline_near_reserve_time_for_verified_handoff",
+  "automation_status": "PAUSED",
+  "last_quota_check_utc": "2026-10-26 04:51:27 UTC",
+  "maximum_reported_used_percent": 10,
+  "reported_remaining_percent": 90,
+  "missing_secondary": "unknown",
+  "hard_deadline_utc": "2026-10-26T04:54:40+00:00",
+  "withdrawal_to_zero_depth_validated": true,
+  "blade_cleared": true,
+  "damage_specific_supported_reclosure_validated": true,
+  "last_reclosure": "runs/offline/tomato_spectral_reclosure_01/phase09_hold/attempt000",
+  "main_forward": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+  "main_forward_depth_mm": 8.84375,
+  "deeper_trials": [
+    {
+      "depth_mm": 8.875,
+      "calls": 11,
+      "stop_reason": "bounded_worker_budget",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion27_after_reclosure",
+      "uncommitted_candidate": "runs/offline/tomato_curvature_search_01/insertion27_after_reclosure/attempt010",
+      "candidate_sha256": "62464066bef365a679c1fe937a4a7171203cb8734fdc67b999d35a6bd4f76af7"
+    },
+    {
+      "depth_mm": 8.875,
+      "calls": 11,
+      "stop_reason": "bounded_worker_budget",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion28_after_reclosure_global",
+      "uncommitted_candidate": "runs/offline/tomato_curvature_search_01/insertion28_after_reclosure_global/attempt010",
+      "candidate_sha256": "e6c2c78d8195a5ff14034b5ba32d528975b85e9c030f00439d5a81b15775a38c"
+    },
+    {
+      "depth_mm": 8.875,
+      "calls": 3,
+      "stop_reason": "physical_gate_failed",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion29_after_reclosure_resume",
+      "rejected_checkpoint": "runs/offline/tomato_curvature_search_01/insertion29_after_reclosure_resume/attempt002",
+      "summary_sha256": "b4d62c0adc70348a454133b6067372a3166c656e1bd85cf4c07f2e5fc899823e",
+      "swept_gap_m": -1.392540647034256e-07
+    },
+    {
+      "depth_mm": 8.859375,
+      "calls": 11,
+      "stop_reason": "bounded_worker_budget",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion30_after_reclosure_half",
+      "uncommitted_candidate": "runs/offline/tomato_curvature_search_01/insertion30_after_reclosure_half/attempt009",
+      "candidate_sha256": "4cda61ae65abb124cad2e40046c70bc89915d3ab1c293b4c8d91c4880e15d792"
+    },
+    {
+      "depth_mm": 8.859375,
+      "calls": 11,
+      "stop_reason": "bounded_worker_budget",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion31_after_reclosure_half_global",
+      "uncommitted_candidate": "runs/offline/tomato_curvature_search_01/insertion31_after_reclosure_half_global/attempt010",
+      "candidate_sha256": "20106f8f7d0307d954a143b01d76e0890e33415e414177386f095ec6ddfaf5dc"
+    },
+    {
+      "depth_mm": 8.859375,
+      "calls": 2,
+      "stop_reason": "physical_gate_failed",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion32_after_reclosure_half_resume",
+      "rejected_checkpoint": "runs/offline/tomato_curvature_search_01/insertion32_after_reclosure_half_resume/attempt001",
+      "summary_sha256": "453d585f708b69d580106334f480a5328f06b0d9c40dbf3b675bd805bc88e1ad",
+      "swept_gap_m": -2.5490859756221772e-08
+    },
+    {
+      "depth_mm": 8.8515625,
+      "calls": 5,
+      "stop_reason": "repeated_uncommitted_optimizer_state",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion33_after_reclosure_quarter",
+      "uncommitted_candidate": "runs/offline/tomato_curvature_search_01/insertion33_after_reclosure_quarter/attempt003",
+      "candidate_sha256": "89cc11cb40594969c5f780edf28b18c42a2e60a812b2ff08297e8d8c150c54b1"
+    },
+    {
+      "depth_mm": 8.8515625,
+      "calls": 11,
+      "stop_reason": "bounded_worker_budget",
+      "physical_previous": "runs/offline/tomato_curvature_search_01/insertion26_small_global/attempt004",
+      "batch": "runs/offline/tomato_curvature_search_01/insertion34_after_reclosure_quarter_global",
+      "uncommitted_candidate": "runs/offline/tomato_curvature_search_01/insertion34_after_reclosure_quarter_global/attempt010",
+      "candidate_sha256": "5f270633576b135fd1513b851abd04f672717fac7e67d094d164b5ef460e8ff8"
+    }
+  ],
+  "next": "After renewed user instruction and fresh UTC/quota/commonlocks/source/state/seed qualification, use a NEW run_cycle_guarded_branch.py batch: SAME actual accepted insertion26_small_global/attempt004, SAME target8.8515625, initial-resume insertion34_after_reclosure_quarter_global/attempt010. Candidate is NOT a committed state. If physical contact/work fails, halve from8.84375 to8.84765625. Preserve original1nm contact, all energy/stability/history and memory/frozen-grasp safeguards. Stop unresolved physicalinstability. NEVER splice withdrawal/reclosure/support work into forward history. Fullcut/release requires all47failed, graph2 and independentmotion/contact tests; depth alone is insufficient.",
+  "full_cut": false,
+  "independent_release_validated": false,
+  "simulator": false,
+  "training": false,
+  "controller_or_physical_law_changed": false,
+  "safeguards_and_grasp_criteria_unchanged": true,
+  "verification_hashes": {
+    "runs/offline/tomato_spectral_reclosure_01/qualification.json": "ec48a548192d3b0cb86bf9f51544cf3a98e5a887d1f943d9b6f2f722c18b7d5d",
+    "runs/offline/tomato_spectral_reclosure_01/seed_qualification.json": "1ec7d585db679b6ef75fe74fa5241966709d034b25655c74c2e3cb446953625d",
+    "runs/offline/tomato_curvature_search_01/qualification.json": "00884db24cbc36d892ffd4e5b3548975e9ec9b8645dcdda5cf13dcaede997565",
+    "runs/offline/tomato_global_search_01/refinement_qualification.json": "cbcf7c06c235ad951165d4c0c653dcb4045c1596cd08289a9076a105237e4cbe"
+  }
+}

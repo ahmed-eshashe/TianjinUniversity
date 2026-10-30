@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="ar5_o6_right">
+  <!-- GROUPS: Representation of a set of joints and links -->
+  <group name="arm">
+    <chain base_link="AR5_5_07R_W4C4A2_base" tip_link="AR5_5_07R_W4C4A2_tcp"/>
+  </group>
+
+  <group name="hand">
+    <link name="rh_hand_base_link"/>
+    <link name="rh_thumb_metacarpals_base2"/>
+    <link name="rh_thumb_metacarpals"/>
+    <link name="rh_thumb_distal"/>
+    <link name="rh_index_proximal"/>
+    <link name="rh_index_distal"/>
+    <link name="rh_middle_proximal"/>
+    <link name="rh_middle_distal"/>
+    <link name="rh_ring_proximal"/>
+    <link name="rh_ring_distal"/>
+    <link name="rh_pinky_proximal"/>
+    <link name="rh_pinky_distal"/>
+    <joint name="rh_thumb_cmc_yaw"/>
+    <joint name="rh_thumb_cmc_pitch"/>
+    <joint name="rh_thumb_ip"/>
+    <joint name="rh_index_mcp_pitch"/>
+    <joint name="rh_index_dip"/>
+    <joint name="rh_middle_mcp_pitch"/>
+    <joint name="rh_middle_dip"/>
+    <joint name="rh_ring_mcp_pitch"/>
+    <joint name="rh_ring_dip"/>
+    <joint name="rh_pinky_mcp_pitch"/>
+    <joint name="rh_pinky_dip"/>
+  </group>
+
+  <group name="arm_hand">
+    <group name="arm"/>
+    <group name="hand"/>
+  </group>
+
+  <!-- GROUP STATES -->
+  <!-- Arm States -->
+  <group_state name="home" group="arm">
+    <joint name="AR5_5_07R_W4C4A2_joint_1" value="0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_2" value="0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_3" value="0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_4" value="0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_5" value="0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_6" value="0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_7" value="0"/>
+  </group_state>
+
+  <group_state name="ready" group="arm">
+    <joint name="AR5_5_07R_W4C4A2_joint_1" value="0.0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_2" value="-0.5"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_3" value="0.0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_4" value="1.2"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_5" value="0.0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_6" value="0.7"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_7" value="0.0"/>
+  </group_state>
+
+  <group_state name="cut_ready" group="arm">
+    <joint name="AR5_5_07R_W4C4A2_joint_1" value="0.0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_2" value="-0.35"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_3" value="0.0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_4" value="1.4"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_5" value="0.0"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_6" value="0.52"/>
+    <joint name="AR5_5_07R_W4C4A2_joint_7" value="0.0"/>
+  </group_state>
+
+  <!-- Hand States -->
+  <group_state name="open" group="hand">
+    <joint name="rh_thumb_cmc_yaw" value="0"/>
+    <joint name="rh_thumb_cmc_pitch" value="0"/>
+    <joint name="rh_index_mcp_pitch" value="0"/>
+    <joint name="rh_middle_mcp_pitch" value="0"/>
+    <joint name="rh_ring_mcp_pitch" value="0"/>
+    <joint name="rh_pinky_mcp_pitch" value="0"/>
+  </group_state>
+
+  <group_state name="grip_knife" group="hand">
+    <joint name="rh_thumb_cmc_yaw" value="0.5"/>
+    <joint name="rh_thumb_cmc_pitch" value="0.4"/>
+    <joint name="rh_index_mcp_pitch" value="0.8"/>
+    <joint name="rh_middle_mcp_pitch" value="0.85"/>
+    <joint name="rh_ring_mcp_pitch" value="0.85"/>
+    <joint name="rh_pinky_mcp_pitch" value="0.85"/>
+  </group_state>
+
+  <!-- END EFFECTOR -->
+  <end_effector name="hand_ee" parent_link="AR5_5_07R_W4C4A2_tcp" group="hand" parent_group="arm"/>
+
+  <!-- DISABLE COLLISIONS -->
+  <disable_collisions link1="world" link2="AR5_5_07R_W4C4A2_base" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_base" link2="AR5_5_07R_W4C4A2_link1" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link1" link2="AR5_5_07R_W4C4A2_link2" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link2" link2="AR5_5_07R_W4C4A2_link3" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link3" link2="AR5_5_07R_W4C4A2_link4" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link4" link2="AR5_5_07R_W4C4A2_link5" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link5" link2="AR5_5_07R_W4C4A2_link6" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link6" link2="AR5_5_07R_W4C4A2_link7" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link7" link2="AR5_5_07R_W4C4A2_tcp" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_tcp" link2="rh_rk_adapter" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link7" link2="rh_rk_adapter" reason="Never"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link6" link2="rh_rk_adapter" reason="Never"/>
+  <disable_collisions link1="rh_rk_adapter" link2="rh_hand_base_link" reason="Adjacent"/>
+  <disable_collisions link1="rh_hand_base_link" link2="rh_thumb_metacarpals_base2" reason="Adjacent"/>
+  <disable_collisions link1="rh_hand_base_link" link2="rh_index_proximal" reason="Adjacent"/>
+  <disable_collisions link1="rh_hand_base_link" link2="rh_middle_proximal" reason="Adjacent"/>
+  <disable_collisions link1="rh_hand_base_link" link2="rh_ring_proximal" reason="Adjacent"/>
+  <disable_collisions link1="rh_hand_base_link" link2="rh_pinky_proximal" reason="Adjacent"/>
+  <disable_collisions link1="rh_thumb_metacarpals_base2" link2="rh_thumb_metacarpals" reason="Adjacent"/>
+  <disable_collisions link1="rh_thumb_metacarpals" link2="rh_thumb_distal" reason="Adjacent"/>
+  <disable_collisions link1="rh_index_proximal" link2="rh_index_distal" reason="Adjacent"/>
+  <disable_collisions link1="rh_middle_proximal" link2="rh_middle_distal" reason="Adjacent"/>
+  <disable_collisions link1="rh_ring_proximal" link2="rh_ring_distal" reason="Adjacent"/>
+  <disable_collisions link1="rh_pinky_proximal" link2="rh_pinky_distal" reason="Adjacent"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_tcp" link2="rh_hand_base_link" reason="Never"/>
+  <disable_collisions link1="AR5_5_07R_W4C4A2_link7" link2="rh_hand_base_link" reason="Never"/>
+</robot>

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_withdrawal.py", line 140, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_withdrawal.py", line 70, in main
+    x,lam,state,trace,ok,_,ids,free=solve_triangle_continuation(model,x,fixed,geometry,max_iterations=6,initial_active=active)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_continuation.py", line 81, in solve_triangle_continuation
+    result=list(solve_contact_continuation(model,initial,fixed,geometry['matrix'][used],geometry['bounds'][used],max_iterations,initial_active))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_continuation.py", line 25, in solve_contact_continuation
+    if np.any(diagonal<=0):raise ValueError('Nonpositive constrained Newton diagonal')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Nonpositive constrained Newton diagonal

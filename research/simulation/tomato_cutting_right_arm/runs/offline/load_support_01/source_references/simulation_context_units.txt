@@ -1,0 +1,13 @@
+
+    def _init_usd_physics_scene(self) -> None:
+        """Create and configure the USD physics scene."""
+        from pxr import Gf, UsdGeom, UsdPhysics  # noqa: PLC0415
+
+        cfg = self.cfg
+        with sim_utils.use_stage(self.stage):
+            # Set stage conventions for metric units
+            UsdGeom.SetStageUpAxis(self.stage, "Z")
+            UsdGeom.SetStageMetersPerUnit(self.stage, 1.0)
+            UsdPhysics.SetStageKilogramsPerUnit(self.stage, 1.0)
+
+            # Find and delete any existing physics scene.

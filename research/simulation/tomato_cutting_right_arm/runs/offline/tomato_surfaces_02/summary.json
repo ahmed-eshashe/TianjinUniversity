@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "checks": {
+    "pieces_closed_oriented_convex": true,
+    "disjoint_piece_node_ids": true,
+    "coincident_cut_coordinates": true,
+    "matching_cut_triangulations": true,
+    "no_zero_length_bonds": true,
+    "original_bonds_unchanged": true,
+    "original_patch_registry_unchanged": true,
+    "no_new_cross_cut_bonds": true,
+    "unique_bonds": true,
+    "positive_mass": true,
+    "mass_preserved": true,
+    "per_piece_mass_preserved": true,
+    "initial_single_component": true,
+    "exactly_two_sides_after_interface_removal": true,
+    "fixture_unchanged": true,
+    "no_rest_volume_overlap": true,
+    "triangle_centres_edges_vertices_detected": true,
+    "noncrossing_segments_not_misclassified": true,
+    "original_nodes_inside_closed_surfaces": true,
+    "unique_coordinates_per_piece": true,
+    "cut_area_tiles_polygon": true,
+    "volume_error_below_one_percent": true,
+    "cross_piece_has_no_shared_topological_vertices": true
+  },
+  "piece_checks": [
+    {
+      "passed": true,
+      "checks": {
+        "two_opposite_uses_per_edge": true,
+        "vertex_links_single_cycles": true,
+        "euler_characteristic_two": true,
+        "positive_triangle_areas": true,
+        "positive_oriented_volume": true,
+        "convex_support_plane_certificate": true,
+        "outward_cut_normals": true,
+        "side_identity": true,
+        "exact_cut_plane": true
+      },
+      "surface_nodes": 834,
+      "triangles": 1664,
+      "cut_triangles": 448,
+      "cut_area_m2": 0.0014597014129079178,
+      "signed_volume_m3": 7.710496694792791e-06,
+      "maximum_support_plane_violation_m": 8.263188723526843e-18,
+      "minimum_triangle_area_m2": 2.8424596651982687e-07
+    },
+    {
+      "passed": true,
+      "checks": {
+        "two_opposite_uses_per_edge": true,
+        "vertex_links_single_cycles": true,
+        "euler_characteristic_two": true,
+        "positive_triangle_areas": true,
+        "positive_oriented_volume": true,
+        "convex_support_plane_certificate": true,
+        "outward_cut_normals": true,
+        "side_identity": true,
+        "exact_cut_plane": true
+      },
+      "surface_nodes": 1922,
+      "triangles": 3840,
+      "cut_triangles": 448,
+      "cut_area_m2": 0.0014597014129079178,
+      "signed_volume_m3": 0.00011354292172820023,
+      "maximum_support_plane_violation_m": 1.2938942411796844e-17,
+      "minimum_triangle_area_m2": 3.272175326399698e-07
+    }
+  ],
+  "total_nodes": 3735,
+  "total_bonds": 29790,
+  "added_surface_nodes": 2756,
+  "added_same_side_bonds": 19280,
+  "component_sizes_after_cut": [
+    898,
+    2837
+  ],
+  "matched_cut_vertices": 257,
+  "original_node_max_outside_distance_m": [
+    0.0,
+    0.0
+  ],
+  "cut_area_relative_error_vs_analytic": -0.0016056069643817228,
+  "piece_volume_relative_errors": [
+    -0.005519317524577683,
+    -0.003292317886517626
+  ],
+  "analytic_crossing_samples": 2688,
+  "missed_crossings": 0,
+  "collision_pair_policy": {
+    "status": "offline policy design, not a native filter implementation",
+    "same_side_incident_vertex_face": "exclude only actual incident own-side topology",
+    "cross_side_faces": "always contact eligible regardless of rest distance or intact interface bonds",
+    "rest_shape_proximity_exclusion_radius_m": 0.0,
+    "blanket_particle_radius_inflation": false,
+    "shared_cut_face_positions_but_not_ids": true,
+    "blade_piece_pairs": "both eligible at every damage state",
+    "cross_piece_rule_probe_count": 200704,
+    "native_contact_completeness_validated": false
+  },
+  "physical_contact_validated": false,
+  "limitations": [
+    "rest geometry only; runtime surface crossing prevention not demonstrated",
+    "surface mass split 25 percent is provisional; inertia/continuum convergence not validated",
+    "surface tether and edge stiffness unset; added mechanics needs compression/shear checks",
+    "zero rest gap deliberately retained; native coincident-face handling untested"
+  ],
+  "runtime_s": 4.7181384390023595,
+  "peak_rss_bytes": 63275008,
+  "limits": {
+    "address_space_bytes": 268435456,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true
+  },
+  "layout_sha256": "7d9b1b469c5b34ddfb291924bb4bb91f66d82634e3bdb16037f515650529a671",
+  "source_hashes": {
+    "rl/offline_tomato_surfaces.py": "3344b72ab34680b493ee4cab4756a2acd79e16eff5667288ed7d460a75e67162",
+    "rl/tomato_surfaces.py": "3bed1b5cfdd992339d9a154a511c2f438bc6acf50da0d4b2ddfab4a955dd5b47"
+  },
+  "simulator_imports_or_launches": false,
+  "training": false
+}

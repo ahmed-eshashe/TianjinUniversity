@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="dual_ar5_o6">
+  
+  <!-- Shared Materials -->
+  <material name="black"><color rgba="0.0 0.0 0.0 1.0" /></material>
+  <material name="blue"><color rgba="0.0 0.0 0.8 1.0" /></material>
+  <material name="green"><color rgba="0.0 0.8 0.0 1.0" /></material>
+  <material name="grey"><color rgba="0.2 0.2 0.2 1.0" /></material>
+  <material name="orange"><color rgba="1.0 0.423529411765 0.0392156862745 1.0" /></material>
+  <material name="brown"><color rgba="0.870588235294 0.811764705882 0.764705882353 1.0" /></material>
+  <material name="red"><color rgba="0.8 0.0 0.0 1.0" /></material>
+  <material name="white"><color rgba="1.0 1.0 1.0 1.0" /></material>
+  <material name="silver"><color rgba="0.5 0.5 0.52 1.0" /></material>
+  <material name="BlackAccent"><color rgba="0.05 0.05 0.05 1.0" /></material>
+  <material name="Beige"><color rgba="1.0 0.784 0.5765 1.0" /></material>
+
+  <!-- Base world link for fixed robot -->
+  <link name="world"/>
+
+  <!-- Include Torso -->
+  <xacro:include filename="torso.xacro"/>
+  
+  <joint name="world_to_torso" type="fixed">
+    <parent link="world"/>
+    <child link="torso_base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Include Processed Left Arm -->
+  <xacro:include filename="left_arm_processed.urdf"/>
+  
+  <!-- Include Processed Right Arm -->
+  <xacro:include filename="right_arm_processed.urdf"/>
+
+  <!-- Attach Left Arm to Torso -->
+  <joint name="torso_to_left_arm" type="fixed">
+    <parent link="torso_base_link"/>
+    <child link="left_AR5_5_07L_W4C4A2_base"/>
+    <origin xyz="0.392426 0.2626025 1.2462556" rpy="0 1.5707963 0"/>
+  </joint>
+
+  <!-- Attach Right Arm to Torso -->
+  <joint name="torso_to_right_arm" type="fixed">
+    <parent link="torso_base_link"/>
+    <child link="right_AR5_5_07R_W4C4A2_base"/>
+    <origin xyz="0.303435 0.2626025 1.2462556" rpy="0 -1.5707963 0"/>
+  </joint>
+
+</robot>

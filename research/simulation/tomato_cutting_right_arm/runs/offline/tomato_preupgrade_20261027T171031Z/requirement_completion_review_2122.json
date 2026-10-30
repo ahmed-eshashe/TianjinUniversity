@@ -1,0 +1,155 @@
+{
+  "reviewed_utc": "2026-10-27T21:23:20.514061+00:00",
+  "scope": "source_and_saved_offline_evidence_review_only",
+  "native_runtime_validated": false,
+  "preparation_complete": false,
+  "requirements": [
+    {
+      "id": "P0",
+      "requirement": "Baseline and source inventory",
+      "status": "offline_verified",
+      "evidence": "baseline_sources.json; installed_source_refresh.json",
+      "next_action": "243 baseline files, 16 earlier source entries unchanged"
+    },
+    {
+      "id": "P1",
+      "requirement": "Backend/contact/reaction route",
+      "status": "source_decision_completed_runtime_unverified",
+      "evidence": "backend_decision.md; coupling_sources.json",
+      "next_action": "Source decision and coupling probe documented; native interface behavior/contact extraction remain runtime-only gates"
+    },
+    {
+      "id": "P2",
+      "requirement": "Geometry, contact-pair and patch registries",
+      "status": "full_registry_export_and_original_tolerance_patch_reference_compared_native_operator_unverified",
+      "evidence": "session2052_tests.json; session2052_quadrature_inventory.json; native_surface_patch_registry_2047fix.json; earlier force/evolution evidence; session2057_evolution_tests.json; session2102_assembly_tests.json",
+      "next_action": "Reference dependency regressions pass; native implicit operator/softening stability remains unresolved and requires reviewed design/runtime validation"
+    },
+    {
+      "id": "P3",
+      "requirement": "Wrench, sample-time and integrated work contract",
+      "status": "SI_work_reference_and_endpoint_COM_motion_adapter_offline_tested_native_sampling_pending",
+      "evidence": "rl/tomato_reaction_metadata.py; rl/tomato_coupon_segment.py; session1947_tests.json; earlier SI/work evidence",
+      "next_action": "Verify actual kinematic timing and native force sampling/refinement; endpoint estimates remain outside step-average work acceptance"
+    },
+    {
+      "id": "P4",
+      "requirement": "Damage history and exact reset",
+      "status": "declared_reset_and_readonly_journal_prefix_reconciliation_tested_native_registry_incomplete",
+      "evidence": "rl/tomato_journal_verify.py; session1942_tests.json; native_history_allocation_candidates.json; earlier episode contract",
+      "next_action": "Actual native history/contact/alias completeness and reset/restart remain unverified; diagnostic prefix never physical resume state"
+    },
+    {
+      "id": "P5",
+      "requirement": "Dedicated native launch guard",
+      "status": "disabled_worker_preview_and_resource_checkpoint_fixture_integration_tested_native_runtime_unverified",
+      "evidence": "rl/tomato_resource_supervisor.py; session1917_tests.json; session1912_exact_preview.json; earlier guard contracts; single_blade_disabled_worker_config_2102.json; session2102_exact_preview.json; session2107_fix_tests.json; rl/tomato_supervision_protocol.py; session2112_tests.json; rl/tomato_protocol_fixture.py",
+      "next_action": "Disabled contract and stdlib lifecycle fixture prepared; real native serialization/IPC, bounded hardware monitoring and OS signals remain runtime gates"
+    },
+    {
+      "id": "P6",
+      "requirement": "Blade/contact and two-piece native coupon source",
+      "status": "coupon_builders_observer_step_segment_source_and_journal_offline_checked_native_unexecuted",
+      "evidence": "real_blade_facet_challenges_2017.json; contact_challenge_registry_2017.json; session2017_tests.json; prior source evidence",
+      "next_action": "Current 12-step/0.01s nonresumable worker is initial-rest only; full motion needs complete state continuation design, never dt/call-cap loosening"
+    },
+    {
+      "id": "P7",
+      "requirement": "Mechanics stages and evaluation",
+      "status": "staged_evaluator_hashed_evidence_and_release_coverage_offline_tested_runtime_unverified",
+      "evidence": "rl/tomato_evidence_bundle.py; session1842_tests.json; session1827_tests.json; session2117_tests.json; rl/tomato_segment_collection.py",
+      "next_action": "Diagnostic coupon collector refuses promotion to staged cut evidence; actual complete native histories/auditors and full protocol runtime remain required"
+    },
+    {
+      "id": "P8",
+      "requirement": "Robot two-way coupling and grasp under cutting load",
+      "status": "existing_PhysX_endpoint_unverified_native_only_probe_spec_source_grounded",
+      "evidence": "COUPLING_PROBE_SPEC.md; coupling_probe_source_leads.json; frozen criteria unchanged",
+      "next_action": "Later supported robot endpoint decision/runtime authorization, then native-only transfer and actual frozen-grasp-under-load validation; no migration authorized"
+    },
+    {
+      "id": "P9",
+      "requirement": "Baseline/RL interface and reset/reward logic",
+      "status": "actor_masks_episode_history_reset_residual_and_split_contracts_offline_tested",
+      "evidence": "rl/tomato_learning_episode.py; session1837_tests.json; session1832_tests.json",
+      "next_action": "Actual sensor/frame schema, reviewed physical action limits/case assignments/reward scales and robot feasibility remain runtime gates"
+    },
+    {
+      "id": "P10",
+      "requirement": "Native resolution, release, resource and throughput evidence",
+      "status": "runtime_pending_ordered_gate_manifest_and_reference_checker_offline_tested",
+      "evidence": "rl/tomato_readiness_gates.py; session2027_tests.json; postupgrade_gate_manifest.json; session2027_readiness_assessment.json",
+      "next_action": "Actual resource/coupon/mechanics/coupling/baseline throughput evidence only after upgrade and separate runtime authorization"
+    },
+    {
+      "id": "P11",
+      "requirement": "Integrated evidence/runbook/handoff",
+      "status": "working_runbook_gap_matrix_and_capped_serial_runner_tested",
+      "evidence": "rl/tomato_preparation_runner.py; session1957_tests.json; POST_UPGRADE_RUNBOOK.md; integration_gaps.json; session2002_tests.json; integration_gaps_2102.json",
+      "next_action": "Full-source interrupted-result reconciliation tested; finish disabled native supervisor integration contract, then consolidate final readiness evidence"
+    }
+  ],
+  "priority_offline_remaining": [
+    {
+      "id": "signal_delivery",
+      "task": "Real external SIGINT/SIGTERM delivery to fixed stdlib supervisor with owned child process cleanup; existing tests inject KeyboardInterrupt and do not cover OS signal delivery",
+      "evidence": [
+        "rl/tests/test_tomato_resource_supervisor.py",
+        "rl/tests/test_tomato_preupgrade_guard.py"
+      ]
+    },
+    {
+      "id": "final_binding_and_regression",
+      "task": "Bind new supervision/collector modules in final disabled config/evidence inventory, run only affected capped suites, verify manifests and unfinished/native gate labels"
+    },
+    {
+      "id": "final_handoff",
+      "task": "Write final readiness package with exact preview, source hashes, unresolved gates and human inputs; pause automation when offline exit conditions met"
+    }
+  ],
+  "runtime_or_design_blockers": [
+    {
+      "id": "robot_endpoint",
+      "status": "blocked_supported_bridge_not_demonstrated",
+      "next": "Review supported two-way endpoint before robot cutting runtime; no backend migration authorized",
+      "reference": "COUPLING_PROBE_SPEC.md"
+    },
+    {
+      "id": "implicit_cohesion",
+      "status": "blocked_custom_VBD_operator_not_identified",
+      "next": "Reviewed energy/gradient/Hessian/active-softening integration design and native comparison required; explicit external force injection not equivalent",
+      "reference": "cohesive_vbd_route_source.json"
+    },
+    {
+      "id": "complete_native_state",
+      "status": "unimplemented_native_registry",
+      "next": "Inventory aliases, solver/contact buffers and exact continuation/reset/checkpoint completeness; current diagnostic snapshots cannot resume",
+      "reference": "native_history_allocation_candidates.json"
+    },
+    {
+      "id": "bounded_motion_span",
+      "status": "initial_rest_only",
+      "next": "12 calls at1/1200 cover0.01s; full1.2s trajectory requires1440 calls. Later reviewed live-state/chunk or complete checkpoint continuation; never increase dt or batch cap to manufacture a completed motion",
+      "reference": "coupon_trajectory.json"
+    },
+    {
+      "id": "native_supervisor",
+      "status": "disabled_contract_and_stdlib_fixture_only",
+      "next": "Native command polling/serialization and actual bounded hardware readers/cleanup still need implementation and runtime evidence",
+      "reference": "session2112_tests.json"
+    },
+    {
+      "id": "physical_gates",
+      "status": "all_pending",
+      "next": "Actual SDF/contact normals/completeness, force/work sampling, damage/release/reset/convergence, frozen grasp and throughput before learning",
+      "reference": "postupgrade_gate_manifest.json"
+    }
+  ],
+  "inputs_for_later": [
+    "Actual installed/available32GB RAM and GPU/VRAM after upgrade;32GB host RAM does not add VRAM",
+    "Explicit native runtime authorization after resource verification",
+    "Sensor axes/frame/timing and reviewed physical robot action/effort limits; actor wrist channels remain disabled",
+    "Calibrated material/contact inputs, physical case assignments and reward scales; validators do not invent hardware ranges"
+  ],
+  "stop_policy": "Finish early only after remaining offline exit conditions and final handoff; runtime blockers are reported, not disguised as preparation success"
+}

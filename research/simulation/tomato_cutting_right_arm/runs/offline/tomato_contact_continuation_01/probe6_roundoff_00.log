@@ -1,0 +1,22 @@
+{'stage': 'solve_start', 'depth_mm': 6.0, 'rows': 3587, 'elapsed_s': 0.3973585280000407}
+{'iteration': 0, 'force_residual': 0.3779953363197239, 'min_gap_m': 0.0, 'energy_j': 0.008058334211517807, 'min_J': 0.3483180975755159, 'active_constraints': 200, 'linear_iterations': 180, 'minimum_active_multiplier_n': -19.388560012454064}
+{'iteration': 1, 'force_residual': 0.601074170048101, 'min_gap_m': 0.0, 'energy_j': 0.008058334211517807, 'min_J': 0.3483180975755159, 'active_constraints': 189, 'linear_iterations': 178, 'minimum_active_multiplier_n': -0.0001853343174545416}
+{'iteration': 2, 'force_residual': 0.6010741753568843, 'min_gap_m': 0.0, 'energy_j': 0.008058334211517807, 'min_J': 0.3483180975755159, 'active_constraints': 177, 'linear_iterations': 179, 'minimum_active_multiplier_n': 8.135696456454461e-06}
+{'iteration': 3, 'force_residual': 0.2840677738633316, 'min_gap_m': 0.0, 'energy_j': 0.008058334211517807, 'min_J': 0.3483180975755159, 'active_constraints': 186, 'linear_iterations': 191, 'minimum_active_multiplier_n': -0.0041334705489334865}
+{'iteration': 4, 'force_residual': 0.28402582602435056, 'min_gap_m': 0.0, 'energy_j': 0.008058334211517807, 'min_J': 0.3483180975755159, 'active_constraints': 181, 'linear_iterations': 192, 'minimum_active_multiplier_n': 9.877091158602651e-06}
+{'iteration': 5, 'force_residual': 0.2829386090141068, 'min_gap_m': 0.0, 'energy_j': 0.008058334211517807, 'min_J': 0.3483180975755159, 'active_constraints': 195, 'linear_iterations': 192, 'minimum_active_multiplier_n': 6.067535479909487e-06}
+{'iteration': 6, 'force_residual': 0.28270698322640375, 'min_gap_m': 0.0, 'energy_j': 0.008057378320136841, 'min_J': 0.3483466713705126, 'active_constraints': 195, 'linear_iterations': 192, 'minimum_active_multiplier_n': 6.235678470071148e-06}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_contact_continuation.py", line 82, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_contact_continuation.py", line 52, in main
+    x,lam,state,trace,ok,active,ids,free=solve_triangle_contact(model,guess,fixed,geometry,max_iterations=args.newton_steps,initial_active=resume_active)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_continuation.py", line 88, in solve_triangle_continuation
+    result=list(solve_contact_continuation(model,initial,fixed,geometry['matrix'][used],geometry['bounds'][used],max_iterations,initial_active))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_continuation.py", line 65, in solve_contact_continuation
+    if len(new)==len(active):raise ValueError('Dependent blocking contact: '+str({'row':hit,'gap':float(gap[hit]),'direction_gap':float(delta[hit]),'active':hit in active}))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Dependent blocking contact: {'row': 297, 'gap': 0.0, 'direction_gap': -0.003477939559393066, 'active': False}

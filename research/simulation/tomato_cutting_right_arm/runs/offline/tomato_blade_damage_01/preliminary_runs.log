@@ -1,0 +1,86 @@
+insertion 0 0 {'passed': True, 'flags': [], 'depth_mm': 0.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1375589330000366}
+ 
+insertion 1 0 {'passed': True, 'flags': [], 'depth_mm': 0.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0009467941325343377, 'runtime_s': 4.803339255000537}
+ 
+insertion 2 0 {'passed': True, 'flags': [], 'depth_mm': 0.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.001514350862529597, 'runtime_s': 5.242479972999718}
+ 
+insertion 3 0 {'passed': True, 'flags': [], 'depth_mm': 0.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.00031323796807490606, 'runtime_s': 17.163769967999542}
+ 
+insertion 4 0 {'passed': True, 'flags': [], 'depth_mm': 1.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0030935385816657696, 'runtime_s': 9.159903122999822}
+ 
+insertion 5 0 {'passed': True, 'flags': [], 'depth_mm': 1.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.001752562495907229, 'runtime_s': 14.117040518000067}
+ 
+insertion 6 0 {'passed': True, 'flags': [], 'depth_mm': 1.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0011142503961301226, 'runtime_s': 23.752941624001323}
+ 
+insertion 7 0 {'passed': True, 'flags': [], 'depth_mm': 1.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.002150834297928084, 'runtime_s': 13.180794703999709}
+ 
+insertion 8 0 {'passed': True, 'flags': [], 'depth_mm': 2.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0015159588669715943, 'runtime_s': 13.437024427999859}
+ 
+insertion 9 0 {'passed': True, 'flags': [], 'depth_mm': 2.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0011193925769331192, 'runtime_s': 15.26465029100109}
+ 
+insertion 10 0 {'passed': True, 'flags': [], 'depth_mm': 2.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0024473783798383184, 'runtime_s': 11.504996695000955}
+ 
+insertion 11 0 {'passed': True, 'flags': [], 'depth_mm': 2.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0019014665453804434, 'runtime_s': 12.041267511000115}
+ 
+insertion 12 0 {'passed': True, 'flags': [], 'depth_mm': 3.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0015155451905783436, 'runtime_s': 14.064920453000013}
+ 
+insertion 13 0 {'passed': True, 'flags': [], 'depth_mm': 3.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0012475724085531095, 'runtime_s': 24.67171111300013}
+ 
+insertion 14 0 {'passed': True, 'flags': [], 'depth_mm': 3.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0026587904370675586, 'runtime_s': 13.53494271999989}
+ 
+insertion 15 1  Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 121, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 44, in main
+    x,lam,state,trace,ok,active,fixed_ids,free=solve_contact(model,points,x,fixed,A,b,labels)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupled_contact.py", line 163, in solve_contact
+    direction,linear_iterations=constrained_step(state['tangent_n_m'],g,x,fixed,[labels[i] for i in a],bounds[a])
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupled_contact.py", line 125, in constrained_step
+    if root in prescribed and abs(prescribed[root]-value)>1e-12:raise ValueError('Incompatible contact/support constraints')
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Incompatible contact/support constraints
+
+SEQUENCE END insertion
+face_rub 0 0 {'passed': True, 'flags': [], 'depth_mm': 0.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1806977809992532}
+ 
+face_rub 1 0 {'passed': True, 'flags': [], 'depth_mm': 0.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0009467941325343377, 'runtime_s': 4.776637510998626}
+ 
+face_rub 2 0 {'passed': True, 'flags': [], 'depth_mm': 0.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.001514350862529597, 'runtime_s': 5.260694540998884}
+ 
+face_rub 3 0 {'passed': True, 'flags': [], 'depth_mm': 0.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.00031323796807490606, 'runtime_s': 17.349957510999957}
+ 
+face_rub 4 0 {'passed': True, 'flags': [], 'depth_mm': 1.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0030935385816657696, 'runtime_s': 9.763416602001598}
+ 
+face_rub 5 0 {'passed': True, 'flags': [], 'depth_mm': 1.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.001752562495907229, 'runtime_s': 15.227600324000377}
+ 
+face_rub 6 0 {'passed': True, 'flags': [], 'depth_mm': 1.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0011142503961301226, 'runtime_s': 23.345595964001404}
+ 
+face_rub 7 0 {'passed': True, 'flags': [], 'depth_mm': 1.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.002150834297928084, 'runtime_s': 13.714058520001345}
+ 
+face_rub 8 0 {'passed': True, 'flags': [], 'depth_mm': 2.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0015159588669715943, 'runtime_s': 13.598152684000524}
+ 
+face_rub 9 1  Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 121, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 34, in main
+    if not previous['passed'] or previous['mode']!=args.mode or previous['source_hashes']!=hashes:raise ValueError('Invalid/changed continuation')
+                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid/changed continuation
+
+SEQUENCE END face_rub
+miss 0 0 {'passed': True, 'flags': [], 'depth_mm': 0.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.14936390100047}
+ 
+miss 1 0 {'passed': True, 'flags': [], 'depth_mm': 1.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1699144469985185}
+ 
+miss 2 0 {'passed': True, 'flags': [], 'depth_mm': 2.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1307922139985749}
+ 
+miss 3 0 {'passed': True, 'flags': [], 'depth_mm': 3.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1747047989993007}
+ 
+miss 4 0 {'passed': True, 'flags': [], 'depth_mm': 4.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1465829650005617}
+ 
+SEQUENCE END miss
+COMPLETE

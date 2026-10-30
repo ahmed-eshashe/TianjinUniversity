@@ -1,0 +1,106 @@
+{
+  "side": "slice",
+  "mode": "compression_y",
+  "scope": "exact finite-length bulk spring static continuation; fully prescribed outer surface; no contact or dynamics",
+  "requested_levels": [
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.3
+  ],
+  "stages": [
+    {
+      "strain": 0.01,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 16,
+      "newton_polish_steps": 1,
+      "force_residual_fraction": 3.213190014417312e-13,
+      "energy_j": 1.3261923150071376e-05,
+      "min_cell_volume_ratio": 0.9291366246203081,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9900183960383168,
+      "min_spring_length_ratio": 0.9833204135482394,
+      "least_preconditioned_tangent_eigenvalue": 0.3547977681460834,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.02,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 16,
+      "newton_polish_steps": 1,
+      "force_residual_fraction": 1.5533075298899209e-13,
+      "energy_j": 5.288164750569542e-05,
+      "min_cell_volume_ratio": 0.8540171132282475,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9800367865650959,
+      "min_spring_length_ratio": 0.9667626990987668,
+      "least_preconditioned_tangent_eigenvalue": 0.34713526464105715,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.05,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 18,
+      "newton_polish_steps": 1,
+      "force_residual_fraction": 5.522742936777695e-14,
+      "energy_j": 0.00032732403913033297,
+      "min_cell_volume_ratio": 0.5938106920409812,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9500918512391004,
+      "min_spring_length_ratio": 0.9180356710186593,
+      "least_preconditioned_tangent_eigenvalue": 0.321432332600815,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.1,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 20,
+      "newton_polish_steps": 1,
+      "force_residual_fraction": 4.610415949529809e-14,
+      "energy_j": 0.0012869195892117298,
+      "min_cell_volume_ratio": -0.05207779008113723,
+      "inverted_cell_count": 8,
+      "volume_ratio": 0.9001822967078692,
+      "min_spring_length_ratio": 0.8418796190183643,
+      "least_preconditioned_tangent_eigenvalue": 0.25368560059313594,
+      "eigen_status": "converged",
+      "flags": [
+        "diagnostic_cell_inversion"
+      ],
+      "passed_static_screen": false
+    }
+  ],
+  "all_requested_levels_passed": false,
+  "first_flagged_strain": 0.1,
+  "interface_springs_included": false,
+  "damage_evolution_enabled": false,
+  "source_hashes": {
+    "rl/offline_tomato_large_strain.py": "2a39f64de845508a4513855b43c5785faa1fd54a4ede77fc7a9ccf2226797fca",
+    "rl/tomato_nonlinear_checks.py": "bada0d08fdfb8091bc264e7f9653a4c6000f3e473e4bef43c012855a89d5c8d6",
+    "runs/offline/tomato_surfaces_03/surface_design.json": "7980595a98fe4f90e17e184431230818bed3872542f33340e1820f8d5f63b2ee",
+    "runs/offline/tomato_surface_mechanics_04/mass_stiffness_assignments.json": "c1b77f10ddae6d8fed38361bed4987e54df8098ec2a0baac95442264dbd54a4a"
+  },
+  "runtime_s": 0.4433455149992369,
+  "peak_rss_bytes": 126795776,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true,
+    "blas_threads": 1
+  },
+  "simulator_imports_or_launches": false,
+  "training": false
+}

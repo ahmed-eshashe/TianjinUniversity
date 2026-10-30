@@ -1,0 +1,45 @@
+{
+  "phase": "preshape_above_board",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 129, in <module>\n    set_hand(np.deg2rad(candidate['finger_deg']),0.,0.)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 103, in set_hand\n    env.desired[:,env.ids[7:]]=torch.tensor([values])\n    ~~~~~~~~~~~^^^^^^^^^^^^^^^\nRuntimeError: Index put requires the source and destination dtypes match, got Float for the destination and Double for the source.\n",
+  "training": false,
+  "last_sample": {
+    "handle_height_m": 0.8750805389508235,
+    "handle_in_palm_m": [
+      0.15025845126466034,
+      -0.011035210641295156,
+      0.2445622032751607
+    ],
+    "contacts": [],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 2.452489137649536,
+    "support_clearance_m": -0.0005531645072250901,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "phase": "settling",
+    "control_step": 30,
+    "sim_s": 1.5,
+    "q_rad": [
+      -1.0417230129241943,
+      -1.7930338382720947,
+      1.399203896522522,
+      1.4381719827651978,
+      -0.5452283620834351,
+      0.34165894985198975,
+      0.8952219486236572,
+      0.002920521656051278,
+      -1.2131303448771613e-13,
+      0.0010252806823700666,
+      0.001024883589707315,
+      0.0010245060548186302,
+      0.0010242724092677236
+    ],
+    "palm_world_m": [
+      -2.218934085510956,
+      -1.6120620662570164,
+      1.0450099729217655
+    ]
+  }
+}

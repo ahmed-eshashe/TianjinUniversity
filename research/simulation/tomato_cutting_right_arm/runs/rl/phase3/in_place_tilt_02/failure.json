@@ -1,0 +1,96 @@
+{
+  "phase": "descent",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 181, in <module>\n    move(target,orientation)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 153, in move\n    wait_targets(100)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 133, in wait_targets\n    step()\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 94, in step\n    env.step(torch.zeros(1,13));controls+=1\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/IsaacLab/source/isaaclab/isaaclab/envs/direct_rl_env.py\", line 425, in step\n    self._apply_action()\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 51, in _apply_action\n    raise RuntimeError('Physics-substep excessive robot contact stop')\nRuntimeError: Physics-substep excessive robot contact stop\n",
+  "training": false,
+  "last_sample": {
+    "handle_height_m": 0.875080564557044,
+    "handle_in_palm_m": [
+      0.08313088482141268,
+      -0.033884867895959445,
+      0.13288499007104967
+    ],
+    "contacts": [],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 2.4525063037872314,
+    "support_clearance_m": -0.0005531706286371341,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "knife_friction_by_hand_body_n": {},
+    "phase": "descent",
+    "control_step": 223,
+    "sim_s": 11.15,
+    "q_rad": [
+      -1.1481074094772339,
+      -1.636631965637207,
+      1.2314468622207642,
+      1.6573442220687866,
+      -1.031968355178833,
+      -0.11969270557165146,
+      0.9115144610404968,
+      0.8705443143844604,
+      -1.7468423626001983e-12,
+      0.4369722902774811,
+      0.43697217106819153,
+      0.43697237968444824,
+      0.43697264790534973
+    ],
+    "palm_world_m": [
+      -2.205047029229455,
+      -1.5523515449686653,
+      0.9691786686355186
+    ],
+    "knife_pose_xyzw": [
+      -2.1993465423583984,
+      -1.424451470375061,
+      0.8757561445236206,
+      0.06174848973751068,
+      0.018866071477532387,
+      0.5541372895240784,
+      0.8299174904823303
+    ],
+    "in_place_motion": {
+      "footprint_margin_m": 0.028258414509223728,
+      "centre_xy_shift_m": 0.0,
+      "rotation_deg": 0.0,
+      "within_bounds": true
+    },
+    "estimated_hand_drive_torque_nm": [
+      -0.0016600809758529067,
+      3.9713898836168937e-10,
+      -0.001939050736837089,
+      -0.0019385914783924818,
+      -0.0019388352520763874,
+      -0.001939526293426752
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "substep_event": {
+    "contacts": [
+      {
+        "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal",
+        "other": "/Indoor/RZ/SM_kitchen_Board",
+        "force_n": 65.65650939941406
+      },
+      {
+        "body": "/Indoor/RZ/SM_kitchen_knife_02",
+        "other": "/Indoor/RZ/SM_kitchen_Board",
+        "force_n": 2.4525063037872314
+      }
+    ]
+  }
+}

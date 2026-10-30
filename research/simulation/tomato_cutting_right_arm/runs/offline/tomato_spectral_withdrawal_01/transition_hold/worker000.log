@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_spectral_withdrawal.py", line 139, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_spectral_withdrawal.py", line 68, in main
+    x,lam,state,trace,ok,_,ids,free=solve_triangle_continuation(model,x,fixed,geometry,max_iterations=6,initial_active=active)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_spectral_search.py", line 103, in solve_triangle_continuation
+    result=list(solve_contact_continuation(model,initial,fixed,geometry['matrix'][used],geometry['bounds'][used],max_iterations,initial_active))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_spectral_search.py", line 20, in solve_contact_continuation
+    active=independent_rows(C,np.flatnonzero(C@x-b<=1e-10) if initial_active is None else initial_active,fixed,x.size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_linear_contact.py", line 85, in independent_rows
+    ids=C.indices[C.indptr[row]:C.indptr[row+1]];v=C.data[C.indptr[row]:C.indptr[row+1]]
+                  ~~~~~~~~^^^^^
+IndexError: index 459 is out of bounds for axis 0 with size 446

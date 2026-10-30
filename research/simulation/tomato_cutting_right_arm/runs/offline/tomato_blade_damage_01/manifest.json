@@ -1,0 +1,27 @@
+{
+  "scope": "offline partial fixed-normal wedge insertion with 4032 deformable nodes and 47 evolving surface-cohesive patches; no full cut",
+  "depth_limit_mm": 4,
+  "edge_contact_gate": "continuous edge sweep at a supported material site AND current positive blade multiplier >1e-9 N",
+  "damage_commit": "tentative staggered equilibration from last committed history, never accumulating Newton guesses",
+  "fracture_integral": "0.5 Kn a b/(b-a) * (clip(kappa,a,b)-a)",
+  "energy_gate_relative": 0.01,
+  "contact_tolerance_m": 1e-09,
+  "force_residual_tolerance": 1e-06,
+  "min_J": 0.1,
+  "min_scaled_softening_eigenvalue": 1e-06,
+  "patch_steps": [
+    2400,
+    4800
+  ],
+  "patch_count": 47,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "one_worker": true
+  },
+  "simulator": false,
+  "training": false,
+  "full_cut": false,
+  "bounded_extension_reason": "3 mm pilot remained below area-weighted damage onset; extend shallow insertion by 1 mm without changing any material parameter or acceptance threshold"
+}

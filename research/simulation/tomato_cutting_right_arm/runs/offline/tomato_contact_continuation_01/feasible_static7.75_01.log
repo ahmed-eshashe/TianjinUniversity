@@ -1,0 +1,19 @@
+{'stage': 'solve_start', 'depth_mm': 7.75, 'rows': 3587, 'elapsed_s': 0.34698352299892576}
+{'iteration': 0, 'force_residual': 1.5900969021117143e-07, 'min_gap_m': 0.0, 'energy_j': 0.021736779027967872, 'min_J': 0.3617707395864707, 'active_constraints': 202, 'linear_iterations': 76, 'minimum_active_multiplier_n': 1.8292898408935188e-05}
+{'iteration': 1, 'force_residual': 1.063787873742658e-11, 'min_gap_m': 0.0, 'energy_j': 0.02173677902796785, 'min_J': 0.36177073958671363, 'active_constraints': 202, 'linear_iterations': 5, 'minimum_active_multiplier_n': 1.829289840926049e-05}
+{'stage': 'solve_end', 'ok': True, 'iterations': 2, 'elapsed_s': 1.2109254610004427}
+{'stage': 'stability_start', 'elapsed_s': 1.423856256998988}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_contact_continuation.py", line 82, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_contact_continuation.py", line 72, in main
+    least=float(eigsh(pre@h@pre,k=1,which='SA',return_eigenvectors=False,tol=1e-5,maxiter=1600,ncv=40)[0])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 1778, in eigsh
+    params.iterate()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 624, in iterate
+    self._raise_no_convergence()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 421, in _raise_no_convergence
+    raise ArpackNoConvergence(f"No convergence ({num_iter} iterations, "
+scipy.sparse.linalg._eigen.arpack.arpack.ArpackNoConvergence: ARPACK error -1: No convergence (1601 iterations, 0/1 eigenvectors converged)

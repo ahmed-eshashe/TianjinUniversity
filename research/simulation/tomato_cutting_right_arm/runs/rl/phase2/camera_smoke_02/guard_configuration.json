@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/home/omen/miniconda3/envs/isaaclab_6/bin/python",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/benchmark.py",
+    "--output",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase2/camera_smoke_02",
+    "--seconds",
+    "60",
+    "--max-updates",
+    "4",
+    "--width",
+    "128",
+    "--camera"
+  ],
+  "scope": "Phase 2 resource benchmark only; not knife skill training",
+  "thresholds_bytes": {
+    "host_start": 5000000000,
+    "host_warning": 3000000000,
+    "host_stop": 2000000000,
+    "gpu_start_free": 2147483648,
+    "gpu_warning_free": 1610612736,
+    "gpu_stop_free": 1073741824
+  },
+  "same_lock_as_scripted_controller": true,
+  "configuration": {
+    "output": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase2/camera_smoke_02",
+    "seconds": 60,
+    "camera": true,
+    "resume": null,
+    "max_updates": 4,
+    "width": 128
+  }
+}

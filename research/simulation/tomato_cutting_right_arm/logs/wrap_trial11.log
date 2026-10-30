@@ -1,0 +1,382 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1792253911.820728  102933 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1792253911.820802  102933 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-10-17T16:18:31Z [Info] [carb] Logging to file: /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim Python/6.1/kit_20261018_001831.log
+[0.146s] [ext: omni.assets.plugins-0.0.0] startup
+[0.149s] [ext: omni.blobkey-1.1.2] startup
+[0.150s] [ext: omni.kit.async_engine-0.0.3] startup
+[0.322s] [ext: omni.client.lib-1.1.1] startup
+[0.344s] [ext: omni.client-1.3.0] startup
+[0.351s] [ext: omni.protobuf.lib-1.0.1] startup
+[0.354s] [ext: omni.grpc.lib-1.0.0] startup
+[0.362s] [ext: omni.metrics.core-0.0.3] startup
+[0.362s] [ext: omni.datastore-0.0.0] startup
+[0.364s] [ext: omni.gpu_foundation.shadercache.vulkan-1.0.0] startup
+[0.368s] [ext: omni.hsscclient-1.1.4] startup
+[0.369s] [ext: omni.stats-1.0.1] startup
+[0.371s] [ext: omni.ujitso.default-1.0.0] startup
+[0.380s] [ext: omni.gpu_foundation-0.0.0] startup
+[0.842s] [ext: carb.windowing.plugins-1.0.1] startup
+[0.843s] [ext: omni.kit.renderer.init-1.0.1] startup
+2026-10-17T16:18:32Z [1,352ms] [Warning] [omni.rtx] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-10-17T16:18:32Z [1,353ms] [Warning] [omni.rtx] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 595.91.07     | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 5060 Laptop.. | Yes: 0 |     | 8151    MB | 10de      | 0          |
+|     |                                  |        |     |            | 2d59      | 62854e38.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | Intel(R) Graphics (RPL-S)        |        |     | 11758   MB | 8086      | 0          |
+|     |                                  |        |     |            | a78b      | 86808ba7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 24.04.5 LTS (Noble Numbat) ubuntu, Version: 24.04.5, Kernel: 7.0.0-38-generic
+| XServer Vendor: The X.Org Foundation, XServer Version: 12101011 (1.21.1.11)
+| Processor: Intel(R) Core(TM) i7-14650HX
+| Bare Metal Cores: 16 | Bare Metal Logical Cores: 32
+| Available Cores:  24 
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 15677 | Free Memory: 9688
+| Total Page/Swap (MB): 4095 | Free Page/Swap: 805
+|---------------------------------------------------------------------------------------------|
+2026-10-17T16:18:33Z [1,780ms] [Warning] [omni.rtx] CPU performance profile is set to powersave. This profile sets the CPU to the lowest frequency reducing performance.
+2026-10-17T16:18:33Z [1,791ms] [Warning] [omni.rtx] PCIe link width current (8) and maximum (16) for device 0 don't match.
+[2.070s] [ext: omni.kit.pipapi-0.0.0] startup
+[2.073s] [ext: omni.kit.telemetry-0.5.2] startup
+[2.136s] [ext: omni.kit.loop-isaac-1.6.2] startup
+[2.140s] [ext: omni.kit.test-2.1.1] startup
+[2.286s] [ext: omni.materialx.libs-1.0.9] startup
+[2.303s] [ext: omni.gpucompute.plugins-0.0.0] startup
+[2.304s] [ext: omni.usd.config-1.0.8] startup
+[2.311s] [ext: omni.usd.libs-1.0.3] startup
+[2.532s] [ext: omni.iray.libs-0.0.1] startup
+[2.543s] [ext: omni.mdl-57.0.6] startup
+[2.734s] [ext: omni.mdl.neuraylib-0.2.22] startup
+[2.740s] [ext: omni.kit.usd.mdl-1.1.11] startup
+[2.979s] [ext: omni.appwindow-1.2.2] startup
+[2.984s] [ext: omni.kit.renderer.core-1.3.1] startup
+[3.051s] [ext: omni.kit.renderer.capture-2.0.1] startup
+[3.055s] [ext: omni.kit.renderer.imgui-2.1.0] startup
+[3.165s] [ext: omni.ui-3.3.1] startup
+[3.185s] [ext: omni.kit.mainwindow-1.0.4] startup
+[3.187s] [ext: carb.audio-0.1.0] startup
+[3.194s] [ext: omni.uiaudio-1.0.0] startup
+[3.195s] [ext: omni.kit.uiapp-0.0.0] startup
+[3.196s] [ext: omni.usd.schema.metrics.assembler-110.1.0] startup
+[3.201s] [ext: omni.usd.schema.audio-0.0.1] startup
+[3.208s] [ext: omni.usd_resolver-1.0.0] startup
+[3.214s] [ext: omni.usd.core-1.10.10] startup
+[3.222s] [ext: omni.metropolis.schema-0.0.3] startup
+[3.223s] [ext: isaacsim.anim.robot.schema-0.1.1] startup
+[3.224s] [ext: isaacsim.common-6.2.0] startup
+[3.226s] [ext: omni.usd.schema.anim-0.0.1] startup
+[3.263s] [ext: omni.usd.schema.geospatial-0.0.1] startup
+[3.269s] [ext: omni.usd.schema.omnigraph-1.0.1] startup
+[3.280s] [ext: omni.usd.schema.semantics-0.0.0] startup
+[3.285s] [ext: omni.activity.core-1.0.4] startup
+[3.287s] [ext: omni.cubric-0.1.0] startup
+[3.287s] [ext: omni.graph.exec-0.9.6] startup
+[3.288s] [ext: omni.hydra.scene_delegate-0.3.5] startup
+[3.296s] [ext: usdrt.scenegraph-7.6.3] startup
+[3.349s] [ext: omni.hydra.usdrt_delegate-7.5.2] startup
+[3.362s] [ext: omni.inspect-1.0.2] startup
+[3.365s] [ext: omni.kit.actions.core-1.2.0] startup
+[3.369s] [ext: omni.kit.audiodeviceenum-1.0.2] startup
+[3.372s] [ext: omni.kit.commands-1.5.0] startup
+[3.379s] [ext: omni.kit.exec.core-0.13.6] startup
+[3.382s] [ext: omni.kit.usd_undo-0.1.8] startup
+[3.382s] [ext: omni.kit.window.popup_dialog-2.0.26] startup
+[3.390s] [ext: omni.kit.widget.connection_manager-1.0.3] startup
+[3.402s] [ext: omni.timeline-1.1.0] startup
+[3.406s] [ext: omni.usd-1.18.0] startup
+[3.486s] [ext: omni.graph.core-3.1.5] startup
+[3.493s] [ext: omni.kit.notification_manager-1.0.16] startup
+[3.496s] [ext: isaacsim.core.deprecation_manager-0.4.4] startup
+[3.498s] [ext: isaacsim.replicator.agent.schema-0.1.1] startup
+[3.500s] [ext: isaacsim.robot.schema-7.0.2] startup
+[3.506s] [ext: isaacsim.robot_motion.schema-0.2.2] startup
+[3.508s] [ext: omni.anim.behavior.schema-110.3.0] startup
+[3.516s] [ext: omni.anim.graph.schema-110.3.0] startup
+[3.528s] [ext: omni.anim.navigation.schema-110.3.0] startup
+[3.535s] [ext: omni.behavior.tree.schema-110.3.0] startup
+[3.536s] [ext: omni.kit.asset_converter-6.0.5] startup
+2026-10-17T16:18:34Z [3,479ms] [Warning] [asset_converter_native_bindings._bootstrap] A different OpenUSD (pxr) build was already imported from /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache/omni.usd.schema.omniscripting-1.0.1+00c488ae.lx64.r.cp312/pxr before usd-convert-asset loaded. The host pxr bindings will remain in use rather than reloading the bundled OpenUSD at /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache/omni.kit.asset_converter-6.0.5+110.1.1.lx64.r.cp312.u7f4/asset_converter_native_bindings/libs/lib/python/pxr, /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache/omni.kit.asset_converter-6.0.5+110.1.1.lx64.r.cp312.u7f4/asset_converter_native_bindings/libs/python/pxr. Mixing USD builds in one process can cause ABI and singleton conflicts; prefer importing usd_convert_asset first, or run the converter in a separate process/venv when mixing unrelated USD builds.
+[3.562s] [ext: omni.usd.schema.flow-110.0.0] startup
+[3.563s] [ext: omni.usd.schema.newton-1.4.0] startup
+[3.565s] [ext: omni.usd.schema.mujoco-1.1.4] startup
+[3.566s] [ext: omni.usd.schema.omni_dome_light-1.0.0] startup
+[3.566s] [ext: omni.usd.schema.omni_lens_distortion-1.0.0] startup
+[3.567s] [ext: omni.usd.schema.omni_projectors-1.0.0] startup
+[3.568s] [ext: omni.usd.schema.omni_sensors-0.0.0] startup
+[3.585s] [ext: omni.usd.schema.omniscripting-1.0.1] startup
+[3.595s] [ext: omni.usd.schema.physical_lighting-0.1.0] startup
+[3.601s] [ext: omni.usd.schema.physx-110.3.2] startup
+[3.657s] [ext: omni.usd.schema.render_settings.rtx-1.0.3] startup
+[3.664s] [ext: omni.usd.schema.usd_particle_field-1.0.0] startup
+[3.665s] [ext: isaacsim.core.version-2.2.1] startup
+[3.669s] [ext: omni.kit.menu.core-1.3.0] startup
+[3.670s] [ext: omni.kit.menu.utils-2.2.8] startup
+[3.683s] [ext: isaacsim.app.about-2.3.2] startup
+[3.692s] [ext: isaacsim.asset.transformer-6.1.0] startup
+[3.698s] [ext: omni.scene.optimizer.core-110.2.1] startup
+[3.823s] [ext: isaacsim.asset.importer.utils-1.9.1] startup
+[3.828s] [ext: omni.convexdecomposition-110.3.2] startup
+[3.833s] [ext: omni.physics-110.3.2] startup
+[3.839s] [ext: omni.physx.gpu-110.3.2] startup
+[3.840s] [ext: omni.physx.foundation-110.3.2] startup
+[3.843s] [ext: omni.usdphysics-110.3.2] startup
+[3.847s] [ext: omni.physx.cooking-110.3.2] startup
+[3.853s] [ext: omni.physx-110.3.2] startup
+[3.874s] [ext: omni.physics.physx-110.3.2] startup
+[3.879s] [ext: isaacsim.asset.exporter.urdf-2.2.6] startup
+[3.896s] [ext: omni.kit.clipboard-1.1.1] startup
+[3.898s] [ext: omni.kit.usd.layers-2.7.2] startup
+[3.914s] [ext: omni.kit.widget.context_menu-1.5.0] startup
+[3.918s] [ext: omni.kit.context_menu-1.10.0] startup
+[3.921s] [ext: omni.kit.helper.file_utils-0.1.10] startup
+[3.924s] [ext: omni.kit.widget.nucleus_info-2.0.2] startup
+[3.925s] [ext: omni.kit.search_core-1.0.8] startup
+[3.926s] [ext: omni.kit.widget.path_field-2.0.13] startup
+[3.927s] [ext: omni.kit.widget.browser_bar-2.0.11] startup
+[3.928s] [ext: omni.kit.widget.filebrowser-2.14.0] startup
+[3.938s] [ext: omni.kit.widget.nucleus_connector-2.4.0] startup
+[3.939s] [ext: omni.kit.widget.options_menu-1.1.7] startup
+[3.944s] [ext: omni.kit.widget.options_button-1.0.3] startup
+[3.945s] [ext: omni.kit.widget.search_delegate-1.0.10] startup
+[3.947s] [ext: omni.ui.scene-2.0.4] startup
+[3.957s] [ext: omni.kit.window.filepicker-3.0.14] startup
+[3.986s] [ext: omni.kit.window.file_importer-1.1.22] startup
+[3.990s] [ext: omni.kit.material.library-3.1.7] startup
+[4.000s] [ext: isaacsim.asset.transformer.rules-1.7.18] startup
+[4.020s] [ext: omni.usdex.libs-2.3.0] startup
+[4.038s] [ext: isaacsim.asset.importer.mjcf-3.12.1] startup
+[4.042s] [ext: omni.kit.primitive.mesh-1.1.1] startup
+[4.046s] [ext: omni.kit.stage_template.core-1.1.23] startup
+[4.047s] [ext: omni.kit.stage_templates-2.0.3] startup
+[4.050s] [ext: omni.usd.metrics.assembler-110.1.2] startup
+[4.057s] [ext: omni.warp.core-1.16.0] startup
+[4.397s] [ext: isaacsim.core.experimental.utils-0.23.0] startup
+[4.399s] [ext: isaacsim.asset.importer.urdf-3.11.10] startup
+[4.408s] [ext: omni.physics.stageupdate-110.3.2] startup
+[4.412s] [ext: omni.physics.tensors-110.3.2] startup
+[4.421s] [ext: omni.physx.tensors-110.3.2] startup
+[4.429s] [ext: isaacsim.core.simulation_manager-1.17.1] startup
+[4.455s] [ext: isaacsim.storage.native-1.11.0] startup
+[4.458s] [ext: omni.usd.metrics.assembler.physics-110.3.2] startup
+[4.461s] [ext: isaacsim.core.utils-4.1.9] startup
+[4.466s] [ext: isaacsim.core.prims-0.11.7] startup
+[6.702s] [ext: isaacsim.core.api-5.3.2] startup
+[6.713s] [ext: isaacsim.core.cloner-1.7.5] startup
+[6.715s] [ext: isaacsim.test.docstring-1.3.2] startup
+[6.722s] [ext: isaacsim.core.experimental.prims-1.10.8] startup
+[6.754s] [ext: isaacsim.core.experimental.primdata-0.3.6] startup
+[6.759s] [ext: omni.graph.tools-1.81.0] startup
+[6.809s] [ext: omni.graph-1.142.5] startup
+[6.896s] [ext: isaacsim.core.experimental.actuators-0.1.6] startup
+[6.936s] [ext: isaacsim.core.experimental.materials-0.10.0] startup
+[6.945s] [ext: isaacsim.core.experimental.objects-0.9.0] startup
+[7.106s] [ext: omni.hydra.engine.stats-1.0.5] startup
+[7.113s] [ext: omni.hydra.rtx.shadercache.vulkan-1.0.0] startup
+[7.116s] [ext: omni.index.libs-392300.961.0] startup
+[7.116s] [ext: omni.index-1.0.1] startup
+[7.117s] [ext: omni.ujitso.client-0.0.0] startup
+[7.118s] [ext: omni.usd.schema.playback-1.1.0] startup
+[7.120s] [ext: omni.volume-0.5.2] startup
+[7.131s] [ext: omni.hydra.rtx-1.0.4] startup
+2026-10-17T16:18:38Z [7,111ms] [Warning] [omni.log] Source: omni.hydra was already registered.
+[7.215s] [ext: omni.kit.hydra_texture-1.6.2] startup
+[7.225s] [ext: omni.kit.raycast.query-1.2.0] startup
+[7.238s] [ext: omni.kit.viewport.legacy_gizmos-1.0.24] startup
+[7.245s] [ext: omni.kit.viewport.registry-104.0.6] startup
+[7.247s] [ext: omni.kit.viewport.scene_camera_model-1.0.7] startup
+[7.258s] [ext: omni.kit.widget.viewport-110.0.0] startup
+[7.269s] [ext: omni.kit.window.drop_support-1.0.8] startup
+[7.271s] [ext: omni.kit.viewport.window-110.0.1] startup
+[7.312s] [ext: omni.kit.viewport.utility-2.1.0] startup
+[7.315s] [ext: isaacsim.core.rendering_manager-0.5.1] startup
+[7.339s] [ext: omni.graph.action_core-1.1.9] startup
+[7.345s] [ext: omni.graph.action_nodes_core-2.11.0] startup
+[7.352s] [ext: omni.graph.action_nodes-2.11.0] startup
+[7.419s] [ext: omni.graph.action-2.10.2] startup
+[7.422s] [ext: omni.graph.image.core-0.6.1] startup
+[7.425s] [ext: omni.graph.image.nodes-1.3.2] startup
+[7.427s] [ext: omni.graph.nodes_core-2.11.0] startup
+[7.442s] [ext: omni.graph.nodes-2.12.0] startup
+[7.458s] [ext: omni.kit.hotkeys.core-1.4.0] startup
+[7.461s] [ext: omni.kit.property.adapter.core-1.1.1] startup
+[7.467s] [ext: omni.kit.property.adapter.usd-1.0.6] startup
+[7.470s] [ext: omni.kit.widget.filter-1.1.8] startup
+[7.473s] [ext: omni.kit.widget.highlight_label-1.0.3] startup
+[7.476s] [ext: omni.kit.widget.searchfield-1.1.8] startup
+[7.479s] [ext: omni.kit.window.file_exporter-1.0.38] startup
+[7.483s] [ext: omni.kit.widget.stage-4.6.5] startup
+[7.504s] [ext: omni.kit.window.content_browser_registry-0.0.6] startup
+[7.507s] [ext: omni.kit.window.file-2.0.15] startup
+[7.515s] [ext: omni.kit.window.content_browser-3.1.12] startup
+[7.541s] [ext: omni.kit.window.property-1.15.2] startup
+[7.571s] [ext: omni.kit.property.usd-4.9.14] startup
+[7.595s] [ext: omni.graph.scriptnode-2.10.2] startup
+[7.618s] [ext: omni.kit.widget.searchable_combobox-1.0.7] startup
+[7.620s] [ext: omni.kit.widget.settings-2.0.1] startup
+[7.625s] [ext: omni.kit.window.preferences-1.8.5] startup
+[7.638s] [ext: omni.kit.viewport.menubar.core-110.0.3] startup
+[7.666s] [ext: omni.syntheticdata-0.6.17] startup
+[7.743s] [ext: omni.replicator.nv-1.1.6] startup
+[7.759s] [ext: omni.videoencoding-0.2.1] startup
+[7.765s] [ext: omni.replicator.core-1.13.36] startup
+2026-10-17T16:18:39Z [7,730ms] [Warning] [pxr.Semantics] pxr.Semantics is deprecated - please use Semantics instead
+2026-10-17T16:18:39Z [7,858ms] [Warning] [omni.replicator.core.scripts.extension] No material configuration file, adding configuration to material settings directly.
+[8.173s] [ext: isaacsim.core.nodes-5.10.13] startup
+[8.246s] [ext: isaacsim.core.throttling-2.3.7] startup
+[8.250s] [ext: omni.kit.manipulator.viewport-107.0.1] startup
+[8.252s] [ext: omni.graph.visualization.nodes-2.1.4] startup
+[8.285s] [ext: omni.kit.window.extensions-1.5.16] startup
+[8.297s] [ext: isaacsim.gui.components-1.8.9] startup
+[8.308s] [ext: isaacsim.robot.surface_gripper-3.6.3] startup
+[8.335s] [ext: isaacsim.robot.manipulators-3.4.5] startup
+[8.359s] [ext: isaacsim.robot_motion.lula-4.1.4] startup
+[8.375s] [ext: isaacsim.robot_motion.motion_generation-8.2.9] startup
+[8.389s] [ext: isaacsim.cortex.framework-1.0.20] startup
+[8.394s] [ext: isaacsim.cortex.behaviors-2.0.18] startup
+[8.398s] [ext: isaacsim.examples.base-1.3.4] startup
+[8.406s] [ext: omni.kit.widget.zoombar-1.0.7] startup
+[8.408s] [ext: omni.kit.browser.core-2.3.18] startup
+[8.417s] [ext: omni.kit.browser.folder.core-2.0.3] startup
+[8.426s] [ext: omni.kit.widget.stage_icons-1.0.8] startup
+[8.429s] [ext: omni.kit.window.stage-2.6.1] startup
+[8.437s] [ext: omni.kit.menu.stage-1.2.7] startup
+[8.440s] [ext: omni.kit.usd.collect-3.0.6] startup
+[8.446s] [ext: omni.kit.widget.prompt-1.0.7] startup
+[8.448s] [ext: omni.kit.tool.collect-2.2.19] startup
+[8.453s] [ext: isaacsim.examples.browser-0.3.4] startup
+[8.459s] [ext: omni.kit.search.files-1.0.4] startup
+[8.461s] [ext: omni.kit.widget.calendar-1.0.9] startup
+[8.464s] [ext: omni.kit.widget.extended_searchfield-1.0.31] startup
+[8.484s] [ext: omni.simready.content.browser-0.3.8] startup
+[8.680s] [ext: isaacsim.gui.content_browser-0.5.1] startup
+[8.686s] [ext: omni.kit.selection-0.1.6] startup
+[8.689s] [ext: isaacsim.gui.menu-2.10.12] startup
+[8.707s] [ext: isaacsim.gui.property-1.6.4] startup
+[8.723s] [ext: omni.kit.viewport.actions-110.1.0] startup
+[8.732s] [ext: omni.kit.viewport.menubar.display-110.0.0] startup
+[8.736s] [ext: isaacsim.gui.sensors.icon-2.2.4] startup
+[8.744s] [ext: omni.behavior.scripting.core-110.3.0] startup
+[8.751s] [ext: isaacsim.replicator.behavior-1.6.2] startup
+[8.763s] [ext: isaacsim.replicator.experimental.domain_randomization-1.2.10] startup
+[8.802s] [ext: isaacsim.replicator.domain_randomization-1.2.3] startup
+[8.974s] [ext: isaacsim.replicator.writers-1.5.6] startup
+[9.028s] [ext: isaacsim.robot.experimental.wheeled_robots-0.2.14] startup
+[9.079s] [ext: isaacsim.robot_motion.experimental.motion_generation-7.1.2] startup
+[9.099s] [ext: isaacsim.robot.policy.examples-7.2.0] startup
+[9.269s] [ext: isaacsim.robot.wheeled_robots-5.2.5] startup
+[9.278s] [ext: isaacsim.robot.wheeled_robots.nodes-0.1.12] startup
+[9.324s] [ext: isaacsim.robot_motion.controllers-0.3.2] startup
+[9.343s] [ext: isaacsim.robot_motion.cumotion-1.4.0] startup
+[9.370s] [ext: omni.kit.numpy.common-0.1.3] startup
+[9.374s] [ext: omni.rtx.spg-0.4.0] startup
+[9.386s] [ext: omni.sensors.nv.camera-1.0.0] startup
+[9.398s] [ext: isaacsim.sensors.camera-1.7.13] startup
+[9.453s] [ext: isaacsim.sensors.experimental.physics-3.3.0] startup
+[9.471s] [ext: omni.sensors.net-1.0.1] startup
+[9.478s] [ext: omni.sensors.nv.common-3.0.0] startup
+[9.503s] [ext: omni.sensors.nv.materials-2.0.0] startup
+[9.511s] [ext: omni.sensors.nv.acoustic-3.0.0] startup
+[9.519s] [ext: omni.sensors.nv.ids-2.0.1] startup
+[9.523s] [ext: omni.sensors.nv.lidar-3.0.0] startup
+[9.533s] [ext: omni.sensors.nv.radar-3.0.0] startup
+[9.540s] [ext: isaacsim.sensors.experimental.rtx-1.9.0] startup
+[9.971s] [ext: isaacsim.sensors.physics.nodes-1.6.2] startup
+[9.987s] [ext: isaacsim.util.debug_draw-3.2.6] startup
+[10.001s] [ext: isaacsim.sensors.physx-2.5.7] startup
+[10.020s] [ext: isaacsim.sensors.rtx-15.17.5] startup
+[10.049s] [ext: isaacsim.simulation_app-2.19.0] startup
+[10.050s] [ext: omni.anim.curve.core-1.6.1] startup
+[10.073s] [ext: omni.graph.ui_nodes-2.11.1] startup
+[10.131s] [ext: omni.kit.manipulator.camera-110.1.0] startup
+[10.139s] [ext: omni.kit.manipulator.selector-1.1.4] startup
+[10.142s] [ext: omni.kit.manipulator.transform-107.0.1] startup
+[10.152s] [ext: omni.kit.widget.toolbar-2.1.0] startup
+[10.166s] [ext: omni.kit.manipulator.tool.snap-1.5.15] startup
+[10.176s] [ext: omni.kit.viewport.manipulator.transform-107.0.4] startup
+[10.180s] [ext: omni.kit.manipulator.prim.core-108.0.2] startup
+[10.193s] [ext: omni.kit.manipulator.prim.usd-107.0.3] startup
+[10.197s] [ext: omni.kit.manipulator.prim-108.0.0] startup
+[10.197s] [ext: omni.kit.manipulator.selection-110.0.0] startup
+[10.200s] [ext: omni.kit.menu.create-2.0.2] startup
+[10.204s] [ext: omni.kit.property.audio-1.0.18] startup
+[10.212s] [ext: omni.kit.property.camera-1.0.14] startup
+[10.215s] [ext: omni.kit.property.geometry-2.1.2] startup
+[10.222s] [ext: omni.kit.property.light-1.0.16] startup
+[10.306s] [ext: omni.kit.property.material-1.14.10] startup
+[10.320s] [ext: omni.kit.property.render-1.2.2] startup
+[10.323s] [ext: omni.kit.property.transform-1.6.12] startup
+[10.331s] [ext: omni.kit.property.bundle-1.5.2] startup
+[10.335s] [ext: omni.kit.usdz_export-1.1.1] startup
+[10.341s] [ext: omni.kit.tool.asset_importer-6.0.2] startup
+[10.353s] [ext: omni.kit.ui.actions-1.0.5] startup
+[10.357s] [ext: omni.kit.viewport.menubar.camera-107.0.14] startup
+[10.368s] [ext: omni.kit.viewport.menubar.lighting-107.3.2] startup
+[10.374s] [ext: omni.kit.viewport.menubar.render-110.1.1] startup
+[10.380s] [ext: omni.kit.viewport.menubar.settings-110.0.1] startup
+[10.388s] [ext: omni.kit.window.console-1.1.10] startup
+[10.397s] [ext: omni.kit.window.status_bar-0.1.11] startup
+[10.404s] [ext: omni.kit.window.toolbar-3.0.3] startup
+[10.409s] [ext: omni.ocio-0.1.1] startup
+[10.412s] [ext: omni.physx.commands-110.3.2] startup
+[10.419s] [ext: omni.replicator.replicator_yaml-2.0.12] startup
+[10.445s] [ext: omni.rtx.window.settings-0.8.2] startup
+[10.455s] [ext: omni.rtx.settings.core-0.7.1] startup
+[10.462s] [ext: omni.usd.metrics.assembler.ui-110.1.1] startup
+[10.477s] [ext: semantics.schema.editor-2.0.2] startup
+[10.483s] [ext: semantics.schema.property-2.0.2] startup
+[10.486s] [ext: omni.kit.menu.common-2.0.2] startup
+[10.489s] [ext: isaacsim.exp.base-6.1.0] startup
+[10.490s] [ext: isaacsim.exp.base.python-6.1.0] startup
+[10.493s] Simulation App Starting
+[12.712s] Simulation App Startup Complete
+[12.732s] app ready
+Starting kit application with the following args:  ['/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/exts/isaacsim.simulation_app/isaacsim/simulation_app/simulation_app.py', '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/apps/isaacsim.exp.base.python.kit', '--/app/tokens/exe-path=/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit', '--/persistent/app/viewport/displayOptions=3094', '--/rtx/materialDb/syncLoads=True', '--/rtx/hydra/materialSyncLoads=True', '--/omni/kit/plugin/syncUsdLoads=True', '--/app/renderer/resolution/width=1100', '--/app/renderer/resolution/height=760', '--/app/window/width=1440', '--/app/window/height=900', '--/renderer/multiGpu/enabled=True', '--/app/fastShutdown=True', '--/app/installSignalHandlers=0', '--ext-folder', '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/exts', '--ext-folder', '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/apps', '--/physics/cudaDevice=0', '--/plugins/carb.tasking.plugin/threadCount=16', '--/plugins/omni.tbb.globalcontrol/maxThreadCount=16', '--portable', '--no-window', '--/app/window/hideUi=1']
+Passing the following args to the base kit application:  ['--adjust-stance', '--stance-seed', 'work/grasp_stance_top.json', '--require-wrap', '--handle-overhang', '--overhang-edge', '-.035', '--palm-height', '.035', '--finger-offset', '.015', '--handle-offset', '.015', '--preclose-deg', '0', '--close-deg', '90', '--thumb-pitch-deg', '30', '--close-thumb-pitch-deg', '33', '--thumb-yaw-deg', '60', '--prethumb-yaw-deg', '0', '--support-fingers', 'middle-ring', '--support-close-deg', '70', '--finger-torque', '.3', '--finger-stiffness', '3', '--thumb-torque', '1', '--thumb-stiffness', '10', '--force-closure', '--finger-contact-force', '4', '--thumb-contact-force', '4', '--closure-speed', '3', '--insert-distance', '0', '--approach-clearance', '.08', '--approach-axis', 'z', '--pad-stiffness', '15000', '--pad-damping', '60', '--torsional-radius', '.006']
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.16.0
+BOARD_SETUP {"existing_board_shift_m": [-0.07701616339420998, 0.12508202617616762, -0.0], "handle_axis_edge_m": -0.035}
+PHYSICS_ENGINE physx
+PHYSICS_MATERIALS {"hand_and_arm_unique": [[0.5, 0.5, 0.0], [1.2000000476837158, 1.0, -15000.0]], "knife": [[[1.2000000476837158, 1.0, 0.0], [1.2000000476837158, 1.0, 0.0], [1.2000000476837158, 1.0, 0.0]]]}
+SETTLED_SCENE {"handle": [-2.2626926453553637, -1.7618007401896119, 0.8719522994596122], "knife_rotation_world": [[0.4494360262963649, 0.8930614528218366, 0.02117781269828697], [-0.8933123888203851, 0.4492968012143529, 0.011196445800676323], [0.0004839906511359092, -0.023950488560796006, 0.9997130287491249]], "knife_speed": 0.00010091606964124367, "knife_mass": 0.25, "knife_com_local": [[-0.15163005888462067, 0.0056639197282493114, 0.0014779072953388095]]}
+REACH_PLAN_READY {"knife": "/Indoor/RZ/SM_kitchen_knife_02", "handle": [-2.2626926453553637, -1.7618007401896119, 0.8719522994596122], "goal": [-2.2420550960340186, -1.7667090553800862, 0.9869522994596122], "start": [-2.242080303452126, -1.766722533787384, 1.0569888568046228], "fk_error_m": 0.0001744449190115011, "knife_speed": 0.00010091606964124367}
+DESCENDED {"palm": [-2.242019248200565, -1.766664849314744, 0.906784639386113], "handle": [-2.262735003399134, -1.7631115577392225, 0.8655982991194637], "contacts": {"right_rh_thumb_distal": 0.4904226064682007}}
+SUPPORT_CONTACTS {"right_rh_thumb_distal": 6.935961723327637, "right_rh_middle_distal": 6.586397647857666, "right_rh_ring_distal": 1.8147960901260376}
+GRIP_VECTORS {"right_rh_thumb_distal": [6.606410026550293, -2.593893051147461, 20.292434692382812], "right_rh_index_distal": [-2.9402787685394287, -0.3559507429599762, -2.7958459854125977], "right_rh_middle_distal": [-3.2875216007232666, -0.5081600546836853, -1.9146395921707153], "right_rh_ring_distal": [-3.264059066772461, -0.28012678027153015, -2.152710199356079], "right_rh_pinky_distal": [-1.5441142320632935, 0.344512403011322, -3.5078492164611816]}
+CONTACT_DETAILS [{"body": "right_rh_thumb_distal", "force_n": 5.356047630310059, "point_world": [-2.217667579650879, -1.815624475479126, 0.8652820587158203], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06549708035052676, 0.003835058851171344, 0.01043648828191014]}, {"body": "right_rh_thumb_distal", "force_n": 5.177545070648193, "point_world": [-2.215388298034668, -1.8152374029159546, 0.8645894527435303], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06588724871887434, 0.006214833204754403, 0.010531858918787306]}, {"body": "right_rh_thumb_distal", "force_n": 6.131227970123291, "point_world": [-2.217315435409546, -1.8162676095962524, 0.865085244178772], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06623734293821634, 0.004003395108240286, 0.010442589686069184]}, {"body": "right_rh_thumb_distal", "force_n": 4.832989692687988, "point_world": [-2.215287685394287, -1.8155286312103271, 0.8645195364952087], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06620270863384696, 0.006232437970770429, 0.010532326771232059]}, {"body": "right_rh_index_distal", "force_n": 3.117445468902588, "point_world": [-2.2456398010253906, -1.7992831468582153, 0.8576931357383728], "normal": [-0.7219089269638062, -0.08739444613456726, -0.6864472031593323], "relative_to_handle_knife_frame": [0.044186146136953534, -0.013856509927347084, -0.00800065951211216]}, {"body": "right_rh_index_distal", "force_n": 0.9554765224456787, "point_world": [-2.2462193965911865, -1.8014130592346191, 0.8585739135742188], "normal": [-0.7219089269638062, -0.08739444613456726, -0.6864472031593323], "relative_to_handle_knife_frame": [0.04585289602931299, -0.015321751273673134, -0.0071502243643776315]}, {"body": "right_rh_middle_distal", "force_n": 0.509530782699585, "point_world": [-2.251765489578247, -1.7802138328552246, 0.8617075681686401], "normal": [-0.8565242886543274, -0.13239499926567078, -0.49883633852005005], "relative_to_handle_knife_frame": [0.023770595644251175, -0.014427131865462593, -0.008398344327133508]}, {"body": "right_rh_middle_distal", "force_n": 2.2764437198638916, "point_world": [-2.252049446105957, -1.7807214260101318, 0.8620708584785461], "normal": [-0.8565242886543274, -0.13239499926567078, -0.49883633852005005], "relative_to_handle_knife_frame": [0.024097011527283236, -0.014952755996672633, -0.008102652065138946]}, {"body": "right_rh_middle_distal", "force_n": 1.0522373914718628, "point_world": [-2.251155138015747, -1.7838960886001587, 0.8615343570709229], "normal": [-0.8565242886543274, -0.13239499926567078, -0.49883633852005005], "relative_to_handle_knife_frame": [0.027434905544620213, -0.01500954041124982, -0.007956561886140093]}, {"body": "right_rh_ring_distal", "force_n": 2.877438545227051, "point_world": [-2.2563717365264893, -1.7653820514678955, 0.8646632432937622], "normal": [-0.8326596021652222, -0.07146017998456955, -0.5491551160812378], "relative_to_handle_knife_frame": [0.007968599001195625, -0.014679462191661769, -0.008808828205403171]}, {"body": "right_rh_ring_distal", "force_n": 1.0426017045974731, "point_world": [-2.255899667739868, -1.7670574188232422, 0.8643801212310791], "normal": [-0.8326596021652222, -0.07146017998456955, -0.5491551160812378], "relative_to_handle_knife_frame": [0.009730138115189234, -0.01470932757902461, -0.008731686611243777]}, {"body": "right_rh_pinky_distal", "force_n": 2.0338594913482666, "point_world": [-2.259341239929199, -1.7491556406021118, 0.8664366006851196], "normal": [-0.40126514434814453, 0.08952758461236954, -0.9115760922431946], "relative_to_handle_knife_frame": [-0.008462459719809313, -0.01266243901277505, -0.009909320497122008]}, {"body": "right_rh_pinky_distal", "force_n": 1.0089057683944702, "point_world": [-2.2603235244750977, -1.749670386314392, 0.8668184280395508], "normal": [-0.40126514434814453, 0.08952758461236954, -0.9115760922431946], "relative_to_handle_knife_frame": [-0.00832043608826613, -0.013824339197156027, -0.009835459440857883]}, {"body": "right_rh_pinky_distal", "force_n": 0.8053488731384277, "point_world": [-2.2600202560424805, -1.7504926919937134, 0.8666041493415833], "normal": [-0.40126514434814453, 0.08952758461236954, -0.9115760922431946], "relative_to_handle_knife_frame": [-0.007421082318989572, -0.01375239967934983, -0.00984328480568325]}]
+GRIP_CLOSED {"contacts": {"right_rh_thumb_distal": 21.49781036376953, "right_rh_index_distal": 4.072922229766846, "right_rh_middle_distal": 3.83821177482605, "right_rh_ring_distal": 3.9200398921966553, "right_rh_pinky_distal": 3.848114252090454}, "board_forces": {}, "net_forces": {"right_rh_thumb_distal": [6.606410026550293, -2.593893051147461, 20.292434692382812], "right_rh_index_distal": [-2.9402787685394287, -0.3559507429599762, -2.7958459854125977], "right_rh_middle_distal": [-3.2875216007232666, -0.5081600546836853, -1.9146395921707153], "right_rh_ring_distal": [-3.264059066772461, -0.28012678027153015, -2.152710199356079], "right_rh_pinky_distal": [-1.5441142320632935, 0.344512403011322, -3.5078492164611816]}, "handle": [-2.24227089602059, -1.7541107091291552, 0.8702043418798465], "finger_actual_deg": {"right_rh_thumb_cmc_yaw": -5.2569550490488837e-08, "right_rh_index_mcp_pitch": 67.11388397216797, "right_rh_middle_mcp_pitch": 73.2721939086914, "right_rh_ring_mcp_pitch": 75.21064758300781, "right_rh_pinky_mcp_pitch": 77.2743148803711, "right_rh_thumb_cmc_pitch": 29.91053009033203, "right_rh_index_dip": 59.731327056884766, "right_rh_middle_dip": 65.21221923828125, "right_rh_ring_dip": 66.93743133544922, "right_rh_pinky_dip": 68.77408599853516, "right_rh_thumb_ip": 55.63314437866211}}
+LIFT_PROGRESS {"fraction": 0.016666666666666666, "palm": [-2.2419983726497437, -1.7667115263362962, 0.9070093214785071], "handle": [-2.2422143407476365, -1.7540765366027098, 0.8702731366222389], "contacts": {"right_rh_thumb_distal": 11.772130012512207, "right_rh_index_distal": 3.842827320098877, "right_rh_middle_distal": 3.9606122970581055, "right_rh_ring_distal": 2.9768941402435303, "right_rh_pinky_distal": 2.888462543487549}, "knife_board_force_n": 0.0, "knife_rotation_vector_deg": [-0.4537361474244663, 0.045786687524814434, -0.11835091530194845], "knife_rotation_change_deg": 0.47114737756555614, "friction_forces": {"right_rh_thumb_distal": [10.49698257446289, -5.301782608032227, -4.170644283294678], "right_rh_index_distal": [-2.483578681945801, 2.3768367767333984, 2.3427340984344482], "right_rh_middle_distal": [-1.8810659646987915, 2.3554799556732178, 2.5969414710998535], "right_rh_ring_distal": [0.2952929139137268, 2.4534995555877686, -0.7644648551940918], "right_rh_pinky_distal": [2.255070686340332, 1.5780307054519653, -0.8599038124084473]}}
+LIFT_PROGRESS {"fraction": 0.18333333333333332, "palm": [-2.2420036842453657, -1.766691957570011, 0.9118459699890039], "handle": [-2.239015044161076, -1.753237837950302, 0.8714632193120675], "contacts": {"right_rh_thumb_distal": 4.189272880554199, "right_rh_index_distal": 3.820622205734253, "right_rh_middle_distal": 2.0952963829040527, "right_rh_ring_distal": 0.701808512210846, "right_rh_pinky_distal": 0.14984454214572906}, "knife_board_force_n": 3.19331693649292, "knife_rotation_vector_deg": [-12.26825833369085, -0.17186312394281889, -4.500451152729149], "knife_rotation_change_deg": 13.068808670022202, "friction_forces": {"right_rh_thumb_distal": [1.642516016960144, 1.9416805505752563, -0.5594319701194763], "right_rh_index_distal": [-1.6011884212493896, -1.3270044326782227, 2.9572913646698], "right_rh_middle_distal": [1.0486444234848022, 0.2322404682636261, -1.79074227809906], "right_rh_ring_distal": [0.35149475932121277, 0.08257505297660828, -0.6013230085372925], "right_rh_pinky_distal": [0.09271702915430069, 0.0423613116145134, -0.10982919484376907]}}
+LIFT_PROGRESS {"fraction": 0.35, "palm": [-2.2420089390586235, -1.7666871441977774, 0.9168498441430556], "handle": [-2.2363305999055356, -1.75316627780349, 0.8729132293891624], "contacts": {"right_rh_thumb_distal": 3.8790037631988525, "right_rh_index_distal": 4.3894124031066895, "right_rh_pinky_distal": 0.6585806012153625}, "knife_board_force_n": 1.7439872026443481, "knife_rotation_vector_deg": [-18.747316364586993, -0.15236999265913703, -8.792665766188705], "knife_rotation_change_deg": 20.707391404145543, "friction_forces": {"right_rh_thumb_distal": [1.6198780536651611, 1.3677117824554443, -0.15836572647094727], "right_rh_index_distal": [0.5448447465896606, 0.8143815994262695, -1.4270414113998413], "right_rh_middle_distal": [-0.0003326951409690082, -0.000935009797103703, -0.0015930596273392439], "right_rh_ring_distal": [0.0, 0.0, 0.0], "right_rh_pinky_distal": [0.27203086018562317, -0.03509652242064476, -0.5987276434898376]}}
+LIFT_PROGRESS {"fraction": 0.5166666666666666, "palm": [-2.242011123302605, -1.766685293551476, 0.9218499322292181], "handle": [-2.2348681923897757, -1.7534095208200888, 0.8743821905388464], "contacts": {"right_rh_thumb_distal": 3.8420767784118652, "right_rh_index_distal": 3.6005492210388184}, "knife_board_force_n": 1.5518170595169067, "knife_rotation_vector_deg": [-23.32071554278206, -0.8627172119963314, -12.141123501559383], "knife_rotation_change_deg": 26.306024676779824, "friction_forces": {"right_rh_thumb_distal": [1.0894718170166016, 1.177731990814209, -0.15715453028678894], "right_rh_index_distal": [0.8603224754333496, 0.9003326892852783, -2.713479518890381], "right_rh_middle_distal": [-0.00011098964023403823, -0.00022547566913999617, -0.0003449383075349033], "right_rh_ring_distal": [0.0, 0.0, 0.0], "right_rh_pinky_distal": [0.0, 0.0, 0.0]}}
+LIFT_PROGRESS {"fraction": 0.6833333333333333, "palm": [-2.242013975694815, -1.7666817015540903, 0.9268482505930224], "handle": [-2.2342617481180427, -1.7537920903982551, 0.8759341897777168], "contacts": {"right_rh_thumb_distal": 3.613853931427002, "right_rh_index_distal": 3.3133726119995117}, "knife_board_force_n": 1.9098331928253174, "knife_rotation_vector_deg": [-26.04048453259952, -2.2623681853172783, -14.743603631748513], "knife_rotation_change_deg": 30.009981548621433, "friction_forces": {"right_rh_thumb_distal": [0.833330512046814, 1.1773154735565186, -0.12670525908470154], "right_rh_index_distal": [0.7422057390213013, 0.7836136221885681, -2.749919891357422], "right_rh_middle_distal": [0.0, 0.0, 0.0]}}
+LIFT_PROGRESS {"fraction": 0.85, "palm": [-2.2420097993744235, -1.7666910208137265, 0.9318481124283826], "handle": [-2.233832800834727, -1.7542304901484849, 0.8775045713027173], "contacts": {"right_rh_thumb_distal": 3.6254756450653076, "right_rh_index_distal": 3.230719804763794}, "knife_board_force_n": 1.9461421966552734, "knife_rotation_vector_deg": [-26.547624482024098, -4.361291230076834, -16.94628575675004], "knife_rotation_change_deg": 31.795814626795455, "friction_forces": {"right_rh_thumb_distal": [0.8362401723861694, 1.4188252687454224, -0.1542799472808838], "right_rh_index_distal": [0.747208833694458, 0.7471123933792114, -2.8395543098449707]}}
+LIFT_PROGRESS {"fraction": 1.0, "palm": [-2.2420029520655906, -1.7666995835389139, 0.9363389422163153], "handle": [-2.2337441249405496, -1.7542879511819764, 0.8809962647144156], "contacts": {"right_rh_thumb_distal": 3.635683536529541, "right_rh_index_distal": 4.054928779602051}, "knife_board_force_n": 0.8885086178779602, "knife_rotation_vector_deg": [-25.981553958317335, -5.226636479949435, -17.472251727380968], "knife_rotation_change_deg": 31.74332142998682, "friction_forces": {"right_rh_thumb_distal": [1.9085280895233154, -1.016944169998169, -0.7460128664970398], "right_rh_index_distal": [0.8314149975776672, 2.5914058685302734, -3.665792465209961]}}
+GRASP_RESULT {"passed": false, "lift_passed": false, "wrap_grasp": {"passed": false, "inner_finger_contacts": [], "contact_details": [{"body": "right_rh_thumb_distal", "force_n": 4.010194301605225, "distance_from_fingertip_m": null, "inner_finger_contact": false, "point_in_hand_m": [0.03771613580713042, 0.05000344799579716, 0.08639529641779274]}, {"body": "right_rh_index_distal", "force_n": 1.3472633361816406, "distance_from_fingertip_m": 0.004555167316044766, "inner_finger_contact": false, "point_in_hand_m": [0.04968208825788828, 0.025864437782955118, 0.08601048226158958]}, {"body": "right_rh_index_distal", "force_n": 2.9304018020629883, "distance_from_fingertip_m": 0.0018586074156469942, "inner_finger_contact": false, "point_in_hand_m": [0.05377803615275188, 0.027082178659961046, 0.08515751509732629]}], "checks": {"palm_contact": false, "thumb_contact": true, "at_least_two_contacts_away_from_tips": false, "at_least_three_fingers_contact": false, "at_least_three_fingers_curled": true, "handle_near_palm": false, "wrap_retained_during_hold": false}, "proximal_contacts": [], "finger_contacts": ["index"], "curled_fingers": ["middle", "ring", "pinky"], "handle_in_hand_m": [0.05539602970824744, -0.006253748570308897, 0.051321141722784513]}, "controller_type": "Scripted IK and joint-drive targets; no RL training", "final_knife_rotation_world": [[0.06607464015984704, 0.7195039479520506, 0.6913379859440387], [-0.9973938636819921, 0.02750477116259914, 0.0667005866001294], [0.028976242290107757, -0.6939434821689057, 0.7194461904395901]], "initial_handle_world_m": [-2.2626926453553637, -1.7618007401896119, 0.8719522994596122], "knife_path": "/Indoor/RZ/SM_kitchen_knife_02", "duplicate_knife_created": false, "grasp_attachment_created": false, "knife_collision": "Separate blade and handle hulls on the existing rigid body", "configuration": {"require_wrap": true, "lift_pitch_deg": 0.0, "approach_axis": "z", "stance_seed": "work/grasp_stance_top.json", "pinky_close_deg": null, "overhang_edge": -0.035, "handle_overhang": true, "seat_distance": 0.0, "lift_height": 0.03, "lift_support_close_deg": null, "support_fingers": "middle-ring", "support_close_deg": 70.0, "pad_stiffness": 15000.0, "pad_damping": 60.0, "torsional_radius": 0.006, "thumb_torque": 1.0, "thumb_stiffness": 10.0, "static_friction": 1.2, "dynamic_friction": 1.0, "air_hand_test": false, "lift_close_deg": null, "inspect_hand": false, "adjust_stance": true, "finger_stiffness": 3.0, "thumb_contact_force": 4.0, "finger_contact_force": 4.0, "closure_speed": 3.0, "close_camera": false, "force_closure": true, "close_thumb_pitch_deg": 33.0, "insert_distance": 0.0, "prethumb_yaw_deg": 0.0, "approach_clearance": 0.08, "finger_torque": 0.3, "contact_descent": false, "thumb_pitch_deg": 30.0, "thumb_yaw_deg": 60.0, "tilt_deg": 0, "palm_height": 0.035, "finger_offset": 0.015, "preclose_deg": 0.0, "handle_offset": 0.015, "close_deg": 90.0, "gui": false, "interactive": false}, "board_shift_m": [-0.07701616339420998, 0.12508202617616762, -0.0], "stance": {"root_yaw_deg": 3.5046620747772765, "root_offset_xy": [0.0943038653225478, -0.06278893865861987], "roll_deg": 0.0, "orientation": [[0.0, 0.5243078043623611, -0.8515288170606562], [0.0, -0.8515288170606562, -0.524307804362361], [-1.0000000000000002, 0.0, 0.0]]}, "closure_contact_details": [{"body": "right_rh_thumb_distal", "force_n": 5.356047630310059, "point_world": [-2.217667579650879, -1.815624475479126, 0.8652820587158203], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06549708035052676, 0.003835058851171344, 0.01043648828191014]}, {"body": "right_rh_thumb_distal", "force_n": 5.177545070648193, "point_world": [-2.215388298034668, -1.8152374029159546, 0.8645894527435303], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06588724871887434, 0.006214833204754403, 0.010531858918787306]}, {"body": "right_rh_thumb_distal", "force_n": 6.131227970123291, "point_world": [-2.217315435409546, -1.8162676095962524, 0.865085244178772], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06623734293821634, 0.004003395108240286, 0.010442589686069184]}, {"body": "right_rh_thumb_distal", "force_n": 4.832989692687988, "point_world": [-2.215287685394287, -1.8155286312103271, 0.8645195364952087], "normal": [0.3073062002658844, -0.12065847218036652, 0.9439303278923035], "relative_to_handle_knife_frame": [0.06620270863384696, 0.006232437970770429, 0.010532326771232059]}, {"body": "right_rh_index_distal", "force_n": 3.117445468902588, "point_world": [-2.2456398010253906, -1.7992831468582153, 0.8576931357383728], "normal": [-0.7219089269638062, -0.08739444613456726, -0.6864472031593323], "relative_to_handle_knife_frame": [0.044186146136953534, -0.013856509927347084, -0.00800065951211216]}, {"body": "right_rh_index_distal", "force_n": 0.9554765224456787, "point_world": [-2.2462193965911865, -1.8014130592346191, 0.8585739135742188], "normal": [-0.7219089269638062, -0.08739444613456726, -0.6864472031593323], "relative_to_handle_knife_frame": [0.04585289602931299, -0.015321751273673134, -0.0071502243643776315]}, {"body": "right_rh_middle_distal", "force_n": 0.509530782699585, "point_world": [-2.251765489578247, -1.7802138328552246, 0.8617075681686401], "normal": [-0.8565242886543274, -0.13239499926567078, -0.49883633852005005], "relative_to_handle_knife_frame": [0.023770595644251175, -0.014427131865462593, -0.008398344327133508]}, {"body": "right_rh_middle_distal", "force_n": 2.2764437198638916, "point_world": [-2.252049446105957, -1.7807214260101318, 0.8620708584785461], "normal": [-0.8565242886543274, -0.13239499926567078, -0.49883633852005005], "relative_to_handle_knife_frame": [0.024097011527283236, -0.014952755996672633, -0.008102652065138946]}, {"body": "right_rh_middle_distal", "force_n": 1.0522373914718628, "point_world": [-2.251155138015747, -1.7838960886001587, 0.8615343570709229], "normal": [-0.8565242886543274, -0.13239499926567078, -0.49883633852005005], "relative_to_handle_knife_frame": [0.027434905544620213, -0.01500954041124982, -0.007956561886140093]}, {"body": "right_rh_ring_distal", "force_n": 2.877438545227051, "point_world": [-2.2563717365264893, -1.7653820514678955, 0.8646632432937622], "normal": [-0.8326596021652222, -0.07146017998456955, -0.5491551160812378], "relative_to_handle_knife_frame": [0.007968599001195625, -0.014679462191661769, -0.008808828205403171]}, {"body": "right_rh_ring_distal", "force_n": 1.0426017045974731, "point_world": [-2.255899667739868, -1.7670574188232422, 0.8643801212310791], "normal": [-0.8326596021652222, -0.07146017998456955, -0.5491551160812378], "relative_to_handle_knife_frame": [0.009730138115189234, -0.01470932757902461, -0.008731686611243777]}, {"body": "right_rh_pinky_distal", "force_n": 2.0338594913482666, "point_world": [-2.259341239929199, -1.7491556406021118, 0.8664366006851196], "normal": [-0.40126514434814453, 0.08952758461236954, -0.9115760922431946], "relative_to_handle_knife_frame": [-0.008462459719809313, -0.01266243901277505, -0.009909320497122008]}, {"body": "right_rh_pinky_distal", "force_n": 1.0089057683944702, "point_world": [-2.2603235244750977, -1.749670386314392, 0.8668184280395508], "normal": [-0.40126514434814453, 0.08952758461236954, -0.9115760922431946], "relative_to_handle_knife_frame": [-0.00832043608826613, -0.013824339197156027, -0.009835459440857883]}, {"body": "right_rh_pinky_distal", "force_n": 0.8053488731384277, "point_world": [-2.2600202560424805, -1.7504926919937134, 0.8666041493415833], "normal": [-0.40126514434814453, 0.08952758461236954, -0.9115760922431946], "relative_to_handle_knife_frame": [-0.007421082318989572, -0.01375239967934983, -0.00984328480568325]}], "knife_board_force_n": 0.8621000051498413, "lift_m": 0.011183614170026668, "relative_slip_m": 0.020677105155649796, "relative_slip_frame": "hand", "hold_seconds": 3, "closure_contacts_n": {"right_rh_thumb_distal": 21.49781036376953, "right_rh_index_distal": 4.072922229766846, "right_rh_middle_distal": 3.83821177482605, "right_rh_ring_distal": 3.9200398921966553, "right_rh_pinky_distal": 3.848114252090454}, "final_contacts_n": {"right_rh_thumb_distal": 4.010193824768066, "right_rh_index_distal": 4.277665615081787}, "hold_samples": [{"height": 0.8810210304193398, "contacts": {"right_rh_thumb_distal": 3.7712438106536865, "right_rh_index_distal": 4.032273292541504}, "board_force_n": 0.6808764338493347, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.7712438106536865, "curled_fingers": 3}, {"height": 0.8813185450736254, "contacts": {"right_rh_thumb_distal": 3.8889005184173584, "right_rh_index_distal": 4.101114273071289}, "board_force_n": 0.844060480594635, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.8889005184173584, "curled_fingers": 3}, {"height": 0.8813545393380444, "contacts": {"right_rh_thumb_distal": 3.768083333969116, "right_rh_index_distal": 4.094907760620117}, "board_force_n": 0.9218313694000244, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.768083333969116, "curled_fingers": 3}, {"height": 0.8813707915952896, "contacts": {"right_rh_thumb_distal": 3.8895263671875, "right_rh_index_distal": 4.297114849090576}, "board_force_n": 1.0184203386306763, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.8895263671875, "curled_fingers": 3}, {"height": 0.8813748713620309, "contacts": {"right_rh_thumb_distal": 4.005195140838623, "right_rh_index_distal": 4.213095188140869}, "board_force_n": 0.9019654393196106, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.005195140838623, "curled_fingers": 3}, {"height": 0.8813743753778156, "contacts": {"right_rh_thumb_distal": 3.9896695613861084, "right_rh_index_distal": 4.18732213973999}, "board_force_n": 0.8657466769218445, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.9896695613861084, "curled_fingers": 3}, {"height": 0.8813738211286773, "contacts": {"right_rh_thumb_distal": 3.82710599899292, "right_rh_index_distal": 4.135417938232422}, "board_force_n": 0.9089260101318359, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.82710599899292, "curled_fingers": 3}, {"height": 0.8813874052999175, "contacts": {"right_rh_thumb_distal": 4.030205726623535, "right_rh_index_distal": 4.227926254272461}, "board_force_n": 0.7924937605857849, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.030205726623535, "curled_fingers": 3}, {"height": 0.8813842426550234, "contacts": {"right_rh_thumb_distal": 3.9625260829925537, "right_rh_index_distal": 4.27555513381958}, "board_force_n": 0.8983266949653625, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.9625260829925537, "curled_fingers": 3}, {"height": 0.8813871413671508, "contacts": {"right_rh_thumb_distal": 3.9977195262908936, "right_rh_index_distal": 4.262452602386475}, "board_force_n": 0.9121963977813721, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.9977195262908936, "curled_fingers": 3}, {"height": 0.8813868436814292, "contacts": {"right_rh_thumb_distal": 4.017063140869141, "right_rh_index_distal": 4.228306293487549}, "board_force_n": 0.9312746524810791, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.017063140869141, "curled_fingers": 3}, {"height": 0.8813870875704466, "contacts": {"right_rh_thumb_distal": 4.038835048675537, "right_rh_index_distal": 4.18404483795166}, "board_force_n": 0.8684220910072327, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.038835048675537, "curled_fingers": 3}, {"height": 0.8813845761691503, "contacts": {"right_rh_thumb_distal": 3.9986319541931152, "right_rh_index_distal": 4.212438583374023}, "board_force_n": 0.8617392778396606, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.9986319541931152, "curled_fingers": 3}, {"height": 0.8813848343914805, "contacts": {"right_rh_thumb_distal": 3.964103937149048, "right_rh_index_distal": 4.244244575500488}, "board_force_n": 0.8408458232879639, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.964103937149048, "curled_fingers": 3}, {"height": 0.8813855248627498, "contacts": {"right_rh_thumb_distal": 4.00612211227417, "right_rh_index_distal": 4.203766345977783}, "board_force_n": 0.869299590587616, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.00612211227417, "curled_fingers": 3}, {"height": 0.8813854977288419, "contacts": {"right_rh_thumb_distal": 4.001486301422119, "right_rh_index_distal": 4.162599563598633}, "board_force_n": 0.8479121923446655, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.001486301422119, "curled_fingers": 3}, {"height": 0.8813867578703122, "contacts": {"right_rh_thumb_distal": 3.9865214824676514, "right_rh_index_distal": 4.280984401702881}, "board_force_n": 0.8506133556365967, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.9865214824676514, "curled_fingers": 3}, {"height": 0.8813859197846815, "contacts": {"right_rh_thumb_distal": 4.005942344665527, "right_rh_index_distal": 4.201402187347412}, "board_force_n": 0.8503269553184509, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.005942344665527, "curled_fingers": 3}, {"height": 0.8813860498246555, "contacts": {"right_rh_thumb_distal": 3.988832950592041, "right_rh_index_distal": 4.286946773529053}, "board_force_n": 0.8274930119514465, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.988832950592041, "curled_fingers": 3}, {"height": 0.8813856376814038, "contacts": {"right_rh_thumb_distal": 4.013267517089844, "right_rh_index_distal": 4.23241662979126}, "board_force_n": 0.7779902815818787, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.013267517089844, "curled_fingers": 3}, {"height": 0.8813864811921227, "contacts": {"right_rh_thumb_distal": 4.007636547088623, "right_rh_index_distal": 4.242568016052246}, "board_force_n": 0.8540809750556946, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.007636547088623, "curled_fingers": 3}, {"height": 0.8813873523493306, "contacts": {"right_rh_thumb_distal": 4.009907245635986, "right_rh_index_distal": 4.19452428817749}, "board_force_n": 0.8380027413368225, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.009907245635986, "curled_fingers": 3}, {"height": 0.8813856709806142, "contacts": {"right_rh_thumb_distal": 3.9671599864959717, "right_rh_index_distal": 4.210154056549072}, "board_force_n": 0.8578831553459167, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 3.9671599864959717, "curled_fingers": 3}, {"height": 0.8813865686366111, "contacts": {"right_rh_thumb_distal": 4.011232852935791, "right_rh_index_distal": 4.227792263031006}, "board_force_n": 0.8358479142189026, "inner_finger_contacts": [], "palm_contact_n": 0.0, "thumb_contact_n": 4.011232852935791, "curled_fingers": 3}], "max_contact_n": 21.856164932250977, "thumb_pitch_deg": 30.0, "thumb_yaw_deg": 60.0, "tilt_deg": 0, "palm_height_setting_m": 0.035, "finger_offset_setting_m": 0.015, "handle_offset_setting_m": 0.015, "finger_torque_limit_nm": 0.3, "mimic_followers_passive": true, "static_friction": 1.2, "dynamic_friction": 1.0, "knife_mass_kg": 0.25, "limitations": ["Provisional rigid-body grip and friction settings; not calibrated to hardware", "Robot self-collision disabled", "Simplified kitchen materials and nearby kitchen collisions only"]}
+2026-10-17T16:18:45Z [13,867ms] [Warning] [omni.usd] Encountered USD Warnings but USD Diagnostics are currently muted. To view USD Warnings, please set the '/persistent/app/usd/muteUsdDiagnostics' setting to false in Preferences page.
+2026-10-17T16:18:45Z [13,956ms] [Warning] [omni.fabric.plugin] Warning: attribute material:binding not found for path /Indoor/appliance_rice_cooker_01/Looks
+
+2026-10-17T16:18:49Z [17,967ms] [Warning] [omni.physx.plugin] Detected an articulation at /dual_ar5_o6 with more than 4 velocity iterations being added to a TGS scene.The related behavior changed recently, please consult the changelog. This warning will only print once.
+2026-10-17T16:21:24Z [172,536ms] [Error] [omni.kit.app._impl] [py stderr]: Traceback (most recent call last):
+2026-10-17T16:21:24Z [172,537ms] [Error] [omni.kit.app._impl] [py stderr]:   File "/home/omen/teamwork_projects/tomato_cutting_right_arm/scripts/kitchen_grasp.py", line 536, in <module>
+    'finger_torque_limit_nm':args.finger_torque,'mimic_followers_passive':True,'static_friction':args.static_friction,'dynamic_friction':args.dynamic_friction,'knife_mass_kg':.25,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-17T16:21:24Z [172,537ms] [Error] [omni.kit.app._impl] [py stderr]: RuntimeError: Physical grasp/lift acceptance checks did not pass
+GRASP_FAILED Physical grasp/lift acceptance checks did not pass
+[173.455s] Simulation App Shutting Down
+MEMORY_REPORT {"exit_code": 0, "reason": "normal exit", "peak_rss_gb": 8.049412, "lowest_available_ram_gb": 4.255976}

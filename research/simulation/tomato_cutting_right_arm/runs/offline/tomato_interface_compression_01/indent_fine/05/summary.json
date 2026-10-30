@@ -1,0 +1,121 @@
+{
+  "case": "indentation",
+  "drive_mm": 0.0375,
+  "damage": 0.0,
+  "damage_evolution": false,
+  "passed": true,
+  "flags": [],
+  "trace": [
+    {
+      "iteration": 0,
+      "force_residual": 0.33852563180306017,
+      "min_gap_m": -1.2500000000005562e-05,
+      "active_constraints": 1,
+      "energy_j": 4.2034508400837955e-09,
+      "min_J": 0.9906140288725481,
+      "linear_iterations": 107
+    },
+    {
+      "iteration": 1,
+      "force_residual": 0.33083706273353997,
+      "min_gap_m": -1.2500000000005562e-05,
+      "active_constraints": 258,
+      "energy_j": 4.2034508400837955e-09,
+      "min_J": 0.9906140288725481,
+      "linear_iterations": 102
+    },
+    {
+      "iteration": 2,
+      "force_residual": 0.0015457805150250617,
+      "min_gap_m": 0.0,
+      "active_constraints": 258,
+      "energy_j": 9.42222642847346e-09,
+      "min_J": 0.9859164375686348,
+      "linear_iterations": 79
+    },
+    {
+      "iteration": 3,
+      "force_residual": 2.4221677842264138e-08,
+      "min_gap_m": 0.0,
+      "active_constraints": 258,
+      "energy_j": 9.422205914734412e-09,
+      "min_J": 0.9859136564423566,
+      "linear_iterations": 6
+    }
+  ],
+  "force_residual": 2.4221677842264138e-08,
+  "energy_j": 9.422205914734412e-09,
+  "barrier_energy_j": 0.0,
+  "min_J": 0.9859136564423566,
+  "min_spring_ratio": 0.986261539463046,
+  "minimum_constrained_scaled_tangent_eigenvalue": 0.0015347983880225453,
+  "min_cut_gap_m": 0.0,
+  "min_contact_gap_m": 0.0,
+  "min_multiplier_n": 0.0,
+  "blade_force_n": 0.0004997130529495445,
+  "cut_normal_force_n": 0.0004997130528461654,
+  "active_contacts": 258,
+  "fixed_dofs": 1103,
+  "free_dofs": 10993,
+  "back_cap_driven_nodes": [],
+  "deformation": {
+    "slice": {
+      "max_nonrigid_displacement_m": 3.6478598009067265e-05,
+      "max_displacement_m": 3.750025734597885e-05
+    },
+    "remainder": {
+      "max_nonrigid_displacement_m": 6.656037082363609e-07,
+      "max_displacement_m": 1.178802895775155e-06
+    }
+  },
+  "active_interface_bonds": 0,
+  "active_surface_cohesive_pairs": 257,
+  "cohesive_energy_j": 0.0,
+  "finite_blade_coverage_certificate": true,
+  "swept_normal_contact_min_gap_m": 0.0,
+  "swept_min_J": 0.9859136564423566,
+  "surface_intersection_screens": [
+    {
+      "path_fraction": 0.5,
+      "proper_intersections": 0,
+      "candidate_pairs": 12672
+    },
+    {
+      "path_fraction": 1.0,
+      "proper_intersections": 0,
+      "candidate_pairs": 12669
+    }
+  ],
+  "force_balance_fraction": 8.016592160646856e-10,
+  "moment_balance_fraction": 9.167253924904456e-10,
+  "work": {
+    "support_work_j": 0.0,
+    "blade_work_j": 5.216918883894922e-09,
+    "energy_change_j": 5.218755074650617e-09,
+    "residual_j": -1.836190755694683e-12
+  },
+  "positions_sha256": "dcd4322644a561c98f0ea48c1a9060f71b8d80811bc175e92f10492aa24bf570",
+  "contact_scope": "supported fixed-normal facets and matched cut faces, no arbitrary rotations/slip or general CCD",
+  "design_sha256": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+  "source_hashes": {
+    "rl/offline_tomato_coupled.py": "f797b92dfe23ac872b83b0c0d0093e700717dab151a3776b51d3b079f8fac77d",
+    "rl/tomato_coupled_contact.py": "5fb9a5bb42693afd46bb279c18f6b3039107a98b4927693f499d771819aae502",
+    "rl/tomato_surface_cohesion.py": "328c1d23c909885894da6ab2766bc0365687c6dcd31462e1ca1c2f1091878d12",
+    "rl/offline_tomato_patch_sweep.py": "610eecf82da3603166c36968a02aad7c9e672135c629c6610f35957e573f218d",
+    "rl/tomato_bonds.py": "9e0d61c5c64852e760330284d45bc60c81c7e732370b703a1fec973729863087",
+    "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+    "rl/tomato_nonlinear_checks.py": "bada0d08fdfb8091bc264e7f9653a4c6000f3e473e4bef43c012855a89d5c8d6"
+  },
+  "runtime_s": 3.67486549700061,
+  "peak_rss_bytes": 174243840,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true,
+    "blas_threads": 1
+  },
+  "simulator_imports_or_launches": false,
+  "training": false,
+  "full_cut": false
+}

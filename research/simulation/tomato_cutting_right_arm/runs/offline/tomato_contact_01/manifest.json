@@ -1,0 +1,28 @@
+{
+  "scope": "offline local constrained blade/patch coupons and rigid parallel cut-face response on refined 5mm-reference geometry; NOT integrated deformable tomato cutting",
+  "mesh": "runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5",
+  "blade": {
+    "surrogate": true,
+    "provenance": "audited collision-blade bounding dimensions; NOT a measured edge/bevel or source mesh",
+    "length_m": 0.26593121886253357,
+    "height_m": 0.0504381824284792,
+    "max_thickness_m": 0.00760862766765058,
+    "single_bevel_length_m": 0.008,
+    "bevel_status": "synthetic uncalibrated coupon choice"
+  },
+  "fracture_energy_relative_tolerance": 0.01,
+  "load_work_step_refinement_target": 0.1,
+  "contact_penetration_tolerance_m": 0.0001,
+  "patch_steps": [
+    2400,
+    4800
+  ],
+  "contact_dt_s": [
+    0.001,
+    0.0005
+  ],
+  "nonpenetration_scope": "parallel normal translation with actual finite cut outlines; rotations and general deformable self-contact unsupported",
+  "full_cut_success_requires": "coupled deformable blade-driven response, complete damage and independent release without pass-through, full energy/contact checks; not supplied by coupons",
+  "training": false,
+  "simulator": false
+}

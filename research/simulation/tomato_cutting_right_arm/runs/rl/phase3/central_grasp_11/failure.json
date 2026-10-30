@@ -1,0 +1,100 @@
+{
+  "phase": "finger_contact_feedback",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 173, in <module>\n    step()\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 86, in step\n    if (a.output/'checkpoint_and_stop.request').exists():raise RuntimeError('Memory/manual safe stop requested')\n                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Memory/manual safe stop requested\n",
+  "training": false,
+  "last_sample": {
+    "handle_height_m": 0.8742331451376464,
+    "handle_in_palm_m": [
+      0.0755534525687979,
+      0.017266629849437984,
+      0.09758713433614119
+    ],
+    "contacts": [
+      {
+        "part": "index",
+        "body": "right_rh_index_distal",
+        "force_n": 0.9460159540176392,
+        "on_handle": true,
+        "point_world_m": [
+          -2.229057788848877,
+          -1.514400839805603,
+          0.8786230683326721
+        ],
+        "normal_world": [
+          -0.8468134999275208,
+          0.416507363319397,
+          0.3307998776435852
+        ],
+        "radial_vector": [
+          -0.016465016715667087,
+          -0.0016120891669221288
+        ],
+        "curl_rad": 1.6191663146018982,
+        "proximal": false,
+        "distance_from_tip_m": 0.00027252956256063054
+      }
+    ],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 2.2339744567871094,
+    "support_clearance_m": -0.0007966628106387263,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "phase": "finger_contact_feedback",
+    "control_step": 384,
+    "sim_s": 19.200000000000003,
+    "q_rad": [
+      -1.0722432136535645,
+      -1.4812688827514648,
+      1.1532443761825562,
+      1.5274248123168945,
+      -1.185784935951233,
+      -0.12232650071382523,
+      0.40279802680015564,
+      0.8704842329025269,
+      0.0006361767300404608,
+      0.8567019701004028,
+      0.8861084580421448,
+      0.886109471321106,
+      0.847989022731781
+    ],
+    "palm_world_m": [
+      -2.2136069484371617,
+      -1.494283026431122,
+      0.9559238966933751
+    ],
+    "knife_pose_xyzw": [
+      -2.163007974624634,
+      -1.4418458938598633,
+      0.8735306262969971,
+      0.08603822439908981,
+      0.03584294766187668,
+      0.5092222690582275,
+      0.8555732369422913
+    ],
+    "estimated_hand_drive_torque_nm": [
+      -0.0014321802882477641,
+      -0.0019087768159806728,
+      0.08440717309713364,
+      -0.004893884062767029,
+      -0.00489666685461998,
+      0.0003045666962862015
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "substep_event": null
+}

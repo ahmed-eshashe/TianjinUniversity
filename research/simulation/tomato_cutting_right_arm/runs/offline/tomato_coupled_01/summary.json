@@ -1,0 +1,119 @@
+{
+  "sequences": {
+    "indent_coarse": 7,
+    "indent_fine": 13,
+    "reclose_broken": 13,
+    "reclose_broken_fine": 25,
+    "reclose_intact": 5,
+    "reclose_partial": 5
+  },
+  "checked_endpoints": 68,
+  "all_endpoints_passed": true,
+  "load_increment_comparisons": {
+    "indent_coarse": {
+      "matched_force_max_relative_change": 2.881141991650793e-10,
+      "coarse_loading_work_j": 1.6737684884801484e-08,
+      "fine_loading_work_j": 1.6760366570451673e-08,
+      "loading_work_relative_change": 0.0013532929339491462
+    },
+    "reclose_broken": {
+      "matched_force_max_relative_change": 2.995970138641724e-11,
+      "coarse_loading_work_j": 4.313718211441762e-07,
+      "fine_loading_work_j": 4.31418857879858e-07,
+      "loading_work_relative_change": 0.00010902800103118615
+    }
+  },
+  "compression_branch_audit": [
+    {
+      "sequence": "reclose_intact",
+      "damage": 0.0,
+      "back_cap_actuator_force_n": 0.01854183447222988,
+      "cut_contact_force_n": 0.009537607575289203,
+      "cohesive_force_on_slice_x_n": -0.009004226895465995,
+      "cohesive_elastic_energy_j": 2.5915625274372505e-09,
+      "total_elastic_energy_j": 4.6380349482306756e-07,
+      "compression_load_fraction_via_cohesion": 0.4856168308994255,
+      "slice_force_balance_fraction": 7.953266383877018e-11
+    },
+    {
+      "sequence": "reclose_partial",
+      "damage": 0.5,
+      "back_cap_actuator_force_n": 0.018449071251529524,
+      "cut_contact_force_n": 0.009963066081632433,
+      "cohesive_force_on_slice_x_n": -0.008486005168002441,
+      "cohesive_elastic_energy_j": 4.205326616932839e-09,
+      "total_elastic_energy_j": 4.6148382698343546e-07,
+      "compression_load_fraction_via_cohesion": 0.4599692338062225,
+      "slice_force_balance_fraction": 1.0269619224292977e-10
+    },
+    {
+      "sequence": "reclose_broken",
+      "damage": 1.0,
+      "back_cap_actuator_force_n": 0.01724734697746908,
+      "cut_contact_force_n": 0.017247346977518497,
+      "cohesive_force_on_slice_x_n": 0.0,
+      "cohesive_elastic_energy_j": 0.0,
+      "total_elastic_energy_j": 4.314345367874058e-07,
+      "compression_load_fraction_via_cohesion": 0.0,
+      "slice_force_balance_fraction": 2.8650976292892237e-12
+    }
+  ],
+  "peak_rigid_motion_removed_displacement_m": {
+    "indent_coarse": {
+      "slice": 4.8709397427502384e-05,
+      "remainder": 7.770216157082927e-07
+    },
+    "indent_fine": {
+      "slice": 4.870939743341163e-05,
+      "remainder": 7.770216148825787e-07
+    },
+    "reclose_broken": {
+      "slice": 1.8125338586488826e-05,
+      "remainder": 2.0252990740688723e-05
+    },
+    "reclose_broken_fine": {
+      "slice": 1.8125338586927853e-05,
+      "remainder": 2.0252990740586683e-05
+    },
+    "reclose_intact": {
+      "slice": 1.734454771482966e-05,
+      "remainder": 2.0011698281876778e-05
+    },
+    "reclose_partial": {
+      "slice": 1.7415492803654965e-05,
+      "remainder": 2.00414129415434e-05
+    }
+  },
+  "minimum_J": 0.7379262202351019,
+  "minimum_swept_J": 0.7379262202351019,
+  "max_force_residual": 7.236774004642635e-08,
+  "minimum_constrained_scaled_tangent_eigenvalue": 0.001210431817386056,
+  "max_penetration_m": 1.096345236817342e-15,
+  "proper_surface_intersections": 0,
+  "minimum_surface_area_ratio": 0.9972025146969982,
+  "minimum_surface_normal_cosine": 0.9997678417398586,
+  "max_force_balance_fraction": 4.972756879429331e-08,
+  "max_moment_balance_fraction": 2.299575766587992e-08,
+  "runtime_s": 216.01573145900147,
+  "max_worker_runtime_s": 4.788580866000302,
+  "peak_worker_rss_bytes": 189784064,
+  "damage_evolution": false,
+  "full_cut_tested": false,
+  "general_3d_contact_validated": false,
+  "simulator_imports_or_launches": false,
+  "training": false,
+  "tests": {
+    "tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "forbidden_imports": []
+  },
+  "unilateral_stability": {
+    "checked_endpoints": 68,
+    "all_passed": true,
+    "minimum_scaled_eigenvalue": 0.0012104318173855918,
+    "weak_contact_force_threshold_n": 1e-09,
+    "forbidden_imports": []
+  },
+  "preservation": "preservation.json"
+}

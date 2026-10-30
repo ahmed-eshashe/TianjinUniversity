@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "scope": "Resource feasibility only; posture-surrogate PPO and untrained vision encoder. No knife skill learned or evaluated.",
+  "elapsed_test_wall_s": 1800.086599354996,
+  "physics_steps": 212292,
+  "control_steps": 17691,
+  "simulated_seconds": 884.55,
+  "physics_steps_per_wall_s": 117.93432609079369,
+  "action_steps_per_wall_s": 9.827860507566141,
+  "reset_count": 277,
+  "updates_this_run": 12,
+  "total_learner_updates": 14,
+  "transitions_this_run": 768,
+  "initial_learner_updates": 2,
+  "checkpoint_roundtrip": true,
+  "resume_checks": {
+    "loaded": true,
+    "optimizer_entries": 9,
+    "normalization_count": 310,
+    "prior_updates": 2,
+    "curriculum": {
+      "stage": "resource_probe_only",
+      "grasp_training": false
+    },
+    "rng_restored": true,
+    "physical_state": "new episode; no claim of bit-exact PhysX contact-state continuation"
+  },
+  "max_parameter_change": 0.006803445518016815,
+  "losses_finite": true,
+  "physics_seconds": 1433.5898676369616,
+  "render_seconds": 273.3524675926383,
+  "encoder_seconds": 34.13540086097055,
+  "ppo_update_seconds": 0.37695048700697953,
+  "camera_frames": 17707,
+  "camera_checks": {
+    "camera_path": "/dual_ar5_o6/BenchmarkEye",
+    "eye_world_m": [
+      -1.78908107829754,
+      -1.4031557344931702,
+      1.65
+    ],
+    "look_at_world_m": [
+      -2.2843094031304836,
+      -1.625671974500418,
+      0.8616160089768693
+    ],
+    "width": 128,
+    "height": 128,
+    "requested_hz": 20,
+    "depth_type": "distance_to_image_plane",
+    "focal_length_mm": 24.0,
+    "intrinsics": [
+      [
+        146.599853515625,
+        0.0,
+        64.0
+      ],
+      [
+        0.0,
+        146.599853515625,
+        64.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "perception": "UNTRAINED small RGB-D encoder, inference allocation proxy only",
+    "distinct_timestamps": 11707,
+    "last_timestamp_seconds": 885.116666666,
+    "depth_valid_fraction": 1.0,
+    "rgb_std": 35.167021318770665,
+    "board_corner_pixels": [
+      [
+        43.418028193208094,
+        38.235122051628096
+      ],
+      [
+        105.18412543452773,
+        59.07135437464435
+      ],
+      [
+        20.816225617980077,
+        69.1678895766911
+      ],
+      [
+        91.15510212379732,
+        97.99325798440306
+      ]
+    ],
+    "board_in_frame": true
+  },
+  "max_camera_age_sim_s": 0.10004616049036485,
+  "max_joint_speed_rad_s": 0.04489688202738762,
+  "max_parked_joint_drift_rad": 0.0003041886375285685,
+  "max_tracking_error_rad": 0.0017212629318237305,
+  "max_mimic_residual_rad": 2.2747553884983063e-07,
+  "cuda_peak_allocated_mib": 65.26904296875,
+  "cuda_peak_reserved_mib": 66.0,
+  "stopped_for_reserve": false,
+  "configuration": {
+    "camera": true,
+    "observation_size": 55,
+    "action_size": 13,
+    "physics_hz": 240,
+    "action_hz": 20,
+    "episode_controls": 64,
+    "rollout_controls": 64,
+    "policy": "64x64 tanh PPO probe, two epochs per 64 transitions",
+    "reward": "negative bounded posture error only",
+    "full_grasp_training": false,
+    "device": "cuda",
+    "physics_device": "cpu",
+    "width": 128,
+    "max_updates_this_run": 12,
+    "requested_seconds": 1800,
+    "hashes": {
+      "rl/benchmark.py": "51d1dbf87ebac67061f05af4d64fa0559166160f55f6732908e5ad452de91029",
+      "rl/probe_policy.py": "97b03bc17ee97fc0fc0b8a574a1379a705ebe91d19abbd35b7d23f1d54a51d5f",
+      "rl/scene/minimal_benchmark.usda": "850a765acdec138313fd0ca036c29487e14d6f9d50d37bbf6f20bc2f1d2a071b"
+    }
+  },
+  "remaining_gaps": [
+    "Core World harness is not yet a native Isaac Lab DirectRLEnv",
+    "Vision proxy is untrained and produces no knife pose",
+    "Self-collision disabled",
+    "Small-motion resource probe does not validate grasp contact dynamics",
+    "Later teacher/perception workloads may require more memory"
+  ]
+}

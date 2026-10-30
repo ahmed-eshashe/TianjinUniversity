@@ -1,0 +1,34 @@
+{
+  "command": [
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/native_probe.py",
+    "--output",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase3/clear_ready_06",
+    "--seconds",
+    "20",
+    "--phase3"
+  ],
+  "scope": "Bounded native physical validation; no training",
+  "guard_sha256": "6dbcb0479d551dd54a6da2e025c988cccd2d741463f285e601f139c01af8b25d",
+  "thresholds_bytes": {
+    "host_start": 10000000000,
+    "original_host_start_floor": 5120000000,
+    "host_warning": 3072000000,
+    "host_stop": 2048000000,
+    "gpu_start_free": 4294967296,
+    "gpu_warning_free": 1610612736,
+    "gpu_stop_free": 1073741824
+  },
+  "same_lock_as_scripted_controller": true,
+  "configuration": {
+    "output": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase3/clear_ready_06",
+    "seconds": 20,
+    "camera": false,
+    "resume": null,
+    "max_updates": 12,
+    "width": 128,
+    "native": false,
+    "phase3": true,
+    "phase3_fixtures": false
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "execution_authorized": false,
+  "training_authorized": false,
+  "gates": [
+    {
+      "id": "resources",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": []
+    },
+    {
+      "id": "native_startup",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": [
+        "resources"
+      ]
+    },
+    {
+      "id": "contact_coupons",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": [
+        "resources",
+        "native_startup"
+      ]
+    },
+    {
+      "id": "damage_release_reset_convergence",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": [
+        "resources",
+        "native_startup",
+        "contact_coupons"
+      ]
+    },
+    {
+      "id": "robot_coupling_and_frozen_grasp",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": [
+        "resources",
+        "native_startup",
+        "contact_coupons",
+        "damage_release_reset_convergence"
+      ]
+    },
+    {
+      "id": "baseline_and_throughput",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": [
+        "resources",
+        "native_startup",
+        "contact_coupons",
+        "damage_release_reset_convergence",
+        "robot_coupling_and_frozen_grasp"
+      ]
+    },
+    {
+      "id": "learning_smoke",
+      "status": "pending_runtime",
+      "evidence": null,
+      "prerequisites": [
+        "resources",
+        "native_startup",
+        "contact_coupons",
+        "damage_release_reset_convergence",
+        "robot_coupling_and_frozen_grasp",
+        "baseline_and_throughput"
+      ]
+    }
+  ],
+  "full_training_separate_authorization_required": true
+}

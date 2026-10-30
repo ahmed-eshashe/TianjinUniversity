@@ -1,0 +1,114 @@
+{
+  "date_local": "2026-10-19",
+  "authorization": "Dependency repair, native integration, Phase 3 continuation; no full training",
+  "dependency_runtime_passed": true,
+  "pip_check_clean": false,
+  "expected_upstream_metadata_conflicts": 6,
+  "native_integration_passed": true,
+  "phase3_complete": false,
+  "training_ready": false,
+  "full_training_started": false,
+  "native_final_run": "runs/rl/phase3/final_oracle_check_10",
+  "native_result": {
+    "passed": true,
+    "native_class": "isaaclab.envs.direct_rl_env.DirectRLEnv",
+    "adapter": "RslRlVecEnvWrapper",
+    "physics_backend": "physx",
+    "steps": 274,
+    "resets": 2,
+    "elapsed_s": 10.006051438002032,
+    "max_speed_rad_s": 0.4476546049118042,
+    "max_left_drift_rad": 0.011163515038788319,
+    "joint_count": 36,
+    "training": false,
+    "max_mimic_residual_rad": 3.5762786865234375e-07,
+    "empty_hand_cycle": true,
+    "empty_hand_cycle_passed": true,
+    "max_hand_joint_positions_rad": [
+      0.8042688965797424,
+      0.41106775403022766,
+      1.2059226036071777,
+      1.2059181928634644,
+      1.2059147357940674,
+      1.205911636352539
+    ],
+    "empty_hand_first_finger_motion_step": 12,
+    "empty_hand_first_thumb_flexion_step": 142,
+    "physical_negative_oracle_samples": 255,
+    "physical_negative_false_successes": 0,
+    "phase3": true,
+    "limitations": [
+      "Joint-interface validation only; not a learned pickup or complete Phase 3 acceptance"
+    ]
+  },
+  "native_memory": {
+    "reason": "normal exit",
+    "child_exit_code": 0,
+    "warning_requested": false,
+    "elapsed_wall_s": 18.394306941998366,
+    "samples": 18,
+    "peak_rss_gb": 2.664820736,
+    "min_available_ram_gb": 9.528336384,
+    "peak_gpu_used_mib": 800.0,
+    "min_gpu_free_mib": 7351.0
+  },
+  "knife_fixture_run": "runs/rl/phase3/knife_settling_contacts_02",
+  "knife_fixture_result": {
+    "passed": true,
+    "native_class": "DirectRLEnv",
+    "scope": "Knife-only fixture; robot inactive; NOT whole-task or grasp acceptance",
+    "steps": 1090,
+    "elapsed_s": 3.6561090030008927,
+    "settled_cases": 28,
+    "requested_cases": 28,
+    "all_settled": true,
+    "training": false,
+    "self_collision_gate": "separate and unresolved"
+  },
+  "knife_fixture_memory": {
+    "reason": "normal exit",
+    "child_exit_code": 0,
+    "warning_requested": false,
+    "elapsed_wall_s": 9.185921550000785,
+    "samples": 9,
+    "peak_rss_gb": 2.327724032,
+    "min_available_ram_gb": 9.711640576,
+    "peak_gpu_used_mib": 801.0,
+    "min_gpu_free_mib": 7350.0
+  },
+  "placement_samples": 1000,
+  "preapproach_ik_solved": 20,
+  "preapproach_ik_tested": 20,
+  "unit_tests_passed": 20,
+  "preservation_and_guard": {
+    "concurrent_native_refused_before_launch": true,
+    "exit_code": 1,
+    "message": "Another robot controller/benchmark is running; start refused.",
+    "original_robot_unchanged": true,
+    "accepted_demos_unchanged": true,
+    "frozen_native_source_hashes_match": true,
+    "frozen_native_run": "runs/rl/phase3/final_oracle_check_10"
+  },
+  "criteria_sha256": "81b8d50fe0b4b3857c52b9143e4760d87d8cab1a948b80ab377cd3c74102fe05",
+  "remaining_gates": [
+    "Physical positive wrap and 5 cm / 3 s lift in the native scene",
+    "Acquire a flat central knife without relying on a board edge",
+    "Physical blade/slip/drop adversarial checks and annotated visual validation",
+    "Collision-free routes and placement groups; knife/board dimensions limit full-board poses",
+    "Bounds/calibration for uncertain dynamics and hardware interfaces"
+  ],
+  "failed_diagnostics_retained": [
+    "self_collision_01",
+    "self_collision_diagnostic_02",
+    "decomposed_collision_03",
+    "self_collision_contacts_04",
+    "fixed_assembly_filter_05",
+    "knife_settling_01"
+  ],
+  "notes": [
+    "Later successful startup does not validate arbitrary arm trajectories",
+    "Knife fixture deactivates robot; empty-hand closure does not pick up a knife",
+    "No trained vision or pickup policy; native physical run has no camera",
+    "Thirty-second native diagnostics are not a repeat of the Phase 2 camera soak"
+  ]
+}

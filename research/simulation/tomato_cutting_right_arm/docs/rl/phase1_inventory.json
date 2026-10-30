@@ -1,0 +1,1559 @@
+{
+  "scope": "Offline model/software audit, no physical connection or hardware commands",
+  "versions": {
+    "isaacsim": "6.1.0.0",
+    "isaacsim-core": "6.1.0.0",
+    "isaaclab": "19.0.0",
+    "isaaclab-rl": "1.0.0",
+    "torch": "2.12.0+cu130",
+    "torchvision": "0.27.0+cu130",
+    "numpy": "2.3.1",
+    "gymnasium": "1.3.0",
+    "rsl-rl-lib": "5.5.1",
+    "rl-games": "1.6.1",
+    "skrl": "2.1.0",
+    "stable-baselines3": "2.9.0",
+    "python": "3.12.14 | packaged by Anaconda, Inc. | (main, Aug 27 2026, 14:46:43) [GCC 14.3.0]",
+    "cuda_build": "13.0",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 5060 Laptop GPU",
+    "torch_architectures": [
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "isaaclab_source_VERSION": "3.0.0",
+    "isaaclab_source_commit": "75e9c8ce12b27ecc5dc17a3de822e39cc6506d80"
+  },
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "gpu_driver": "NVIDIA GeForce RTX 5060 Laptop GPU, 8151 MiB, 595.91.07",
+  "source": "/home/omen/teamwork_projects/tomato_cutting_right_arm/assets/robots/Collected_whole_robot_updated/Collected_whole_robot/whole_robot_2.usd",
+  "source_sha256": "07d6b54590102f237ce781a3edc6dcef07faeac75547b5f55d6658ea7c13c68a",
+  "baseline_sha256": {
+    "run_kitchen_grasp.sh": "213f1aa07541ceb17840cf7634ec5955e78052c16658eb539b86b340be8a49cc",
+    "scripts/guarded_grasp.py": "0cd2219d0c64dade7e78309627e952b988a580ccf15ae8fc7361de397a3afaae",
+    "work/validated_grasp_configuration.json": "f3e53c41c9ed6ec8eb36017f3448270231f4de3f0ebd43da9c4ffc150202cea2",
+    "logs/kitchen_grasp_validation_report.json": "53143ec155423e817da58d6132deb04e149d01673efd9ac4c0923093cf614b8b",
+    "logs/kitchen_grasp_gui_validation_report.json": "0b52b23313d915ddc7cc0fbf50a735adf01610791ef3406609a0f9c83937d1ff"
+  },
+  "joints": [
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_1",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_1",
+      "limits_rad": [
+        -3.106699916987575,
+        3.106699916987575
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_2",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_2",
+      "limits_rad": [
+        -2.094400029241212,
+        2.094400029241212
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_3",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_3",
+      "limits_rad": [
+        -3.106699916987575,
+        3.106699916987575
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_4",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_4",
+      "limits_rad": [
+        -1.047200014620606,
+        2.53069998483255
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_5",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_5",
+      "limits_rad": [
+        -3.106699916987575,
+        3.106699916987575
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_6",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_6",
+      "limits_rad": [
+        -1.047200014620606,
+        1.047200014620606
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_7",
+      "path": "/dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_7",
+      "limits_rad": [
+        -1.047200014620606,
+        1.047200014620606
+      ],
+      "axis": "X",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_thumb_cmc_yaw",
+      "path": "/dual_ar5_o6/Physics/left_lh_thumb_cmc_yaw",
+      "limits_rad": [
+        0.0,
+        1.2999999818851324
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_thumb_cmc_pitch",
+      "path": "/dual_ar5_o6/Physics/left_lh_thumb_cmc_pitch",
+      "limits_rad": [
+        0.0,
+        0.580000000112324
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_thumb_ip",
+      "path": "/dual_ar5_o6/Physics/left_lh_thumb_ip",
+      "limits_rad": [
+        0.0,
+        1.0799999726592127
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals/left_lh_thumb_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/left_lh_thumb_cmc_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "2.2899999618530273"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_index_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/left_lh_index_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_index_dip",
+      "path": "/dual_ar5_o6/Physics/left_lh_index_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal/left_lh_index_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/left_lh_index_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_middle_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/left_lh_middle_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_middle_dip",
+      "path": "/dual_ar5_o6/Physics/left_lh_middle_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal/left_lh_middle_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/left_lh_middle_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_ring_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/left_lh_ring_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_ring_dip",
+      "path": "/dual_ar5_o6/Physics/left_lh_ring_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal/left_lh_ring_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/left_lh_ring_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_pinky_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/left_lh_pinky_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "left_lh_pinky_dip",
+      "path": "/dual_ar5_o6/Physics/left_lh_pinky_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal/left_lh_pinky_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/left_lh_pinky_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_1",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_1",
+      "limits_rad": [
+        -3.106699916987575,
+        3.106699916987575
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_2",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_2",
+      "limits_rad": [
+        -2.094400029241212,
+        2.094400029241212
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_3",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_3",
+      "limits_rad": [
+        -3.106699916987575,
+        3.106699916987575
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_4",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_4",
+      "limits_rad": [
+        -1.047200014620606,
+        2.53069998483255
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_5",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_5",
+      "limits_rad": [
+        -3.106699916987575,
+        3.106699916987575
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_6",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_6",
+      "limits_rad": [
+        -1.047200014620606,
+        1.047200014620606
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_7",
+      "path": "/dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_7",
+      "limits_rad": [
+        -1.047200014620606,
+        1.047200014620606
+      ],
+      "axis": "X",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 2500.0,
+        "damping": 150.0,
+        "max_force": 1000.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_thumb_cmc_yaw",
+      "path": "/dual_ar5_o6/Physics/right_rh_thumb_cmc_yaw",
+      "limits_rad": [
+        0.0,
+        1.3599999359801818
+      ],
+      "axis": "Z",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_thumb_cmc_pitch",
+      "path": "/dual_ar5_o6/Physics/right_rh_thumb_cmc_pitch",
+      "limits_rad": [
+        0.0,
+        0.580000000112324
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_thumb_ip",
+      "path": "/dual_ar5_o6/Physics/right_rh_thumb_ip",
+      "limits_rad": [
+        0.0,
+        1.0799999726592127
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_thumb_cmc_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "1.8600000143051147"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_index_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/right_rh_index_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_index_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_index_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_index_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_middle_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/right_rh_middle_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_middle_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_middle_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal/right_rh_middle_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_middle_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_ring_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/right_rh_ring_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_ring_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_ring_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal/right_rh_ring_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_ring_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_pinky_mcp_pitch",
+      "path": "/dual_ar5_o6/Physics/right_rh_pinky_mcp_pitch",
+      "limits_rad": [
+        0.0,
+        1.6000000186764876
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {},
+      "mimic_attributes": {},
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_pinky_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_pinky_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal/right_rh_pinky_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_pinky_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    }
+  ],
+  "urdf_inventory": [
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_1",
+      "limits": {
+        "effort": "108",
+        "lower": "-3.1067",
+        "upper": "3.1067",
+        "velocity": "3.0543261909900763"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_2",
+      "limits": {
+        "effort": "108",
+        "lower": "-2.0944",
+        "upper": "2.0944",
+        "velocity": "3.0543261909900763"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_3",
+      "limits": {
+        "effort": "66",
+        "lower": "-3.1067",
+        "upper": "3.1067",
+        "velocity": "4.71238898038469"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_4",
+      "limits": {
+        "effort": "66",
+        "lower": "-1.0472",
+        "upper": "2.5307",
+        "velocity": "5.235987755982989"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_5",
+      "limits": {
+        "effort": "19",
+        "lower": "-3.1067",
+        "upper": "3.1067",
+        "velocity": "4.1887902047863905"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_6",
+      "limits": {
+        "effort": "19",
+        "lower": "-1.0472",
+        "upper": "1.0472",
+        "velocity": "4.1887902047863905"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_AR5_5_07L_W4C4A2_joint_7",
+      "limits": {
+        "effort": "19",
+        "lower": "-1.0472",
+        "upper": "1.0472",
+        "velocity": "4.1887902047863905"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_thumb_cmc_yaw",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.3",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_thumb_cmc_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "0.58",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_thumb_ip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.08",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "lh_thumb_cmc_pitch",
+        "multiplier": "2.29",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "left_lh_index_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_index_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "lh_index_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "left_lh_middle_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_middle_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "lh_middle_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "left_lh_ring_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_ring_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "lh_ring_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "left_lh_pinky_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "left_lh_pinky_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "lh_pinky_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_1",
+      "limits": {
+        "effort": "108",
+        "lower": "-3.1067",
+        "upper": "3.1067",
+        "velocity": "3.0543261909900763"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_2",
+      "limits": {
+        "effort": "108",
+        "lower": "-2.0944",
+        "upper": "2.0944",
+        "velocity": "3.0543261909900763"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_3",
+      "limits": {
+        "effort": "66",
+        "lower": "-3.1067",
+        "upper": "3.1067",
+        "velocity": "4.71238898038469"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_4",
+      "limits": {
+        "effort": "66",
+        "lower": "-1.0472",
+        "upper": "2.5307",
+        "velocity": "5.235987755982989"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_5",
+      "limits": {
+        "effort": "19",
+        "lower": "-3.1067",
+        "upper": "3.1067",
+        "velocity": "4.1887902047863905"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_6",
+      "limits": {
+        "effort": "19",
+        "lower": "-1.0472",
+        "upper": "1.0472",
+        "velocity": "4.1887902047863905"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_AR5_5_07R_W4C4A2_joint_7",
+      "limits": {
+        "effort": "19",
+        "lower": "-1.0472",
+        "upper": "1.0472",
+        "velocity": "4.1887902047863905"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_thumb_cmc_yaw",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.36",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_thumb_cmc_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "0.58",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_thumb_ip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.08",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "rh_thumb_cmc_pitch",
+        "multiplier": "1.86",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "right_rh_index_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_index_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "rh_index_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "right_rh_middle_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_middle_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "rh_middle_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "right_rh_ring_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_ring_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "rh_ring_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    },
+    {
+      "name": "right_rh_pinky_mcp_pitch",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.60",
+        "velocity": "1"
+      },
+      "mimic": null
+    },
+    {
+      "name": "right_rh_pinky_dip",
+      "limits": {
+        "effort": "100",
+        "lower": "0",
+        "upper": "1.43",
+        "velocity": "1"
+      },
+      "mimic": {
+        "joint": "rh_pinky_mcp_pitch",
+        "multiplier": "0.89",
+        "offset": "0"
+      }
+    }
+  ],
+  "robot_world_visual_bounds_m": [
+    [
+      -2.4957958601200163,
+      -1.9079350279959835,
+      0.0009456627217342012
+    ],
+    [
+      -0.9397551859217977,
+      -1.3142583657024385,
+      1.4749698203082358
+    ]
+  ],
+  "rigid_body_count": 45,
+  "sensor_prims": [],
+  "right_arm_independent": [
+    "right_AR5_5_07R_W4C4A2_joint_1",
+    "right_AR5_5_07R_W4C4A2_joint_2",
+    "right_AR5_5_07R_W4C4A2_joint_3",
+    "right_AR5_5_07R_W4C4A2_joint_4",
+    "right_AR5_5_07R_W4C4A2_joint_5",
+    "right_AR5_5_07R_W4C4A2_joint_6",
+    "right_AR5_5_07R_W4C4A2_joint_7"
+  ],
+  "right_hand_independent": [
+    "right_rh_thumb_cmc_yaw",
+    "right_rh_thumb_cmc_pitch",
+    "right_rh_index_mcp_pitch",
+    "right_rh_middle_mcp_pitch",
+    "right_rh_ring_mcp_pitch",
+    "right_rh_pinky_mcp_pitch"
+  ],
+  "right_hand_followers": [
+    {
+      "name": "right_rh_thumb_ip",
+      "path": "/dual_ar5_o6/Physics/right_rh_thumb_ip",
+      "limits_rad": [
+        0.0,
+        1.0799999726592127
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_thumb_cmc_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "1.8600000143051147"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_index_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_index_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_index_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_middle_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_middle_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal/right_rh_middle_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_middle_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_ring_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_ring_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal/right_rh_ring_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_ring_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    },
+    {
+      "name": "right_rh_pinky_dip",
+      "path": "/dual_ar5_o6/Physics/right_rh_pinky_dip",
+      "limits_rad": [
+        0.0,
+        1.4300000599684783
+      ],
+      "axis": "Y",
+      "body0": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal"
+      ],
+      "body1": [
+        "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal/right_rh_pinky_distal"
+      ],
+      "simulation_drive": {
+        "type": "force",
+        "stiffness": 50.0,
+        "damping": 2.0,
+        "max_force": 10.0
+      },
+      "mimic_relationships": {
+        "newton:mimicJoint": [
+          "/dual_ar5_o6/Physics/right_rh_pinky_mcp_pitch"
+        ]
+      },
+      "mimic_attributes": {
+        "newton:mimicCoef1": "0.8899999856948853"
+      },
+      "physical_limits_verified": false
+    }
+  ],
+  "hardware_status": "NOT VERIFIED: same models confirmed by user; live encoders, calibration, firmware, tactile, force/current interfaces and certified limits remain unverified",
+  "compatibility": "CUDA tensor operation and Phase 2 runtime probes required; distribution isaaclab 19.0.0 and source VERSION 3.0.0 recorded separately; no upgrade performed",
+  "references": [
+    "https://github.com/linker-bot/linkerhand-python-sdk",
+    "https://github.com/linker-bot/linkerhand-ros2-sdk"
+  ]
+}

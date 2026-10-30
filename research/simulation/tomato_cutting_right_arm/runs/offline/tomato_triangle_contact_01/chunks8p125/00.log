@@ -1,0 +1,30 @@
+{'stage': 'solve_start', 'depth_mm': 8.125, 'rows': 3587, 'elapsed_s': 0.344171266995545}
+ERROR in LDL_factor: Error in KKT matrix LDL factorization when computing the nonzero elements. The problem seems to be non-convex
+ERROR in osqp_setup: KKT matrix factorization.
+The problem seems to be non-convex.
+Traceback (most recent call last):
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/osqp/interface.py", line 131, in raises_error
+    return_value = fn(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^
+ValueError: 4
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 74, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 44, in main
+    x,lam,state,trace,ok,active,ids,free=solve_triangle_contact(model,guess,fixed,geometry,max_iterations=args.newton_steps)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_triangle_contact.py", line 124, in solve_triangle_contact
+    result=list(solve_linear_contact(model,initial,fixed,geometry['matrix'][used],geometry['bounds'][used],max_iterations=max_iterations))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_linear_contact.py", line 163, in solve_linear_contact
+    solver.setup(P=triu(Q,format='csc'),q=np.asarray(D@g[free]).ravel(),A=B,
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/osqp/interface.py", line 385, in setup
+    self._solver = self.raises_error(
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/osqp/interface.py", line 139, in raises_error
+    raise OSQPException(error_code)
+osqp.interface.OSQPException: 4

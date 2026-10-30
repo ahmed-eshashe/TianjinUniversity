@@ -1,0 +1,46 @@
+insertion_final 0 0 {'passed': True, 'flags': [], 'depth_mm': 0.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.135726087999501}
+ 
+insertion_final 1 0 {'passed': True, 'flags': [], 'depth_mm': 0.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.000946794138360863, 'runtime_s': 6.232669775999966}
+ 
+insertion_final 2 0 {'passed': True, 'flags': [], 'depth_mm': 0.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0015143508647803606, 'runtime_s': 4.967757410999184}
+ 
+insertion_final 3 0 {'passed': True, 'flags': [], 'depth_mm': 0.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.00031323797186501035, 'runtime_s': 13.383040381000683}
+ 
+insertion_final 4 0 {'passed': True, 'flags': [], 'depth_mm': 1.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0030935385795153383, 'runtime_s': 8.438602456999433}
+ 
+insertion_final 5 0 {'passed': True, 'flags': [], 'depth_mm': 1.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0017525624947389389, 'runtime_s': 11.281354521999674}
+ 
+insertion_final 6 0 {'passed': True, 'flags': [], 'depth_mm': 1.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0011142503952831682, 'runtime_s': 19.81748183200034}
+ 
+insertion_final 7 0 {'passed': True, 'flags': [], 'depth_mm': 1.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.002150834297330514, 'runtime_s': 11.225588000999778}
+ 
+insertion_final 8 0 {'passed': True, 'flags': [], 'depth_mm': 2.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0015159588666397601, 'runtime_s': 10.720203625000067}
+ 
+insertion_final 9 0 {'passed': True, 'flags': [], 'depth_mm': 2.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0011193925766992707, 'runtime_s': 15.662973323998813}
+ 
+insertion_final 10 0 {'passed': True, 'flags': [], 'depth_mm': 2.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.002447378379696579, 'runtime_s': 10.870675070998914}
+ 
+insertion_final 11 0 {'passed': True, 'flags': [], 'depth_mm': 2.75, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0019014665453751945, 'runtime_s': 11.631307865998679}
+ 
+insertion_final 12 1  Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 127, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 49, in main
+    x,lam,state,trace,ok,active,fixed_ids,free=solve_contact(model,points,x,fixed,A,b,labels)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupled_contact.py", line 163, in solve_contact
+    direction,linear_iterations=constrained_step(state['tangent_n_m'],g,x,fixed,[labels[i] for i in a],bounds[a])
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupled_contact.py", line 131, in constrained_step
+    if np.any(diagonal<=0):raise ValueError('Nonpositive reduced diagonal')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Nonpositive reduced diagonal
+
+SEQUENCE END insertion_final
+miss_final 0 0 {'passed': True, 'flags': [], 'depth_mm': 0.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1470034390004002}
+ 
+miss_final 1 0 {'passed': True, 'flags': [], 'depth_mm': 4.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.1562011639998673}
+ 
+SEQUENCE END miss_final
+COMPLETE

@@ -1,0 +1,574 @@
+{
+  "scene": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/scene/phase3.usda",
+  "knife_mass_kg": 0.25,
+  "mass_assumption": "provisional: 0.10 kg handle, 0.15 kg blade; not measured hardware",
+  "knife_dimensions_local_m": [
+    0.4382743835449219,
+    0.05195130035281181,
+    0.021097593009471893
+  ],
+  "knife_com_local_m": [
+    -0.19093716332175026,
+    0.005026592037801787,
+    0.0013825954921448907
+  ],
+  "knife_inertia_kg_m2": [
+    [
+      3.712360721850989e-05,
+      -4.445309626818741e-05,
+      -3.4929072688054916e-06
+    ],
+    [
+      -4.445309626818741e-05,
+      0.002719950407635366,
+      -1.1039526496614739e-07
+    ],
+    [
+      -3.4929072688054916e-06,
+      -1.1039526496614739e-07,
+      0.0027496215898954327
+    ]
+  ],
+  "principal_inertia_kg_m2": [
+    3.638274369781551e-05,
+    0.0027206866757180184,
+    0.0027496261853334754
+  ],
+  "inertia_positive_and_triangle_inequality": true,
+  "friction": {
+    "static": 0.8,
+    "dynamic": 0.6,
+    "restitution": 0.0,
+    "calibrated": false
+  },
+  "self_collision_enabled": true,
+  "fixed_assembly_and_adjacent_filtered_pairs": [
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals/left_lh_thumb_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal/left_lh_index_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal/left_lh_middle_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal/left_lh_ring_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal/left_lh_pinky_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "reason": "same welded assembly"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal/right_rh_middle_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal/right_rh_ring_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    },
+    {
+      "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal",
+      "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal/right_rh_pinky_distal",
+      "reason": "adjacent movable joint after welding fixed links"
+    }
+  ],
+  "home_rad": {
+    "left_AR5_5_07L_W4C4A2_joint_1": 0.0,
+    "left_AR5_5_07L_W4C4A2_joint_2": 0.0,
+    "left_AR5_5_07L_W4C4A2_joint_3": 0.0,
+    "left_AR5_5_07L_W4C4A2_joint_4": 0.0,
+    "left_AR5_5_07L_W4C4A2_joint_5": 0.0,
+    "left_AR5_5_07L_W4C4A2_joint_6": 0.0,
+    "left_AR5_5_07L_W4C4A2_joint_7": 0.0,
+    "left_lh_thumb_cmc_yaw": 0.0,
+    "left_lh_thumb_cmc_pitch": 0.0,
+    "left_lh_thumb_ip": 0.0,
+    "left_lh_index_mcp_pitch": 0.0,
+    "left_lh_index_dip": 0.0,
+    "left_lh_middle_mcp_pitch": 0.0,
+    "left_lh_middle_dip": 0.0,
+    "left_lh_ring_mcp_pitch": 0.0,
+    "left_lh_ring_dip": 0.0,
+    "left_lh_pinky_mcp_pitch": 0.0,
+    "left_lh_pinky_dip": 0.0,
+    "right_AR5_5_07R_W4C4A2_joint_1": -1.0327859923613538,
+    "right_AR5_5_07R_W4C4A2_joint_2": -1.7923999503858548,
+    "right_AR5_5_07R_W4C4A2_joint_3": 1.3983192884110816,
+    "right_AR5_5_07R_W4C4A2_joint_4": 1.4362848292530368,
+    "right_AR5_5_07R_W4C4A2_joint_5": -0.545299481044457,
+    "right_AR5_5_07R_W4C4A2_joint_6": 0.34165951540780254,
+    "right_AR5_5_07R_W4C4A2_joint_7": 0.8953846629621905,
+    "right_rh_thumb_cmc_yaw": 0.0,
+    "right_rh_thumb_cmc_pitch": 0.0,
+    "right_rh_thumb_ip": 0.0,
+    "right_rh_index_mcp_pitch": 0.0,
+    "right_rh_index_dip": 0.0,
+    "right_rh_middle_mcp_pitch": 0.0,
+    "right_rh_middle_dip": 0.0,
+    "right_rh_ring_mcp_pitch": 0.0,
+    "right_rh_ring_dip": 0.0,
+    "right_rh_pinky_mcp_pitch": 0.0,
+    "right_rh_pinky_dip": 0.0
+  },
+  "ready_change": "Right shoulder joint 2 +0.3 rad, separate Phase 3 reset only; clears torso intersection",
+  "knife_scale_baked": 0.7624999829567969,
+  "handle_centre_local_m": [
+    -0.08600338123358675,
+    0.007646160925731187,
+    0.0015865240473518353
+  ],
+  "knife_initial_pose_xyzw": [
+    -2.197465958675515,
+    -1.8249925808368839,
+    0.8735782808142989,
+    0.0,
+    0.0,
+    -0.5253108468554822,
+    0.8509104031424084
+  ],
+  "board_bounds_m": [
+    [
+      -2.4336242209112857,
+      -1.860385057507056,
+      0.8399309252356599
+    ],
+    [
+      -2.1349945853496815,
+      -1.39095889149378,
+      0.8616160089768693
+    ]
+  ],
+  "source_assets_modified": false,
+  "limitations": [
+    "No physical mass/friction/actuator calibration",
+    "Self-collision must still pass runtime tests",
+    "Mechanical flat pickup feasibility not established"
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "controller": "Scripted IK with contact-force feedback; no RL",
+  "robot_base_fixed": true,
+  "support_board_translated_with_knife": true,
+  "knife_yaw_changed": false,
+  "all_trials_require_wrapped_contact": true,
+  "cases": [
+    {
+      "name": "control",
+      "offset_world_xy_m": [
+        0.0,
+        0.0
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 81.1,
+      "passed": true,
+      "lift_passed": true,
+      "lift_m": 0.027286416967759908,
+      "relative_slip_m": 0.002780732316074543,
+      "initial_handle_world_m": [
+        -2.2626926453553637,
+        -1.7618007401896119,
+        0.8719522994596122
+      ],
+      "max_contact_n": 16.38479995727539,
+      "wrap_checks": {
+        "palm_contact": true,
+        "thumb_contact": true,
+        "at_least_two_contacts_away_from_tips": true,
+        "at_least_three_fingers_contact": true,
+        "at_least_three_fingers_wrap_and_contact": true,
+        "handle_near_palm": true,
+        "wrap_retained_during_hold": true
+      },
+      "status": "passed",
+      "error": null,
+      "memory": {
+        "exit_code": 0,
+        "reason": "normal exit",
+        "peak_rss_gb": 8.13994,
+        "lowest_available_ram_gb": 3.628124
+      }
+    },
+    {
+      "name": "x_plus_5cm",
+      "offset_world_xy_m": [
+        0.05,
+        0.0
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 82.6,
+      "passed": false,
+      "lift_passed": true,
+      "lift_m": 0.030779389114702904,
+      "relative_slip_m": 0.01006121422700598,
+      "initial_handle_world_m": [
+        -2.212846136236936,
+        -1.761893663085234,
+        0.8719886842337474
+      ],
+      "max_contact_n": 14.034971237182617,
+      "wrap_checks": {
+        "palm_contact": true,
+        "thumb_contact": true,
+        "at_least_two_contacts_away_from_tips": true,
+        "at_least_three_fingers_contact": true,
+        "at_least_three_fingers_wrap_and_contact": true,
+        "handle_near_palm": true,
+        "wrap_retained_during_hold": false
+      },
+      "status": "failed",
+      "error": "Physical grasp/lift acceptance checks did not pass",
+      "memory": {
+        "exit_code": 0,
+        "reason": "normal exit",
+        "peak_rss_gb": 8.19012,
+        "lowest_available_ram_gb": 3.51718
+      }
+    },
+    {
+      "name": "x_minus_5cm",
+      "offset_world_xy_m": [
+        -0.05,
+        0.0
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 39.6,
+      "passed": false,
+      "status": "failed",
+      "error": "Grasp waypoint unreachable",
+      "memory": {
+        "exit_code": 0,
+        "reason": "normal exit",
+        "peak_rss_gb": 8.188408,
+        "lowest_available_ram_gb": 3.644392
+      }
+    },
+    {
+      "name": "y_plus_5cm",
+      "offset_world_xy_m": [
+        0.0,
+        0.05
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 83.1,
+      "passed": true,
+      "lift_passed": true,
+      "lift_m": 0.03018313903848624,
+      "relative_slip_m": 0.00857672928813354,
+      "initial_handle_world_m": [
+        -2.2628371584096,
+        -1.7118892049670233,
+        0.8719887200490195
+      ],
+      "max_contact_n": 12.887271881103516,
+      "wrap_checks": {
+        "palm_contact": true,
+        "thumb_contact": true,
+        "at_least_two_contacts_away_from_tips": true,
+        "at_least_three_fingers_contact": true,
+        "at_least_three_fingers_wrap_and_contact": true,
+        "handle_near_palm": true,
+        "wrap_retained_during_hold": true
+      },
+      "status": "passed",
+      "error": null,
+      "memory": {
+        "exit_code": 0,
+        "reason": "normal exit",
+        "peak_rss_gb": 8.209372,
+        "lowest_available_ram_gb": 3.829632
+      }
+    },
+    {
+      "name": "y_minus_5cm",
+      "offset_world_xy_m": [
+        0.0,
+        -0.05
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 81.6,
+      "passed": true,
+      "lift_passed": true,
+      "lift_m": 0.028742558484573077,
+      "relative_slip_m": 0.0016676990770891683,
+      "initial_handle_world_m": [
+        -2.2626926453553637,
+        -1.811800692505896,
+        0.8719522994596122
+      ],
+      "max_contact_n": 12.066289901733398,
+      "wrap_checks": {
+        "palm_contact": true,
+        "thumb_contact": true,
+        "at_least_two_contacts_away_from_tips": true,
+        "at_least_three_fingers_contact": true,
+        "at_least_three_fingers_wrap_and_contact": true,
+        "handle_near_palm": true,
+        "wrap_retained_during_hold": true
+      },
+      "status": "passed",
+      "error": null,
+      "memory": {
+        "exit_code": 0,
+        "reason": "normal exit",
+        "peak_rss_gb": 8.2212,
+        "lowest_available_ram_gb": 3.936792
+      }
+    }
+  ],
+  "completed_cases": 5,
+  "passed_cases": 3,
+  "visual_repeat": {
+    "case": "y_minus_5cm",
+    "passed": true,
+    "lift_m": 0.02736196881965902,
+    "relative_slip_m": 0.002707461445736764,
+    "memory": {
+      "exit_code": 0,
+      "reason": "normal exit",
+      "peak_rss_gb": 8.242048,
+      "lowest_available_ram_gb": 3.80796
+    },
+    "images_visually_inspected": true,
+    "report": "visual_repeat_y_minus_5cm/kitchen_grasp_report.json"
+  }
+}

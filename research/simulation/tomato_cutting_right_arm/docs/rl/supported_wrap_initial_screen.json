@@ -1,0 +1,1041 @@
+{
+  "scope": "Offline mesh proposals only; not physical grasp validation",
+  "source_run": "runs/rl/phase3/in_place_tilt_07",
+  "supported_handle_world_m": [
+    -2.2107054799777166,
+    -1.5145250745104712,
+    0.8859577715799878
+  ],
+  "supported_sample": {
+    "handle_height_m": 0.8859577715799878,
+    "handle_in_palm_m": [
+      0.07791124133875846,
+      0.01702711055009657,
+      0.09902685122986954
+    ],
+    "contacts": [
+      {
+        "part": "thumb",
+        "body": "right_rh_thumb_distal",
+        "force_n": 3.0124549865722656,
+        "on_handle": true,
+        "point_world_m": [
+          -2.2013041973114014,
+          -1.5356403589248657,
+          0.8863152265548706
+        ],
+        "normal_world": [
+          0.8871217966079712,
+          -0.4521266520023346,
+          -0.09271721541881561
+        ],
+        "radial_vector": [
+          0.018485232544661733,
+          -0.003302258120649621
+        ],
+        "curl_rad": 0.0,
+        "proximal": false,
+        "distance_from_tip_m": 0.009811475689243149
+      },
+      {
+        "part": "index",
+        "body": "right_rh_index_distal",
+        "force_n": 2.803046464920044,
+        "on_handle": true,
+        "point_world_m": [
+          -2.228511095046997,
+          -1.5158575773239136,
+          0.8940455317497253
+        ],
+        "normal_world": [
+          -0.8647089004516602,
+          0.4318488836288452,
+          0.2564862072467804
+        ],
+        "radial_vector": [
+          -0.015595584720380489,
+          -0.007077416549133795
+        ],
+        "curl_rad": 1.6362029314041138,
+        "proximal": false,
+        "distance_from_tip_m": 0.0004910871077705714
+      }
+    ],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 0.7059289216995239,
+    "support_clearance_m": -0.00010663987621961635,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "knife_friction_by_hand_body_n": {
+      "right_rh_thumb_distal": [
+        -0.4126523435115814,
+        -0.5164172053337097,
+        -1.4300141334533691
+      ],
+      "right_rh_index_distal": [
+        0.30811816453933716,
+        1.0677094459533691,
+        -0.7589359879493713
+      ],
+      "right_rh_middle_distal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_ring_distal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_pinky_distal": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "phase": "supported_in_place_tilt",
+    "control_step": 567,
+    "sim_s": 28.35,
+    "q_rad": [
+      -1.0417670011520386,
+      -1.5110315084457397,
+      1.1410366296768188,
+      1.5269595384597778,
+      -1.1915477514266968,
+      -0.08374309539794922,
+      0.35922321677207947,
+      0.8591291308403015,
+      0.1419910341501236,
+      0.8657163381576538,
+      0.9160710573196411,
+      0.916071891784668,
+      0.8801082968711853
+    ],
+    "palm_world_m": [
+      -2.2155154048075314,
+      -1.4981511422333724,
+      0.970967592131308
+    ],
+    "knife_pose_xyzw": [
+      -2.1619925498962402,
+      -1.4433019161224365,
+      0.8894036412239075,
+      0.06408291310071945,
+      -0.001913641463033855,
+      0.5048508048057556,
+      0.8608224987983704
+    ],
+    "in_place_motion": {
+      "footprint_margin_m": 0.025936319454322287,
+      "centre_xy_shift_m": 0.02770406841046067,
+      "rotation_deg": 7.0850032465193555,
+      "within_bounds": true
+    },
+    "estimated_hand_drive_torque_nm": [
+      0.03350074216723442,
+      0.5087569355964661,
+      0.21789109706878662,
+      0.0007763244211673737,
+      0.0007688574842177331,
+      0.000646779895760119
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "candidates": [
+    {
+      "score": 42.14527615866248,
+      "roll_delta_deg": 10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.025,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.35335040036852905,
+          -0.3802833951419923,
+          -0.8547093271625616
+        ],
+        [
+          -0.07961696084094971,
+          -0.9225576304451957,
+          0.3775560329988061
+        ],
+        [
+          -0.9320969016716287,
+          -0.06536021639058562,
+          -0.35626311626033497
+        ]
+      ],
+      "minimum_board_gap_m": 0.008951570974048306,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.010355037999027983,
+        "right_rh_thumb_metacarpals": 0.04846573624957953,
+        "right_rh_thumb_metacarpals_base2": 0.07690352164262718,
+        "right_rh_index_distal": 0.012932630668734693,
+        "right_rh_index_proximal": 0.00733865782256464,
+        "right_rh_middle_distal": 0.00495995778103929,
+        "right_rh_middle_proximal": -0.00044176845025772904,
+        "right_rh_ring_distal": 0.006097309155553066,
+        "right_rh_ring_proximal": 0.0008598784326460107,
+        "right_rh_pinky_distal": 0.010519586313082224,
+        "right_rh_pinky_proximal": 0.0053584410483256545,
+        "right_rh_hand_base_link": 0.016869454907446096
+      }
+    },
+    {
+      "score": 44.58389552284985,
+      "roll_delta_deg": 10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.025,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.35335040036852905,
+          -0.3802833951419923,
+          -0.8547093271625616
+        ],
+        [
+          -0.07961696084094971,
+          -0.9225576304451957,
+          0.3775560329988061
+        ],
+        [
+          -0.9320969016716287,
+          -0.06536021639058562,
+          -0.35626311626033497
+        ]
+      ],
+      "minimum_board_gap_m": 0.009715048221975331,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.011472271161508826,
+        "right_rh_thumb_metacarpals": 0.04969177802825634,
+        "right_rh_thumb_metacarpals_base2": 0.07701117596708189,
+        "right_rh_index_distal": 0.012932630668734693,
+        "right_rh_index_proximal": 0.00733865782256464,
+        "right_rh_middle_distal": 0.00495995778103929,
+        "right_rh_middle_proximal": -0.00044176845025772904,
+        "right_rh_ring_distal": 0.006097309155553066,
+        "right_rh_ring_proximal": 0.0008598784326460107,
+        "right_rh_pinky_distal": 0.010519586313082224,
+        "right_rh_pinky_proximal": 0.0053584410483256545,
+        "right_rh_hand_base_link": 0.016869454907446096
+      }
+    },
+    {
+      "score": 47.93795651179283,
+      "roll_delta_deg": 0,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.025,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.4879870826543486,
+          -0.3829296238972297,
+          -0.78436822367076
+        ],
+        [
+          -0.16139231752745822,
+          -0.9227177960733949,
+          0.3500634066173901
+        ],
+        [
+          -0.8578001672916677,
+          -0.04423541512614356,
+          -0.5120762648697982
+        ]
+      ],
+      "minimum_board_gap_m": 0.01751825686965114,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.01033570485692513,
+        "right_rh_thumb_metacarpals": 0.048100345110133946,
+        "right_rh_thumb_metacarpals_base2": 0.07739555386436597,
+        "right_rh_index_distal": 0.012674947645266166,
+        "right_rh_index_proximal": 0.007644854320280989,
+        "right_rh_middle_distal": 0.004823971129953766,
+        "right_rh_middle_proximal": -1.9314395404923523e-05,
+        "right_rh_ring_distal": 0.0057959271409898094,
+        "right_rh_ring_proximal": 0.0013469191622882126,
+        "right_rh_pinky_distal": 0.01019993840309713,
+        "right_rh_pinky_proximal": 0.00582252958049892,
+        "right_rh_hand_base_link": 0.018353102060334886
+      }
+    },
+    {
+      "score": 49.992698951990526,
+      "roll_delta_deg": 0,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.025,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.4879870826543486,
+          -0.3829296238972297,
+          -0.78436822367076
+        ],
+        [
+          -0.16139231752745822,
+          -0.9227177960733949,
+          0.3500634066173901
+        ],
+        [
+          -0.8578001672916677,
+          -0.04423541512614356,
+          -0.5120762648697982
+        ]
+      ],
+      "minimum_board_gap_m": 0.017612445157890955,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.011286018752928006,
+        "right_rh_thumb_metacarpals": 0.04934580355421727,
+        "right_rh_thumb_metacarpals_base2": 0.07749574009734818,
+        "right_rh_index_distal": 0.012674947645266166,
+        "right_rh_index_proximal": 0.007644854320280989,
+        "right_rh_middle_distal": 0.004823971129953766,
+        "right_rh_middle_proximal": -1.9314395404923523e-05,
+        "right_rh_ring_distal": 0.0057959271409898094,
+        "right_rh_ring_proximal": 0.0013469191622882126,
+        "right_rh_pinky_distal": 0.01019993840309713,
+        "right_rh_pinky_proximal": 0.00582252958049892,
+        "right_rh_hand_base_link": 0.018353102060334886
+      }
+    },
+    {
+      "score": 50.05207809657166,
+      "roll_delta_deg": -10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.025,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.02256512321276616,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.00997672043994173,
+        "right_rh_thumb_metacarpals": 0.047945683195162944,
+        "right_rh_thumb_metacarpals_base2": 0.07851980121027155,
+        "right_rh_index_distal": 0.012331763475083121,
+        "right_rh_index_proximal": 0.008012301796139959,
+        "right_rh_middle_distal": 0.004480383018158313,
+        "right_rh_middle_proximal": 0.0005486702285723843,
+        "right_rh_ring_distal": 0.005544480451622882,
+        "right_rh_ring_proximal": 0.002006317309848793,
+        "right_rh_pinky_distal": 0.009962457879008166,
+        "right_rh_pinky_proximal": 0.006466171905701271,
+        "right_rh_hand_base_link": 0.01883741232089388
+      }
+    },
+    {
+      "score": 51.9730044826574,
+      "roll_delta_deg": -10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.025,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.0228307438910208,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.010896981903151373,
+        "right_rh_thumb_metacarpals": 0.049197061096514005,
+        "right_rh_thumb_metacarpals_base2": 0.07859396836690817,
+        "right_rh_index_distal": 0.012331763475083121,
+        "right_rh_index_proximal": 0.008012301796139959,
+        "right_rh_middle_distal": 0.004480383018158313,
+        "right_rh_middle_proximal": 0.0005486702285723843,
+        "right_rh_ring_distal": 0.005544480451622882,
+        "right_rh_ring_proximal": 0.002006317309848793,
+        "right_rh_pinky_distal": 0.009962457879008166,
+        "right_rh_pinky_proximal": 0.006466171905701271,
+        "right_rh_hand_base_link": 0.01883741232089388
+      }
+    },
+    {
+      "score": 64.25025799282642,
+      "roll_delta_deg": 20,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.035,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.20858307715081545,
+          -0.38086673602170273,
+          -0.9007961086275131
+        ],
+        [
+          0.005651141510276307,
+          -0.9205702977200148,
+          0.39053603105899626
+        ],
+        [
+          -0.9779883253525713,
+          -0.08654973337831227,
+          -0.18986305361026745
+        ]
+      ],
+      "minimum_board_gap_m": 0.005577870240323524,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.006798116742639651,
+        "right_rh_thumb_metacarpals": 0.045236043628332376,
+        "right_rh_thumb_metacarpals_base2": 0.07785400679889232,
+        "right_rh_index_distal": 0.009571309830200173,
+        "right_rh_index_proximal": 0.006980868125244968,
+        "right_rh_middle_distal": 0.0015265247382650338,
+        "right_rh_middle_proximal": -0.0009045782156697768,
+        "right_rh_ring_distal": 0.002904866747991036,
+        "right_rh_ring_proximal": 0.00037420163619955593,
+        "right_rh_pinky_distal": 0.007493187094019638,
+        "right_rh_pinky_proximal": 0.004840429082467346,
+        "right_rh_hand_base_link": 0.023914433850010172
+      }
+    },
+    {
+      "score": 66.14292272245228,
+      "roll_delta_deg": 20,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.035,
+        -0.025,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.20858307715081545,
+          -0.38086673602170273,
+          -0.9007961086275131
+        ],
+        [
+          0.005651141510276307,
+          -0.9205702977200148,
+          0.39053603105899626
+        ],
+        [
+          -0.9779883253525713,
+          -0.08654973337831227,
+          -0.18986305361026745
+        ]
+      ],
+      "minimum_board_gap_m": 0.006278337432817138,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.008070999847776983,
+        "right_rh_thumb_metacarpals": 0.046775696629367716,
+        "right_rh_thumb_metacarpals_base2": 0.07785573870711052,
+        "right_rh_index_distal": 0.009571309830200173,
+        "right_rh_index_proximal": 0.006980868125244968,
+        "right_rh_middle_distal": 0.0015265247382650338,
+        "right_rh_middle_proximal": -0.0009045782156697768,
+        "right_rh_ring_distal": 0.002904866747991036,
+        "right_rh_ring_proximal": 0.00037420163619955593,
+        "right_rh_pinky_distal": 0.007493187094019638,
+        "right_rh_pinky_proximal": 0.004840429082467346,
+        "right_rh_hand_base_link": 0.023914433850010172
+      }
+    },
+    {
+      "score": 86.51111972699373,
+      "roll_delta_deg": -10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 20,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        0.02,
+        0.12500000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.018756835141953254,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.006917361159180999,
+        "right_rh_thumb_metacarpals": 0.03879903329259703,
+        "right_rh_thumb_metacarpals_base2": 0.07427829409811504,
+        "right_rh_index_distal": 0.0028372893910613983,
+        "right_rh_index_proximal": 0.0027351583620678216,
+        "right_rh_middle_distal": 0.00039244767765182764,
+        "right_rh_middle_proximal": 0.00038932804952442057,
+        "right_rh_ring_distal": 0.0019783653946683494,
+        "right_rh_ring_proximal": 0.002092543093910035,
+        "right_rh_pinky_distal": 0.004404065983047323,
+        "right_rh_pinky_proximal": 0.004549646455394379,
+        "right_rh_hand_base_link": 0.028385114314246368
+      }
+    },
+    {
+      "score": 87.32400343938863,
+      "roll_delta_deg": -10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 20,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        0.02,
+        0.12500000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.017240942682639537,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.007481892977749351,
+        "right_rh_thumb_metacarpals": 0.03823097886453655,
+        "right_rh_thumb_metacarpals_base2": 0.07435315986447877,
+        "right_rh_index_distal": 0.0028372893910613983,
+        "right_rh_index_proximal": 0.0027351583620678216,
+        "right_rh_middle_distal": 0.00039244767765182764,
+        "right_rh_middle_proximal": 0.00038932804952442057,
+        "right_rh_ring_distal": 0.0019783653946683494,
+        "right_rh_ring_proximal": 0.002092543093910035,
+        "right_rh_pinky_distal": 0.004404065983047323,
+        "right_rh_pinky_proximal": 0.004549646455394379,
+        "right_rh_hand_base_link": 0.028385114314246368
+      }
+    },
+    {
+      "score": 90.29331377196323,
+      "roll_delta_deg": -10,
+      "finger_deg": 75,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        -0.025,
+        0.12500000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.03175397577463912,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.00406609961819869,
+        "right_rh_thumb_metacarpals": 0.038522366137381914,
+        "right_rh_thumb_metacarpals_base2": 0.07855743697977645,
+        "right_rh_index_distal": 0.0017051970310567183,
+        "right_rh_index_proximal": 0.0021339341056140076,
+        "right_rh_middle_distal": -0.000774188932937861,
+        "right_rh_middle_proximal": -0.00023177908222492272,
+        "right_rh_ring_distal": 0.0007970751588624314,
+        "right_rh_ring_proximal": 0.0014640415024613496,
+        "right_rh_pinky_distal": 0.003219979707593204,
+        "right_rh_pinky_proximal": 0.003921303914149313,
+        "right_rh_hand_base_link": 0.029712004717756077
+      }
+    },
+    {
+      "score": 91.13957669262146,
+      "roll_delta_deg": -10,
+      "finger_deg": 75,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        -0.025,
+        0.12500000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.03175397577463912,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.004999579513488894,
+        "right_rh_thumb_metacarpals": 0.0403949122434495,
+        "right_rh_thumb_metacarpals_base2": 0.07848803948826426,
+        "right_rh_index_distal": 0.0017051970310567183,
+        "right_rh_index_proximal": 0.0021339341056140076,
+        "right_rh_middle_distal": -0.000774188932937861,
+        "right_rh_middle_proximal": -0.00023177908222492272,
+        "right_rh_ring_distal": 0.0007970751588624314,
+        "right_rh_ring_proximal": 0.0014640415024613496,
+        "right_rh_pinky_distal": 0.003219979707593204,
+        "right_rh_pinky_proximal": 0.003921303914149313,
+        "right_rh_hand_base_link": 0.029712004717756077
+      }
+    },
+    {
+      "score": 95.23695861998455,
+      "roll_delta_deg": 0,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 20,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        0.02,
+        0.12500000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.4879870826543486,
+          -0.3829296238972297,
+          -0.78436822367076
+        ],
+        [
+          -0.16139231752745822,
+          -0.9227177960733949,
+          0.3500634066173901
+        ],
+        [
+          -0.8578001672916677,
+          -0.04423541512614356,
+          -0.5120762648697982
+        ]
+      ],
+      "minimum_board_gap_m": 0.013760594790593883,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.007218438162928123,
+        "right_rh_thumb_metacarpals": 0.03823570542334648,
+        "right_rh_thumb_metacarpals_base2": 0.07291913724868057,
+        "right_rh_index_distal": 0.0009500267753804886,
+        "right_rh_index_proximal": 0.0011449636100647892,
+        "right_rh_middle_distal": -0.0005061879284106452,
+        "right_rh_middle_proximal": -0.00013440812548976,
+        "right_rh_ring_distal": 0.0008534498565122978,
+        "right_rh_ring_proximal": 0.0013266001064894672,
+        "right_rh_pinky_distal": 0.003250517897069441,
+        "right_rh_pinky_proximal": 0.0031516310410782677,
+        "right_rh_hand_base_link": 0.029976903502732064
+      }
+    },
+    {
+      "score": 95.6342841384097,
+      "roll_delta_deg": 0,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 20,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        0.02,
+        0.12500000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.4879870826543486,
+          -0.3829296238972297,
+          -0.78436822367076
+        ],
+        [
+          -0.16139231752745822,
+          -0.9227177960733949,
+          0.3500634066173901
+        ],
+        [
+          -0.8578001672916677,
+          -0.04423541512614356,
+          -0.5120762648697982
+        ]
+      ],
+      "minimum_board_gap_m": 0.012277650160209652,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0074885983131871,
+        "right_rh_thumb_metacarpals": 0.0376880528139234,
+        "right_rh_thumb_metacarpals_base2": 0.07301034993940893,
+        "right_rh_index_distal": 0.0009500267753804886,
+        "right_rh_index_proximal": 0.0011449636100647892,
+        "right_rh_middle_distal": -0.0005061879284106452,
+        "right_rh_middle_proximal": -0.00013440812548976,
+        "right_rh_ring_distal": 0.0008534498565122978,
+        "right_rh_ring_proximal": 0.0013266001064894672,
+        "right_rh_pinky_distal": 0.003250517897069441,
+        "right_rh_pinky_proximal": 0.0031516310410782677,
+        "right_rh_hand_base_link": 0.029976903502732064
+      }
+    },
+    {
+      "score": 98.33972119100245,
+      "roll_delta_deg": 30,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        -0.01,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.05808379486137798,
+          -0.384661922018916,
+          -0.921228244531839
+        ],
+        [
+          0.09182116138401962,
+          -0.916816181997068,
+          0.38860901012509774
+        ],
+        [
+          -0.9940800506481309,
+          -0.10716013333806451,
+          -0.017932058620723366
+        ]
+      ],
+      "minimum_board_gap_m": 0.004752497845323833,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0025284166504627448,
+        "right_rh_thumb_metacarpals": 0.0405887929436924,
+        "right_rh_thumb_metacarpals_base2": 0.07754467783292832,
+        "right_rh_index_distal": 0.005951678588005882,
+        "right_rh_index_proximal": 0.004579300341705811,
+        "right_rh_middle_distal": 0.00045593538982380277,
+        "right_rh_middle_proximal": -0.00036429658571288104,
+        "right_rh_ring_distal": 0.002796163964269155,
+        "right_rh_ring_proximal": 0.0019864592579604545,
+        "right_rh_pinky_distal": 0.006724499536697376,
+        "right_rh_pinky_proximal": 0.005518661748906278,
+        "right_rh_hand_base_link": 0.030853777680313985
+      }
+    },
+    {
+      "score": 98.94432905799522,
+      "roll_delta_deg": 30,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 30,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.045000000000000005,
+        -0.01,
+        0.13000000000000006
+      ],
+      "hand_rotation_world": [
+        [
+          0.05808379486137798,
+          -0.384661922018916,
+          -0.921228244531839
+        ],
+        [
+          0.09182116138401962,
+          -0.916816181997068,
+          0.38860901012509774
+        ],
+        [
+          -0.9940800506481309,
+          -0.10716013333806451,
+          -0.017932058620723366
+        ]
+      ],
+      "minimum_board_gap_m": 0.005363016038384849,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0035268923187793677,
+        "right_rh_thumb_metacarpals": 0.04173110414253027,
+        "right_rh_thumb_metacarpals_base2": 0.07768007713829968,
+        "right_rh_index_distal": 0.005951678588005882,
+        "right_rh_index_proximal": 0.004579300341705811,
+        "right_rh_middle_distal": 0.00045593538982380277,
+        "right_rh_middle_proximal": -0.00036429658571288104,
+        "right_rh_ring_distal": 0.002796163964269155,
+        "right_rh_ring_proximal": 0.0019864592579604545,
+        "right_rh_pinky_distal": 0.006724499536697376,
+        "right_rh_pinky_proximal": 0.005518661748906278,
+        "right_rh_hand_base_link": 0.030853777680313985
+      }
+    },
+    {
+      "score": 101.6460478729502,
+      "roll_delta_deg": -10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 10,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.060000000000000005,
+        0.02,
+        0.10000000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.007175671232553027,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0056982872908021495,
+        "right_rh_thumb_metacarpals": 0.02044035786371652,
+        "right_rh_thumb_metacarpals_base2": 0.061328630121191885,
+        "right_rh_index_distal": -0.0007244357382400896,
+        "right_rh_index_proximal": 0.0007409567748723894,
+        "right_rh_middle_distal": 0.0005662908276284767,
+        "right_rh_middle_proximal": 0.004898787931735181,
+        "right_rh_ring_distal": 0.0008395740151679043,
+        "right_rh_ring_proximal": 0.003945414443334853,
+        "right_rh_pinky_distal": 0.0006135962163286435,
+        "right_rh_pinky_proximal": 0.001972603147682876,
+        "right_rh_hand_base_link": 0.03134913089583181
+      }
+    },
+    {
+      "score": 102.28617733704195,
+      "roll_delta_deg": -10,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 10,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.060000000000000005,
+        0.02,
+        0.10000000000000002
+      ],
+      "hand_rotation_world": [
+        [
+          0.608402256546468,
+          -0.38872501796574355,
+          -0.6919100769873909
+        ],
+        [
+          -0.2371902257166567,
+          -0.9210459280530472,
+          0.3088935014554074
+        ],
+        [
+          -0.7573555908908617,
+          -0.023817195981740976,
+          -0.6525681957634162
+        ]
+      ],
+      "minimum_board_gap_m": 0.004874419051080214,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.006234723144569833,
+        "right_rh_thumb_metacarpals": 0.019431652208917086,
+        "right_rh_thumb_metacarpals_base2": 0.061526705970437044,
+        "right_rh_index_distal": -0.0007244357382400896,
+        "right_rh_index_proximal": 0.0007409567748723894,
+        "right_rh_middle_distal": 0.0005662908276284767,
+        "right_rh_middle_proximal": 0.004898787931735181,
+        "right_rh_ring_distal": 0.0008395740151679043,
+        "right_rh_ring_proximal": 0.003945414443334853,
+        "right_rh_pinky_distal": 0.0006135962163286435,
+        "right_rh_pinky_proximal": 0.001972603147682876,
+        "right_rh_hand_base_link": 0.03134913089583181
+      }
+    },
+    {
+      "score": 103.18227714325444,
+      "roll_delta_deg": 30,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 20,
+      "thumb_yaw_deg": 40,
+      "handle_in_hand_m": [
+        0.05500000000000001,
+        -0.025,
+        0.11000000000000003
+      ],
+      "hand_rotation_world": [
+        [
+          0.05808379486137798,
+          -0.384661922018916,
+          -0.921228244531839
+        ],
+        [
+          0.09182116138401962,
+          -0.916816181997068,
+          0.38860901012509774
+        ],
+        [
+          -0.9940800506481309,
+          -0.10716013333806451,
+          -0.017932058620723366
+        ]
+      ],
+      "minimum_board_gap_m": 0.004871481661615551,
+      "gaps_m": {
+        "right_rh_thumb_distal": 0.0007330945583722132,
+        "right_rh_thumb_metacarpals": 0.0318697551391466,
+        "right_rh_thumb_metacarpals_base2": 0.06541368428860998,
+        "right_rh_index_distal": -0.00022627856792703516,
+        "right_rh_index_proximal": 0.0007189867778849002,
+        "right_rh_middle_distal": 0.0011720519358760645,
+        "right_rh_middle_proximal": 0.002636978569752202,
+        "right_rh_ring_distal": 0.0016167436535338836,
+        "right_rh_ring_proximal": 0.003056445635017141,
+        "right_rh_pinky_distal": 0.0016187656932347416,
+        "right_rh_pinky_proximal": 0.0027818680487770586,
+        "right_rh_hand_base_link": 0.03205068760618239
+      }
+    },
+    {
+      "score": 103.19914683462441,
+      "roll_delta_deg": 30,
+      "finger_deg": 85,
+      "thumb_pitch_deg": 20,
+      "thumb_yaw_deg": 50,
+      "handle_in_hand_m": [
+        0.05500000000000001,
+        -0.025,
+        0.11000000000000003
+      ],
+      "hand_rotation_world": [
+        [
+          0.05808379486137798,
+          -0.384661922018916,
+          -0.921228244531839
+        ],
+        [
+          0.09182116138401962,
+          -0.916816181997068,
+          0.38860901012509774
+        ],
+        [
+          -0.9940800506481309,
+          -0.10716013333806451,
+          -0.017932058620723366
+        ]
+      ],
+      "minimum_board_gap_m": 0.004115816899074365,
+      "gaps_m": {
+        "right_rh_thumb_distal": -0.000840312171287938,
+        "right_rh_thumb_metacarpals": 0.029338907093195435,
+        "right_rh_thumb_metacarpals_base2": 0.06546920388071598,
+        "right_rh_index_distal": -0.00022627856792703516,
+        "right_rh_index_proximal": 0.0007189867778849002,
+        "right_rh_middle_distal": 0.0011720519358760645,
+        "right_rh_middle_proximal": 0.002636978569752202,
+        "right_rh_ring_distal": 0.0016167436535338836,
+        "right_rh_ring_proximal": 0.003056445635017141,
+        "right_rh_pinky_distal": 0.0016187656932347416,
+        "right_rh_pinky_proximal": 0.0027818680487770586,
+        "right_rh_hand_base_link": 0.03205068760618239
+      }
+    }
+  ]
+}

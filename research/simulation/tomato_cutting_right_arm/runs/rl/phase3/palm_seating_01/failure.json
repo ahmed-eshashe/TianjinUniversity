@@ -1,0 +1,112 @@
+{
+  "phase": "coordinated_palm_seating",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 284, in <module>\n    move(target,orientation,seat_feedback,settle_steps=2)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 165, in move\n    wait_targets(100)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 137, in wait_targets\n    step()\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 97, in step\n    env.step(torch.zeros(1,13));controls+=1\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/IsaacLab/source/isaaclab/isaaclab/envs/direct_rl_env.py\", line 425, in step\n    self._apply_action()\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 54, in _apply_action\n    raise RuntimeError('Physics-substep excessive robot contact stop')\nRuntimeError: Physics-substep excessive robot contact stop\n",
+  "training": false,
+  "last_sample": {
+    "handle_height_m": 0.8750708028068718,
+    "handle_in_palm_m": [
+      0.04398345581189155,
+      0.012011258614246527,
+      0.1294493401349139
+    ],
+    "contacts": [],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 2.413175582885742,
+    "support_clearance_m": -0.0003610077003536327,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "knife_friction_by_hand_body_n": {
+      "right_rh_middle_proximal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_middle_distal": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "phase": "coordinated_palm_seating",
+    "control_step": 773,
+    "sim_s": 38.650000000000006,
+    "q_rad": [
+      -1.1037688255310059,
+      -1.5008777379989624,
+      1.1550406217575073,
+      1.5077956914901733,
+      -1.1795698404312134,
+      -0.08916981518268585,
+      0.40214961767196655,
+      0.8707408308982849,
+      0.545947253704071,
+      1.4829392433166504,
+      1.4829416275024414,
+      1.482943058013916,
+      1.4829487800598145
+    ],
+    "palm_world_m": [
+      -2.2154582586630394,
+      -1.4981930004492505,
+      0.9463238686678712
+    ],
+    "knife_pose_xyzw": [
+      -2.208477735519409,
+      -1.417630910873413,
+      0.87581467628479,
+      0.057764358818531036,
+      0.01592511683702469,
+      0.5504864454269409,
+      0.8326911330223083
+    ],
+    "in_place_motion": {
+      "footprint_margin_m": 0.02132894368770777,
+      "centre_xy_shift_m": 0.012483290082203325,
+      "rotation_deg": 0.7733396941520125,
+      "within_bounds": true
+    },
+    "estimated_hand_drive_torque_nm": [
+      -0.0021177895832806826,
+      -0.0178283229470253,
+      0.0017983349971473217,
+      0.0017952993512153625,
+      0.001789976842701435,
+      0.001787577522918582
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "substep_event": {
+    "contacts": [
+      {
+        "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+        "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+        "force_n": 9289.7197265625
+      },
+      {
+        "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+        "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+        "force_n": 9289.7197265625
+      },
+      {
+        "body": "/Indoor/RZ/SM_kitchen_knife_02",
+        "other": "/Indoor/RZ/SM_kitchen_Board",
+        "force_n": 2.41013765335083
+      }
+    ]
+  }
+}

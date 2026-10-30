@@ -1,0 +1,231 @@
+{
+  "status": "draft_not_frozen_not_runtime_configuration",
+  "version": "tomato-provisional-0.1",
+  "purpose": "specification only; no asset generated",
+  "units": "SI; explicit degrees only where named",
+  "coordinates": {
+    "board_frame": "z up; x is slice normal from exposed end into remainder; y is drawing direction",
+    "knife": "cutting edge and blade faces must be identified from existing geometry",
+    "cut_plane": "initial end slice at x_end + target thickness; no shared mechanical nodes across planned interface"
+  },
+  "geometry": {
+    "shape": "rounded ellipsoid with mild adjustable asymmetry",
+    "width_m": {
+      "value": 0.065,
+      "unit": "m",
+      "status": "provisional",
+      "source": "synthetic research proposal",
+      "uncertainty": null,
+      "note": "synthetic nominal; not measured"
+    },
+    "depth_m": {
+      "value": 0.065,
+      "unit": "m",
+      "status": "provisional",
+      "source": "synthetic research proposal",
+      "uncertainty": null,
+      "note": "synthetic nominal"
+    },
+    "height_m": {
+      "value": 0.055,
+      "unit": "m",
+      "status": "provisional",
+      "source": "synthetic research proposal",
+      "uncertainty": null,
+      "note": "synthetic nominal"
+    },
+    "target_slice_thickness_m": {
+      "value": 0.01,
+      "unit": "m",
+      "status": "proposed_pending_user_confirmation",
+      "source": "synthetic research proposal",
+      "uncertainty": null,
+      "note": "initial end slice"
+    },
+    "mesh_spacing_m": {
+      "value": null,
+      "unit": "m",
+      "status": "unselected",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "must resolve 10 mm slice and narrow blade contact without excessive particle penetration"
+    },
+    "interface_spacing_m": {
+      "value": null,
+      "unit": "m",
+      "status": "unselected",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "convergence tests required; avoid zero-length ordinary springs"
+    },
+    "collision_particle_radius_m": {
+      "value": null,
+      "unit": "m",
+      "status": "unselected",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "must not bridge released cut or permit blade tunneling"
+    }
+  },
+  "representations": {
+    "visual": "smooth surface with separate cut faces; appearance detail independent of mechanics",
+    "collision": "simplified exterior and per-piece cut surfaces; no hull across both released pieces",
+    "mechanical": "coarse volume-supporting spring network, with finite-length damageable interface bonds; FEM alternative uses separate node sets and cohesive coupling"
+  },
+  "mechanical_parameters": {
+    "mass_kg": {
+      "value": null,
+      "unit": "kg",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "measure samples; do not set mass and density inconsistently"
+    },
+    "density_kg_m3": {
+      "value": null,
+      "unit": "kg/m^3",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "derive from mass and measured/model volume"
+    },
+    "flesh_elastic_modulus_pa": {
+      "value": null,
+      "unit": "Pa",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "FEM/reference continuum parameter; reduced-network mapping must be documented"
+    },
+    "poisson_ratio": {
+      "value": null,
+      "unit": "1",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "compressibility assumption; nearly incompressible locking must be checked"
+    },
+    "bulk_or_volume_penalty_pa": {
+      "value": null,
+      "unit": "Pa",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "only if chosen reduced model needs explicit volume constraint"
+    },
+    "network_stiffness_n_m": {
+      "value": null,
+      "unit": "N/m",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "discretization-dependent; not interchangeable with Young modulus"
+    },
+    "network_damping_n_s_m": {
+      "value": null,
+      "unit": "N s/m",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "discretization-dependent, keep dissipation distinct from fracture"
+    },
+    "skin_peak_traction_pa": {
+      "value": null,
+      "unit": "Pa",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "effective skin law; no explicit thin skin required initially"
+    },
+    "flesh_peak_traction_pa": {
+      "value": null,
+      "unit": "Pa",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "cohesive initiation; distinct from compressive contact"
+    },
+    "skin_fracture_energy_j_m2": {
+      "value": null,
+      "unit": "J/m^2",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "integrate damage dissipation per interface area"
+    },
+    "flesh_fracture_energy_j_m2": {
+      "value": null,
+      "unit": "J/m^2",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "area-weighted bonds for resolution independence"
+    },
+    "knife_friction": {
+      "value": null,
+      "unit": "1",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "measure/identify; no arbitrary value treated as real"
+    },
+    "board_friction": {
+      "value": null,
+      "unit": "1",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "measure/identify"
+    },
+    "rate_dependence": {
+      "value": null,
+      "unit": "model-specific",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "choose only from evidence"
+    },
+    "fixture_stiffness": {
+      "value": null,
+      "unit": "model-specific",
+      "status": "uncalibrated",
+      "source": "measurement or solver selection required",
+      "uncertainty": null,
+      "note": "record axes, force reactions and which remainder nodes constrained"
+    }
+  },
+  "damage_contract": {
+    "state": "D in [0,1] per finite interface patch; monotonic within episode",
+    "initiation": "local verified blade interaction plus traction/work law; neither time nor depth alone",
+    "evolution": "law to be selected and energy-accounted; threshold values remain null",
+    "broken_bond": "remove all intended tensile/shear cohesive stiffness AND damping; retain appropriate compressive contact without healing",
+    "mesh_scaling": "patch area weights traction/fracture energy; no duplicated force/energy budget with refinement",
+    "topology": "pre-separated index sets, no undeclared tet/spring/skin/constraint still spanning released interface",
+    "reset": "restore all bond/material/contact/fixture states and log model hash"
+  },
+  "sensors": {
+    "hardware_type": "unknown; provisional wrist torque only",
+    "force_channels_allowed_for_deployment_actor": false,
+    "torque_axis_count": null,
+    "sample_hz": null,
+    "latency_s": null,
+    "bias_noise_saturation": null,
+    "calibration_required": true
+  },
+  "initial_exclusions": [
+    "individual seeds",
+    "liquid flow",
+    "detailed cavities",
+    "arbitrary fracture path",
+    "camera observations in mechanics-only test"
+  ],
+  "validation_required": [
+    "mass and dimensions",
+    "compression response",
+    "skin breakthrough",
+    "available wrist trace vs blade trajectory",
+    "released slice thickness",
+    "contact and numerical convergence"
+  ],
+  "execution_gate": "Null physical/numerical parameters are missing inputs, not zero or permission to pick undocumented defaults."
+}

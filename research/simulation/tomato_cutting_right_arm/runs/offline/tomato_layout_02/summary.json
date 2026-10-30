@@ -1,0 +1,105 @@
+{
+  "scope": "offline topology and prescribed constitutive evaluation only; no time integration or simulated contact",
+  "layout": {
+    "passed": true,
+    "checks": {
+      "unique_pairs": true,
+      "positive_mass_and_length": true,
+      "registered_once": true,
+      "cut_classification": true,
+      "area_partition": true,
+      "mass_accounting": true,
+      "initial_connected": true,
+      "two_connected_sides_after_complete_removal": true,
+      "fixture_remainder_only": true,
+      "budgets": true
+    },
+    "nodes": 979,
+    "bonds": 10510,
+    "interface_bonds": 403,
+    "patches": 47,
+    "fixture_nodes": 25,
+    "diagnostic_cells": 648,
+    "removed_graph_component_sizes": [
+      64,
+      915
+    ],
+    "physical_separation_tested": false
+  },
+  "coupon": {
+    "inputs": {
+      "status": "synthetic constitutive engineering test; not tomato calibration",
+      "stiffness_n_m": 1000.0,
+      "area_m2": 2.5e-05,
+      "peak_traction_pa": 40000.0,
+      "fracture_energy_j_m2": 80.0,
+      "damping_n_s_m": 0.2
+    },
+    "onset_m": 0.001,
+    "failure_m": 0.004,
+    "expected_fracture_work_j": 0.002,
+    "scalar_and_bundle_work": {
+      "scalar_opening": {
+        "integrated_work_j": 0.001999999999999999,
+        "damage_energy_drop_j": 0.0020003080931932887,
+        "work_relative_error_vs_scalar_target": -4.440892098500626e-16,
+        "damage_relative_error_vs_scalar_target": 0.0001540465966443083,
+        "final_damage": 1.0,
+        "final_force_n": 0.0,
+        "energy_target_met_1_percent": true
+      },
+      "bundle_opening": {
+        "integrated_work_j": 0.002271981693228431,
+        "damage_energy_drop_j": 0.0022723421775836597,
+        "work_relative_error_vs_scalar_target": 0.13599084661421545,
+        "damage_relative_error_vs_scalar_target": 0.13617108879182993,
+        "final_damage": 1.0,
+        "final_force_n": 0.0,
+        "energy_target_met_1_percent": false
+      },
+      "bundle_shear": {
+        "integrated_work_j": 0.0007160065818377761,
+        "damage_energy_drop_j": 0.0007161205452409243,
+        "work_relative_error_vs_scalar_target": -0.641996709081112,
+        "damage_relative_error_vs_scalar_target": -0.6419397273795379,
+        "final_damage": 1.0,
+        "final_force_n": 0.0,
+        "energy_target_met_1_percent": false
+      }
+    }
+  },
+  "area_quadrature_l1_fraction": 0.030273437499999854,
+  "equal_unit_stiffness_directional_probe": {
+    "x": 722.7124086091643,
+    "y": 722.7124086091641,
+    "z": 714.082597816447
+  },
+  "topology_anisotropy_ratio": 1.012085171686169,
+  "tests": {
+    "run": 20,
+    "passed": true,
+    "failures": 0,
+    "errors": 0
+  },
+  "scalar_energy_gate": true,
+  "bundle_energy_calibrated": false,
+  "physical_separation": false,
+  "contact_eligibility_validated": false,
+  "simulator_launched": false,
+  "training": false,
+  "runtime_s": 1.1028533140015497,
+  "peak_rss_bytes": 49385472,
+  "memory_measurement": "Linux /proc/self/status VmHWM for this process; excludes inherited pre-exec getrusage high-water",
+  "limits": {
+    "address_space_bytes": 268435456,
+    "cpu_s": 30,
+    "wall_s": 45,
+    "shared_lock": true
+  },
+  "source_hashes": {
+    "rl/tomato_layout.py": "10a115828a2cc1ca8c4af0b817e746537c5526569e7b81a96466adfd6669eef2",
+    "rl/tomato_bonds.py": "cf4504f5fb03050f086317f91501534694d65c7b8429623fe306d9f83b426092",
+    "rl/offline_tomato_probe.py": "59b6ef0b98bcbd9c47db59b63eacecedf5776eccc508d179a8b17e646d49aa3e",
+    "rl/tests/test_tomato_offline.py": "c12bca5a9bbda0600d94ea8393650b8d0baf1fa2c8e591c0272e6c09433ddf1a"
+  }
+}

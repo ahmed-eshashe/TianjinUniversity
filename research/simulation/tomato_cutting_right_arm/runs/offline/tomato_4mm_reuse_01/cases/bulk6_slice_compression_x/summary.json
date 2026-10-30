@@ -1,0 +1,432 @@
+{
+  "side": "slice",
+  "mode": "compression_x",
+  "scope": "hybrid spring plus local volume-barrier static continuation; fully prescribed outer surface; no contact/dynamics",
+  "preparation_scope": "whole_mesh_preparation_passed",
+  "whole_mesh_preparation_passed": true,
+  "mesh_spacing_mm": 6.0,
+  "surface_angular_segments": 64,
+  "requested_levels": [
+    0.01,
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.3
+  ],
+  "stages": [
+    {
+      "strain": 0.01,
+      "optimizer_success": true,
+      "iterations": 3,
+      "iteration_trace": [
+        {
+          "iteration": 0,
+          "force_residual_fraction": 1.3835149940585454,
+          "min_cell_ratio": 0.9899999999999949,
+          "energy_j": 1.3837135484322911e-05
+        },
+        {
+          "iteration": 1,
+          "force_residual_fraction": 0.023587487206931892,
+          "min_cell_ratio": 0.6681396942118827,
+          "energy_j": 1.0100639819560622e-05
+        },
+        {
+          "iteration": 2,
+          "force_residual_fraction": 1.5780146952119508e-05,
+          "min_cell_ratio": 0.656226365148136,
+          "energy_j": 1.0099523795883077e-05
+        },
+        {
+          "iteration": 3,
+          "force_residual_fraction": 3.358407707818931e-11,
+          "min_cell_ratio": 0.6562077449918134,
+          "energy_j": 1.0099523794776366e-05
+        }
+      ],
+      "affine_initial_guess_fallback": false,
+      "force_residual_fraction": 3.358407707818931e-11,
+      "barrier_energy_j": 0.0,
+      "spring_energy_j": 1.0099523794776366e-05,
+      "active_volume_cells": 0,
+      "strain_conjugate_reaction_j": 0.002008473466963687,
+      "mean_energy_density_pa": 1.3098408824423817,
+      "energy_j": 1.0099523794776366e-05,
+      "min_cell_volume_ratio": 0.6562077449918134,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9900032494942271,
+      "min_spring_length_ratio": 0.9497603083303144,
+      "least_preconditioned_tangent_eigenvalue": 0.5718945671876954,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.02,
+      "optimizer_success": true,
+      "iterations": 6,
+      "iteration_trace": [
+        {
+          "iteration": 0,
+          "force_residual_fraction": 0.7732841514445579,
+          "min_cell_ratio": 0.649579383931291,
+          "energy_j": 4.393400319385384e-05
+        },
+        {
+          "iteration": 1,
+          "force_residual_fraction": 0.839533655643395,
+          "min_cell_ratio": 0.29932430200577576,
+          "energy_j": 4.107883070784272e-05
+        },
+        {
+          "iteration": 2,
+          "force_residual_fraction": 0.28106745457697535,
+          "min_cell_ratio": 0.3949809564472398,
+          "energy_j": 4.0174904560688795e-05
+        },
+        {
+          "iteration": 3,
+          "force_residual_fraction": 0.05920829856166413,
+          "min_cell_ratio": 0.44799703779263683,
+          "energy_j": 4.0037005838121785e-05
+        },
+        {
+          "iteration": 4,
+          "force_residual_fraction": 0.0022023398903664422,
+          "min_cell_ratio": 0.4639180730891506,
+          "energy_j": 4.002948959135676e-05
+        },
+        {
+          "iteration": 5,
+          "force_residual_fraction": 3.240874506070891e-06,
+          "min_cell_ratio": 0.46455572219707275,
+          "energy_j": 4.0029478676134936e-05
+        },
+        {
+          "iteration": 6,
+          "force_residual_fraction": 6.97545676073379e-12,
+          "min_cell_ratio": 0.46455666341117763,
+          "energy_j": 4.002947867611128e-05
+        }
+      ],
+      "affine_initial_guess_fallback": false,
+      "force_residual_fraction": 6.97545676073379e-12,
+      "barrier_energy_j": 1.5020583522491716e-08,
+      "spring_energy_j": 4.001445809258879e-05,
+      "active_volume_cells": 16,
+      "strain_conjugate_reaction_j": 0.0039802650885285475,
+      "mean_energy_density_pa": 5.191556427635221,
+      "energy_j": 4.002947867611128e-05,
+      "min_cell_volume_ratio": 0.46455666341117763,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9800074093261657,
+      "min_spring_length_ratio": 0.8988668520883721,
+      "least_preconditioned_tangent_eigenvalue": 0.5570421651489551,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.05,
+      "optimizer_success": true,
+      "iterations": 5,
+      "iteration_trace": [
+        {
+          "iteration": 0,
+          "force_residual_fraction": 0.9391803139778426,
+          "min_cell_ratio": 0.450335541061828,
+          "energy_j": 0.0002815709609122648
+        },
+        {
+          "iteration": 1,
+          "force_residual_fraction": 0.5290386361085803,
+          "min_cell_ratio": 0.36231381449427363,
+          "energy_j": 0.0002550361618766788
+        },
+        {
+          "iteration": 2,
+          "force_residual_fraction": 0.04838691833892132,
+          "min_cell_ratio": 0.3802378400085618,
+          "energy_j": 0.00024647809120372026
+        },
+        {
+          "iteration": 3,
+          "force_residual_fraction": 0.005751626794394464,
+          "min_cell_ratio": 0.3843131648355513,
+          "energy_j": 0.0002464483498273635
+        },
+        {
+          "iteration": 4,
+          "force_residual_fraction": 3.209807125381541e-05,
+          "min_cell_ratio": 0.3843656733529759,
+          "energy_j": 0.00024644781392767586
+        },
+        {
+          "iteration": 5,
+          "force_residual_fraction": 1.0682862616425893e-09,
+          "min_cell_ratio": 0.38436569276255345,
+          "energy_j": 0.00024644781391071374
+        }
+      ],
+      "affine_initial_guess_fallback": false,
+      "force_residual_fraction": 1.0682862616425893e-09,
+      "barrier_energy_j": 5.180255876990184e-07,
+      "spring_energy_j": 0.0002459297883230147,
+      "active_volume_cells": 44,
+      "strain_conjugate_reaction_j": 0.009718082101157238,
+      "mean_energy_density_pa": 31.962637903359987,
+      "energy_j": 0.00024644781391071374,
+      "min_cell_volume_ratio": 0.3843656927625535,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9500284378079078,
+      "min_spring_length_ratio": 0.7434526019637566,
+      "least_preconditioned_tangent_eigenvalue": 0.6762921380888008,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.1,
+      "optimizer_success": true,
+      "iterations": 4,
+      "iteration_trace": [
+        {
+          "iteration": 0,
+          "force_residual_fraction": 0.8576573344666615,
+          "min_cell_ratio": 0.3641359194592828,
+          "energy_j": 0.0010611611562443297
+        },
+        {
+          "iteration": 1,
+          "force_residual_fraction": 0.2935939524875242,
+          "min_cell_ratio": 0.3047336629032429,
+          "energy_j": 0.000950072701279374
+        },
+        {
+          "iteration": 2,
+          "force_residual_fraction": 0.019609857499002573,
+          "min_cell_ratio": 0.3139153140068445,
+          "energy_j": 0.0009427875331558468
+        },
+        {
+          "iteration": 3,
+          "force_residual_fraction": 0.0003053962762758069,
+          "min_cell_ratio": 0.3141777636180604,
+          "energy_j": 0.0009427178196426296
+        },
+        {
+          "iteration": 4,
+          "force_residual_fraction": 6.228251558285994e-08,
+          "min_cell_ratio": 0.3141767129664016,
+          "energy_j": 0.0009427178059194215
+        }
+      ],
+      "affine_initial_guess_fallback": false,
+      "force_residual_fraction": 6.228251558285994e-08,
+      "barrier_energy_j": 2.383963808057709e-06,
+      "spring_energy_j": 0.0009403338421113638,
+      "active_volume_cells": 132,
+      "strain_conjugate_reaction_j": 0.01779293104495844,
+      "mean_energy_density_pa": 122.26421244121475,
+      "energy_j": 0.0009427178059194215,
+      "min_cell_volume_ratio": 0.31417671296640165,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9001305819252858,
+      "min_spring_length_ratio": 0.48965122582515536,
+      "least_preconditioned_tangent_eigenvalue": 0.5537819276282183,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.2,
+      "optimizer_success": true,
+      "iterations": 5,
+      "iteration_trace": [
+        {
+          "iteration": 0,
+          "force_residual_fraction": 1.0064735849268818,
+          "min_cell_ratio": 0.2792681893034531,
+          "energy_j": 0.003951828252507451
+        },
+        {
+          "iteration": 1,
+          "force_residual_fraction": 0.5272471355035606,
+          "min_cell_ratio": 0.26574620063221355,
+          "energy_j": 0.0035104615661664933
+        },
+        {
+          "iteration": 2,
+          "force_residual_fraction": 0.13169598972419622,
+          "min_cell_ratio": 0.2465260673421513,
+          "energy_j": 0.0033925424611905373
+        },
+        {
+          "iteration": 3,
+          "force_residual_fraction": 0.010260774194771373,
+          "min_cell_ratio": 0.2483159306029959,
+          "energy_j": 0.0033862702867968305
+        },
+        {
+          "iteration": 4,
+          "force_residual_fraction": 7.391948723807743e-05,
+          "min_cell_ratio": 0.24833190757175946,
+          "energy_j": 0.0033862308639978026
+        },
+        {
+          "iteration": 5,
+          "force_residual_fraction": 4.2362992134423815e-09,
+          "min_cell_ratio": 0.24833190600539837,
+          "energy_j": 0.003386230862012798
+        }
+      ],
+      "affine_initial_guess_fallback": false,
+      "force_residual_fraction": 4.2362992134423815e-09,
+      "barrier_energy_j": 4.4092315632046436e-05,
+      "spring_energy_j": 0.0033421385463807515,
+      "active_volume_cells": 265,
+      "strain_conjugate_reaction_j": 0.03048389225764406,
+      "mean_energy_density_pa": 439.1715600241015,
+      "energy_j": 0.003386230862012798,
+      "min_cell_volume_ratio": 0.2483319060053984,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.8005216709853176,
+      "min_spring_length_ratio": 0.3591070972591617,
+      "least_preconditioned_tangent_eigenvalue": 0.30284042689480883,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.3,
+      "optimizer_success": true,
+      "iterations": 12,
+      "iteration_trace": [
+        {
+          "iteration": 0,
+          "force_residual_fraction": 0.6784752063037445,
+          "min_cell_ratio": 0.21729041775472588,
+          "energy_j": 0.007572253516444707
+        },
+        {
+          "iteration": 1,
+          "force_residual_fraction": 0.2561300745864309,
+          "min_cell_ratio": 0.13779528375432668,
+          "energy_j": 0.0071653536994969475
+        },
+        {
+          "iteration": 2,
+          "force_residual_fraction": 0.06637738319391492,
+          "min_cell_ratio": 0.17113085060045394,
+          "energy_j": 0.0070087905225533036
+        },
+        {
+          "iteration": 3,
+          "force_residual_fraction": 0.0051490763742068945,
+          "min_cell_ratio": 0.18872632045742696,
+          "energy_j": 0.007002817669344613
+        },
+        {
+          "iteration": 4,
+          "force_residual_fraction": 0.0004302471345187183,
+          "min_cell_ratio": 0.1905251743988666,
+          "energy_j": 0.007002737520073124
+        },
+        {
+          "iteration": 5,
+          "force_residual_fraction": 0.00023008635806997236,
+          "min_cell_ratio": 0.190543038400117,
+          "energy_j": 0.0070027255619446215
+        },
+        {
+          "iteration": 6,
+          "force_residual_fraction": 0.0004573912042232881,
+          "min_cell_ratio": 0.19055358761124033,
+          "energy_j": 0.007002716527855034
+        },
+        {
+          "iteration": 7,
+          "force_residual_fraction": 0.0005885398630376239,
+          "min_cell_ratio": 0.19055618362607057,
+          "energy_j": 0.007002696129574318
+        },
+        {
+          "iteration": 8,
+          "force_residual_fraction": 0.016911852084954937,
+          "min_cell_ratio": 0.19054058793880554,
+          "energy_j": 0.007001720427076143
+        },
+        {
+          "iteration": 9,
+          "force_residual_fraction": 0.002834896967352611,
+          "min_cell_ratio": 0.1903621289221809,
+          "energy_j": 0.007000367099109681
+        },
+        {
+          "iteration": 10,
+          "force_residual_fraction": 7.171340482087548e-05,
+          "min_cell_ratio": 0.19032272059050734,
+          "energy_j": 0.007000328086196029
+        },
+        {
+          "iteration": 11,
+          "force_residual_fraction": 2.9545637728708515e-07,
+          "min_cell_ratio": 0.19032076998808026,
+          "energy_j": 0.007000328022306195
+        },
+        {
+          "iteration": 12,
+          "force_residual_fraction": 9.207678972552422e-14,
+          "min_cell_ratio": 0.19032076840978662,
+          "energy_j": 0.007000328022305931
+        }
+      ],
+      "affine_initial_guess_fallback": false,
+      "force_residual_fraction": 9.207678972552422e-14,
+      "barrier_energy_j": 0.00028035250384936554,
+      "spring_energy_j": 0.006719975518456565,
+      "active_volume_cells": 519,
+      "strain_conjugate_reaction_j": 0.04332668789435664,
+      "mean_energy_density_pa": 907.8958592944599,
+      "energy_j": 0.007000328022305931,
+      "min_cell_volume_ratio": 0.19032076840978662,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.7007827721368962,
+      "min_spring_length_ratio": 0.3736826140833585,
+      "least_preconditioned_tangent_eigenvalue": 0.11895549955537592,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    }
+  ],
+  "all_requested_levels_passed": true,
+  "first_flagged_strain": null,
+  "interface_springs_included": false,
+  "damage_evolution_enabled": false,
+  "volume_protection": {
+    "modulus_pa": 10000.0,
+    "activation_ratio": 0.5,
+    "strict_floor_ratio": 0.1,
+    "cell_role": "same-piece volume energy/force elements; formerly diagnostic only",
+    "compression_shear_acceptance_thresholds_unchanged": true
+  },
+  "source_hashes": {
+    "rl/offline_tomato_sensitivity_path.py": "6097f6706abb7b5fcf45007d1953d047fbb13d6dbad3da86b14c2e6c0e82b029",
+    "rl/tomato_nonlinear_checks.py": "bada0d08fdfb8091bc264e7f9653a4c6000f3e473e4bef43c012855a89d5c8d6",
+    "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+    "runs/offline/tomato_sensitivity_01/meshes/bulk6/surface_design.json": "7b09835a0714232ac164398322d8a02322ec3ba4d6dd16a3f8ad1634c654ff02",
+    "runs/offline/tomato_sensitivity_01/meshes/bulk6/mass_stiffness_assignments.json": "76b1c5ae5608ba8031615823b2b7113b7a49ec87d257745df7ce92fe8b55b4d5"
+  },
+  "runtime_s": 0.6400388710026164,
+  "peak_rss_bytes": 106360832,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true,
+    "blas_threads": 1
+  },
+  "simulator_imports_or_launches": false,
+  "training": false
+}

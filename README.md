@@ -14,3 +14,11 @@ Welcome to the central repository for Master's research under Professor Shan An 
 
 ---
 *Maintained with Antigravity AI Assistant.*
+
+## Tomato cutting implementation and offline evidence
+
+The preserved tomato cutting workspace, offline mechanics preparation, tests,
+and experiment evidence are in
+[`research/simulation/tomato_cutting_right_arm/REPOSITORY_SNAPSHOT.md`](research/simulation/tomato_cutting_right_arm/REPOSITORY_SNAPSHOT.md).
+Large local assets are inventoried rather than committed. Native simulation and
+training gates remain unresolved; see the snapshot's status notes.

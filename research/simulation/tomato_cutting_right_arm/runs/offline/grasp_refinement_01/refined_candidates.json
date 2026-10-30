@@ -1,0 +1,1921 @@
+{
+  "scope": "Offline proposals only; no active plan update, no simulator, no physical proof",
+  "search_budget_s": 120,
+  "wall_s": 138.54020554399904,
+  "peak_rss_bytes_linux": 424677376,
+  "search_reference_knife_pose_xyzw": [
+    -2.1648762226104736,
+    -1.4458147287368774,
+    0.9218448400497437,
+    0.07025060057640076,
+    -0.04098977521061897,
+    0.5062049627304077,
+    0.858569324016571
+  ],
+  "trials": [
+    {
+      "seed_candidate": 0,
+      "target_fingers": [
+        "index",
+        "middle",
+        "ring"
+      ],
+      "score": 13.344737474223711,
+      "evaluations": 892,
+      "status": "completed bounded local optimization",
+      "hand_root_in_knife_m": [
+        -0.02460573286189838,
+        -0.026589736524345473,
+        0.08090184432200519
+      ],
+      "hand_rotation_in_knife": [
+        [
+          0.19393558009588943,
+          -0.9592634701199051,
+          -0.20543267915885988
+        ],
+        [
+          -0.6100932845458962,
+          -0.2819215089738524,
+          0.7404771751579549
+        ],
+        [
+          -0.768228595487612,
+          -0.018271772530931436,
+          -0.6399148126147002
+        ]
+      ],
+      "joint_rad": [
+        0.3533460392155346,
+        0.31446157098006405,
+        1.207773222165614,
+        1.217838722373421,
+        1.1813870750408413,
+        1.064650843716541
+      ],
+      "approximate_handle_gaps_m": {
+        "right_rh_thumb_distal": -0.0001668422273052566,
+        "right_rh_thumb_metacarpals": 0.005396394738677868,
+        "right_rh_thumb_metacarpals_base2": 0.030801427078177398,
+        "right_rh_index_distal": -0.0001738370951635225,
+        "right_rh_index_proximal": 0.00046323575850642715,
+        "right_rh_middle_distal": -0.00018261682594396603,
+        "right_rh_middle_proximal": 0.009247102591130225,
+        "right_rh_ring_distal": -0.0001690796595016867,
+        "right_rh_ring_proximal": 0.011209548962607618,
+        "right_rh_pinky_distal": 0.004354195857520053,
+        "right_rh_pinky_proximal": 0.014129045483423126,
+        "right_rh_hand_base_link": 0.0018123929803866429
+      },
+      "approximate_min_blade_gap_m": 0.07579852486812502,
+      "board_plane_clearance_m": 0.012241647962110802,
+      "exact_contact_geometry": [
+        {
+          "body": "right_rh_thumb_distal",
+          "approximation": "convexHull",
+          "distance_m": 1.0443360732441995e-09,
+          "a_m": [
+            -0.08828457635510945,
+            -0.009059800630587197,
+            -0.005875776897341546
+          ],
+          "b_m": [
+            -0.08828457532770609,
+            -0.009059800466634717,
+            -0.005875776806788962
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 1.0443360732441995e-09,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.005435163541485925,
+          "a_m": [
+            -0.0707845557063831,
+            -0.014552391180823248,
+            0.00967614463045291
+          ],
+          "b_m": [
+            -0.07090881482554418,
+            -0.009521214363670188,
+            0.007623628557788741
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 2.6942056319256835e-10,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals_base2",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.030814497748849506,
+          "a_m": [
+            -0.05127941081611127,
+            -0.014530725201078244,
+            0.04053004815611789
+          ],
+          "b_m": [
+            -0.051839640441850465,
+            -0.004686048877732498,
+            0.011335840470879172
+          ],
+          "constraint_violation_m": 1.1791456699938862e-14,
+          "distance_certificate_gap_m": 1.20614629395277e-14,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_index_distal",
+          "approximation": "convexHull",
+          "distance_m": 3.646615052976848e-10,
+          "a_m": [
+            -0.05528441708633907,
+            0.003604383984083123,
+            -0.00896227100981791
+          ],
+          "b_m": [
+            -0.055284417076341484,
+            0.003604384278626428,
+            -0.008962271224578948
+          ],
+          "constraint_violation_m": 4.440892098500626e-19,
+          "distance_certificate_gap_m": 3.646615052976848e-10,
+          "inner_witness": {
+            "distance_m": 0.0010751739588199657,
+            "a_m": [
+              -0.059684323047404786,
+              0.009022769726744345,
+              -0.01003744485764479
+            ],
+            "b_m": [
+              -0.05968432334021299,
+              0.009022769399132703,
+              -0.008962270898824913
+            ],
+            "constraint_violation_m": 4.440892098500626e-19,
+            "distance_certificate_gap_m": 1.4449794291104823e-08
+          },
+          "inner_region_distance_m": 0.0010751739588199657
+        },
+        {
+          "body": "right_rh_index_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.0006467965614625183,
+          "a_m": [
+            -0.06846704834537884,
+            0.025257441211587132,
+            -0.0046808694882054325
+          ],
+          "b_m": [
+            -0.06845226793517771,
+            0.024643996533236442,
+            -0.004476387317840286
+          ],
+          "constraint_violation_m": 8.881784197001253e-19,
+          "distance_certificate_gap_m": 5.6788503530191826e-08,
+          "inner_witness": {
+            "distance_m": 0.0006467965614625183,
+            "a_m": [
+              -0.06846704834537884,
+              0.025257441211587132,
+              -0.0046808694882054325
+            ],
+            "b_m": [
+              -0.06845226793517771,
+              0.024643996533236442,
+              -0.004476387317840286
+            ],
+            "constraint_violation_m": 8.881784197001253e-19,
+            "distance_certificate_gap_m": 5.6788503530191826e-08
+          },
+          "inner_region_distance_m": 0.0006467965614625183
+        },
+        {
+          "body": "right_rh_middle_distal",
+          "approximation": "convexHull",
+          "distance_m": 4.080363267086838e-09,
+          "a_m": [
+            -0.03982668579815435,
+            0.012188789161208703,
+            -0.008962271145817591
+          ],
+          "b_m": [
+            -0.039826681802890486,
+            0.012188788874831822,
+            -0.008962270367859154
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 4.080363267086838e-09,
+          "inner_witness": {
+            "distance_m": 0.0012438745689415307,
+            "a_m": [
+              -0.0417143773833614,
+              0.018641756671541852,
+              -0.010206143070036077
+            ],
+            "b_m": [
+              -0.04171437624753326,
+              0.018641755363856167,
+              -0.008962268501095752
+            ],
+            "constraint_violation_m": 2.6645352591003758e-18,
+            "distance_certificate_gap_m": 1.1149560586165564e-07
+          },
+          "inner_region_distance_m": 0.0012438745689415307
+        },
+        {
+          "body": "right_rh_middle_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.009280625328903839,
+          "a_m": [
+            -0.052451802512793216,
+            0.03406415898184302,
+            -0.006610166108977941
+          ],
+          "b_m": [
+            -0.052234233671742715,
+            0.025034787083193125,
+            -0.004476363538268317
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 4.994139928271579e-10,
+          "inner_witness": {
+            "distance_m": 0.009280625328903839,
+            "a_m": [
+              -0.052451802512793216,
+              0.03406415898184302,
+              -0.006610166108977941
+            ],
+            "b_m": [
+              -0.052234233671742715,
+              0.025034787083193125,
+              -0.004476363538268317
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 4.994139928271579e-10
+          },
+          "inner_region_distance_m": 0.009280625328903839
+        },
+        {
+          "body": "right_rh_ring_distal",
+          "approximation": "convexHull",
+          "distance_m": 2.2001130102662075e-09,
+          "a_m": [
+            -0.023270105890512573,
+            0.016433265485203005,
+            -0.008962270885731802
+          ],
+          "b_m": [
+            -0.023270106115542366,
+            0.016433264141089803,
+            -0.008962269158532177
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 2.2001130102662075e-09,
+          "inner_witness": {
+            "distance_m": 0.0007789701490300892,
+            "a_m": [
+              -0.026846640055578352,
+              0.020215339400907188,
+              -0.009721493172374033
+            ],
+            "b_m": [
+              -0.026858342218535117,
+              0.020041458105395087,
+              -0.008962268009768678
+            ],
+            "constraint_violation_m": 8.881784197001253e-19,
+            "distance_certificate_gap_m": 8.82827144721432e-15
+          },
+          "inner_region_distance_m": 0.0007789701490300892
+        },
+        {
+          "body": "right_rh_ring_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.011209548962611608,
+          "a_m": [
+            -0.0345662433373703,
+            0.036757538586985494,
+            -0.004887832298034296
+          ],
+          "b_m": [
+            -0.034299852386776325,
+            0.025701399264461293,
+            -0.0030589509220116046
+          ],
+          "constraint_violation_m": 3.7836400679225334e-16,
+          "distance_certificate_gap_m": 6.891974319245264e-09,
+          "inner_witness": {
+            "distance_m": 0.011209548962611608,
+            "a_m": [
+              -0.0345662433373703,
+              0.036757538586985494,
+              -0.004887832298034296
+            ],
+            "b_m": [
+              -0.034299852386776325,
+              0.025701399264461293,
+              -0.0030589509220116046
+            ],
+            "constraint_violation_m": 3.7836400679225334e-16,
+            "distance_certificate_gap_m": 6.891974319245264e-09
+          },
+          "inner_region_distance_m": 0.011209548962611608
+        },
+        {
+          "body": "right_rh_pinky_distal",
+          "approximation": "convexHull",
+          "distance_m": 0.004373901190338252,
+          "a_m": [
+            -0.007836079201442421,
+            0.016626922061268933,
+            -0.013206366001573162
+          ],
+          "b_m": [
+            -0.00844265474218249,
+            0.01576048685179987,
+            -0.00896226800977201
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 1.0734472732920608e-09,
+          "inner_witness": {
+            "distance_m": 0.0058359402631668385,
+            "a_m": [
+              -0.010175999346906578,
+              0.022276540312290642,
+              -0.012812550854598745
+            ],
+            "b_m": [
+              -0.011023107976523686,
+              0.019011383667263303,
+              -0.008050265918949279
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 3.857509398130787e-09
+          },
+          "inner_region_distance_m": 0.0058359402631668385
+        },
+        {
+          "body": "right_rh_pinky_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.014129631021406306,
+          "a_m": [
+            -0.017318431937686306,
+            0.0390340908652502,
+            -0.0032132265522675533
+          ],
+          "b_m": [
+            -0.01953903213153559,
+            0.025154486298577604,
+            -0.0017737875459303224
+          ],
+          "constraint_violation_m": 6.916689443414725e-17,
+          "distance_certificate_gap_m": 0.0,
+          "inner_witness": {
+            "distance_m": 0.014129631021406306,
+            "a_m": [
+              -0.017318431937686306,
+              0.0390340908652502,
+              -0.0032132265522675533
+            ],
+            "b_m": [
+              -0.01953903213153559,
+              0.025154486298577604,
+              -0.0017737875459303224
+            ],
+            "constraint_violation_m": 6.916689443414725e-17,
+            "distance_certificate_gap_m": 0.0
+          },
+          "inner_region_distance_m": 0.014129631021406306
+        },
+        {
+          "body": "right_rh_hand_base_link",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.001812392980386105,
+          "a_m": [
+            -0.06652163308612968,
+            0.024091773618522404,
+            0.011486547259322546
+          ],
+          "b_m": [
+            -0.0664964141915913,
+            0.023045040058827224,
+            0.010007195652124667
+          ],
+          "constraint_violation_m": 8.881784197001253e-19,
+          "distance_certificate_gap_m": 1.4875716272122474e-09,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        }
+      ],
+      "near_fingers_within_1mm": [
+        "index",
+        "middle",
+        "ring"
+      ],
+      "inner_fingers_within_1mm": [
+        "index",
+        "ring"
+      ],
+      "arm_ik": {
+        "q_rad": [
+          -1.055602648621527,
+          -1.477116876761733,
+          1.044978020066021,
+          1.5212068816587296,
+          -1.4274395385966923,
+          -0.182226392747299,
+          0.2831964529401157
+        ],
+        "position_error_m": 3.9010864806960514e-08,
+        "rotation_error_rad": 7.870746751053987e-07
+      },
+      "conditional_load": {
+        "status": "inconclusive: overlapping selected witness has no unique surface normal",
+        "body": "right_rh_thumb_distal"
+      },
+      "full_robot_self_envelopes": {
+        "collision_meshes": 44,
+        "unfiltered_mesh_pairs_checked": 868,
+        "authored_filtered_body_pairs": 91,
+        "overlaps": [
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.023864946525507094,
+            "exact_for_authored_convex_hulls": false
+          },
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.024059081333333565,
+            "exact_for_authored_convex_hulls": false
+          }
+        ],
+        "scope": "Terminal discrete pose only, left side at Phase 3 home; decomposition enclosed by convex hull; physical contact margins and approach route unverified"
+      },
+      "terminal_feasibility_certified": false,
+      "physical_success": false
+    },
+    {
+      "seed_candidate": 2,
+      "target_fingers": [
+        "index",
+        "middle",
+        "pinky"
+      ],
+      "score": 14.955661070613468,
+      "evaluations": 357,
+      "status": "completed bounded local optimization",
+      "hand_root_in_knife_m": [
+        -0.039198143131188724,
+        -0.02405349565766698,
+        0.08296050699575859
+      ],
+      "hand_rotation_in_knife": [
+        [
+          0.19888834620717963,
+          -0.960904058099284,
+          -0.1926312977459768
+        ],
+        [
+          -0.6401830858692253,
+          -0.2762113088617819,
+          0.7168493073330099
+        ],
+        [
+          -0.7420303513401102,
+          -0.019253674589211657,
+          -0.670089735561502
+        ]
+      ],
+      "joint_rad": [
+        0.36729631774727756,
+        0.3144271080796571,
+        1.1973592049165047,
+        1.2095626761617864,
+        1.064650843716541,
+        1.1203380925038562
+      ],
+      "approximate_handle_gaps_m": {
+        "right_rh_thumb_distal": -0.000178039352624091,
+        "right_rh_thumb_metacarpals": 0.005376728333050626,
+        "right_rh_thumb_metacarpals_base2": 0.0314544573815682,
+        "right_rh_index_distal": -0.00017825486115379506,
+        "right_rh_index_proximal": 0.0005389890572309458,
+        "right_rh_middle_distal": -0.00019135745658807428,
+        "right_rh_middle_proximal": 0.009164001330763127,
+        "right_rh_ring_distal": 0.006222296933320543,
+        "right_rh_ring_proximal": 0.01354603249393619,
+        "right_rh_pinky_distal": -0.00015881943110519596,
+        "right_rh_pinky_proximal": 0.011160180036185196,
+        "right_rh_hand_base_link": 0.0018029097840670631
+      },
+      "approximate_min_blade_gap_m": 0.06357468073911228,
+      "board_plane_clearance_m": 0.01044064545507739,
+      "exact_contact_geometry": [
+        {
+          "body": "right_rh_thumb_distal",
+          "approximation": "convexHull",
+          "distance_m": 5.344496734824349e-10,
+          "a_m": [
+            -0.10036674013393902,
+            -0.008946519916916813,
+            -0.006523009609070195
+          ],
+          "b_m": [
+            -0.10036674052373672,
+            -0.008946520270014989,
+            -0.006523009704022243
+          ],
+          "constraint_violation_m": 8.881784197001253e-19,
+          "distance_certificate_gap_m": 5.344496734824349e-10,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.0054247303692186895,
+          "a_m": [
+            -0.0915076600005759,
+            -0.014977916020594749,
+            0.009852436281765437
+          ],
+          "b_m": [
+            -0.09163013498816977,
+            -0.010025662869342734,
+            0.007641579393124311
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 2.2171597890974227e-14,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals_base2",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.031454457381571065,
+          "a_m": [
+            -0.06520946786362776,
+            -0.013342886624907496,
+            0.0418390141933425
+          ],
+          "b_m": [
+            -0.0657789687798832,
+            -0.004166035296350673,
+            0.011758389905123026
+          ],
+          "constraint_violation_m": 3.725020292222325e-15,
+          "distance_certificate_gap_m": 2.2949748057499165e-10,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_index_distal",
+          "approximation": "convexHull",
+          "distance_m": 1.367573473216835e-09,
+          "a_m": [
+            -0.06796495178660981,
+            0.0022288670310528225,
+            -0.008962270026123459
+          ],
+          "b_m": [
+            -0.06796495221330281,
+            0.002228866797661641,
+            -0.008962271304293577
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 1.367573473216835e-09,
+          "inner_witness": {
+            "distance_m": 0.0012640252266386833,
+            "a_m": [
+              -0.07299280547380216,
+              0.008428132903939175,
+              -0.010226296158233374
+            ],
+            "b_m": [
+              -0.07299280543545646,
+              0.008428132971852156,
+              -0.008962270931594692
+            ],
+            "constraint_violation_m": 8.881784197001253e-19,
+            "distance_certificate_gap_m": 2.550337611539888e-09
+          },
+          "inner_region_distance_m": 0.0012640252266386833
+        },
+        {
+          "body": "right_rh_index_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.0008523844144803994,
+          "a_m": [
+            -0.08178279674039032,
+            0.02512346030142099,
+            -0.0047694047701226806
+          ],
+          "b_m": [
+            -0.08176351489011391,
+            0.024323248072995005,
+            -0.004476406835357723
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 3.37286903160372e-08,
+          "inner_witness": {
+            "distance_m": 0.0008523844144803994,
+            "a_m": [
+              -0.08178279674039032,
+              0.02512346030142099,
+              -0.0047694047701226806
+            ],
+            "b_m": [
+              -0.08176351489011391,
+              0.024323248072995005,
+              -0.004476406835357723
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 3.37286903160372e-08
+          },
+          "inner_region_distance_m": 0.0008523844144803994
+        },
+        {
+          "body": "right_rh_middle_distal",
+          "approximation": "convexHull",
+          "distance_m": 4.192012967043311e-10,
+          "a_m": [
+            -0.05120080432006851,
+            0.009609744947186288,
+            -0.00896227075131323
+          ],
+          "b_m": [
+            -0.05120080432692964,
+            0.009609744543886863,
+            -0.008962270865472
+          ],
+          "constraint_violation_m": 1.1102230246251566e-19,
+          "distance_certificate_gap_m": 4.192012967043311e-10,
+          "inner_witness": {
+            "distance_m": 0.0014681850531818878,
+            "a_m": [
+              -0.05492394989539719,
+              0.01788700066792447,
+              -0.010430453758622959
+            ],
+            "b_m": [
+              -0.05492394994588598,
+              0.017886999973524362,
+              -0.008962268705441236
+            ],
+            "constraint_violation_m": 1.7763568394002505e-18,
+            "distance_certificate_gap_m": 1.3048737019794033e-09
+          },
+          "inner_region_distance_m": 0.0014681850531818878
+        },
+        {
+          "body": "right_rh_middle_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.009261283966839838,
+          "a_m": [
+            -0.06548107302369847,
+            0.03366977679726143,
+            -0.006851347001770898
+          ],
+          "b_m": [
+            -0.06526544306580732,
+            0.02472078642177035,
+            -0.0044763826451809825
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 6.851657282425094e-09,
+          "inner_witness": {
+            "distance_m": 0.009261283966839838,
+            "a_m": [
+              -0.06548107302369847,
+              0.03366977679726143,
+              -0.006851347001770898
+            ],
+            "b_m": [
+              -0.06526544306580732,
+              0.02472078642177035,
+              -0.0044763826451809825
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 6.851657282425094e-09
+          },
+          "inner_region_distance_m": 0.009261283966839838
+        },
+        {
+          "body": "right_rh_ring_distal",
+          "approximation": "convexHull",
+          "distance_m": 0.006346651136894649,
+          "a_m": [
+            -0.037088436051382574,
+            0.020515126574846082,
+            -0.015303440602457294
+          ],
+          "b_m": [
+            -0.03708209465495564,
+            0.020251553833654373,
+            -0.008962268009770813
+          ],
+          "constraint_violation_m": 6.661338147750939e-18,
+          "distance_certificate_gap_m": 4.632826257733313e-09,
+          "inner_witness": {
+            "distance_m": 0.006606438088003547,
+            "a_m": [
+              -0.039485636371616284,
+              0.021990291800677585,
+              -0.015319868585508807
+            ],
+            "b_m": [
+              -0.039442402589123196,
+              0.020194722261489766,
+              -0.008962268009771436
+            ],
+            "constraint_violation_m": 1.3322676295501878e-17,
+            "distance_certificate_gap_m": 2.5792701308091636e-15
+          },
+          "inner_region_distance_m": 0.006606438088003547
+        },
+        {
+          "body": "right_rh_ring_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.013546032493937696,
+          "a_m": [
+            -0.048277830745234215,
+            0.03861916907659123,
+            -0.005957254531128671
+          ],
+          "b_m": [
+            -0.04795591496049029,
+            0.02525852227213526,
+            -0.0037471677633909763
+          ],
+          "constraint_violation_m": 7.549516567451064e-16,
+          "distance_certificate_gap_m": 1.8683955715914636e-10,
+          "inner_witness": {
+            "distance_m": 0.013546032493937696,
+            "a_m": [
+              -0.048277830745234215,
+              0.03861916907659123,
+              -0.005957254531128671
+            ],
+            "b_m": [
+              -0.04795591496049029,
+              0.02525852227213526,
+              -0.0037471677633909763
+            ],
+            "constraint_violation_m": 7.549516567451064e-16,
+            "distance_certificate_gap_m": 1.8683955715914636e-10
+          },
+          "inner_region_distance_m": 0.013546032493937696
+        },
+        {
+          "body": "right_rh_pinky_distal",
+          "approximation": "convexHull",
+          "distance_m": 3.8185300971071126e-10,
+          "a_m": [
+            -0.018819488675445667,
+            0.01898456300954377,
+            -0.008962267990666566
+          ],
+          "b_m": [
+            -0.018819488751386095,
+            0.018984562653172273,
+            -0.008962268104877451
+          ],
+          "constraint_violation_m": 4.440892098500626e-19,
+          "distance_certificate_gap_m": 3.8185300971071126e-10,
+          "inner_witness": {
+            "distance_m": 0.0003930551960767815,
+            "a_m": [
+              -0.02222822114725137,
+              0.01996443557499311,
+              -0.009285577766055451
+            ],
+            "b_m": [
+              -0.022239736728679217,
+              0.019793213085960087,
+              -0.008931964081653008
+            ],
+            "constraint_violation_m": 1.7763568394002505e-18,
+            "distance_certificate_gap_m": 1.9922135868843948e-07
+          },
+          "inner_region_distance_m": 0.0003930551960767815
+        },
+        {
+          "body": "right_rh_pinky_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.011184432859774699,
+          "a_m": [
+            -0.03005567163348377,
+            0.03701772652778672,
+            -0.0028728871904316272
+          ],
+          "b_m": [
+            -0.030803045474809897,
+            0.02591254974322818,
+            -0.001773787868344888
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 0.0,
+          "inner_witness": {
+            "distance_m": 0.011184432859774699,
+            "a_m": [
+              -0.03005567163348377,
+              0.03701772652778672,
+              -0.0028728871904316272
+            ],
+            "b_m": [
+              -0.030803045474809897,
+              0.02591254974322818,
+              -0.001773787868344888
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 0.0
+          },
+          "inner_region_distance_m": 0.011184432859774699
+        },
+        {
+          "body": "right_rh_hand_base_link",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.0018110488512653995,
+          "a_m": [
+            -0.0799294531858297,
+            0.024174712014444277,
+            0.011192078088516957
+          ],
+          "b_m": [
+            -0.0799017924992192,
+            0.023026708845273774,
+            0.00979164188802068
+          ],
+          "constraint_violation_m": 5.551115123125783e-20,
+          "distance_certificate_gap_m": 3.1480190000987563e-08,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        }
+      ],
+      "near_fingers_within_1mm": [
+        "index",
+        "middle",
+        "pinky"
+      ],
+      "inner_fingers_within_1mm": [
+        "index",
+        "pinky"
+      ],
+      "arm_ik": {
+        "q_rad": [
+          -1.062176700711623,
+          -1.4956421428327302,
+          1.0640941171981386,
+          1.476174408400916,
+          -1.3976165465678645,
+          -0.15068575198526063,
+          0.19703612875218954
+        ],
+        "position_error_m": 2.7685608895641284e-08,
+        "rotation_error_rad": 5.898706990851812e-07
+      },
+      "conditional_load": {
+        "status": "inconclusive: overlapping selected witness has no unique surface normal",
+        "body": "right_rh_thumb_distal"
+      },
+      "full_robot_self_envelopes": {
+        "collision_meshes": 44,
+        "unfiltered_mesh_pairs_checked": 868,
+        "authored_filtered_body_pairs": 91,
+        "overlaps": [
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.023864946525507094,
+            "exact_for_authored_convex_hulls": false
+          },
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.024000152708476996,
+            "exact_for_authored_convex_hulls": false
+          }
+        ],
+        "scope": "Terminal discrete pose only, left side at Phase 3 home; decomposition enclosed by convex hull; physical contact margins and approach route unverified"
+      },
+      "terminal_feasibility_certified": false,
+      "physical_success": false
+    },
+    {
+      "seed_candidate": 0,
+      "target_fingers": [
+        "index",
+        "middle",
+        "pinky"
+      ],
+      "score": 18.52677435779257,
+      "evaluations": 298,
+      "status": "completed bounded local optimization",
+      "hand_root_in_knife_m": [
+        -0.030118419764249785,
+        -0.021703662240499088,
+        0.08390231123034729
+      ],
+      "hand_rotation_in_knife": [
+        [
+          0.15864992404447037,
+          -0.9698316572447281,
+          -0.18508581308848587
+        ],
+        [
+          -0.6757350940732937,
+          -0.2433334234735836,
+          0.6958239200102142
+        ],
+        [
+          -0.7198696300292426,
+          0.014676567261033892,
+          -0.6939541152950904
+        ]
+      ],
+      "joint_rad": [
+        0.44395710657504917,
+        0.3146029748583858,
+        1.1863361430850368,
+        1.208713371388321,
+        1.1779729050361465,
+        1.1358893383087751
+      ],
+      "approximate_handle_gaps_m": {
+        "right_rh_thumb_distal": -0.00017895423509563593,
+        "right_rh_thumb_metacarpals": 0.005411332654980873,
+        "right_rh_thumb_metacarpals_base2": 0.03223539934558074,
+        "right_rh_index_distal": -0.00018888033823388078,
+        "right_rh_index_proximal": 0.0009820715205012959,
+        "right_rh_middle_distal": -0.00019915900136967778,
+        "right_rh_middle_proximal": 0.008669279879127943,
+        "right_rh_ring_distal": -0.00014487687808528195,
+        "right_rh_ring_proximal": 0.00999840051444668,
+        "right_rh_pinky_distal": -0.00015627217956849446,
+        "right_rh_pinky_proximal": 0.010224582110779267,
+        "right_rh_hand_base_link": 0.002174981475811133
+      },
+      "approximate_min_blade_gap_m": 0.07408078999288997,
+      "board_plane_clearance_m": 0.01179154419635009
+    },
+    {
+      "seed_candidate": 2,
+      "target_fingers": [
+        "index",
+        "middle",
+        "ring"
+      ],
+      "score": 29.28079488384009,
+      "evaluations": 123,
+      "status": "search wall budget reached",
+      "hand_root_in_knife_m": [
+        -0.04034135088376023,
+        -0.017481260233788723,
+        0.08696669050709148
+      ],
+      "hand_rotation_in_knife": [
+        [
+          0.12283648506087316,
+          -0.98333836375204,
+          -0.13400321007852173
+        ],
+        [
+          -0.7322378821722969,
+          -0.18094314034499404,
+          0.6565723599679777
+        ],
+        [
+          -0.6698797517836447,
+          0.01747118586559739,
+          -0.7422640202884216
+        ]
+      ],
+      "joint_rad": [
+        0.5628629462351222,
+        0.31462168844092114,
+        1.1663871831470225,
+        1.1932596547600187,
+        1.1615532190419975,
+        1.1158012647669646
+      ],
+      "approximate_handle_gaps_m": {
+        "right_rh_thumb_distal": -0.00013130116804710608,
+        "right_rh_thumb_metacarpals": 0.0042164386786159615,
+        "right_rh_thumb_metacarpals_base2": 0.033219287494141006,
+        "right_rh_index_distal": -0.00019135156248681513,
+        "right_rh_index_proximal": 0.00188623662788363,
+        "right_rh_middle_distal": -0.00022181086364422842,
+        "right_rh_middle_proximal": 0.008951036276425548,
+        "right_rh_ring_distal": -0.00021129256102917111,
+        "right_rh_ring_proximal": 0.009039047527541453,
+        "right_rh_pinky_distal": -0.0001801379899992496,
+        "right_rh_pinky_proximal": 0.00773323354847065,
+        "right_rh_hand_base_link": 0.0029276176298088444
+      },
+      "approximate_min_blade_gap_m": 0.07205946128529209,
+      "board_plane_clearance_m": 0.010342738647908134
+    }
+  ],
+  "audited_candidates": [
+    {
+      "seed_candidate": 0,
+      "target_fingers": [
+        "index",
+        "middle",
+        "ring"
+      ],
+      "score": 13.344737474223711,
+      "evaluations": 892,
+      "status": "completed bounded local optimization",
+      "hand_root_in_knife_m": [
+        -0.02460573286189838,
+        -0.026589736524345473,
+        0.08090184432200519
+      ],
+      "hand_rotation_in_knife": [
+        [
+          0.19393558009588943,
+          -0.9592634701199051,
+          -0.20543267915885988
+        ],
+        [
+          -0.6100932845458962,
+          -0.2819215089738524,
+          0.7404771751579549
+        ],
+        [
+          -0.768228595487612,
+          -0.018271772530931436,
+          -0.6399148126147002
+        ]
+      ],
+      "joint_rad": [
+        0.3533460392155346,
+        0.31446157098006405,
+        1.207773222165614,
+        1.217838722373421,
+        1.1813870750408413,
+        1.064650843716541
+      ],
+      "approximate_handle_gaps_m": {
+        "right_rh_thumb_distal": -0.0001668422273052566,
+        "right_rh_thumb_metacarpals": 0.005396394738677868,
+        "right_rh_thumb_metacarpals_base2": 0.030801427078177398,
+        "right_rh_index_distal": -0.0001738370951635225,
+        "right_rh_index_proximal": 0.00046323575850642715,
+        "right_rh_middle_distal": -0.00018261682594396603,
+        "right_rh_middle_proximal": 0.009247102591130225,
+        "right_rh_ring_distal": -0.0001690796595016867,
+        "right_rh_ring_proximal": 0.011209548962607618,
+        "right_rh_pinky_distal": 0.004354195857520053,
+        "right_rh_pinky_proximal": 0.014129045483423126,
+        "right_rh_hand_base_link": 0.0018123929803866429
+      },
+      "approximate_min_blade_gap_m": 0.07579852486812502,
+      "board_plane_clearance_m": 0.012241647962110802,
+      "exact_contact_geometry": [
+        {
+          "body": "right_rh_thumb_distal",
+          "approximation": "convexHull",
+          "distance_m": 1.0443360732441995e-09,
+          "a_m": [
+            -0.08828457635510945,
+            -0.009059800630587197,
+            -0.005875776897341546
+          ],
+          "b_m": [
+            -0.08828457532770609,
+            -0.009059800466634717,
+            -0.005875776806788962
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 1.0443360732441995e-09,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.005435163541485925,
+          "a_m": [
+            -0.0707845557063831,
+            -0.014552391180823248,
+            0.00967614463045291
+          ],
+          "b_m": [
+            -0.07090881482554418,
+            -0.009521214363670188,
+            0.007623628557788741
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 2.6942056319256835e-10,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals_base2",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.030814497748849506,
+          "a_m": [
+            -0.05127941081611127,
+            -0.014530725201078244,
+            0.04053004815611789
+          ],
+          "b_m": [
+            -0.051839640441850465,
+            -0.004686048877732498,
+            0.011335840470879172
+          ],
+          "constraint_violation_m": 1.1791456699938862e-14,
+          "distance_certificate_gap_m": 1.20614629395277e-14,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_index_distal",
+          "approximation": "convexHull",
+          "distance_m": 3.646615052976848e-10,
+          "a_m": [
+            -0.05528441708633907,
+            0.003604383984083123,
+            -0.00896227100981791
+          ],
+          "b_m": [
+            -0.055284417076341484,
+            0.003604384278626428,
+            -0.008962271224578948
+          ],
+          "constraint_violation_m": 4.440892098500626e-19,
+          "distance_certificate_gap_m": 3.646615052976848e-10,
+          "inner_witness": {
+            "distance_m": 0.0010751739588199657,
+            "a_m": [
+              -0.059684323047404786,
+              0.009022769726744345,
+              -0.01003744485764479
+            ],
+            "b_m": [
+              -0.05968432334021299,
+              0.009022769399132703,
+              -0.008962270898824913
+            ],
+            "constraint_violation_m": 4.440892098500626e-19,
+            "distance_certificate_gap_m": 1.4449794291104823e-08
+          },
+          "inner_region_distance_m": 0.0010751739588199657
+        },
+        {
+          "body": "right_rh_index_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.0006467965614625183,
+          "a_m": [
+            -0.06846704834537884,
+            0.025257441211587132,
+            -0.0046808694882054325
+          ],
+          "b_m": [
+            -0.06845226793517771,
+            0.024643996533236442,
+            -0.004476387317840286
+          ],
+          "constraint_violation_m": 8.881784197001253e-19,
+          "distance_certificate_gap_m": 5.6788503530191826e-08,
+          "inner_witness": {
+            "distance_m": 0.0006467965614625183,
+            "a_m": [
+              -0.06846704834537884,
+              0.025257441211587132,
+              -0.0046808694882054325
+            ],
+            "b_m": [
+              -0.06845226793517771,
+              0.024643996533236442,
+              -0.004476387317840286
+            ],
+            "constraint_violation_m": 8.881784197001253e-19,
+            "distance_certificate_gap_m": 5.6788503530191826e-08
+          },
+          "inner_region_distance_m": 0.0006467965614625183
+        },
+        {
+          "body": "right_rh_middle_distal",
+          "approximation": "convexHull",
+          "distance_m": 4.080363267086838e-09,
+          "a_m": [
+            -0.03982668579815435,
+            0.012188789161208703,
+            -0.008962271145817591
+          ],
+          "b_m": [
+            -0.039826681802890486,
+            0.012188788874831822,
+            -0.008962270367859154
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 4.080363267086838e-09,
+          "inner_witness": {
+            "distance_m": 0.0012438745689415307,
+            "a_m": [
+              -0.0417143773833614,
+              0.018641756671541852,
+              -0.010206143070036077
+            ],
+            "b_m": [
+              -0.04171437624753326,
+              0.018641755363856167,
+              -0.008962268501095752
+            ],
+            "constraint_violation_m": 2.6645352591003758e-18,
+            "distance_certificate_gap_m": 1.1149560586165564e-07
+          },
+          "inner_region_distance_m": 0.0012438745689415307
+        },
+        {
+          "body": "right_rh_middle_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.009280625328903839,
+          "a_m": [
+            -0.052451802512793216,
+            0.03406415898184302,
+            -0.006610166108977941
+          ],
+          "b_m": [
+            -0.052234233671742715,
+            0.025034787083193125,
+            -0.004476363538268317
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 4.994139928271579e-10,
+          "inner_witness": {
+            "distance_m": 0.009280625328903839,
+            "a_m": [
+              -0.052451802512793216,
+              0.03406415898184302,
+              -0.006610166108977941
+            ],
+            "b_m": [
+              -0.052234233671742715,
+              0.025034787083193125,
+              -0.004476363538268317
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 4.994139928271579e-10
+          },
+          "inner_region_distance_m": 0.009280625328903839
+        },
+        {
+          "body": "right_rh_ring_distal",
+          "approximation": "convexHull",
+          "distance_m": 2.2001130102662075e-09,
+          "a_m": [
+            -0.023270105890512573,
+            0.016433265485203005,
+            -0.008962270885731802
+          ],
+          "b_m": [
+            -0.023270106115542366,
+            0.016433264141089803,
+            -0.008962269158532177
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 2.2001130102662075e-09,
+          "inner_witness": {
+            "distance_m": 0.0007789701490300892,
+            "a_m": [
+              -0.026846640055578352,
+              0.020215339400907188,
+              -0.009721493172374033
+            ],
+            "b_m": [
+              -0.026858342218535117,
+              0.020041458105395087,
+              -0.008962268009768678
+            ],
+            "constraint_violation_m": 8.881784197001253e-19,
+            "distance_certificate_gap_m": 8.82827144721432e-15
+          },
+          "inner_region_distance_m": 0.0007789701490300892
+        },
+        {
+          "body": "right_rh_ring_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.011209548962611608,
+          "a_m": [
+            -0.0345662433373703,
+            0.036757538586985494,
+            -0.004887832298034296
+          ],
+          "b_m": [
+            -0.034299852386776325,
+            0.025701399264461293,
+            -0.0030589509220116046
+          ],
+          "constraint_violation_m": 3.7836400679225334e-16,
+          "distance_certificate_gap_m": 6.891974319245264e-09,
+          "inner_witness": {
+            "distance_m": 0.011209548962611608,
+            "a_m": [
+              -0.0345662433373703,
+              0.036757538586985494,
+              -0.004887832298034296
+            ],
+            "b_m": [
+              -0.034299852386776325,
+              0.025701399264461293,
+              -0.0030589509220116046
+            ],
+            "constraint_violation_m": 3.7836400679225334e-16,
+            "distance_certificate_gap_m": 6.891974319245264e-09
+          },
+          "inner_region_distance_m": 0.011209548962611608
+        },
+        {
+          "body": "right_rh_pinky_distal",
+          "approximation": "convexHull",
+          "distance_m": 0.004373901190338252,
+          "a_m": [
+            -0.007836079201442421,
+            0.016626922061268933,
+            -0.013206366001573162
+          ],
+          "b_m": [
+            -0.00844265474218249,
+            0.01576048685179987,
+            -0.00896226800977201
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 1.0734472732920608e-09,
+          "inner_witness": {
+            "distance_m": 0.0058359402631668385,
+            "a_m": [
+              -0.010175999346906578,
+              0.022276540312290642,
+              -0.012812550854598745
+            ],
+            "b_m": [
+              -0.011023107976523686,
+              0.019011383667263303,
+              -0.008050265918949279
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 3.857509398130787e-09
+          },
+          "inner_region_distance_m": 0.0058359402631668385
+        },
+        {
+          "body": "right_rh_pinky_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.014129631021406306,
+          "a_m": [
+            -0.017318431937686306,
+            0.0390340908652502,
+            -0.0032132265522675533
+          ],
+          "b_m": [
+            -0.01953903213153559,
+            0.025154486298577604,
+            -0.0017737875459303224
+          ],
+          "constraint_violation_m": 6.916689443414725e-17,
+          "distance_certificate_gap_m": 0.0,
+          "inner_witness": {
+            "distance_m": 0.014129631021406306,
+            "a_m": [
+              -0.017318431937686306,
+              0.0390340908652502,
+              -0.0032132265522675533
+            ],
+            "b_m": [
+              -0.01953903213153559,
+              0.025154486298577604,
+              -0.0017737875459303224
+            ],
+            "constraint_violation_m": 6.916689443414725e-17,
+            "distance_certificate_gap_m": 0.0
+          },
+          "inner_region_distance_m": 0.014129631021406306
+        },
+        {
+          "body": "right_rh_hand_base_link",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.001812392980386105,
+          "a_m": [
+            -0.06652163308612968,
+            0.024091773618522404,
+            0.011486547259322546
+          ],
+          "b_m": [
+            -0.0664964141915913,
+            0.023045040058827224,
+            0.010007195652124667
+          ],
+          "constraint_violation_m": 8.881784197001253e-19,
+          "distance_certificate_gap_m": 1.4875716272122474e-09,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        }
+      ],
+      "near_fingers_within_1mm": [
+        "index",
+        "middle",
+        "ring"
+      ],
+      "inner_fingers_within_1mm": [
+        "index",
+        "ring"
+      ],
+      "arm_ik": {
+        "q_rad": [
+          -1.055602648621527,
+          -1.477116876761733,
+          1.044978020066021,
+          1.5212068816587296,
+          -1.4274395385966923,
+          -0.182226392747299,
+          0.2831964529401157
+        ],
+        "position_error_m": 3.9010864806960514e-08,
+        "rotation_error_rad": 7.870746751053987e-07
+      },
+      "conditional_load": {
+        "status": "inconclusive: overlapping selected witness has no unique surface normal",
+        "body": "right_rh_thumb_distal"
+      },
+      "full_robot_self_envelopes": {
+        "collision_meshes": 44,
+        "unfiltered_mesh_pairs_checked": 868,
+        "authored_filtered_body_pairs": 91,
+        "overlaps": [
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.023864946525507094,
+            "exact_for_authored_convex_hulls": false
+          },
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.024059081333333565,
+            "exact_for_authored_convex_hulls": false
+          }
+        ],
+        "scope": "Terminal discrete pose only, left side at Phase 3 home; decomposition enclosed by convex hull; physical contact margins and approach route unverified"
+      },
+      "terminal_feasibility_certified": false,
+      "physical_success": false
+    },
+    {
+      "seed_candidate": 2,
+      "target_fingers": [
+        "index",
+        "middle",
+        "pinky"
+      ],
+      "score": 14.955661070613468,
+      "evaluations": 357,
+      "status": "completed bounded local optimization",
+      "hand_root_in_knife_m": [
+        -0.039198143131188724,
+        -0.02405349565766698,
+        0.08296050699575859
+      ],
+      "hand_rotation_in_knife": [
+        [
+          0.19888834620717963,
+          -0.960904058099284,
+          -0.1926312977459768
+        ],
+        [
+          -0.6401830858692253,
+          -0.2762113088617819,
+          0.7168493073330099
+        ],
+        [
+          -0.7420303513401102,
+          -0.019253674589211657,
+          -0.670089735561502
+        ]
+      ],
+      "joint_rad": [
+        0.36729631774727756,
+        0.3144271080796571,
+        1.1973592049165047,
+        1.2095626761617864,
+        1.064650843716541,
+        1.1203380925038562
+      ],
+      "approximate_handle_gaps_m": {
+        "right_rh_thumb_distal": -0.000178039352624091,
+        "right_rh_thumb_metacarpals": 0.005376728333050626,
+        "right_rh_thumb_metacarpals_base2": 0.0314544573815682,
+        "right_rh_index_distal": -0.00017825486115379506,
+        "right_rh_index_proximal": 0.0005389890572309458,
+        "right_rh_middle_distal": -0.00019135745658807428,
+        "right_rh_middle_proximal": 0.009164001330763127,
+        "right_rh_ring_distal": 0.006222296933320543,
+        "right_rh_ring_proximal": 0.01354603249393619,
+        "right_rh_pinky_distal": -0.00015881943110519596,
+        "right_rh_pinky_proximal": 0.011160180036185196,
+        "right_rh_hand_base_link": 0.0018029097840670631
+      },
+      "approximate_min_blade_gap_m": 0.06357468073911228,
+      "board_plane_clearance_m": 0.01044064545507739,
+      "exact_contact_geometry": [
+        {
+          "body": "right_rh_thumb_distal",
+          "approximation": "convexHull",
+          "distance_m": 5.344496734824349e-10,
+          "a_m": [
+            -0.10036674013393902,
+            -0.008946519916916813,
+            -0.006523009609070195
+          ],
+          "b_m": [
+            -0.10036674052373672,
+            -0.008946520270014989,
+            -0.006523009704022243
+          ],
+          "constraint_violation_m": 8.881784197001253e-19,
+          "distance_certificate_gap_m": 5.344496734824349e-10,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.0054247303692186895,
+          "a_m": [
+            -0.0915076600005759,
+            -0.014977916020594749,
+            0.009852436281765437
+          ],
+          "b_m": [
+            -0.09163013498816977,
+            -0.010025662869342734,
+            0.007641579393124311
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 2.2171597890974227e-14,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_thumb_metacarpals_base2",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.031454457381571065,
+          "a_m": [
+            -0.06520946786362776,
+            -0.013342886624907496,
+            0.0418390141933425
+          ],
+          "b_m": [
+            -0.0657789687798832,
+            -0.004166035296350673,
+            0.011758389905123026
+          ],
+          "constraint_violation_m": 3.725020292222325e-15,
+          "distance_certificate_gap_m": 2.2949748057499165e-10,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        },
+        {
+          "body": "right_rh_index_distal",
+          "approximation": "convexHull",
+          "distance_m": 1.367573473216835e-09,
+          "a_m": [
+            -0.06796495178660981,
+            0.0022288670310528225,
+            -0.008962270026123459
+          ],
+          "b_m": [
+            -0.06796495221330281,
+            0.002228866797661641,
+            -0.008962271304293577
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 1.367573473216835e-09,
+          "inner_witness": {
+            "distance_m": 0.0012640252266386833,
+            "a_m": [
+              -0.07299280547380216,
+              0.008428132903939175,
+              -0.010226296158233374
+            ],
+            "b_m": [
+              -0.07299280543545646,
+              0.008428132971852156,
+              -0.008962270931594692
+            ],
+            "constraint_violation_m": 8.881784197001253e-19,
+            "distance_certificate_gap_m": 2.550337611539888e-09
+          },
+          "inner_region_distance_m": 0.0012640252266386833
+        },
+        {
+          "body": "right_rh_index_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.0008523844144803994,
+          "a_m": [
+            -0.08178279674039032,
+            0.02512346030142099,
+            -0.0047694047701226806
+          ],
+          "b_m": [
+            -0.08176351489011391,
+            0.024323248072995005,
+            -0.004476406835357723
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 3.37286903160372e-08,
+          "inner_witness": {
+            "distance_m": 0.0008523844144803994,
+            "a_m": [
+              -0.08178279674039032,
+              0.02512346030142099,
+              -0.0047694047701226806
+            ],
+            "b_m": [
+              -0.08176351489011391,
+              0.024323248072995005,
+              -0.004476406835357723
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 3.37286903160372e-08
+          },
+          "inner_region_distance_m": 0.0008523844144803994
+        },
+        {
+          "body": "right_rh_middle_distal",
+          "approximation": "convexHull",
+          "distance_m": 4.192012967043311e-10,
+          "a_m": [
+            -0.05120080432006851,
+            0.009609744947186288,
+            -0.00896227075131323
+          ],
+          "b_m": [
+            -0.05120080432692964,
+            0.009609744543886863,
+            -0.008962270865472
+          ],
+          "constraint_violation_m": 1.1102230246251566e-19,
+          "distance_certificate_gap_m": 4.192012967043311e-10,
+          "inner_witness": {
+            "distance_m": 0.0014681850531818878,
+            "a_m": [
+              -0.05492394989539719,
+              0.01788700066792447,
+              -0.010430453758622959
+            ],
+            "b_m": [
+              -0.05492394994588598,
+              0.017886999973524362,
+              -0.008962268705441236
+            ],
+            "constraint_violation_m": 1.7763568394002505e-18,
+            "distance_certificate_gap_m": 1.3048737019794033e-09
+          },
+          "inner_region_distance_m": 0.0014681850531818878
+        },
+        {
+          "body": "right_rh_middle_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.009261283966839838,
+          "a_m": [
+            -0.06548107302369847,
+            0.03366977679726143,
+            -0.006851347001770898
+          ],
+          "b_m": [
+            -0.06526544306580732,
+            0.02472078642177035,
+            -0.0044763826451809825
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 6.851657282425094e-09,
+          "inner_witness": {
+            "distance_m": 0.009261283966839838,
+            "a_m": [
+              -0.06548107302369847,
+              0.03366977679726143,
+              -0.006851347001770898
+            ],
+            "b_m": [
+              -0.06526544306580732,
+              0.02472078642177035,
+              -0.0044763826451809825
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 6.851657282425094e-09
+          },
+          "inner_region_distance_m": 0.009261283966839838
+        },
+        {
+          "body": "right_rh_ring_distal",
+          "approximation": "convexHull",
+          "distance_m": 0.006346651136894649,
+          "a_m": [
+            -0.037088436051382574,
+            0.020515126574846082,
+            -0.015303440602457294
+          ],
+          "b_m": [
+            -0.03708209465495564,
+            0.020251553833654373,
+            -0.008962268009770813
+          ],
+          "constraint_violation_m": 6.661338147750939e-18,
+          "distance_certificate_gap_m": 4.632826257733313e-09,
+          "inner_witness": {
+            "distance_m": 0.006606438088003547,
+            "a_m": [
+              -0.039485636371616284,
+              0.021990291800677585,
+              -0.015319868585508807
+            ],
+            "b_m": [
+              -0.039442402589123196,
+              0.020194722261489766,
+              -0.008962268009771436
+            ],
+            "constraint_violation_m": 1.3322676295501878e-17,
+            "distance_certificate_gap_m": 2.5792701308091636e-15
+          },
+          "inner_region_distance_m": 0.006606438088003547
+        },
+        {
+          "body": "right_rh_ring_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.013546032493937696,
+          "a_m": [
+            -0.048277830745234215,
+            0.03861916907659123,
+            -0.005957254531128671
+          ],
+          "b_m": [
+            -0.04795591496049029,
+            0.02525852227213526,
+            -0.0037471677633909763
+          ],
+          "constraint_violation_m": 7.549516567451064e-16,
+          "distance_certificate_gap_m": 1.8683955715914636e-10,
+          "inner_witness": {
+            "distance_m": 0.013546032493937696,
+            "a_m": [
+              -0.048277830745234215,
+              0.03861916907659123,
+              -0.005957254531128671
+            ],
+            "b_m": [
+              -0.04795591496049029,
+              0.02525852227213526,
+              -0.0037471677633909763
+            ],
+            "constraint_violation_m": 7.549516567451064e-16,
+            "distance_certificate_gap_m": 1.8683955715914636e-10
+          },
+          "inner_region_distance_m": 0.013546032493937696
+        },
+        {
+          "body": "right_rh_pinky_distal",
+          "approximation": "convexHull",
+          "distance_m": 3.8185300971071126e-10,
+          "a_m": [
+            -0.018819488675445667,
+            0.01898456300954377,
+            -0.008962267990666566
+          ],
+          "b_m": [
+            -0.018819488751386095,
+            0.018984562653172273,
+            -0.008962268104877451
+          ],
+          "constraint_violation_m": 4.440892098500626e-19,
+          "distance_certificate_gap_m": 3.8185300971071126e-10,
+          "inner_witness": {
+            "distance_m": 0.0003930551960767815,
+            "a_m": [
+              -0.02222822114725137,
+              0.01996443557499311,
+              -0.009285577766055451
+            ],
+            "b_m": [
+              -0.022239736728679217,
+              0.019793213085960087,
+              -0.008931964081653008
+            ],
+            "constraint_violation_m": 1.7763568394002505e-18,
+            "distance_certificate_gap_m": 1.9922135868843948e-07
+          },
+          "inner_region_distance_m": 0.0003930551960767815
+        },
+        {
+          "body": "right_rh_pinky_proximal",
+          "approximation": "convexHull",
+          "distance_m": 0.011184432859774699,
+          "a_m": [
+            -0.03005567163348377,
+            0.03701772652778672,
+            -0.0028728871904316272
+          ],
+          "b_m": [
+            -0.030803045474809897,
+            0.02591254974322818,
+            -0.001773787868344888
+          ],
+          "constraint_violation_m": 0.0,
+          "distance_certificate_gap_m": 0.0,
+          "inner_witness": {
+            "distance_m": 0.011184432859774699,
+            "a_m": [
+              -0.03005567163348377,
+              0.03701772652778672,
+              -0.0028728871904316272
+            ],
+            "b_m": [
+              -0.030803045474809897,
+              0.02591254974322818,
+              -0.001773787868344888
+            ],
+            "constraint_violation_m": 0.0,
+            "distance_certificate_gap_m": 0.0
+          },
+          "inner_region_distance_m": 0.011184432859774699
+        },
+        {
+          "body": "right_rh_hand_base_link",
+          "approximation": "convexDecomposition",
+          "distance_m": 0.0018110488512653995,
+          "a_m": [
+            -0.0799294531858297,
+            0.024174712014444277,
+            0.011192078088516957
+          ],
+          "b_m": [
+            -0.0799017924992192,
+            0.023026708845273774,
+            0.00979164188802068
+          ],
+          "constraint_violation_m": 5.551115123125783e-20,
+          "distance_certificate_gap_m": 3.1480190000987563e-08,
+          "inner_witness": null,
+          "inner_region_distance_m": null
+        }
+      ],
+      "near_fingers_within_1mm": [
+        "index",
+        "middle",
+        "pinky"
+      ],
+      "inner_fingers_within_1mm": [
+        "index",
+        "pinky"
+      ],
+      "arm_ik": {
+        "q_rad": [
+          -1.062176700711623,
+          -1.4956421428327302,
+          1.0640941171981386,
+          1.476174408400916,
+          -1.3976165465678645,
+          -0.15068575198526063,
+          0.19703612875218954
+        ],
+        "position_error_m": 2.7685608895641284e-08,
+        "rotation_error_rad": 5.898706990851812e-07
+      },
+      "conditional_load": {
+        "status": "inconclusive: overlapping selected witness has no unique surface normal",
+        "body": "right_rh_thumb_distal"
+      },
+      "full_robot_self_envelopes": {
+        "collision_meshes": 44,
+        "unfiltered_mesh_pairs_checked": 868,
+        "authored_filtered_body_pairs": 91,
+        "overlaps": [
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.023864946525507094,
+            "exact_for_authored_convex_hulls": false
+          },
+          {
+            "a": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7",
+            "b": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5",
+            "envelope_intersection_radius_m": 0.024000152708476996,
+            "exact_for_authored_convex_hulls": false
+          }
+        ],
+        "scope": "Terminal discrete pose only, left side at Phase 3 home; decomposition enclosed by convex hull; physical contact margins and approach route unverified"
+      },
+      "terminal_feasibility_certified": false,
+      "physical_success": false
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "status": "Simulation interface specified; physical deployment blocked pending verification",
+  "frames": {
+    "world": "metres, Z up",
+    "robot": "authored robot root",
+    "camera": "USD optical -Z forward, +Y up; convert explicitly to ROS optical +Z forward, +Y down"
+  },
+  "joint_units": "radians and radians/second; USD drive positions are authored in degrees",
+  "actor_inputs": {
+    "q_independent": {
+      "size": 13,
+      "source": "simulator joint state; physical encoder mapping unverified"
+    },
+    "qd_independent": {
+      "size": 13,
+      "source": "simulator joint state; physical velocity feedback unverified"
+    },
+    "previous_action": {
+      "size": 12,
+      "source": "controller history"
+    },
+    "handle_pose_confidence": {
+      "size": 8,
+      "source": "future RGB-D perception: xyz + quaternion wxyz + confidence"
+    },
+    "image_age_seconds": {
+      "size": 1,
+      "source": "camera timestamp"
+    }
+  },
+  "actor_exclusions": [
+    "ground-truth knife pose",
+    "simulated contact identities/forces",
+    "tactile",
+    "wrist wrench",
+    "motor current or torque"
+  ],
+  "teacher_critic_only": [
+    "ground-truth object pose/velocity",
+    "simulator contacts"
+  ],
+  "proposed_task_action": {
+    "size": 12,
+    "order": [
+      "palm dx",
+      "palm dy",
+      "palm dz",
+      "palm dRx",
+      "palm dRy",
+      "palm dRz",
+      "thumb flexion",
+      "thumb opposition",
+      "index",
+      "middle",
+      "ring",
+      "pinky"
+    ],
+    "initial_rate_hz": 20,
+    "translation_limit_m_per_step": 0.002,
+    "rotation_limit_rad_per_step": 0.02,
+    "finger_limit_rad_per_step": 0.01,
+    "status": "provisional simulation limits, not hardware calibration"
+  },
+  "benchmark_action": {
+    "size": 13,
+    "type": "bounded independent-joint offsets around fixed ready posture; resource probe only",
+    "joint_offset_limit_rad": 0.015,
+    "target_slew_rad_per_step": 0.002,
+    "action_hz": 20,
+    "physics_hz": 240
+  },
+  "independent_joint_order": [
+    "right_AR5_5_07R_W4C4A2_joint_1",
+    "right_AR5_5_07R_W4C4A2_joint_2",
+    "right_AR5_5_07R_W4C4A2_joint_3",
+    "right_AR5_5_07R_W4C4A2_joint_4",
+    "right_AR5_5_07R_W4C4A2_joint_5",
+    "right_AR5_5_07R_W4C4A2_joint_6",
+    "right_AR5_5_07R_W4C4A2_joint_7",
+    "right_rh_thumb_cmc_yaw",
+    "right_rh_thumb_cmc_pitch",
+    "right_rh_index_mcp_pitch",
+    "right_rh_middle_mcp_pitch",
+    "right_rh_ring_mcp_pitch",
+    "right_rh_pinky_mcp_pitch"
+  ],
+  "hardware_hand_order": [
+    "thumb flexion",
+    "thumb opposition",
+    "index",
+    "middle",
+    "ring",
+    "pinky"
+  ],
+  "hardware_mapping_notes": "Vendor O6 six-channel order differs from authored yaw/pitch traversal. Named mapping and sign/range calibration required before hardware use; URDF effort declarations are not proof of available torque control.",
+  "fallbacks": {
+    "stale_image": "hold bounded targets, stop if age exceeds future validated threshold",
+    "missing_joint_feedback": "stop; do not substitute zeros",
+    "missing_tactile": "excluded by design"
+  },
+  "physical_deployment_inputs_confirmed": []
+}

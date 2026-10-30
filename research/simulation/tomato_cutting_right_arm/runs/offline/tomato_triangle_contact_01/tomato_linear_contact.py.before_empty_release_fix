@@ -1,0 +1,190 @@
+"""Bounded sparse primal-feasible contact for one/two-DOF linear constraints.
+
+Weighted graph elimination handles barycentric edge constraints exactly. No
+penalty spring, dense full-system factorization or physics regularization.
+"""
+import numpy as np
+from scipy.sparse import coo_matrix,tril,triu
+from scipy.sparse.linalg import cg,LinearOperator,spsolve_triangular,lsmr
+from tomato_volume_protection import InfeasibleVolume
+
+
+def affine_space(C,b,fixed,size):
+    """x=offset+T*q for active weighted pair/single equalities and supports."""
+    C=C.tocsr();adj=[[] for _ in range(size)];anchors=dict(fixed)
+    for row in range(C.shape[0]):
+        j=C.indices[C.indptr[row]:C.indptr[row+1]];v=C.data[C.indptr[row]:C.indptr[row+1]]
+        keep=np.abs(v)>1e-13;j=j[keep];v=v[keep]
+        if len(j)==1:
+            value=b[row]/v[0]
+            if j[0] in anchors and abs(anchors[j[0]]-value)>1e-9:raise ValueError('Incompatible fixed/contact equality')
+            anchors[j[0]]=value
+        elif len(j)==2:
+            a,z=map(int,j);u,w=v
+            adj[a].append((z,-u/w,b[row]/w));adj[z].append((a,-w/u,b[row]/u))
+        else:raise ValueError('Contact row must have one or two nonzero DOFs')
+    seen=np.zeros(size,dtype=bool);offset=np.zeros(size);rows=[];cols=[];vals=[];column=0
+    for root in range(size):
+        if seen[root]:continue
+        if not adj[root]:
+            seen[root]=True
+            if root in anchors:offset[root]=anchors[root]
+            else:rows.append(root);cols.append(column);vals.append(1.);column+=1
+            continue
+        co={root:1.};off={root:0.};stack=[root];members=[];rootvalues=[];seen[root]=True
+        while stack:
+            a=stack.pop();members.append(a)
+            if a in anchors:
+                if abs(co[a])<1e-14:
+                    if abs(off[a]-anchors[a])>1e-9:raise ValueError('Degenerate supported equality')
+                else:rootvalues.append((anchors[a]-off[a])/co[a])
+            for z,k,q in adj[a]:
+                s=k*co[a];t=k*off[a]+q
+                if not seen[z]:seen[z]=True;co[z]=s;off[z]=t;stack.append(z)
+                else:
+                    delta=co[z]-s;rhs=t-off[z]
+                    if abs(delta)>1e-10*max(abs(co[z]),abs(s),1.):rootvalues.append(rhs/delta)
+                    elif abs(rhs)>1e-9:raise ValueError('Incompatible equality cycle')
+        if rootvalues:
+            value=rootvalues[0]
+            for j in members:offset[j]=off[j]+co[j]*value
+            if any(abs(v-value)>1e-8*max(1.,abs(value)) for v in rootvalues):raise ValueError('Incompatible contact anchors')
+        else:
+            scale=np.linalg.norm([co[j] for j in members])
+            for j in members:offset[j]=off[j];rows.append(j);cols.append(column);vals.append(co[j]/scale)
+            column+=1
+    T=coo_matrix((vals,(rows,cols)),shape=(size,column)).tocsr()
+    if C.shape[0] and np.max(np.abs(C@offset-b))>1e-9:raise ValueError('Equality elimination residual')
+    return offset,T
+
+
+def feasible_guess(x,C,b,fixed):
+    """Uncommitted halfspace projection; never repairs a committed trajectory."""
+    x=x.copy();ids=np.array(sorted(fixed),dtype=int);x[ids]=[fixed[i] for i in ids];blocked=set(fixed)
+    for _ in range(200):
+        gaps=C@x-b
+        if gaps.min()>=-1e-11:return x
+        for row in np.flatnonzero(gaps < -1e-11):
+            j=C.indices[C.indptr[row]:C.indptr[row+1]];v=C.data[C.indptr[row]:C.indptr[row+1]]
+            free=np.array([i not in blocked for i in j]);j=j[free];v=v[free]
+            gap=float((C.getrow(row)@x)[0]-b[row]);norm=float(v@v)
+            if norm<=1e-24:raise ValueError('Infeasible contact against fixed support')
+            if gap<0:x[j]+=(-gap+1e-12)*v/norm
+    raise ValueError('Contact feasibility guess did not converge')
+
+
+def independent_rows(C,candidates,fixed,size):
+    """Linear-time weighted union/find rank filter for pair constraints."""
+    parent=list(range(size));weight=np.ones(size);anchored=np.zeros(size,dtype=bool)
+    anchored[list(fixed)]=True;selected=[]
+    def find(i):
+        if parent[i]!=i:
+            p=parent[i];r,w=find(p);weight[i]*=w;parent[i]=r
+        return parent[i],weight[i]
+    for row in candidates:
+        ids=C.indices[C.indptr[row]:C.indptr[row+1]];v=C.data[C.indptr[row]:C.indptr[row+1]]
+        keep=np.abs(v)>1e-13;ids=ids[keep];v=v[keep]
+        roots=[find(int(i)) for i in ids]
+        if len(ids)==1:
+            a,_=roots[0]
+            if not anchored[a]:anchored[a]=True;selected.append(int(row))
+        elif len(ids)==2:
+            (a,u),(b,w)=roots;c,d=v[0]*u,v[1]*w
+            if a==b:
+                if abs(c+d)>1e-10*max(abs(c),abs(d),1.) and not anchored[a]:anchored[a]=True;selected.append(int(row))
+            elif not (anchored[a] and anchored[b]):
+                parent[a]=b;weight[a]=-d/c;anchored[b]=anchored[a] or anchored[b];selected.append(int(row))
+        else:raise ValueError('Unsupported contact row size')
+    return selected
+
+
+def solve_linear_contact(model,initial,fixed,C,b,max_iterations=60):
+    """Sparse SQP with the already-installed OSQP builtin CPU backend.
+
+    The numerical QP changes Newton's step only. Final loads/geometry are
+    checked against the original nonlinear energy; no penalty/contact spring
+    or constitutive regularization is added. Hard worker caps remain external.
+    """
+    import osqp
+    from scipy.sparse import diags,triu
+    C=C.tocsr();x=feasible_guess(np.asarray(initial).ravel(),C,b,fixed)
+    ids=np.array(sorted(fixed),dtype=int);free=np.setdiff1d(np.arange(x.size),ids)
+    Af=C[:,free];row_ids=np.flatnonzero(np.asarray(Af.multiply(Af).sum(axis=1)).ravel()>1e-24)
+    trace=[];lam=np.zeros(len(b));success=False
+    for iteration in range(max_iterations):
+        state=model.evaluate(x.reshape(-1,3),tangent=True);g=state['gradient_n'].ravel();H=state['tangent_n_m'][free][:,free]
+        if np.any(H.diagonal()<=0):raise ValueError('Nonpositive free diagonal')
+        # Re-equilibrating an already converged position must not require a
+        # new ill-conditioned near-zero QP step. Recover nonnegative contact
+        # loads, then apply exactly the same physical KKT acceptance gates.
+        gaps=C@x-b;touch=np.flatnonzero(gaps<=1e-10);cached=None
+        if len(touch):
+            M=Af[touch].T
+            fit=lsmr(M,g[free],atol=1e-13,btol=1e-13,maxiter=2500)
+            test=np.zeros(len(b));test[touch]=fit[0]
+            denom=max(np.linalg.norm(g[ids]),np.linalg.norm(C.T@test),1e-4)
+            if np.linalg.norm((g-C.T@test)[free])/denom < 1e-3 and M.shape[0]*M.shape[1]*8 < 64*1024**2:
+                from scipy.optimize import nnls
+                loads,_=nnls(M.toarray(),g[free],maxiter=5*len(touch))
+                test[:]=0.;test[touch]=loads
+                denom=max(np.linalg.norm(g[ids]),np.linalg.norm(C.T@test),1e-4)
+                error=float(np.linalg.norm((g-C.T@test)[free])/denom)
+                if x.size>1000:print({'stage':'kkt_load_recovery','relative':error},flush=True)
+                if error>=1e-7:
+                    strong=independent_rows(C,np.flatnonzero(test>1e-9).tolist(),fixed,x.size)
+                    offset,T=affine_space(C[strong],b[strong],fixed,x.size)
+                    particular=offset+T@(T.T@(x-offset))-x
+                    hh=(T.T@state['tangent_n_m']@T).tocsr();rr=-np.asarray(T.T@(g+state['tangent_n_m']@particular)).ravel()
+                    hd=hh.diagonal();lower=tril(hh,format='csr');upper=triu(hh,format='csr')
+                    def precondition(v):return spsolve_triangular(upper,hd*spsolve_triangular(lower,v,lower=True),lower=False)
+                    correction,info=cg(hh,rr,M=LinearOperator(hh.shape,matvec=precondition),rtol=1e-9,atol=1e-12,maxiter=2500)
+                    if info==0:
+                        trial=x+particular+T@correction
+                        if (C@trial-b).min()>=-1e-10:
+                            try:
+                                refined=model.evaluate(trial.reshape(-1,3),tangent=True)
+                                if refined['energy_j']<=state['energy_j']+1e-14:
+                                    x=trial;state=refined;g=state['gradient_n'].ravel();H=state['tangent_n_m'][free][:,free]
+                                    gaps=C@x-b;touch=np.flatnonzero(gaps<=1e-10);M=Af[touch].T
+                                    loads,_=nnls(M.toarray(),g[free],maxiter=5*len(touch))
+                                    test[:]=0.;test[touch]=loads
+                                    denom=max(np.linalg.norm(g[ids]),np.linalg.norm(C.T@test),1e-4)
+                                    error=float(np.linalg.norm((g-C.T@test)[free])/denom)
+                            except InfeasibleVolume:pass
+                if error<1e-7 and gaps.min()>=-1e-10 and test.min()>=-1e-9 and np.max(np.abs(test*gaps))<1e-10:
+                    cached=(test,error)
+        elif np.linalg.norm(g[free]) < 1e-11:cached=(np.zeros(len(b)),float(np.linalg.norm(g[free])/1e-4))
+        if cached is not None:
+            lam,relative=cached;trace.append({'iteration':iteration,'force_residual':relative,'min_gap_m':float(gaps.min()),'energy_j':state['energy_j'],'cached_kkt_verified':True})
+            success=True;break
+        D=diags(1/np.sqrt(H.diagonal()));Q=(D@H@D).tocsc();B=(Af[row_ids]@D).tocsr()
+        scale=np.sqrt(np.asarray(B.multiply(B).sum(axis=1)).ravel());B=(diags(1/scale)@B).tocsc()
+        solver=osqp.OSQP(algebra='builtin')
+        solver.setup(P=triu(Q,format='csc'),q=np.asarray(D@g[free]).ravel(),A=B,
+            l=(b-C@x)[row_ids]/scale,u=np.full(len(row_ids),np.inf),
+            eps_abs=1e-10,eps_rel=1e-10,max_iter=20000,polishing=True,
+            verbose=False,check_termination=10,adaptive_rho=True)
+        result=solver.solve(raise_error=False)
+        if result.info.status_val!=1:raise ValueError('Contact QP inconclusive: '+result.info.status)
+        direction=np.zeros(x.size);direction[free]=D@result.x
+        lam[:]=0.;lam[row_ids]=-result.y/scale
+        residual=g-C.T@lam;norm=max(np.linalg.norm(g[ids]),np.linalg.norm(C.T@lam),1e-4)
+        relative=float(np.linalg.norm(residual[free])/norm);gaps=C@x-b
+        trace.append({'iteration':iteration,'force_residual':relative,'min_gap_m':float(gaps.min()),'energy_j':state['energy_j'],'qp_iterations':int(result.info.iter)})
+        if x.size>1000:print(trace[-1],flush=True)
+        if relative<1e-7 and gaps.min()>=-1e-10 and lam.min()>=-1e-9 and np.max(np.abs(lam*gaps))<1e-10:
+            success=True;break
+        alpha=1.;accepted=False
+        while alpha>1e-9:
+            trial=x+alpha*direction
+            try:
+                proposed=model.evaluate(trial.reshape(-1,3))
+                if (C@trial-b).min()>=-1e-10 and proposed['energy_j']<=state['energy_j']+1e-4*alpha*min(float(g@direction),0.)+1e-14:
+                    accepted=True;break
+            except InfeasibleVolume:pass
+            alpha*=.5
+        if not accepted:break
+        x=trial
+    state=model.evaluate(x.reshape(-1,3),tangent=True)
+    active=np.flatnonzero(lam>1e-9).tolist()
+    return x.reshape(-1,3),lam,state,trace,success,active,ids,free

@@ -1,0 +1,299 @@
+{
+  "constructor_and_method_calls": [
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 58,
+      "target": "newton.ModelBuilder",
+      "explicit_keywords_checked": [
+        "gravity"
+      ],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 67,
+      "target": "builder.add_body",
+      "explicit_keywords_checked": [
+        "is_kinematic",
+        "label"
+      ],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 69,
+      "target": "shape.configure_sdf",
+      "explicit_keywords_checked": [
+        "max_resolution",
+        "force_sdf"
+      ],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 70,
+      "target": "newton.Mesh",
+      "explicit_keywords_checked": [],
+      "positional_count": 2,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 72,
+      "target": "builder.add_shape_mesh",
+      "explicit_keywords_checked": [
+        "mesh",
+        "cfg",
+        "label"
+      ],
+      "positional_count": 1,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 73,
+      "target": "builder.color",
+      "explicit_keywords_checked": [],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 74,
+      "target": "builder.finalize",
+      "explicit_keywords_checked": [],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 78,
+      "target": "newton.solvers.SolverVBD",
+      "explicit_keywords_checked": [
+        "iterations",
+        "rigid_compliant_alm",
+        "integrate_with_external_rigid_solver",
+        "rigid_body_contact_buffer_size"
+      ],
+      "positional_count": 1,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 80,
+      "target": "newton.CollisionPipeline",
+      "explicit_keywords_checked": [
+        "broad_phase",
+        "soft_contact_gap",
+        "enable_rigid_soft_full_surface_contact"
+      ],
+      "positional_count": 1,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 60,
+      "target": "builder.add_particle",
+      "explicit_keywords_checked": [
+        "radius"
+      ],
+      "positional_count": 3,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 64,
+      "target": "builder.add_spring",
+      "explicit_keywords_checked": [],
+      "positional_count": 5,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_native_coupon.py",
+      "line": 66,
+      "target": "builder.add_triangle",
+      "explicit_keywords_checked": [
+        "tri_ke",
+        "tri_ka",
+        "tri_kd"
+      ],
+      "positional_count": 3,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 60,
+      "target": "newton.ModelBuilder",
+      "explicit_keywords_checked": [
+        "gravity"
+      ],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 68,
+      "target": "builder.color",
+      "explicit_keywords_checked": [],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 69,
+      "target": "builder.finalize",
+      "explicit_keywords_checked": [],
+      "positional_count": 0,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 73,
+      "target": "newton.solvers.SolverVBD",
+      "explicit_keywords_checked": [
+        "iterations",
+        "rigid_compliant_alm",
+        "particle_enable_self_contact",
+        "particle_self_contact_margin",
+        "particle_self_contact_gap",
+        "particle_rest_shape_contact_exclusion_radius",
+        "particle_topological_contact_filter_threshold",
+        "particle_vertex_contact_buffer_size",
+        "particle_edge_contact_buffer_size"
+      ],
+      "positional_count": 1,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 62,
+      "target": "builder.add_particle",
+      "explicit_keywords_checked": [
+        "radius"
+      ],
+      "positional_count": 3,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 65,
+      "target": "builder.add_spring",
+      "explicit_keywords_checked": [],
+      "positional_count": 5,
+      "runtime_types_validated": false
+    },
+    {
+      "source": "tomato_two_piece_coupon.py",
+      "line": 67,
+      "target": "builder.add_triangle",
+      "explicit_keywords_checked": [
+        "tri_ke",
+        "tri_ka",
+        "tri_kd"
+      ],
+      "positional_count": 3,
+      "runtime_types_validated": false
+    }
+  ],
+  "private_helper_argument_map": [
+    {
+      "parameter": "contact_index",
+      "expression": "index"
+    },
+    {
+      "parameter": "corners",
+      "expression": "cs"
+    },
+    {
+      "parameter": "bary",
+      "expression": "bary[index]"
+    },
+    {
+      "parameter": "pos",
+      "expression": "particle_q"
+    },
+    {
+      "parameter": "pos_prev",
+      "expression": "particle_q_prev"
+    },
+    {
+      "parameter": "particle_radius",
+      "expression": "particle_radius"
+    },
+    {
+      "parameter": "contact_ke",
+      "expression": "penalty_k[index]"
+    },
+    {
+      "parameter": "contact_kd",
+      "expression": "material_kd[index]"
+    },
+    {
+      "parameter": "contact_mu",
+      "expression": "material_mu[index]"
+    },
+    {
+      "parameter": "friction_epsilon",
+      "expression": "friction_epsilon"
+    },
+    {
+      "parameter": "shape_body",
+      "expression": "shape_body"
+    },
+    {
+      "parameter": "body_q",
+      "expression": "body_q"
+    },
+    {
+      "parameter": "body_q_prev",
+      "expression": "body_q_prev"
+    },
+    {
+      "parameter": "body_qd",
+      "expression": "body_qd"
+    },
+    {
+      "parameter": "body_com",
+      "expression": "body_com"
+    },
+    {
+      "parameter": "contact_shape",
+      "expression": "contact_shape"
+    },
+    {
+      "parameter": "contact_body_pos",
+      "expression": "contact_body_pos"
+    },
+    {
+      "parameter": "contact_body_vel",
+      "expression": "contact_body_vel"
+    },
+    {
+      "parameter": "contact_normal",
+      "expression": "contact_normal"
+    },
+    {
+      "parameter": "shape_margin",
+      "expression": "shape_margin"
+    },
+    {
+      "parameter": "dt",
+      "expression": "dt"
+    }
+  ],
+  "native_runtime_validated": false,
+  "kernel_compiled": false,
+  "array_dtype_and_device_validated": false,
+  "semantic_argument_review_required": true,
+  "inspected_source_paths": {
+    "builder": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/builder.py",
+    "solver": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py",
+    "pipeline": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/collide.py",
+    "types": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/geometry/types.py",
+    "helper": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/rigid_vbd_kernels.py"
+  },
+  "static_audit_completed": true
+}

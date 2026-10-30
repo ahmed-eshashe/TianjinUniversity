@@ -1,0 +1,21 @@
+0 0 {'passed': True, 'flags': [], 'depth_mm': 0.0, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0, 'runtime_s': 1.131660623001153}
+ 
+1 0 {'passed': True, 'flags': [], 'depth_mm': 0.25, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.0009467941325343377, 'runtime_s': 4.768329714999709}
+ 
+2 0 {'passed': True, 'flags': [], 'depth_mm': 0.5, 'damaged_patches': 0, 'max_damage': 0.0, 'relative_energy_residual': 0.001514350862529597, 'runtime_s': 5.297268131000237}
+ 
+3 1  Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 115, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_blade_damage.py", line 96, in main
+    least=float(eigsh(pre@h@pre,k=1,which='SA',return_eigenvectors=False,tol=1e-5,maxiter=800)[0])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 1778, in eigsh
+    params.iterate()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 624, in iterate
+    self._raise_no_convergence()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/linalg/_eigen/arpack/arpack.py", line 421, in _raise_no_convergence
+    raise ArpackNoConvergence(f"No convergence ({num_iter} iterations, "
+scipy.sparse.linalg._eigen.arpack.arpack.ArpackNoConvergence: ARPACK error -1: No convergence (801 iterations, 0/1 eigenvectors converged)
+

@@ -1,0 +1,41 @@
+{
+  "command": [
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py",
+    "--output",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase3/central_grasp_09",
+    "--seconds",
+    "180",
+    "--candidate",
+    "1",
+    "--grasp-plan",
+    "alternatives"
+  ],
+  "scope": "Bounded native physical validation; no training",
+  "guard_sha256": "539b31f9601cd75fd518272d241101e32a0bb672db949f274babb818e73feabc",
+  "thresholds_bytes": {
+    "host_start": 10000000000,
+    "original_host_start_floor": 5120000000,
+    "host_warning": 3072000000,
+    "host_stop": 2048000000,
+    "gpu_start_free": 4294967296,
+    "gpu_warning_free": 1610612736,
+    "gpu_stop_free": 1073741824
+  },
+  "same_lock_as_scripted_controller": true,
+  "configuration": {
+    "output": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase3/central_grasp_09",
+    "seconds": 180,
+    "camera": false,
+    "resume": null,
+    "max_updates": 12,
+    "width": 128,
+    "native": false,
+    "phase3": false,
+    "phase3_fixtures": false,
+    "hand_cycle": false,
+    "phase3_grasp": true,
+    "candidate": 1,
+    "grasp_plan": "alternatives"
+  }
+}

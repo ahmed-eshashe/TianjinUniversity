@@ -1,0 +1,156 @@
+{
+  "phase": "mesh_guided_palm_seating",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 347, in <module>\n    move(target,orientation,seat_feedback,settle_steps=2)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 175, in move\n    wait_targets(100)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 147, in wait_targets\n    step()\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 131, in step\n    raise RuntimeError('Knife left bounded central footprint/3 cm translation/20 degree rotation limit')\nRuntimeError: Knife left bounded central footprint/3 cm translation/20 degree rotation limit\n",
+  "training": false,
+  "last_sample": {
+    "handle_height_m": 0.902280243082627,
+    "handle_in_palm_m": [
+      0.0782114854045422,
+      0.017108354524039908,
+      0.09872912825799238
+    ],
+    "contacts": [
+      {
+        "part": "thumb",
+        "body": "right_rh_thumb_distal",
+        "force_n": 3.1923742294311523,
+        "on_handle": true,
+        "point_world_m": [
+          -2.199319362640381,
+          -1.535754919052124,
+          0.9029300212860107
+        ],
+        "normal_world": [
+          0.887593686580658,
+          -0.4602533280849457,
+          -0.018556326627731323
+        ],
+        "radial_vector": [
+          0.018461694542459276,
+          -0.003387689966477838
+        ],
+        "curl_rad": 0.0,
+        "proximal": false,
+        "distance_from_tip_m": 0.009657709364870676
+      },
+      {
+        "part": "index",
+        "body": "right_rh_index_distal",
+        "force_n": 3.0128798484802246,
+        "on_handle": true,
+        "point_world_m": [
+          -2.226867198944092,
+          -1.515438199043274,
+          0.9079993367195129
+        ],
+        "normal_world": [
+          -0.8742054104804993,
+          0.43855783343315125,
+          0.2084033191204071
+        ],
+        "radial_vector": [
+          -0.015818544508814796,
+          -0.005875688654834397
+        ],
+        "curl_rad": 1.6497512459754944,
+        "proximal": false,
+        "distance_from_tip_m": 0.00018030868834771618
+      }
+    ],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 0.6195064187049866,
+    "support_clearance_m": -1.586614170967504e-05,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "knife_friction_by_hand_body_n": {
+      "right_rh_thumb_distal": [
+        -0.1220054104924202,
+        -0.1778241991996765,
+        -1.4252302646636963
+      ],
+      "right_rh_index_distal": [
+        -0.2864665985107422,
+        -0.06516149640083313,
+        -1.0645394325256348
+      ],
+      "right_rh_middle_distal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_ring_distal": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right_rh_pinky_distal": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "phase": "mesh_guided_palm_seating",
+    "control_step": 632,
+    "sim_s": 31.6,
+    "q_rad": [
+      -1.0062352418899536,
+      -1.528961420059204,
+      1.1252986192703247,
+      1.4731268882751465,
+      -1.2120487689971924,
+      -0.02392330951988697,
+      0.19765768945217133,
+      0.8579426407814026,
+      0.13940854370594025,
+      0.8728848695755005,
+      0.9952689409255981,
+      0.9952733516693115,
+      0.949896514415741
+    ],
+    "palm_world_m": [
+      -2.2203646876774568,
+      -1.499085051310425,
+      0.9869501524168538
+    ],
+    "knife_pose_xyzw": [
+      -2.1590735912323,
+      -1.4438318014144897,
+      0.9100691080093384,
+      0.05529012903571129,
+      -0.03411339968442917,
+      0.5012511014938354,
+      0.8628595471382141
+    ],
+    "in_place_motion": {
+      "footprint_margin_m": 0.02338786880290078,
+      "centre_xy_shift_m": 0.029576173473789484,
+      "rotation_deg": 9.403800731799473,
+      "within_bounds": true
+    },
+    "estimated_hand_drive_torque_nm": [
+      0.0007913900190033019,
+      0.5676261186599731,
+      0.27406296133995056,
+      2.323184162378311e-05,
+      1.0389834642410278e-05,
+      -0.0015022214502096176
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "substep_event": null
+}

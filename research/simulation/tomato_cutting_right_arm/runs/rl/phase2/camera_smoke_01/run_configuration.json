@@ -1,0 +1,22 @@
+{
+  "camera": true,
+  "observation_size": 55,
+  "action_size": 13,
+  "physics_hz": 240,
+  "action_hz": 20,
+  "episode_controls": 64,
+  "rollout_controls": 64,
+  "policy": "64x64 tanh PPO probe, two epochs per 64 transitions",
+  "reward": "negative bounded posture error only",
+  "full_grasp_training": false,
+  "device": "cuda",
+  "physics_device": "cpu",
+  "width": 128,
+  "max_updates_this_run": 4,
+  "requested_seconds": 60,
+  "hashes": {
+    "rl/benchmark.py": "871be930bfd1787278003cba174eda32ca6db7cd42a0c272b121fe707a4057b4",
+    "rl/probe_policy.py": "97b03bc17ee97fc0fc0b8a574a1379a705ebe91d19abbd35b7d23f1d54a51d5f",
+    "rl/scene/minimal_benchmark.usda": "850a765acdec138313fd0ca036c29487e14d6f9d50d37bbf6f20bc2f1d2a071b"
+  }
+}

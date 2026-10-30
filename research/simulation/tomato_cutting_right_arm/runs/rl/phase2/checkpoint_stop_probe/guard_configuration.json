@@ -1,0 +1,37 @@
+{
+  "command": [
+    "/home/omen/miniconda3/envs/isaaclab_6/bin/python",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/benchmark.py",
+    "--output",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase2/checkpoint_stop_probe",
+    "--seconds",
+    "60",
+    "--max-updates",
+    "1",
+    "--width",
+    "128",
+    "--camera",
+    "--resume",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase2/camera_soak_30min_01/checkpoint.pt"
+  ],
+  "scope": "Phase 2 resource benchmark only; not knife skill training",
+  "guard_sha256": "09e537aee0a672afced67fbfdbf0540b6ce4ec63220be2ff086870388fc940ff",
+  "thresholds_bytes": {
+    "host_start": 10000000000,
+    "original_host_start_floor": 5120000000,
+    "host_warning": 3072000000,
+    "host_stop": 2048000000,
+    "gpu_start_free": 4294967296,
+    "gpu_warning_free": 1610612736,
+    "gpu_stop_free": 1073741824
+  },
+  "same_lock_as_scripted_controller": true,
+  "configuration": {
+    "output": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase2/checkpoint_stop_probe",
+    "seconds": 60,
+    "camera": true,
+    "resume": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/rl/phase2/camera_soak_30min_01/checkpoint.pt",
+    "max_updates": 1,
+    "width": 128
+  }
+}

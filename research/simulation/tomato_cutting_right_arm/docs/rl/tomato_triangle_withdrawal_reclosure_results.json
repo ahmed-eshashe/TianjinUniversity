@@ -1,0 +1,367 @@
+{
+  "updated_utc": "2026-10-25T21:27:56.491771+00:00",
+  "withdrawal": {
+    "passed": true,
+    "existing_files_unchanged": 241,
+    "independently_audited_endpoints": 71,
+    "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/withdrawal_batch09/attempt006_00",
+    "last_accepted_depth_mm": 0.0,
+    "damage_and_history_exactly_unchanged_from_seed": true,
+    "maximum_withdrawal_energy_residual_fraction": 0.0020207541424654978,
+    "minimum_cut_gap_m": -2.411265631607762e-15,
+    "minimum_swept_blade_gap_m": -2.411265631607762e-15,
+    "maximum_worker_rss_bytes": 202866688,
+    "optimization_only_candidates": 9,
+    "rejected_endpoints": [
+      "runs/offline/tomato_triangle_withdrawal_01/withdrawal_batch08/attempt009_00"
+    ],
+    "complete_withdrawal_validated": true,
+    "supported_reclosure_validated": false,
+    "independent_release_validated": false,
+    "full_cut": false,
+    "simulator": false,
+    "training": false
+  },
+  "deeper_insertion_branch": {
+    "passed": true,
+    "independently_audited_endpoints": 2,
+    "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/insertion_batch02/attempt001_01",
+    "last_accepted_depth_mm": 8.3125,
+    "damaged_patches": 5,
+    "completely_failed_patches": 0,
+    "max_damage": 0.9628795103472146,
+    "topology": {
+      "components": 1,
+      "cross_bulk_couplings": 0,
+      "components_spanning_both_pieces": 1,
+      "active_cohesive_patches": 47,
+      "all_patches_failed": false,
+      "materially_disconnected": false
+    },
+    "maximum_total_work_error_fraction": 0.0006567703905245108,
+    "minimum_swept_blade_gap_m": -7.979727989493313e-17,
+    "maximum_accepted_worker_rss_bytes": 195305472,
+    "batches": [
+      {
+        "batch": "insertion_batch01",
+        "stop_reason": "worker_refused_or_resource_or_solver_stop",
+        "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/insertion_batch01/attempt001_01"
+      },
+      {
+        "batch": "insertion_batch02",
+        "stop_reason": "worker_refused_or_resource_or_solver_stop",
+        "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/insertion_batch02/attempt001_01"
+      },
+      {
+        "batch": "insertion_batch03",
+        "stop_reason": "worker_refused_or_resource_or_solver_stop",
+        "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/insertion_batch02/attempt001_01"
+      }
+    ],
+    "validation_branches_separate": true,
+    "full_cut": false,
+    "independent_release_validated": false,
+    "simulator": false,
+    "training": false
+  },
+  "supported_reclosure": {
+    "passed": true,
+    "checks": {
+      "ten_phases_independently_audited": true,
+      "damage_and_history_exactly_retained": true,
+      "baseline_sources_unchanged": true,
+      "compression_positive_load": true,
+      "compression_faces_closed": true,
+      "compression_load_balanced": true,
+      "negative_drive_reopens_faces": true,
+      "final_faces_reclose": true,
+      "final_stored_energy_returns": true
+    },
+    "empty_polygon_query_semantics": "Positive infinity permitted only for independently verified empty blade clipping; all mechanical state metrics must be finite",
+    "accepted_phases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/cleared_reclosure_batch01/phase09_00",
+    "complete_supported_cycle": true,
+    "maximum_reclosure_energy_residual_fraction": 0.0002901137815510351,
+    "minimum_swept_blade_gap_m": -1.0942635686461699e-14,
+    "maximum_opening_m": 5.871949343327215e-06,
+    "maximum_worker_rss_bytes": 199835648,
+    "phase_metrics": [
+      {
+        "minimum_blade_clearance_m": 0.0010000000000000633,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.0,
+        "energy_j": 2.0162121516499317e-25,
+        "back_cap_force_n": 4.1138031745963335e-11,
+        "cut_contact_force_n": 2.7399460748827112e-12,
+        "minimum_cut_gap_m": -2.411265631607762e-15,
+        "maximum_cut_gap_m": 1.863093013199091e-15,
+        "reclosure_relative_energy_residual": 1.5396544981433443e-13
+      },
+      {
+        "minimum_blade_clearance_m": 0.0009986835441549227,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.025,
+        "energy_j": 1.0792130192464987e-07,
+        "back_cap_force_n": 0.008631199356267267,
+        "cut_contact_force_n": 0.008631199356338187,
+        "minimum_cut_gap_m": 0.0,
+        "maximum_cut_gap_m": 0.0,
+        "reclosure_relative_energy_residual": 0.0002901137815510351
+      },
+      {
+        "minimum_blade_clearance_m": 0.0009973696424913567,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.05,
+        "energy_j": 4.314345367874066e-07,
+        "back_cap_force_n": 0.017247346977469078,
+        "cut_contact_force_n": 0.0172473469775215,
+        "minimum_cut_gap_m": 0.0,
+        "maximum_cut_gap_m": 0.0,
+        "reclosure_relative_energy_residual": 0.00014536422676084376
+      },
+      {
+        "minimum_blade_clearance_m": 0.0009973696424913567,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.025,
+        "energy_j": 1.0792130192464823e-07,
+        "back_cap_force_n": 0.008631199356258657,
+        "cut_contact_force_n": 0.008631199356331363,
+        "minimum_cut_gap_m": 0.0,
+        "maximum_cut_gap_m": 0.0,
+        "reclosure_relative_energy_residual": 7.257058541663903e-05
+      },
+      {
+        "minimum_blade_clearance_m": 0.0009986835441548186,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.0,
+        "energy_j": 1.9596893807456975e-26,
+        "back_cap_force_n": -1.7701642364481249e-13,
+        "cut_contact_force_n": -2.7561430487489287e-14,
+        "minimum_cut_gap_m": -1.0942635686461699e-14,
+        "maximum_cut_gap_m": 1.0044048925905713e-14,
+        "reclosure_relative_energy_residual": 1.197524398690876e-09
+      },
+      {
+        "minimum_blade_clearance_m": 0.0009999999999999246,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": -0.025,
+        "energy_j": 1.0643014421417206e-07,
+        "back_cap_force_n": -0.008516804410119285,
+        "cut_contact_force_n": 0.0,
+        "minimum_cut_gap_m": 2.171426179142788e-08,
+        "maximum_cut_gap_m": 2.936808558343801e-06,
+        "reclosure_relative_energy_residual": 6.933017509460166e-05
+      },
+      {
+        "minimum_blade_clearance_m": 0.0010013048309491582,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": -0.05,
+        "energy_j": 4.259606288571556e-07,
+        "back_cap_force_n": -0.017048126580607503,
+        "cut_contact_force_n": 0.0,
+        "minimum_cut_gap_m": 4.362826037593304e-08,
+        "maximum_cut_gap_m": 5.871949343327215e-06,
+        "reclosure_relative_energy_residual": 0.00014153751377948758
+      },
+      {
+        "minimum_blade_clearance_m": 0.0010013048309477357,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": -0.025,
+        "energy_j": 1.0643014421417255e-07,
+        "back_cap_force_n": -0.008516804412445934,
+        "cut_contact_force_n": 0.0,
+        "minimum_cut_gap_m": 2.1714261794897327e-08,
+        "maximum_cut_gap_m": 2.936808559571985e-06,
+        "reclosure_relative_energy_residual": 6.933010768446395e-05
+      },
+      {
+        "minimum_blade_clearance_m": 0.0010000000000013332,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.0,
+        "energy_j": 2.2911563919446245e-26,
+        "back_cap_force_n": -4.620525605995574e-13,
+        "cut_contact_force_n": 9.321288549000803e-16,
+        "minimum_cut_gap_m": -7.62237495344209e-15,
+        "maximum_cut_gap_m": 8.139322549283179e-15,
+        "reclosure_relative_energy_residual": 1.0544457407491234e-09
+      },
+      {
+        "minimum_blade_clearance_m": 0.0010000000000013332,
+        "maximum_blade_multiplier_n": 0.0,
+        "drive_mm": 0.0,
+        "energy_j": 2.2911563919446245e-26,
+        "back_cap_force_n": -4.620525605995574e-13,
+        "cut_contact_force_n": -3.9877671045600133e-13,
+        "minimum_cut_gap_m": -7.62237495344209e-15,
+        "maximum_cut_gap_m": 8.139322549283179e-15,
+        "reclosure_relative_energy_residual": 1.0544457407491234e-09
+      }
+    ],
+    "full_cut": false,
+    "independent_release_validated": false,
+    "simulator": false,
+    "training": false
+  },
+  "zero_insertion_control": {
+    "passed": false,
+    "checks": {
+      "ten_phases_independently_audited": true,
+      "damage_and_history_exactly_retained": true,
+      "baseline_sources_unchanged": true,
+      "compression_positive_load": true,
+      "compression_faces_closed": false,
+      "compression_load_balanced": false,
+      "negative_drive_reopens_faces": true,
+      "final_faces_reclose": true,
+      "final_stored_energy_returns": true
+    },
+    "accepted_phases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "last_accepted": "runs/offline/tomato_triangle_withdrawal_01/reclosure_batch01/phase09_00",
+    "complete_supported_cycle": true,
+    "maximum_reclosure_energy_residual_fraction": 0.00031252305603789735,
+    "minimum_swept_blade_gap_m": -1.651109804434725e-14,
+    "maximum_opening_m": 2.1548018133088487e-05,
+    "maximum_worker_rss_bytes": 201658368,
+    "phase_metrics": [
+      {
+        "drive_mm": 0.0,
+        "energy_j": 2.0162121516499317e-25,
+        "back_cap_force_n": 4.1138031745963335e-11,
+        "cut_contact_force_n": 3.2875500089215784e-12,
+        "minimum_cut_gap_m": -2.411265631607762e-15,
+        "maximum_cut_gap_m": 1.863093013199091e-15,
+        "reclosure_relative_energy_residual": 1.5396544981433443e-13
+      },
+      {
+        "drive_mm": 0.025,
+        "energy_j": 1.0974222957501492e-07,
+        "back_cap_force_n": 0.008776634566669862,
+        "cut_contact_force_n": 0.008577002739199452,
+        "minimum_cut_gap_m": 0.0,
+        "maximum_cut_gap_m": 1.0777859025007386e-05,
+        "reclosure_relative_energy_residual": 0.00031252305603789735
+      },
+      {
+        "drive_mm": 0.05,
+        "energy_j": 4.386943563039207e-07,
+        "back_cap_force_n": 0.01753678447705233,
+        "cut_contact_force_n": 0.01713940403442766,
+        "minimum_cut_gap_m": 0.0,
+        "maximum_cut_gap_m": 2.1548018133088487e-05,
+        "reclosure_relative_energy_residual": 0.00015656836787515904
+      },
+      {
+        "drive_mm": 0.025,
+        "energy_j": 1.0974222957501552e-07,
+        "back_cap_force_n": 0.008776634566673882,
+        "cut_contact_force_n": 0.008577002739512826,
+        "minimum_cut_gap_m": 0.0,
+        "maximum_cut_gap_m": 1.077785902517392e-05,
+        "reclosure_relative_energy_residual": 7.817966317675276e-05
+      },
+      {
+        "drive_mm": 0.0,
+        "energy_j": 5.36364497989264e-26,
+        "back_cap_force_n": -1.334281875518225e-13,
+        "cut_contact_force_n": -1.041656377532029e-13,
+        "minimum_cut_gap_m": -7.601558271730369e-15,
+        "maximum_cut_gap_m": 6.4254157550180935e-15,
+        "reclosure_relative_energy_residual": 1.175745355038557e-09
+      },
+      {
+        "drive_mm": -0.025,
+        "energy_j": 1.1148233915535172e-07,
+        "back_cap_force_n": -0.008921109098296885,
+        "cut_contact_force_n": 0.0,
+        "minimum_cut_gap_m": 2.474772485203114e-08,
+        "maximum_cut_gap_m": 9.580573752637767e-06,
+        "reclosure_relative_energy_residual": 7.186117264379243e-05
+      },
+      {
+        "drive_mm": -0.05,
+        "energy_j": 4.4618199825474673e-07,
+        "back_cap_force_n": -0.017857468876575227,
+        "cut_contact_force_n": 0.0,
+        "minimum_cut_gap_m": 4.9703352433816406e-08,
+        "maximum_cut_gap_m": 1.9185368206251635e-05,
+        "reclosure_relative_energy_residual": 0.00014362182496419957
+      },
+      {
+        "drive_mm": -0.025,
+        "energy_j": 1.1148233915535244e-07,
+        "back_cap_force_n": -0.00892110910044329,
+        "cut_contact_force_n": 0.0,
+        "minimum_cut_gap_m": 2.4747724911011737e-08,
+        "maximum_cut_gap_m": 9.58057375330737e-06,
+        "reclosure_relative_energy_residual": 7.06551680018141e-05
+      },
+      {
+        "drive_mm": 0.0,
+        "energy_j": 2.1309261479960697e-26,
+        "back_cap_force_n": -8.439439752976408e-13,
+        "cut_contact_force_n": 2.3121537566958494e-15,
+        "minimum_cut_gap_m": -1.651109804434725e-14,
+        "maximum_cut_gap_m": 1.2125717097077882e-14,
+        "reclosure_relative_energy_residual": 1.0158437211756922e-09
+      },
+      {
+        "drive_mm": 0.0,
+        "energy_j": 2.1309261479960697e-26,
+        "back_cap_force_n": -8.439439752976408e-13,
+        "cut_contact_force_n": 5.064318554687299e-14,
+        "minimum_cut_gap_m": -1.651109804434725e-14,
+        "maximum_cut_gap_m": 1.2125717097077882e-14,
+        "reclosure_relative_energy_residual": 1.0158437211756922e-09
+      }
+    ],
+    "full_cut": false,
+    "independent_release_validated": false,
+    "simulator": false,
+    "training": false
+  },
+  "zero_insertion_contact_diagnostic": {
+    "zero_depth_blade_active_rows": 10,
+    "loaded_blade_rows": 1,
+    "maximum_blade_multiplier_n": 0.0005347102061791377,
+    "blade_force_on_slice_cut_nodes_x_n": -0.0005347102061791377,
+    "blade_force_on_remainder_cut_nodes_x_n": 0.0,
+    "maximum_cut_gap_m": 2.1548018133088487e-05,
+    "conclusion": "At zero insertion, the edge remains an active load-bearing obstacle. This is not a blade-clear supported reclosure test.",
+    "simulator": false,
+    "training": false
+  },
+  "regressions": {
+    "passed": true,
+    "tests": 111,
+    "failures": 0,
+    "errors": 0,
+    "forbidden_imports": []
+  },
+  "native_simulator": false,
+  "training": false,
+  "calibrated_material": false,
+  "full_cut": false,
+  "independent_release_validated": false
+}

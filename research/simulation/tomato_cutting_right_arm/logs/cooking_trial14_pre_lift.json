@@ -1,0 +1,205 @@
+{
+  "configuration": {
+    "knife_setup_yaw_deg": 120.0,
+    "knife_setup_roll_deg": 180.0,
+    "post_lift_roll_deg": -75.0,
+    "require_cutting_orientation": true,
+    "fingers_first": true,
+    "finger_seating_force": 1.0,
+    "index_close_delay": 1.0,
+    "finger_support_count": 2,
+    "finger_support_force": 0.1,
+    "finger_support_seconds": 0.15,
+    "seat_palm": false,
+    "seat_x": 0.035,
+    "seat_z": 0.075,
+    "test_offset_xy": [
+      0.0,
+      0.0
+    ],
+    "align_thumb_yaw": true,
+    "thumb_yaw_force_limit": 4.0,
+    "require_wrap": true,
+    "lift_pitch_deg": 0.0,
+    "approach_axis": "z",
+    "stance_seed": "work/grasp_stance_cooking_clear.json",
+    "pinky_close_deg": null,
+    "overhang_edge": -0.055,
+    "handle_overhang": true,
+    "seat_distance": 0.0,
+    "lift_height": 0.06,
+    "lift_support_close_deg": null,
+    "support_fingers": "none",
+    "support_close_deg": 80.0,
+    "pad_stiffness": 15000.0,
+    "pad_damping": 60.0,
+    "torsional_radius": 0.006,
+    "thumb_torque": 1.0,
+    "thumb_stiffness": 10.0,
+    "static_friction": 1.2,
+    "dynamic_friction": 1.0,
+    "air_hand_test": false,
+    "lift_close_deg": null,
+    "inspect_hand": false,
+    "adjust_stance": true,
+    "finger_stiffness": 3.0,
+    "thumb_contact_force": 4.0,
+    "finger_contact_force": 4.0,
+    "middle_contact_force": null,
+    "closure_speed": 6.0,
+    "close_camera": false,
+    "force_closure": true,
+    "close_thumb_pitch_deg": 33.0,
+    "insert_distance": 0.0,
+    "prethumb_yaw_deg": 0.0,
+    "approach_clearance": 0.08,
+    "finger_torque": 0.3,
+    "contact_descent": false,
+    "thumb_pitch_deg": 10.0,
+    "thumb_yaw_deg": 60.0,
+    "tilt_deg": 0,
+    "palm_height": 0.035,
+    "finger_offset": 0.04,
+    "preclose_deg": 0.0,
+    "handle_offset": -0.035,
+    "close_deg": 90.0,
+    "gui": false,
+    "interactive": false
+  },
+  "contacts": {
+    "right_rh_hand_base_link": 15.454215049743652,
+    "right_rh_thumb_metacarpals": 2.975029230117798,
+    "right_rh_index_proximal": 4.114215850830078,
+    "right_rh_index_distal": 1.6644139289855957,
+    "right_rh_middle_distal": 4.304753303527832,
+    "right_rh_ring_distal": 4.145443439483643,
+    "right_rh_pinky_distal": 4.341885566711426
+  },
+  "palm_world": [
+    -2.213634699843778,
+    -1.748423180579049,
+    0.9067983050536405
+  ],
+  "handle_in_palm_frame_m": [
+    0.024870648836410957,
+    0.03878541291261337,
+    0.016563957730034436
+  ],
+  "knife_rotation_world": [
+    [
+      0.6438995891364435,
+      0.7633352049374064,
+      -0.05208343319220718
+    ],
+    [
+      0.7649596143090146,
+      -0.6436293236851133,
+      0.024043339386350292
+    ],
+    [
+      -0.01516929748283977,
+      -0.055323219318939146,
+      -0.9983532610344225
+    ]
+  ],
+  "closure_sequence": {
+    "mode": "fingers_then_thumb",
+    "fingers_established_before_thumb": true,
+    "events": [
+      {
+        "time_s": 11.2375,
+        "supporting_fingers": [
+          "index",
+          "middle"
+        ],
+        "thumb_contact_n": 0.6675581932067871,
+        "max_thumb_contact_before_support_n": 0.687253475189209,
+        "thumb_actual_deg": {
+          "right_rh_thumb_cmc_yaw": -1.550278572182151e-09,
+          "right_rh_thumb_cmc_pitch": 9.985621452331543
+        }
+      },
+      {
+        "time_s": 11.2375,
+        "thumb_contact_n": 0.6675581932067871,
+        "phase": "firm_grip"
+      }
+    ],
+    "first_finger_contact_s": 6.520833333333333,
+    "first_two_finger_contacts_s": 9.545833333333333,
+    "first_thumb_contact_s": 11.095833333333333,
+    "finger_contacts_at_first_thumb_touch": [
+      "index",
+      "middle"
+    ],
+    "max_thumb_motion_before_support_deg": 0.01495555229485035,
+    "method": "Fingers contact first; thumb closing commands held until 2 fingers support for 0.15 s. Incidental contact with the stationary thumb is reported separately.",
+    "thumb_opposed_before_final_squeeze": true
+  },
+  "board_forces": {},
+  "net_forces": {
+    "right_rh_hand_base_link": [
+      0.7475807666778564,
+      -0.3531506657600403,
+      15.43208122253418
+    ],
+    "right_rh_thumb_metacarpals": [
+      1.9199018478393555,
+      -1.3649860620498657,
+      -1.8170275688171387
+    ],
+    "right_rh_index_proximal": [
+      -2.9883627891540527,
+      2.5531115531921387,
+      1.215762972831726
+    ],
+    "right_rh_index_distal": [
+      -0.22769886255264282,
+      0.20569579303264618,
+      -1.6358839273452759
+    ],
+    "right_rh_middle_distal": [
+      -0.588908314704895,
+      0.5320007801055908,
+      -4.230964183807373
+    ],
+    "right_rh_ring_distal": [
+      -0.5671140551567078,
+      0.5123125314712524,
+      -4.074385166168213
+    ],
+    "right_rh_pinky_distal": [
+      -0.593988299369812,
+      0.5365898013114929,
+      -4.267460346221924
+    ]
+  },
+  "handle": [
+    -2.2466348220187506,
+    -1.7746753570138476,
+    0.8819178449915468
+  ],
+  "finger_actual_deg": {
+    "right_rh_thumb_cmc_yaw": 33.63752365112305,
+    "right_rh_index_mcp_pitch": 80.87684631347656,
+    "right_rh_middle_mcp_pitch": 80.21110534667969,
+    "right_rh_ring_mcp_pitch": 80.77118682861328,
+    "right_rh_pinky_mcp_pitch": 81.82269287109375,
+    "right_rh_thumb_cmc_pitch": 28.29222869873047,
+    "right_rh_index_dip": 71.9803466796875,
+    "right_rh_middle_dip": 71.3878402709961,
+    "right_rh_ring_dip": 71.88629913330078,
+    "right_rh_pinky_dip": 72.82212829589844,
+    "right_rh_thumb_ip": 52.62337875366211
+  },
+  "inner_finger_contacts": [
+    "index",
+    "middle"
+  ],
+  "enclosing_fingers": [
+    "index",
+    "middle",
+    "ring",
+    "pinky"
+  ]
+}

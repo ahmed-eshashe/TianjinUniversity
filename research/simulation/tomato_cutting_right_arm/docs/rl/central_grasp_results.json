@@ -1,0 +1,751 @@
+{
+  "date_local": "2026-10-19",
+  "task": "Firm physical pickup from a flat central knife placement",
+  "firm_central_grasp_passed": false,
+  "phase3_complete": false,
+  "training_ready": false,
+  "full_training_started": false,
+  "controller": "scripted diagnostic, not a learned policy",
+  "vision_based": false,
+  "initial_knife": "Existing kitchen knife; full footprint on board; centred flat resets; no edge-overhang setup",
+  "attachments_created": false,
+  "knife_teleports_during_episode": 0,
+  "self_collision_disabled_to_obtain_pass": false,
+  "criteria_sha256": "81b8d50fe0b4b3857c52b9143e4760d87d8cab1a948b80ab377cd3c74102fe05",
+  "preservation": {
+    "original_robot_unchanged": true,
+    "accepted_demonstrations_unchanged": true,
+    "frozen_grasp_criteria_unchanged": true
+  },
+  "cases": [
+    {
+      "run": "runs/rl/phase3/central_grasp_01",
+      "passed": false,
+      "phase": null,
+      "reason": "See simulation.log or startup refusal",
+      "recorded_control_steps": 0,
+      "max_handle_lift_after_settling_m": null,
+      "final_board_support_n": null,
+      "manual_stop": false,
+      "training": false,
+      "memory": null
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_02",
+      "passed": false,
+      "phase": "preshape_above_board",
+      "reason": "RuntimeError: Index put requires the source and destination dtypes match, got Float for the destination and Double for the source.",
+      "recorded_control_steps": 30,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.452489137649536,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 10.201339871000073,
+        "samples": 10,
+        "peak_rss_gb": 2.48141824,
+        "min_available_ram_gb": 8.911130624,
+        "peak_gpu_used_mib": 706.0,
+        "min_gpu_free_mib": 7445.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 55,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12000000000000005
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.36806056563188,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.8314696123025452,
+          0.5555702330196023
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.9634954084936207,
+        "minimum_edge_margin_m": 0.028750700701800413
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_03",
+      "passed": false,
+      "phase": "fingers_then_thumb",
+      "reason": "RuntimeError: Opposed physical finger/handle support absent; lift refused",
+      "recorded_control_steps": 588,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 8.540374755859375,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 28.57253069300009,
+        "samples": 28,
+        "peak_rss_gb": 2.512633856,
+        "min_available_ram_gb": 8.971083776,
+        "peak_gpu_used_mib": 705.0,
+        "min_gpu_free_mib": 7446.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 55,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12000000000000005
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.36806056563188,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.8314696123025452,
+          0.5555702330196023
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.9634954084936207,
+        "minimum_edge_margin_m": 0.028750700701800413
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_04",
+      "passed": false,
+      "phase": null,
+      "reason": "See simulation.log or startup refusal",
+      "recorded_control_steps": 0,
+      "max_handle_lift_after_settling_m": null,
+      "final_board_support_n": null,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 1,
+        "warning_requested": false,
+        "elapsed_wall_s": 29.618621738,
+        "samples": 29,
+        "peak_rss_gb": 2.512687104,
+        "min_available_ram_gb": 9.037361152,
+        "peak_gpu_used_mib": 705.0,
+        "min_gpu_free_mib": 7446.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 55,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12000000000000005
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.36806056563188,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.8314696123025452,
+          0.5555702330196023
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.9634954084936207,
+        "minimum_edge_margin_m": 0.028750700701800413
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_05",
+      "passed": false,
+      "phase": "complete_wrap",
+      "reason": "RuntimeError: Physical motion/contact safeguard stopped the attempt",
+      "recorded_control_steps": 662,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.4522883892059326,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 31.65926453300017,
+        "samples": 31,
+        "peak_rss_gb": 2.515484672,
+        "min_available_ram_gb": 9.038565376,
+        "peak_gpu_used_mib": 707.0,
+        "min_gpu_free_mib": 7444.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 55,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12000000000000005
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.36806056563188,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.8314696123025452,
+          0.5555702330196023
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.9634954084936207,
+        "minimum_edge_margin_m": 0.028750700701800413
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_06",
+      "passed": false,
+      "phase": "approach",
+      "reason": "RuntimeError: Physical motion/contact safeguard stopped the attempt",
+      "recorded_control_steps": 396,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.4524896144866943,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 21.423625035000214,
+        "samples": 21,
+        "peak_rss_gb": 2.510426112,
+        "min_available_ram_gb": 9.0752,
+        "peak_gpu_used_mib": 699.0,
+        "min_gpu_free_mib": 7452.0
+      },
+      "configuration": {
+        "roll_deg": 180,
+        "finger_deg": 85,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.06000000000000001,
+          0.015,
+          0.11000000000000004
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.8278651668758017,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          -0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": -1.1780972450961724,
+        "minimum_edge_margin_m": 0.028750700701800636
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_07",
+      "passed": false,
+      "phase": "thumb_contact_feedback",
+      "reason": "RuntimeError: Opposed physical finger/handle support absent; lift refused",
+      "recorded_control_steps": 504,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 7.194467544555664,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 24.483021302999987,
+        "samples": 24,
+        "peak_rss_gb": 2.515369984,
+        "min_available_ram_gb": 9.090797568,
+        "peak_gpu_used_mib": 705.0,
+        "min_gpu_free_mib": 7446.0
+      },
+      "configuration": {
+        "roll_deg": 220,
+        "finger_deg": 85,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.06000000000000001,
+          0.045,
+          0.11000000000000004
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_08",
+      "passed": false,
+      "phase": "clearance_lift",
+      "reason": "RuntimeError: Physics-substep excessive robot contact stop",
+      "recorded_control_steps": 514,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.430377244949341,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 28.58316059899994,
+        "samples": 28,
+        "peak_rss_gb": 2.513072128,
+        "min_available_ram_gb": 8.932048896,
+        "peak_gpu_used_mib": 705.0,
+        "min_gpu_free_mib": 7446.0
+      },
+      "configuration": {
+        "roll_deg": 220,
+        "finger_deg": 85,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.06000000000000001,
+          0.045,
+          0.11000000000000004
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      },
+      "substep_stop_contacts": [
+        {
+          "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+          "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+          "force_n": 175.44009399414062
+        },
+        {
+          "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+          "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+          "force_n": 175.44009399414062
+        },
+        {
+          "body": "/Indoor/RZ/SM_kitchen_knife_02",
+          "other": "/Indoor/RZ/SM_kitchen_Board",
+          "force_n": 2.424062490463257
+        }
+      ]
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_09",
+      "passed": false,
+      "phase": "clearance_lift",
+      "reason": "RuntimeError: Physics-substep excessive robot contact stop",
+      "recorded_control_steps": 514,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.430377244949341,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 50.07506251400014,
+        "samples": 49,
+        "peak_rss_gb": 3.944787968,
+        "min_available_ram_gb": 7.48263424,
+        "peak_gpu_used_mib": 678.0,
+        "min_gpu_free_mib": 7473.0
+      },
+      "configuration": {
+        "roll_deg": 220,
+        "finger_deg": 85,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.06000000000000001,
+          0.045,
+          0.11000000000000004
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      },
+      "substep_stop_contacts": [
+        {
+          "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+          "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+          "force_n": 108.34712219238281
+        },
+        {
+          "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals",
+          "other": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link",
+          "force_n": 108.34712219238281
+        },
+        {
+          "body": "/Indoor/RZ/SM_kitchen_knife_02",
+          "other": "/Indoor/RZ/SM_kitchen_Board",
+          "force_n": 2.4084062576293945
+        }
+      ]
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_10",
+      "passed": false,
+      "phase": "clearance_lift",
+      "reason": "RuntimeError: Knife did not follow the physical clearance lift; wrap/lift refused",
+      "recorded_control_steps": 534,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.452500343322754,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 29.613259307999897,
+        "samples": 29,
+        "peak_rss_gb": 2.509541376,
+        "min_available_ram_gb": 9.043902464,
+        "peak_gpu_used_mib": 670.0,
+        "min_gpu_free_mib": 7481.0
+      },
+      "configuration": {
+        "roll_deg": 220,
+        "finger_deg": 85,
+        "thumb_pitch_deg": 15,
+        "handle_in_hand_m": [
+          0.06000000000000001,
+          -0.02,
+          0.11000000000000004
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_11",
+      "passed": false,
+      "phase": "finger_contact_feedback",
+      "reason": "RuntimeError: Memory/manual safe stop requested",
+      "recorded_control_steps": 384,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 2.2339744567871094,
+      "manual_stop": true,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 24.478793170000017,
+        "samples": 24,
+        "peak_rss_gb": 2.51451392,
+        "min_available_ram_gb": 9.058828288,
+        "peak_gpu_used_mib": 671.0,
+        "min_gpu_free_mib": 7480.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 25,
+        "thumb_pitch_deg": 10,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12500000000000006
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_12",
+      "passed": false,
+      "phase": "thumb_contact_feedback",
+      "reason": "RuntimeError: Opposed physical finger/handle support absent; lift refused",
+      "recorded_control_steps": 470,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 3.544527769088745,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 29.59436567800003,
+        "samples": 29,
+        "peak_rss_gb": 2.518515712,
+        "min_available_ram_gb": 8.976412672,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 25,
+        "thumb_pitch_deg": 10,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12500000000000006
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_13",
+      "passed": false,
+      "phase": "clearance_lift",
+      "reason": "RuntimeError: Knife did not follow the physical clearance lift; wrap/lift refused",
+      "recorded_control_steps": 507,
+      "max_handle_lift_after_settling_m": 0.01899954003765414,
+      "final_board_support_n": 2.4524078369140625,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 34.72335474700003,
+        "samples": 34,
+        "peak_rss_gb": 2.512859136,
+        "min_available_ram_gb": 8.986681344,
+        "peak_gpu_used_mib": 673.0,
+        "min_gpu_free_mib": 7478.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 25,
+        "thumb_pitch_deg": 10,
+        "handle_in_hand_m": [
+          0.065,
+          0.015,
+          0.12500000000000006
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      }
+    },
+    {
+      "run": "runs/rl/phase3/central_grasp_14",
+      "passed": false,
+      "phase": "descent",
+      "reason": "RuntimeError: Physics-substep excessive robot contact stop",
+      "recorded_control_steps": 253,
+      "max_handle_lift_after_settling_m": 0.0,
+      "final_board_support_n": 4.278176307678223,
+      "manual_stop": false,
+      "training": false,
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 16.325762503000078,
+        "samples": 16,
+        "peak_rss_gb": 2.513166336,
+        "min_available_ram_gb": 9.041158144,
+        "peak_gpu_used_mib": 670.0,
+        "min_gpu_free_mib": 7481.0
+      },
+      "configuration": {
+        "roll_deg": 240,
+        "finger_deg": 25,
+        "thumb_pitch_deg": 25,
+        "handle_in_hand_m": [
+          0.05500000000000001,
+          -0.035,
+          0.12500000000000006
+        ]
+      },
+      "reset": {
+        "valid": true,
+        "pose_xyzw": [
+          -2.2005582406290873,
+          -1.4234787821250343,
+          0.8735782807119414,
+          0.0,
+          0.0,
+          0.5555702330196022,
+          0.8314696123025452
+        ],
+        "centre_xy": [
+          -2.2843094031304836,
+          -1.625671974500418
+        ],
+        "yaw_rad": 1.1780972450961724,
+        "minimum_edge_margin_m": 0.027373203551082304
+      },
+      "substep_stop_contacts": [
+        {
+          "body": "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal",
+          "other": "/Indoor/RZ/SM_kitchen_Board",
+          "force_n": 77.72328186035156
+        },
+        {
+          "body": "/Indoor/RZ/SM_kitchen_knife_02",
+          "other": "/Indoor/RZ/SM_kitchen_Board",
+          "force_n": 2.3180742263793945
+        }
+      ]
+    }
+  ],
+  "memory": {
+    "startup_reserve_refused_once": true,
+    "user_freed_memory_before_retry": true,
+    "thresholds_weakened": false,
+    "midrun_memory_warnings": 0,
+    "peak_process_ram_gb": 3.944787968,
+    "min_available_ram_gb": 7.48263424,
+    "peak_total_gpu_used_mib": 707.0
+  },
+  "diagnostic_fixes": [
+    "Strict reporting of failed physical outcomes",
+    "JSON serialization of nonempty-contact enclosure flag",
+    "Pad-facing approach screen and positive closing-load check",
+    "Contact safety checks at physics substeps",
+    "Preserve individual finger targets when subsequently closing thumb"
+  ],
+  "remaining_work": [
+    "Controlled in-place knife tilt/reposition before final wrap, or another validated acquisition strategy",
+    "Validate/refine palm-thumb mechanical collision geometry over the intended joint range",
+    "Physical positive wrap, unsupported 5 cm lift, continuous 3 s hold and visual validation"
+  ]
+}

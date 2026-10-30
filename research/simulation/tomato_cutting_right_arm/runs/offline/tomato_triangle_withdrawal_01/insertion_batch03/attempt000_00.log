@@ -1,0 +1,19 @@
+{'iteration': 0, 'force_residual': 0.27412035339871466, 'min_gap_m': 0.0, 'energy_j': 0.0056301998633485045, 'min_J': 0.34365795614765166, 'active_constraints': 188, 'linear_iterations': 214, 'minimum_active_multiplier_n': 4.282718314365387e-05}
+{'iteration': 1, 'force_residual': 0.27039293817508125, 'min_gap_m': 0.0, 'energy_j': 0.005630185097969631, 'min_J': 0.34365784142558975, 'active_constraints': 189, 'linear_iterations': 217, 'minimum_active_multiplier_n': 5.31460442321391e-05}
+{'iteration': 2, 'force_residual': 0.2752114035560624, 'min_gap_m': 0.0, 'energy_j': 0.0056301760954964985, 'min_J': 0.3436577684939145, 'active_constraints': 190, 'linear_iterations': 222, 'minimum_active_multiplier_n': 2.7278919620104573e-05}
+{'iteration': 3, 'force_residual': 0.26714917055938725, 'min_gap_m': 0.0, 'energy_j': 0.005630174556015972, 'min_J': 0.3436577512988513, 'active_constraints': 191, 'linear_iterations': 221, 'minimum_active_multiplier_n': 3.264627173759648e-05}
+{'iteration': 4, 'force_residual': 0.2713593627590003, 'min_gap_m': 0.0, 'energy_j': 0.005630125054383057, 'min_J': 0.34365718255826583, 'active_constraints': 192, 'linear_iterations': 225, 'minimum_active_multiplier_n': -3.211523743828981e-05}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_evolution.py", line 131, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_evolution.py", line 66, in main
+    x,lam,state,trace,ok,_,ids,free=solve_triangle_continuation(model,x,fixed,geometry,max_iterations=6,initial_active=active)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_continuation.py", line 81, in solve_triangle_continuation
+    result=list(solve_contact_continuation(model,initial,fixed,geometry['matrix'][used],geometry['bounds'][used],max_iterations,initial_active))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_continuation.py", line 25, in solve_contact_continuation
+    if np.any(diagonal<=0):raise ValueError('Nonpositive constrained Newton diagonal')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Nonpositive constrained Newton diagonal

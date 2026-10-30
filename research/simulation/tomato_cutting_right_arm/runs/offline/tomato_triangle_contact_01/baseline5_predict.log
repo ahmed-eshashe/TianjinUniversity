@@ -1,0 +1,15 @@
+{'stage': 'solve_start', 'depth_mm': 5.0, 'rows': 3587, 'elapsed_s': 0.34451009199983673}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 40, in main
+    x,lam,state,trace,ok,active,ids,free=solve_linear_contact(model,guess,fixed,C,b)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_linear_contact.py", line 150, in solve_linear_contact
+    proposed=predict(direction,diagonal)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_linear_contact.py", line 121, in predict
+    if result.info.status_val!=1:raise ValueError('Contact-set QP inconclusive: '+result.info.status)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Contact-set QP inconclusive: solved inaccurate

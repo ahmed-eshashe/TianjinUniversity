@@ -1,0 +1,380 @@
+{
+  "controller": "Scripted native contact-only diagnostic; no vision policy or task training",
+  "firm_grasp_passed": false,
+  "phase3_complete": false,
+  "full_training_started": false,
+  "attachments_created": false,
+  "knife_pose_commands_during_episode": 0,
+  "startup_refusals": [
+    {
+      "run": "runs/rl/phase3/contact_transfer_06",
+      "simulator_started": false,
+      "full_training_started": false,
+      "recorded_from_launcher_stderr": true,
+      "reason": "Start refused: this measured benchmark requires 10 GB available RAM and 4 GiB free VRAM. Close other large apps first.",
+      "followup_available_ram_mib": 9122,
+      "reserves_lowered": false,
+      "retry_after_user_freed_memory": "../contact_transfer_07"
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_08",
+      "simulator_started": false,
+      "full_training_started": false,
+      "recorded_from_launcher_stderr": true,
+      "reason": "Start refused: this measured benchmark requires 10 GB available RAM and 4 GiB free VRAM. Close other large apps first.",
+      "reserves_lowered": false,
+      "pending_test": "1 mm minimum contact patch sensitivity only; not executed"
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_09",
+      "simulator_started": false,
+      "full_training_started": false,
+      "recorded_from_launcher_stderr": true,
+      "reason": "Start refused: this measured benchmark requires 10 GB available RAM and 4 GiB free VRAM. Close other large apps first.",
+      "reserves_lowered": false,
+      "retry_requested_by_user": true,
+      "pending_test": "1 mm minimum contact patch sensitivity only; not executed"
+    }
+  ],
+  "preservation": {
+    "source_robot_unchanged": true,
+    "accepted_baselines_unchanged": true,
+    "frozen_criteria_unchanged": true
+  },
+  "cases": [
+    {
+      "run": "runs/rl/phase3/contact_transfer_01",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 766,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 52.04776218999905,
+        "samples": 51,
+        "peak_rss_gb": 2.518884352,
+        "min_available_ram_gb": 8.91572224,
+        "peak_gpu_used_mib": 686.0,
+        "min_gpu_free_mib": 7465.0
+      },
+      "provisional_contact_patch": null,
+      "completed_seating_fraction": 0.26666666666666666,
+      "rolling_progress": null,
+      "seating_samples": 130,
+      "new_digit_contacts": {
+        "middle": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "ring": {
+          "peak_normal_force_n": 1.142846941947937,
+          "longest_contact_over_0_3n_s": 0.4
+        },
+        "pinky": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        }
+      },
+      "tracking_stop": {
+        "max_material_point_error_m": 0.004369839725659275,
+        "seating_lateral_drift_m": 0.0035556335146950616
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_02",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 930,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 68.4004491020005,
+        "samples": 67,
+        "peak_rss_gb": 2.516652032,
+        "min_available_ram_gb": 8.894111744,
+        "peak_gpu_used_mib": 676.0,
+        "min_gpu_free_mib": 7475.0
+      },
+      "provisional_contact_patch": null,
+      "completed_seating_fraction": 0.5,
+      "rolling_progress": null,
+      "seating_samples": 280,
+      "new_digit_contacts": {
+        "middle": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "ring": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "pinky": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        }
+      },
+      "tracking_stop": {
+        "max_material_point_error_m": 0.0029110978718383694,
+        "seating_lateral_drift_m": 0.0026790055136938066
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_03",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 835,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 59.19266668700038,
+        "samples": 58,
+        "peak_rss_gb": 2.515636224,
+        "min_available_ram_gb": 8.743497728,
+        "peak_gpu_used_mib": 698.0,
+        "min_gpu_free_mib": 7453.0
+      },
+      "provisional_contact_patch": null,
+      "completed_seating_fraction": 0.36666666666666664,
+      "rolling_progress": null,
+      "seating_samples": 185,
+      "new_digit_contacts": {
+        "middle": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "ring": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "pinky": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        }
+      },
+      "tracking_stop": {
+        "max_material_point_error_m": 0.0053612933358002214,
+        "seating_lateral_drift_m": 0.004376208103367331
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_04",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 794,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 58.20133286199962,
+        "samples": 57,
+        "peak_rss_gb": 2.518298624,
+        "min_available_ram_gb": 8.128397312,
+        "peak_gpu_used_mib": 796.0,
+        "min_gpu_free_mib": 7355.0
+      },
+      "provisional_contact_patch": null,
+      "completed_seating_fraction": 0.3,
+      "rolling_progress": null,
+      "seating_samples": 144,
+      "new_digit_contacts": {
+        "middle": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "ring": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "pinky": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        }
+      },
+      "tracking_stop": {
+        "max_material_point_error_m": 0.002863555900836452,
+        "seating_lateral_drift_m": 0.0032876345668031094,
+        "reference_error_vectors_m": [
+          [
+            0.0023356331277493148,
+            -0.0015924046342332687,
+            -0.0004571846133102353
+          ],
+          [
+            -0.0015109555373427064,
+            0.000558777447655423,
+            -0.0018062451840551441
+          ]
+        ]
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_05",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Rolling contact lost opposed support",
+        "controls": 762,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 55.11894154900074,
+        "samples": 54,
+        "peak_rss_gb": 2.519711744,
+        "min_available_ram_gb": 8.028213248,
+        "peak_gpu_used_mib": 938.0,
+        "min_gpu_free_mib": 7213.0
+      },
+      "provisional_contact_patch": null,
+      "completed_seating_fraction": null,
+      "rolling_progress": {
+        "iteration": 110,
+        "fraction": 0.04060772561484893,
+        "goal_distance_m": 0.04289389241131982,
+        "linear_contact_velocity_residual_m": 4.426438602550285e-19
+      },
+      "seating_samples": 112,
+      "new_digit_contacts": {
+        "middle": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "ring": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "pinky": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        }
+      },
+      "tracking_stop": null,
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    },
+    {
+      "run": "runs/rl/phase3/contact_transfer_07",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Rolling contact lost opposed support",
+        "controls": 762,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 55.15280850800082,
+        "samples": 54,
+        "peak_rss_gb": 2.520694784,
+        "min_available_ram_gb": 7.938801664,
+        "peak_gpu_used_mib": 1041.0,
+        "min_gpu_free_mib": 7110.0
+      },
+      "provisional_contact_patch": {
+        "radius_m": 0.002,
+        "minimum_radius_m": 0.0,
+        "hardware_calibrated": false,
+        "colliders": [
+          "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal/thumb_distal_1",
+          "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal/index_distal_1",
+          "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal/right_rh_middle_distal/middle_distal_1",
+          "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal/right_rh_ring_distal/ring_distal_1",
+          "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal/right_rh_pinky_distal/pinky_distal_1"
+        ]
+      },
+      "completed_seating_fraction": null,
+      "rolling_progress": {
+        "iteration": 110,
+        "fraction": 0.04060772561484893,
+        "goal_distance_m": 0.04289389241131982,
+        "linear_contact_velocity_residual_m": 4.426438602550285e-19
+      },
+      "seating_samples": 112,
+      "new_digit_contacts": {
+        "middle": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "ring": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        },
+        "pinky": {
+          "peak_normal_force_n": 0,
+          "longest_contact_over_0_3n_s": 0.0
+        }
+      },
+      "tracking_stop": null,
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    }
+  ],
+  "memory": {
+    "reserves_weakened": false,
+    "warnings": 0,
+    "peak_process_ram_gb": 2.520694784,
+    "min_available_ram_gb": 7.938801664,
+    "peak_total_gpu_mib": 1041.0
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "status": "draft_not_frozen_not_active",
+  "version": "slicing-provisional-0.1",
+  "scope": "single end slice, disclosed fixture; mechanics and robot claims separate",
+  "existing_grasp_criteria_overridden": false,
+  "overall_rule": "PASS only if all applicable required checks pass; unresolved or missing measurements produce BLOCKED/INCONCLUSIVE, never pass. N/A allowed only by declared mechanics-only scope.",
+  "checks": {
+    "separation": {
+      "required": true,
+      "rule": "No mechanically active path through springs/tets/skin/attachments/constraints connects slice to remainder; independent release/probe motion persists >=1 s after blade withdrawal. At-rest touching is permitted, cohesive coupling is not. No teleport, timer/depth-only release or slice fixture support.",
+      "independent_observation_s": 1.0,
+      "probe_design": "bounded contact probe must overcome board friction if needed; log its work so forcing a remaining bond to break does not fake completion"
+    },
+    "thickness": {
+      "required": true,
+      "target_m": 0.01,
+      "max_absolute_error_m": 0.002,
+      "status": "proposed_simulation_threshold",
+      "rule": "measure released material along cut normal at >=5 interior sample locations after stated settling; each must meet tolerance; log taper/range and material strain. Define end-surface curvature contribution."
+    },
+    "remainder_motion": {
+      "required": true,
+      "max_translation_m": 0.005,
+      "max_rotation_deg": 5,
+      "status": "proposed_simulation_threshold",
+      "rule": "best-fit bulk material motion in board frame; report deformation separately and fixture reactions, do not confuse constrained pose with gentle stabilization"
+    },
+    "knife_slip": {
+      "required_for": "robot-held knife only",
+      "max_translation_m": 0.002,
+      "max_rotation_deg": 3,
+      "status": "additional proposed slicing checks",
+      "rule": "hand-relative transform during cut; all original grasp conditions also apply unchanged; prescribed blade gets N/A and no grasp claim"
+    },
+    "loads": {
+      "required": true,
+      "peak_force_limit_n": null,
+      "peak_torque_limit_nm": null,
+      "saturation_limit": null,
+      "status": "blocking_unconfirmed_limits",
+      "rule": "log peak/RMS/impulse and durations; evaluate only verified axes. No force safety claim from torque-only data. Robot/real-cut acceptance blocked until limits defined; isolated synthetic mechanism study may report unvalidated loads, not overall robot success"
+    },
+    "blade_hand_clearance": {
+      "required_for": "robot trials",
+      "minimum_left_hand_clearance_m": 0.02,
+      "status": "proposed_simulation_margin_not_hardware_certification",
+      "rule": "zero blade contact with either hand; subtract geometry/pose uncertainty from clearance; right-hand handle contact allowed; retain actuator/joint constraints"
+    },
+    "numerics": {
+      "required": true,
+      "max_mass_relative_error": 0.01,
+      "rule": "finite states; no invalid inverted elements if applicable, no runaway volume collapse, no unexplained energy injection; account external prescribed-blade/fixture work and damage dissipation; fixture must not constrain slice",
+      "energy_tolerance": null,
+      "volume_tolerance": null,
+      "status": "energy and volume limits require model-specific pre-run definition"
+    },
+    "convergence": {
+      "required_before": "model selection or RL claims",
+      "relative_peak_load_and_cut_work_change_max": 0.1,
+      "thickness_change_max_m": 0.001,
+      "rule": "compare half timestep and refined mesh with physical parameters/patch area scaled consistently; do not compare by retuning material after each resolution"
+    },
+    "resources": {
+      "required": true,
+      "worker_wall_s_max": 60,
+      "simulated_stage_completion_required": true,
+      "guard_warning_allowed": false,
+      "rule": "unchanged startup/runtime watchdog, common lock and bounded exit; incomplete stages are inconclusive; record process-tree RAM and global VRAM, step-time distribution, real-time factor and cooking time"
+    }
+  },
+  "negative_controls": [
+    "No contact => no damage.",
+    "Off-plane motion => no untouched-interface release.",
+    "Partial cut => intact connectivity remains.",
+    "Stopped blade => no clock-driven damage; any stored-energy fracture must follow a disclosed law.",
+    "Interrupted cut and reset restore state without hidden damage.",
+    "Released piece has collision contact without persistent cross-cut damping."
+  ],
+  "evaluation": {
+    "matched_baseline_cases": true,
+    "held_out_cases_min_proposed": 30,
+    "training_seeds_proposed": 3,
+    "success_rate_target_proposed": 0.9,
+    "hard_violations_allowed": 0,
+    "uncertainty_reporting_required": true,
+    "training_authorized": false
+  },
+  "freeze_gate": [
+    "confirm target thickness/end-slice definition",
+    "select mechanics and separation design",
+    "set measurement/geometry resolution",
+    "define load, volume and energy bounds",
+    "verify fixture and sensor contract",
+    "review thresholds before execution; do not mutate frozen grasp file"
+  ]
+}

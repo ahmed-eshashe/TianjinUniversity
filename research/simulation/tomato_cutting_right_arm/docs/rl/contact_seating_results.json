@@ -1,0 +1,155 @@
+{
+  "controller": "Scripted native contact-only diagnostic; no vision policy or task training",
+  "firm_grasp_passed": false,
+  "phase3_complete": false,
+  "full_training_started": false,
+  "attachments_created": false,
+  "knife_pose_commands_during_episode": 0,
+  "preservation": {
+    "source_robot_unchanged": true,
+    "accepted_baselines_unchanged": true,
+    "frozen_criteria_unchanged": true
+  },
+  "cases": [
+    {
+      "run": "runs/rl/phase3/contact_seating_01",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 637,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 74.13683863299957,
+        "samples": 72,
+        "peak_rss_gb": 2.517110784,
+        "min_available_ram_gb": 8.98848768,
+        "peak_gpu_used_mib": 674.0,
+        "min_gpu_free_mib": 7477.0
+      },
+      "completed_seating_fraction": null,
+      "seating_samples": 26,
+      "tracking_stop": {
+        "max_material_point_error_m": 0.0023371200454757567,
+        "seating_lateral_drift_m": 0.0025265156530219924
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": false
+    },
+    {
+      "run": "runs/rl/phase3/contact_seating_02",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 665,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 77.27959324099902,
+        "samples": 75,
+        "peak_rss_gb": 2.515226624,
+        "min_available_ram_gb": 8.974245888,
+        "peak_gpu_used_mib": 672.0,
+        "min_gpu_free_mib": 7479.0
+      },
+      "completed_seating_fraction": null,
+      "seating_samples": 29,
+      "tracking_stop": {
+        "max_material_point_error_m": 0.005527859643615894,
+        "seating_lateral_drift_m": 0.004587126967477908
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": false
+    },
+    {
+      "run": "runs/rl/phase3/contact_seating_03",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Contact-path material-point/knife drift stop",
+        "controls": 665,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 92.89693607499976,
+        "samples": 90,
+        "peak_rss_gb": 2.516680704,
+        "min_available_ram_gb": 8.8334336,
+        "peak_gpu_used_mib": 688.0,
+        "min_gpu_free_mib": 7463.0
+      },
+      "completed_seating_fraction": null,
+      "seating_samples": 29,
+      "tracking_stop": {
+        "max_material_point_error_m": 0.005527859643615894,
+        "seating_lateral_drift_m": 0.004587126967477908
+      },
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    },
+    {
+      "run": "runs/rl/phase3/contact_seating_04",
+      "result": {
+        "passed": false,
+        "phase": "contact_preserving_seating",
+        "training": false,
+        "reason": "RuntimeError: Coordinated seating did not establish palm/three-finger contact; lift refused",
+        "controls": 726,
+        "knife_teleports_during_episode": 0,
+        "attachment_created": false
+      },
+      "memory": {
+        "reason": "normal exit",
+        "child_exit_code": 0,
+        "warning_requested": false,
+        "elapsed_wall_s": 101.05950178499916,
+        "samples": 98,
+        "peak_rss_gb": 2.519506944,
+        "min_available_ram_gb": 8.905408512,
+        "peak_gpu_used_mib": 678.0,
+        "min_gpu_free_mib": 7473.0
+      },
+      "completed_seating_fraction": 0.2,
+      "seating_samples": 90,
+      "tracking_stop": null,
+      "palm_contact_seen": false,
+      "max_oracle_wrapping_fingers": 0,
+      "max_unsupported_hold_s": 0,
+      "lift_phase_reached": false,
+      "substep_trace_saved": true
+    }
+  ],
+  "memory": {
+    "reserves_weakened": false,
+    "warnings": 0,
+    "peak_process_ram_gb": 2.519506944,
+    "min_available_ram_gb": 8.8334336,
+    "peak_total_gpu_mib": 688.0
+  }
+}

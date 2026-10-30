@@ -1,0 +1,32 @@
+{'stage': 'solve_start', 'depth_mm': 5.0, 'rows': 3587, 'elapsed_s': 0.3460127900034422}
+{'stage': 'polish', 'newton': 0, 'inner': 0, 'active': 193}
+{'stage': 'polish', 'newton': 0, 'inner': 1, 'active': 190}
+{'stage': 'polish', 'newton': 0, 'inner': 2, 'active': 1}
+{'stage': 'polish', 'newton': 0, 'inner': 3, 'active': 181}
+{'stage': 'polish', 'newton': 0, 'inner': 4, 'active': 118}
+{'stage': 'polish', 'newton': 0, 'inner': 5, 'active': 97}
+{'stage': 'polish', 'newton': 0, 'inner': 6, 'active': 87}
+{'stage': 'polish', 'newton': 0, 'inner': 7, 'active': 28}
+{'stage': 'polish', 'newton': 0, 'inner': 8, 'active': 15}
+{'stage': 'polish', 'newton': 0, 'inner': 9, 'active': 7}
+{'stage': 'polish', 'newton': 0, 'inner': 10, 'active': 6}
+{'stage': 'polish', 'newton': 0, 'inner': 11, 'active': 176}
+{'stage': 'polish', 'newton': 0, 'inner': 12, 'active': 117}
+{'stage': 'polish', 'newton': 0, 'inner': 13, 'active': 96}
+{'stage': 'polish', 'newton': 0, 'inner': 14, 'active': 88}
+{'stage': 'polish', 'newton': 0, 'inner': 15, 'active': 29}
+{'stage': 'polish', 'newton': 0, 'inner': 16, 'active': 16}
+{'stage': 'polish', 'newton': 0, 'inner': 17, 'active': 8}
+{'stage': 'polish', 'newton': 0, 'inner': 18, 'active': 7}
+{'stage': 'polish', 'newton': 0, 'inner': 19, 'active': 175}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 66, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 40, in main
+    x,lam,state,trace,ok,active,ids,free=solve_linear_contact(model,guess,fixed,C,b)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_linear_contact.py", line 155, in solve_linear_contact
+    else:raise ValueError('Contact-set polish did not converge')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Contact-set polish did not converge

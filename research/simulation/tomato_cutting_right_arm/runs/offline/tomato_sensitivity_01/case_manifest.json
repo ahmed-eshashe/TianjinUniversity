@@ -1,0 +1,492 @@
+{
+  "scope": "one-factor-at-a-time sensitivity screen, not exhaustive grid or convergence proof",
+  "planned_paths": 40,
+  "mesh_failures_retained": [
+    "bulk4: coincident tether geometry",
+    "surface32: >1 percent volume-approximation error"
+  ],
+  "fixed_acceptance": "same 1e-6 force residual, J>0, near-collapse J>=0.1, length ratio>=0.1, positive free tangent screen",
+  "mesh_comparison_target": "matched final mean energy density and strain-conjugate reaction density within 10 percent; otherwise no mesh-independence claim",
+  "cases": [
+    {
+      "mesh": "bulk4p5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk4p5_baseline_slice_compression_x"
+    },
+    {
+      "mesh": "bulk4p5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk4p5_baseline_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk4p5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk4p5_baseline_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk4p5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk4p5_baseline_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_baseline_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_baseline_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_baseline_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_baseline_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus2500",
+        "modulus": 2500,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_modulus2500_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus2500",
+        "modulus": 2500,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_modulus2500_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus2500",
+        "modulus": 2500,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_modulus2500_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus2500",
+        "modulus": 2500,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_modulus2500_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus40000",
+        "modulus": 40000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_modulus40000_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus40000",
+        "modulus": 40000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_modulus40000_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus40000",
+        "modulus": 40000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_modulus40000_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "modulus40000",
+        "modulus": 40000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_modulus40000_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation035",
+        "modulus": 10000,
+        "activation": 0.35,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_activation035_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation035",
+        "modulus": 10000,
+        "activation": 0.35,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_activation035_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation035",
+        "modulus": 10000,
+        "activation": 0.35,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_activation035_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation035",
+        "modulus": 10000,
+        "activation": 0.35,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_activation035_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation065",
+        "modulus": 10000,
+        "activation": 0.65,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_activation065_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation065",
+        "modulus": 10000,
+        "activation": 0.65,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_activation065_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation065",
+        "modulus": 10000,
+        "activation": 0.65,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_activation065_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "activation065",
+        "modulus": 10000,
+        "activation": 0.65,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_activation065_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor005",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.05
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_floor005_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor005",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.05
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_floor005_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor005",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.05
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_floor005_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor005",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.05
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_floor005_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor020",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.2
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk5_floor020_slice_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor020",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.2
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_floor020_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor020",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.2
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk5_floor020_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk5",
+      "setting": {
+        "name": "floor020",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.2
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk5_floor020_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk6",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "bulk6_baseline_slice_compression_x"
+    },
+    {
+      "mesh": "bulk6",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "bulk6_baseline_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "bulk6",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "bulk6_baseline_remainder_compression_x"
+    },
+    {
+      "mesh": "bulk6",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "bulk6_baseline_remainder_shear_xz_negative"
+    },
+    {
+      "mesh": "surface128",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "compression_x",
+      "id": "surface128_baseline_slice_compression_x"
+    },
+    {
+      "mesh": "surface128",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "slice",
+      "mode": "shear_xz_negative",
+      "id": "surface128_baseline_slice_shear_xz_negative"
+    },
+    {
+      "mesh": "surface128",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "compression_x",
+      "id": "surface128_baseline_remainder_compression_x"
+    },
+    {
+      "mesh": "surface128",
+      "setting": {
+        "name": "baseline",
+        "modulus": 10000,
+        "activation": 0.5,
+        "floor": 0.1
+      },
+      "side": "remainder",
+      "mode": "shear_xz_negative",
+      "id": "surface128_baseline_remainder_shear_xz_negative"
+    }
+  ]
+}

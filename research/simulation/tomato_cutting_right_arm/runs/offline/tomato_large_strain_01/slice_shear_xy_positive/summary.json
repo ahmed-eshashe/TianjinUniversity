@@ -1,0 +1,118 @@
+{
+  "side": "slice",
+  "mode": "shear_xy_positive",
+  "scope": "exact finite-length bulk spring static continuation; fully prescribed outer surface; no contact or dynamics",
+  "requested_levels": [
+    0.02,
+    0.05,
+    0.1,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "stages": [
+    {
+      "strain": 0.02,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 18,
+      "force_residual_fraction": 2.824299499180442e-07,
+      "energy_j": 1.6573547790725983e-05,
+      "min_cell_volume_ratio": 0.9165403812793154,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9999861136815137,
+      "min_spring_length_ratio": 0.9857927087628487,
+      "least_preconditioned_tangent_eigenvalue": 0.3606707092228169,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.05,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 18,
+      "force_residual_fraction": 3.007930713249529e-07,
+      "energy_j": 0.00010364268337373827,
+      "min_cell_volume_ratio": 0.7929716352310234,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9999636864391401,
+      "min_spring_length_ratio": 0.964618634124745,
+      "least_preconditioned_tangent_eigenvalue": 0.35881234051295624,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.1,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 19,
+      "force_residual_fraction": 9.384272386524654e-08,
+      "energy_j": 0.0004155237099913826,
+      "min_cell_volume_ratio": 0.5926148443151373,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9999236367627341,
+      "min_spring_length_ratio": 0.9297665500925594,
+      "least_preconditioned_tangent_eigenvalue": 0.35545180520923253,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.2,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 20,
+      "force_residual_fraction": 9.055113895111752e-08,
+      "energy_j": 0.0016782372077418,
+      "min_cell_volume_ratio": 0.21808326628046165,
+      "inverted_cell_count": 0,
+      "volume_ratio": 0.9998406853485716,
+      "min_spring_length_ratio": 0.8622269307174323,
+      "least_preconditioned_tangent_eigenvalue": 0.3316912480489851,
+      "eigen_status": "converged",
+      "flags": [],
+      "passed_static_screen": true
+    },
+    {
+      "strain": 0.3,
+      "optimizer_success": true,
+      "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "iterations": 22,
+      "force_residual_fraction": 4.5771663365018416e-08,
+      "energy_j": 0.003838180855922756,
+      "min_cell_volume_ratio": -0.12144409978160364,
+      "inverted_cell_count": 8,
+      "volume_ratio": 0.9997600773325728,
+      "min_spring_length_ratio": 0.7987121188835221,
+      "least_preconditioned_tangent_eigenvalue": 0.2752111027730156,
+      "eigen_status": "converged",
+      "flags": [
+        "diagnostic_cell_inversion"
+      ],
+      "passed_static_screen": false
+    }
+  ],
+  "all_requested_levels_passed": false,
+  "first_flagged_strain": 0.3,
+  "interface_springs_included": false,
+  "damage_evolution_enabled": false,
+  "source_hashes": {
+    "rl/offline_tomato_large_strain.py": "ac22cd42cea84aa70a5593a23708b20b41b1aa5e39aece9991b9f6e8a0bb2d0f",
+    "rl/tomato_nonlinear_checks.py": "f67319f22dd5ee9822a5115a822e6e0bc973ff1a96c4885b734d2ee0d8f6a234",
+    "runs/offline/tomato_surfaces_03/surface_design.json": "7980595a98fe4f90e17e184431230818bed3872542f33340e1820f8d5f63b2ee",
+    "runs/offline/tomato_surface_mechanics_04/mass_stiffness_assignments.json": "c1b77f10ddae6d8fed38361bed4987e54df8098ec2a0baac95442264dbd54a4a"
+  },
+  "runtime_s": 0.4233696429982956,
+  "peak_rss_bytes": 130236416,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true,
+    "blas_threads": 1
+  },
+  "simulator_imports_or_launches": false,
+  "training": false
+}

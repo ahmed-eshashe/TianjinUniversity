@@ -1,0 +1,12 @@
+{'stage': 'solve_start', 'depth_mm': 8.125, 'rows': 2179, 'elapsed_s': 0.6216498089997913}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 69, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_triangle_contact.py", line 43, in main
+    x,lam,state,trace,ok,active,ids,free=solve_linear_contact(model,guess,fixed,C,b)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_linear_contact.py", line 120, in solve_linear_contact
+    if info:raise ValueError('Contact CG inconclusive: '+str(info))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Contact CG inconclusive: 2500

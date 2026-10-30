@@ -1,0 +1,81 @@
+{
+  "status": "all tested actual patch energy checks pass",
+  "patch_count": 47,
+  "bond_count": 403,
+  "case_count": 235,
+  "all_pass": true,
+  "mode_statistics": {
+    "opening": {
+      "cases": 47,
+      "passes": 47,
+      "max_abs_work_relative_error": 1.7161276174570972e-06,
+      "worst_work_patch_id": 8,
+      "max_abs_damage_relative_error": 0.0026394141167183083,
+      "worst_damage_patch_id": 44,
+      "total_target_j": 0.11696391110288157,
+      "total_work_j": 0.11696375800729977
+    },
+    "shear_y_positive": {
+      "cases": 47,
+      "passes": 47,
+      "max_abs_work_relative_error": 1.1425748637217126e-06,
+      "worst_work_patch_id": 45,
+      "max_abs_damage_relative_error": 0.002123164111982989,
+      "worst_damage_patch_id": 42,
+      "total_target_j": 0.11696391110288157,
+      "total_work_j": 0.1169638646169235
+    },
+    "shear_y_negative": {
+      "cases": 47,
+      "passes": 47,
+      "max_abs_work_relative_error": 1.1425748637217126e-06,
+      "worst_work_patch_id": 1,
+      "max_abs_damage_relative_error": 0.0021777700855298843,
+      "worst_damage_patch_id": 0,
+      "total_target_j": 0.11696391110288157,
+      "total_work_j": 0.11696386632028195
+    },
+    "shear_z_positive": {
+      "cases": 47,
+      "passes": 47,
+      "max_abs_work_relative_error": 9.768320057279567e-07,
+      "worst_work_patch_id": 44,
+      "max_abs_damage_relative_error": 0.0021777700855301063,
+      "worst_damage_patch_id": 26,
+      "total_target_j": 0.11696391110288157,
+      "total_work_j": 0.1169638661920661
+    },
+    "shear_z_negative": {
+      "cases": 47,
+      "passes": 47,
+      "max_abs_work_relative_error": 9.768320057279567e-07,
+      "worst_work_patch_id": 42,
+      "max_abs_damage_relative_error": 0.0021777700855296622,
+      "worst_damage_patch_id": 20,
+      "total_target_j": 0.11696391110288157,
+      "total_work_j": 0.11696386619206611
+    }
+  },
+  "synthetic_material_only": true,
+  "physical_cutting_validated": false,
+  "material_labels": {
+    "effective_skin": 10,
+    "flesh": 37
+  },
+  "total_runtime_s": 11.784099388001778,
+  "peak_batch_rss_bytes": 33099776,
+  "unchanged_energy_tolerance_fraction": 0.01,
+  "layout_sha256": "7d9b1b469c5b34ddfb291924bb4bb91f66d82634e3bdb16037f515650529a671",
+  "existing_files_checked": 171,
+  "changed_existing_files": [],
+  "memory_safeguard_unchanged": true,
+  "simulator_imports_or_launches": false,
+  "training": false,
+  "limits_per_serial_batch": {
+    "address_space_bytes": 268435456,
+    "cpu_s": 30,
+    "wall_s": 45,
+    "shared_lock": true
+  },
+  "scope": "isolated patch constitutive loading with actual bond vectors; no full tomato dynamics or contact"
+}

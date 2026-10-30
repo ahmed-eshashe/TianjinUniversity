@@ -1,0 +1,628 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "dual_ar5_o6"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    upAxis = "Z"
+)
+
+over "dual_ar5_o6" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    prepend rel isaac:physics:robotJoints = [
+        </dual_ar5_o6/Physics/world_to_torso>,
+        </dual_ar5_o6/Physics/torso_to_left_arm>,
+        </dual_ar5_o6/Physics/torso_to_right_arm>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_1>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_2>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_3>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_4>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_5>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_6>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_joint_7>,
+        </dual_ar5_o6/Physics/left_AR5_5_07L_W4C4A2_tcp_joint>,
+        </dual_ar5_o6/Physics/left_rk_adapter_joint>,
+        </dual_ar5_o6/Physics/left_hand_mount_joint>,
+        </dual_ar5_o6/Physics/left_lh_thumb_cmc_yaw>,
+        </dual_ar5_o6/Physics/left_lh_index_mcp_pitch>,
+        </dual_ar5_o6/Physics/left_lh_middle_mcp_pitch>,
+        </dual_ar5_o6/Physics/left_lh_ring_mcp_pitch>,
+        </dual_ar5_o6/Physics/left_lh_pinky_mcp_pitch>,
+        </dual_ar5_o6/Physics/left_lh_thumb_cmc_pitch>,
+        </dual_ar5_o6/Physics/left_lh_thumb_ip>,
+        </dual_ar5_o6/Physics/left_lh_index_dip>,
+        </dual_ar5_o6/Physics/left_lh_middle_dip>,
+        </dual_ar5_o6/Physics/left_lh_ring_dip>,
+        </dual_ar5_o6/Physics/left_lh_pinky_dip>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_1>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_2>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_3>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_4>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_5>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_6>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_joint_7>,
+        </dual_ar5_o6/Physics/right_AR5_5_07R_W4C4A2_tcp_joint>,
+        </dual_ar5_o6/Physics/right_rk_adapter_joint>,
+        </dual_ar5_o6/Physics/right_hand_mount_joint>,
+        </dual_ar5_o6/Physics/right_rh_thumb_cmc_yaw>,
+        </dual_ar5_o6/Physics/right_rh_index_mcp_pitch>,
+        </dual_ar5_o6/Physics/right_rh_middle_mcp_pitch>,
+        </dual_ar5_o6/Physics/right_rh_ring_mcp_pitch>,
+        </dual_ar5_o6/Physics/right_rh_pinky_mcp_pitch>,
+        </dual_ar5_o6/Physics/right_rh_thumb_cmc_pitch>,
+        </dual_ar5_o6/Physics/right_rh_thumb_ip>,
+        </dual_ar5_o6/Physics/right_rh_index_dip>,
+        </dual_ar5_o6/Physics/right_rh_middle_dip>,
+        </dual_ar5_o6/Physics/right_rh_ring_dip>,
+        </dual_ar5_o6/Physics/right_rh_pinky_dip>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </dual_ar5_o6/Geometry/world/torso_base_link>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_thumb_metacarpals_base2/left_lh_thumb_metacarpals/left_lh_thumb_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_index_proximal/left_lh_index_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_middle_proximal/left_lh_middle_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_ring_proximal/left_lh_ring_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/left_AR5_5_07L_W4C4A2_base/left_AR5_5_07L_W4C4A2_link1/left_AR5_5_07L_W4C4A2_link2/left_AR5_5_07L_W4C4A2_link3/left_AR5_5_07L_W4C4A2_link4/left_AR5_5_07L_W4C4A2_link5/left_AR5_5_07L_W4C4A2_link6/left_AR5_5_07L_W4C4A2_link7/left_AR5_5_07L_W4C4A2_tcp/left_lh_rk_adapter/left_lh_hand_base_link/left_lh_pinky_proximal/left_lh_pinky_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_middle_proximal/right_rh_middle_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_ring_proximal/right_rh_ring_distal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal>,
+        </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_pinky_proximal/right_rh_pinky_distal>,
+    ]
+    token isaac:robotType = "Default"
+
+    over "Geometry"
+    {
+        over "world"
+        {
+            over "torso_base_link" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "left_AR5_5_07L_W4C4A2_base" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "left_AR5_5_07L_W4C4A2_link1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "left_AR5_5_07L_W4C4A2_link2" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "left_AR5_5_07L_W4C4A2_link3" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "left_AR5_5_07L_W4C4A2_link4" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "left_AR5_5_07L_W4C4A2_link5" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "left_AR5_5_07L_W4C4A2_link6" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "left_AR5_5_07L_W4C4A2_link7" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "left_AR5_5_07L_W4C4A2_tcp" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "left_lh_rk_adapter" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                        over "left_lh_hand_base_link" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "left_lh_thumb_metacarpals_base2" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "left_lh_thumb_metacarpals" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                    over "left_lh_thumb_distal" (
+                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                    )
+                                                                    {
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            over "left_lh_index_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "left_lh_index_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "left_lh_middle_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "left_lh_middle_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "left_lh_ring_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "left_lh_ring_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "left_lh_pinky_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "left_lh_pinky_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                over "right_AR5_5_07R_W4C4A2_base" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "right_AR5_5_07R_W4C4A2_link1" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "right_AR5_5_07R_W4C4A2_link2" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "right_AR5_5_07R_W4C4A2_link3" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "right_AR5_5_07R_W4C4A2_link4" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "right_AR5_5_07R_W4C4A2_link5" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "right_AR5_5_07R_W4C4A2_link6" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "right_AR5_5_07R_W4C4A2_link7" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "right_AR5_5_07R_W4C4A2_tcp" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "right_rh_rk_adapter" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                        over "right_rh_hand_base_link" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "right_rh_thumb_metacarpals_base2" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "right_rh_thumb_metacarpals" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                    over "right_rh_thumb_distal" (
+                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                    )
+                                                                    {
+                                                                    }
+                                                                }
+                                                            }
+
+                                                            over "right_rh_index_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "right_rh_index_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "right_rh_middle_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "right_rh_middle_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "right_rh_ring_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "right_rh_ring_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "right_rh_pinky_proximal" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "right_rh_pinky_distal" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "world_to_torso" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_2" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_3" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_4" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_5" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_6" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_7" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_AR5_5_07L_W4C4A2_tcp_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_rk_adapter_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_thumb_cmc_yaw" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_thumb_cmc_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_thumb_ip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_index_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_index_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_middle_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_middle_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_ring_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_ring_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_pinky_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_lh_pinky_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_hand_mount_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_2" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_3" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_4" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_5" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_6" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_7" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_AR5_5_07R_W4C4A2_tcp_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rk_adapter_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_thumb_cmc_yaw" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_thumb_cmc_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_thumb_ip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_index_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_index_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_middle_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_middle_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_ring_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_ring_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_pinky_mcp_pitch" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_rh_pinky_dip" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_hand_mount_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "torso_to_left_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "torso_to_right_arm" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+    }
+}
+

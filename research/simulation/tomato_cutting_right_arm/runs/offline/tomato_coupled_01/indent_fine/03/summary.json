@@ -1,0 +1,116 @@
+{
+  "case": "indentation",
+  "drive_mm": 0.0125,
+  "damage": 0.0,
+  "damage_evolution": false,
+  "passed": true,
+  "flags": [],
+  "trace": [
+    {
+      "iteration": 0,
+      "force_residual": 1.0,
+      "min_gap_m": -1.2499999999998623e-05,
+      "active_constraints": 1,
+      "energy_j": 0.0,
+      "min_J": 0.9999999999999999,
+      "linear_iterations": 105
+    },
+    {
+      "iteration": 1,
+      "force_residual": 1.0000000000000002,
+      "min_gap_m": -1.2499999999998623e-05,
+      "active_constraints": 258,
+      "energy_j": 0.0,
+      "min_J": 0.9999999999999999,
+      "linear_iterations": 104
+    },
+    {
+      "iteration": 2,
+      "force_residual": 0.004591139536687418,
+      "min_gap_m": 0.0,
+      "active_constraints": 258,
+      "energy_j": 1.0598699385697265e-09,
+      "min_J": 0.9952945816400438,
+      "linear_iterations": 81
+    },
+    {
+      "iteration": 3,
+      "force_residual": 7.21410175907957e-08,
+      "min_gap_m": 0.0,
+      "active_constraints": 258,
+      "energy_j": 1.0598491824627114e-09,
+      "min_J": 0.9952915894250902,
+      "linear_iterations": 6
+    }
+  ],
+  "force_residual": 7.21410175907957e-08,
+  "energy_j": 1.0598491824627114e-09,
+  "barrier_energy_j": 0.0,
+  "min_J": 0.9952915894250902,
+  "min_spring_ratio": 0.9953923318850216,
+  "minimum_constrained_scaled_tangent_eigenvalue": 0.001242882691738492,
+  "min_cut_gap_m": 0.0,
+  "min_contact_gap_m": 0.0,
+  "min_multiplier_n": 0.0,
+  "blade_force_n": 0.0001692461449330251,
+  "cut_normal_force_n": 8.664956195649816e-05,
+  "active_contacts": 258,
+  "fixed_dofs": 1103,
+  "free_dofs": 10993,
+  "back_cap_driven_nodes": [],
+  "deformation": {
+    "slice": {
+      "max_nonrigid_displacement_m": 1.2172713430660636e-05,
+      "max_displacement_m": 1.2500083898894785e-05
+    },
+    "remainder": {
+      "max_nonrigid_displacement_m": 1.9374600400458238e-07,
+      "max_displacement_m": 3.670078921776121e-07
+    }
+  },
+  "active_interface_bonds": 403,
+  "finite_blade_coverage_certificate": true,
+  "swept_normal_contact_min_gap_m": 0.0,
+  "swept_min_J": 0.9952915894250902,
+  "surface_intersection_screens": [
+    {
+      "path_fraction": 0.5,
+      "proper_intersections": 0,
+      "candidate_pairs": 12726
+    },
+    {
+      "path_fraction": 1.0,
+      "proper_intersections": 0,
+      "candidate_pairs": 12691
+    }
+  ],
+  "force_balance_fraction": 2.4146896467912485e-09,
+  "moment_balance_fraction": 3.965153127297995e-09,
+  "work": {
+    "support_work_j": 0.0,
+    "blade_work_j": 1.0577884058312904e-09,
+    "energy_change_j": 1.0598491824627114e-09,
+    "residual_j": -2.060776631420953e-12
+  },
+  "positions_sha256": "cb99d53acff9210160f9d11a95b65eeeaa896b5db40faf44c269bd88e66a9361",
+  "contact_scope": "supported fixed-normal facets and matched cut faces, no arbitrary rotations/slip or general CCD",
+  "design_sha256": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+  "source_hashes": {
+    "rl/offline_tomato_coupled.py": "ca028428869c5238bd06546930751a76f014f0f88cec62f09fddd0f0918e0ffb",
+    "rl/tomato_coupled_contact.py": "98a847ecf284284daedf52c78d497da8097bd7a9018529cf11944814b44d2d64",
+    "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+    "rl/tomato_nonlinear_checks.py": "bada0d08fdfb8091bc264e7f9653a4c6000f3e473e4bef43c012855a89d5c8d6"
+  },
+  "runtime_s": 3.3329276080003183,
+  "peak_rss_bytes": 184373248,
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 45,
+    "wall_s": 55,
+    "shared_lock": true,
+    "blas_threads": 1
+  },
+  "simulator_imports_or_launches": false,
+  "training": false,
+  "full_cut": false
+}

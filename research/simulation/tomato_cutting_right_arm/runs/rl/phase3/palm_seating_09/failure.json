@@ -1,0 +1,83 @@
+{
+  "phase": "coordinated_palm_seating",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 336, in <module>\n    move(target,orientation,seat_feedback,settle_steps=2)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 175, in move\n    if feedback is not None:feedback(sample)\n                            ^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/central_grasp.py\", line 312, in seat_feedback\n    raise RuntimeError('Supported clearance/opposed pinch lost during seating; motion stopped early')\nRuntimeError: Supported clearance/opposed pinch lost during seating; motion stopped early\n",
+  "training": false,
+  "last_sample": {
+    "handle_height_m": 0.8734904388435454,
+    "handle_in_palm_m": [
+      0.10770771361132597,
+      0.017251529259498837,
+      0.12032127315784202
+    ],
+    "contacts": [],
+    "blade_contact": false,
+    "unsafe_contact": false,
+    "support_force_n": 3.3035261631011963,
+    "support_clearance_m": -0.000733833527733041,
+    "attachment": false,
+    "joint_limit_violation": false,
+    "contact_buffer_full": false,
+    "dropped": false,
+    "knife_friction_by_hand_body_n": {},
+    "phase": "coordinated_palm_seating",
+    "control_step": 630,
+    "sim_s": 31.5,
+    "q_rad": [
+      -1.0035970211029053,
+      -1.5531327724456787,
+      1.1210352182388306,
+      1.4782202243804932,
+      -1.2122691869735718,
+      -0.011382326483726501,
+      0.22780008614063263,
+      0.8686145544052124,
+      0.1644955724477768,
+      0.9423760175704956,
+      0.9837562441825867,
+      0.983761727809906,
+      0.9478010535240173
+    ],
+    "palm_world_m": [
+      -2.223998822214427,
+      -1.5043243056124056,
+      0.995189830933932
+    ],
+    "knife_pose_xyzw": [
+      -2.166654348373413,
+      -1.4399129152297974,
+      0.8723444938659668,
+      0.06278372555971146,
+      0.027346262708306313,
+      0.5091128945350647,
+      0.85797119140625
+    ],
+    "in_place_motion": {
+      "footprint_margin_m": 0.03020826597292814,
+      "centre_xy_shift_m": 0.023637733863909254,
+      "rotation_deg": 6.1580425013338,
+      "within_bounds": true
+    },
+    "estimated_hand_drive_torque_nm": [
+      -0.0035930494777858257,
+      0.34246861934661865,
+      0.019413433969020844,
+      -0.006054859608411789,
+      -0.006071245297789574,
+      -0.006187897175550461
+    ],
+    "metric": {
+      "success": false,
+      "wrapped": false,
+      "lifted": false,
+      "supported": true,
+      "unsafe_seen": false,
+      "hold_s": 0.0,
+      "slip_m": 0.0,
+      "fingers": [],
+      "inner_fingers": [],
+      "enclosed": false,
+      "opposed": false
+    }
+  },
+  "substep_event": null
+}
