@@ -1,0 +1,168 @@
+{
+  "parameters": {
+    "soft_ke": 1000.0,
+    "soft_kd": 10.0,
+    "soft_mu": 0.5,
+    "shape_ke": 2500.0,
+    "shape_kd": 100.0,
+    "shape_mu": 0.0,
+    "cold_start_k": -1.0,
+    "friction_epsilon": 0.01
+  },
+  "native_arrays": {
+    "ke": [
+      1750.0
+    ],
+    "kd": [
+      55.0
+    ],
+    "mu": [
+      0.0
+    ],
+    "material_ke": [
+      1750.0
+    ],
+    "force": [
+      [
+        0.0,
+        0.0,
+        1.7499998807907104
+      ]
+    ],
+    "hessian": [
+      [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1750.0
+        ]
+      ]
+    ],
+    "rigid_point": [
+      [
+        0.008994003757834435,
+        0.0033971210941672325,
+        0.0020000000949949026
+      ]
+    ],
+    "wrench": [
+      [
+        -0.0,
+        -0.0,
+        -1.7499998807907104,
+        -0.005944961681962013,
+        0.015739506110548973,
+        0.0
+      ]
+    ]
+  },
+  "expected_force_n": [
+    0.0,
+    0.0,
+    1.7499999788124065
+  ],
+  "expected_moment_nm": [
+    -0.0059449618428158366,
+    0.015739506385648964,
+    0.0
+  ],
+  "expected_hessian": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1750.0
+    ]
+  ],
+  "force_error_n": 9.80216960932978e-08,
+  "reaction_error_n": 9.80216960932978e-08,
+  "moment_error_nm": 3.186753171219987e-10,
+  "hessian_error_n_m": 0.0,
+  "expected_ke": 1750.0,
+  "expected_kd": 55.0,
+  "expected_mu": 0.0,
+  "independent_penetration_m": 0.0009999999878928037,
+  "record": {
+    "global_index": 0,
+    "shape_id": 0,
+    "body_id": 0,
+    "corners": [
+      0,
+      1,
+      2
+    ],
+    "barycentric": [
+      0.19259896874427795,
+      0.41744905710220337,
+      0.38995203375816345
+    ],
+    "soft_point_world_m": [
+      0.008994003333285372,
+      0.003397120757465344,
+      0.001000000107102099
+    ],
+    "raw_rigid_surface_world_m": [
+      0.008994003757834435,
+      0.0033971210941672325,
+      0.0020000000949949026
+    ],
+    "normal_world": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "body_surface_velocity_body_m_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "barycentric_sum_error": 5.960464477539063e-08,
+    "normal_length_error": 0.0,
+    "projected_gap_from_rounded_snapshot_m": -0.0009999999878928037
+  },
+  "reference_version": 2,
+  "separated_checks": {
+    "replay": {
+      "soft_point_binary32_m": [
+        0.008994003757834435,
+        0.0033971210941672325,
+        0.0010000001639127731
+      ],
+      "penetration_binary32_m": 0.0009999999310821295,
+      "replayed_force_n": [
+        0.0,
+        0.0,
+        1.7499998807907104
+      ],
+      "matches_recorded_force_exactly": true,
+      "error_from_independent_geometry_reference_n": 9.80216960932978e-08
+    },
+    "penetration_error_m": 5.6810674220475477e-11,
+    "surface_error_m": 0.0,
+    "normal_error": 0.0,
+    "geometry_passed": true,
+    "arithmetic_passed": true,
+    "historical_geometry_force_gate_passed": true
+  },
+  "arithmetic_reaction_error_n": 0.0,
+  "arithmetic_moment_error_nm": 6.304623424228832e-10
+}

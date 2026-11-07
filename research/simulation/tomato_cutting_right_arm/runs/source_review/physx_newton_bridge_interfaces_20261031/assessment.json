@@ -1,0 +1,134 @@
+{
+  "result": "Installed state/wrench interfaces inspected; host reference contract passes 5 tests. Runtime bridge is not implemented or validated.",
+  "conventions": {
+    "pose": "xyz + quaternion xyzw on both selected installed APIs; no legacy quaternion reorder.",
+    "velocity": "World COM linear velocity xyz, then world angular velocity xyz.",
+    "newton_pose": "Rigid body actor/link frame; COM offset remains body-local and is transformed to world for moment/point velocity.",
+    "reaction": "World force = -soft contact force. World torque about COM = (contact_world - com_world) cross reaction.",
+    "physx_delivery": "Instantaneous wrench composer, is_global=True, positions=None when torque already includes contact moment; call write_data_to_sim before physics step.",
+    "units": "m, s, kg, N, N m; a force packet is not pre-multiplied by dt."
+  },
+  "source_findings": [
+    "Current pose index APIs and data getters use xyzw and COM-world velocities.",
+    "PhysX instantaneous composer is cleared after write_data_to_sim; permanent composer persists. Deprecated set_external_force_and_torque targets the permanent composer.",
+    "SolverVBD external-rigid mode does not integrate rigid bodies; its harvest falls back to proxy momentum change. Unchanged proxy velocity can therefore yield zero despite soft contact.",
+    "VBD explicit contact-force harvest in internal-rigid mode reads dynamic-body adjacency; prescribed kinematic bodies can have no such adjacency. A global-stream reference collector does not automatically become a validated runtime bridge.",
+    "The inspected IsaacLab coupled configuration targets Newton ModelViews/NewtonManager; it does not demonstrate a ready CPU PhysX adapter. A PhysX shadow Newton model used for visualization is not force feedback."
+  ],
+  "ownership_decision": "PhysX remains authoritative for rigid motion. Newton proxy receives state; Newton advances only soft state in external-rigid mode. Reactions must be explicitly collected and applied once to PhysX. Never advance and copy back a second Newton rigid trajectory.",
+  "planned_interval": [
+    "Read PhysX link pose, COM velocity, COM offset and body mapping at t_n; record episode/step/time/dt.",
+    "Synchronize CPU PhysX state to the CUDA Newton proxy using an explicit, verified transfer; preserve quaternion and COM conventions.",
+    "Run the declared Newton soft substep schedule with a documented proxy trajectory policy; collect contact-only reaction and the interval over which it acts.",
+    "Apply one world COM wrench through the instantaneous composer, then write_data_to_sim and advance PhysX for the same declared interval.",
+    "Refresh PhysX data, copy back state for the next interval, invalidate stale contact/snapshot generations and reject duplicate or mismatched-time deliveries."
+  ],
+  "timing_limit": "This is a partitioned time-stepping design, not monolithic Newton backward Euler. Must test impulse/work for the actual schedule and expose lag; the previous free-pair reference is not automatically the coupled reference.",
+  "next_bounded_test": "Isolated CPU PhysX proxy pose/velocity echo plus one-shot wrench impulse and zero-next-step check, including rotated/nonzero-COM case. No robot or blade; no Newton contact feedback yet.",
+  "tests_passed": 5,
+  "native_launches": 0,
+  "physics_steps": 0,
+  "robot_modified": false,
+  "installed_sources_modified": false,
+  "original_pinned_sources_unchanged": true,
+  "item_15_complete": false,
+  "reference_example": {
+    "newton_pose_xyzw": [
+      1.0,
+      2.0,
+      3.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "newton_velocity_com_world": [
+      1.0,
+      2.0,
+      3.0,
+      0.0,
+      0.0,
+      2.0
+    ],
+    "com_world_m": [
+      1.5,
+      2.0,
+      3.0
+    ],
+    "contact_velocity_world_m_s": [
+      -1.0,
+      2.0,
+      3.0
+    ],
+    "physx_wrench": {
+      "force_n": [
+        -0.0,
+        -0.0,
+        3.0
+      ],
+      "torque_about_com_nm": [
+        3.0,
+        -0.0,
+        0.0
+      ],
+      "positions": null,
+      "is_global": true
+    },
+    "native_transfer_enabled": false,
+    "scope": "Reference arithmetic only. Runtime mapping, timing, CPU/GPU transfer and integration are unvalidated."
+  },
+  "sources": {
+    "physx_rigid_object": {
+      "path": "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object.py",
+      "sha256": "0fd17152d133805412776d8cc90eebe85159a383a2e052dafc2eafdd14e54390"
+    },
+    "base_rigid_object": {
+      "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/assets/rigid_object/base_rigid_object.py",
+      "sha256": "3ed285c781418f08c53801c33ab7eb1d20de9f8a1e3ede52f1e4e038b9c40dbc"
+    },
+    "base_rigid_data": {
+      "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/assets/rigid_object/base_rigid_object_data.py",
+      "sha256": "841ca674429d5bd405d212f93494c42ff32ae162e4add373474193adbec746f7"
+    },
+    "wrench_composer": {
+      "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/utils/wrench_composer.py",
+      "sha256": "16914d155c28e0d02ab7135b2627112042bd420b023bfabd9eae1dc3c69960ce"
+    },
+    "simulation_context": {
+      "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/sim/simulation_context.py",
+      "sha256": "5a9ecddbdec7de384b73079021aa6ae30cbf051c0b284d13c3b39bbf0e78815e"
+    },
+    "isaac_newton_coupler": {
+      "path": "/home/omen/IsaacLab/source/isaaclab_contrib/isaaclab_contrib/coupling/coupler.py",
+      "sha256": "f8573aee5966ec6d89dc0462542122b86b4ad37e6bbb7694010db1cd08217632"
+    },
+    "isaac_coupler_config": {
+      "path": "/home/omen/IsaacLab/source/isaaclab_contrib/isaaclab_contrib/coupling/coupler_cfg.py",
+      "sha256": "44b19e9db28b001f98c3f114659af6241f2de75b42ffa25aa6452cde40b1fff7"
+    },
+    "newton_model": {
+      "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/model.py",
+      "sha256": "602f6a10afb090a58f58a9662f31b32c1de6011de8f957f7635dfdd87139d892"
+    },
+    "vbd_solver": {
+      "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py",
+      "sha256": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13"
+    },
+    "vbd_coupling": {
+      "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/vbd_coupling_kernels.py",
+      "sha256": "dd8ac0cc17eb01fd81e54643732dc6c644858904fdd8fe9c88e2f9612beaa2a4"
+    },
+    "coupling_interface": {
+      "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/coupled/interface.py",
+      "sha256": "c8d1f160d4ffcac22841e870f3cd0375c7aad30f799549052692097ab4a1fdb9"
+    },
+    "bridge_reference": {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_physx_bridge_reference.py",
+      "sha256": "9de2398b32ef01a1887737285bbf9032eb67a2ad5f148f65ed6a18b8d11d6563"
+    },
+    "bridge_tests": {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_physx_bridge_reference.py",
+      "sha256": "787fabc1a94d6456bb973a80faafc23534612ac6abff5a75d21b13f6384a701b"
+    }
+  }
+}

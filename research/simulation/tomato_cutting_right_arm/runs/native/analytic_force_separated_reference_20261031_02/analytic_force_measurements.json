@@ -1,0 +1,591 @@
+{
+  "cases": [
+    {
+      "id": "particle_inside",
+      "contact_count": 1,
+      "parameters": {
+        "soft_ke": 1000.0,
+        "soft_kd": 10.0,
+        "soft_mu": 0.5,
+        "shape_ke": 2500.0,
+        "shape_kd": 100.0,
+        "shape_mu": 0.0,
+        "cold_start_k": -1.0,
+        "friction_epsilon": 0.01
+      },
+      "expected_mixed_ke": 1750.0,
+      "expected_cold_penalty_ke": 1750.0,
+      "records": [
+        {
+          "global_contact_index": 0,
+          "expected_force_n": [
+            0.0,
+            0.0,
+            1.7500000831205398
+          ],
+          "native_force_n": [
+            0.0,
+            0.0,
+            1.7500001192092896
+          ],
+          "expected_body_reaction_n": [
+            -0.0,
+            -0.0,
+            -1.7500000831205398
+          ],
+          "native_body_wrench_force_then_moment": [
+            -0.0,
+            -0.0,
+            -1.7500001192092896,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected_body_moment_nm": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "force_error_n": 3.608874976634979e-08,
+          "reaction_error_n": 0.0,
+          "moment_error_nm": 0.0,
+          "hessian_error_n_m": 0.0,
+          "independent_box_penetration_m": 0.0010000000474974513,
+          "separated_checks": {
+            "replay": {
+              "soft_point_binary32_m": [
+                0.0,
+                0.0,
+                0.0010000000474974513
+              ],
+              "penetration_binary32_m": 0.0010000000474974513,
+              "replayed_force_n": [
+                0.0,
+                0.0,
+                1.7500001192092896
+              ],
+              "matches_recorded_force_exactly": true,
+              "error_from_independent_geometry_reference_n": 3.608874976634979e-08
+            },
+            "penetration_error_m": 0.0,
+            "surface_error_m": 0.0,
+            "normal_error": 0.0,
+            "geometry_passed": true,
+            "arithmetic_passed": true,
+            "historical_geometry_force_gate_passed": true
+          }
+        }
+      ],
+      "native_arrays": {
+        "ke": [
+          1750.0
+        ],
+        "kd": [
+          55.0
+        ],
+        "mu": [
+          0.0
+        ],
+        "material_ke": [
+          1750.0
+        ],
+        "force": [
+          [
+            0.0,
+            0.0,
+            1.7500001192092896
+          ]
+        ],
+        "hessian": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1750.0
+            ]
+          ]
+        ],
+        "rigid_point": [
+          [
+            0.0,
+            0.0,
+            0.0020000000949949026
+          ]
+        ],
+        "wrench": [
+          [
+            -0.0,
+            -0.0,
+            -1.7500001192092896,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "state_unchanged": true
+    },
+    {
+      "id": "particle_clear",
+      "contact_count": 0,
+      "parameters": {
+        "soft_ke": 1000.0,
+        "soft_kd": 10.0,
+        "soft_mu": 0.5,
+        "shape_ke": 2500.0,
+        "shape_kd": 100.0,
+        "shape_mu": 0.0,
+        "cold_start_k": -1.0,
+        "friction_epsilon": 0.01
+      },
+      "expected_mixed_ke": 1750.0,
+      "expected_cold_penalty_ke": 1750.0,
+      "records": [],
+      "native_arrays": null,
+      "state_unchanged": true
+    },
+    {
+      "id": "edge_inside_vertices_outside",
+      "contact_count": 1,
+      "parameters": {
+        "soft_ke": 1000.0,
+        "soft_kd": 10.0,
+        "soft_mu": 0.5,
+        "shape_ke": 2500.0,
+        "shape_kd": 100.0,
+        "shape_mu": 0.0,
+        "cold_start_k": -1.0,
+        "friction_epsilon": 0.01
+      },
+      "expected_mixed_ke": 1750.0,
+      "expected_cold_penalty_ke": 1750.0,
+      "records": [
+        {
+          "global_contact_index": 0,
+          "expected_force_n": [
+            0.0,
+            0.0,
+            1.7500000831205398
+          ],
+          "native_force_n": [
+            0.0,
+            0.0,
+            1.7500001192092896
+          ],
+          "expected_body_reaction_n": [
+            -0.0,
+            -0.0,
+            -1.7500000831205398
+          ],
+          "native_body_wrench_force_then_moment": [
+            -0.0,
+            -0.0,
+            -1.7500001192092896,
+            0.0,
+            0.01574973575770855,
+            0.0
+          ],
+          "expected_body_moment_nm": [
+            0.0,
+            0.015749736040119547,
+            0.0
+          ],
+          "force_error_n": 3.608874976634979e-08,
+          "reaction_error_n": 0.0,
+          "moment_error_nm": 6.072042868510152e-10,
+          "hessian_error_n_m": 0.0,
+          "independent_box_penetration_m": 0.0010000000474974513,
+          "separated_checks": {
+            "replay": {
+              "soft_point_binary32_m": [
+                0.008999848738312721,
+                0.0,
+                0.0010000000474974513
+              ],
+              "penetration_binary32_m": 0.0010000000474974513,
+              "replayed_force_n": [
+                0.0,
+                0.0,
+                1.7500001192092896
+              ],
+              "matches_recorded_force_exactly": true,
+              "error_from_independent_geometry_reference_n": 3.608874976634979e-08
+            },
+            "penetration_error_m": 0.0,
+            "surface_error_m": 0.0,
+            "normal_error": 0.0,
+            "geometry_passed": true,
+            "arithmetic_passed": true,
+            "historical_geometry_force_gate_passed": true
+          }
+        }
+      ],
+      "native_arrays": {
+        "ke": [
+          1750.0
+        ],
+        "kd": [
+          55.0
+        ],
+        "mu": [
+          0.0
+        ],
+        "material_ke": [
+          1750.0
+        ],
+        "force": [
+          [
+            0.0,
+            0.0,
+            1.7500001192092896
+          ]
+        ],
+        "hessian": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1750.0
+            ]
+          ]
+        ],
+        "rigid_point": [
+          [
+            0.008999848738312721,
+            0.0,
+            0.0020000000949949026
+          ]
+        ],
+        "wrench": [
+          [
+            -0.0,
+            -0.0,
+            -1.7500001192092896,
+            0.0,
+            0.01574973575770855,
+            0.0
+          ]
+        ]
+      },
+      "state_unchanged": true
+    },
+    {
+      "id": "face_inside_vertices_outside",
+      "contact_count": 1,
+      "parameters": {
+        "soft_ke": 1000.0,
+        "soft_kd": 10.0,
+        "soft_mu": 0.5,
+        "shape_ke": 2500.0,
+        "shape_kd": 100.0,
+        "shape_mu": 0.0,
+        "cold_start_k": -1.0,
+        "friction_epsilon": 0.01
+      },
+      "expected_mixed_ke": 1750.0,
+      "expected_cold_penalty_ke": 1750.0,
+      "records": [
+        {
+          "global_contact_index": 0,
+          "expected_force_n": [
+            0.0,
+            0.0,
+            1.7499999788124065
+          ],
+          "native_force_n": [
+            0.0,
+            0.0,
+            1.7499998807907104
+          ],
+          "expected_body_reaction_n": [
+            -0.0,
+            -0.0,
+            -1.7499999788124065
+          ],
+          "native_body_wrench_force_then_moment": [
+            -0.0,
+            -0.0,
+            -1.7499998807907104,
+            -0.005944961681962013,
+            0.015739506110548973,
+            0.0
+          ],
+          "expected_body_moment_nm": [
+            -0.0059449618428158366,
+            0.015739506385648964,
+            0.0
+          ],
+          "force_error_n": 9.80216960932978e-08,
+          "reaction_error_n": 0.0,
+          "moment_error_nm": 6.304623424228832e-10,
+          "hessian_error_n_m": 0.0,
+          "independent_box_penetration_m": 0.0009999999878928037,
+          "separated_checks": {
+            "replay": {
+              "soft_point_binary32_m": [
+                0.008994003757834435,
+                0.0033971210941672325,
+                0.0010000001639127731
+              ],
+              "penetration_binary32_m": 0.0009999999310821295,
+              "replayed_force_n": [
+                0.0,
+                0.0,
+                1.7499998807907104
+              ],
+              "matches_recorded_force_exactly": true,
+              "error_from_independent_geometry_reference_n": 9.80216960932978e-08
+            },
+            "penetration_error_m": 5.6810674220475477e-11,
+            "surface_error_m": 0.0,
+            "normal_error": 0.0,
+            "geometry_passed": true,
+            "arithmetic_passed": true,
+            "historical_geometry_force_gate_passed": true
+          }
+        }
+      ],
+      "native_arrays": {
+        "ke": [
+          1750.0
+        ],
+        "kd": [
+          55.0
+        ],
+        "mu": [
+          0.0
+        ],
+        "material_ke": [
+          1750.0
+        ],
+        "force": [
+          [
+            0.0,
+            0.0,
+            1.7499998807907104
+          ]
+        ],
+        "hessian": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1750.0
+            ]
+          ]
+        ],
+        "rigid_point": [
+          [
+            0.008994003757834435,
+            0.0033971210941672325,
+            0.0020000000949949026
+          ]
+        ],
+        "wrench": [
+          [
+            -0.0,
+            -0.0,
+            -1.7499998807907104,
+            -0.005944961681962013,
+            0.015739506110548973,
+            0.0
+          ]
+        ]
+      },
+      "state_unchanged": true
+    },
+    {
+      "id": "face_clear",
+      "contact_count": 0,
+      "parameters": {
+        "soft_ke": 1000.0,
+        "soft_kd": 10.0,
+        "soft_mu": 0.5,
+        "shape_ke": 2500.0,
+        "shape_kd": 100.0,
+        "shape_mu": 0.0,
+        "cold_start_k": -1.0,
+        "friction_epsilon": 0.01
+      },
+      "expected_mixed_ke": 1750.0,
+      "expected_cold_penalty_ke": 1750.0,
+      "records": [],
+      "native_arrays": null,
+      "state_unchanged": true
+    },
+    {
+      "id": "transformed_face_inside",
+      "contact_count": 1,
+      "parameters": {
+        "soft_ke": 1000.0,
+        "soft_kd": 10.0,
+        "soft_mu": 0.5,
+        "shape_ke": 2500.0,
+        "shape_kd": 100.0,
+        "shape_mu": 0.0,
+        "cold_start_k": -1.0,
+        "friction_epsilon": 0.01
+      },
+      "expected_mixed_ke": 1750.0,
+      "expected_cold_penalty_ke": 1750.0,
+      "records": [
+        {
+          "global_contact_index": 0,
+          "expected_force_n": [
+            1.7499652360563334,
+            0.0,
+            0.0
+          ],
+          "native_force_n": [
+            1.749977469444275,
+            0.0,
+            0.0
+          ],
+          "expected_body_reaction_n": [
+            -1.7499652360563334,
+            -0.0,
+            -0.0
+          ],
+          "native_body_wrench_force_then_moment": [
+            -1.749977469444275,
+            -0.0,
+            -0.0,
+            0.0,
+            0.006988398265093565,
+            -0.005489066243171692
+          ],
+          "expected_body_moment_nm": [
+            0.0,
+            0.0069883395319389925,
+            -0.0054890353153925035
+          ],
+          "force_error_n": 1.2233387941540386e-05,
+          "reaction_error_n": 0.0,
+          "moment_error_nm": 1.496348796868377e-10,
+          "hessian_error_n_m": 0.0,
+          "independent_box_penetration_m": 0.0009999801348893333,
+          "separated_checks": {
+            "replay": {
+              "soft_point_binary32_m": [
+                0.10700001567602158,
+                -0.20313671231269836,
+                0.29600661993026733
+              ],
+              "penetration_binary32_m": 0.0009999871253967285,
+              "replayed_force_n": [
+                1.749977469444275,
+                0.0,
+                0.0
+              ],
+              "matches_recorded_force_exactly": true,
+              "error_from_independent_geometry_reference_n": 1.2233387941540386e-05
+            },
+            "penetration_error_m": 6.990507395165935e-09,
+            "surface_error_m": 1.1641532182693481e-09,
+            "normal_error": 0.0,
+            "geometry_passed": true,
+            "arithmetic_passed": true,
+            "historical_geometry_force_gate_passed": false
+          }
+        }
+      ],
+      "native_arrays": {
+        "ke": [
+          1750.0
+        ],
+        "kd": [
+          55.0
+        ],
+        "mu": [
+          0.0
+        ],
+        "material_ke": [
+          1750.0
+        ],
+        "force": [
+          [
+            1.749977469444275,
+            0.0,
+            0.0
+          ]
+        ],
+        "hessian": [
+          [
+            [
+              1750.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "rigid_point": [
+          [
+            0.1080000028014183,
+            -0.2031366527080536,
+            0.29600659012794495
+          ]
+        ],
+        "wrench": [
+          [
+            -1.749977469444275,
+            -0.0,
+            -0.0,
+            0.0,
+            0.006988398265093565,
+            -0.005489066243171692
+          ]
+        ]
+      },
+      "state_unchanged": true
+    }
+  ],
+  "force_evaluations": 4,
+  "mechanical_steps": 0,
+  "collision_queries": 6,
+  "reference_version": 2,
+  "comparison_scope": "Stationary axis-box fixtures only: geometry 1e-7 m / normal 1e-6; force exact fused binary32 replay; reaction 1e-5 N, moment 1e-6 Nm, Hessian 1e-4 N/m.",
+  "historical_geometry_force_gate_passed": false,
+  "reaction_is_reconstructed_not_independently_measured": true,
+  "physical_two_way_coupling_validated": false,
+  "real_blade_force_validated": false
+}

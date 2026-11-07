@@ -1,0 +1,1034 @@
+{
+  "result": "PASS: installed native particle/edge/face scatter matches independent stationary force/diagonal-stiffness references.",
+  "native_attempts": 1,
+  "fixture_count": 6,
+  "point_force_evaluations": 5,
+  "assembly_kernel_launches": 18,
+  "force_evaluations": 18,
+  "force_count_scope": "5 point-helper calls plus 13 source-inferred contact-law executions across colored scatter launches. No instruction-level counters added.",
+  "mechanical_steps": 0,
+  "focused_tests_passed": 16,
+  "metrics": {
+    "max_force_scatter_error_n": 9.104485343414126e-08,
+    "max_diagonal_stiffness_scatter_error_n_m": 4.441525356924103e-05,
+    "max_summed_force_residual_n": 1.1920930376163512e-07,
+    "max_reconstructed_reaction_residual_n": 1.1920930376163512e-07,
+    "max_algebraic_moment_residual_nm": 4.4190687292329405e-08
+  },
+  "validated_scope": [
+    "Barycentric force weights and squared weights for each particle diagonal stiffness block.",
+    "Three-color scatter gating, padded particle/edge supports, all-three-positive face weights, zero-weight corners and untouched spectator particles.",
+    "Empty-control outputs remain zero; raw float32 weights preserved without renormalization.",
+    "Summed force and reconstructed rigid reaction/moment agree within numerical tolerances; physical/contact inputs unchanged."
+  ],
+  "limits": [
+    "Algebraic balances only: no time integration, dynamic momentum or energy/work conservation measured.",
+    "Only per-particle diagonal contact stiffness blocks are tested, not off-diagonal global Hessian or cohesive material physics.",
+    "Synthetic scalars and explicit stationary references; no native blade body, collision pipeline or Solver instance.",
+    "The general collision-generated blade backend, candidate completeness and moving contacts remain open."
+  ],
+  "original_pinned_sources_unchanged": true,
+  "item_13_complete_for_stationary_fixture_scope": true,
+  "item_12_complete": false,
+  "next_step": "A small bounded dynamic momentum/work audit on an analytic proxy fixture, before attempting moving real-blade contact.",
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 2.876569161999214,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 13,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25115832320,
+    "min_free_vram_bytes": 7698644992,
+    "mode": "particle_scatter",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "particle_scatter_cases_completed": 6,
+      "point_force_evaluations": 5,
+      "assembly_kernel_launches": 18,
+      "force_evaluations": 18,
+      "mechanical_steps": 0,
+      "particle_scatter_checks_passed": true,
+      "training": false,
+      "full_surface_contact_validated": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "wide:edge_through_authored_blade_face",
+        "point_reference": {
+          "modeled_binary32_soft_point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "projected_penetration_m": 0.00252077823992197,
+          "expected_force_n": [
+            -0.054653930354606285,
+            -0.0018461566957947598,
+            -4.411022993219437
+          ],
+          "native_force_n": [
+            -0.05465392768383026,
+            -0.0018461565487086773,
+            -4.411022663116455
+          ],
+          "expected_reconstructed_reaction_n": [
+            0.054653930354606285,
+            0.0018461566957947598,
+            4.411022993219437
+          ],
+          "expected_reconstructed_moment_nm": [
+            0.023570000526572443,
+            1.2242113915068749,
+            -0.0008044118632322538
+          ],
+          "force_error_n": 3.301138191449843e-07,
+          "reaction_error_n": 3.301138191449843e-07,
+          "moment_error_nm": 5.633887352127046e-08,
+          "hessian_error_n_m": 2.4873623033272452e-05
+        },
+        "color_checks": [
+          {
+            "color": 0,
+            "max_force_error_n": 1.4689092608932697e-08,
+            "max_diagonal_stiffness_error_n_m": 9.561186601558802e-06
+          },
+          {
+            "color": 1,
+            "max_force_error_n": 2.6938522523778374e-08,
+            "max_diagonal_stiffness_error_n_m": 1.0031305919255828e-06
+          },
+          {
+            "color": 2,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          }
+        ],
+        "balance": {
+          "summed_particle_force_n": [
+            -0.05465392768383026,
+            -0.0018461564905010164,
+            -4.4110225439071655
+          ],
+          "point_force_residual_n": 1.1920930376163512e-07,
+          "reconstructed_reaction_residual_n": 1.1920930376163512e-07,
+          "moment_residual_nm": 3.0291910365286375e-08,
+          "raw_barycentric_sum": 0.9999999701976776
+        },
+        "particle_forces_n": [
+          [
+            -0.020436424762010574,
+            -0.0006903225439600646,
+            -1.6493879556655884
+          ],
+          [
+            -0.03421750292181969,
+            -0.0011558339465409517,
+            -2.761634588241577
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "particle_diagonal_stiffness_n_m": [
+          [
+            [
+              0.03755800426006317,
+              0.001268672989681363,
+              3.031240940093994
+            ],
+            [
+              0.001268672989681363,
+              4.285453906049952e-05,
+              0.10239237546920776
+            ],
+            [
+              3.031240940093994,
+              0.10239237546920776,
+              244.64613342285156
+            ]
+          ],
+          [
+            [
+              0.10529051721096039,
+              0.003556611714884639,
+              8.497814178466797
+            ],
+            [
+              0.003556611714884639,
+              0.00012013888772344217,
+              0.2870478928089142
+            ],
+            [
+              8.497814178466797,
+              0.2870478928089142,
+              685.8436889648438
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "particle_colors": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "spectator_unchanged": true,
+        "physical_and_contact_state_unchanged": true
+      },
+      {
+        "id": "authored_blade_edge_through_soft_interior",
+        "point_reference": {
+          "modeled_binary32_soft_point_m": [
+            -0.21106868982315063,
+            -0.0008001684909686446,
+            0.0012241380754858255
+          ],
+          "projected_penetration_m": 0.003320271378444978,
+          "expected_force_n": [
+            -0.07270853734113449,
+            1.6062665408108633e-06,
+            -5.810019832959548
+          ],
+          "native_force_n": [
+            -0.07270853966474533,
+            1.606266550879809e-06,
+            -5.8100199699401855
+          ],
+          "expected_reconstructed_reaction_n": [
+            0.07270853734113449,
+            -1.6062665408108633e-06,
+            5.810019832959548
+          ],
+          "expected_reconstructed_moment_nm": [
+            -0.004648965026377458,
+            1.2264022601003015,
+            5.851776515550747e-05
+          ],
+          "force_error_n": 1.370003438577705e-07,
+          "reaction_error_n": 1.370003438577705e-07,
+          "moment_error_nm": 2.2615213810016472e-08,
+          "hessian_error_n_m": 5.88952300404344e-05
+        },
+        "color_checks": [
+          {
+            "color": 0,
+            "max_force_error_n": 9.104485343414126e-08,
+            "max_diagonal_stiffness_error_n_m": 2.430854010526673e-06
+          },
+          {
+            "color": 1,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          },
+          {
+            "color": 2,
+            "max_force_error_n": 9.104485343414126e-08,
+            "max_diagonal_stiffness_error_n_m": 4.441525356924103e-05
+          }
+        ],
+        "balance": {
+          "summed_particle_force_n": [
+            -0.07270853966474533,
+            1.606266550879809e-06,
+            -5.8100199699401855
+          ],
+          "point_force_residual_n": 0.0,
+          "reconstructed_reaction_residual_n": 0.0,
+          "moment_residual_nm": 2.7668067076704112e-08,
+          "raw_barycentric_sum": 1.0
+        },
+        "particle_forces_n": [
+          [
+            -0.025183986872434616,
+            5.563609875025577e-07,
+            -2.012410879135132
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            -0.047524552792310715,
+            1.0499055633772514e-06,
+            -3.7976090908050537
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "particle_diagonal_stiffness_n_m": [
+          [
+            [
+              0.03287484496831894,
+              -7.26266307538026e-07,
+              2.6269750595092773
+            ],
+            [
+              -7.26266307538026e-07,
+              1.6044571921058903e-11,
+              -5.8034751418745145e-05
+            ],
+            [
+              2.6269750595092773,
+              -5.8034751418745145e-05,
+              209.917236328125
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.11707141250371933,
+              -2.5863246264634654e-06,
+              9.354985237121582
+            ],
+            [
+              -2.5863246264634654e-06,
+              5.713671549778532e-11,
+              -0.00020666896307375282
+            ],
+            [
+              9.354985237121582,
+              -0.00020666896307375282,
+              747.5414428710938
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "particle_colors": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "spectator_unchanged": true,
+        "physical_and_contact_state_unchanged": true
+      },
+      {
+        "id": "wide:translated_clear_negative_control",
+        "point_reference": null,
+        "color_checks": [
+          {
+            "color": 0,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          },
+          {
+            "color": 1,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          },
+          {
+            "color": 2,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          }
+        ],
+        "balance": null,
+        "particle_forces_n": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "particle_diagonal_stiffness_n_m": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "particle_colors": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "spectator_unchanged": true,
+        "physical_and_contact_state_unchanged": true
+      },
+      {
+        "id": "control:padded_blade_edge",
+        "point_reference": {
+          "modeled_binary32_soft_point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "projected_penetration_m": 0.00252077823992197,
+          "expected_force_n": [
+            -0.054653930354606285,
+            -0.0018461566957947598,
+            -4.411022993219437
+          ],
+          "native_force_n": [
+            -0.05465392768383026,
+            -0.0018461565487086773,
+            -4.411022663116455
+          ],
+          "expected_reconstructed_reaction_n": [
+            0.054653930354606285,
+            0.0018461566957947598,
+            4.411022993219437
+          ],
+          "expected_reconstructed_moment_nm": [
+            0.023570000526572443,
+            1.2242113915068749,
+            -0.0008044118632322538
+          ],
+          "force_error_n": 3.301138191449843e-07,
+          "reaction_error_n": 3.301138191449843e-07,
+          "moment_error_nm": 5.633887352127046e-08,
+          "hessian_error_n_m": 2.4873623033272452e-05
+        },
+        "color_checks": [
+          {
+            "color": 0,
+            "max_force_error_n": 1.4689092608932697e-08,
+            "max_diagonal_stiffness_error_n_m": 9.561186601558802e-06
+          },
+          {
+            "color": 1,
+            "max_force_error_n": 2.6938522523778374e-08,
+            "max_diagonal_stiffness_error_n_m": 1.0031305919255828e-06
+          },
+          {
+            "color": 2,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          }
+        ],
+        "balance": {
+          "summed_particle_force_n": [
+            -0.05465392768383026,
+            -0.0018461564905010164,
+            -4.4110225439071655
+          ],
+          "point_force_residual_n": 1.1920930376163512e-07,
+          "reconstructed_reaction_residual_n": 1.1920930376163512e-07,
+          "moment_residual_nm": 3.0291910365286375e-08,
+          "raw_barycentric_sum": 0.9999999701976776
+        },
+        "particle_forces_n": [
+          [
+            -0.020436424762010574,
+            -0.0006903225439600646,
+            -1.6493879556655884
+          ],
+          [
+            -0.03421750292181969,
+            -0.0011558339465409517,
+            -2.761634588241577
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "particle_diagonal_stiffness_n_m": [
+          [
+            [
+              0.03755800426006317,
+              0.001268672989681363,
+              3.031240940093994
+            ],
+            [
+              0.001268672989681363,
+              4.285453906049952e-05,
+              0.10239237546920776
+            ],
+            [
+              3.031240940093994,
+              0.10239237546920776,
+              244.64613342285156
+            ]
+          ],
+          [
+            [
+              0.10529051721096039,
+              0.003556611714884639,
+              8.497814178466797
+            ],
+            [
+              0.003556611714884639,
+              0.00012013888772344217,
+              0.2870478928089142
+            ],
+            [
+              8.497814178466797,
+              0.2870478928089142,
+              685.8436889648438
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "particle_colors": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "spectator_unchanged": true,
+        "physical_and_contact_state_unchanged": true
+      },
+      {
+        "id": "control:blade_particle",
+        "point_reference": {
+          "modeled_binary32_soft_point_m": [
+            -0.2775190770626068,
+            0.005343955475836992,
+            0.0012506443308666348
+          ],
+          "projected_penetration_m": 0.0025207782401168496,
+          "expected_force_n": [
+            -0.05465393035883155,
+            -0.001846156695937485,
+            -4.411022993560452
+          ],
+          "native_force_n": [
+            -0.05465392768383026,
+            -0.0018461565487086773,
+            -4.411022663116455
+          ],
+          "expected_reconstructed_reaction_n": [
+            0.05465393035883155,
+            0.001846156695937485,
+            4.411022993560452
+          ],
+          "expected_reconstructed_moment_nm": [
+            0.02357000052839463,
+            1.2242113916015183,
+            -0.0008044118632944424
+          ],
+          "force_error_n": 3.304548565294045e-07,
+          "reaction_error_n": 3.304548565294045e-07,
+          "moment_error_nm": 5.6433534006403534e-08,
+          "hessian_error_n_m": 2.4873623033272452e-05
+        },
+        "color_checks": [
+          {
+            "color": 0,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          },
+          {
+            "color": 1,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          },
+          {
+            "color": 2,
+            "max_force_error_n": 0.0,
+            "max_diagonal_stiffness_error_n_m": 0.0
+          }
+        ],
+        "balance": {
+          "summed_particle_force_n": [
+            -0.05465392768383026,
+            -0.0018461565487086773,
+            -4.411022663116455
+          ],
+          "point_force_residual_n": 0.0,
+          "reconstructed_reaction_residual_n": 0.0,
+          "moment_residual_nm": 4.4190687292329405e-08,
+          "raw_barycentric_sum": 1.0
+        },
+        "particle_forces_n": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            -0.05465392768383026,
+            -0.0018461565487086773,
+            -4.411022663116455
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "particle_diagonal_stiffness_n_m": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ],
+          [
+            [
+              0.2686181962490082,
+              0.00907366257160902,
+              21.679706573486328
+            ],
+            [
+              0.00907366257160902,
+              0.0003064995107706636,
+              0.7323194146156311
+            ],
+            [
+              21.679706573486328,
+              0.7323194146156311,
+              1749.7310791015625
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "particle_colors": [
+          0,
+          1,
+          2,
+          0,
+          1
+        ],
+        "spectator_unchanged": true,
+        "physical_and_contact_state_unchanged": true
+      },
+      {
+        "id": "control:three_weight_face",
+        "point_reference": {
+          "modeled_binary32_soft_point_m": [
+            0.3333333432674408,
+            0.3333333432674408,
+            -0.0010000000474974513
+          ],
+          "projected_penetration_m": 0.0010000000474974513,
+          "expected_force_n": [
+            0.0,
+            0.0,
+            1.7500000831205398
+          ],
+          "native_force_n": [
+            0.0,
+            0.0,
+            1.7500001192092896
+          ],
+          "expected_reconstructed_reaction_n": [
+            -0.0,
+            -0.0,
+            -1.7500000831205398
+          ],
+          "expected_reconstructed_moment_nm": [
+            -0.5833333784248688,
+            0.5833333784248688,
+            0.0
+          ],
+          "force_error_n": 3.608874976634979e-08,
+          "reaction_error_n": 3.608874976634979e-08,
+          "moment_error_nm": 7.573262940865992e-09,
+          "hessian_error_n_m": 0.0
+        },
+        "color_checks": [
+          {
+            "color": 0,
+            "max_force_error_n": 1.7384689243726825e-08,
+            "max_diagonal_stiffness_error_n_m": 1.9735758485239785e-06
+          },
+          {
+            "color": 1,
+            "max_force_error_n": 1.7384689243726825e-08,
+            "max_diagonal_stiffness_error_n_m": 1.9735758485239785e-06
+          },
+          {
+            "color": 2,
+            "max_force_error_n": 1.7384689243726825e-08,
+            "max_diagonal_stiffness_error_n_m": 1.9735758485239785e-06
+          }
+        ],
+        "balance": {
+          "summed_particle_force_n": [
+            0.0,
+            0.0,
+            1.7500001192092896
+          ],
+          "point_force_residual_n": 0.0,
+          "reconstructed_reaction_residual_n": 0.0,
+          "moment_residual_nm": 0.0,
+          "raw_barycentric_sum": 1.0000000298023224
+        },
+        "particle_forces_n": [
+          [
+            0.0,
+            0.0,
+            0.5833333730697632
+          ],
+          [
+            0.0,
+            0.0,
+            0.5833333730697632
+          ],
+          [
+            0.0,
+            0.0,
+            0.5833333730697632
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "particle_diagonal_stiffness_n_m": [
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              194.4444580078125
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              194.4444580078125
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              194.4444580078125
+            ]
+          ],
+          [
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        ],
+        "particle_colors": [
+          0,
+          1,
+          2,
+          0
+        ],
+        "spectator_unchanged": true,
+        "physical_and_contact_state_unchanged": true
+      }
+    ],
+    "point_force_evaluations": 5,
+    "assembly_kernel_launches": 18,
+    "force_evaluations": 18,
+    "mechanical_steps": 0,
+    "weights_renormalized": false,
+    "comparison_scope": "Stationary fixture scatter: force 1e-5 N, diagonal stiffness 1e-4 N/m, algebraic moment 1e-6 Nm.",
+    "off_diagonal_global_stiffness_validated": false,
+    "dynamic_conservation_validated": false,
+    "full_blade_contact_path_validated": false
+  }
+}

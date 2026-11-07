@@ -1,0 +1,57 @@
+INTEGRATION RECOVERY DECISION — 2 November 2026
+
+DECISION
+Moving mounted-blade qualification is blocked. Completed components remain useful.
+No new native simulation was launched. No physical parameters, thresholds or historical verdicts were changed. Fixed mount retained; experimental validation pending; no cutting or training started.
+
+VERIFIED SCOPE
+- Benchmark/evaluator: the existing curved nominal 10 mm end-cap contract remains the reference, not a uniform slice.
+- Material/frame/contact/history operators and prepared damaged states are component checks; accepted live coupled fracture remains unqualified.
+- Saved support evidence covers two synchronized ten-second holds and the specific 0.01 N force/twist pulses, not the full cutting-load envelope.
+- Stationary preload: protected 4096-interval run, independent readback and finest-pair refinement passed. Maximum pose change is exactly zero at this scale. Its 0.77% energy result does not qualify a moving blade.
+- Moving robot-only known-wrench replay completed 192 steps. Independent channel reconstruction and pose-versus-velocity work pass, but force/moment and some energy checks fail. Worker completion is not qualification.
+
+UNRESOLVED MEASUREMENTS (original gates retained)
+- Per-step knife force residual: 1.49849242e-05 N; budget 1e-06 N; FAIL.
+- Per-step knife moment residual: 1.64853937e-07 Nm; budget 1e-07 Nm; FAIL.
+- Up-profile cumulative work residual: 1.34437936e-11 J; budget 1.12260314e-11 J; FAIL.
+- Up-clear cumulative work residual: 1.72714264e-11 J; budget 9.24481825e-12 J; FAIL.
+Force readout rounding allowance adds at most 2.235 microN to the original 1 microN limit; the approximately 15 microN maximum still fails. This is a Newton–Euler balance residual, not a measured contact-force peak.
+Loaded robot-only contact work is about 1.12 nJ; its 1% budget is about 11.2 pJ. Clear-case initial kinetic energy is 9.24 microJ; its one-part-per-million budget is about 9.24 pJ. Gravity and motor work each approach 80 microJ, so this is a demanding subtraction of large terms. The existing traces do not establish that these full-ledger precision requirements are achievable. That is a measurement limitation to resolve, not permission to increase limits.
+Cumulative knife linear impulse residuals are 0.196–0.367 nNs over 0.833 ms, below the prior 1 nNs impulse bound; this scoped observation cannot erase failing per-step force requirements or establish moving contact. Signed cancellation must also be checked in any future windowed measurement.
+
+DAMPING ASSESSMENT AND RUN DECISION
+The source capture establishes angular damping 0.0500000007/s for the mounted knife. Forty-five robot bodies have absent API/property values; these are UNKNOWN effective runtime coefficients, not zero. Joint-drive gains being zero does not resolve body drag. The capture took zero physical steps and is not a force calibration.
+The conditional all-body 0.05/s estimate below is a scale check only. It uses measured angular kinetic energies and an assumed scalar drag model, excludes possible other loss terms and does not establish the installed solver's discrete force law. The known knife coefficient alone does not close the full-robot ledger.
+- down_profile: hypothetical all-body drag -1.3883e-11 J; knife-only coefficient contribution -2.9644e-20 J.
+- down_replay: hypothetical all-body drag -1.3883e-11 J; knife-only coefficient contribution -2.9644e-20 J.
+- down_clear: hypothetical all-body drag -1.3884e-11 J; knife-only coefficient contribution -4.34494e-22 J.
+- up_profile: hypothetical all-body drag -1.3885e-11 J; knife-only coefficient contribution -2.98142e-20 J.
+- up_replay: hypothetical all-body drag -1.3885e-11 J; knife-only coefficient contribution -2.98142e-20 J.
+- up_clear: hypothetical all-body drag -1.38841e-11 J; knife-only coefficient contribution -4.06631e-22 J.
+Damping would remove energy under this model, with scale of order 10 pJ per short episode. Agreement in order of magnitude with an observed negative residual does not identify its cause. An unforced decay run with unknown effective coefficients would mix physical damping, constraint losses and numerical errors. Establishing them independently requires another identification branch, which section 9 disallows. Therefore no new native invocation is justified here. The hypothesis remains unresolved; no corrected ledger or pass is issued.
+
+MEASUREMENT CONTRACT REVIEW
+Physical stop limits (force/moment/penetration/volume/domain bounds) remain distinct from readout precision and convergence targets. A future force controller needs a stated sampling period, latency and worst-case transient load resolution. A block impulse can assess momentum transfer; it cannot certify unobserved peaks. Accumulated work is needed for the cutting energy evaluator and requires explicit actuator/support/damping terms. Pose-work agreement alone does not prove whole-system conservation.
+The original per-step force gate still fails, including its declared floating-point rounding allowance. No windowed sensor contract is adopted. A prospective alternative must specify window, latency, cumulative and within-window residual limits, positive/negative/clear controls and independent held-out loads before results, with uncertainty derived independently rather than fitted to these failures.
+
+RECOMMENDATION FOR USER DECISION — NOT IMPLEMENTED
+Temporarily separate the next research deliverables:
+1. A robot-only force-transfer benchmark with explicit measurement resolution and bandwidth.
+2. A prescribed-blade nonfracturing whole-target material experiment, retaining board/support, physical contact and existing stop criteria.
+These establish separate capabilities, not two-way robot cutting. Do not carry this scoped result into shallow cuts or claim robot cutting qualification. Experimental validation and loaded/post-cut reset remain pending. Returning to cutting requires a defensible mounted-moving-contact qualification.
+Proposed finite next package after user agrees to this scope: one frozen measurement/experiment specification, one serialized robot-only held-out load run, and one prescribed-blade nonfracturing run; no solver sweep or material retuning. Budget at most two native invocations, provisionally 20 minutes robot-only and 30 minutes material wall time including setup/cleanup; shorten physical duration or return incomplete if needed, never relax gates to meet time. These are ceilings rather than throughput forecasts; confirm costs from the saved timed runs before launch. Exit is two reproducible component verdicts (pass, fail or incomplete) and a clear statement of which original gates remain open. Stop after this package and review; a failure does not authorize another branch.
+
+EVIDENCE AND PRESERVATION
+moving_audit: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/joint_state_interface_pgs_work_20261102_01/measurements.json
+preload_work: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/preload_contact_work_r128_20261102_02/measurements.json
+preload_refinement: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/mounted_com_refinement_20261102_01/measurements.json
+preload_readback: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/mounted_com_readback_r128_20261102_02/measurements.json
+parameters: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_body_parameters_20261102_01/body_parameters.json
+parameters_supervisor: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_body_parameters_20261102_01/supervisor_result.json
+moving_supervisor: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/joint_state_interface_pgs_20261102_01/supervisor_result.json
+preload_supervisor: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/mounted_target_com_r128_20261102_02/supervisor_result.json
+down_readback: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/load_down_readback_20261102_01/measurements.json
+twist_readback: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/load_twist_readback_20261102_01/measurements.json
+Integrity details and conditional calculation: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/recovery_decision_20261102
+All old evidence remains in place. Current supervisor records report no remaining owned live group members. Hash rechecks are recorded in integrity.json; the startup guard is the documented intentional change against the original fixed-mount wrapper set. No historical failed audit is relabelled.

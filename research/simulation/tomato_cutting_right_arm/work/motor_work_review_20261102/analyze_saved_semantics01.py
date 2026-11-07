@@ -1,0 +1,10 @@
+"""Bounded saved-data review; no simulator imports or changed verdicts."""
+from pathlib import Path
+import json,hashlib,numpy as np
+R=Path(__file__).resolve().parents[2];run=R/'runs/native/motor_effort_capture_20261102_01';out=R/'work/motor_work_review_20261102/saved_semantics01';out.mkdir(exist_ok=False);order=json.loads((run/'ordering.json').read_text());names=order['joint_names'];jmap=order['user_to_backend_joint'];A=np.load(run/'get_dof_armatures.npy')[0][jmap].astype(float);records=[];rotor=[];gap=[];pins={}
+for i in range(120):
+ p=run/f'interval_{i:03d}.npz';pins[str(p)]=hashlib.sha256(p.read_bytes()).hexdigest()
+ with np.load(p)as z:
+  dv=(z['after_qd'].astype(float)-z['before_qd'].astype(float));rotor.append(A*dv*240);gap.append(z['measured_effort_backend'][jmap].astype(float)-z['approximate_applied_effort'].astype(float));records.append({k:z[k]for k in ['before_qd','after_qd']})
+rotor=np.array(rotor);gap=np.array(gap);largest=np.unravel_index(np.argmax(abs(gap)),gap.shape);i,j=map(int,largest);first=records[0];last=records[-1];rotor_dK=float(.5*np.sum(A*(last['after_qd'].astype(float)**2-first['before_qd'].astype(float)**2)));d=dict(status='saved_data_review_complete_motor_work_unresolved',native_runs=0,intervals=120,armature_backend_to_user_order_explicit=True,armature_min_kg_m2=float(A.min()),armature_max_kg_m2=float(A.max()),maximum_armature_average_inertia_term_nm=float(abs(rotor).max()),maximum_measured_vs_approximate_difference_nm=float(abs(gap).max()),largest_difference_joint=names[j],largest_difference_step=i,armature_average_term_at_largest_difference_nm=float(rotor[i,j]),difference_at_largest_nm=float(gap[i,j]),total_rotor_kinetic_energy_change_j=rotor_dK,armature_alone_explains_large_difference=False,isolated_motor_work_qualified=False,whole_system_work_qualified=False,scope_change=False,old_verdicts_unchanged=True,raw_sha256=pins)
+(out/'measurements.json').write_text(json.dumps(d,indent=2)+'\n');print(json.dumps({k:v for k,v in d.items()if k!='raw_sha256'},indent=2))

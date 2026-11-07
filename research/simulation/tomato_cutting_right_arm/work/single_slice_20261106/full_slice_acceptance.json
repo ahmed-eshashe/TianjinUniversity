@@ -1,0 +1,36 @@
+{
+  "scope": "Prospective exploratory full-slice acceptance, declared before any observed fracture",
+  "original_material": true,
+  "original_frictionless_board": true,
+  "experimental_validation": "pending",
+  "motor_work_qualified": false,
+  "requirements": {
+    "failed_cohesive_patches": 47,
+    "remaining_material_patches": 0,
+    "connected_components": 2,
+    "slice_fixed_nodes": 0,
+    "phase": "settle_after_withdrawal",
+    "blade_force_norm_max_N": 1e-05,
+    "blade_torque_norm_max_Nm": 1e-05,
+    "minimum_slice_height_absolute_max_m": 0.0002,
+    "maximum_slice_vertical_speed_m_s": 0.01,
+    "all_slice_vertices_inside_board_xy": true,
+    "board_xy_bounds_m": [
+      [
+        -0.149315,
+        0.149315
+      ],
+      [
+        -0.234713,
+        0.234713
+      ]
+    ],
+    "board_edge_margin_m": 0.001,
+    "sustained_duration_s": 0.1,
+    "board_footprint_source": "board_footprint.json",
+    "all_slice_vertices_inside_board_convex_footprint": true
+  },
+  "horizontal_velocity_requirement": "No zero-speed requirement on a frictionless board; finite-board containment must hold throughout.",
+  "raw_driver_result_preserved": true,
+  "reason": "Original driver required total speed below .01 m/s, which incorrectly demands frictionless horizontal motion decay. Independent final audit will report this distinct support criterion explicitly."
+}

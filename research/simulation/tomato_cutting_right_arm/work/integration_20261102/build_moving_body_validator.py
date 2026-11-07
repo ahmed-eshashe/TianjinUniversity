@@ -1,0 +1,13 @@
+from pathlib import Path
+r=Path(__file__).resolve().parents[2];s=(r/'work/integration_20261102/validate_robot_work_com_trace.py').read_text()
+s=s.replace('Independent COM/link-frame body energy and measured knife joint-wrench audit.','Independent multirate moving-robot body energy and measured joint-wrench audit.')
+s=s.replace("manifest['dt_s'];n=manifest['intervals_per_case']","manifest['robot_dt_s'];n=manifest['robot_intervals_per_case']")
+s=s.replace("worker'].get('mounted_target_com_component_passed')","worker'].get('moving_contact_component_passed')")
+s=s.replace("worker'].get('mounted_target_work_qualified')","worker'].get('moving_contact_work_qualified')")
+s=s.replace("path=run/(label+'_audit.jsonl.gz')","path=run/(label+'_robot_audit.json')")
+s=s.replace("with gzip.open(path,'rt')as stream:\n  for count,line in enumerate(stream,1):\n   row=json.loads(line);raw=run/(label+'_interval'", "with path.open()as stream:\n  for count,row in enumerate(json.load(stream),1):\n   raw=run/(label+'_robot_interval'")
+s=s.replace("if np.any(qd0)or np.any(bv)or K0:raise ValueError('Actual body/joint velocity or rotor energy survived reset')", "if not np.array_equal(qd0,np.array(scope['initial_joint_velocity_rad_s']))or K0<=0:raise ValueError('Moving reset did not restore the declared nonzero initial velocity/kinetic state')")
+s=s.replace("steps!=32*manifest['refinement']", "steps!=32*manifest['coupling_refinement']")
+s=s.replace("original_combined_validator_failure_preserved='robot_work_readback_r4_20261102_01'", "registered_protocol='moving_contact_protocol_20261102_01',initial_velocity_scope='Declared native nonzero right-arm coasting state; reset must restore it exactly, not silently set it to zero'")
+s=s.replace("true body/joint velocity reset", "declared nonzero body/joint velocity reset")
+(r/'work/integration_20261102/validate_moving_robot_work.py').write_text(s)

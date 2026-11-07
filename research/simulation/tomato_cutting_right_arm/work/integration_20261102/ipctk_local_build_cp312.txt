@@ -1,0 +1,92 @@
+running build_ext
+-- Using CPM cache folder: /home/omen/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Third-party: creating target 'Eigen3::Eigen'
+-- Found Git: /usr/bin/git (found version "2.43.0") 
+-- CPM: Adding package eigen@5.0.1 (5.0.1 at /home/omen/.cache/CPM/eigen/5.0.1)
+-- Third-party: creating target 'igl::core'
+-- Creating target: igl::core (igl_core)
+-- Creating target: igl::predicates (igl_predicates)
+-- Third-party: creating target 'predicates::predicates'
+-- CPM: Adding package libigl@2.6.0 (v2.6.0 at /home/omen/.cache/CPM/libigl/9850)
+-- Third-party: creating target 'TBB::tbb' (OneTBB)
+CMake Warning at /home/omen/.cache/CPM/onetbb/3244/CMakeLists.txt:160 (message):
+  You are building oneTBB as a static library.  This is highly discouraged
+  and such configuration is not supported.  Consider building a dynamic
+  library to avoid unforeseen issues.
+
+
+-- GNU Assembler version: 2.42  (2042)
+-- TBBBind build targets are disabled due to unsupported environment
+-- CPM: Adding package oneTBB@2022.3.0 (v2022.3.0 at /home/omen/.cache/CPM/onetbb/3244)
+-- Third-party: creating target 'tight_inclusion::tight_inclusion'
+-- Using CPM cache folder: /home/omen/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Third-party: creating target 'spdlog::spdlog'
+-- Build spdlog: 1.17.0
+-- Build type: Release
+-- Generating install
+-- CPM: Tight-Inclusion: Adding package spdlog@1.17.0 (v1.17.0 at /home/omen/.cache/CPM/spdlog/7d8f)
+-- Searching for AVX...
+-- Using CPU native flags for AVX optimization:  -march=native
+--   Found AVX 2.0 extensions, using flags:  -march=native -mavx2 -mno-avx512f -mno-avx512pf -mno-avx512er -mno-avx512cd
+-- CPM: Adding package Tight-Inclusion@1.0.6 (v1.0.6 at /home/omen/.cache/CPM/tight-inclusion/6ee0)
+-- Third-party: creating target 'scalable_ccd::scalable_ccd'
+-- Using CPM cache folder: /home/omen/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- CPM: Adding package scalable-ccd@0 (ccf4bc19aba432b9d5abdd41ae55d15ea166a0a5 at /home/omen/.cache/CPM/scalable-ccd/bb08)
+-- Third-party: creating target 'TinyAD::TinyAD'
+-- Building TinyAD in Release mode
+-- Building TinyAD with oneTBB backend.
+-- CPM: Adding package tinyad@0 (957ede5bcf4b8d924f27230083508c664a9f7a7d at /home/omen/.cache/CPM/tinyad/6834)
+-- Third-party: creating target 'tsl::robin_map'
+-- CPM: Adding package robin-map@1.4.1 (v1.4.1 at /home/omen/.cache/CPM/robin-map/5c0c)
+-- Third-party: creating target 'absl::flat_hash_map'
+-- CPM: Adding package abseil-cpp@0 (d407ef122a08203648451e0fec77b3f868b71112 at /home/omen/.cache/CPM/abseil-cpp/9514)
+-- Third-party: creating target 'filib::filib'
+-- CPM: Adding package filib@0 (7cf13519b0db72df2493c9c8997a8bef9e372848 at /home/omen/.cache/CPM/filib/c410)
+-- Third-party: creating target 'pybind11::pybind11'
+-- pybind11 v3.0.1 
+CMake Error at /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find Python (missing: Development.Module) (found suitable version
+  "3.12.14", minimum required is "3.8")
+Call Stack (most recent call first):
+  /usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake:600 (_FPHSA_FAILURE_MESSAGE)
+  /usr/share/cmake-3.28/Modules/FindPython/Support.cmake:3862 (find_package_handle_standard_args)
+  /usr/share/cmake-3.28/Modules/FindPython.cmake:574 (include)
+  /home/omen/.cache/CPM/pybind11/3d7d/tools/pybind11NewTools.cmake:54 (find_package)
+  /home/omen/.cache/CPM/pybind11/3d7d/tools/pybind11Common.cmake:204 (include)
+  /home/omen/.cache/CPM/pybind11/3d7d/CMakeLists.txt:296 (include)
+
+
+-- Configuring incomplete, errors occurred!
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipc-toolkit-v1.6.1-source/setup.py", line 132, in <module>
+    setup(
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/__init__.py", line 117, in setup
+    return distutils.core.setup(**attrs)  # type: ignore[return-value]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 186, in setup
+    return run_commands(dist)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/core.py", line 202, in run_commands
+    dist.run_commands()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1000, in run_commands
+    self.run_command(cmd)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/dist.py", line 1107, in run_command
+    super().run_command(command)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/dist.py", line 1019, in run_command
+    cmd_obj.run()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/command/build_ext.py", line 97, in run
+    _build_ext.run(self)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 367, in run
+    self.build_extensions()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 483, in build_extensions
+    self._build_extensions_serial()
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/setuptools/_distutils/command/build_ext.py", line 509, in _build_extensions_serial
+    self.build_extension(ext)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipc-toolkit-v1.6.1-source/setup.py", line 128, in build_extension
+    subprocess.check_call(["cmake", ext.sourcedir] + cmake_args, cwd=build_temp)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['cmake', '/home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipc-toolkit-v1.6.1-source', '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-local-cp312/', '-DPYTHON_EXECUTABLE=/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python', '-DCMAKE_BUILD_TYPE=Release', '-DIPC_TOOLKIT_BUILD_TESTS=OFF', '-DIPC_TOOLKIT_BUILD_PYTHON=ON', '-DIPC_TOOLKIT_WITH_SIMD=OFF', '-DPython_EXECUTABLE=/home/omen/miniconda3/envs/isaaclab_6/bin/python']' returned non-zero exit status 1.

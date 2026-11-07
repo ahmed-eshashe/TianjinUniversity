@@ -1,0 +1,117 @@
+{
+  "results": [
+    {
+      "resolution": 256,
+      "queries": 562,
+      "families": {
+        "thin_feature": {
+          "n": 32,
+          "sign_mismatches": 16,
+          "max_distance_error_mm": 0.42343752050340133,
+          "max_angle_deg": 148.75504588252258
+        },
+        "interior_scan": {
+          "n": 24,
+          "sign_mismatches": 0,
+          "max_distance_error_mm": 0.3700747584924108,
+          "max_angle_deg": 69.68637660345321
+        },
+        "normal_stencil": {
+          "n": 24,
+          "sign_mismatches": 0,
+          "max_distance_error_mm": 0.33963866868399833,
+          "max_angle_deg": 69.68637660345321
+        }
+      },
+      "finite_difference_comparison": [
+        {
+          "h_um": 25.0,
+          "native_fd_to_native_gradient_deg": 0.0007745854053668,
+          "reference_fd_to_reference_normal_deg": 0.0,
+          "native_fd_to_reference_fd_deg": 21.567473800507244
+        },
+        {
+          "h_um": 100.0,
+          "native_fd_to_native_gradient_deg": 0.000920310569036147,
+          "reference_fd_to_reference_normal_deg": 0.0,
+          "native_fd_to_reference_fd_deg": 21.565818355928645
+        },
+        {
+          "h_um": 250.0,
+          "native_fd_to_native_gradient_deg": 8.62078585370036,
+          "reference_fd_to_reference_normal_deg": 0.0,
+          "native_fd_to_reference_fd_deg": 30.186497904319534
+        },
+        {
+          "h_um": 500.0,
+          "native_fd_to_native_gradient_deg": 12.641402020218194,
+          "reference_fd_to_reference_normal_deg": 13.898435447468227,
+          "native_fd_to_reference_fd_deg": 20.30670064689506
+        }
+      ],
+      "elapsed_wall_s": 3.7658136979998744,
+      "min_available_ram_gb": 25.724801024,
+      "min_free_vram_gib": 7.166015625
+    },
+    {
+      "resolution": 512,
+      "queries": 562,
+      "families": {
+        "thin_feature": {
+          "n": 32,
+          "sign_mismatches": 16,
+          "max_distance_error_mm": 0.36428575939524255,
+          "max_angle_deg": 117.6325691833379
+        },
+        "interior_scan": {
+          "n": 24,
+          "sign_mismatches": 0,
+          "max_distance_error_mm": 0.19480252750217975,
+          "max_angle_deg": 48.16130248440296
+        },
+        "normal_stencil": {
+          "n": 24,
+          "sign_mismatches": 0,
+          "max_distance_error_mm": 0.17364095534541463,
+          "max_angle_deg": 46.37910877825229
+        }
+      },
+      "finite_difference_comparison": [
+        {
+          "h_um": 25.0,
+          "native_fd_to_native_gradient_deg": 0.001660878770821336,
+          "reference_fd_to_reference_normal_deg": 0.0,
+          "native_fd_to_reference_fd_deg": 30.011660848047423
+        },
+        {
+          "h_um": 100.0,
+          "native_fd_to_native_gradient_deg": 2.2974106387615474,
+          "reference_fd_to_reference_normal_deg": 0.0,
+          "native_fd_to_reference_fd_deg": 27.712676363960192
+        },
+        {
+          "h_um": 250.0,
+          "native_fd_to_native_gradient_deg": 8.794175724699835,
+          "reference_fd_to_reference_normal_deg": 0.0,
+          "native_fd_to_reference_fd_deg": 21.215849054518007
+        },
+        {
+          "h_um": 500.0,
+          "native_fd_to_native_gradient_deg": 12.824278287323322,
+          "reference_fd_to_reference_normal_deg": 13.898435447468227,
+          "native_fd_to_reference_fd_deg": 3.2880845591980896
+        }
+      ],
+      "elapsed_wall_s": 3.7960257419999834,
+      "min_available_ram_gb": 25.646604288,
+      "min_free_vram_gib": 7.109375
+    }
+  ],
+  "query_registry_sha256": "4d0aa94e85f3aaa4282f08977fded8bc1a0a4dba78902431819414d2bcaf81ab",
+  "identical_562_query_registries_verified": true,
+  "thin_feature_finding": "All 16 interior queries at two geometrically selected thin sharp edges were classified outside by both 256 and 512 SDFs. The other 16 thin-feature samples were outside reference points.",
+  "gradient_finding": "At the original worst point, native gradient matches a 25 micrometre central difference of the native field within 0.002 degrees, while authored-mesh reference finite differences agree with the reference normal. This supports SDF field approximation as the source of that local discrepancy, not a distance/gradient mismatch.",
+  "scope": "Geometry and initial-rest diagnostics only; thin features are selected from mesh geometry, not a verified semantic cutting-edge registry.",
+  "qualification": "Not qualified for positive blade-contact tests. No tolerance was relaxed and no production resolution was promoted.",
+  "next_step": "Investigate finer/local SDF sampling and cooking extent at the two thin features, checking signed-distance preservation against the same mesh. Preserve physical blade thickness and contact radii."
+}

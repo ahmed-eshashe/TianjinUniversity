@@ -1,0 +1,39 @@
+{
+  "cases": 3,
+  "episodes_per_case": 2,
+  "deformable_steps": 16,
+  "newton_native_vbd_steps": 0,
+  "controlled_steps": 0,
+  "backend": "Explicit float64 coupled Positive tensile-curvature block-Jacobi GN-preconditioned L-BFGS/PCG candidate, Newton registry and collision backend, original material/source precision",
+  "dt_s": 0.0004166666666666667,
+  "maximum_outer_iterations": 40,
+  "maximum_cg_iterations": 1000,
+  "cg_relative_tolerance": 1e-09,
+  "cg_absolute_tolerance": 1e-16,
+  "velocity_defect_budget_per_declared_duration_m_s": 0.0001,
+  "declared_solver_duration_s": 0.1,
+  "freefall_position_budget_m": 1e-08,
+  "freefall_velocity_budget_m_s": 1e-05,
+  "replay_position_budget_m": 1e-10,
+  "replay_velocity_budget_m_s": 1e-08,
+  "global_contract": {
+    "version": "support-ledger-0.1",
+    "scope": "Undamaged standalone full-target gravity fixture; engineering numerical checks, not experimental validation",
+    "initial_momentum": "zero",
+    "linear_impulse_error_ns": 0.0001,
+    "angular_impulse_error_nms": 1e-05,
+    "maximum_energy_increase_above_initial_j": 1e-05,
+    "provenance": "Frozen before first ledger run. Absolute impulse budget is about 0.08% of one second of total target weight; angular budget uses a 0.1 m characteristic length. Energy bound is an added numerical injection stop, not physical material accuracy. Original volume, board and settling gates remain unchanged.",
+    "limitations": "No actuator, robot, fracture or moving-support work in this fixture. Fixed support work is zero only after the exact fixed-position check passes. Record numerical dissipation; do not present loss of energy alone as a full work qualification."
+  },
+  "local_contract": {
+    "version": "local-force-residual-0.1",
+    "scope": "Undamaged standalone target integration; no robot or fracture work",
+    "cumulative_absolute_nodal_impulse_residual_ns": 0.0001,
+    "formula": "sum over accepted substeps and free nodes of norm(m_i*(v_i_new-v_i_old)-dt*F_i(x_new))",
+    "force_source": "Fresh final-state float64 bulk gradient, objective cohesive force, full contact force, board and gravity; no solver last-color arrays or acceleration-inferred reaction",
+    "provenance": "Additional numerical audit declared after the captured failure exposed cancelling internal errors. Uses the existing 0.0001 Ns absolute support impulse budget as a stricter sum of nonnegative local errors. Does not replace or relax global impulse, angular, energy, volume, board, replay, accuracy or sustained-support gates.",
+    "limitation": "Finite solver convergence criterion for the original implicit-Euler fixture, not experimental material accuracy. Declare history/eligibility treatment separately before fracture."
+  },
+  "scope": "Integrator component and analytic freefall controls only. No sustained support, coupled robot, fracture or cutting qualification."
+}

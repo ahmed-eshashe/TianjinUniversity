@@ -1,0 +1,9 @@
+{
+  "registered_before_any_moving_native_result": true,
+  "work_formula": "For each actual robot block, Wpose=F_applied_float32 dot (c_after-c_before)+tau_applied_float32 dot log(R_after*R_before^T). c derives from ACTUAL link pose and unchanged localCOM, matching the actual CAD surface geometry. Never infer displacement from velocity when claiming pose work.",
+  "consistency_gate": "Maximum absolute cumulative Wpose-Wvelocity <=1% of maximum absolute cumulative Wvelocity +1e-14J. Both measured work quantities and raw discrepancy must be reported. Clear both zero. No post-hoc rounding allowance added to this work gate.",
+  "relative_budget": 0.01,
+  "absolute_budget_j": 1e-14,
+  "reason": "Body kinetic/work balance can pass despite a float32 joint position failing to advance consistently with its reported velocity. This separate pose-conjugate work check detects that gap. A moving-contact work qualification requires it as well as the existing energy and force gates.",
+  "scope": "Bounded coasting diagnostic only; not an approach/tracking controller or cutting qualification."
+}

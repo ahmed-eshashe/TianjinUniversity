@@ -1,0 +1,262 @@
+{
+  "scope": "static inspection of installed Python tensor/PhysX bindings, IsaacLab actuator and matching-family public CPU source; not proof of every private binary interface",
+  "sources": [
+    {
+      "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache/omni.physics.tensors-110.3.2+110.3.0.lx64.r.cp312.u7f4/omni/physics/tensors/api.py",
+      "sha256": "1ba654210857a63b98236512e5f225723c3eb1dee64e867eaa4fade0578ccb7b",
+      "relevant_methods": [
+        {
+          "name": "clear_forces",
+          "line": 473,
+          "doc": "Clears the force/torque data buffers from the physics simulation backend.\n        "
+        },
+        {
+          "name": "get_drive_types",
+          "line": 863,
+          "doc": "Gets the degrees of freedom (DOF) drive types for all articulations in the view.\n\nPotential drive types are:\n\n* 0 (DofDriveType.None) if no drive is present.\n* 1 (DofDriveType.Force) if a force drive is present.\n* 2 (DofDriveType.Acceleration) if an acceleration drive is present.\n\n.. note::\n    The function raises an exception if the DOF drive types cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF drive types with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> drive_types = articulation_view.get_drive_types() # Get the drive type for all DOFs and all articulations in the view\n      >>> drive_types_np = drive_types.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_dof_max_forces",
+          "line": 947,
+          "doc": "Gets the degrees of freedom (DOF) maximum forces applied by the drive for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF maximum forces cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF maximum forces with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_max_forces = articulation_view.get_dof_max_forces() # Get the DOF maximum force applied by the drive for all DOFs and all articulations in the view\n      >>> dof_max_forces_np = dof_max_forces.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_dof_drive_model_properties",
+          "line": 973,
+          "doc": "Gets the degrees of freedom (DOF) drive model properties for all articulations in the view.\n\nThe drive model properties tensor is composed of the following properties (provided in the order of appearance in the array):\n\n* speed effort gradient\n* max actuator velocity\n* velocity dependent resistance\n\n.. note::\n    The function raises an exception if the DOF drive model properties cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF drive model properties with shape (count, max_dofs, 3) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations. The 3 elements of the last dimension are the speed effort gradient, max actuator velocity, and velocity dependent resistance respectively.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_drive_model_properties = articulation_view.get_dof_drive_model_properties() # Get the DOF drive model properties for all DOFs and all articulations in the view\n      >>> dof_drive_model_properties_np = dof_drive_model_properties.numpy().reshape(articulation_view.count, articulation_view.max_dofs, 3) # Reshape the obtained array in a 3D numpy array on the host"
+        },
+        {
+          "name": "set_dof_max_forces",
+          "line": 1216,
+          "doc": "Sets the degrees of freedom (DOF) maximum forces applied by the drive for articulations indicated by indices.\n\n.. note::\n    * The function raises an exception if the DOF maximum forces cannot be set in the backend.\n    * Value would be set even if no drive is present, but it would have no effect on the dynamics.\n    * The sparse setting of subset of DOFs within an articulation is not supported yet. :py:func:`ArticulationView.get_dof_max_forces` can be used to get the current maximum forces and modify them before setting them back.\n\nArgs:\n    data (Union[np.ndarray, torch.Tensor, wp.array]): An array of DOF maximum forces with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n    indices (Union[np.ndarray, torch.Tensor, wp.array]): An array of indices of articulations to set the maximum forces for. The array can have any dimension (user_count, 1) as long as all indices are less than the number of articulations in the view (count). Note that providing repeated indices can lead to undefined behavior as the subsitutions may be performed in parallel.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> all_indices = wp_utils.arange(articulation_view.count)\n      >>> dof_max_forces_np = numpy.zeros([articulation_view.count, articulation_view.max_dofs]) # Create an array with the expected shape\n      >>> dof_max_forces_np[0, 1] = 10000.0 # Modify the maximum force of the drive applied to the DOF 1 of articulation 0\n      >>> dof_max_forces_wp = warp.from_numpy(dof_max_forces_np, dtype=warp.float32, device=\"cpu\") # Convert back to a format accepted by the tensor API\n      >>> articulation_view.set_dof_max_forces(dof_max_forces_wp, all_indices) # Set the new DOF maximum forces"
+        },
+        {
+          "name": "set_dof_drive_model_properties",
+          "line": 1248,
+          "doc": "Sets the degrees of freedom (DOF) drive model properties for articulations indicated by indices.\n\nThe drive model properties tensor is composed of the following properties (provided in the order of appearance in the array):\n\n* speed effort gradient\n* max actuator velocity\n* velocity dependent resistance\n\nThe ``drive model properties`` and the ``maxForce`` parameter define the **performance envelope** of a motor. This envelope acts as a static model that constrains the behavior of an articulated joint, ensuring it operates within physically achievable limits.\nThe performance envelope is enforced through two key constraints:\n\n1. **Effort constraint**:\n\n.. math::\n\n    |driveEffort| \\leq maxForce - velocityDependentResistance \\cdot |jointVelocity|\n\n2. **Velocity constraint**:\n\n.. math::\n\n    |jointVelocity| \\leq maxActuatorVelocity - speedEffortGradient \\cdot |driveEffort|\n\nImportantly, ``driveEffort`` refers to the sum of internally computed drive effort (force or torque) and user-applied joint force or torque.\n\n\n.. note::\n    * The function raises an exception if the DOF drive model properties cannot be set in the backend.\n    * The sparse setting of subset of DOFs within an articulation is not supported yet. :py:func:`ArticulationView.get_dof_drive_model_properties` can be used to get the current drive model properties and modify them before setting them back.\n    * Value would be set even if no drive is present, but it would have no effect on the dynamics.\n\nArgs:\n    data (Union[np.ndarray, torch.Tensor, wp.array]): An array of DOF drive model properties with shape (count, max_dofs, 3) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations. The 3 elements of the last dimension are the speed effort gradient, max actuator velocity, and velocity dependent resistance respectively.\n    indices (Union[np.ndarray, torch.Tensor, wp.array]): An array of indices of articulations to set the drive model properties for. The array can have any dimension (user_count, 1) as long as all indices are less than the number of articulations in the view (count). Note that providing repeated indices can lead to undefined behavior as the subsitutions may be performed in parallel.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> all_indices = wp_utils.arange(articulation_view.count)    \n      >>> dof_drive_model_properties_np = numpy.zeros([articulation_view.count, articulation_view.max_dofs, 3]) # Create an array with the expected shape\n      >>> dof_drive_model_properties_np[0, 1, 0] = 100.0 # Modify the speed effort gradient of the drive applied to the DOF 1 of articulation 0\n      >>> dof_drive_model_properties_np[0, 1, 1] = 200.0 # Modify the max actuator velocity of the drive applied to the DOF 1 of articulation 0\n      >>> dof_drive_model_properties_np[0, 1, 2] = 0.1 # Modify the velocity dependent resistance of the drive applied to the DOF 1 of articulation 0\n      >>> dof_drive_model_properties_wp = warp.from_numpy(dof_drive_model_properties_np, dtype=warp.float32, device=\"cpu\") # Convert back to a format accepted by the tensor API\n      >>> articulation_view.set_dof_drive_model_properties(dof_drive_model_properties_wp, all_indices) # Set the new DOF drive model properties"
+        },
+        {
+          "name": "get_link_accelerations",
+          "line": 1501,
+          "doc": "Gets the link accelerations for all articulations in the view.\n\n.. note::\n    * The function raises an exception if the link accelerations cannot be obtained from the backend.\n    * The link accelerations are given in the global frame of reference, the linear component is reported with respect to the link's center of mass.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of link accelerations with shape (count, max_links, 6) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 6 elements of the last dimension are the linear and angular accelerations of the links.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> link_accelerations = articulation_view.get_link_accelerations() # Get the acceleration for all links and all articulations in the view\n      >>> link_accelerations_np = link_accelerations.numpy().reshape(articulation_view.count, articulation_view.max_links, 6) # Reshape the obtained array in a 3D numpy array on the host"
+        },
+        {
+          "name": "set_dof_actuation_forces",
+          "line": 1763,
+          "doc": "Sets the degrees of freedom (DOF) actuation forces for articulations indicated by indices.\n\nNote that this function applies external forces/torques to all DOFs in the articulations and is independent of the implicit PD controller forces.\n\n.. note::\n    * The function raises an exception if the DOF actuation forces cannot be set in the backend.\n    * Sparse setting of subset of DOFs within an articulation is not supported yet. :py:func:`ArticulationView.get_dof_actuation_forces` can be used to get the current actuation forces and modify them before setting them back.\n\nArgs:\n    data (Union[np.ndarray, torch.Tensor, wp.array]): An array of DOF actuation forces with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n    indices (Union[np.ndarray, torch.Tensor, wp.array]): An array of indices of articulations to set the actuation forces for. The array can have any dimension (user_count, 1) as long as all indices are less than the number of articulations in the view (count). Note that providing repeated indices can lead to undefined behavior as the subsitutions may be performed in parallel.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> all_indices = wp_utils.arange(articulation_view.count, device=device) # device is either cpu or cuda:0 (if using the first GPU)\n      >>> dof_actuation_forces_wp = wp.zeros(articulation_view.count * articulation_view.max_dofs, dtype=wp.float32, device=device) # Create new DOF actuation force array\n      >>> articulation_view.set_dof_actuation_forces(dof_actuation_forces_wp, all_indices) # Set the new DOF actuation forces"
+        },
+        {
+          "name": "apply_forces_and_torques_at_position",
+          "line": 1860,
+          "doc": "Applies forces and torques at the specified positions in the articulations indicated by indices.\n\nNote that there are a few different ways this function can be used:\n\n* Not specifying the position_data will apply the forces at link transforms location.\n* Specifying the position_data will apply the forces at the specified positions at link transforms location.\n* Specifying the is_global as True will apply the forces and torques in the global frame of reference. If position_data is specified, its components are considered in the global frame of reference as well.\n* Specifying the is_global as False will apply the forces and torques in the local frame of reference of the link transforms. If position_data is specified, its components are considered in the local frame of reference as well.\n* Not specifying the force_data and torque_data won't have any effects, so at least one of them should be specified.\n\n.. note::\n    The function raises an exception if the forces and torques cannot be applied in the backend.\n\nArgs:\n    force_data (Union[np.ndarray, torch.Tensor, wp.array]): An array of forces with shape (count, max_links, 3) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 3 elements of the last dimension are the x, y, z components of the force.\n    torque_data (Union[np.ndarray, torch.Tensor, wp.array]): An array of torques with shape (count, max_links, 3) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 3 elements of the last dimension are the x, y, z components of the torque.\n    position_data (Union[np.ndarray, torch.Tensor, wp.array]): An array of positions with shape (count, max_links, 3) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 3 elements of the last dimension are the x, y, z components of the applied position in the local/global frame of reference.\n    indices (Union[np.ndarray, torch.Tensor, wp.array]): An array of indices of articulations to apply the forces and torques for. The array can have any dimension (user_count, 1) as long as all indices are less than the number of articulations in the view (count). Note that providing repeated indices can lead to undefined behavior as the subsitutions may be performed in parallel.\n    is_global (bool): A boolean flag to indicate if the forces, torques and positions are in the global frame of reference. If set to False, the forces, torques and positions are in the local frame of reference of the link transforms.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> all_indices = wp_utils.arange(articulation_view.count, device=device) # device is either cpu or cuda:0 (if using the first GPU)\n      >>> forces_wp = wp.ones(articulation_view.count * articulation_view.max_links * 3, dtype=wp.float32, device=device) # Create new link force array\n      >>> articulation_view.apply_forces_and_torques_at_position(forces_wp, None, None, all_indices, True) # Apply forces to the links at the link transform considering the global frame of reference"
+        },
+        {
+          "name": "get_dof_actuation_forces",
+          "line": 1967,
+          "doc": "Gets the degrees of freedom (DOF) actuation forces for all articulations in the view.\n\n.. note::\n    The function raises an exception if the DOF actuation forces cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF actuation forces with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_actuation_forces = articulation_view.get_dof_actuation_forces() # Get the DOF actuation force for all DOFs and all articulations in the view\n      >>> dof_actuation_forces_np = dof_actuation_forces.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_dof_projected_joint_forces",
+          "line": 1995,
+          "doc": "Gets the degrees of freedom (DOF) projected joint forces for all articulations in the view.\n\nNote that this function projects the links incoming joint forces in the motion direction and hence is the active component of the force.\nTo get the total 6D joint forces, including the active and passive components of the force, use :py:func:`ArticulationView.get_link_incoming_joint_force`.\n\n.. note::\n    The function raises an exception if the DOF projected joint forces cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of DOF projected joint forces with shape (count, max_dofs) where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> dof_projected_joint_forces = articulation_view.get_dof_projected_joint_forces() # Get the DOF projected joint force for all DOFs and all articulations in the view\n      >>> dof_projected_joint_forces_np = dof_projected_joint_forces.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_coriolis_and_centrifugal_compensation_forces",
+          "line": 2095,
+          "doc": "Gets the Coriolis and Centrifugal compensation forces for all articulations in the view.\n\n.. note::\n    * The function raises an exception if the Coriolis and Centrifugal compensation forces cannot be obtained from the backend.\n    * For floating base articulations, the Coriolis and Centrifugal forces acting on the root is also provided. In that case, the root properties are expected to be in the global frame of reference.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of Coriolis and Centrifugal compensation forces with shape (count, max_dofs) for fixed based articulations, and (count, max_dofs + 6) for floating base articulatons where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> coriolis_and_centrifugal_compensation_forces = articulation_view.get_coriolis_and_centrifugal_compensation_forces() # Get the Coriolis and centrifugal compensation force for all articulations in the view\n      >>> coriolis_and_centrifugal_compensation_forces_np = coriolis_and_centrifugal_compensation_forces.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_gravity_compensation_forces",
+          "line": 2129,
+          "doc": "Gets the Gravity compensation forces for all articulations in the view.\n\n.. note::\n    * The function raises an exception if the Gravity compensation forces cannot be obtained from the backend.\n    * For floating base articulations, the Gravity compensation forces of the root is also provided. In that case, the root properties are expected to be in the global frame of reference.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of Gravity compensation forces with shape (count, max_dofs) for fixed based articulations, and (count, max_dofs + 6) for floating base articulatons where count is the number of articulations in the view and max_dofs is the maximum number of degrees of freedom in all the view's articulations.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> gravity_compensation_forces = articulation_view.get_gravity_compensation_forces() # Get the gravity compensation force for all articulations in the view\n      >>> gravity_compensation_forces_np = gravity_compensation_forces.numpy().reshape(articulation_view.count, articulation_view.max_dofs) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_link_incoming_joint_force",
+          "line": 2228,
+          "doc": "Gets the link incoming joint forces for all articulation in the view.\n\nIn a kinematic tree, each link has a single incoming joint and this function provides the total 6D force/torque of links incoming joints.\nThe total 6D force is given in the child joint frame.\n\n.. note::\n    The function raises an exception if the incoming joint forces cannot be obtained from the backend.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of incoming joint forces with shape (count, max_links, 6) where count is the number of articulations in the view and max_links is the maximum number of links in all the view's articulations. The 6 elements of the last dimensions are the forces and torques of the link incoming joint represented in the joints' child frames.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> articulation_view = sim_view.create_articulation_view(\"/World/Franka_*\") # This assumes that the prims referenced by \"/World/Franka_*\" were already created in the stage\n      >>> link_incoming_joint_forces = articulation_view.get_link_incoming_joint_force() # Get the incoming joint force for all links and all articulations in the view\n      >>> link_incoming_joint_forces_np = link_incoming_joint_forces.numpy().reshape(articulation_view.count, articulation_view.max_links, 6) # Reshape the obtained array in a 3D numpy array on the host"
+        },
+        {
+          "name": "get_accelerations",
+          "line": 3340,
+          "doc": "Gets the accelerations for all rigid objects in the view.\n\n.. note::\n    * The function raises an exception if the accelerations cannot be obtained from the backend.\n    * The velocities are given in the global frame of reference, the linear component is reported with respect to the rigid body's center of mass.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of accelerations with shape (count, 6) where count is the number of rigid objects in the view. The 6 elements of the last dimension are the linear and angular accelerations respectively.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> rigid_body_view = sim_view.create_rigid_body_view(\"/World/Cube_*\") # This assumes that the prims referenced by \"/World/Cube_*\" were already created in the stage\n      >>> rb_accelerations = rigid_body_view.get_accelerations() # Get the acceleration for all rigid bodies in the view\n      >>> rb_accelerations_np = rb_accelerations.numpy().reshape(rigid_body_view.count, 6) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "apply_forces_and_torques_at_position",
+          "line": 3460,
+          "doc": "Applies forces and torques at the specified positions in the rigid objects indicated by indices.\n\nNote that there are a few different ways this function can be used:\n\n* Not specifying the position_data will apply the forces at link transforms location.\n* Specifying the position_data will apply the forces at the specified positions at link transforms location.\n* Specifying the is_global as True will apply the forces and torques in the global frame of reference. If position_data is specified, its components are considered in the global frame of reference as well.\n* Specifying the is_global as False will apply the forces and torques in the local frame of reference of the link transforms. If position_data is specified, its components are considered in the local frame of reference as well.\n* Not specifying the force_data and torque_data won't have any effects, so at least one of them should be specified.\n\n.. note::\n    The function raises an exception if the forces and torques cannot be applied in the backend.\n\nArgs:\n    force_data (Union[np.ndarray, torch.Tensor, wp.array]): An array of forces with shape (count, 3) where count is the number of rigid objects in the view. The 3 elements of the last dimension are the x, y, z components of the force.\n    torque_data (Union[np.ndarray, torch.Tensor, wp.array]): An array of torques with shape (count, 3) where count is the number of rigid objects in the view. The 3 elements of the last dimension are the x, y, z components of the torque.\n    position_data (Union[np.ndarray, torch.Tensor, wp.array]): An array of positions with shape (count, 3) where count is the number of rigid objects in the view. The 3 elements of the last dimension are the x, y, z components of the applied position in the local/global frame of reference.\n    indices (Union[np.ndarray, torch.Tensor, wp.array]): An array of indices of rigid objects to apply the forces and torques for. The array can have any dimension (user_count, 1) as long as all indices are less than the number of rigid objects in the view (count). Note that providing repeated indices can lead to undefined behavior as the subsitutions may be performed in parallel.\n    is_global (bool): A boolean flag to indicate if the forces, torques and positions are in the global frame of reference. If set to False, the forces, torques and positions are in the local frame of reference of the link transforms.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> rigid_body_view = sim_view.create_rigid_body_view(\"/World/Cube_*\") # This assumes that the prims referenced by \"/World/Cube_*\" were already created in the stage\n      >>> all_indices = wp_utils.arange(rigid_body_view.count, device=device) # device is either cpu or cuda:0 (if using the first GPU)\n      >>> forces_wp = wp.ones(rigid_body_view.count * 3, dtype=wp.float32, device=device) # Create new rigid body force array\n      >>> rigid_body_view.apply_forces_and_torques_at_position(forces_wp, None, None, all_indices, True) # Apply forces to the rigid body transform considering the global frame of reference"
+        },
+        {
+          "name": "apply_forces",
+          "line": 3509,
+          "doc": "Applies only forces at the link transforms of the rigid objects indicated by indices.\n\n.. note::\n    The function raises an exception if the forces cannot be applied in the backend.\n\nArgs:\n    data (Union[np.ndarray, torch.Tensor, wp.array]): An array of forces with shape (count, 3) where count is the number of rigid objects in the view. The 3 elements of the last dimension are the x, y, z components of the force in either local or global frame of reference depending on the is_global flag.\n    indices (Union[np.ndarray, torch.Tensor, wp.array]): An array of indices of rigid objects to apply the forces for. The array can have any dimension (user_count, 1) as long as all indices are less than the number of rigid objects in the view (count). Note that providing repeated indices can lead to undefined behavior as the subsitutions may be performed in parallel.\n    is_global (bool): A boolean flag to indicate if the forces are in the global frame of reference. If set to False, the forces are in the local frame of reference of the link transforms. Default is True.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> rigid_body_view = sim_view.create_rigid_body_view(\"/World/Cube_*\") # This assumes that the prims referenced by \"/World/Cube_*\" were already created in the stage\n      >>> all_indices = wp_utils.arange(rigid_body_view.count, device=device) # device is either cpu or cuda:0 (if using the first GPU)\n      >>> forces_wp = wp.ones(rigid_body_view.count * 3, dtype=wp.float32, device=device) # Create new rigid body force array\n      >>> rigid_body_view.apply_forces(forces_wp, all_indices, True) # Apply forces to the rigid body transform considering the global frame of reference"
+        },
+        {
+          "name": "get_net_contact_forces",
+          "line": 4922,
+          "doc": "Gets the net contact forces acting on the sensors in the view.\n\nThis includes all the contact forces from all the prims interacting with the sensors, not only the filter prims.\n\n.. note::\n    The function raises an exception if the net contact forces cannot be obtained from the backend.\n\nArgs:\n    dt (float): The time step of the simulation to use to convert impulses to forces.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]: An array of net contact forces with shape (sensor_count, 3) where sensor_count is the number of sensors in the view. The 3 elements of the last dimension are the x, y, z components of the net contact forces.\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> rigid_contact_view = sim_view.create_rigid_contact_view(\"/World/Cube_*\") # This assumes that the prims referenced by \"/World/Cube_*\" were already created in the stage\n      >>> net_contact_forces = rigid_contact_view.get_net_contact_forces(dt) # Get the net contact forces acting on the sensors in the view\n      >>> net_contact_forces_np = net_contact_forces.numpy().reshape(rigid_contact_view.sensor_count, 3) # Reshape the obtained array in a 2D numpy array on the host"
+        },
+        {
+          "name": "get_contact_force_matrix",
+          "line": 4954,
+          "doc": "Gets the matrix of pair-wise contact forces between sensors and filter prims.\n\nThis only includes the contact forces between the sensors and the filter prims but not other potential contacts between the sensors and non-filter prims.\n\n.. note::\n    * The function raises an exception if the contact force matrix cannot be obtained from the backend.\n    * This function can only be used if the view is initialized with a valid filter prims.\n    * There could be more than one contact point between a sensor prim and a filter prim, but this function aggregates and reports the sum of all those contact forces between a pair of sensor/filter.\n\nArgs:\n    dt (float): The time step of the simulation to use to convert impulses to forces.\n\nReturns:\n    Union[np.ndarray, torch.Tensor, wp.array]:\n      An array of contact forces with shape (sensor_count, filter_count, 3) where sensor_count is the number of sensors in the view and filter_count is the number of filter prims in the view.\n      The 3 elements of the last dimension are the x, y, z components of the contact forces between the sensors prims (in the first dimension) and the filter prims (in the second dimension).\n\nExample:\n    .. code-block:: python\n\n      >>> import omni.physics.tensors as tensors\n      >>> sim_view = tensors.create_simulation_view(\"warp\")\n      >>> rigid_contact_view = sim_view.create_rigid_contact_view(\"/World/Cube_*\") # This assumes that the prims referenced by \"/World/Cube_*\" were already created in the stage\n      >>> contact_force_matrix = rigid_contact_view.get_contact_force_matrix(dt) # Get the matrix of pair-wise contact forces between sensors and filter prims\n      >>> contact_force_matrix_np = contact_force_matrix.numpy().reshape(rigid_contact_view.sensor_count, rigid_contact_view.filter_count, 3) # Reshape the obtained array in a 3D numpy array on the host"
+        }
+      ]
+    },
+    {
+      "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache/omni.physx-110.3.2+110.3.0.lx64.r.cp312.u7f4/omni/physx/bindings/_physx.pyi",
+      "sha256": "23ea6ea0070a56fccee5d90843186e2b1a430f5112800a9549b8becdb88480b4",
+      "relevant_methods": [
+        {
+          "name": "impulse",
+          "line": 461,
+          "doc": "Contact impulse\n\n:type: carb._carb.Float3"
+        },
+        {
+          "name": "impulse",
+          "line": 814,
+          "doc": "Contact impulse\n\n:type: carb._carb.Float3"
+        },
+        {
+          "name": "apply_force_at_pos",
+          "line": 1204,
+          "doc": "Applies force at given body with given force position.\n\nArgs:\n    stage_id: USD stageId\n    body_path: USD path of the body encoded in uint64_t use PhysicsSchemaTools::sdfPathToInt\n    force: Force to apply to the body.\n    pos: World position where the force is applied.\n    mode: Supporting various modes - Force (default), Impulse, Velocity, Acceleration."
+        },
+        {
+          "name": "apply_force_at_pos_instanced",
+          "line": 1215,
+          "doc": "Applies force at given point instancer body with given force position.\n\nArgs:\n    stage_id: USD stageId\n    point_instancer_path: USD path to a point instancer encoded in uint64_t use PhysicsSchemaTools::sdfPathToInt\n    force: Force to apply to the target.\n    pos: World position where the force is applied.\n    mode: Supporting various modes - Force (default), Impulse, Velocity, Acceleration.\n    protoIndex: If protoIndex is 0xffffffff (default), force will be applied to all instances,\n                otherwise it will only be applied to the instance at this index."
+        },
+        {
+          "name": "force_load_physics_from_usd",
+          "line": 1587,
+          "doc": "Forces load physics objects from USD into PhysX. By default physics is not loaded;\nthis function forces a load of all physics from USD into PhysX."
+        },
+        {
+          "name": "get_vehicle_drive_state",
+          "line": 1627,
+          "doc": "Get the drive state of a vehicle.\n\nNote:\n    Should only be called after the simulation has been started.\n\nArgs:\n    path: Vehicle USD path.\n\nReturns:\n    A dictionary with the following key, value pairs. An empty dictionary is returned for an invalid path,\n    when the simulation is not running or when the vehicle does not have a Basic or Standard drive type.\n\n    | VEHICLE_DRIVE_STATE_ACCELERATOR, d (in range [0, 1]),\n    | VEHICLE_DRIVE_STATE_BRAKE0, d (in range [0, 1]),\n    | VEHICLE_DRIVE_STATE_BRAKE1, d (in range [0, 1]),\n    | VEHICLE_DRIVE_STATE_STEER, d (in range [-1, 1]),\n    | VEHICLE_DRIVE_STATE_CLUTCH, d (in range [0, 1], only applicable to PhysxVehicleDriveStandard drive type),\n    | VEHICLE_DRIVE_STATE_CURRENT_GEAR, i (only applicable to PhysxVehicleDriveStandard drive type),\n    | VEHICLE_DRIVE_STATE_TARGET_GEAR, i (only applicable to PhysxVehicleDriveStandard drive type),\n    | VEHICLE_DRIVE_STATE_GEAR_SWITCH_TIME, d (in seconds, negative value if no gear shift is in process. Only applicable to PhysxVehicleDriveStandard drive type),\n    | VEHICLE_DRIVE_STATE_AUTOBOX_TIME_SINCE_LAST_SHIFT, d (in seconds, only applicable toPhysxVehicleDriveStandard drive type),\n    | VEHICLE_DRIVE_STATE_ENGINE_ROTATION_SPEED, d (in radians per second, only applicable to PhysxVehicleDriveStandard drive type),\n    | VEHICLE_DRIVE_STATE_AUTOMATIC_TRANSMISSION, i (only applicable to PhysxVehicleDriveStandard drive type)"
+        },
+        {
+          "name": "subscribe_physics_on_step_events",
+          "line": 1849,
+          "doc": "Subscribes to physics pre-step or post-step events.\n\nSubscription cannot be changed in the onUpdate callback\n\nArgs:\n    fn:         The callback to be called right before or after every physics step.\n    pre_step:   Whether fn has to be called right *before* the physics step. If this is false,\n                it will be called right *after* the physics step.\n    order:      An integer value used to order the callbacks: 0 means \"highest priority\", 1 is \"less priority\" and so on.\n\nReturns:\n    The subscription holder."
+        },
+        {
+          "name": "subscribe_physics_step_events",
+          "line": 1864,
+          "doc": "Subscribes to physics step events.\n\nSubscription cannot be changed in the onUpdate callback\n\nArgs:\n    fn: The callback to be called on every physics step.\n\nReturns:\n    The subscription holder."
+        }
+      ]
+    },
+    {
+      "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/actuators/actuator_pd.py",
+      "sha256": "4ed77a4c7d95a470d219ea35c8a7a8423288111e8b41737c1358d63846598c95",
+      "relevant_methods": [
+        {
+          "name": "joint_effort_limit",
+          "line": 155,
+          "doc": "Current joint effort limits [N or N\u00b7m, depending on joint type]."
+        },
+        {
+          "name": "joint_effort_limit",
+          "line": 162,
+          "doc": null
+        },
+        {
+          "name": "actuator_effort_limit",
+          "line": 166,
+          "doc": "Actuator effort limit [N or N\u00b7m, depending on joint type].\n\nThe actuator's rated force/torque reflected at the joint when configured through\n:attr:`~isaaclab.actuators.ActuatorBaseCfg.actuator_effort_limit`; it clips the\neffort telemetry but is not pushed to the solver. When unset, it tracks the live\narticulation joint effort limit (:attr:`joint_effort_limit`)."
+        },
+        {
+          "name": "actuator_effort_limit",
+          "line": 179,
+          "doc": null
+        },
+        {
+          "name": "_clip_effort",
+          "line": 229,
+          "doc": "Clip telemetry using the articulation joint effort limit."
+        },
+        {
+          "name": "_clip_effort",
+          "line": 439,
+          "doc": null
+        }
+      ]
+    },
+    {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/astra_effort_resolution_20261102/physx_5_9_1_DyFeatherstoneArticulation.cpp",
+      "sha256": "b53ea96c6e98790f136a12618c044b7f7a4b0cd9835e205526c687d35f916773",
+      "relevant_lines": [
+        {
+          "line": 2243,
+          "text": "constraints->driveImpulse = 0.0f;"
+        },
+        {
+          "line": 4277,
+          "text": "PxReal driveDeltaF = 0.0f;"
+        },
+        {
+          "line": 4298,
+          "text": "jointV += frictionDeltaF * constraint.response;"
+        },
+        {
+          "line": 4303,
+          "text": "const PxReal appliedDriveImpulse = isPerStep ? 0.0f : constraint.driveImpulse;"
+        },
+        {
+          "line": 4324,
+          "text": "driveDeltaF = clampedImpulse - appliedDriveImpulse;"
+        },
+        {
+          "line": 4325,
+          "text": "constraint.driveImpulse += driveDeltaF;"
+        },
+        {
+          "line": 4329,
+          "text": "const PxReal unclampedImpulse = (data.isTGS && data.isVelIter) ? constraint.driveImpulse :"
+        },
+        {
+          "line": 4330,
+          "text": "computeDriveImpulse(constraint.driveImpulse, jointV, jointPDelta, data.elapsedTime, constraint.getImplicitDriveDesc());"
+        },
+        {
+          "line": 4332,
+          "text": "driveDeltaF = (clampedImpulse - constraint.driveImpulse);"
+        },
+        {
+          "line": 4333,
+          "text": "constraint.driveImpulse = clampedImpulse;"
+        },
+        {
+          "line": 4335,
+          "text": "jointV += driveDeltaF * constraint.response;"
+        },
+        {
+          "line": 4353,
+          "text": "jointV += frictionDeltaF * constraint.response;"
+        },
+        {
+          "line": 4358,
+          "text": "//printf(\"LinkID %i driveDeltaV = %f, jointV = %f\\n\", linkID, driveDeltaF, jointV);"
+        },
+        {
+          "line": 4381,
+          "text": "const PxReal deltaF = frictionDeltaF + driveDeltaF + posLimitDeltaF + velLimitDeltaF;"
+        }
+      ]
+    },
+    {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/astra_effort_resolution_20261102/physx_5_9_1_DyFeatherstoneForwardDynamic.cpp",
+      "sha256": "8d9d835213358a43ff16ef3f6c1e0861988e02aa705cfad68cf86701232b135c",
+      "relevant_lines": [
+        {
+          "line": 1452,
+          "text": "const PxReal* jointDofForces = externalForcesEveryTgsIterationEnabled ? NULL : mArticulationData.getJointForces();"
+        }
+      ]
+    }
+  ],
+  "native_runs": 0,
+  "qualified_work_method_available": false
+}

@@ -1,0 +1,156 @@
+{
+  "decision": "Moving mounted-contact qualification blocked; preserve qualified components.",
+  "native_runs_launched_in_recovery": 0,
+  "damping_test_decision": "Not justified as an independent causal test within the recovery scope: effective damping remains unresolved for 45 bodies. A decay fit would confound numerical/constraint losses with drag; a separately controlled identification campaign would exceed this directive.",
+  "damping_hypothesis": "Unresolved; conditional scale compatible with some pJ residuals is not validation.",
+  "unknown_angular_damping_bodies": [
+    "torso_base_link",
+    "left_AR5_5_07L_W4C4A2_base",
+    "right_AR5_5_07R_W4C4A2_base",
+    "left_AR5_5_07L_W4C4A2_link1",
+    "right_AR5_5_07R_W4C4A2_link1",
+    "left_AR5_5_07L_W4C4A2_link2",
+    "right_AR5_5_07R_W4C4A2_link2",
+    "left_AR5_5_07L_W4C4A2_link3",
+    "right_AR5_5_07R_W4C4A2_link3",
+    "left_AR5_5_07L_W4C4A2_link4",
+    "right_AR5_5_07R_W4C4A2_link4",
+    "left_AR5_5_07L_W4C4A2_link5",
+    "right_AR5_5_07R_W4C4A2_link5",
+    "left_AR5_5_07L_W4C4A2_link6",
+    "right_AR5_5_07R_W4C4A2_link6",
+    "left_AR5_5_07L_W4C4A2_link7",
+    "right_AR5_5_07R_W4C4A2_link7",
+    "left_AR5_5_07L_W4C4A2_tcp",
+    "right_AR5_5_07R_W4C4A2_tcp",
+    "left_lh_rk_adapter",
+    "right_rh_rk_adapter",
+    "left_lh_hand_base_link",
+    "right_rh_hand_base_link",
+    "left_lh_thumb_metacarpals_base2",
+    "left_lh_index_proximal",
+    "left_lh_middle_proximal",
+    "left_lh_ring_proximal",
+    "left_lh_pinky_proximal",
+    "right_rh_thumb_metacarpals_base2",
+    "right_rh_index_proximal",
+    "right_rh_middle_proximal",
+    "right_rh_ring_proximal",
+    "right_rh_pinky_proximal",
+    "left_lh_thumb_metacarpals",
+    "left_lh_index_distal",
+    "left_lh_middle_distal",
+    "left_lh_ring_distal",
+    "left_lh_pinky_distal",
+    "right_rh_thumb_metacarpals",
+    "right_rh_index_distal",
+    "right_rh_middle_distal",
+    "right_rh_ring_distal",
+    "right_rh_pinky_distal",
+    "left_lh_thumb_distal",
+    "right_rh_thumb_distal"
+  ],
+  "conditional_estimates": [
+    {
+      "case": "down_profile",
+      "conditional_all_bodies_angular_drag_work_j": -1.3882993323740469e-11,
+      "known_knife_coefficient_only_angular_drag_work_j": -2.964398803341623e-20
+    },
+    {
+      "case": "down_replay",
+      "conditional_all_bodies_angular_drag_work_j": -1.3882993323740469e-11,
+      "known_knife_coefficient_only_angular_drag_work_j": -2.964398803341623e-20
+    },
+    {
+      "case": "down_clear",
+      "conditional_all_bodies_angular_drag_work_j": -1.3883950852374357e-11,
+      "known_knife_coefficient_only_angular_drag_work_j": -4.344935044692041e-22
+    },
+    {
+      "case": "up_profile",
+      "conditional_all_bodies_angular_drag_work_j": -1.3885025878315293e-11,
+      "known_knife_coefficient_only_angular_drag_work_j": -2.9814243287178356e-20
+    },
+    {
+      "case": "up_replay",
+      "conditional_all_bodies_angular_drag_work_j": -1.3885025878315293e-11,
+      "known_knife_coefficient_only_angular_drag_work_j": -2.9814243287178356e-20
+    },
+    {
+      "case": "up_clear",
+      "conditional_all_bodies_angular_drag_work_j": -1.3884062745735282e-11,
+      "known_knife_coefficient_only_angular_drag_work_j": -4.066305845991846e-22
+    }
+  ],
+  "conditional_scope": "Trapezoidal angular kinetic energy times -2*0.05*dt. Hypothetical scalar drag, not a validated installed-runtime discrete force law. No coefficients fitted, no ledger corrected, no verdict changed.",
+  "original_moving_verdict": false,
+  "refs": {
+    "moving_audit": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/joint_state_interface_pgs_work_20261102_01/measurements.json",
+    "preload_work": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/preload_contact_work_r128_20261102_02/measurements.json",
+    "preload_refinement": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/mounted_com_refinement_20261102_01/measurements.json",
+    "preload_readback": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/mounted_com_readback_r128_20261102_02/measurements.json",
+    "parameters": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_body_parameters_20261102_01/body_parameters.json",
+    "parameters_supervisor": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_body_parameters_20261102_01/supervisor_result.json",
+    "moving_supervisor": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/joint_state_interface_pgs_20261102_01/supervisor_result.json",
+    "preload_supervisor": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/mounted_target_com_r128_20261102_02/supervisor_result.json",
+    "down_readback": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/load_down_readback_20261102_01/measurements.json",
+    "twist_readback": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/load_twist_readback_20261102_01/measurements.json"
+  },
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/joint_state_interface_pgs_work_20261102_01/measurements.json": "5406b2c6fff27d1a25dfcd5d7f5bcba719bb22433b04031d4eb5e705431832ed",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/preload_contact_work_r128_20261102_02/measurements.json": "0cf2555c733ea69ab3f2fb0bff6c495fd38fcd51ed8b820f05f2787091ed33d6",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/mounted_com_refinement_20261102_01/measurements.json": "f2fb6c9a0c7d499c6a753d8641403eec19b8ee7d3d43ca06530e171a06da1a01",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/mounted_com_readback_r128_20261102_02/measurements.json": "c76a445ff2ed173aaeb67a129e45a65a37dc046623984947df22acdbf35830a9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_body_parameters_20261102_01/body_parameters.json": "4e4671f7fa104ddbe3adb7dc8d10dd19c9df437a16b53c766493515ebfded1a4",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_body_parameters_20261102_01/supervisor_result.json": "8bd5955c0810bcca45ef36e3a38042e9e0dd7b0cf64e6707da210f5b7fa9e0d8",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/joint_state_interface_pgs_20261102_01/supervisor_result.json": "a24b02784a5d47e38663428ddfb81e5fc7aa417d1d2f27a4d37e35a9591bdf8f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/mounted_target_com_r128_20261102_02/supervisor_result.json": "869014d7373fc9439d40b8c66df2ba51c34e9d63ca82e8a9b236a561f68ba388",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/load_down_readback_20261102_01/measurements.json": "f10285143f5bbf0fde31d347cccacea6285bdff5ca9f2deefc9f8b389759b8ff",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/load_twist_readback_20261102_01/measurements.json": "f49ee1b3288d2bbbb4bea948ac2ef31e34e288a826b920fbe2a03829bf1989aa"
+  },
+  "supervisor_cleanup": {
+    "parameters_supervisor": [],
+    "moving_supervisor": [],
+    "preload_supervisor": []
+  },
+  "integrity": {
+    "moving_audit": {
+      "checked": 209,
+      "mismatches": []
+    },
+    "preload_work": {
+      "checked": 13,
+      "mismatches": []
+    },
+    "preload_refinement": {
+      "checked": 4112,
+      "mismatches": []
+    },
+    "preload_readback": {
+      "checked": 4102,
+      "mismatches": []
+    },
+    "down_readback": {
+      "checked": 7,
+      "mismatches": []
+    },
+    "twist_readback": {
+      "checked": 7,
+      "mismatches": []
+    },
+    "fixed_mount_inputs": {
+      "checked": 20,
+      "mismatches_against_original": [
+        "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_guard.py"
+      ]
+    },
+    "frozen_production": {
+      "checked": 45,
+      "mismatches_against_original": []
+    },
+    "installed_dependencies": {
+      "checked": 13,
+      "mismatches_against_original": []
+    }
+  }
+}

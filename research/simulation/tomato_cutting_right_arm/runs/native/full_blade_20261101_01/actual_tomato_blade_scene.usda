@@ -1,0 +1,103 @@
+#usda 1.0
+(
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Z"
+)
+
+def PhysicsScene "physicsScene" (
+    prepend apiSchemas = ["PhysxSceneAPI", "MaterialBindingAPI"]
+)
+{
+    rel material:binding:physics = </physicsScene/defaultMaterial> (
+        bindMaterialAs = "strongerThanDescendants"
+    )
+    vector3f physics:gravityDirection = (0, 0, -1)
+    float physics:gravityMagnitude = 0
+    float physxScene:bounceThreshold = 0.5
+    uniform token physxScene:broadphaseType = "MBP"
+    bool physxScene:enableCCD = 0
+    bool physxScene:enableEnhancedDeterminism = 0
+    bool physxScene:enableExternalForcesEveryIteration = 1
+    bool physxScene:enableGPUDynamics = 0
+    bool physxScene:enableSceneQuerySupport = 0
+    bool physxScene:enableStabilization = 0
+    float physxScene:frictionCorrelationDistance = 0.025
+    float physxScene:frictionOffsetThreshold = 0.04
+    uint physxScene:gpuCollisionStackSize = 67108864
+    uint physxScene:gpuFoundLostAggregatePairsCapacity = 33554432
+    uint physxScene:gpuFoundLostPairsCapacity = 2097152
+    uint physxScene:gpuHeapCapacity = 67108864
+    uint physxScene:gpuMaxNumPartitions = 8
+    uint physxScene:gpuMaxParticleContacts = 1048576
+    uint physxScene:gpuMaxRigidContactCount = 8388608
+    uint physxScene:gpuMaxRigidPatchCount = 163840
+    int physxScene:gpuMaxSoftBodyContacts = 1048576
+    uint64 physxScene:gpuTempBufferCapacity = 16777216
+    uint physxScene:gpuTotalAggregatePairsCapacity = 2097152
+    uniform uint physxScene:maxPositionIterationCount = 255
+    uniform uint physxScene:maxVelocityIterationCount = 255
+    uniform uint physxScene:minPositionIterationCount = 1
+    uniform uint physxScene:minVelocityIterationCount = 0
+    bool physxScene:solveArticulationContactLast = 0
+    uniform token physxScene:solverType = "TGS"
+    uint physxScene:timeStepsPerSecond = 2400
+
+    def Material "defaultMaterial" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+    )
+    {
+        float physics:dynamicFriction = 0.5
+        float physics:restitution = 0
+        float physics:staticFriction = 0.5
+    }
+}
+
+def "World"
+{
+    def Xform "AuthoredBlade" (
+        prepend apiSchemas = ["PhysicsMassAPI", "PhysicsRigidBodyAPI", "PhysxRigidBodyAPI"]
+    )
+    {
+        float physics:density = 0
+        bool physics:kinematicEnabled = 0
+        float physics:mass = 0.02
+        float physxRigidBody:angularDamping = 0
+        bool physxRigidBody:disableGravity = 1
+        float physxRigidBody:linearDamping = 0
+        float physxRigidBody:sleepThreshold = 0
+        int physxRigidBody:solverPositionIterationCount = 16
+        int physxRigidBody:solverVelocityIterationCount = 0
+        float physxRigidBody:stabilizationThreshold = 0
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (-0.02250000089406967, 0, 0.07231315970420837)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "geometry"
+        {
+            def Cube "mesh" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                bool physics:collisionEnabled = 0
+                double size = 0.001
+                quatd xformOp:orient = (1, 0, 0, 0)
+                double3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def Mesh "ActualBladeVisual"
+        {
+            int[] faceVertexCounts = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+            int[] faceVertexIndices = [0, 1, 2, 2, 3, 0, 3, 2, 4, 4, 5, 3, 5, 4, 6, 6, 7, 5, 7, 6, 8, 8, 9, 7, 9, 8, 10, 10, 11, 9, 11, 10, 12, 12, 13, 11, 13, 12, 14, 14, 15, 13, 15, 14, 16, 16, 17, 15, 17, 16, 18, 18, 19, 17, 19, 18, 20, 20, 21, 19, 22, 21, 20, 20, 23, 22, 24, 22, 23, 23, 25, 24, 24, 25, 26, 26, 27, 24, 28, 27, 26, 26, 29, 28, 28, 29, 30, 30, 31, 28, 31, 30, 32, 32, 33, 31, 33, 32, 34, 34, 35, 33, 36, 35, 34, 34, 37, 36, 36, 37, 38, 38, 39, 36, 39, 38, 40, 40, 41, 39, 42, 41, 40, 40, 43, 42, 44, 42, 43, 43, 45, 44, 46, 44, 45, 45, 47, 46, 46, 47, 48, 48, 49, 46, 49, 48, 50, 50, 51, 49, 51, 50, 52, 52, 53, 51, 54, 53, 52, 52, 55, 54, 56, 54, 55, 55, 57, 56, 58, 1, 0, 0, 59, 58, 58, 59, 60, 60, 61, 58, 57, 61, 60, 60, 56, 57, 51, 53, 62, 51, 62, 63, 46, 49, 51, 63, 64, 65, 42, 46, 51, 42, 44, 46, 35, 51, 63, 35, 42, 51, 63, 65, 66, 35, 63, 66, 65, 67, 66, 35, 39, 42, 39, 41, 42, 35, 36, 39, 33, 35, 66, 31, 33, 66, 31, 66, 28, 30, 29, 68, 30, 68, 32, 68, 34, 32, 68, 69, 70, 68, 70, 71, 70, 72, 71, 68, 71, 34, 38, 37, 34, 71, 50, 34, 71, 73, 50, 73, 52, 50, 43, 38, 34, 50, 43, 34, 43, 40, 38, 50, 47, 43, 50, 48, 47, 47, 45, 43, 56, 60, 59, 59, 0, 3, 56, 59, 3, 53, 56, 3, 53, 54, 56, 53, 3, 5, 62, 53, 5, 62, 5, 7, 7, 63, 62, 64, 63, 7, 7, 9, 64, 65, 64, 9, 9, 11, 65, 67, 65, 11, 11, 13, 67, 66, 67, 13, 13, 15, 66, 66, 15, 28, 15, 27, 28, 15, 17, 19, 15, 19, 27, 19, 22, 27, 19, 21, 22, 22, 24, 27, 2, 1, 58, 58, 61, 57, 2, 58, 57, 2, 57, 52, 57, 55, 52, 4, 2, 52, 73, 4, 52, 6, 4, 73, 73, 71, 6, 6, 71, 72, 72, 8, 6, 8, 72, 70, 70, 10, 8, 10, 70, 69, 69, 12, 10, 12, 69, 68, 68, 14, 12, 68, 29, 14, 29, 26, 14, 18, 16, 14, 26, 18, 14, 26, 23, 18, 26, 25, 23, 23, 20, 18]
+            point3f[] points = [(0.0002615959, -0.1324691, 0.0077778087), (-0.0001042589, -0.13246924, 0.0077778096), (-0.0001076297, -0.13133544, 0.006982283), (0.0002642944, -0.1313353, 0.006982283), (-0.0001948787, -0.10198908, -0.0033824104), (0.000334142, -0.1019889, -0.003382411), (-0.000241305, -0.0771925, -0.011203106), (0.0003658656, -0.07719235, -0.011203106), (-0.0002526268, -0.05196576, -0.017312312), (0.000362231, -0.05196558, -0.017312312), (-0.0002792041, -0.02639748, -0.021694845), (0.00037365, -0.02639731, -0.021694845), (-0.00032744044, -0.00057634, -0.024335502), (0.0004065793, -0.00057613, -0.024335502), (-0.00037598296, 0.02540908, -0.02521909), (0.0004397184, 0.02540932, -0.02521909), (-0.0005712074, 0.1299155, -0.02521909), (0.000572996, 0.12991583, -0.02521909), (-0.0005730067, 0.1308789, -0.025063455), (0.0005742246, 0.13087922, -0.025063455), (-0.0005745707, 0.13171595, -0.024630181), (0.0005752923, 0.13171633, -0.024630181), (0.0005761348, 0.13237676, -0.02396973), (-0.0005758041, 0.13237637, -0.02396973), (0.0005766872, 0.13281, -0.023132548), (-0.00057661295, 0.13280962, -0.023132548), (-0.0005769031, 0.13296525, -0.022169095), (0.0005768858, 0.13296561, -0.022169095), (0.003804305, 0.1329656, -0.008563805), (-0.003804314, 0.13296331, -0.0085638035), (-0.0038043056, 0.13296331, 0.022181513), (0.003804314, 0.1329656, 0.02218151), (-0.0038023556, 0.1328075, 0.023143549), (0.0038024567, 0.13280977, 0.023143549), (-0.0037969283, 0.1323739, 0.023978868), (0.0037972874, 0.13237615, 0.023978865), (0.003789411, 0.13171548, 0.024636926), (-0.0037886607, 0.13171321, 0.02463693), (-0.0037781857, 0.13087618, 0.025067182), (0.0037794325, 0.13087843, 0.025067179), (-0.0037661395, 0.12991361, 0.02521909), (0.003767957, 0.12991586, 0.02521909), (0.001997407, -0.01860161, 0.024614545), (-0.0019075554, -0.01860278, 0.024614545), (0.0018450004, -0.0313858, 0.024367636), (-0.0017475712, -0.03138688, 0.024367636), (0.001692803, -0.0441524, 0.023731615), (-0.0015878069, -0.04415338, 0.023731615), (-0.0014283755, -0.05689328, 0.022707205), (0.0015409229, -0.05689241, 0.022707205), (-0.0012693923, -0.06959741, 0.021295132), (0.001389469, -0.06959664, 0.021295132), (-0.0010899869, -0.11765464, 0.014066407), (0.0012385458, -0.11765395, 0.014066407), (0.0002653542, -0.13089053, 0.011827074), (-0.0001089506, -0.13089073, 0.011827075), (0.0002623555, -0.13215028, 0.011251314), (-0.0001052055, -0.1321503, 0.011251314), (-0.0001027828, -0.13296561, 0.008943365), (0.0002604146, -0.13296548, 0.008943365), (0.0002606887, -0.13285054, 0.010195639), (-0.0001031241, -0.1328507, 0.01019564), (0.0012608886, -0.09562795, 0.007857092), (0.0013557468, -0.07381458, 0.0024744584), (0.0016154936, -0.05063668, -0.001569103), (0.0019044413, -0.02639903, -0.0048036426), (0.0025036475, 0.02386368, -0.00815495), (0.0021998396, -0.0016204, -0.006688672), (-0.0024389857, 0.02386219, -0.008154948), (-0.0021200713, -0.00162171, -0.006688671), (-0.0018099849, -0.02640018, -0.0048036417), (-0.00123318, -0.07381533, 0.0024744591), (-0.0015066683, -0.05063758, -0.0015691022), (-0.0011253891, -0.0956287, 0.007857093)]
+        }
+    }
+}
+

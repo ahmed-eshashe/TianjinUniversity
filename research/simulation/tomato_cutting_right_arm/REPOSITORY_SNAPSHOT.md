@@ -1,3 +1,37 @@
+# Update — 7 November 2026
+
+The incremental update is indexed in `PUBLICATION_UPDATE_20261107.json`.
+It adds the research material/contact implementation, mounted-robot cutting and
+horizontal withdrawal, natural-grip and kitchen scene work, recovery and research
+roadmaps, learning-interface preparation, tests, and compact experiment evidence.
+The checklists in `docs/progress/` are static snapshots of the local dashboards.
+
+**Full separation is not achieved.** The latest production run at snapshot time
+is `work/single_slice_20261106/robot_cut18`, resumed from run17 checkpoint 6475.
+This is an ongoing, scripted exploratory simulation with a disclosed fixed knife
+mount. Experimental calibration, motor-work qualification, full-trajectory
+numerical convergence, and training remain pending. No paper claim is promoted.
+
+The local coupled timestep comparison passed: maximum tomato position difference
+0.054 mm, knife position difference 0.014 mm, force difference 0.86%, with identical
+separation and eligibility at all eight comparison points. See
+`work/single_slice_20261106/coupled_timestep_comparison.json`. These are short-window
+numerical comparisons, not successful-cut or experimental-validation results.
+Native stepping and collision checks stay at 2400 Hz; candidate material updates
+are 600 Hz, with the wrench reapplied every native substep. Adoption is restricted
+to horizontal withdrawal, under the user's approved comparison limits.
+
+Large arrays, checkpoints, recordings, caches and third-party source remain local.
+The update manifest lists large text/asset exclusions and category counts. It
+hashes the copied files, not a subsequently changing live workspace. It does not
+replace the original publication manifest, which records the earlier snapshot.
+Machine-specific paths and external assets still need restoration before running.
+Do not interpret the snapshot's runtime status files as a live status service.
+
+---
+
+## Earlier snapshot (historical)
+
 # Tomato cutting workspace snapshot
 
 This directory preserves the code, plans and experiment evidence from the local

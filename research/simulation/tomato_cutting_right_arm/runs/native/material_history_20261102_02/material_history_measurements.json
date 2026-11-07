@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "id": "partial_load",
+      "imposed_gap_m": 0.0015,
+      "force_reference_error_n": 2.220446049250313e-16,
+      "history_reference_error": 2.7755575615628914e-16,
+      "mirror_error": 8.829770581364471e-09,
+      "minimum_damage": 0.4444451420389986,
+      "maximum_damage": 0.4444451420389991,
+      "trial_did_not_commit": true,
+      "closure_contact_left_x_n": 0.0,
+      "contact_peak_n": 0.0,
+      "contact_invalid": 0,
+      "rejected_failure_trial_preserved_history": true
+    },
+    {
+      "id": "unload",
+      "imposed_gap_m": 0.0005,
+      "force_reference_error_n": 2.7755575615628914e-17,
+      "history_reference_error": 0.0,
+      "mirror_error": 8.829770581364471e-09,
+      "minimum_damage": 0.4444451420389986,
+      "maximum_damage": 0.4444451420389991,
+      "trial_did_not_commit": true,
+      "closure_contact_left_x_n": 0.0,
+      "contact_peak_n": 0.0,
+      "contact_invalid": 0
+    },
+    {
+      "id": "partial_reclosure",
+      "imposed_gap_m": -1e-05,
+      "force_reference_error_n": 0.0,
+      "history_reference_error": 0.0,
+      "mirror_error": 8.829770581364471e-09,
+      "minimum_damage": 0.4444451420389986,
+      "maximum_damage": 0.4444451420389991,
+      "trial_did_not_commit": true,
+      "closure_contact_left_x_n": -77.59353323947805,
+      "contact_peak_n": 39.75883246504119,
+      "contact_invalid": 0
+    },
+    {
+      "id": "full_failure",
+      "imposed_gap_m": 0.0045,
+      "force_reference_error_n": 0.0,
+      "history_reference_error": 8.673617379884035e-19,
+      "mirror_error": 8.673617379884035e-19,
+      "minimum_damage": 1.0,
+      "maximum_damage": 1.0,
+      "trial_did_not_commit": true,
+      "closure_contact_left_x_n": 0.0,
+      "contact_peak_n": 0.0,
+      "contact_invalid": 0
+    },
+    {
+      "id": "failed_reclosure",
+      "imposed_gap_m": -1e-05,
+      "force_reference_error_n": 0.0,
+      "history_reference_error": 0.0,
+      "mirror_error": 8.673617379884035e-19,
+      "minimum_damage": 1.0,
+      "maximum_damage": 1.0,
+      "trial_did_not_commit": true,
+      "closure_contact_left_x_n": -77.59353323947796,
+      "contact_peak_n": 39.75883246504111,
+      "contact_invalid": 0,
+      "closure_contact_damage_independence_n": 7.815970093361102e-14
+    },
+    {
+      "id": "reset_clear",
+      "imposed_gap_m": 0.0,
+      "force_reference_error_n": 0.0,
+      "history_reference_error": 1e-20,
+      "mirror_error": 0.0,
+      "minimum_damage": 0.0,
+      "maximum_damage": 0.0,
+      "trial_did_not_commit": true,
+      "closure_contact_left_x_n": 0.0,
+      "contact_peak_n": 0.0,
+      "contact_invalid": 0
+    }
+  ],
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_material_history_worker.py": "d37bd893f37ec59daf2dea95190c389aab3cf53633e99b5f3b81945971d9eab7",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_full_model.py": "ae29ff83c5183a4e212108029be283c7f3c4c2e0c9ad0e218107e6e2da06a812",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_objective_reference.py": "c45ea83ce8e0d0252041dc4773e967f4a1f3ee67c245974fbec1216c1419c619",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_cohesion_reference.py": "1a84b28cad01973090de4ffc58b5b1c160ead05c6a369338e28b1e2e73af26dd",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fast_mollified_contact.py": "fc3ca21204ed6f6399e7fc9a311e46b9e87397ebe4714d5bb9c9624b26f9efc2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_mollified_self_contact.py": "ac81c288634f8da3d62c9fb08072014c923b0f78bbbab0970d7bf4b809be7a8e"
+  },
+  "scope": "Full saved material registry under prescribed compatible piece translations and explicit test eligibility. Verifies history, rejected-trial isolation, partial/failed reclosure and reset operators. Zero mechanical steps; no blade eligibility or performed separation claim."
+}

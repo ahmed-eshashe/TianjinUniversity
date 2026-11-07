@@ -1,0 +1,12 @@
+{
+  "source_sha256": {
+    "rl/tomato_contact_feedback_worker.py": "fc646ff4f18c974e8857af09b864a0c3e01161acdc592f35a78ccdf5a1ae5607",
+    "rl/tomato_partitioned_reference.py": "df29087812b97e02193641e485305de03905c4c5539ffbbdae1fd4615729d4b5",
+    "rl/tomato_isaac_startup_guard.py": "5540419e2d6edfeee2f1b3365cdd5cc5d26b8f1a7adf9da3c4cc2e28cd9e0c37"
+  },
+  "newton_step_cap": 2,
+  "physx_step_cap": 1,
+  "dt_s": 0.0008333333333333334,
+  "schedule": "Read PhysX -> echo both Newton body states -> collide/solve soft with frozen proxy -> collect final contact reaction -> apply once to PhysX -> echo updated pose/twist back.",
+  "scope": "Two synthetic head-on fixtures, zero initial velocity, zero COM offset, damping/friction/gravity zero. No blade or robot."
+}

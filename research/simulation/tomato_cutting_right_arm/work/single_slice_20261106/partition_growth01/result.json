@@ -1,0 +1,28 @@
+{
+  "passed": false,
+  "error": "('Adaptive quadrature capacity', 374756, 4194304, {'unpartitioned_roundoff_fallbacks': 76, 'face_planes': 17, 'partition_planes': 153, 'original_cells': 1425, 'partitioned_cells': 82204, 'lookahead': {'unpartitioned_roundoff_fallbacks': 2151, 'face_planes': 17, 'partition_planes': 153, 'original_cells': 82204, 'partitioned_cells': 374756}}, [])",
+  "details": [
+    [
+      "Adaptive quadrature capacity",
+      374756,
+      4194304,
+      {
+        "unpartitioned_roundoff_fallbacks": 76,
+        "face_planes": 17,
+        "partition_planes": 153,
+        "original_cells": 1425,
+        "partitioned_cells": 82204,
+        "lookahead": {
+          "unpartitioned_roundoff_fallbacks": 2151,
+          "face_planes": 17,
+          "partition_planes": 153,
+          "original_cells": 82204,
+          "partitioned_cells": 374756
+        }
+      },
+      []
+    ]
+  ],
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/check_partition_growth.py\", line 10, in <module>\n    packet,value,report=refresh_packet(blade,np.array(solid['cells']),x,triangles,reference,z['blade_rotation'],z['blade_translation']+origin,com,packet,padding_m=.001,lookahead=(x+z['v']*meta['micro_interval'],pose[:3],Rotation.from_quat(pose[3:]).as_matrix()))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_partition_diagnostic_refresh.py\", line 56, in refresh_packet\n    if 12*len(leaves)>maximum_samples:raise ValueError(('Adaptive quadrature capacity',len(leaves),maximum_samples,partition_report,history))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: ('Adaptive quadrature capacity', 374756, 4194304, {'unpartitioned_roundoff_fallbacks': 76, 'face_planes': 17, 'partition_planes': 153, 'original_cells': 1425, 'partitioned_cells': 82204, 'lookahead': {'unpartitioned_roundoff_fallbacks': 2151, 'face_planes': 17, 'partition_planes': 153, 'original_cells': 82204, 'partitioned_cells': 374756}}, [])\n",
+  "wall_s": 17.379419266988407
+}

@@ -1,0 +1,97 @@
+{
+  "preload_fixture_work_passed": true,
+  "cases": [
+    {
+      "case": "no_feedback",
+      "required_for_closed_preload_gate": false,
+      "energy_signal_j": 1.1204171356069626e-08,
+      "raw_whole_work_error_j": 7.947614154666805e-11,
+      "remap_accounted_whole_work_error_j": 8.643377611468006e-11,
+      "energy_budget_j": 1.1205171356069627e-10,
+      "cumulative_signed_remap_j": 1.8015203187481374e-13,
+      "cumulative_absolute_remap_j": 6.7774825361372e-12,
+      "robot_contact_work_j": 0.0,
+      "robot_energy_work_error_j": 5.227130877950608e-16,
+      "robot_energy_work_budget_j": 1e-15,
+      "target_pressure_work_j": 8.955873367386322e-09,
+      "maximum_tool_pose_component_change": 0.0,
+      "maximum_joint_velocity_change_rad_s": 2.690372639335692e-05,
+      "criteria": {
+        "raw_whole_work": true,
+        "remap_accounted_whole_work": true,
+        "robot_work": true
+      },
+      "passes_required_criteria": null
+    },
+    {
+      "case": "feedback",
+      "required_for_closed_preload_gate": true,
+      "energy_signal_j": 1.1204171356069626e-08,
+      "raw_whole_work_error_j": 7.921200012146237e-11,
+      "remap_accounted_whole_work_error_j": 8.616963468947438e-11,
+      "energy_budget_j": 1.1205171356069627e-10,
+      "cumulative_signed_remap_j": 1.8015203187481374e-13,
+      "cumulative_absolute_remap_j": 6.7774825361372e-12,
+      "robot_contact_work_j": 2.650762887157788e-13,
+      "robot_energy_work_error_j": 8.399735949558382e-16,
+      "robot_energy_work_budget_j": 3.650762887157788e-15,
+      "target_pressure_work_j": 8.955873367386318e-09,
+      "maximum_tool_pose_component_change": 0.0,
+      "maximum_joint_velocity_change_rad_s": 2.691004192456603e-05,
+      "criteria": {
+        "raw_whole_work": true,
+        "remap_accounted_whole_work": true,
+        "robot_work": true
+      },
+      "passes_required_criteria": true
+    },
+    {
+      "case": "replay",
+      "required_for_closed_preload_gate": true,
+      "energy_signal_j": 1.1204171356069626e-08,
+      "raw_whole_work_error_j": 7.921200012146237e-11,
+      "remap_accounted_whole_work_error_j": 8.616963468947438e-11,
+      "energy_budget_j": 1.1205171356069627e-10,
+      "cumulative_signed_remap_j": 1.8015203187481374e-13,
+      "cumulative_absolute_remap_j": 6.7774825361372e-12,
+      "robot_contact_work_j": 2.650762887157788e-13,
+      "robot_energy_work_error_j": 8.399735949558382e-16,
+      "robot_energy_work_budget_j": 3.650762887157788e-15,
+      "target_pressure_work_j": 8.955873367386318e-09,
+      "maximum_tool_pose_component_change": 0.0,
+      "maximum_joint_velocity_change_rad_s": 2.691004192456603e-05,
+      "criteria": {
+        "raw_whole_work": true,
+        "remap_accounted_whole_work": true,
+        "robot_work": true
+      },
+      "passes_required_criteria": true
+    },
+    {
+      "case": "clear",
+      "required_for_closed_preload_gate": true,
+      "energy_signal_j": 0.0,
+      "raw_whole_work_error_j": 5.242340672482231e-16,
+      "remap_accounted_whole_work_error_j": 5.242340672482231e-16,
+      "energy_budget_j": 1e-14,
+      "cumulative_signed_remap_j": 0.0,
+      "cumulative_absolute_remap_j": 0.0,
+      "robot_contact_work_j": 0.0,
+      "robot_energy_work_error_j": 5.227130877950608e-16,
+      "robot_energy_work_budget_j": 1e-15,
+      "target_pressure_work_j": 0.0,
+      "maximum_tool_pose_component_change": 0.0,
+      "maximum_joint_velocity_change_rad_s": 2.690372639335692e-05,
+      "criteria": {
+        "raw_whole_work": true,
+        "remap_accounted_whole_work": true,
+        "robot_work": true
+      },
+      "passes_required_criteria": true
+    }
+  ],
+  "definition_clarification": "Closed preload gates apply feedback/replay/clear; no-feedback is deliberately open. Energy signal is max(initial contact potential, max absolute cumulative target pressure work, max absolute cumulative actual robot contact work); it excludes turnover and pre-existing bulk/gravity energy. Clear retains absolute floors. No limits were relaxed.",
+  "moving_blade_work_qualified": false,
+  "full_23B_qualified": false,
+  "scope": "Only the registered assigned nonfracturing preload. Actual moving tool, actuator-driven approach/indentation, coupling lag under commanded motion, cutting, global base momentum, post-cut reset and experimental validation remain separate."
+}

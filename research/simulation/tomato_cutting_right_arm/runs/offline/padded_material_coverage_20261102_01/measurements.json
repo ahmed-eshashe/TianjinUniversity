@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "convex_difference_identical",
+      "uv_area_error": 0.0
+    },
+    {
+      "case": "convex_difference_internal",
+      "uv_area_error": 0.0
+    },
+    {
+      "case": "convex_difference_partial",
+      "uv_area_error": 0.0
+    },
+    {
+      "case": "convex_difference_disjoint",
+      "uv_area_error": 0.0
+    },
+    {
+      "case": "duplicate_cell_positive_quad_level_0",
+      "reference_area_m2": 1.25e-05,
+      "removed_duplicate_reference_area_m2": 1.25e-05,
+      "area_error_m2": 0.0,
+      "centroid_error_m": 2.168404344971009e-19,
+      "quadratic_integral_error": 2.5849394142282115e-26,
+      "force_error_n": 2.220446049250313e-16,
+      "moment_error_nm": 1.939479807224432e-18,
+      "virtual_work_error_j": 3.3881317890172014e-21
+    },
+    {
+      "case": "duplicate_cell_positive_quad_level_1",
+      "reference_area_m2": 1.2499999999999999e-05,
+      "removed_duplicate_reference_area_m2": 1.25e-05,
+      "area_error_m2": 1.6940658945086007e-21,
+      "centroid_error_m": 4.336808689942018e-19,
+      "quadratic_integral_error": 1.2924697071141057e-26,
+      "force_error_n": 6.661338147750939e-16,
+      "moment_error_nm": 3.9747508192403134e-18,
+      "virtual_work_error_j": 3.3881317890172014e-21
+    },
+    {
+      "case": "duplicate_cell_positive_quad_level_2",
+      "reference_area_m2": 1.2500000000000002e-05,
+      "removed_duplicate_reference_area_m2": 1.25e-05,
+      "area_error_m2": 1.6940658945086007e-21,
+      "centroid_error_m": 4.336808689942018e-19,
+      "quadratic_integral_error": 3.877409121342317e-26,
+      "force_error_n": 1.7763568394002505e-15,
+      "moment_error_nm": 1.734723475976807e-17,
+      "virtual_work_error_j": 2.710505431213761e-20
+    },
+    {
+      "case": "adjacent_cells_padded_neighbourhood",
+      "oracle_grid_points": 13041,
+      "required_near_solid_points": 3481,
+      "uncovered_required_points": 0,
+      "duplicate_interior_owners": 0,
+      "owned_polygons": 2,
+      "reference_union_area_m2": 8.623140646055102e-05,
+      "raw_duplicate_area_removed_m2": 1.3356406460551074e-05
+    }
+  ],
+  "scope": "Eight host controls: convex difference, duplicate-cell ownership, degree-two positive quadrature/force/moment/work and independent analytic closed-hull distance membership screen. The plane/AABB expansion is a conservative outer bound, not a strict exact-arithmetic CCD certificate or native contact qualification.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/qualify_padded_material_coverage.py": "9d7aac37085c27be3ac3fe05068e5f3f2d0be3bc3a180e015864d4c17e3163a9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_padded_material_coverage.py": "58856cb08e5948c13444778c2f370eeb66b1730fba5f6a28fe8f1dc384bfa064",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_host_blade_geometry.py": "423f31e6167fe4b90d07799644406a1321288ad1ce0f8296ebd75a9deb9a531d"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "result": "Native float64 all-facet distance diagnostic agrees with independent references on all tested points; no complete-contact qualification.",
+  "unique_query_count": 562,
+  "candidate_triangles_per_query": 144,
+  "candidate_point_triangle_evaluations_per_double_batch": 80928,
+  "double_batches": 2,
+  "float32_parity_comparison_batches": 2,
+  "mechanical_steps": 0,
+  "metrics": {
+    "query_count": 562,
+    "query_batches": 2,
+    "missing_queries": 0,
+    "centered_coordinates": false,
+    "double_precision_all_facets": true,
+    "distance_arithmetic": "float64 all 144 triangles",
+    "sign_source": "installed float32-mesh one-ray parity (unchanged)",
+    "double_query_wall_s_cold_warm": [
+      0.3440676629998052,
+      0.0006877450000501995
+    ],
+    "coordinate_shift_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "max_surface_error_m": 1.1069239052817517e-12,
+    "max_signed_distance_error_m": 5.107947485122333e-17,
+    "sign_mismatches": 0,
+    "thin_sign_mismatches": 0,
+    "max_normal_angle_error_deg": 8.537736462515939e-07,
+    "max_thin_normal_angle_error_deg": 8.537736462515939e-07,
+    "cold_build_compile_query_wall_s": 0.02641514900005859,
+    "warm_562_query_wall_s": 0.00012400700006764964,
+    "accuracy_thresholds_selected": false,
+    "point_query_accuracy_qualified": false,
+    "full_surface_contact_validated": false,
+    "limitations": [
+      "Point queries do not establish edge/face contact completeness.",
+      "Surface-point normals are not compared because sharp edges and zero distance are ambiguous.",
+      "Mesh float32 rounding and parity/nearest-triangle robustness remain scoped to these samples."
+    ]
+  },
+  "previous_five_discrepancies": [
+    {
+      "probe_id": "face:74",
+      "float32_error_um": 3.3083776997955283,
+      "float64_error_m": 8.993530610280186e-15,
+      "double_nearest_triangle": 74
+    },
+    {
+      "probe_id": "face:81",
+      "float32_error_um": 6.271714028116548,
+      "float64_error_m": 2.8114615597168232e-15,
+      "double_nearest_triangle": 81
+    },
+    {
+      "probe_id": "face:90",
+      "float32_error_um": 5.4850452215760015,
+      "float64_error_m": 6.833904672465823e-15,
+      "double_nearest_triangle": 90
+    },
+    {
+      "probe_id": "face:92",
+      "float32_error_um": 51.606708439067006,
+      "float64_error_m": 1.1069239052817517e-12,
+      "double_nearest_triangle": 92
+    },
+    {
+      "probe_id": "face:115",
+      "float32_error_um": 38.37584154098295,
+      "float64_error_m": 2.29265213343785e-13,
+      "double_nearest_triangle": 115
+    }
+  ],
+  "sign_method": "Signs inherited from unchanged installed float32-mesh one-ray parity; only distances and closest points use float64.",
+  "implementation_scope": "Bounded brute-force geometry diagnostic, not a production broad/narrow phase or solver integration.",
+  "integrity": "Exact historical query/reference registry, rerun original float32 outputs, old production source hashes, and current source snapshot verified.",
+  "next_step": "Validate edge/triangle-interior crossing and clear negative controls with the double-precision geometric route before designing candidate-complete contact records and force/work integration.",
+  "resources": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 1.5781398149997585,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 7,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 26043207680,
+    "min_free_vram_bytes": 7720665088,
+    "mode": "direct_mesh_double",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "direct_queries_completed": 562,
+      "centered_coordinates": false,
+      "double_precision_all_facets": true,
+      "mechanical_steps": 0,
+      "training": false,
+      "cutting_validated": false,
+      "full_surface_contact_validated": false
+    }
+  }
+}

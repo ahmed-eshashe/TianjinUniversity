@@ -1,0 +1,30 @@
+NEXT NONFRACTURING CONTACT TEST — design,2November2026
+
+Status: defined, NOT executable yet. No new simulator run in this planning step.
+
+The verified closer approach stops19.98mm above the target, with0.066mm maximum simulated tool tracking error. Its tomato is a stationary scene visual. A genuine touch must connect the corrected controller to the existing live Newton target; lowering toward that visual alone would not establish deformable robot contact.
+
+Immediate next implementation — bounded live assembly check
+Reuse the supported4032-node target, original material parameters/rest data,25-node remainder fixture, free cap, board and fixed knife mount. Initialize at the verified20mm standoff and hold for0.1simulated seconds, with24robot steps at1/240s and240target steps at1/2400s (10substeps per robot step). All setup steps are separately counted. Render actual Newton target coordinates and hide the old static visual. Verify positive actual-CAD clearance, empty contact exchange, gravity/board support, unchanged damage/history, correct robot hold, fixed mount and matched clocks. Keep existing physical limits. One protected run,10minute wall cap. This checks live assembly only; it does not requalify support for longer durations or mounted contact work.
+
+One intended touch experiment, after entry gates
+From an explicitly clear measured near-contact state, approach at no more than the existing2mm/s diagnostic speed. First resolved positive contact stops commanded descent; withdraw and settle. Target the existing exploratory1.5–5mN sum of absolute quadrature-sample force magnitudes without forcing it; this differs from net resultant force. Abort at unchanged10mN resultant force,0.2mNm moment,100micrometre penetration, volume ratio0.1, blade-board height4mm, other-body inflated target gap10mm or fixed packet domain motion5micrometres. A stopped command is not instantaneous physical braking; require a one-coupling-interval overshoot margin and record any limit crossing as failure. Damage stays disabled, with no deleted bonds or pinned cap nodes.
+
+PhysX must own the actual robot motion, Newton the actual target. Contact comes from current-CAD geometry, not a prescribed force waveform. Return the opposite wrench exactly once at the measured Native tool COM, keeping geometry/reporting origins explicit. Independent accepted force/impulse/work traces, replay and clear controls are required; controller effort, gravity, support, physical/numerical dissipation and remap terms must be identified. Do not copy the old zero-gain coasting worker and call it the corrected controller.
+
+Why the touch phase is not launch-ready
+The dry controller is verified, but its live pressure/feedback adapter does not exist as a qualified configuration. The old moving-force/work audit remains failed, and effective damping/applied-drive work must not be guessed. Existing1microN/0.1microNm balance and registered work gates remain unchanged in this specification. A different fixture-specific measurement contract would require prospective justification and an explicit scope decision; this document does not adopt one. A contact animation alone cannot pass these gates.
+
+The existing static2mN host candidate uses roughly34.7micrometres of advance past first overlap; the new dry approach has measured65.7micrometres maximum tracking error. Thus the dry-route1mm acceptance target is not itself a bound on safe near-contact penetration or load. Before touching, require measured near-contact signed clearance and a motion/error/one-step bound that respects the100micrometre penetration ceiling. Do not blindly command the old host contact coordinates.
+
+Cost constraint
+The saved live support job took1070seconds for two10-second episodes. The finest preload job took983seconds for four0.833millisecond cases. Both figures include setup/logging/controls and are not steady-state rates. They show that dry-GUI throughput cannot justify promising a long live-contact animation. Freeze the exact contact horizon, clocks, run counts and cost before launching the touch portion. Do not silently enlarge timesteps, disable contact physics or change error limits for speed.
+
+What is reused and what is new
+Do not rerun the passing coupon, static calibration, support, preload or dry-controller suites merely to repeat evidence. The0.1s clear check specifically resolves whether the corrected controller, live deformable state, display and synchronized integration work together. It does not resolve the failed contact ledger by itself. The intended touch test adds controlled current-geometry contact in that combined scene. Full23B reverse/off-centre/controller comparisons/refinement remain separate; separation, experimental validation17 and loaded/post-cut reset22 remain pending.
+
+Stopping decision
+Implement and check the clear live assembly first. Stop with a concise verdict and a specific touch-readiness decision. Do not start another open-ended precision, solver or damping campaign. Do not lower the tool into the target while its entry conditions remain unsatisfied.
+
+Machine-readable specification and evidence hashes:
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/nonfracturing_contact_plan_20261102/contact_test_contract.json

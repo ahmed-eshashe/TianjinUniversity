@@ -1,0 +1,69 @@
+{
+  "identical_562_probe_registry_verified": true,
+  "reference_registry_sha256": "4d0aa94e85f3aaa4282f08977fded8bc1a0a4dba78902431819414d2bcaf81ab",
+  "results": [
+    {
+      "case": "target512",
+      "resolution": 512,
+      "cooking_padding_m": 0.05,
+      "max_surface_error_mm": 0.30403464916162193,
+      "thin_sign_mismatches": 16,
+      "thin_sample_count": 32,
+      "thin_max_distance_error_mm": 0.36428575939524255,
+      "thin_max_normal_error_deg": 117.6325691833379,
+      "interior_max_normal_error_deg": 48.16130248440296,
+      "elapsed_wall_s": 3.7960257419999834,
+      "min_available_ram_gb": 25.646604288,
+      "min_free_vram_gib": 7.109375
+    },
+    {
+      "case": "tight512",
+      "resolution": 512,
+      "cooking_padding_m": 0.005,
+      "max_surface_error_mm": 0.22251837071962655,
+      "thin_sign_mismatches": 16,
+      "thin_sample_count": 32,
+      "thin_max_distance_error_mm": 0.2623333410460841,
+      "thin_max_normal_error_deg": 133.73043975410144,
+      "interior_max_normal_error_deg": 38.14986529257219,
+      "elapsed_wall_s": 3.746793093999713,
+      "min_available_ram_gb": 25.747255296,
+      "min_free_vram_gib": 7.1396484375
+    },
+    {
+      "case": "fine1024",
+      "resolution": 1024,
+      "cooking_padding_m": 0.05,
+      "max_surface_error_mm": 0.11918235395569354,
+      "thin_sign_mismatches": 10,
+      "thin_sample_count": 32,
+      "thin_max_distance_error_mm": 0.13733553013324076,
+      "thin_max_normal_error_deg": 150.46258422900172,
+      "interior_max_normal_error_deg": 43.95770803572643,
+      "elapsed_wall_s": 4.923621789000208,
+      "min_available_ram_gb": 24.13848576,
+      "min_free_vram_gib": 6.23828125
+    },
+    {
+      "case": "tight1024",
+      "resolution": 1024,
+      "cooking_padding_m": 0.005,
+      "max_surface_error_mm": 0.09928752842824906,
+      "thin_sign_mismatches": 7,
+      "thin_sample_count": 32,
+      "thin_max_distance_error_mm": 0.10515565266677772,
+      "thin_max_normal_error_deg": 179.40123040249392,
+      "interior_max_normal_error_deg": 30.168926695275612,
+      "elapsed_wall_s": 4.226700303999678,
+      "min_available_ram_gb": 25.584992256,
+      "min_free_vram_gib": 7.064453125
+    }
+  ],
+  "new_native_attempts": 3,
+  "baseline_reused": "target512",
+  "original_physics_source_hashes_verified": true,
+  "accuracy_qualified": false,
+  "finding": "Finer resolution and smaller cooking padding improve distances and reduce interior-to-exterior sign errors, but neither removes the thin-feature representation problem. At 1024/5 mm padding, seven remaining misclassifications are 25\u201350 micrometres inside the mesh.",
+  "remaining_normal_issue": "Worst targeted thin-feature normal error reaches 179.4 degrees in the best-distance case; do not promote that configuration as a contact-ready fix.",
+  "next_step": "Review supported local/adaptive SDF or mesh-based contact options and estimate their memory/accuracy costs before any more global refinement or positive-contact test. Keep physical blade thickness, geometry, and contact radii unchanged."
+}

@@ -1,0 +1,23 @@
+NATIVE OBSERVER BUILD AND INTEGRATION RESULT — 2026-11-02
+
+Verdict: source/build/load feasibility established, but runtime qualification FAILED at clean shutdown. Motor-work validation remains unresolved. Do not launch contact, cutting or training.
+
+Verified results
+- Isolated source: NVIDIA PhysX tag 110.3-omni-and-physx-5.9.1, commit 4f5f47733d72bc0966af6b1e469eb76acbae7d69. Extension version110.3.2 matches the installed family. Version matching alone is not binary equivalence.
+- Additive observer records internal drive-row impulses, local solver velocities and responses into a bounded buffer. Original solver arithmetic/controller/scene untouched. Standalone disabled, non-overwrite and overflow-rejection checks pass. These are component checks, not physical-work validation.
+- Native configure05 passed; compile01 built and linked OvruntimePhysX in408.1s with2workers. Build dependencies used isolated caches; installed extension packages reused through build-only links. No installed library replaced.
+- load01 passed: exact isolated core plugin path/hash verified in loaded process; zero physics steps; clean exit in3.67s.
+- capture_off01: existing clear route completed120steps plus3monitor setup steps, zero target steps. All capture checks passed before shutdown. However, process exited withSIGSEGV(-11) after SimulationContext cleared. Supervisor verdict is FAILED, with no remaining live owned processes. A pre-close worker pass does not override this failure.
+- Saved-data comparison: all20array fields across120intervals exactly equal the archived original-backend capture, including commanded and actual joints, body states, feedforward, transmitted loads and approximate efforts. This is strong evidence of agreement for this one fixture only, not proof of general backend equivalence.
+- No recording-on run was launched after the failure. No native trace completeness, pass-to-step mapping, analytic impulse control or complete energy ledger is qualified.
+- All9pinned production installation files unchanged. Fixed mount, original controller, scenes and historical failed gates preserved. Experimental validation remains pending.
+
+Interpretation and recommended next action
+The immediate blocker is now narrow: establish reliable teardown and trace finalization. The new worker requests normal shutdown (fast_shutdown=False) so the observer destructor can flush its buffer; the archived worker used default fast shutdown. The crash could involve that teardown path or the mixed built-core/installed-companion arrangement. The current evidence does not establish its cause. Do not attribute it to a physics error or hide it by marking the run passed.
+A focused next investigation should inspect the shutdown crash stack and compare lifecycle behavior without changing gains, timestep, solver or scene. Avoid another force/energy sweep. Only after a clean trace-off run should the planned trace-on equivalence check proceed. If normal shutdown cannot safely provide trace finalization, an explicit bounded flush mechanism needs its own source version and checks; bypassing shutdown is not a qualification result.
+Even after successful traces, local solver-row velocity is not automatically physical generalized velocity. Independent clock/order controls and full feedforward/drive/damping/constraint/numerical-work accounting remain necessary before any motor-work gate can close.
+
+Evidence (relative to this directory)
+configure05/result.json; compile01/result.json; load01/supervisor_result.json and loaded_plugin.json; capture_off01/supervisor_result.json, measurements.json, simulation.log and interval_*.npz; original_backend_comparison.json; production_preservation_final.json; native_build_and_observer_v01.patch; override_manifest.json; capture_launch_contract.json.
+
+Actual native execution this task: one zero-step load check, one123-step contact-free robot capture. No contact, fracture, training or video. No background simulator/build left running.

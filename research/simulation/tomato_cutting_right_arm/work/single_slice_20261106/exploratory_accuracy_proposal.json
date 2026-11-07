@@ -1,0 +1,23 @@
+{
+  "status": "user_authorized_comparison_gated_testing",
+  "reason": "Measured current material step costs roughly 17-29 seconds per 0.417 milliseconds of simulated time",
+  "unchanged": [
+    "original research tomato mesh and bulk model",
+    "cohesive law and its parameters",
+    "damage evolution and contact-derived eligibility",
+    "fixed knife mount and grip",
+    "collision, volume, support and finite-state stops",
+    "strict historical research verdicts"
+  ],
+  "prospective_comparison": {
+    "maximum_position_difference_m": 0.0001,
+    "maximum_peak_force_relative_difference": 0.05,
+    "near_zero_force_absolute_floor_N": 1e-05,
+    "separation_disagreement_allowed": false,
+    "history_monotone": true,
+    "fixture_exact": true
+  },
+  "scope": "Exploratory demo numerical settings only. Local comparisons do not qualify whole-cut convergence, motor work or experimental realism.",
+  "candidate_design": "Consider bounded nonlinear stopping tolerance and material timestep changes only after user decision; test held-out checkpoints before production adoption.",
+  "user_decision": "Use faster settings only if the comparison checks pass"
+}

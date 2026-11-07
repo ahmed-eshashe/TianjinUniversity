@@ -1,0 +1,18 @@
+SHUTDOWN AND TRACE FINALIZATION RESOLUTION — 2026-11-02
+
+Result: lifecycle correction passes the existing clear-motion fixture. Motor-work qualification remains open.
+
+Evidence-backed cause
+shutdown_debug02's native stack identified Python finalization destroying isaaclab_physx._SIMULATION_MANAGER_ENABLE_HOOK, a tuple of Kit IHookHolder objects, after Kit shutdown. Releasing this before app.close removed that crash, but capture_off02 still failed. shutdown_debug03 then identified late destruction of a timeline interface held in class state. Worker v03 releases the extension hook and PhysxManager/original SimulationManager timeline references after parked.close and before app.close, then collects garbage while Kit is alive. Normal shutdown remains enabled. No forced successful exit, fast-shutdown bypass, exception suppression, controller/solver changes or installed-source modifications were introduced.
+
+Successful verification
+capture_off03 and capture_on01 both passed the supervisor, exited0 in about15seconds, and left no live owned processes. Each completed120commanded clear-motion steps plus3reported monitor setup steps. All20array fields across120intervals are exactly identical between recording off/on and between the corrected recording-off capture and the original archived capture. The observer finalized181440rows across5040passes, with a completion footer and zero dropped records. Structural finite/response checks passed. All9production installation pins remain unchanged.
+
+Scope and limitations
+This is an instrumentation and lifecycle pass on one fixture, not a motor-work or cutting pass. The local response residual (maximum2.903232e-7 in solver velocity arithmetic) is a float32 sanity result, not an energy error bound. Native pass-to-physical-step mapping remains unqualified:5040passes must not simply be assigned to the123reported controlled steps. Reset/initialization and solver pass semantics require explicit accounting. No independent analytic impulse/energy control or complete motor-work ledger has passed. Experimental validation remains pending.
+
+Preserved evidence
+Original failed captures and debugger runs remain unchanged. Current executable versions: rl/tomato_native_observer_capture_worker_v03.py and rl/tomato_native_observer_guard_v04.py. Verification: shutdown_resolution_verification.json and verify_shutdown_resolution.py. This turn ran3debugger captures,1failed intermediate lifecycle capture, and2successful captures, each reporting123controlled steps; no target/contact solve, fracture, training or video.
+
+Next bounded step
+Establish trace clock/joint/pass correspondence, including initialization, and validate an independently calculable nonzero/zero drive impulse fixture. Only then assess how the recorded impulses contribute to a complete discrete work ledger. Do not interpret summed local row energy as certified physical motor work or start contact based on these results.

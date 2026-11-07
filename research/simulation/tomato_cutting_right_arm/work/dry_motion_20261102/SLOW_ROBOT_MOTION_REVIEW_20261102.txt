@@ -1,0 +1,43 @@
+SLOW SCRIPTED ROBOT MOTION — 2 November 2026
+
+Result: PASS within the inherited offset dry-motion scope. Not yet contact-ready.
+
+Executed one 16.033-second approach/stroke/withdrawal/return cycle in visible Isaac Sim, followed by one second settling. Same 481 route samples, same fixed mount, original robot/assets/drive gains; eight physics substeps per sample instead of four. 3848 route +240 settling +3 collision-monitor control steps =4091 PhysX steps. Zero Newton target steps. The displayed tomato is the stationary scene visual; its dynamics were not simulated in this task.
+
+Commands were joint position targets to the actual articulation, not prescribed tool poses. Initialization/reset writes occurred before the executed route. No joint position/state writes were made inside the route or settling loops. The worker's historical field “one_initial_joint_state_write_only” means no such writes during executed motion; it is not a count of all initialization/reset writes in the entire process. A separate positive probe/floor contact verifies the rigid collision monitor, followed by clear controls and reset; it does not touch the tomato.
+
+Independent raw-array/clock readback PASS. All seven right-arm joints follow their commanded direction (correlations 0.99935–0.99961). All four tool-height phases have the commanded sign. The left arm received a constant hold target, with maximum actual gravity/hold deviation 0.0111635169 rad (about0.64degrees), not perfectly zero motion. Measured joint positions remain inside the arm limits.
+
+MEASURED RESULTS
+Maximum right joint tracking error: 0.0155499578 rad (about0.89degrees), versus inherited0.03rad dry-motion bound.
+Maximum actual tool-position error from command FK: 9.730710 mm. Final settled tool-position error: 6.738830 mm.
+Maximum tool orientation tracking error: 0.0117805649 rad (about0.675degrees).
+Measured Native tool pose versus FK of actual joints: 4.19666932e-07 m. This confirms that the millimetre tracking deviation is present in the measured motion rather than merely the old route IK/display reference.
+Maximum joint speed: 0.143895164 rad/s, below inherited3rad/s stop.
+Final joint speed: 0.000418544281 rad/s, below declared0.002rad/s stationary criterion. No forced zeroing of the measured final velocity.
+Maximum knife/hand relative-transform discrepancy: 1.57045858e-07 m and 4.01535271e-07 rad, versus inherited20micrometres/0.0002rad bounds.
+Minimum blade/target AABB axis separation: 34.423281 mm, versus15mm gate.
+Minimum blade height above board plane: 5.991714 mm, versus4mm gate.
+Minimum blade/fixture AABB axis separation: 37.189098 mm.
+Minimum blade/other-robot-body AABB axis separation, excluding its own body and directly mounted hand: 73.382470 mm (right_rh_thumb_distal).
+Maximum monitored rigid-contact force during route/settling: 0.0 N. The positive probe contact was a separate setup control.
+
+CLEARANCE AND MOUNT LIMITS
+AABB separation is a coarse certificate for the authored geometry bounds, not a mesh-distance or arbitrary swept collision qualification. Values above are sampled at every executed physics interval; sub-interval CCD completeness is not claimed. Blade board height uses the board top z=0. The tested motion stays away from the target; this is not an actual cutting path.
+The knife is attached by the selected ideal fixed constraint. Its handle is visibly offset from the hand; there is no physical bracket geometry or finger grasp. The relative transform is verified, but the floating-looking gap must not be presented as a manufactured mount. No bracket or hidden supporting dynamics was added to improve appearance.
+
+VISUAL INSPECTION
+Actual viewport stills at start, downstroke midpoint, lowest route sample, withdrawal and endpoint are stored in the native run. They are diagnostic still images, not a video. The initial overview obscured parts of the active arm; a zero-step saved-scene inspection opened a clearer arm-side view. The first closer inspection camera used an unsuitable default near plane; the second viewer changes only camera clipping to0.01m. Both versions remain preserved. No physics trajectory was rerun for this camera correction.
+A bounded zero-step paused viewer is provided for user inspection; it automatically closes180seconds after its ready record, or earlier on stop request. The saved paused scene remains available afterwards. Rendering inspection is not a second motion qualification.
+
+DECISION AND NEXT STEP
+The robot performs the intended slow scripted dry-motion sequence and the ideal knife constraint remains rigid. Original dry-motion checks pass; no Cartesian cutting-accuracy pass is issued. The measured9.73mm maximum and6.74mm final tracking offset should be addressed before approaching the tomato. The next proposed task is a focused dry-route controller correction (gravity/trajectory feedforward using existing native interfaces), validated on this same offset route with a prospectively justified tool-tracking requirement. Do not start contact based on this result. No renewed force/energy investigation, material change, separation, video or training was performed. Milestone17 stays pending and loaded/post-cut reset stays open.
+
+EVIDENCE
+Native measurements: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/measurements.json
+Protected completion and cleanup: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/supervisor_result.json
+Independent raw readback: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/dry_motion_20261102/independent_readback01/measurements.json
+Measured arrays: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/measured_motion.npz
+Original scene export: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/inspection_scene.usda
+Paused inspection scene: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_scene_inspection_20261102_02/paused_inspection_scene.usda
+Original sources/assets remain unchanged; worker input hashes and independent readback record their preservation. The only original wrapper intentionally extended is the launch guard, with new dedicated worker/result routes and bounded resource monitoring.

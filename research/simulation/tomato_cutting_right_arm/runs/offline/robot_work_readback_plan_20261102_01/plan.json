@@ -1,0 +1,20 @@
+{
+  "calibration": "Only first four no-feedback knife joint-reaction intervals inspected. Remaining no-feedback and all feedback/replay/clear reaction data held out for the checks below.",
+  "force_balance_absolute_budget_n": 1e-06,
+  "moment_balance_absolute_budget_nm": 1e-07,
+  "budget_basis": "Force margin covers float32 error on 2.4525N knife weight and derivative readings; moment margin covers child-anchor/COM transformation cancellation. Unloaded observed first-four residuals below0.3uN and0.05uNm. Limits set before reading feedback/replay joint-reaction results.",
+  "kinetic_reconstruction_absolute_budget_j": 1e-15,
+  "gravity_work_reconstruction_absolute_budget_j": 1e-15,
+  "actuator_work_reconstruction_absolute_budget_j": 1e-15,
+  "contact_work_reconstruction_absolute_budget_j": 1e-15,
+  "robot_energy_conservation_scope": "Report cumulative kinetic-minus-gravity/actuator/contact work defects and refinement trends; reconstruction alone is NOT conservation qualification.",
+  "joint_reaction_frame": "Actual API child-joint-frame wrench, transformed using authored USD child frame and actual native link pose; shift moment to actual knife COM. Independent knife Newton-Euler balance; no rotor inertia on the fixed MountedKnife joint.",
+  "fixed_base_scope": "Actual fixed root velocity/pose checked, work zero; raw zero root incoming-wrench row NOT an independently measured base reaction or passed global robot momentum ledger.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/mounted_target_v06_r4_20261102_01/robot_energy_binding_inputs.npz": "1a6cc7e8a37461304659c7b7d6fa3ff64a3f17368b7c2ba1a9e9218a858de46c"
+  },
+  "references": [
+    "https://docs.omniverse.nvidia.com/kit/docs/omni_physics/108.0/extensions/runtime/source/omni.physics.tensors/docs/api/python.html",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/sensors/joint_wrench/joint_wrench_sensor.py"
+  ]
+}

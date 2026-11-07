@@ -1,0 +1,21 @@
+{
+  "purpose": "Isolated native plugin loading/provenance only",
+  "maximum_wall_s": 600,
+  "physics_steps": 0,
+  "robot_steps": 0,
+  "deformable_steps": 0,
+  "contact_allowed": false,
+  "motor_work_qualified": false,
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_observer_guard_v01.py": "01f86f5fe8f5a83d6949ace023855c7477b6d3ae06d8af7d8ce2464aa8550421",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_observer_load_worker_v01.py": "f624946536339f6c5e812c44d183a2e835de58514cb828d7dc629199560a2cbd"
+  },
+  "acceptance": [
+    "supervisor normal exit with no live owned processes",
+    "worker load check passes",
+    "exact rebuilt core plugin path and hash loaded once",
+    "no fallback to installed core",
+    "production installation pins unchanged"
+  ],
+  "runtime_equivalence_qualified": false
+}

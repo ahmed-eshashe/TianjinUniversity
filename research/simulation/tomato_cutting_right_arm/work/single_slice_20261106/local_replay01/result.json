@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "accepted_reference_intervals": 8,
+  "original_failed_interval_passed": true,
+  "errors": {
+    "position_m": 7.596114132516533e-08,
+    "velocity_m_s": 5.057909395083495e-05,
+    "damage": 1.3645749125101858e-07,
+    "opening_m": 4.790891299834028e-09,
+    "force_N": 3.0850220290239815e-06
+  },
+  "criteria": {
+    "scope": "Prospective local partition numerical sensitivity diagnostic; same force/energy budgets and material law",
+    "intervals": 8,
+    "source_checkpoint": "robot_cut08/checkpoints/step_003250.npz",
+    "position_difference_max_m": 1e-05,
+    "velocity_difference_max_m_s": 0.001,
+    "damage_difference_max": 0.01,
+    "opening_difference_max_m": 1e-05,
+    "force_relative_plus_absolute_limit": [
+      0.01,
+      1e-05
+    ],
+    "original_quadrature_error_budgets_unchanged": true,
+    "original_nonlinear_convergence_unchanged": true,
+    "additional_originally_failed_interval": 3259
+  },
+  "wall_s": 74.1807232350111,
+  "scope": "Measured-pose numerical diagnostic only; physical law unchanged; not a coupled cut or experimental qualification"
+}

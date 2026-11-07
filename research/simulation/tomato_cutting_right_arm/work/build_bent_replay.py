@@ -1,0 +1,28 @@
+from pathlib import Path
+r=Path('rl');seq=(r/'tomato_bent_rebased_worker.py').read_text();old=(r/'tomato_two_joint_replay_worker.py').read_text()
+s=seq.replace('import argparse,hashlib,math,signal,traceback','import argparse,hashlib,math,signal,traceback,copy').replace('from tomato_wrench_contract import cross','from tomato_wrench_contract import cross\nfrom tomato_two_joint_replay_reference import compare')
+s=s.replace('steps=echoes=ns=0;cases=[]','steps=echoes=ns=0;cases=[];reset_cycles=dirty_resets=0;episodes=[];comparisons=[];reset_records=[]')
+s=s.replace('bent_rebased_checks_passed','bent_replay_checks_passed').replace('bent_rebased_cases_completed','bent_replay_cases_completed')
+s=s.replace('natural_separation=passed,robot_validated=False','natural_separation=passed,reset_cycles_completed=reset_cycles,dirty_wrench_resets=dirty_resets,replay_comparisons=len(comparisons),robot_validated=False')
+s=s.replace("ROOT/'rl/tomato_bent_rebased_reference.py'","ROOT/'rl/tomato_bent_rebased_reference.py',ROOT/'rl/tomato_two_joint_replay_reference.py'")
+s=s.replace('controlled_step_cap=32,newton_step_cap=64','controlled_step_cap=66,newton_step_cap=132')
+s=s.replace('initial=initial,particle_mass_kg=mp','initial=initial,initial_link_packet=copy.deepcopy(before),particle_mass_kg=mp')
+a=old.index('        for episode,episode_length');b=old.index('            for interval in range(episode_length)',a);reset=old[a:b]
+a=s.index('        for interval in range(32):');b=s.index('        for r in cases:',a)
+body=s[a:b].replace('for interval in range(32):','for interval in range(episode_length):');body='\n'.join('    '+line if line else line for line in body.split('\n'))
+u=old.index('            episodes.append');v=old.index('        for r in cases:',u)
+s=s[:a]+reset+body+old[u:v]+s[b:]
+s=s.replace('steps!=32 or ns!=64 or echoes!=66 or int(sim._physics_step_count)!=baseline+32','steps!=66 or ns!=132 or echoes!=138 or int(sim._physics_step_count)!=baseline+66 or reset_cycles!=2 or dirty_resets!=4 or len(comparisons)!=4')
+s=s.replace("write(out,'bent_rebased_measurements.json',dict(cases=cases", "write(out,'bent_replay_measurements.json',dict(episodes=episodes,comparisons=comparisons,reset_records=reset_records,cases=cases")
+s=s.replace('32 translated persistent coupled bent-chain exchanges, no particle reposition or reset.','Bent-chain reset/replay after coast and during active contact with persistent models/solvers/buffers.')
+s=s.replace('for 32 exchanges with natural separation, no particle reposition/reset.','for baseline 32 exchanges, reset/replay 2 exchanges, active-contact reset/replay 32 exchanges.')
+(r/'tomato_bent_replay_worker.py').write_text(s)
+p=r/'tomato_isaac_startup_guard.py';s=p.read_text().replace('BENT_REBASED_WORKER =',"BENT_REPLAY_WORKER = ROOT / 'rl/tomato_bent_replay_worker.py'\nBENT_REBASED_WORKER =",1)
+a=s.index("    if mode == 'two_joint_replay':");b=s.index("    if mode == 'hinge_replay':",a)
+s=s[:a]+s[a:b].replace("'two_joint_replay'","'bent_replay'").replace('two_joint_replay_checks_passed','bent_replay_checks_passed').replace('two_joint_replay_cases_completed','bent_replay_cases_completed')+s[a:]
+s=s.replace("('startup', 'bent_rebased'","('startup', 'bent_replay', 'bent_rebased'")
+s=s.replace("    if mode == 'bent_rebased':\n        worker_path = BENT_REBASED_WORKER", "    if mode == 'bent_replay':\n        worker_path = BENT_REPLAY_WORKER\n    if mode == 'bent_rebased':\n        worker_path = BENT_REBASED_WORKER")
+s=s.replace("({ROOT/'rl/tomato_two_joint_reference.py'} if mode == 'two_joint_interface' else set()) |", "({ROOT/'rl/tomato_two_joint_replay_reference.py', ROOT/'rl/tomato_bent_rebased_reference.py', ROOT/'rl/tomato_bent_origin_reference.py', ROOT/'rl/tomato_two_joint_sequence_reference.py', ROOT/'rl/tomato_half_step_reaction.py', ROOT/'rl/tomato_offset_contact_reference.py', ROOT/'rl/tomato_reaction_metadata.py', ROOT/'rl/tomato_wrench_contract.py'} if mode == 'bent_replay' else set()) |\n                                                ({ROOT/'rl/tomato_two_joint_reference.py'} if mode == 'two_joint_interface' else set()) |")
+p.write_text(s)
+t=(r/'tests/test_tomato_two_joint_replay_reference.py').read_text().replace('two_joint_replay_checks_passed','bent_replay_checks_passed').replace('two_joint_replay_cases_completed','bent_replay_cases_completed').replace("worker_passed(r,'two_joint_replay')","worker_passed(r,'bent_replay')").replace(",'two_joint_replay'))",",'bent_replay'))")
+(r/'tests/test_tomato_bent_replay_reference.py').write_text(t)

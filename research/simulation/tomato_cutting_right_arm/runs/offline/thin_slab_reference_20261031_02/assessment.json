@@ -1,0 +1,165 @@
+{
+  "result": "PASS: analytic slab comparisons; medial-plane normal remains intrinsically non-unique.",
+  "parameters": {
+    "half_thickness_m": 0.002,
+    "endpoint_halfspan_m": 0.01,
+    "stiffness_n_m": 1750.0,
+    "gravity": 0,
+    "radius_and_margin_m": 0
+  },
+  "analytic_normalized_integral_reference": {
+    "energy_j": 0.00023333333333333336,
+    "endpoint_forces_n": [
+      -0.011666666666666667,
+      0.011666666666666667
+    ],
+    "net_force_n": 0.0
+  },
+  "sampling_density_comparisons": [
+    {
+      "sample_count": 4,
+      "weight_sum": 0.2,
+      "weighted_endpoint_forces_n": [
+        -0.011666666666666685,
+        0.01166666666666668
+      ],
+      "raw_endpoint_forces_n": [
+        -0.23333333333333328,
+        0.2333333333333335
+      ],
+      "weighted_net_force_n": -5.204170427930421e-18,
+      "raw_net_force_n": 2.220446049250313e-16,
+      "weighted_energy_j": 0.00023333333333333339,
+      "raw_energy_j": 0.004666666666666667
+    },
+    {
+      "sample_count": 8,
+      "weight_sum": 0.19999999999999998,
+      "weighted_endpoint_forces_n": [
+        -0.011666666666666652,
+        0.01166666666666668
+      ],
+      "raw_endpoint_forces_n": [
+        -0.4666666666666667,
+        0.4666666666666667
+      ],
+      "weighted_net_force_n": 2.7755575615628914e-17,
+      "raw_net_force_n": 0.0,
+      "weighted_energy_j": 0.00023333333333333339,
+      "raw_energy_j": 0.009333333333333334
+    },
+    {
+      "sample_count": 16,
+      "weight_sum": 0.20000000000000004,
+      "weighted_endpoint_forces_n": [
+        -0.011666666666666655,
+        0.011666666666666664
+      ],
+      "raw_endpoint_forces_n": [
+        -0.9333333333333343,
+        0.9333333333333331
+      ],
+      "weighted_net_force_n": 8.673617379884035e-18,
+      "raw_net_force_n": -1.2212453270876722e-15,
+      "weighted_energy_j": 0.00023333333333333339,
+      "raw_energy_j": 0.018666666666666668
+    },
+    {
+      "sample_count": 32,
+      "weight_sum": 0.2000000000000001,
+      "weighted_endpoint_forces_n": [
+        -0.011666666666666645,
+        0.01166666666666663
+      ],
+      "raw_endpoint_forces_n": [
+        -1.866666666666665,
+        1.8666666666666625
+      ],
+      "weighted_net_force_n": -1.3877787807814457e-17,
+      "raw_net_force_n": -2.4424906541753444e-15,
+      "weighted_energy_j": 0.00023333333333333333,
+      "raw_energy_j": 0.037333333333333316
+    },
+    {
+      "sample_count": 64,
+      "weight_sum": 0.1999999999999998,
+      "weighted_endpoint_forces_n": [
+        -0.011666666666666676,
+        0.011666666666666665
+      ],
+      "raw_endpoint_forces_n": [
+        -3.733333333333335,
+        3.7333333333333307
+      ],
+      "weighted_net_force_n": -1.0408340855860843e-17,
+      "raw_net_force_n": -4.440892098500626e-15,
+      "weighted_energy_j": 0.00023333333333333339,
+      "raw_energy_j": 0.07466666666666669
+    }
+  ],
+  "one_sided_limits": [
+    {
+      "z_m": -1e-06,
+      "phi_m": -0.001999,
+      "energy_j": 0.0034965008749999996,
+      "force_n": -3.4982499999999996,
+      "normal": -1.0,
+      "status": "unique_branch"
+    },
+    {
+      "z_m": -1e-09,
+      "phi_m": -0.001999999,
+      "energy_j": 0.0034999965000008758,
+      "force_n": -3.4999982500000004,
+      "normal": -1.0,
+      "status": "unique_branch"
+    },
+    {
+      "z_m": 0.0,
+      "phi_m": -0.002,
+      "energy_j": 0.0034999999999999996,
+      "force_n": null,
+      "normal": null,
+      "status": "ambiguous_medial_plane"
+    },
+    {
+      "z_m": 1e-09,
+      "phi_m": -0.001999999,
+      "energy_j": 0.0034999965000008758,
+      "force_n": 3.4999982500000004,
+      "normal": 1.0,
+      "status": "unique_branch"
+    },
+    {
+      "z_m": 1e-06,
+      "phi_m": -0.001999,
+      "energy_j": 0.0034965008749999996,
+      "force_n": 3.4982499999999996,
+      "normal": 1.0,
+      "status": "unique_branch"
+    }
+  ],
+  "independent_integral_formula": "E=k*h^3/(6L); endpoint F=(-k*h^3/(12L^2), +k*h^3/(12L^2)), for dt=dz/(2L). Alternate mathematical model only.",
+  "source_findings": "Installed edge/face pair kernels optimize signed distance and each emit at most one record per candidate pair. Particle, edge and face passes are separate, so this does not mean one total contact per body.",
+  "decision": "Preserve installed per-feature minimizer and per-contact material semantics. Do not adopt all-seed summation or normalized-integral coefficients. Check ambiguity at the selected minimum; do not reject solely because normals differ elsewhere in the candidate set.",
+  "previous_policy_scope": "The prior aligned-normal selection preview is a conservative diagnostic refusal filter. It is not the general Newton minimizer policy and must not be used to require a new two-sided force formulation.",
+  "tests_passed": 8,
+  "native_launches": 0,
+  "native_force_evaluations": 0,
+  "mechanical_steps": 0,
+  "elapsed_wall_s": 0.007703541000410041,
+  "limits": [
+    "Host analytic calculations only; native optimizer behavior at ties has not been measured.",
+    "Opposite-normal ambiguity at the medial plane is geometric; it cannot be resolved by adding more point samples.",
+    "The normalized integral is not a calibrated material or adopted contact law; it only demonstrates count-independent integration.",
+    "No general contact manifold, reliable global minimum, blade integration, dynamic coupling or cutting qualification."
+  ],
+  "next_step": "Run a bounded native analytic-slab minimizer query comparing edge order and small offsets; record chosen points, distances and normals with zero forces and integration.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_thin_slab_reference.py": "d7ea44352e8757e907a7a822d68ccfc51367bf8fd1c18a9b9571f9feedc7cacd",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_thin_slab_reference.py": "3624b4ce92d4c87e3a850c7fc983cc7f866f4eefc0d8e241ee6db326a15cd6e5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/run_thin_slab_reference.py": "bb5690301df50852159de0714e63f44b7033eecfc1413cb5319ef63eded25aed",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/geometry/soft_contacts_sdf.py": "903ecc39f352418cee2423615b9d472330965283d8681b486937634393bdc68f"
+  },
+  "original_pinned_sources_unchanged": true
+}

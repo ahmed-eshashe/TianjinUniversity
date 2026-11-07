@@ -1,0 +1,45 @@
+{
+  "result": "Disabled native-format active-prefix preview and full-stream snapshot reader implemented and checked on synthetic reference data.",
+  "source_sha256": {
+    "rl/tomato_contact_snapshot.py": "a8e77abe24e58d12369751e07eec91abfacceef136407c3933fd4b795924dd4a",
+    "rl/tomato_mesh_contact_contract.py": "6b07677a41f42cdba3994e5fa9e96c9e94bfd38f08a43cccb96dbdee41096c74",
+    "rl/tests/test_tomato_contact_snapshot.py": "eff10e17c943603f1c1f4711f1e10eb263a2fbb40e77eb6056afc8085f7d7347",
+    "rl/tests/test_tomato_mesh_contact_contract.py": "293f9013767b4d7d40722d7a25074ab57516e8622b4446bd9d8f3437fd020253"
+  },
+  "new_focused_tests_passed": 10,
+  "engine_imports": false,
+  "native_launches": 0,
+  "mechanical_steps": 0,
+  "force_evaluations": 0,
+  "buffer_write_enabled": false,
+  "snapshot_fields": [
+    "soft_contact_count",
+    "soft_contact_particle",
+    "soft_contact_indices",
+    "soft_contact_barycentric",
+    "soft_contact_shape",
+    "soft_contact_body_pos",
+    "soft_contact_body_vel",
+    "soft_contact_normal"
+  ],
+  "full_stream_behavior": "Checks all active rows before selecting target body; dynamic solver adjacency is not an input to collection. Kinematic records are retained even with an empty dynamic adjacency list. Inactive tail rows are ignored according to active count.",
+  "identity_checks": [
+    "run",
+    "episode/reset identity",
+    "step",
+    "time interval",
+    "source pins",
+    "content hash"
+  ],
+  "dtype_policy": "Represent float32 vectors and int32 counters/indices via standard-library serialization; reject overflow/nonfinite values. Report rounding and weight/normal consistency deviations without renormalization or conversion qualification.",
+  "duplicate_policy": "Raw records preserved; exact duplicate report remains separate and cannot hide overflow.",
+  "limitations": [
+    "No owned live-state capture or IPC implementation.",
+    "No actual native buffer allocation/write/read round-trip performed.",
+    "Body pose comes from provided reference context; native pose/frame/time coherence remains unvalidated.",
+    "No replay tids, history/reset registry or float32 acceptance budget established.",
+    "Hash agreement cannot authenticate runtime or physical validity.",
+    "No reaction force, contact solver or robot integration."
+  ],
+  "next_step": "A guarded native-buffer round-trip and read-only capture comparison using disclosed synthetic records, with zero physics/force calls; do not yet enable force-producing contacts."
+}

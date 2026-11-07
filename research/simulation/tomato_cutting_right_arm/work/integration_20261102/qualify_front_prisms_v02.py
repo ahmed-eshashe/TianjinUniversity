@@ -1,0 +1,12 @@
+from pathlib import Path
+import sys,json,hashlib,time,numpy as np
+from scipy.spatial.transform import Rotation
+r=Path(__file__).resolve().parents[2];sys.path.insert(0,str(r/'rl'));from tomato_front_sweep_reference import translated_front_events
+from tomato_cut_geometry import current_footprints
+p=r/'runs/offline/cut_front_registration_20261102_02';reg=np.load(p/'cut_footprints.npz');registration=json.loads((p/'registration.json').read_text());blade=json.loads((r/'runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json').read_text());d=json.loads((r/'runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json').read_text());v=np.array(blade['vertices']);faces=np.array(blade['triangles'])[registration['front']['face_ids']];R=np.array([[0,0,1],[1,0,0],[0,1,0]]);center_z=float(v[faces].mean((0,1))[2]);f0=(v@R.T+[d['cut_x_m']-center_z,.301608,.09])[faces];f1=f0+[0,0,-.09];x=np.array([n['position_m']for n in d['nodes']])+[0,0,.002];material=current_footprints(x,reg);cases=[];start=time.monotonic();rotation=Rotation.from_rotvec([.23,-.41,.12]).as_matrix();bent=material.copy();bent[:,:,0]+=.002*np.sin(2*np.pi*bent[:,:,1]/.045)
+for label,a,b,m,expected in [('full',f0,f1,material,47),('clear',f0+[.01,0,0],f1+[.01,0,0],material,0),('rotated',f0@rotation.T+[.2,-.1,.3],f1@rotation.T+[.2,-.1,.3],material@rotation.T+[.2,-.1,.3],47),('shallow',f0,f0+[0,0,-.0317],material,None),('deformed',f0,f1,bent,None)]:
+ row=translated_front_events(a,b,m,reg['patch']);row['case']=label;count=len(row['events'])
+ if expected is not None and count!=expected:raise ValueError((label,count))
+ if expected is None and not 0<count<47:raise ValueError((label,count))
+ cases.append(row)
+out=r/'runs/offline/front_prism_reference_20261102_02';out.mkdir(exist_ok=True);report=dict(passed=True,cases=cases,elapsed_wall_s=time.monotonic()-start,scope='Independent exact positive-area geometry reference for stationary material snapshots and common front translation. No actual robot route, moving-target trajectory, active fracture, coupled support or performed cut.',source_sha256={str(q):hashlib.sha256(q.read_bytes()).hexdigest()for q in [r/'rl/tomato_front_sweep_reference.py',r/'rl/tomato_cut_geometry.py',Path(__file__),p/'cut_footprints.npz']});(out/'measurements.json').write_text(json.dumps(report,indent=2)+'\n');np.savez(out/'ccd_comparison_inputs.npz',front0=f0,front1=f1,material=material,bent=bent,patches=reg['patch']);print([(c['case'],len(c['events']))for c in cases]);print('seconds',report['elapsed_wall_s'])

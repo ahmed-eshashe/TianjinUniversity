@@ -1,0 +1,29 @@
+{
+  "id": "native_drive_observer_20261102_v01",
+  "status": "specified_not_launch_ready",
+  "purpose": "Observation provenance and no-change validation, not contact/motor-work qualification",
+  "production_controller_changed": false,
+  "physics_parameters_changed": false,
+  "loaded_contact_allowed": false,
+  "entry_gates": [
+    "Native build/link succeeds with matching dependencies",
+    "Record loaded plugin paths/build hashes; reject fallback to installed plugin",
+    "Use separate overrides and evidence directories, never overwrite installed files",
+    "Freeze exact worker/source closure, counts and guard configuration before launch"
+  ],
+  "intended_fixture": "Existing verified clear 120-step motor-effort capture with3separate monitor setup steps,0target steps; keep all original physical and motion stops",
+  "comparison": [
+    "Trace disabled versus trace enabled in same built backend: require identical saved commands, states and reported loads; preserve any mismatch as failure",
+    "Compare new-backend clear trajectory with archived original-backend capture under declared unchanged acceptance criteria; matching version alone is not equivalence",
+    "Trace footer required, dropped count0, clock/pass-to-step mapping independently established, correct joint/body indexing and analytic nonzero/zero-drive controls required"
+  ],
+  "trace_scope": "Internal drive row impulse, local solver velocity before/after and row response. Local solver velocity is not automatically actual physical joint velocity; the trace alone does not certify energy. Other ledger terms remain separate.",
+  "no_launch_yet": true,
+  "offline_authored_iteration_counts": {
+    "position": 32,
+    "velocity": 8,
+    "prim": "/dual_ar5_o6",
+    "runtime_counts_still_require_verification": true
+  },
+  "recorder_capacity": 262144
+}

@@ -1,0 +1,20 @@
+{
+  "target_dt_s": 8.138020833333334e-07,
+  "robot_dt_s": 0.00010416666666666667,
+  "target_intervals_per_case": 1024,
+  "robot_intervals_per_case": 8,
+  "subcycles": 128,
+  "coupling_refinement": 1,
+  "direction": "down",
+  "duration_s": 0.0008333333333333334,
+  "cases": [
+    "no_feedback",
+    "feedback",
+    "replay",
+    "clear"
+  ],
+  "contact_refresh_clock_s": 2.604166666666667e-05,
+  "exchange": "Actual PhysX pose held across each block of fine deformable intervals. Sum accepted target impulses/moments and apply the block-average wrench exactly once at knife COM, then advance the real robot. No extrapolated or teleported pose. Explicit coupling delay and end-pose potential jump recorded.",
+  "initial_velocity": "Native right-seven-joint velocity from pinned static COM Jacobian, nominal 2mm/s down or reversed up. Coasting gravity-compensation diagnostic; no trajectory controller or executed approach.",
+  "scope": "New multirate, nonfracturing moving-contact diagnostic only. Geometry/material/masses/effort limits unchanged. No live damage/cut/training or automatic 23B qualification."
+}

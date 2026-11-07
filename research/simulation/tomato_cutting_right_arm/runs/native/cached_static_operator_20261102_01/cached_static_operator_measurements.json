@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "case": "captured_regularized_rhs",
+      "cg_iterations": 0,
+      "cpu_cg_status": null,
+      "linear_backend": "CPU cached-LU-preconditioned CG with fresh LU fallback; actual GPU residual",
+      "direct_factorizations": 1,
+      "direct_refinement_steps": 0,
+      "cg_true_residual_n": 1.54850847721421e-15,
+      "cg_rhs_norm_n": 0.2949486161707692,
+      "linear_true_residual_n": 1.54850847721421e-15,
+      "linear_valid": true,
+      "linear_wall_s": 2.519892873999197,
+      "maximum_known_solution_error_m": null,
+      "matrix_unchanged": true
+    },
+    {
+      "case": "weaker_regularization_rhs",
+      "cg_iterations": 128,
+      "cpu_cg_status": 128,
+      "linear_backend": "CPU cached-LU-preconditioned CG with fresh LU fallback; actual GPU residual",
+      "direct_factorizations": 1,
+      "direct_refinement_steps": 0,
+      "cg_true_residual_n": 6.849995486089498e-13,
+      "cg_rhs_norm_n": 0.2949486161707692,
+      "linear_true_residual_n": 6.849995486089498e-13,
+      "linear_valid": true,
+      "linear_wall_s": 6.832773171998269,
+      "maximum_known_solution_error_m": null,
+      "matrix_unchanged": true
+    },
+    {
+      "case": "weaker_known_solution",
+      "cg_iterations": 1,
+      "cpu_cg_status": 0,
+      "linear_backend": "CPU cached-LU-preconditioned CG with fresh LU fallback; actual GPU residual",
+      "direct_factorizations": 0,
+      "direct_refinement_steps": 0,
+      "cg_true_residual_n": 5.668875051030061e-16,
+      "cg_rhs_norm_n": 0.7110717575786758,
+      "linear_true_residual_n": 5.668875051030061e-16,
+      "linear_valid": true,
+      "linear_wall_s": 0.03200533900235314,
+      "maximum_known_solution_error_m": 4.410910837936968e-18,
+      "matrix_unchanged": true
+    },
+    {
+      "case": "changed_matrix_known_solution",
+      "cg_iterations": 1,
+      "cpu_cg_status": 0,
+      "linear_backend": "CPU cached-LU-preconditioned CG with fresh LU fallback; actual GPU residual",
+      "direct_factorizations": 0,
+      "direct_refinement_steps": 0,
+      "cg_true_residual_n": 3.968787154936631e-16,
+      "cg_rhs_norm_n": 0.7252931927302487,
+      "linear_true_residual_n": 3.968787154936631e-16,
+      "linear_valid": true,
+      "linear_wall_s": 0.027308308002830017,
+      "maximum_known_solution_error_m": 7.748485347914928e-18,
+      "matrix_unchanged": true
+    }
+  ],
+  "scope": "Four captured full-registry cached/fresh search solves with unchanged matrix, independent actual GPU true residual and known solution. No physical steps/equilibrium/support/cutting claim."
+}

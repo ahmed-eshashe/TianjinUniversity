@@ -1,0 +1,9 @@
+Bounded speedup comparison, not a new fracture formulation.
+Main withdrawal checkpoint: robot_cut17/checkpoints/step_006475.npz.
+Comparison branch: same earlier accepted checkpoint step_006400, 32 native steps.
+Baseline: exploratory_v1, material/native dt 1/2400.
+Candidate: exploratory_v3, material dt 1/600; four native steps at 1/2400, with wrench reapplied and all native stop checks each step.
+Candidate correction cadence: two material intervals (~3.33 ms), gain scaled to that physical interval.
+Adoption requires material and tool displacement differences <=0.1 mm, force <=5%, same separation and eligibility, no worker failure, exact restoration.
+This is a short-window exploratory comparison. Full-trajectory numerical convergence, motor work and experimental validation remain unqualified.
+No tests modify the saved production checkpoint or count as slice success.

@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "id": "rest",
+      "force_error_n": 0.0,
+      "potential_error_j": 0.0,
+      "incremental_gradient_error_n": 0.0,
+      "net_force_n": 0.0,
+      "net_moment_nm": 0.0
+    },
+    {
+      "id": "tensile",
+      "force_error_n": 5.551115123125783e-17,
+      "potential_error_j": 5.421010862427522e-20,
+      "incremental_gradient_error_n": 5.551115123125783e-17,
+      "net_force_n": 3.752553823233029e-14,
+      "net_moment_nm": 1.6655731007970727e-16
+    },
+    {
+      "id": "mixed_open",
+      "force_error_n": 4.440892098500626e-16,
+      "potential_error_j": 4.336808689942018e-19,
+      "incremental_gradient_error_n": 2.220446049250313e-16,
+      "net_force_n": 2.1350014727272284e-14,
+      "net_moment_nm": 1.9462029979126007e-16,
+      "diagonal_tangent_error_n_m": 1.8403056856186595e-12,
+      "diagonal_tangent_symmetry_error_n_m": 6.913775107975084e-13
+    },
+    {
+      "id": "mixed_compressed",
+      "force_error_n": 4.0245584642661925e-16,
+      "potential_error_j": 4.336808689942018e-19,
+      "incremental_gradient_error_n": 2.220446049250313e-16,
+      "net_force_n": 1.610419661244242e-14,
+      "net_moment_nm": 2.2214622985811796e-15
+    },
+    {
+      "id": "rotated_mixed",
+      "force_error_n": 4.917941054394248e-16,
+      "potential_error_j": 8.673617379884035e-19,
+      "incremental_gradient_error_n": 4.440892098500626e-16,
+      "net_force_n": 1.0453273243954615e-14,
+      "net_moment_nm": 1.930783855550163e-15
+    },
+    {
+      "id": "pure_compression",
+      "force_error_n": 0.0,
+      "potential_error_j": 0.0,
+      "incremental_gradient_error_n": 0.0,
+      "net_force_n": 0.0,
+      "net_moment_nm": 0.0
+    }
+  ],
+  "hessian_columns": 54,
+  "patches": 47,
+  "scope": "Float64 operator: objective explicit force, consistent incremental fracture potential and colored diagonal tangent. No dynamic integration or whole-fruit contact qualification.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_force_worker.py": "063bfad25681b2f45efdf98aa22c7c13109a5c713c0840a9ed1a4bba936779ee",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_objective_reference.py": "c45ea83ce8e0d0252041dc4773e967f4a1f3ee67c245974fbec1216c1419c619",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_cohesion_reference.py": "98d0b6313b8e4a77560ec39743fef5ce84c9a536d69563f82bb0aea48cb87dd1",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/objective_tangent_reference.npz": "4d10a61e80a72e6eeba3267556fd7cc7792763c478914d4afa84942986fae293"
+  }
+}

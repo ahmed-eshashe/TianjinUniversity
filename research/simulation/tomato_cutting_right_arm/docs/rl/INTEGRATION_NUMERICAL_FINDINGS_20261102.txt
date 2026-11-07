@@ -1,0 +1,154 @@
+Integration prerequisites: numerical findings and remaining gates
+2 November 2026
+
+Authority and scope
+Astra's RESEARCH_ROADMAP_REVIEW_20261102.md remains the governing sequence.
+Keep the existing fixed right knife mount. Experimental validation remains
+pending. No full separation or learning run has been authorized by a passed
+mechanical gate. Component results below do not change that boundary.
+
+Benchmark
+Versioned contract: runs/offline/integration_contract_20261102_02/contract.json.
+The original contract and slicing_criteria.json are preserved. The nominal
+10 mm cap has reference thicknesses [10, 7.78336, 7.78336, 7.78336, 7.78336] mm
+at the five saved geometric sample rays. Area-weighted proper rigid registration
+removes cap pose only, with no scale or deformation fit. Remainder pose must be
+reported separately. Missing/multiple ray intersections invalidate shape quality.
+Reference, rigid-motion and scaling-negative controls pass. This is an evaluator
+specification, not a measurement of a released cut.
+
+What the old longer dynamics exposed
+The older ten-second support test did not settle and allowed the cap through
+the remainder. That failure remains preserved. The subsequent complete-contact
+candidate passes short component checks but cannot yet support a cutting claim.
+The displacement-storage correction isolated and reduced world-position
+cancellation, without changing the source material values or geometry.
+
+The two finest completed time levels still differ by 1.33742 mm/s, beyond the
+frozen 1 mm/s screen. More solver iterations reduce the iteration error, but do
+not prove time convergence. The extended follow-up was intentionally stopped
+and retained as INCOMPLETE after a later-duration failure identified a more
+specific block-solve problem; no convergence pass is assigned to that study.
+
+At 51.67 ms, relative_preflight_20261102_03 fails its original impulse budget.
+Cell 8682 has J = 0.100000018, very close to the unchanged 0.1 floor. Independent
+bulk-gradient reconstruction yields free-node forces up to about 125,495 N.
+These are numerical/internal forces from a failed synthetic-model state, not
+measured tomato forces. Native postmortem evaluation reproduces infinite
+float32 block determinants at all four affected nodes. Even a finite float64
+cofactor determinant is not a reliable inverse of a severely conditioned block.
+A valid determinant, exact replay or bounded total energy cannot alone qualify
+local force equilibrium.
+
+The saved spring network alone has rest modes up to about 9.17 kHz. This is a
+restricted linear spectrum, excluding cohesion, contact and active barriers.
+It explains why very fine time stepping can be costly; it neither validates a
+step size nor justifies changing the acceptance screen after observing failure.
+
+Current solver candidate and stricter audit
+The separately versioned RebasedRelativeVBD retains physical geometry in double
+precision, rebases local coordinates before each color, preserves tiny local
+increments and uses scaled double-precision blocks. It explicitly refuses
+native rigid-body Contacts, whose position convention is incompatible with
+relative-coordinate storage. Six static controls pass; no sustained dynamics
+claim follows. Its first 32-iteration duration preflight still misses the global
+impulse budget at 28.75 ms. The higher-iteration candidate is undergoing a
+fresh final-state float64 force audit.
+
+The additional local-force contract sums norms of per-node implicit-Euler
+impulse residuals across free nodes and accepted substeps. It uses the existing
+0.0001 Ns support impulse budget as a stricter noncancelling audit. It does not
+replace or relax the global impulse, angular, energy, volume, board, replay or
+settling checks. Native freefall, cancelling-force and fixed-reaction operator
+controls pass. The local force contract is declared before its candidate run.
+
+Geometry and eligibility components
+The actual blunt CAD edge band has 28 facets and thickness 0.363--1.154 mm.
+The current material mid-surface is partitioned into 1,664 positive barycentric
+subtriangles covering all 47 existing cohesive patches, preserving triangulated
+area. Saved traction weights and fracture-energy areas remain unchanged.
+
+The independent translating-facet prism reference gives 47 patches for a full
+geometric sweep, 21 for the genuinely shallow sweep, and 17 for a nonuniformly
+deformed stationary snapshot. The continuous detector agrees with that separate
+positive-area reference for shallow, deformed, translating-target and commonly
+rotated cases, at 1 nm and 0.1 nm numerical tolerances. This is geometry-only
+validation, not a mechanical cut or a general deformation-trajectory certificate.
+
+Important implementation detail: IPC Toolkit's default conservative rescaling
+adds an effective minimum separation up to 100 micrometres. A collision-safe
+step candidate is therefore not automatically a cutting intersection. The
+independent moving-target reference caught 13 extra candidates. The geometric
+edge detector now explicitly uses rescaling 1.0 (no added separation), and
+passes the independent masks. Computational CCD tolerance is still explicit.
+
+Transactional eligibility requires an accepted inward edge event AND current
+positive-area blade-solid overlap. A historical seed never keeps a patch active
+by itself. Broad-face entry overlaps all 47 patches but activates none; retreat
+seeds none; withdrawal clears active eligibility. Rejected trials, dirty reset,
+replay and common rigid rotation pass. No cohesive history is changed by these
+geometry tests. Coupled nonuniform deformation, actual accepted robot motion,
+one-interval mask lag and partial-fracture dynamics remain to qualify. The
+existing one-scalar-per-patch resolution is an explicit model limitation.
+
+Actual mounted force and remaining work checks
+mounted_contact_20261102_03 verifies actual fixed-mount articulated response,
+reaction signs/moments and exact elastic-coupon replay over 24 Newton/24 PhysX
+intervals. It does not establish whole-target cutting or whole-system energy.
+Postprocessing its tiny response gives pose-based robot work about -6.77 nJ,
+versus +3.83 nJ from passive velocity quadrature. The sign disagreement is a
+measurement-resolution limitation at this response scale; do not count it as
+accurate robot work. A longer resolvable fixture is required.
+
+A new physical-coordinate frozen pressure packet passes host energy derivatives
+and native force/block/reaction tests. The reaction moment uses the current
+soft point (or its normal projection), not an old closest point after tangential
+slip. The off-center negative control distinguishes them by 0.0002625 N m.
+This is an operator pass only: generated whole-target CAD quadrature, native
+integration, actual robot work and time refinement still require verification.
+
+Recommended work fixture after stable target mechanics
+Use a separately recorded passive zero-gravity robot fixture with every drive,
+joint friction and link damping explicitly read back, a fixed spring-supported
+elastic coupon and a resolvable low load. Keep the real mount and body inertias.
+Measure contact work from actual COM twists/poses, generalized contact torque
+from the actual COM Jacobian, and kinetic energy from the actual joint-space
+mass matrix. Reconcile joint- and body-based energy conventions before claiming
+a balance; do not guess inertia frames. Account for armature explicitly or set
+it to a declared diagnostic zero. Fixed-base/fixture work is zero only after
+actual pose invariance is checked. Repeat at smaller coupling steps.
+For driven work, use observed applied actuator effort or an explicit known
+bounded torque fixture. An implicit-drive effort estimate is not independent
+actuator work. A separate actual-drive/controller qualification is required
+before its budget is used for the cutting controller.
+
+Remaining execution gates
+1. Accurate admissible full-target dynamics, with noncancelling local residuals.
+2. Settling and at least the declared full-duration support hold, including board
+   load path and bounded force/moment challenge; cap nodes remain unpinned.
+3. Contact regularization refinement and coupled eligibility/material tests.
+4. Contact-capable actual robot route and measured mounted force/work exchange.
+5. Only then shallow cuts, release qualification and cutting convergence.
+6. Loaded post-cut reset after coupled cutting exists; earlier operator/coupon
+   resets remain scoped component passes under milestone 22.
+
+Preservation
+Latest recheck: all 45 frozen production inputs and 13 installed dependency
+sources are unchanged. New numerical/geometry candidates are versioned beside
+them. Failed and interrupted runs remain available. The isolated IPC source
+build does not replace any frozen installed SDK dependency.
+
+Primary methodological references
+- Chen et al., Vertex Block Descent, SIGGRAPH 2024:
+  https://graphics.cs.utah.edu/research/projects/vbd/vbd-siggraph2024.pdf
+  Supports variational implicit-Euler block updates. Descent and conditioning
+  still need verification in this extension; the publication does not validate
+  this particular spring/barrier/contact model or our achieved accuracy.
+- IPC Toolkit v1.6.1, official implementation:
+  https://github.com/ipc-sim/ipc-toolkit/tree/v1.6.1
+  In src/ipc/ccd/tight_inclusion_ccd.cpp, ccd_strategy derives an effective
+  separation from conservative_rescaling and caps its added part at 1e-4 m.
+- Newton VBD documentation:
+  https://newton-physics.github.io/newton/latest/solvers/vbd.html
+  Installed solver sources remain preserved. These candidate extensions require
+  independent operator, integration and work qualification.

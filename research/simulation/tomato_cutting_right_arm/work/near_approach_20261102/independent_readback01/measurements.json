@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "checks": {
+    "raw_arrays_and_trace_counts": true,
+    "all_interval_geometry_readback": true,
+    "positive_near_stop_clearance": true,
+    "actual_half_speed_command_sequence": true,
+    "only_right_arm_trajectory_commanded": true,
+    "all_seven_joints_follow_direction": true,
+    "phase_directions": true,
+    "native_pose_matches_actual_joint_fk": true,
+    "mount_position": true,
+    "mount_angle": true,
+    "inherited_joint_tracking": true,
+    "prospective_tool_position": true,
+    "prospective_final_position": true,
+    "prospective_tool_orientation": true,
+    "prospective_left_hold": true,
+    "velocity_feedforward_schedule": true,
+    "gravity_feedforward_within_unchanged_limits": true,
+    "arm_limits": true,
+    "final_stationary": true,
+    "frozen_sources_unchanged": true
+  },
+  "actual_physics_steps": 4091,
+  "route_duration_s": 16.03333333333333,
+  "maximum_joint_tracking_rad": 9.584426879882812e-05,
+  "maximum_tool_tracking_m": 6.571227030178558e-05,
+  "final_tool_tracking_m": 5.140420397517817e-06,
+  "maximum_tool_fk_position_difference_m": 4.540156500254656e-07,
+  "maximum_left_joint_deviation_rad": 4.6618469085046854e-09,
+  "joint_command_actual_correlations": [
+    0.9999999962177235,
+    0.9999999915072045,
+    0.9999997630593893,
+    0.9999999998723312,
+    0.9999999795791681,
+    0.9999999997345855,
+    0.9999999997991522
+  ],
+  "phase_displacements": [
+    {
+      "phase": "approach down",
+      "actual_tool_dz_m": -0.06340815871953964,
+      "commanded_tool_dz_m": -0.06338327646234354,
+      "same_direction": true
+    },
+    {
+      "phase": "stroke down",
+      "actual_tool_dz_m": -0.01998984068632126,
+      "commanded_tool_dz_m": -0.020000236445803288,
+      "same_direction": true
+    },
+    {
+      "phase": "withdraw up",
+      "actual_tool_dz_m": 0.020011238753795624,
+      "commanded_tool_dz_m": 0.0199997617641193,
+      "same_direction": true
+    },
+    {
+      "phase": "return up",
+      "actual_tool_dz_m": 0.06338801234960556,
+      "commanded_tool_dz_m": 0.06338375114402753,
+      "same_direction": true
+    }
+  ],
+  "minimum_blade_to_other_body_aabb_gap_m": 0.0631087403236367,
+  "closest_body": "right_rh_thumb_distal",
+  "near_stop_vertical_gap_m": 0.01998263353950651,
+  "minimum_target_aabb_gap_m": 0.019982563977722204,
+  "minimum_board_height_m": 0.07697994142350494,
+  "minimum_fixture_gap_m": 0.055263748538771,
+  "minimum_inflated_other_body_target_gap_m": 0.13162041496344348,
+  "independently_reconstructed_minimum_blade_body_gap_m": 0.0631087403236367,
+  "maximum_gravity_effort_nm": 27.61153793334961,
+  "maximum_gravity_clipping_nm": 0.0,
+  "scope": "Independent nearer-approach raw states, all-interval clearance, per-step command/velocity, clipped arm effort and motion readback. Prospective1mm maximum/0.25mm settled/0.002rad orientation and left-hold engineering targets are dry-controller scope only. No target, contact, cutting or hardware accuracy qualification.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measurements.json": "a721fb79d23865f6d3c2b28d11dd0b039c37b2dcb30902dda2e69de9fb8fbcba",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/input_manifest.json": "686a67503f133edb041453b73082818bc96ca4e2dee17b32b10b0eb1e855ba4b",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/supervisor_result.json": "db2051c33cfe9bbe714c3dc4359620b6c8dab1b071fe6499fcb40dfa1ba17191",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/motion_trace.jsonl": "585504296363867dd35e858c824b9e1b514b5ca7d8df7e28c61c64521cad6cf8",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measured_motion.npz": "fc9d74b5ae9b8d5f2467cfb95dff96dae100e0a1d464c8566d93ddd94ab7c3aa"
+  }
+}

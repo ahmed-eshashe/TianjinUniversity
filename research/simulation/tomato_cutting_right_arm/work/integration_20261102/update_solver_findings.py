@@ -1,0 +1,16 @@
+from pathlib import Path
+import json
+R=Path('/home/omen/teamwork_projects/tomato_cutting_right_arm');out=Path('/home/omen/Documents/Codex/2026-10-31/tomato-project-handoff/outputs')
+paths=['global_gn_operator_20261102_01','global_energy_20261102_02','global_integrator_20261102_01','global_short_20261102_03','global_duration_20261102_01','local_frame_20261102_01','local_short_20261102_01','local_duration_20261102_01','lbfgs_operator_20261102_01','lbfgs_integrator_20261102_01','lbfgs_short_20261102_01','lbfgs_duration_20261102_01','block_preconditioner_20261102_01','block_integrator_20261102_01','block_short_20261102_01','block_duration_20261102_01','failed_frame_20261102_01','tight_linear_20261102_01','tight_linear_20261102_02','tight_integrator_20261102_02','tight_short_20261102_02','tight_duration_20261102_02','tangent_operator_20261102_01','tangent_integrator_20261102_01','tangent_short_20261102_01','tangent_duration_20261102_01','tangent_fine_short_20261102_01','tangent_finest_short_20261102_01','fraction_operator_20261102_01','fraction_integrator_20261102_01','fraction_short_20261102_01','fraction_duration_20261102_01','tangent_refined8_short_20261102_01','tangent_refined16_short_20261102_01','fraction_screen8_20261102_01','fraction_screen16_20261102_01','fraction_screen32_20261102_01','global_hold_preview_20261102_01','failed_safe_global_operator_20261102_01','failed_safe_integrator_20261102_01','static_operator_20261102_01','static_preparation_20261102_01']
+paths += ['static_preparation_regularized_20261102_01','static_preparation_iterative_20261102_01','static_preparation_safeguarded_20261102_01','loaded_force_20261102_01','direct_static_operator_20261102_01','static_preparation_direct_20261102_01']
+paths += ['cached_static_operator_20261102_01','static_preparation_cached_20261102_01','global_pressure_operator_20261102_01','prepared_scene_screen_20261102_01','prepared_scene_device_screen_20261102_01','prepared_scene_device_screen_20261102_02','prepared_scene_device_hold_20261102_01']
+paths += ['external_load_operator_20261102_01','load_clear_screen_20261102_01','load_down_screen_20261102_01','load_down_20261102_01']
+paths += ['load_twist_screen_20261102_01','load_twist_20261102_01','cad_pressure_operator_20261102_01']
+paths += ['robot_energy_operator_20261102_01','robot_energy_operator_v02_20261102_01','robot_energy_operator_v03_20261102_01','mounted_target_screen_v03_20261102_01','mounted_target_screen_v04_20261102_01','mounted_target_screen_v05_20261102_01','mounted_target_screen_v05_fine_20261102_01','mounted_target_screen_v05_finest_20261102_01']
+paths += ['mounted_target_v06_r4_20261102_01', 'mounted_target_v06_r8_20261102_01', 'mounted_target_v06_r16_20261102_01', 'mounted_target_v06_r32_20261102_01', 'mounted_target_v06_r64_20261102_01', 'robot_wrench_trace_20261102_01', 'robot_wrench_trace_20261102_02', 'robot_wrench_com_trace_20261102_01', 'mounted_target_com_r64_20261102_01', 'mounted_target_com_r128_20261102_01']
+records={}
+for name in paths:
+ p=R/'runs/native'/name/'supervisor_result.json'
+ if p.exists():
+  d=json.loads(p.read_text());records[name]={k:d.get(k) for k in ['passed','reason','elapsed_wall_s','remaining_live_group_members','worker']}
+(R/'work/integration_20261102/global_solver_evidence_index.json').write_text(json.dumps(records,indent=2)+'\n')

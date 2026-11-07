@@ -1,0 +1,10 @@
+{
+ "purpose":"Test whether CPU TGS incoming/projected joint force depends incorrectly on allocation of the same equilibrium generalized torque to feedforward versus implicit drive",
+ "fractions":[0.0,1.0,0.5],
+ "steps_per_case":24,"setup_steps":3,"total_steps":75,"dt_s":0.004166666666666667,"wall_cap_s":180,
+ "controller":"Same original robot gains/damping/limits/mount/solver. Diagnostic targets q0+(1-fraction)*native_gravity/K, explicit effort fraction*native_gravity; desired velocity0. Initial-state reset only between cases. Arms only; hands unchanged.",
+ "prediction":"At comparable actual states, net transmitted load should be independent of torque-source split. Large split-dependent readout changes with unchanged equilibrium would contradict using the readout as actual generalized motor torque.",
+ "validity":"Keep all inherited clear-space checks. Require arm pose drift<0.0001rad and maximum arm speed<0.001rad/s for static comparison; archive actual body velocities/mass for independent dynamic bound.",
+ "comparison":"Report exact split differences and independent subtree gravity reference; no replacement of old force/work thresholds. No full-work qualification from this diagnostic.",
+ "stop":"One invocation; no parameter sweep or contact. If controls fail or hypothesis unsupported, stop with saved result. No automatic production change."
+}

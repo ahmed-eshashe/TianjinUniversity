@@ -1,0 +1,14 @@
+"""Explicit published-reference applicability check, not an experimental fit."""
+from pathlib import Path
+import json
+ROOT=Path('/home/omen/teamwork_projects/tomato_cutting_right_arm')
+report=dict(experimental_validation_passed=False,parameter_fit_performed=False,
+ selected_cutting_reference=dict(title='Robotic Cutting of Solids Based on Fracture Mechanics and FEM',authors=['Prajjwal Jamdagni','Yan-Bin Jia'],year=2019,url='https://faculty.sites.iastate.edu/jia/files/inline-files/IROS19.pdf',table='I, tomato row',reported=dict(E_numeric=400000.,E_header_as_printed='N/m',poisson_ratio=.3,blade_material_friction=.18,interior_fracture_energy_N_per_m=130.,skin_fracture_energy_N_per_m=400.,cutting_speed_m_s=.00625),
+ limitations=['Printed modulus unit N/m is dimensionally inconsistent with a 3D Young modulus; do not silently import as Pa.','Modulus was adjusted using initial force-displacement slope, so the published number is not an independent held-out validation target.','Scanned specimen geometry and raw numeric force/torque histories were not obtained from the paper.','Quasi-static pressing experiment differs from a general dynamic slicing task.']),
+ project_baseline=dict(surface_mechanics_young_pa=30000.,central_force_poisson_ratio=.25,synthetic_interface_fracture_energy_j_m2=80.,runtime_operator_is_fixed_frame=True,native_material_is_calibrated=False),
+ comparisons=dict(conditional_E_ratio_if_paper_means_Pa=400000./30000.,poisson_absolute_difference=.05,interior_Gc_ratio=130/80,skin_Gc_ratio=400/80),
+ secondary_experiment=dict(title='Mechanical Performances of Isolated Cuticles Along Tomato Fruit Growth and Ripening',year=2021,url='https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2021.787839/full',doi='10.3389/fpls.2021.787839',specimen='isolated Cascada cuticle, 55 days after anthesis',reported=dict(young_modulus_mpa=1000.,breaking_stress_mpa=52.,rupture_strain_approx=.13),applicability='Isolated cuticle, not bulk flesh or a whole-fruit cutting law. Raw data are author-provided according to the article; none acquired here.'),
+ conclusion='Current synthetic coefficients cannot be called experimentally validated. Copying reported parameters or matching a fitted value is not independent validation.',
+ required_for_item17=['Resolve units and choose the tissue/model scope explicitly.','Obtain a reproducible numerical curve plus specimen geometry/protocol, or a published dataset with these supplied.','Fit on a declared calibration subset and test separate deformation/failure data.','Check uncertainty and loading-rate applicability; report model discrepancies rather than retuning until a test passes.'])
+(ROOT/'work/material_reference_assessment.json').write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps(report['comparisons'],indent=2))

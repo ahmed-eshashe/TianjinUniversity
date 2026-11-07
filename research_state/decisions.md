@@ -108,3 +108,17 @@ This log documents all immutable architectural and scientific decisions. Once ra
 - **Decision**: Established a centralized Hardware Database under `hardware/` (with a shared link `database/hardware`), containing cloned driver repositories for both the arm (`arx5-sdk`, `ARX_CAN`) and the hand (`robot-linkerbot-linker_hand_o6`, `primitive-linkerbot-linker_hand_o6`, `linker_hand_service`, `linkerhand-cpp-sdk`, `linkerhand-python-sdk`), along with complete datasheets and a machine-readable hardware state specification (`research_state/hardware.yaml`).
 - **Consequences**: Enables `ros_agent`, `simulation_agent`, and `rl_agent` to share validated kinematic limits, CAN bus identifiers, and real-time SocketCAN drivers without duplicate or fragmented assumptions.
 
+
+
+## 2026-11-07 — Exploratory cutting snapshot and bounded numerical speedup
+
+User authorized repository publication and the local numerical comparison contract
+(position <=0.1 mm, force <=5%, identical separation). The existing research tomato
+model is retained. Experiment IDs: robot_cut17 (checkpoint pause),
+coupling_timestep_stride1 / coupling_timestep_stride4 (short-window comparison),
+robot_cut18 (ongoing horizontal withdrawal). The latter uses material dt1/600 s
+and native dt1/2400 s, with native collision gates and force reapplication each
+substep. Source/evidence: research/simulation/tomato_cutting_right_arm/work/single_slice_20261106/.
+This records an already authorized local change; publishing does not launch a
+simulation or training run. Full separation, full-trajectory convergence,
+motor-work qualification and experimental validation remain pending.

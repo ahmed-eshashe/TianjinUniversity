@@ -1,0 +1,10 @@
+from pathlib import Path
+import json,numpy as np
+from scipy.spatial.transform import Rotation
+from tomato_collision_embedding import build_embedding,mapped_positions,mapped_force
+r=Path(__file__).resolve().parents[2];base=r/'runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5';d=json.loads((base/'surface_design.json').read_text());assignments=json.loads((base/'mass_stiffness_assignments.json').read_text());cells=np.asarray([c for a in assignments for c in a['integration_cells_global_ids']]);x=np.array([n['position_m'] for n in d['nodes']]);q=Rotation.from_rotvec([.4,.2,-.3]).as_matrix();records=[]
+for margin in [.0001,.00005,.000025]:
+ e=build_embedding(d,cells,interaction_distance_m=margin);v=mapped_positions(x,e);f=np.random.default_rng(12).normal(size=v.shape);physical=mapped_force(f,e,len(x));balance=float(np.max(np.abs(physical.sum(0)-f.sum(0))));moment=float(np.linalg.norm(np.cross(x,physical).sum(0)-np.cross(v,f).sum(0)));motion=np.random.default_rng(41).normal(size=x.shape)*1e-5;power=abs(float(np.sum(physical*motion)-np.sum(f*mapped_positions(motion,e))));rot_error=float(np.max(np.abs(mapped_positions(x@q.T+[.2,-.1,.3],e)-(v@q.T+[.2,-.1,.3]))))
+ if balance>1e-10 or moment>1e-10 or power>1e-10 or rot_error>1e-12:raise ValueError('Embedding force/work/frame invariant failed')
+ out=r/'work/integration_20261102'/f'collision_embedding_{round(margin*1e6)}um.npz';np.savez(out,**{k:e[k] for k in ['surface_node_ids','indices','weights','triangles','reference_positions']});records.append(dict(interaction_distance_m=margin,proxy_vertices=len(v),shifted_vertices=len(e['records']),maximum_recession_m=e['maximum_recession_m'],minimum_normal_alignment=e['minimum_normal_alignment'],force_balance_n=balance,moment_balance_nm=moment,virtual_work_error_j=power,rotation_error_m=rot_error,embedding_file=str(out)))
+(r/'work/integration_20261102/collision_embedding_reference.json').write_text(json.dumps(dict(cases=records,physical_mesh_unchanged=True,scope='Reference affine embedding construction/conservation only; no collision detection or stepping qualified'),indent=2)+'\n');print(json.dumps(records,indent=2))

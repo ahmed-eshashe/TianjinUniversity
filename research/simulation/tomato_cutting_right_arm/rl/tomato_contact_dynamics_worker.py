@@ -1,0 +1,93 @@
+"""Short whole-fruit contact/motion qualification before long support runs."""
+import argparse,hashlib,json,signal,time,traceback
+from pathlib import Path
+from tomato_isaac_startup_worker import write
+ROOT=Path(__file__).resolve().parents[1]
+
+def main():
+ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--steps',type=int,default=24);p.add_argument('--objective',action='store_true');p.add_argument('--graph',action='store_true');p.add_argument('--gn',action='store_true');p.add_argument('--fast-contact',action='store_true');p.add_argument('--compact',action='store_true');p.add_argument('--colored',action='store_true');p.add_argument('--ledger',action='store_true');p.add_argument('--profile',action='store_true');p.add_argument('--iterations',type=int,default=16);args=p.parse_args();out=args.output;app=None;passed=False;steps=0;episodes=[]
+ def stop(*a):raise InterruptedError('Contact motion diagnostic stopped')
+ signal.signal(signal.SIGTERM,stop);signal.signal(signal.SIGINT,stop)
+ try:
+  from isaaclab.app import AppLauncher
+  app=AppLauncher(headless=True,device='cpu',visualizer=['none']).app
+  import numpy as np,torch,warp as wp,newton
+  from tomato_native_full_model import registry,build_model,configure_solver
+  from tomato_board_support import nodal_plane_stiffness
+  from tomato_objective_full_model import configure_objective
+  from tomato_contact_full_model import ContactObjectiveTomatoVBD,ContactFixedFrameTomatoVBD
+  from tomato_mollified_self_contact import MollifiedEmbeddedSelfContact
+  from tomato_fast_mollified_contact import FastMollifiedEmbeddedSelfContact
+  from tomato_colored_contact import ColoredFastMollifiedContact
+  from tomato_objective_gn_model import ContactObjectiveGNTomatoVBD
+  if args.compact:
+   from tomato_objective_gn_compact_model import ContactObjectiveGNTomatoVBD
+  if args.colored:
+   from tomato_colored_contact_model import ColoredContactObjectiveGNVBD as ContactObjectiveGNTomatoVBD
+  torch.set_num_threads(1);wp.init();wp.set_device('cuda:0');data=registry();data['x']+=np.array([0.,0.,.002]);fixed=np.asarray(data['design']['fixture']['node_ids']);model=build_model(data,fixed_nodes=fixed);model.set_gravity((0.,0.,-9.81))
+  solver=configure_solver(model,data,iterations=args.iterations,solver_class=ContactObjectiveGNTomatoVBD if args.gn else ContactObjectiveTomatoVBD if args.objective else ContactFixedFrameTomatoVBD);k=nodal_plane_stiffness(data)
+  configure_objective(solver,data,board_stiffness=k) # also allocates shared checked-volume buffers
+  engine=solver.surface_contact=(ColoredFastMollifiedContact if args.colored else FastMollifiedEmbeddedSelfContact if args.fast_contact else MollifiedEmbeddedSelfContact)(data,margin=.0001)
+  if args.colored:engine.physical_colors=model.particle_colors
+  from tomato_support_ledger import SupportLedger
+  ledger=SupportLedger(solver,data,fixed,k) if args.ledger else None
+  ledger_contract=json.loads((ROOT/'work/integration_20261102/support_ledger_contract.json').read_text()) if args.ledger else None
+  initial_energy=[0.]
+  states=[model.state(),model.state()];rest=model.particle_q.numpy().copy();dt=1/2400
+  files=[Path(__file__)]+[ROOT/'rl'/name for name in ['tomato_contact_full_model.py','tomato_support_ledger.py','tomato_colored_contact.py','tomato_reachable_contact_bounds.py','tomato_colored_contact_model.py','tomato_objective_gn_compact.py','tomato_objective_gn_compact_model.py','tomato_fast_mollified_contact.py','tomato_objective_gn_blocks.py','tomato_objective_gn_model.py','tomato_mollified_self_contact.py','tomato_embedded_self_contact.py','tomato_collision_embedding.py','tomato_collision_local_filters.py','tomato_canonical_self_contact.py','tomato_objective_full_model.py','tomato_native_objective_reference.py','tomato_board_support.py','tomato_checked_volume_steps.py']];pins={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files};snapshot=out/'source_snapshot';snapshot.mkdir(exist_ok=True,parents=True)
+  for p in files:(snapshot/p.name).write_bytes(p.read_bytes())
+  write(out,'input_manifest.json',dict(source_sha256=pins,dt_s=dt,steps_per_episode=args.steps,iterations=args.iterations,objective_material=args.objective,gn_preconditioner=args.gn,fast_contact=args.fast_contact,contact_margin_m=engine.margin,collision_self_contact_enabled=engine.solver.particle_enable_self_contact,mechanical_self_contact_delegated_to_collision_model=True,scope='Gravity and initially closed surface, no blade or fracture. Numerical component diagnostic.'))
+  def reset():
+   for state in states:solver.reset(state,flags=newton.StateFlags.PARTICLE_Q|newton.StateFlags.PARTICLE_QD);state.particle_q.assign(rest);state.particle_qd.zero_();state.clear_forces()
+   solver.particle_q_prev.assign(rest);solver.reset_material();engine.invalid.zero_();engine.contact_energy.zero_()
+   if ledger:
+    ledger.reset();initial_energy[0]=ledger.measurements(states[0])['energy']['total_j']
+  graph=None;warm_steps=0
+  if args.graph:
+   reset();solver.step(states[0],states[1],None,None,dt);
+   if ledger:ledger.step(states[1],dt)
+   solver.step(states[1],states[0],None,None,dt)
+   if ledger:ledger.step(states[0],dt)
+   wp.synchronize();steps+=2;warm_steps=2;reset()
+   with wp.ScopedCapture() as capture:
+    solver.step(states[0],states[1],None,None,dt)
+    if ledger:ledger.step(states[1],dt)
+    solver.step(states[1],states[0],None,None,dt)
+    if ledger:ledger.step(states[0],dt)
+   graph=capture.graph
+   if args.steps%2:raise ValueError('Even measured steps required for two-step graph')
+  for episode in range(2):
+   reset();trace=[]
+   for batch in range(args.steps//2 if args.graph else args.steps):
+    i=batch*2 if args.graph else batch
+    if (out/'stop.request').exists():raise InterruptedError('Guard stop during contact motion')
+    start=time.monotonic();sin,sout=states[i%2],states[1-i%2];
+    from contextlib import nullcontext
+    profile=wp.ScopedTimer('full-model-step',cuda_filter=wp.TIMING_KERNEL,print=False) if args.profile and episode==0 and batch==0 else None
+    with profile if profile else nullcontext():
+     if args.graph:wp.capture_launch(graph);sout=states[0]
+     else:
+      solver.step(sin,sout,None,None,dt)
+      if ledger:ledger.step(sout,dt)
+    if profile:
+     by_kernel={}
+     for event in profile.timing_results:
+      q=by_kernel.setdefault(event.name,dict(calls=0,cuda_ms=0.));q['calls']+=1;q['cuda_ms']+=event.elapsed
+     write(out,'kernel_profile.json',dict(wall_ms=profile.elapsed,kernels=sorted([dict(name=name,**values) for name,values in by_kernel.items()],key=lambda q:-q['cuda_ms'])))
+    wp.synchronize();steps+=2 if args.graph else 1;solver.commit_cohesion(sout);engine.evaluate(sout.particle_q,dt);wp.synchronize();x=sout.particle_q.numpy().astype(float);v=sout.particle_qd.numpy().astype(float);ratios=np.linalg.det(x[data['cells'][:,1:]]-x[data['cells'][:,:1]])/(6*data['volumes']);force=engine.physical_force.numpy();row=dict(step=i+(2 if args.graph else 1),wall_s=time.monotonic()-start,minimum_volume_ratio=float(ratios.min()),maximum_speed_m_s=float(np.linalg.norm(v,axis=1).max()),board_penetration_m=float(max(0.,-x[:,2].min())),maximum_displacement_m=float(np.linalg.norm(x-rest,axis=1).max()),maximum_damage=float(solver.history.numpy()[:,1].max()),fixture_error_m=float(np.max(abs(x[fixed]-rest[fixed]))),contact_candidates=int(engine.stencil_count.numpy()[0]),contact_invalid=int(engine.invalid.numpy()[0]),contact_energy_j=float(engine.contact_energy.numpy()[0]),contact_peak_n=float(np.linalg.norm(force,axis=1).max()))
+    if ledger:
+     row['support_ledger']=ledger.measurements(sout);audit=row['support_ledger'];audit['energy_increase_above_initial_j']=audit['energy']['total_j']-initial_energy[0]
+     if audit['linear_impulse_residual_ns']>ledger_contract['linear_impulse_error_ns'] or audit['angular_impulse_residual_nms']>ledger_contract['angular_impulse_error_nms'] or audit['energy_increase_above_initial_j']>ledger_contract['maximum_energy_increase_above_initial_j']:
+      write(out,'ledger_failure.json',dict(step=row,contract=ledger_contract));raise ValueError('Independent support impulse/energy audit failed')
+    trace.append(row);write(out,'contact_dynamics_partial.json',dict(episodes=episodes,current_episode=episode,trace=trace,newton_steps=steps))
+    if not np.isfinite(x).all() or ratios.min()<=.1 or row['board_penetration_m']>.0001 or row['fixture_error_m']!=0 or row['contact_invalid'] or row['maximum_damage']!=0:raise ValueError('Prefracture contact dynamic gate failed '+str(row))
+   np.savez(out/f'final_{episode}.npz',x=x,v=v);episodes.append(dict(trace=trace))
+  a=np.load(out/'final_0.npz');b=np.load(out/'final_1.npz');pe=float(abs(a['x']-b['x']).max());ve=float(abs(a['v']-b['v']).max())
+  if pe>1e-7 or ve>2e-5:raise ValueError('Contact loaded replay failed')
+  write(out,'contact_dynamics_measurements.json',dict(episodes=episodes,position_replay_error_m=pe,velocity_replay_error_m_s=ve,newton_steps=steps,source_unchanged=all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==h for p,h in pins.items()),scope='Initially closed full surface under short gravity loading. No sustained support, blade coupling or fracture qualification.'));passed=True
+ except BaseException:write(out,'worker_failure.json',dict(traceback=traceback.format_exc()));traceback.print_exc()
+ finally:
+  write(out,'worker_result.json',dict(shutdown_requested=app is not None,diagnostic_passed=passed,contact_dynamics_passed=passed,newton_steps=steps,controlled_steps=0,episodes_completed=len(episodes),steps_per_episode=args.steps,objective_material=args.objective))
+  if app is not None:app.close(exit_code=0 if passed else 1)
+ return 0 if passed else 1
+if __name__=='__main__':raise SystemExit(main())

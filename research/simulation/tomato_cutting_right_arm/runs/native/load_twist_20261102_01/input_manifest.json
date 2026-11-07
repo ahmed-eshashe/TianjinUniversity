@@ -1,0 +1,53 @@
+{
+  "duration_s": 1.1,
+  "load_case": "lateral_twist",
+  "dt_s": 0.0004166666666666667,
+  "world_from_sim_translation_m": [
+    -0.0225,
+    0.0,
+    0.0295
+  ],
+  "world_board_height_m": 0.0,
+  "simulation_board_height_m": -0.0295,
+  "episodes": 2,
+  "deformable_steps": 5280,
+  "refinement": 1,
+  "preview": false,
+  "screen": false,
+  "native_vbd_steps": 0,
+  "controlled_steps": 5283,
+  "robot_setup_steps": 3,
+  "backend": "Failed-safe translated-frame float64 coupled Fraction-to-volume-boundary positive tensile-curvature block-Jacobi GN-preconditioned L-BFGS/PCG candidate using unchanged source forces, Newton registry and complete collision backend",
+  "lbfgs_memory_pairs": 8,
+  "positive_curvature_relative_threshold": 1e-10,
+  "maximum_outer_iterations": 256,
+  "maximum_cg_iterations": 1000,
+  "cg_relative_tolerance": 1e-09,
+  "cg_absolute_tolerance": 1e-16,
+  "solver_declared_duration_s": 1.1,
+  "solver_total_velocity_defect_budget_m_s": 1e-06,
+  "board_penetration_budget_m": 0.0001,
+  "maximum_displacement_m": 0.02,
+  "replay_position_budget_m": 1e-10,
+  "replay_velocity_budget_m_s": 1e-08,
+  "global_contract": {
+    "version": "support-ledger-0.1",
+    "scope": "Undamaged standalone full-target gravity fixture; engineering numerical checks, not experimental validation",
+    "initial_momentum": "zero",
+    "linear_impulse_error_ns": 0.0001,
+    "angular_impulse_error_nms": 1e-05,
+    "maximum_energy_increase_above_initial_j": 1e-05,
+    "provenance": "Frozen before first ledger run. Absolute impulse budget is about 0.08% of one second of total target weight; angular budget uses a 0.1 m characteristic length. Energy bound is an added numerical injection stop, not physical material accuracy. Original volume, board and settling gates remain unchanged.",
+    "limitations": "No actuator, robot, fracture or moving-support work in this fixture. Fixed support work is zero only after the exact fixed-position check passes. Record numerical dissipation; do not present loss of energy alone as a full work qualification."
+  },
+  "local_contract": {
+    "version": "local-force-residual-0.1",
+    "scope": "Undamaged standalone target integration; no robot or fracture work",
+    "cumulative_absolute_nodal_impulse_residual_ns": 0.0001,
+    "formula": "sum over accepted substeps and free nodes of norm(m_i*(v_i_new-v_i_old)-dt*F_i(x_new))",
+    "force_source": "Fresh final-state float64 bulk gradient, objective cohesive force, full contact force, board and gravity; no solver last-color arrays or acceleration-inferred reaction",
+    "provenance": "Additional numerical audit declared after the captured failure exposed cancelling internal errors. Uses the existing 0.0001 Ns absolute support impulse budget as a stricter sum of nonnegative local errors. Does not replace or relax global impulse, angular, energy, volume, board, replay, accuracy or sustained-support gates.",
+    "limitation": "Finite solver convergence criterion for the original implicit-Euler fixture, not experimental material accuracy. Declare history/eligibility treatment separately before fracture."
+  },
+  "scope": "NEW PRESTRESSED INITIAL CONDITION. Synthetic held-force support challenge with actual parked robot at matching clocks. Full cases apply a 100 ms pulse then one second without load. Original source, fixture and free cap; unchanged impulse/volume/board/source-displacement gates; energy includes independently logged held-load displacement work. Maximum speed 0.1 m/s, no claim of postpulse resettling. No blade contact, actual mounted target work, fracture or cut qualification."
+}

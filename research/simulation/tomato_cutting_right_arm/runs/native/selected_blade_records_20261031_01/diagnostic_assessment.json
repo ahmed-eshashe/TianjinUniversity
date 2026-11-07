@@ -1,0 +1,120 @@
+{
+  "result": "PASS: isolated native Contacts transfer of two explicitly selected blade-reference records plus an empty control.",
+  "native_attempts": 1,
+  "focused_tests_passed": 18,
+  "native_refusal_controls_passed": 16,
+  "metrics": {
+    "max_surface_error_m": 1.6839757653353835e-10,
+    "max_projected_gap_error_m": 1.4773101015067014e-10,
+    "max_normal_conversion_error": 2.54101025282099e-08
+  },
+  "interpretation": "The native buffer roundtrip is validated for these disclosed records. It is not collision-generated blade contact or a solver-integrated full-surface backend.",
+  "mechanical_steps": 0,
+  "force_evaluations": 0,
+  "original_pinned_sources_unchanged": true,
+  "private_capability_metadata": "Full-surface flag explicitly set only on newly allocated owned Contacts; its particle-only-consumer refusal was checked. Installed library unchanged.",
+  "reset_scope": "Count/generation invalidation and stale-prefix refusal only, not a complete physics-history reset.",
+  "limits": [
+    "Explicitly selected finite reference candidates, not an automated general collision search or physical manifold.",
+    "Standalone contact/pose/particle arrays only: no native blade body, collision pipeline or solver was connected.",
+    "Identity-frame geometry conversion checks only; no dynamic coupling, impulse, work, cutting or training qualification."
+  ],
+  "next_step": "A bounded stationary native force check of these selected blade-reference records using an independently calculated contact-law reference; no solver integration or motion.",
+  "item_12_complete": false,
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 2.3125081220005086,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 10,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25273282560,
+    "min_free_vram_bytes": 7694450688,
+    "mode": "blade_record_roundtrip",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "blade_record_cases_completed": 3,
+      "published_selected_records": 2,
+      "refusal_controls_passed": 16,
+      "mechanical_steps": 0,
+      "force_evaluations": 0,
+      "training": false,
+      "full_surface_contact_validated": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "wide:edge_through_authored_blade_face",
+        "native_count": 1,
+        "seven_fields_equal": true,
+        "geometry": [
+          {
+            "surface_error_m": 1.6839757653353835e-10,
+            "projected_gap_error_m": 1.4773101015067014e-10,
+            "normal_conversion_error": 8.200697118714951e-09
+          }
+        ],
+        "generation_published": 3,
+        "generation_cleared": 4,
+        "inactive_tail_ignored": true,
+        "clear_does_not_prove_complete_physics_reset": true
+      },
+      {
+        "id": "authored_blade_edge_through_soft_interior",
+        "native_count": 1,
+        "seven_fields_equal": true,
+        "geometry": [
+          {
+            "surface_error_m": 2.6944088358456887e-11,
+            "projected_gap_error_m": 5.7407622926219926e-11,
+            "normal_conversion_error": 2.54101025282099e-08
+          }
+        ],
+        "generation_published": 3,
+        "generation_cleared": 4,
+        "inactive_tail_ignored": true,
+        "clear_does_not_prove_complete_physics_reset": true
+      },
+      {
+        "id": "wide:translated_clear_negative_control",
+        "native_count": 0,
+        "seven_fields_equal": true,
+        "geometry": [],
+        "generation_published": 1,
+        "generation_cleared": 2,
+        "inactive_tail_ignored": true,
+        "clear_does_not_prove_complete_physics_reset": true
+      }
+    ],
+    "refusal_controls": [
+      "wide:edge_through_authored_blade_face:particle_only_consumer",
+      "wide:edge_through_authored_blade_face:partial_transfer_invalidated",
+      "wide:edge_through_authored_blade_face:saturated_collector",
+      "wide:edge_through_authored_blade_face:saturated_native_count",
+      "wide:edge_through_authored_blade_face:stale_generation",
+      "wide:edge_through_authored_blade_face:stale_episode_snapshot",
+      "authored_blade_edge_through_soft_interior:particle_only_consumer",
+      "authored_blade_edge_through_soft_interior:partial_transfer_invalidated",
+      "authored_blade_edge_through_soft_interior:saturated_collector",
+      "authored_blade_edge_through_soft_interior:saturated_native_count",
+      "authored_blade_edge_through_soft_interior:stale_generation",
+      "authored_blade_edge_through_soft_interior:stale_episode_snapshot",
+      "wide:translated_clear_negative_control:particle_only_consumer",
+      "wide:translated_clear_negative_control:saturated_native_count",
+      "wide:translated_clear_negative_control:stale_generation",
+      "wide:translated_clear_negative_control:stale_episode_snapshot"
+    ],
+    "mechanical_steps": 0,
+    "force_evaluations": 0,
+    "collision_generated": false,
+    "solver_connected": false,
+    "full_blade_contact_path_validated": false,
+    "conversion_scope": "Selected identity-frame fixtures only: surface/gap 1e-7 m; normal conversion 1e-6. Not a global force/contact acceptance threshold."
+  }
+}

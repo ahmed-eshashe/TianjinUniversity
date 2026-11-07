@@ -1,0 +1,94 @@
+{
+  "status": "bounded_source_and_trace_review_complete",
+  "native_invocations": 0,
+  "physics_steps": 0,
+  "target_steps": 0,
+  "actual_motor_work_qualified": false,
+  "touch_launch_ready": false,
+  "installed_solver_measured_candidate": "root articulation view get_dof_projected_joint_forces()",
+  "candidate_runtime_readback_tested": false,
+  "implicit_applied_effort_is_approximate": true,
+  "actuation_force_getter_is_not_total_implicit_drive_effort": true,
+  "source_sha256": {
+    "/home/omen/IsaacLab/source/isaaclab/isaaclab/actuators/actuator_pd.py": "4ed77a4c7d95a470d219ea35c8a7a8423288111e8b41737c1358d63846598c95",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache/omni.physics.tensors-110.3.2+110.3.0.lx64.r.cp312.u7f4/omni/physics/tensors/api.py": "1ba654210857a63b98236512e5f225723c3eb1dee64e867eaa4fade0578ccb7b",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extsDeprecated/isaacsim.core.prims/isaacsim/core/prims/impl/articulation.py": "b9c37c52d69a8da4bf639454d6af01fe8680ea914ac41e3503499129df1f6ced",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/exts/isaacsim.robot_setup.gain_tuner.ui/isaacsim/robot_setup/gain_tuner/ui/ui_builder.py": "f3c827e69a8a16f481b62e21d2ca075f68710ead3e48558224823d2f500dc025"
+  },
+  "traces": [
+    {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_tracking_corrected_20261102_01/measured_motion.npz",
+      "sha256": "7fb97dd54a3110b94deeb1428db7e02d65530e0c8d82e3b14ccee0c43e28e7c5",
+      "fields": [
+        "body_link_poses",
+        "joint_positions",
+        "joint_velocities",
+        "joint_position_commands",
+        "commanded_tool_matrices",
+        "actual_tool_matrices",
+        "body_names",
+        "joint_names",
+        "initial_q",
+        "initial_body_poses",
+        "arm_ids",
+        "arm_limits",
+        "joint_velocity_commands",
+        "gravity_feedforward_efforts",
+        "requested_arm_gravity_efforts",
+        "native_effort_limits"
+      ],
+      "measured_drive_effort_recorded": false
+    },
+    {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measured_motion.npz",
+      "sha256": "fc9d74b5ae9b8d5f2467cfb95dff96dae100e0a1d464c8566d93ddd94ab7c3aa",
+      "fields": [
+        "body_link_poses",
+        "joint_positions",
+        "joint_velocities",
+        "joint_position_commands",
+        "commanded_tool_matrices",
+        "actual_tool_matrices",
+        "body_names",
+        "joint_names",
+        "initial_q",
+        "initial_body_poses",
+        "arm_ids",
+        "arm_limits",
+        "joint_velocity_commands",
+        "gravity_feedforward_efforts",
+        "requested_arm_gravity_efforts",
+        "native_effort_limits"
+      ],
+      "measured_drive_effort_recorded": false
+    },
+    {
+      "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/corrected_exchange_clear_20261102_01/robot_trace.json",
+      "sha256": "04f57e4ea01086434022e05e704af76b44085f2f5f42fc1a2372428257d6821c",
+      "fields": [
+        "q",
+        "qd",
+        "tool_pose",
+        "minimum_target_aabb_gap_m",
+        "minimum_blade_board_height_m",
+        "mount_position_error_m",
+        "mount_angle_error_rad",
+        "maximum_joint_speed_rad_s",
+        "right_tracking_error_rad",
+        "maximum_rigid_contact_force_n",
+        "episode_physx_steps",
+        "total_matched_physx_steps",
+        "robot_step",
+        "matched_target_steps",
+        "matched_robot_time_s",
+        "matched_target_time_s",
+        "post_robot_CAD_gap_m",
+        "gravity_feedforward_nm"
+      ],
+      "measured_drive_effort_recorded": false
+    }
+  ],
+  "old_failed_verdicts_unchanged": true,
+  "recommended_next_action": "One contact-free robot-only measured-effort capture protocol; no loaded touch until interval semantics and complete work accounting are defensible.",
+  "stop_rule": "One protected invocation, maximum 120 executed robot steps at 1/240s and 180s wall; stop on unsupported/nonfinite/inconsistent readback. No solver/damping/material sweep. Do not infer work qualification from finite or matching effort channels alone."
+}

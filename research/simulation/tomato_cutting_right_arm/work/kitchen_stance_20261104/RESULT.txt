@@ -1,0 +1,27 @@
+Closer stance and original kitchen — 2026-11-04
+
+Robot base moved 14 cm toward counter. Existing world pickup position, handle grip, left-arm resting pose and target are retained. Arm route replanned. Original kitchen aligned to benchmark coordinates; duplicate working counter/board/knife removed from background. Original room is presentation geometry; its extra props have no active collision physics. Working counter and board physics remain active.
+
+4448-step close-before-lift and noncontact approach passed. Separate toolbar Play smoke test passed. No cutting, training or video. Ideal fixture clamp and fixed hand attachment remain disclosed. Experimental validation stays pending.
+
+Known source asset limitation: the microwave texture T_XS.png is missing in the supplied kitchen; other restored materials render. Earlier failed stance and camera attempts remain in this work folder.
+
+{
+  "base_shift_toward_counter_m": 0.14,
+  "scripted_pickup_and_approach_passed": true,
+  "physics_steps": 4448,
+  "interactive_play_passed": true,
+  "minimum_recorded_blade_target_gap_m": 0.03963445610571484,
+  "maximum_recorded_arm_error_rad": 0.023855477571487427,
+  "maximum_recorded_mount_error_m": 7.584126865148094e-07,
+  "original_kitchen_restored": true,
+  "background_collision_validation": false,
+  "working_counter_and_board_collisions_retained": true,
+  "fixed_attachment_disclosed": true,
+  "cutting": false,
+  "video": false,
+  "experimental_validation": "pending",
+  "known_asset_limitation": "Source microwave T_XS.png texture absent; original asset fallback material remains.",
+  "native_evidence": "native03",
+  "interactive_evidence": "interactive01"
+}

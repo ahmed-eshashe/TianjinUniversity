@@ -1,0 +1,7 @@
+from pathlib import Path
+import json
+import numpy as np
+r=Path(__file__).resolve().parents[2];z=np.load(r/'runs/native/sustained_support_20261102_05/first_bad_update.npz');rng=np.random.default_rng(442);ids=rng.integers(0,len(z['cells']),100000);x=z['before'][z['cells'][ids]].copy();x+=rng.normal(size=x.shape).astype(np.float32)*rng.choice([1e-8,1e-6,1e-4,1e-3],size=(len(x),1,1)).astype(np.float32);v=z['volumes'][ids];v32=v.astype(np.float32);e=x[:,1]-x[:,0];f=x[:,2]-x[:,0];g=x[:,3]-x[:,0];scale=np.float32(1)/(np.float32(6)*v32);j=np.sum(e*np.cross(f,g),axis=1,dtype=np.float32)*scale
+absolute=np.abs(e[:,0]*f[:,1]*g[:,2])+np.abs(e[:,0]*f[:,2]*g[:,1])+np.abs(e[:,1]*f[:,0]*g[:,2])+np.abs(e[:,1]*f[:,2]*g[:,0])+np.abs(e[:,2]*f[:,0]*g[:,1])+np.abs(e[:,2]*f[:,1]*g[:,0]);bound=64*np.finfo(np.float32).eps*absolute*np.abs(scale)+np.abs(j)*np.abs(v32.astype(float)-v)/v;double=np.linalg.det(x.astype(float)[:,1:]-x.astype(float)[:,:1])/(6*v);error=np.abs(j-double);accepted=j>.1+bound
+if np.any(error>bound) or np.any(double[accepted]<=.1):raise ValueError('Roundoff bound or accepted candidate violated reference')
+a={'cases':len(x),'fast_accepted':int(accepted.sum()),'false_fast_acceptances':0,'maximum_error_to_bound_ratio':float(np.max(error/np.maximum(bound,1e-30))),'scope':'CPU binary32 arithmetic vs independent binary64 determinant on perturbed actual cells; supports conservative fast-path bound, not full numerical convergence'};(r/'work/integration_20261102/volume_roundoff_bound_check.json').write_text(json.dumps(a,indent=2)+'\n');print(a)

@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "case": "translation",
+      "native_segments_accepted": [
+        true
+      ],
+      "old_absolute_floor_segments_accepted": [
+        true
+      ],
+      "dense_path_minimum_J": [
+        0.9999999999999996
+      ],
+      "minimum_retained_gap_threshold": [
+        0.28
+      ]
+    },
+    {
+      "case": "admissible_but_too_close_single_trial",
+      "native_segments_accepted": [
+        false
+      ],
+      "old_absolute_floor_segments_accepted": [
+        true
+      ],
+      "dense_path_minimum_J": [
+        0.2
+      ],
+      "minimum_retained_gap_threshold": [
+        0.28
+      ]
+    },
+    {
+      "case": "safe_single_trial",
+      "native_segments_accepted": [
+        true
+      ],
+      "old_absolute_floor_segments_accepted": [
+        true
+      ],
+      "dense_path_minimum_J": [
+        0.6
+      ],
+      "minimum_retained_gap_threshold": [
+        0.28
+      ]
+    },
+    {
+      "case": "same_close_state_reachable_by_safe_trials",
+      "native_segments_accepted": [
+        true,
+        true,
+        true
+      ],
+      "old_absolute_floor_segments_accepted": [
+        true,
+        true,
+        true
+      ],
+      "dense_path_minimum_J": [
+        0.6,
+        0.3,
+        0.2
+      ],
+      "minimum_retained_gap_threshold": [
+        0.28,
+        0.2,
+        0.14
+      ]
+    },
+    {
+      "case": "positive_endpoints_collapsed_middle",
+      "native_segments_accepted": [
+        false
+      ],
+      "old_absolute_floor_segments_accepted": [
+        false
+      ],
+      "dense_path_minimum_J": [
+        0.0
+      ],
+      "minimum_retained_gap_threshold": [
+        0.28
+      ]
+    }
+  ],
+  "scope": "Five native numerical path controls versus dense independent determinant paths. A physically admissible J=.2 state is rejected in one aggressive trial but reachable through three safe trials; physical floor remains .1. Zero mechanical/support/cutting qualification."
+}

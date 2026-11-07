@@ -1,0 +1,24 @@
+{
+  "cases": 2,
+  "mass_matrix_absolute_budget_kg_m2": 1e-05,
+  "mass_matrix_relative_budget": 2e-05,
+  "gravity_torque_absolute_budget_nm": 0.0001,
+  "gravity_torque_relative_budget": 2e-05,
+  "kinetic_energy_relative_budget": 2e-05,
+  "kinetic_energy_absolute_budget_j": 1e-10,
+  "physical_time_advanced_s": 0.0,
+  "controlled_steps": 0,
+  "deformable_steps": 0,
+  "newton_steps": 0,
+  "scope": "Static robot home and candidate contact configuration. Read-only actual native COM/Jacobian/mass/gravity data against independent body-sum mechanics. Placement is initial state assignment, NOT an executed route. Manufactured velocities, no actual dynamic work/feedback or target step.",
+  "references": [
+    {
+      "url": "https://docs.omniverse.nvidia.com/kit/docs/omni_physics/107.0/extensions/runtime/source/omni.physics.tensors/docs/api/python.html",
+      "claim": "Articulation inertia tensors are in center-of-mass local frames."
+    },
+    {
+      "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/assets/articulation/base_articulation_data.py",
+      "claim": "COM Jacobian row convention, generalized M(q), gravity-loading g(q)."
+    }
+  ]
+}

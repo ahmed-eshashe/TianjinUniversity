@@ -1,0 +1,19 @@
+{
+  "scope": "Focused dry tracking correction only. No target/contact/energy campaign.",
+  "baseline": "visible_dry_motion_20261102_01",
+  "changes": [
+    "Use unchanged route waypoints, half-speed clock and linear per-physics-step joint interpolation between consecutive samples; first sample held.",
+    "Set right-arm velocity targets to derivative of the interpolated joint path; left arm zero velocity target.",
+    "Add native gravity compensation only on arm joints, clipped to unchanged native effort limits. No drive gains, model mass, damping, mount or contact properties changed."
+  ],
+  "prospective_tracking_targets": {
+    "max_tool_position_m": 0.001,
+    "final_tool_position_m": 0.00025,
+    "max_tool_orientation_rad": 0.002,
+    "max_left_arm_deviation_rad": 0.002
+  },
+  "rationale": "Provisional dry-controller targets: 1mm maximum is under one sixth of the previous 6mm board clearance, and final0.25mm tests persistent bias. These are explicitly chosen engineering targets, not sensor precision, hardware safety limits or cutting qualification. Original geometric/speed/mount/contact/joint-limit stops retained.",
+  "stopping_rule": "One full route and independent readback. Preserve any failure; no parameter sweep. Stop before contact.",
+  "physics_steps": 4091,
+  "wall_budget_s": 600
+}

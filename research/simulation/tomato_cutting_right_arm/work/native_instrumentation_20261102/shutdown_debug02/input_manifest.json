@@ -1,0 +1,31 @@
+{
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_evidence_snapshot.py": "13847b1b27f76b8de8203c253c178a9e6c5b874354f1a88a19d4586cd52876bf",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_observer_capture_worker_v01.py": "5ba36dd662b7b9f127c64040b0b9e86d406411a4a817ff64acffdc403fea514d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_parked_robot.py": "84934bd2109b1fb43b8b99ea1457bf131b1228c78c10fb2ac27224770cdc6cec",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/load_down_20261102_01/robot_kinematic_snapshot.json": "d9f4c6d7206ee19cef73fbd9aa7ad3801ca0c6888eea0ed2b967e76ac97c3e87",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/static_preparation_cached_20261102_01/prepared_equilibrium.npz": "7101378ffcbac97d4eb45b950c5796023ad22a5b27ba2ebef5abaaa728dc17aa",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda": "df906ab8b04a289b8e393df203646515475180a33e5ef3abf0238cdc7edd7d92",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/near_approach_plan_20261102_02/near_approach_plan.json": "d35ec27039d037b9f0f14df218b720c9f3fbe788dacc2ec8dd9e5d7bd6864e79",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/motor_work_review_20261102/capture_contract.json": "a14469fecc5a7b493ddeb83b9dcfe33316bfe51081286156d50e5d29724d16e9"
+  },
+  "contract": {
+    "scope": "Contact-free robot-only measured-effort interface capture; not motor-work or cutting qualification",
+    "robot_dt_s": 0.004166666666666667,
+    "executed_steps": 120,
+    "monitor_setup_steps": 3,
+    "total_physx_steps": 123,
+    "target_steps": 0,
+    "wall_cap_s": 180,
+    "route": "Existing near-approach plan02, waypoints240 through255 inclusive,8 linear physics substeps per waypoint interval; initial-state assignment at240, then withdrawal only",
+    "controller": "Existing corrected controller: original implicit gains and effort limits, consistent desired velocities, bounded arm-only native gravity compensation",
+    "projection_comparison_absolute_nm": 1e-06,
+    "projection_comparison_relative": 1e-06,
+    "acceptance": "Accessible finite fresh effort buffers; declared joint/body order; preserved commands and full incoming wrenches; projection consistency; inherited clear-space robot gates; exact counts and source closure",
+    "limitations": "Projected effort is transmitted active-axis load, not automatically isolated motor torque; same-backend projection agreement does not prove physical accuracy or interval averaging. No complete-work pass criterion is asserted.",
+    "stop": "One invocation; no physical rerun, parameter tuning, contact, target solve, fracture, video or training. Unsupported or inconsistent readback ends the protocol."
+  },
+  "scope": "Robot-only clear retreat, no target solve or contact work qualification"
+}

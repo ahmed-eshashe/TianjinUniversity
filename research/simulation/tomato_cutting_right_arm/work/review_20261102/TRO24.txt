@@ -1,0 +1,1399 @@
+JOURNAL OF LATEX CLASS FILES                                                                                                                               1
+
+
+
+
+Robotic Cutting of Fruits and Vegetables: Modeling
+ the Effects of Deformation, Fracture Toughness,
+        Knife Edge Geometry, and Motion
+                                                    Prajjwal Jamdagni and Yan-Bin Jia
+
+
+
+   Abstract—There is a huge potential for automation of cutting               types of fruits, vegetables, or meat, saving space and reducing
+fruits and vegetables in the kitchen and food industry as this                clutter. Robots at restaurants and food booths will be able to
+can not only save time and labor on meal preparation and food                 go beyond their “standard” roles of display and delivery to
+packaging but also improve workspace safety. Foods may undergo
+large deformations, and the knife can experience different forces,            assist chefs on meal preparation, meeting high demands and
+which together make it difficult to carry out cutting as intended.            reducing customer waiting time.
+With an accurate model, the contact force between the knife                      At present, the food industry still requires manual interven-
+and the cutting board can be extracted from the sensor data for               tions at various stages such as separation of bones from muscle
+control to realize a smooth knife movement. In this paper, we
+                                                                              and fat, which involve a level of dexterity not yet achieved
+apply the finite element method (FEM) to estimate deformation
+and the cutting force, and linear elastic fracture mechanics                  by machines. Workers often spend long hours carrying out
+(LEFM) to predict fracture. Three-dimensional (3D) FEM is                     repetitive tasks in a crowded environment with sharp tools and
+computationally prohibitive, since numerous tiny elements must                fast-paced machines. This has led to many injuries and long-
+be repeatedly re-generated around the knife edge as it moves                  term health problems, causing a very high turnover rate and,
+further into a food item. To address this issue, we perform two-
+                                                                              subsequently, revenue losses due to the time and effort required
+dimensional (2D) FEM modeling of parallel slices of the object
+and use interpolation to iteratively update forces and fracture,              to train new employees regularly. The use of robots will not
+the latter of which is predicted when the energy release rate                 only address the issues of injury and cost-effectiveness, but
+exceeds the material’s fracture toughness. A strain-based analysis            also make the workplace more hygienic and increase food
+quantifies the reduction in the cutting force when the knife is               safety due to less chance of contamination.
+in a slicing motion. Modeling is completed over the effects of
+the knife’s edge geometry and cutting path (with translation and                 Skillful cutting is challenging as a test for human-level
+rotation). The scheme is then incorporated into an existing control           dexterity. A cutting action typically consists of one or more
+strategy [1] to perform the knife skill of rock chop on soft objects.         movements such as pressing, slicing, rocking the knife edge
+Experiments conducted over various types of natural food have                 on the cutting board, etc. [2]. Each movement requires subtle
+demonstrated the accuracy of our model and its potential for                  control, to which modeling contributes in several ways. First,
+real-time cutting.
+                                                                              modeling can separate forces of different natures mashed in
+   Index Terms—Robotic cutting, dexterous manipulation, frac-                 the sensor readings, enabling the robot to follow a cutting
+ture mechanics, finite element method, and mechanics of mate-                 path with less effort and to ensure material separation by
+rials.
+                                                                              maintaining the knife’s contact with the cutting board. Second,
+                                                                              it can track the object’s deformation to position the knife in
+                         I. I NTRODUCTION                                     reference to its original shape, making it possible to cut to a
+                                                                              specified depth or width.1 Third, it can help predict events
+U     NTIL today, automated cooking has typically been car-
+      ried out on foods preprocessed by humans. To realize
+their potential for improving the daily quality of life for
+                                                                              along a cutting trajectory, whether ongoing or upcoming,
+                                                                              so adjustments can be made in time. Last, it can help the
+humans, robots need to possess various cutting skills such as                 robot leverage the knife geometry and the object’s physical
+chopping, slicing, and dicing. Such a robot can significantly                 properties for efficient cutting.
+reduce the burden for the elderly and assist people with                         In this paper, we present a model for cutting that can be used
+disabilities when completing the monotonous parts of cooking,                 to control a robot to perform the task dexterously. Modeling of
+such as ingredient preparation. It can replace specialized                    fracture [3] is based on a balance between the work performed
+appliances that are scattered in the kitchen for cutting different            by the knife and the sum of its portion responsible for fracture,
+                                                                              the amount of strain energy stored/released due to deformation,
+   *Support for this research has been provided by the US National Science    the amount of energy dissipated through friction, etc. Since
+Foundation under Grant IIS-1651792. Any opinions, findings, and conclusions   the action of cutting lasts over a short time period, modeling
+or recommendations expressed in this material are those of the authors and
+do not necessarily reflect the views of the National Science Foundation.      bears an incremental nature to track the varying crack front
+   *We would like to thank former labmates Xiaoqian Mu and Yuechuan Xue       inside the object and its changing shape. This makes the
+for their early help with experiments.                                        finite element method (FEM) a very good choice, carried
+   The authors are affiliated with the LeapThought Corp., Kirkland,
+WA 98033, and the Department of Computer Science, Iowa State
+University, Ames, IA 50011, USA. prajjwalprem@gmail.com,                        1 In robotic-assisted surgery, this will improve the chance for success in an
+jia@iastate.edu.                                                              operation while reducing the risk of undesirable tissue damage.
+JOURNAL OF LATEX CLASS FILES                                                                                                        2
+
+
+
+out iteratively as follows. Each iteration deals with a small       deformation, apply stress analysis to quantify the reduction
+downward movement of the knife, which injects some extra            in material toughness during a slicing action, and extend
+work. If the crack propagates, the object will release strain       modeling to account for general knife movements and varying
+energy of an amount that, in turn, depends upon the length of       knife edge geometry. More specifically, our work makes the
+the new crack. The propagation happens as long as the energy        following technical contributions:
+release rate exceeds the material’s fracture toughness. We can        1) It presents a procedure to compute the area of fracture
+predict the force component to propagate the crack as well as            and shape deformation created by cutting via solution of
+the force component to overcome friction.                                an energy-based equation.
+   Experience tells us that slicing an object with a kitchen          2) To avoid the prohibitively high computational cost of
+knife is a lot easier than pressing the knife into it. Robots            using a 3D mesh in fracture modeling, we interpolate over
+should also take advantage of the efficiency of slicing. Atkins          parallel 2D meshes without compromising accuracy.
+et al. [4] introduced an energy-based analytical model of             3) We derive a closed form to characterize how the material
+slicing under two assumptions. The first one stated that the             fracture toughness varies with both Poisson’s ratio and
+cutting force and knife displacement would be in the same                “slice-push ratio” describing the knife’s motion.
+direction in the cutting plane. However, this assumption does         4) A sequence of geometry- and mechanics-based methods
+not hold well for cutting deformable objects. The reason is              is presented to model the general case of cutting with a
+that different causes exist for tangential and normal forces             curved knife edge in both translation and rotation.
+acting on the knife. While the normal force results from              5) All the results have been validated through experiments
+compression, the tangential force results from shearing due to           performed over fruits and vegetables in contrast to syn-
+the friction between the knife edge and the object. We adopt             thetic objects often used in fracture mechanics.
+a generalized plane strain assumption [5], [6] to decouple the         Section II overviews related works from fracture mechanics,
+two forces and employ the FEM to calculate them. The second         FEM modeling, and robot control. Section III describes a
+assumption by Atkins et al. stated that the fracture toughness      scheme for cutting that employs energy-based fracture me-
+of an object during slicing would always be the same as during      chanics and the FEM. Section IV tackles prohibitive 3D
+pressing. This, however, did not agree with our experimental        modeling via the use of a set of 2D cross sections, and
+finding that fracture toughness changed during slicing. Indeed,     specializes the scheme to two dimensions over plain strains.
+less deformation is needed to reach the critical maximum            In Section V, we characterize a decrease in the cutting force
+principal strain for fracture [7], resulting in a decrease in the   with the slicing angle via the maximum principal strain.
+fracture toughness. This paper characterizes such decrease via      Section VI models the effects of the knife edge geometry and
+analyzing the strain below the knife edge.                          knife movements. We present experiments in Section VII and
+   The above characterization allows us to model a slicing          conclude with discussions in Section VIII.
+action performed by either a straight or curved knife edge             This article is an extended version of our earlier work
+in translation. A rotation of the knife can be handled using a      presented at the 2019 International Conference on Intelligent
+piecewise linear approximation of its trajectory. Our model is      Robots and Systems (IROS) [8] and the 2021 International
+ready to be integrated into existing control policies to perform    Conference on Robotics and Automation (ICRA) [9]. Besides
+a dexterous cutting movement such as rock chop. The model           combining the results from these two conference papers with
+predicts the force due to deformation, so the robotic arm’s joint   numerous refinements, this paper extends the previous work
+torques can be adjusted accordingly for the knife to maintain       in the three key aspects below:
+a certain level of contact force on the cutting board to achieve      1) modeling of arbitrary knife trajectories to predict cutting
+material separation.                                                     force and deformation (Section VI);
+   FEM-based modeling over a 3D mesh can be computa-                  2) experimental demonstrations of the applicability of our
+tionally prohibitive since tiny elements (≈ 106 in total) must           model to depth cuts on highly deformable objects (Sec-
+be placed near the knife edge for a reasonable accuracy. To              tion VII-A); and
+circumvent this, we will represent the object as multiple evenly      3) integration of modeling with an existing control strat-
+spaced cross sections perpendicular to the cutting plane. Each           egy [1] for dexterous cutting actions, in particular, rock
+cross section is represented by a 2D mesh, to which the                  chop (Section VII-C).
+use of tiny elements (≈ 104 in total) becomes affordable.
+Interpolation is applied between every two adjacent cross
+sections. Boundary conditions on the hanging portions of the        B. Notation
+cross sections are obtained separately using the FEM on a              A scalar is denoted by a letter in either lower or upper case,
+coarse 3D mesh model of the same object.                            e.g., l or W . A vector (or a point) is by default a column
+                                                                    vector, written as a bold lowercase letter, e.g., p. A matrix
+                                                                    is denoted by a bold uppercase letter, e.g., K. A superscript
+A. Contributions and Outline of the Article                         in the form of a parenthesized index describes the value of
+   This paper focuses on the modeling of cutting deformable         the quantity during an iteration specified by the index, e.g.,
+objects based on the mechanics of materials, fracture, and          u(i) is the value of u during the i-th iteration. A term under
+the FEM modeling. Tracking energy exchange during the               a bar refers to its counterpart lower by one dimension or, in
+physical action, we study efficient computation of fracture and     the case of a scalar, represents the density of the quantity.
+JOURNAL OF LATEX CLASS FILES                                                                                                             3
+
+
+
+For example, a three-dimensional vector, say, p, under a bar,           when the speed decreased [29]. Moisture content and storage
+becomes a two-dimensional vector p̄ (with the removed entry             period were found to affect the physico-mechanical properties
+implicit in the context).                                               of food [30]–[33].
+
+                      II. R ELATED W ORK                                B. Modeling of Fracture With Deformation
+   Our model draws upon knowledge from multiple fields, in-
+                                                                           Crack propagation depends upon the elastic strain energy
+cluding fracture mechanics, FEM, and robotic cutting. Below,
+                                                                        stored in the body. It is impossible to calculate the energy
+we present an overview of related works in each field.
+                                                                        analytically for objects with arbitrary shapes or under any
+                                                                        loading conditions. Numerical methods have been proposed
+A. Fracture Mechanics                                                   for modeling soft body mechanics, which involves solving
+   Fracture mechanics studies crack initiation and propagation.         partial differential equations under various boundary condi-
+Griffith [10] first integrated fracture in brittle materials, charac-   tions. Broadly speaking, they can be categorized into mesh-
+terizing crack propagation based on surface energy. His theory          based and mesh-free types. The finite difference method
+was extended for ductile materials by Irwin [11], who added a           (FDM) [34] is the simplest mesh-based method for its way of
+dissipation term due to plastic deformation. Irwin’s theory was         approximating derivatives. However, it can only handle regular
+applicable to cracks for which the plastic deformation zone             geometries and is not accurate enough. The FEM has been
+around the crack tip was much narrower than the crack length.           used extensively for modeling soft body deformation because
+For a large plastic deformation at the crack tip, methods such          it can cope with complex geometries with arbitrary boundary
+as crack tip opening distance by Wells [12] and J-integral by           conditions and capture local effects by refining the mesh at
+Rice [13] were used for modeling crack propagation. For linear          regions in need of high accuracy [35].
+elastic materials, these methods have been shown to reduce                 The FEM was applied to simulate machining by checking
+to Griffith’s theory. Our model uses the fracture toughness             the shear stress ahead of the tool tip to determine chip separa-
+criterion introduced by Irwin [11] given its applicability as           tion [36], to detect crack propagation using the stress intensity
+ensured by the kitchen knife’s sharpness.                               factor and J-integral [37], and to calculate the energy release
+   A comprehensive survey [14] presented the basic mechanics            rate at the crack front using virtual crack extension [38].
+of cutting and compared different models for fracturing soft            In [39], [40], simulation and experiment with pig livers were
+tissues and bones. Fracture toughness was estimated for ductile         conducted via FEM-based modeling of deformations to de-
+materials [15] in cutting and for organ tissues in needle               termine cutting parameters in a computationally efficient way.
+insertion [16], [17], of which the mechanics were empirically           Given their complicated mechanical behaviors, soft tissues are
+investigated in [18]. The “slice/push ratio” introduced in [4]          more accurately modeled using the nonlinear FEM, as in the
+characterizes the dramatic force decrease as a result of the            work [41], where element separation and node snapping were
+knife’s “pressing and slicing”. For flexible solids that undergo        also applied to create a cut.
+negligible deformation during cutting, this ratio was employed             Use of the FEM is challenging if the geometry keeps
+to conveniently compute the cutting force and torque via an             changing, such as during crack propagation. Every time this
+integration along the knife edge [19]. Study of the effects             happens, we must create a new mesh and recompute the
+of knife geometry on both fracture and cutting force for                stiffness matrix. To cut down the computational cost, the ex-
+sugar beet topping had an objective to reduce beet fracture             tended FEM (XFEM) was developed to model discontinuities
+and overturning [20]. Stress distribution and its effect on the         such as fracture, dislocation, and phase interfaces [42], crack
+fracture force during slicing were also investigated [21], [22].        propagation [43], and animation of cutting of soft bodies [44],
+Models [23], [24] were proposed for compression cutting of              [45] without remeshing. Recently, a phase-field model [46]
+bio-materials and the effect of blade sharpness.                        proposed for crack growth was able to accurately display
+   Reduction in frictional force during soft material cutting           continuous crack evolution using a damage parameter.
+was found to be related to a large inclination angle of the                Simulation of cutting has been extensively studied in the
+blade [25]. In the paper industry, fracture mechanics is applied        field of computer graphics. Typically, this involves two em-
+to model crack propagation during the slicing of a paper                bedded meshes: a coarse volumetric mesh for the numerical
+stack, with the effect of friction on facilitating the process          simulation of deformation using the FEM or a mass-spring
+analyzed [26], [27]. The ease of slicing was attributed to the          model, and a high-resolution surface mesh for rendering and
+change from a global deformation during compression to a                collision detection. Biesler et al. [47] introduced an interactive
+local shear deformation [7]. For soft tissues, slicing could            model of cutting tetrahedral meshes of soft tissues (thus of
+more easily achieve the critical stress or strain for fracture          arbitrary shapes) with a very high accuracy. To more accurately
+[28], essentially decreasing the fracture toughness. Our paper          follow the physics, the spring-mass model in [47] was replaced
+carries out a strain-based analysis to quantify how fracture            with linear FEM in [48].
+toughness changes with the slicing angle.                                  A common problem with cutting tetrahedron elements is
+   Fracture toughness also depends on mechanical properties             the introduction of sliver elements, which can make the
+such as Young’s modulus, Poisson’s ratio, and viscosity. Mea-           finite element simulations unstable. A virtual node algorithm
+surements from food cutting revealed that the cutting force and         (VNA) [49] was proposed to place arbitrary piecewise linear
+friction tended to decrease when the temperature increased, or          cracks in deformable tetrahedral geometries by creating virtual
+JOURNAL OF LATEX CLASS FILES                                                                                                                  4
+
+
+
+copies of the nodes and duplicating the elements on the
+cutting surface. This approach did not create sliver elements                                                 Knife
+but limited how many times a tetrahedron could be cut.
+Sifakis et al. extended VNA to allow an arbitrary number of
+cuts in the geometry [50]. Though considered for simulating
+deformation, physics-based models [51] in graphics generally
+provide visual realism rather than accurate force feedback,                                               y
+with no validations through physical experiments.
+   Mesh-free methods can avoid the shortcomings of the
+aforementioned methods in modeling phenomena with large                                                          x
+deformations, discontinuities, and situations where nodes may
+be created and destroyed. One of the first such methods                                                         z
+was smoothed-particle hydrodynamics [52], which treated data
+points as particles that could move around and introduced             Fig. 1. Cutting task. The object rests on the xz-plane, and the knife edge
+a kernel to specify their relationships. Mesh-free methods            translates downward in the yz-plane.
+have been combined with mesh-based methods such as the
+smoothed FEM and applied in fracture analysis [53]. The
+                                                                      surgery [67]. Zhang et al. [68] used vibrations and force
+material point method (MPM) [54], also hybrid by nature,
+                                                                      feedback during a cutting action for training neural networks to
+has been used to simulate trauma in biological tissue [55] and
+                                                                      cut objects with different material properties. A differentiable
+animate snow in the movies [56]. Ambati et al. [57] used the
+                                                                      simulation engine [69] for robotic cutting leveraged the FEM,
+MPM to simulate chip formation during machining. However,
+                                                                      VNA, and a linear-spring-based continuous damage model,
+it can be very expensive to compute the nearest neighbors
+                                                                      and used gradient-based optimization for learning simulation
+for the kernels used in mesh-free methods. In addition, it
+                                                                      and control parameters via Bayesian inference. The spring’s
+is difficult to enforce boundary conditions, so that special
+                                                                      stiffness decreased as the knife cut into the object. In [70],
+techniques are required [58].
+                                                                      a differentiable simulator was developed with the aim of
+   We cannot avoid remeshing because the contact between
+                                                                      learning a cutting policy for separating the hard core of a
+the knife edge and the crack front needs to be represented
+                                                                      soft object from the rest of its body. However, such a machine
+with enough accuracy for reliable force estimation. The size
+                                                                      learning-based model did not consider the effect of slicing or
+of mesh elements near the knife’s edge should be smaller than
+                                                                      of the knife geometry and showed a lack of dexterity in its
+the radius of its cross section to model the contact accurately.
+                                                                      cutting actions.
+Further, as the crack propagates, the location of contact
+changes. Creating a mesh with small elements all along the
+                                                                               III. E NERGY-BASED C RACK P ROPAGATION
+cutting surface would result in extreme computational expense.
+Instead, we generate a new mesh as the crack propagates by               The work done by the knife cutting into an object first
+creating small elements only at the crack tip.                        generates and then propagates a crack. This is an inherently
+                                                                      nonlinear phenomenon where the material at the crack tip
+C. Robotic Cutting                                                    undergoes large plastic deformation before it yields for the
+   Adaptive control was applied to learn the cutting force from       crack to extend. One portion of the knife’s work results in
+the histories of position and velocity [59]. Impedance control        plastic deformation around its edge and creates new surface
+was employed to track such force [60], and also to implement          regions. A second portion overcomes material friction. A
+the cooperation of two robots on trajectory following and             third portion produces sound and/or gets converted into some
+object stabilization [61]. Force control and visual servoing          different form of energy (kinetic, chemical, etc.). In the case
+were combined to create multiple cuts along a specified               that the object is deformable, the knife’s work has a fourth
+trajectory while coping with modeling errors and environ-             portion that changes its strain energy.
+ment constraints [62]. In [2], a three-phase cutting strategy            Our investigation begins with the scenario shown in Fig. 1,
+combined position, force, and impedance controls. In [63],            where the knife, vertically oriented with its straight edge kept
+the recursive least-squares algorithm estimated mechanical            horizontal, presses downward into the object, which lies on
+properties and optimized the knife trajectory according to the        a horizontal cutting board. To model crack propagation using
+changing fracture toughness.                                          fracture mechanics, we make the following five assumptions:
+   Physical properties, including hardness, plasticity, elasticity,   (A1) The object is isotropic and linearly elastic.
+tensile strength, etc., were learned using Nu-support vector          (A2) It remains stable as it is being cut open.
+regression from the haptic data collected during cutting [64].        (A3) The action of cutting is quasi-static.
+Data-driven deep neural networks could learn the dynamics of          (A4) Fracture happens in the cutting plane only.
+cutting for model predictive controllers to realize cutting to a      (A5) The plastic deformation zone is very small around the
+certain depth in the vertical plane [65] and cutting of unseen              crack front compared to the object’s dimensions.
+objects with a torque- or velocity-controlled manipulator [66].          Under assumption (A5), linear elastic fracture mechanics
+   A tensioning policy capable of learning parameters from            (LEFM) is applicable. In LEFM, the energy exchange during
+FEM simulations was proposed for robotic laparoscopic                 crack propagation is approximated using a material property
+JOURNAL OF LATEX CLASS FILES                                                                                                                               5
+
+
+
+called fracture toughness and denoted by R. More precisely,
+R characterizes the amount of energy needed to extend the
+crack by unit area.
+   The surface of the board coincides with the xz-plane. The                                                            y
+knife’s vertical plane of symmetry, in which its edge moves,
+is referred to as the cutting plane and chosen as the yz-plane.                                                              x
+The origin is located somewhere on the z-axis and inside the
+object. Over an infinitesimal downward movement dy of the                                                                   z
+knife, the following differential relationship holds between the
+work W done by the knife, its portions Wc and Wf to create                      Fig. 2. Object represented by evenly spaced cross sections parallel to the
+fracture and overcome friction, respectively, and the object’s                  xy-plane.
+strain energy U [3, p. 24]:
+                      dW = dWc + dWf + dU.                               (1)    rate would be ρ = (U (i+1) − Ũ (i+1) )/(lδ).4 There are two
+The work Wc is related to the area A of fracture:                               cases:
+                                                                                  1) ρ < R. The amount of energy released due to crack
+                             dWc = R dA.                                 (2)         propagation is insufficient. No crack extension. The
+In (1), the work W can be calculated2 . However, Wc , Wf , and                       iteration simply ends.
+U have no closed forms in terms of time or the knife’s pose.
+Among the three, dWf depends on A, which must be known                            2) ρ ≥ R. We need to find the value ∆s of the crack
+for an update of U using, say, the FEM [35]. Conversely,                             extension that satisfies
+dA = dWc /R depends on dU and dWf given dW according
+                                                                                                                ∆Wc = Rl∆s.                              (3)
+to (1). The interdependencies among Wf , A, and U must be
+coped with.                                                                           First, we initialize ∆s = δ and increment it by δ
+   We propose an iterative procedure to solve (1) and track                           repeatedly and reevaluate the energy release rate each
+fracture and deformation. Note that the energy required for                           time until ρ < R holds at ∆s = kδ for some k ≥ 2.
+crack propagation, R dA, is provided in part by the knife,                            Then we determine the value of ∆s to satisfy (3) via
+and in part by the release of strain energy. At each step of                          bisection over the interval [(k − 1)δ, kδ]. This iteration
+iteration, we first assume no crack propagation in order to                           ends.
+compute the change ∆U in strain energy due to the extra
+work ∆W performed by the knife. Then we find the extra                          IV. F RACTURE M ODELING VIA FEM IN T WO D IMENSIONS
+crack propagation ∆A such that the energy release rate ρ =
+(dW − dU )/dA is equal to the fracture toughness R.                                In a 3D FEM model of the object, very small elements have
+   Modeling uses the FEM with a sequence of meshes of the                       to be placed near the knife edge to achieve even a moderate
+object to capture its fracturing process. Let f be the vector of                accuracy. This leads to extremely high computational cost. In
+nodal forces, u the vector of nodal displacements, and K the                    one trial, to model an object of dimensions 5 cm×5 cm×5 cm
+stiffness matrix, all referring to the mesh at the current step.                with a reasonable accuracy, we had to use ∼100, 000 tetrahe-
+   At the start of the ith iteration, the values of f , u, K                    dral elements with ∼95, 000 of them surrounding the cutting
+are respectively f (i) , u(i) , and K (i) , while the knife edge                plane. Every iteration took ∼35 seconds, and the whole process
+is at y = y (i) . The strain energy subsequently is U (i) =                     lasted ∼4 hours. In addition, the cost of simulating crack
+1 (i)⊤
+         K (i) u(i) . Within the iteration, the knife edge moves                propagation also increases significantly, as most of the ele-
+2u
+from y to a new position y (i+1) = y (i) −ϵ, for some constant
+        (i)                                                                     ments are located near the crack tip. To avoid these issues, we
+ϵ > 0. First, assuming no new fracture (and thus using the                      will instead perform a 2D FEM simulation of cutting evenly
+same mesh), we calculate the new values f (i+1) , u(i+1) , and                  spaced cross sections (shown in Fig. 2) that are normal to the
+U (i+1) as will be described in Section IV-A. The work done                     cutting plane, and generate a simulation of the entire object
+by the knife would then be ∆W = U (i+1) − U (i) .                               via interpolation. Such a 2D simulation instance typically uses
+   Keeping the knife at y = y (i+1) , we create a new mesh                      ∼500 elements and finishes in less than 5 seconds.
+with the crack hypothetically extended by some small depth
+δ across the length l of the crack front.3 The increase of the                  A. Cutting a Cross Section
+crack area would be ∆A = lδ. The force, displacement, and
+energy values would be updated to f˜(i+1) , ũ(i+1) , and Ũ (i+1) ,              Let us focus on the cutting of one cross section normal to
+respectively. The crack extension would cause the change in                     the cutting plane. Without loss of generality, we choose the
+the strain energy by the amount ∆Ũ = Ũ (i+1) −U (i) , releasing               one lying in the xy-plane and denote it by S0 . Once we know
+the amount ∆W −∆Ũ = U (i+1) − Ũ (i+1) . The energy release                    how to model the fracture and deformation of S0 , the scheme
+                                                                                can be applied to any cross section parallel to S0 .
+   2 from the sensed force at the robotic arm’s end effector, where the knife
+is mounted, and the knife movement using the arm’s forward kinematics             4 Implicitly, the work ∆W to overcome friction as a result of this crack
+                                                                                                               f
+   3 The value of δ can be chosen to be, say, the shortest edge length of any   extension, if taking place, is now added back to the hypothetical scenario of
+mesh element.                                                                   no new crack as a portion that the robot would have to perform.
+JOURNAL OF LATEX CLASS FILES                                                                                                                             6
+
+
+
+
+                                       y
+
+                                                                                                                                                ∆s
+
+
+
+                                                                                               (a)                            (b)
+                                                                                Fig. 4. (a) Mesh before crack. (b) Mesh after crack propagates by ∆s. The
+                                                                                two vertical green line segments bound the separation layer, in which the
+                                                                                elements are removed to extend the crack. The blue line segment equidistant
+                                                                x               from the bounding segments represents the cutting path of the knife.
+
+Fig. 3. Cutting of a meshed cross section of a tomato downward along the
+y-axis. The top left inset enlarges a portion of the separation layer (inside
+the green box) around the y-axis (blue). The top right inset shows nodes in         Then ujy = 0 and, if the node is within 1 cm of the
+contact with the knife edge (black) and blade (cyan).                               y-axis, ujx = 0 as well.
+                                                                                 2) Contact nodes on the knife edge but not the blade (shown
+                                                                                    as black dots within the upper right inset in Fig. 3) are
+   The knife edge applies force on a very narrow region within                      supposed to stick to the edge (and thus move with it in
+the cross section S0 , which is constrained on both sides by                        the y-direction only). If the j-th node is of this type, then
+a large mass. A state of plane strain exists within S0 along                        it satisfies ujx = 0 and ujy = h − pjy , where h is the
+most of the crack tip [5]. This allows us to make the following                     height of the knife edge above the x-axis.
+assumption:                                                                      3) Contact nodes on the knife’s blade (shown as cyan dots
+(A6) Every cross section of the object normal to the cutting                        within the upper right inset in Fig. 3) move only on
+      plane stays within its containing plane during cutting.5                      the blade. The j-th node, if of this type, is subject to
+   Let us adapt the procedure described in Section III to the                       a displacement that satisfies the following equation:
+2D case. The cross section S0 is now represented as a finite                                     a(pjx + ujx ) + b(pjy + ujy ) + c = 0,
+element mesh, as illustrated in Fig. 3. Instead of an increase
+in the crack area, we calculate an increase in the crack length                      for some a, b, and c. Here, ax+by +c = 0 is the equation
+within the cross section. It is computationally affordable to use                    of either side of the blade as projected onto the xy-plane.
+very small elements (≈ 10−5 m) surrounding the path of the                         Let m be the number of constraints and n the mesh’s total
+thin knife edge (now a point) on the y-axis. These elements                     number of DOFs. All the constraints can be combined into
+form an area, called the separation layer which, as illustrated                 an equation Aū = b, where A is an m × n matrix and
+in the upper left inset of Fig. 3, is one element wide on each                  ū represents the nodal displacements within the mesh. We
+side of the y-axis.                                                             minimize the potential energy of the mesh subject to the
+                                                                                constraints in the form of the following Lagrangian:
+B. FEM-Based Crack Extension                                                                           1 ⊤
+                                                                                         L(ū, λ) =      ū K̄ ū − ū⊤ f¯ + λ⊤ (Aū − b),
+   Recall that at each step of the iterative modeling algorithm                                        2
+in Section III, the crack is first hypothetically extended down-                where f¯ is the vector of nodal force densities, and λ is the
+ward by ∆s. To perform the extension, we identify the node                      vector of Lagrange multipliers. This yields the following first-
+on the y-axis that is the closest to the tip’s new position in the              order necessary condition:
+undeformed mesh. Then we remove all the elements within the
+                                                                                                   K̄ A⊤                 f¯
+                                                                                                             
+                                                                                                                ū
+separation layer that are above this position (see Fig. 4(b)). The                                                  =        ,
+                                                                                                   A     0      λ        b
+FEM is used to calculate the strain energy of the cross section
+and the force exerted by the knife. Boundary conditions are                     which can be solved for ū and λ. The (density of) the force
+introduced below for nodes that are in contact with either the                  exerted by the knife and cutting board can be recovered
+cutting board or the knife.                                                     as −A⊤ λ. The (density of) strain energy within the cross
+  1) Contact nodes between the cross section S0 and cutting                     section can be determined as well. We can then evaluate the
+     board are allowed to move on the x-axis only. Among                        energy release rate and further update the crack length for an
+     them, those within 1 cm of the y-axis are fixed due to                     incremental knife movement as described in Section III.
+     friction between S0 and the board. Suppose that the jth
+     node is in contact with the board. Let p̄j = (pjx , pjy )T                 C. Interpolating Between Two Cross Sections
+     and ūj = (ujx , ujy )T be its position and displacement.6
+                                                                                   The FEM procedure applies to every cross section S parallel
+  5 For a very thin object, the assumption may lead to underestimation of the   to S0 , i.e., the xy-plane. We have a number of such parallel
+cutting force.                                                                  cross sections with a uniform spacing of h along the z-axis. In
+  6 Bars on top of p and u indicate that they concern a 2D mesh.
+                     j        j                                                 Fig. 5, they project to line segments in the yz-plane. We abuse
+JOURNAL OF LATEX CLASS FILES                                                                                                                                      7
+
+
+
+                                                                                     1500                                       1500
+                                                                                     1000                                       1000
+                  Knife                                                               500                                        500
+                                                                                        0                                          0
+                                                                                             0.04         0.02          0              0.04       0.02        0
+                                                                                     1500                                       1500
+                                                                                     1000                                       1000
+                                                                                      500                                        500
+                                                                                        0                                          0
+                                                                                             0.04         0.02          0              0.04       0.02        0
+                                                                                     1500                                       1500
+                                                                                     1000                                       1000
+                                                                                      500                                        500
+                  y                                                                     0
+                                                                                             0.04         0.02          0
+                                                                                                                                   0
+                                                                                                                                       0.04       0.02        0
+                                                                                     1500                                       1500
+                                                             z                       1000
+                                                                                      500
+                                                                                                                                1000
+                                                                                                                                 500
+                             za zj zj+1zb                                               0                                          0
+                                                                                             0.04         0.02          0              0.04       0.02        0
+                                                                                     1500                                       1500
+Fig. 5. Force exerted by the knife via interpolation between the consecutive         1000                                       1000
+cross sections at zj and zj+1 and integration across the knife length in contact      500                                        500
+                                                                                        0                                          0
+with the object over [za , zb ]       .                                                      0.04         0.02          0              0.04       0.02        0
+
+                                                                                   Fig. 6. Force per unit length (ordinate) vs knife height (abscissa) for ten
+the notation f¯ slightly, so f¯(y, z) describes the density of the                 cross sections during a sample cutting. The plots are in a sequence from left
+                                                                                   to right and from top to bottom. The third plot in the left column corresponds
+force along the knife edge when it is at the height y inside S.                    to S0 . The spacing among cross sections is h = 4.8 mm. In each plot, the blue
+We obtain the values of f¯(yi , zj ) for the knife at the height yi                trajectory shows the raw force value predictions during the knife’s movement,
+                                                                                   while the green trajectory shows the polynomial fit f (y, zj ) over these values
+within the j-th cross section, which is at the (signed) distance                   for the j-th cross section.
+zj away from the xy-plane. By fitting over the discrete heights
+of the descending knife edge, we construct the following
+polynomial to describe the force density profile within the
+same cross section as a function of the edge height y:                                    Knife
+
+     f (y, zj ) = aj,k y k + aj,k−1 y k−1 + · · · + aj,1 y + aj,0 .
+                                                                                                                            y
+Before fracture, we let k = 1 as the relationship between force                                                                               z
+and displacement is linear. After fracture, we let k = 5 to
+make sure that the polynomial can approximate the nonlinear
+relationship due to the crack propagation and presence of                          Fig. 7. Estimating boundary conditions for “hanging” cross sections (shown
+                                                                                   in red) from coarse 3D simulation.
+friction.
+   From simulation (see Fig. 6) we have found that the density
+curves f (y, zj ) and f (y, zj+1 ) for the two adjacent cross                      knife position yields good estimates via interpolation for the
+sections at z = zj , zj+1 vary little when their distance h                        x and y displacements of the boundary nodes of the hanging
+is small. This suggests the use of linear interpolation to                         cross sections.
+approximate the force density at the position z, zj < z < zj+1 :
+                   z − zj               zj+1 − z                                    V. C HANGE OF F RACTURE T OUGHNESS U NDER S LICING
+   f (y, z) =              f (y, zj ) +           f (y, zj+1 ).             (4)
+                 zj+1 − zj              zj+1 − zj                                     Until now, we have considered cutting by pressing with the
+The total force by the knife edge at the height y can be                           knife in a downward translation. Slicing refers to a cutting
+obtained via integrating (4) along the edge:                                       action during which the knife also moves sideways. The action
+                             Z zb                                                  makes it easier to reach the critical stress (or strain) for the
+                 f (y) = ŷ        f¯(y, z)dz,                                     material to fracture at the edge contact [7]. In this section,
+                                      za                                           we will reveal that fracture toughness indeed depends on both
+where ŷ is the unit vector along the y-axis, and za and zb                        Poisson’s ratio and the ratio between horizontal and vertical
+determine the segment of contact between the knife edge and                        displacements.
+the object (see Fig. 5).
+                                                                                   A. Strain Below the Knife Edge
+D. Boundary Conditions for a Coarse 3D FEM                                           The effort during slicing is directly related to the strain
+   So far, we have assumed that all the cross sections are in                      below the knife edge. For ease of strain analysis, we model
+contact with the cutting board (and thus constrained by it).                       the object as a half-space and its contact with the knife edge
+Some objects have “hanging” cross sections that do not make                        as a narrow, horizontal, and infinite strip. See Fig. 8. To take
+such contact but are constrained by the body material on each                      the tangential force into account, the plane strain assumption
+side. This is illustrated in Fig. 7. To obtain boundary conditions                 (A6) used in Section IV must be relaxed:
+for these cross sections, we construct a coarse 3D mesh for the                    (A7) Every half-plane bounded from below by the xy-plane
+same object with a crack at the same location interpolated from                          and normal to the knife edge is subjected to the same
+2D simulation. The deformation of this mesh at the current                               displacement field.
+JOURNAL OF LATEX CLASS FILES                                                                                                                                   8
+
+
+
+                                                                                     object to calculate the cumulative stress at p:
+                                                                                                                                        !
+                           Knife spine                                                                             sin(2θ2 ) − sin(2θ1 )    fn
+                                                                                           σz ′ z ′ =    θ2 − θ1 +                             ,
+                                                                                                                             2              π
+                                                                                                                                          !
+                  ft                      fn
+                                                                                                                                        
+                                                                                                                   sin(2θ2 ) − sin(2θ1 )    fn
+                                                                                           σy ′ y ′ =    θ2 − θ1 −                             ,
+                                               q1                                                                            2              π                (5)
+                                                                                           σx′ x′ = ν(σy′ y′ + σz′ z′ ),
+                            q2            p′                                                                                     fn
+                                                                                           σy′ z′ = σz′ y′ = sin2 θ2 − sin2 θ1       ,
+                 y   ′            ′
+                                 z , n̂                                                                                           π
+                                                             x′ , t̂                       σx′ y′ = σy′ x′ = σz′ x′ = σx′ z′ = 0,
+                               θ2              θ1      Knife edge
+                                                                                     where ν is Poisson’s ratio.
+                                                                                        Next, we calculate the components of the shear stress
+                                      p                                              resulting from the tangential pressure ft . Cerruti [73] derived
+                                                                                     the stress at any point in an infinite half-space due to a
+Fig. 8. Strain at a point p below the knife due to normal and tangential             tangential point load at the surface. This stress is integrated
+strip loadings fn and ft , respectively. The object is treated as a half-space,
+and its contact with the knife edge is the yellow strip. A point p underneath        over the contact area between the knife edge and the object
+(or inside) the strip, projects upward to a point p′ inside the strip. A local       to obtain the stress at p:
+coordinate system x′ y ′ z ′ is set up at p′ such that the x′ and z ′ -axes are in
+the directions of t̂ and n̂, respectively.                                                                                   ft
+                                                                                             σx′ z′ = σz′ x′ = (θ2 − θ1 )       ,
+                                                                                                                             π
+                                                                                                                                                     ft      (6)
+                                                                                             σx′ y′ = σy′ x′ = (ln | cos θ1 | − ln | cos θ2 |)          ,
+                                                                                                                                                     π
+                                                                                             σx′ x′ = σy′ y′ = σy′ z′ = σz′ z′ = 0.
+                                                                                     In the case that p is inside the strip, θ1 = −π/2 and θ2 = π/2.
+                                                                                     We substitute these values into (5) and (6) and add up the shear
+                                                                                     stress components contributed by fn and ft , obtaining
+Under the above assumption, cross sections initially normal
+to the knife edge may no longer be so during cutting but will                                   σx′ x′ = 2νfn ,    σy′ y′ = fn ,        σz′ z′ = fn ,
+remain parallel to each other. The assumptions (A1)–(A5) are                                    σx′ y′ = 0,        σy′ z′ = 0,          σz′ x′ = ft .
+still valid.
+                                                                                     Applying Hooke’s law, the strain tensor can be calculated as
+                                                                                                                                             
+                                                                                                  0              0               ft (1 + ν)
+                                                                                         1 
+    Let us examine the strain at a point p below the contact strip                   ϵ=           0     fn (1 − ν − 2ν 2 )            0       ,
+                                                                                         E
+such that it projects to a point p′ inside the strip along the unit                          ft (1 + ν)          0                          2
+                                                                                                                             fn (1 − ν − 2ν )
+inward normal n̂. As shown in Fig. 8, a local coordinate frame
+                                                                                     where E is Young’s modulus. The largest eigenvalue of ϵ
+x′ -y ′ -z ′ is placed at p′ with the x′ -axis parallel to the strip’s
+                                                                                     corresponds to the maximum principal strain:
+bounding edges and z ′ -axis in the direction of n̂. The y ′ -axis
+intersects the strip at a line segment whose two endpoints q1                                           fn
+and q2 define angles θ1 and θ2 of rotations from the outward                               ϵmax =          (1 − ν − 2ν 2 )
+                                                                                                        2E
+normal −n̂ to the vectors −        −→ and −
+                                  pq 1
+                                              −→, respectively. For
+                                             pq 2                                                        s                                                   (7)
+              ′ ′ ′                                                                                                                                  2 !
+i, j = x , y , z , we denote by σii the normal stress in the                                                                        
+                                                                                                                                        ft
+direction of i, and σij , i ̸= j, the shear stress applied in the                                   +      (1 − ν − 2ν 2 )2 + 4            (1 + ν)       .
+                                                                                                                                        fn
+direction j in the plane normal to the direction i. Let t̂ be the
+unit vector along the x′ -axis. Let fn and ft be the pressures
+that measure the normal and tangential forces per unit surface                       B. Varying Fracture Toughness
+area, respectively, applied by the knife edge on the object. The                       Atkins et al. [19] introduced the slice-push ratio
+pressure fn results in both normal and shear stresses at p,
+while the pressure ft results in shear stress at the point only.                                                      dt
+                                                                                                                    ξ=                         (8)
+                                                                                                                      dn
+                                                                                     between the knife’s tangential displacement and normal dis-
+   We use the solution to the Boussinesq problem [71], [72] to                       placement. They also assumed it to be equal to the ratio
+calculate the state of stress inside the object under the normal                     between the knife’s tangential and normal force. However,
+forces. It gives the stress at any point in a half-space due to                      such equality does not hold when the object is deformable.
+a normal point load on its boundary plane. Within the normal                            The tangential force is a shear force and, therefore, pro-
+strip loading fn , we can integrate Boussinesq’s stress equation                     portional to the tangential displacement and the shear modu-
+over the strip contact area between the knife edge and the                           lus G. Meanwhile, the normal force is a compression force
+JOURNAL OF LATEX CLASS FILES                                                                                                               9
+
+
+
+that is proportional to the normal displacement and Young’s                r 4
+modulus E. Their ratio assumes the following form:                                                                            ν = 0.1
+                                                                             3.5
+                   ft   G dt       1
+                      =      =          ξ.                    (9)
+                   fn   E dn   2(1 + ν)                                        3
+                                                                                                                                0.2
+Substituting (9) into (7), the maximum principal strain be-                  2.5
+comes                                                                                                                           0.3
+                                                                               2
+           fn                   p
+               (1 − ν − 2ν 2 ) + (1 − ν − 2ν 2 )2 + ξ 2 .
+                                                       
+  ϵmax =                                                                     1.5
+           2E
+                                                          (10)                                                                  0.4
+                                                                               1
+When the knife is pressing, ξ = 0, simplifying the above to
+                           fp,n                                              0.5                                                   ξ
+                 ϵp,max =       (1 − ν − 2ν 2 ),         (11)                      0     1         2        3        4         5
+                            E
+where ϵp,max and fp,n are the values of ϵmax and fn at
+                                                                     Fig. 9. Effect of slicing on the fracture toughness as measured by r in
+pressing. The critical maximum strain has been found to stay         equation (13). The maximum reduction is achieved for each ν as shown by
+constant for different ratios between normal and tangential          a hollow dot on the corresponding curve.
+forces [28], [74]. Hence, we have ϵp,max = ϵmax . Equat-
+ing (10) and (11), we calculate the ratio between the normal
+forces during slicing and pressing for the same maximum              work (density) ∆W c on fracture has a vertical component
+principal strain:                                                    ∆W n = (f¯ · n̂) ∆n and a horizontal component ∆W t =
+                                                                     (f¯ · t̂) ∆t. Just like f¯ · n̂, f¯ · t̂ can also be determined using
+            fn                        2
+                =        s                           2 .            the FEM here as the antiplane shear component of generalized
+           fp,n                   
+                                           ξ                 (12)    plane strain [6] by solving the Laplace equation, ∇2 ut = 0,
+                    1+       1+
+                                      1 − ν − 2ν 2                   where ut is the displacement in the tangential direction. Two
+                                                                     boundary conditions are imposed: 1) the bottom of the cross
+   During the continuous cutting of an infinite half-space, the      section is fixed on the table, and 2) the nodes in contact with
+change in strain energy is negligible. Assuming no friction on       the knife edge are also fixed.
+both sides of the knife’s blade, all the work done by the knife         FEM is used for calculating the change ∆U in strain
+gets converted into extending the crack. As the state of critical    energy (density). To determine the actual value of the crack
+maximum principal strain remains constant at the knife edge,         extension ∆s, we increase δ in integer multiples until locating
+for the same vertical displacement dn, the amounts of work           an interval that bounds the maximum crack length. Then we
+per unit area to create this fracture depth are fn dn + ft dt and    use bisection to calculate ∆s such that the energy release rate
+fp,n dn for slicing and pressing, respectively. Using (12), we       ρ = R. The work ∆W f to overcome friction is calculated
+obtain the ratio r between the fracture toughness R for slicing      using the normal force on both sides of the blade (obtained
+and the fracture toughness Rp for pressing below:                    from FEM simulation), the frictional coefficient, and a relative
+             R                                                       displacement in the knife velocity direction with ∆s as its
+  r(ν, ξ) =
+            Rp                                                       vertical component. The above procedure is repeated for each
+            (fn dn + ft dt)/dn                                       cross section and integrated over all the cross sections to obtain
+          =                                                          the total force exerted and work done by the knife.
+                  fp,n dn
+                           ξ2
+                                
+             fn
+          =        1+                                                    VI. C URVED K NIFE E DGE I N A G ENERAL M OTION
+            fp,n        2(1 + ν)
+                                                   ξ2
+                                                        
+                           2                                            Until now, we have modeled cutting by a translating knife
+          =      s                          1 +            .         with a straight edge. Most knives have curved edges, often
+                        
+                               ξ
+                                       2       2(1 + ν)
+            1+ 1+                                                    translating and rotating during a cutting action. This section
+                          1 − ν − 2ν 2                               starts with an infinitesimal edge element in translation, moves
+                                                          (13)       on to the edge element in both translation and rotation, and
+For food materials, Poisson’s ratio usually lies between 0.3 and     ends with the whole edge in a general planar movement.
+0.5. Fig. 9 plots r against ξ for different values of Poisson’s
+ratio. The dashed line represents r = 1. A value below (above)       A. Element of a Curved Knife Edge in Translation
+this line means slicing will reduce (increase) the cutting effort.
+The plot shows that we can leverage slicing to cut foods with           In Section IV, for modeling of cutting with a straight knife
+less effort.                                                         edge we used cross sections of the object normal to the edge in
+                                                                     the object’s undeformed state. Since any cross section would
+                                                                     slide over the knife edge during slicing, one that is not normal
+C. Slicing a Cross section                                           to the edge could lead to an incorrect calculation of the stress
+  Slicing of a cross section can be modeled in an iterative          tensor at their contact point. Also, since the tangent and normal
+manner, just like in Section IV. The difference is that the          vary along a curved knife edge, we would need to generate
+JOURNAL OF LATEX CLASS FILES                                                                                                                                 10
+
+
+
+             Knife                                                                                                                      q
+                                                                                                              ′                                     w
+                                                                                                          w                         s
+                     p                         Undeformed crack front                                s′                                     m
+                                t̂                                                              q′                          d
+                     n̂                                   p
+                                                               q                                                  γ                                     r2
+                                     Object                                                           m′               p′                       r
+  y            v                                                                                                                        p
+                                                                                                                  r′
+         z                                                                                                                                      r1
+                          (a)                                 (b)                                                           ∆θ
+Fig. 10. (a) Modeling of cutting by a curved knife edge. The solid green
+line shows the side view of an initial cross section associated with a point                                                    o
+p on the knife edge. The dashed blue line represents the trajectory of p. (b)
+Replacement of the same cross section (green) by a new one (red) that passes      Fig. 11. Rotation of an element pq on the knife edge to p′ q ′ about the
+through the intersection of the crack front (dotted) and p’s trajectory (dashed   instantaneous center o through the angle ∆θ is approximated by translation
+blue), and lies in a plane normal to the edge at p in the undeformed state.       of a segment rs of equal length to r ′ s′ . The segment rs is obtained from
+                                                                                  rotating pq through ∆θ/2. We find the translation vector d by locating the
+                                                                                  point m on pq which rotates to m′ such that the area swept out under this
+                                                                                  rotation is equal to that under the translation.
+new cross sections as the knife moves, which can be costly
+due to meshing.
+   Before moving forward, we want to state that the assump-                       radial segment pw when rotated through ∆θ, where r1 and r2
+tions (A1)–(A5), and (A7) are still valid. We first examine the                   are respectively the distances of p and q (also of w) from o.
+effect of edge geometry on the cutting force by applying the                      This new region generated by pw is further approximated by
+analysis from Section V-B. Consider a point p on the curved                       an area-equal parallelogram swept out by some segment rs
+edge with unit normal n̂ and unit tangent t̂ (see Fig. 10(a)). It                 in a translation. In Fig. 11, the segment rs, from rotating pq
+moves along the dashed blue line segment during the cutting.                      through ∆θ/2, intersects it at some point m, and translates by
+An infinitesimal edge element surrounding p, with the slice-                      d such that m′ = m + d lies on the segment p′ q ′ . Given the
+push ratio ξ = (v · t̂)/(v · n̂), encounters fracture toughness                   small rotation, we can always construct rs and find m and
+given by (13).                                                                    d to satisfy the area constraint over the parallelogram defined
+   To carry out the FEM analysis, we need to find the cross                       by rs and r ′ s′ from its translation:
+section associated with p. The following assumption is intro-                                         θ 2                  #»
+                                                                                                        (r − r12 ) = ||d × rs||.
+duced for this purpose:                                                                               2 2
+(A8) Deformation in the knife’s cutting plane (i.e., the yz-                      Then we model the effect created by the translating and
+       plane) only happens in its velocity direction.                             rotating pq as that by translating rs, which was treated in
+Under this assumption, we determine the initial cross section                     Section VI-A.
+(shown as a green line in Fig. 10(a)) to be the one normal
+to the edge at p when they come in contact. Since the knife                       C. Slicing Across Multiple Cross Sections
+has moved into the object, p is no longer in contact with this                        Since curvature varies continuously along the knife edge,
+section. The new point q in contact with p must lie on both its                   we would need many cross sections to be regenerated as the
+trajectory and the crack front, as illustrated in Fig. 10(b). The                 knife moves. We need to cut down on the number of generated
+cross section considered for the FEM analysis at the moment                       cross sections. Under assumption (A8), we find the endpoints
+is the one through q and normal to the knife edge in the                          k1 and k2 of the arc on the knife edge that will come into
+undeformed state.                                                                 contact with the object. These two endpoints are determined
+                                                                                  from the part of the knife edge that may intersect the object
+B. Edge Element in Translation and Rotation                                       in its undeformed state when the knife moves through its
+                                                                                  planned trajectory. Divide the arc into m segments with equal
+   Most cutting actions involve the knife translating and rotat-
+                                                                                  length. The ith segment is approximated by a linear segment
+ing to be reactive to force feedback and accommodating to the
+                                                                                  ei which connects its endpoints and has a unique normal n̂i
+object’s geometry. We examine such a movement by focusing
+                                                                                  and tangent t̂i .
+on an edge element. It is known that, instantaneously, a planar
+                                                                                      Let us consider a translation of the knife first. The segment
+displacement with rotation and translation is equivalent to
+                                                                                  ei , with slice-push ratio (v · t̂i )/(v · n̂i ), has its movement
+a rotation about some point.7 Our idea is to approximate
+                                                                                  described by the trajectory of its midpoint. The object’s cross
+this instantaneous rotation with a translation, which can be
+                                                                                  section initially assigned to the segment is normal to it and
+modeled as described in Section VI-A.
+                                                                                  contains the point qi to be in contact with its midpoint. (Such
+   As shown in Figure 11, pq and p′ q ′ are respectively the
+                                                                                  cross sections are illustrated as green line segments in Fig. 12.)
+poses of an edge element at t and t′ = t + ∆t as it rotates
+                                                                                  As the knife translates, a sequence of new cross sections will
+through an angle ∆θ about the instantaneous center o for small
+                                                                                  come into contact with the segment. In Section VI-A, they are
+∆t > 0. The element sweeps out the yellow region, which has
+                                                                                  determined from the propagating crack front.8
+the same area ∆θ(r22 − r12 ) as that of the one swept out by the
+                                                                                    8 Represented by a second-degree polynomial fit over all the points q ,
+                                                                                                                                                         i
+  7 A pure translation is a special case with the rotation center at infinity.    1 ≤ i ≤ n.
+JOURNAL OF LATEX CLASS FILES                                                                                                                             11
+
+
+
+                            Knife
+                                               k2                                                                       Kinect
+                                         e3
+                                    e2                                              Robot end effector
+                      k1 e 1             t̂2
+                                   n̂2
+                                                                                         F/T sensor
+                 y             v
+
+                        z
+
+Fig. 12. Approximating the curved edge with piecewise linear segments ei .
+Dashed blue lines represent the trajectories of their midpoints. Solid green
+lines show the side view of the initial cross sections associated with each                                          Linear guide
+segment.
+                                                                                               (a)                                   (b)
+                                                                               Fig. 13. Experimental setups with (a) an Adept Cobra robot and (b) a WAM
+   When the knife is also rotating, we need to modify the                      arm to carry out cutting of soft food items. The knife is rigidly attached to
+strategy from Section VI-A to generate a new cross section                     a 6-axis ATI force/torque sensor mounted at the end effector of the involved
+                                                                               robot. A linear guide in (b) provides an extra degree of freedom to realize
+that is normal to the edge segment in its new orientation. Two                 rock chop.
+situations below arise.
+  1) The crack does not propagate. We assume that the contact
+      point on the object does not change. The new cross                       to provide a third DOF in the plane needed for the knife
+      section (in the undeformed state) passes through the same                movement. Rigidly connecting each manipulator’s open end
+      contact point and is perpendicular to the segment in its                 and the knife was a 6-axis F/T sensor (Delta IP65) from the
+      new orientation.                                                         ATI Industrial Automation.
+  2) The crack propagates. We need to find the new con-                          All the natural foods in the experiments had been precut
+      tact point on the object. Assumption (A8) is no longer                   manually to provide a flat base to stand on a wooden cutting
+      applicable since no fixed velocity direction exists. It is               board. Friction between the board and such an object, plus
+      generalized as the following:                                            the constraining force by the blade, were sufficient to prevent
+(A9) When the crack propagates and the object relaxes around                   both translation and rotation of the object.
+       the knife segment, every point in the cutting plane moves
+       in the displacement direction of the contact point on the               A. Chop
+       cross section before crack propagation.
+                                                                                 This action was performed by the straight portion of the
+   We can then determine the increase in crack length via FEM                  knife edge near its handle. The edge portion stayed horizontal
+simulation as before, and update the contact point’s location                  and translated downward. Two experiments were carried out
+on the object. Then we can generate the new cross section that                 with the Adept robot. The first one aimed at validating our
+passes through this updated contact point and is perpendicular                 modeling of fracture using 2D slices and plain strains. The
+to the segment’s orientation at the next time instant.                         second one aimed at controlling the depth of the crack, which
+                                                                               would not have been possible without deformable modeling.
+                            VII. E XPERIMENTS                                    1) Chopping natural objects: Fig. 13(a) shows a tomato
+We conducted three groups of experiments on natural foods                      on the wooden board before it was to be cut. A laser scanner
+involving chop, slice, and rock chop, respectively. The same                   obtained a point cloud of the object, which was then processed
+kitchen knife shown in Fig. 13 (a) and (b) was used in all the                 using the open-source Computational Geometry Algorithms
+experiments. Knife geometry was determined by placing the                      Library (CGAL) [75] to generate a surface mesh. Next, the
+knife on graph paper and drawing its outline. For this purpose,                mesh was intersected vertically by ten parallel and evenly
+the knife’s tip was set to be at the origin, and the its edge and              spaced planes to create cross sections used for modeling.
+spine curves were reconstructed by fitting quartic polynomials                 Another open-source software GMSH [76] was then used to
+(see Table I). Chop and slice were performed by an Adept
+Cobra 600 robot, which had a repeatability of 0.02 mm. Rock                                                 TABLE II
+chop required rolling of the kitchen knife on the cutting board.                   M ECHANICAL PROPERTIES OF THE FIVE TYPES OF FOODS IN THE
+It was performed by a 4-DOF WAM Arm exploiting its two                           EXPERIMENT: YOUNG ’ S MODULUS (E, MPA ), P OISSON ’ S RATIO (ν),
+                                                                                COEFFICIENT OF BLADE - MATERIAL FRICTION (µ), INTERIOR FRACTURE
+DOFs in the vertical cutting plane and aided by a linear guide                     TOUGHNESS (R, N/ M ), SKIN FRACTURE TOUGHNESS (R′ , N/ M ).
+                                                                                E XPERIMENTS CONDUCTED WITH THE FOODS (C: CHOP, S: SLICE , RC:
+                                                                                                          ROCK CHOP ).
+                                    TABLE I
+                               K NIFE GEOMETRY.                                        Object         E       ν       µ       R     R′       Exp
+                                                                                       Tomato         0.4    0.3     0.18    130    400       C
+    knife tip (m)       x = 0, y = 0, z = 0                                            Potato          2     0.45    0.6      75    160      C,S
+                                                                                       Apple           3     0.17    0.6     150    400       C
+    knife edge (m)      y = 83.4z 4 + 41.3z 3 + 8z 2 + 0.8z + 0.002
+                                                                                       Cucumber       2.5    0.37    0.5     125    450       C
+    knife spine (m)     y = −33.1z 4 − 18.2z 3 − 3.6z 2 − 0.3z − 0.003                 Eggplant      0.55    0.16    1.0     130    900     C,S,RC
+JOURNAL OF LATEX CLASS FILES                                                                                                                                                                  12
+
+
+
+
+                     60                                                    6                                                       0.8
+
+                                                                                                                                   0.6
+                     40                                                    4
+
+                                                                                                                                   0.4
+                     20                                                    2
+                                                                                                                                   0.2
+
+                       0              sf0.02                               0                                                           0
+                           0                                 0.04              0          0.01    0.02          0.03    0.04               0                    0.02               0.04
+   12                                                                                                                                                 200
+                                               50
+   10                                                                                             15
+                                               40                                                                                                     150
+    8
+                                               30                                                 10
+    6                                                                                                                                                 100
+
+                                               20
+    4
+                                                                                                   5
+                                                                                                                                                       50
+    2                                          10
+
+
+    0                                           0                                                  0                                                    0
+        sf
+        0    0.01   0.02       0.03                 0   sf   0.01   0.02           0.03                0   sf    0.01    0.02   0.03                        0          0.02   sf   0.04    0.06
+
+
+Fig. 14. Comparison of experimental and simulation results from cutting a tomato, a potato, an apple, a cucumber, and an eggplant. The horizontal axis is
+the knife displacement in the downward y-direction. Fracture happens at the depth sf .
+
+
+
+generate a mesh for each cross section. Cutting of a cross                                                 Desired Depth (cm)            Without Model                        With Model
+section was modeled as described in Section IV using the
+                                                                                                                   0.8                         0.3                                0.9
+open-source library Getfem++ [77].
+                                                                                                                   1.8                        1.05                               1.46
+   Tomatoes, potatoes, apples, cucumbers, and eggplants were                                                       2.8                        2.45                               2.65
+cut. Table II lists the mechanical properties of the five foods,
+one of each type. Young’s modulus (E) and Poisson’s ratio                                                                                       (a)
+(ν) were measured as described in [30]–[33]. Since the value
+of E is affected by moisture and the time of storage, we tuned
+it slightly based on the initial slope of the force-displacement
+curve before fracture happened.
+   Fig. 14 presents the results of cutting one each of the five
+types of foods. The figure compares the values of force, torque,
+and work during cutting from simulation using the model in                                                       (b)                           (c)                                 (d)
+Section IV and the first experiment. All the cutting forces and                                  Fig. 15. Cutting to a depth without and with modeling. Comparison results
+torques were predicted quite well before the fracture occurred                                   from three specified depths, 0.8, 1.8, and 2.8 cm, are summarized in (a).
+at the depth sf of the knife edge. The potato, apple, and                                        Three pairs of cutting actions for the same depth requirement have their
+                                                                                                 outcomes shown in (b), (c), and (d), respectively. Each image shows two
+cucumber were harder than the tomato and eggplant, deformed                                      cuts, respectively, without (left) and with (right) modeling.
+less, and fractured much earlier. For each food item, the
+force required for initiating a crack was higher than that for
+propagating the crack due to the item’s tough skin. We use a
+higher skin fracture toughness R′ to model this phenomenon                                       cutting actions on each piece. The first one used no deformable
+(see Table II).                                                                                  modeling. The knife simply moved vertically downward to the
+   The predicted forces after the occurrence of fracture also                                    specified height above the cutting board. In the second action,
+closely followed the measured values for all the foods except                                    the knife moved to a position predicted by our model to be
+the eggplant, whose large deformation and tough skin had                                         the height corresponding to the specified depth of crack in
+resulted in an uneven crack initiation across the knife edge.                                    the undeformed state. Fig. 15 compares the actual depths with
+On the eggplant, the measured force decreased, and the torque                                    and without modeling against specified cutting depths in three
+increased due to the changing point of application by the                                        trials. The results are summarized in the table in part (a) of
+resultant force. The third plot in the first row of Fig. 14 shows                                the figure. For a specified depth of 0.8 cm, the cut without
+a good match between the predicted and measured values of                                        modeling only reached 0.3 cm, as shown on the left in (b),
+the work performed on the tomato.                                                                while the cut from moving the knife to a height predicted by
+   2) Depth cut: In the second experiment of the group, the                                      the model, reached 0.9 cm, as shown on the right. The other
+Adept robot tried cutting cuboid eggplant pieces to a certain                                    two pairs of cuts, reported in the last two rows of (a), are
+depth. These prepared pieces were 3.8 cm in height, 3.7 cm                                       shown in (c) and (d), respectively. Modeling yielded a much
+in length, and 5 cm in width. The Adept arm performed two                                        higher accuracy in cutting.
+JOURNAL OF LATEX CLASS FILES                                                                                                                                                                                                                      13
+
+
+
+                                                                                                             20                                                             1                                          0.3
+
+
+
+
+                                                                                                                                                 Horizontal force(N)
+                                            Knife
+
+
+
+
+                                                                                         Vertical force(N)
+
+
+
+
+                                                                                                                                                                                                      Total work(Nm)
+                                                                                                             15                                                         0.5
+
+                                       k1            k2                                                                                                                                                                0.2
+                      y                                                                                      10                                                             0
+
+                                  z                                                                              5              experiment                             -0.5
+                                                                                                                                                                                                                       0.1
+
+                                   v                                                                                            simulation
+                              α                                                                                  0
+                                                                                                                     0     0.01        0.02
+                                                                                                                                                                            -1
+                                                                                                                                                                                 0    0.01    0.02
+                                                                                                                                                                                                                           0
+                                                                                                                                                                                                                               0    0.01   0.02
+                                  z0                                                                                                          Vertical distance travelled by knife(m)
+                                                                                                                                                                                     (a)
+                                             (a)
+                                                                                         20                                                                            1                                    0.3
+
+                                                                                         15                                                                0.5
+                                                                                                                                                                                                            0.2
+                                                                                         10                                                                            0
+                                                                                                                                                                                                            0.1
+                                                                                                 5                                                  -0.5
+
+                                                                                                 0                                                                     -1                                              0
+                                                                                                             0           0.01        0.02                                   0        0.01    0.02                          0       0.01    0.02
+
+                                                                                                                                                                                     (b)
+                                              (b)                                        20                                                                1.5
+                                                                                                                                                                                                            0.2
+ 1000                         300                                10                      15                                                                            1
+                                                                                                                                                                                                      0.15
+                                                                                         10                                                                0.5
+                              200                                                                                                                                                                           0.1
+  500                                                             5                              5                                                                     0                              0.05
+                              100
+                                                                                                 0                                                   -0.5                                                              0
+                                                                                                             0           0.01         0.02                                  0        0.01     0.02                         0       0.01     0.02
+    0                             0                               0
+        0    0.01      0.02           0       0.01        0.02        0   0.01   0.02                                                                                                (c)
+                                              (c)
+                                                                                         20                                                                1.5                                              0.2
+Fig. 16. Experiment and simulation results for straight knife edge slicing
+                                                                                         15
+of eggplant cuboids. (a) Setup: α is the angle between the velocity v and                                                                                              1                              0.15
+the y-axis, and z0 is the horizontal distance of the piece from one endpoint             10                                                                                                                 0.1
+of the knife edge. The values of the angle α ∈ {0, π/10, π/5, π/3}. (b)                                                                                    0.5
+                                                                                                 5                                                                                                    0.05
+Experiment on an eggplant cuboid. (c) Simulation for the experiment (with
+                                                                                                                                                                       0
+column correspondence). The vertical force (y-direction), the horizontal force                   0                                                                                                                     0
+                                                                                                             0            0.01         0.02                                 0         0.01     0.02                        0        0.01     0.02
+(z-direction), and the total work plotted in the three columns, respectively, in
+(b) and (c) are divided by the length of the cuboid along the z-direction. In                                                                                                        (d)
+every plot, the horizontal axis is the knife displacement in the downward y-            Fig. 17. Vertical and horizontal forces (first and second columns, respec-
+direction. Mechanical properties used in the simulation: E (0.4×106 N/m2 ),             tively), and total works (third column) from cutting four cuboid eggplant
+ν (0.35), µ (1.0), R (140 N/m), and R′ (275 N/m).                                       pieces by a curved knife edge translating vertically downward. Cutting was
+                                                                                        performed using different sections of the knife edge with the z0 values
+                                                                                        (cf. Fig. 16(a)): (a) 0.02 m, (b) 0.0765 m, (c) 0.1135 m, and (d) 0.14 m. In
+B. Slice                                                                                each diagram, the horizontal axis is the knife displacement in the downward
+                                                                                        y-direction. Black dashes represent the experimental result and the red curve
+   The second group of two experiments was conducted over                               represents the simulation result. Mechanical properties used in the simulation:
+                                                                                        E (0.4 MPa), ν (0.35), µ (1.0), R (140 N/m), and R′ (275 N/m).
+cuboid pieces acquired by hand surrounding the core of
+eggplants, which were soft and non-homogeneous. These
+experiments were to validate our models for varying fracture
+                                                                                           The experiment indicates that force and velocity directions
+toughness as analyzed in Section V and for a translating
+                                                                                        are not coincident during the cutting of deformable objects.
+curved knife edge as presented in Section VI-A, respectively.
+                                                                                        For instance, in Fig. 16(b), the horizontal to vertical force
+Similar results were obtained from cutting potato pieces and
+                                                                                        ratio (0–0.5) does not match the slice-push ratio ξ (0–1.73)
+whole eggplants and potatoes, but are not described here for
+                                                                                        used in the experiment. Also, the fracture toughness did not
+succinctness. Since an eggplant deforms a lot before fracture
+                                                                                        remain constant. As shown in the last column of Fig. 16(b)–
+happens, a larger fracture toughness was used during this
+                                                                                        (c), the knife’s total work per unit length decreased as ξ
+period than during the post-fracture period.
+                                                                                        increased (i.e., α increased). The total work for the eggplant
+   1) Straight knife edge: Cutting was first carried out using
+                                                                                        shows a considerable decrease for the same case because it
+a segment of the knife edge close to the handle. Four cuboid
+                                                                                        is very anisotropic with fibers running along its axis, and the
+pieces from the same eggplant were sliced, each with a
+                                                                                        mechanism for fracture under shear may be very different for
+different slice-push ratio ξ = tan α, where α is the angle
+                                                                                        compression. This is evident in Fig. 16(b) from the fact that,
+between the velocity direction and the y-axis, as illustrated in
+                                                                                        while the horizontal force increased with ξ, it dropped for
+Fig. 16(a). Part (b) of the figure plots the sensed forces per unit
+                                                                                        a very high ξ value. Also, the horizontal force at α = 0°
+length in the vertical y-direction and horizontal z-direction,
+                                                                                        had a high negative value when fracture started after a large
+and the total work per unit length against the vertical knife
+                                                                                        deformation. This could be due to unequal fracture across the
+displacement.9 Simulation is done for each piece by slicing
+                                                                                        knife edge. In Fig. 16(c), a jump in work was observed due to
+one (uniform) 2D cross section using our model, as shown in
+                                                                                        friction work because a sizable crack happened after a large
+Fig. 16(c).
+                                                                                        deformation.
+   9 The smoothness of the work plot is due to the integration of the knife                2) Curved knife edge: In the next experiment, cutting was
+force over the knife displacements.                                                     carried out on four new cuboid eggplant pieces using different
+JOURNAL OF LATEX CLASS FILES                                                                                                                                  14
+
+
+
+sections of the knife by varying the horizontal distance z0
+of the left endpoint of the knife edge (where it connects the
+knife’s handle) to each piece (c.f. Fig. 16(a)). The knife moved
+vertically downward (α = 0). For simulation, the knife edge’s
+cutting section (between k1 and k2 in the figure) is discretized
+into ten segments. A 3D cuboid mesh was created for each                                                                              No contact
+piece to generate cross sections (since they would depend upon
+the orientation of the knife segment and object geometry),
+which were updated as described in Section VI-A for each
+step of knife displacement by 1 mm.
+                                                                                    Fig. 18. Rock chopping an eggplant without modeling deformation. The initial
+   The experimental and simulation results are presented in                         large deformation pushes the knife away from the table, and the object is not
+Fig. 17. As illustrated in Fig. 16(a), the knife edge curves                        cut at all.
+more as z0 increases, so it took longer to fully establish
+contact with the object. Fig. 17 shows that the eggplant pieces
+fractured very late, with the effect of the degree of curving
+                                                                                    estimate fˆy′ of the contact force would also include the blade-
+(i.e., increasing z0 value) reflected in the initial slopes of the
+                                                                                    material frictional force. The actual knife-board contact force
+vertical force plots.10
+                                                                                    fy in the y-direction would be less than fˆy′ by a margin.
+                                                                                    Contact may not even be engaged (fy = 0) when fˆy′ reaches
+C. Rock Chop                                                                        the desired value fd set for fy . For an object that undergoes
+   This section presents the application of our model in Sec-                       large deformation, such as an eggplant or tomato, the force
+tion VI to realize a knife skill on deformable objects. The                         due to deformation could easily exceed fd by a margin.
+selected skill was rock chop, in which the knife’s curved edge
+                                                                                      A cut was carried out without modeling the deformation, as
+performs pure rolling on the cutting board, starting near its tip
+                                                                                    seen in Fig. 18. During this cut, the knife moved upwards from
+and moving toward the handle. Contact between the knife edge
+                                                                                    the cutting board without fracturing the object. The predicted
+and cutting board is maintained throughout to ensure complete
+                                                                                    contact force fˆy′ was larger than the desired contact force fd ,
+separation of the object.
+                                                                                    which pushed the knife away from the cutting board, even
+   We adapted the hybrid controller proposed by Mu et al. [1]
+                                                                                    though the actual contact force had been below fd .
+to realize position and force controls along the z- and y-
+directions, respectively. The full form of the original controller                     To cope with the issue of contact breaking, we would have
+over the WAM Arm’s joint torques τ is given in the footnote11 .                     to increase the value of fd , with no clear guidance on how to
+It assumed no deformation in calculating fracture and frictional                    ensure that the object is cut through. Such an increase could
+forces. This works well for objects that do not undergo large                       lead to the knife biting deeply into the cutting board, either
+deformation, such as potatoes and onions.                                           blunting the knife edge or damaging the robot.
+   1) Contact break without deformable modeling: However,
+                                                                                        2) Observations: Putting modeling to use, the estimate fˆy′
+if we do not consider the force on the knife due to deformation,
+                                                                                    obtained from our modeling was used for fy in the error
+the controller would assign that part of the (sensed) total force
+                                                                                    fe = fd − fy in the y-direction of the contact force. The knife
+to the contact between the knife and the cutting board. This
+                                                                                    performed rock chop on an eggplant as in [1]. Fig. 19(a) shows
+  10 For cases with very small horizontal force, sensed values were not             the force profile of the modeled cutting force and sensed force
+accurate.                                                                           in the y-direction during the experiment. The desired contact
+  11
+                                                       R
+                                                                                    force fd was set to 10 N. The cutting action had three phases.
+                                                             
+                     c̈zd + kv|c ċze + kp|c cze + ki|c cze dt                      In the first phase (before t0 ), the knife was not in contact with
+        τ = M L̄−1
+                c
+                                         0            R
+                                                              
+                                                                                    the cutting board or the object. This corresponds to the initial
+                       ψ̈d + kv|c ψ̇e + kp|c ψe + ki|c ψe dt
+                                                                                  part of the plot where the force is zero. The second phase
+                                    fz R
+                                                                                    (from t0 to t1 ) began when the knife made contact with the
+             + τ̄c − Jc⊤ fd + kf i fe dt ,
+                                     0                                              cutting board only as it was moving down and immediately
+                                                                                    started rolling. This corresponds to the part where the control
+where M is the combined inertia matrix of the robot arm, force-torque sensor,
+and the knife, c is the contact point in the world frame, L̄c is the Jacobian       tries to maintain the desired value fd . In the third phase (after
+for transforming joint space coordinates into task space y = (cz , 0, ψ)⊤ ,         t1 ), when the knife came into contact with the eggplant (after
+cz is the location of the knife-point contact in the z-direction, with czd          t1 ), the latter underwent a large deformation due to its soft but
+and cze representing its desired position and error, respectively, ψ is the
+knife’s orientation in the z-y plane, kv|c , kp|c , and ki|c are the derivative,    tough skin before fracture happened. This explains the large
+proportional, and integral gains for position control, respectively, τ̄c is the     initial force needed to begin cutting. The model accurately
+combined torque due to Coriolis, centrifugal, gravitational, and external forces    predicted the deformation force so the knife could maintain
+at c, Jc is the Jacobian at c fixed at the knife edge, kf i is the integral force
+gain. The contact force f between the knife and the cutting board is calculated     contact with the cutting board to completely cut through the
+by subtracting the predicted cutting force and friction force from the sensed       eggplant. We see a spike around 22 seconds caused by a small
+force. To ensure that the object is cut through, the force controller keeps         deformation and sudden fracture, which our model did not
+contact between the cutting board and the knife by maintaining the desired
+contact force fd . The desired contact force in the y-direction is fd , and the     anticipate as it assumed that the material was homogeneous.
+error computed as fe = fd − fy , where fy is the y-component of f .                 Fig. 19(b) is a snapshot during the cutting.
+JOURNAL OF LATEX CLASS FILES                                                                                                                     15
+
+
+
+                                                                                   Modeling of cutting separates different forces exerted on the
+                                                                                knife, which is essential for implementing control strategies to
+                                                                                carry out skillful movements such as rock chop (demonstrated
+                                                                                in Section VII-C) and slice (shown in [1]). Fracture mechanics
+                 t0       t1                                                    provides a solid foundation for our effort, which also draws
+                                                                                upon finite element analysis, strain analysis, and geometric
+                                                                                approximations.
+
+                                                                                A. Removal and Relaxation of Assumptions
+                                                                                   Taking a first step, the modeling scheme, not surprisingly,
+                                                                                is limited by its assumptions, particularly those introduced at
+                                                                                the start of Section III. Among them, quasi-static interactions
+                                     (a)                                        assumed by (A3) between the knife and object are realistic
+                                                                                since the object undergoes negligible acceleration as it is being
+                                                                                cut. Below we look at how assumptions (A1), (A2), (A4), and
+                                                                                (A5) can be removed or mitigated for real applications.
+                                                                                   Natural foods have materials that are hardly isotropic or
+                                                                                linearly elastic, which violates the assumption (A1). Their
+                                                                                mechanical properties vary with food type, temperature, degree
+                                                                                of freshness, individual items of the same type, and within
+                                                                                the same item due to the presence of layers, water, seeds,
+                                           Contact point
+                                                                                etc. An effective approach is to conduct an online estima-
+                                                                                tion of cutting-related properties such as fracture toughness,
+                                     (b)
+                                                                                coefficients of friction, Young’s modulus, and Poisson’s ratio
+Fig. 19. Rock chopping an eggplant with deformable modeling: (a) force in       — exactly at the knife edge’s position inside the object. A
+the y-direction, where t0 and t1 mark when the knife first came into contact
+with the cutting board and the eggplant, respectively, and (b) maintenance of   preliminary effort was carried out by the co-author and a
+contact between the knife and the cutting board.                                colleague [78]. Besides, more expressive methods such as
+                                                                                orthotropic elasticity are options for modeling fruits with fiber-
+                                                                                rich content [79]–[81].
+                          VIII. D ISCUSSION                                        The assumption (A2) can be realized with a fixture on the
+   This paper is about computational modeling of the knife-                     object or using a robotic hand to hold it. The first approach
+food interaction during a cutting action, based on a balance                    would be inefficient and face difficulties since some foods
+between the work done by the knife and the energies spent on                    could undergo large deformations. The second approach is
+creating fracture and overcoming friction, as well as stored via                natural and worthy of investigation in the future because it
+deformation. After proposing a generic modeling scheme, our                     requires coordination between the cutting arm and holding
+investigation takes a progressive approach to resolve complex-                  hand, which is expected to be realizable under force control.
+ities in computation, knife geometry, and cutting trajectories,                 This will pave the way for more versatile cutting actions that
+backed up with mechanical analyses. Starting with a straight                    involve sliding, rolling, turning of the food item, and gaiting
+knife edge in vertical translations (pressing), we first reduced                by fingers on it to generate slices, to name a few.
+the burden of FEM from 3D to 2D. Then, we moved on to                              We limit fracture to the cutting plane only under assump-
+general translations (slicing) with a strain-based analysis to                  tion (A4) and use linear elastic fracture mechanics under
+derive a ratio between the values of fracture toughness for slic-               assumption (A5) to model crack propagation. Note that the
+ing and pressing. (This result quantitatively explains a common                 plane strain condition holds for most of the crack tip in
+perception that slicing takes less effort.) Last, we extended the               contact with the knife edge but not toward its ends. Near the
+modeling scheme to a curved knife edge, first in translation                    boundary of a cross section, deformations do not stay in the
+only and then in simultaneous rotation as well, by zooming                      containing plane. We partly account for this using a coarse 3D
+in on the fracture generated by an infinitesimal element on                     mesh to set up boundary conditions, but it does little to the
+the knife edge. Comprehensive experiments conducted with                        recovery of out-of-plane deformations and also underestimates
+two robotic arms yielded results in close agreement with                        the cutting force. Our approach is applicable only if the plastic
+predictions from modeling.                                                      deformation zone around the crack tip is very small compared
+   We are able to increase the efficiency of implementation so                  to the crack length. For highly deformable objects, we may
+that our model can be used by real-time control strategies. This                need to use more complex damage models to correctly identify
+increase has come from reduced steps for the bisection method                   the damage and direction of crack propagation. Methods
+by fitting a quadratic function to the energy-release rate,                     such as a phase-field model used by Borden et al. [46] for
+efficient generation of new meshes as the crack propagates,                     simulating fracture in ductile materials need to be made more
+and a reduction in the overall number of iterations to simulate                 efficient to be applicable to real-time control of a cutting robot.
+the knife movement. Overall, we have reduced the run time                          Better force and deformation predictions are possible with-
+by two orders of magnitude to around 10 seconds.                                out the assumptions (A4) and (A5). Finite element methods are
+JOURNAL OF LATEX CLASS FILES                                                                                                                               16
+
+
+
+                                                                                  Our model reduces the computational complexity by lever-
+                                                                               aging the physics of the problem and shifting from a 3D model
+                                                                               to a 2D one. Some fidelity is lost, particularly at the ends of
+                                                                               the knife contact as well as with highly irregular shape objects.
+                                                                               Although GPUs offer an alternative to massively speed up the
+                                                                               simulation, they are not considered in the paper for two main
+                                                                               reasons:
+                                                                                 1) The benefit usually seen with GPUs for sparse matrix
+                                                                                    solvers is roughly four times the efficiency of CPUs
+                                                                                    at best [82]. This does not offset the huge increase in
+                                                                                    computational cost due to an exponential increase in
+                                                                                    the number of nodes when going from 2D to 3D. For
+                                                                                    example, to accurately represent the knife-object contact
+                                                                                    we need elements that are on the order of the radius of
+                                                                                    the knife edge. This is typically 0.00001 m. To represent
+                                                                                    the area around the contact, say, 0.001 m x 0.001 m (1
+Fig. 20. Cheese cutting: significant underestimation of cutting force due to
+                                                                                    mm2 ), we would need 10000 elements. But if the object
+the presence of sticky friction.                                                    is 0.01 m long, then in 3D we would need 1000 x 10000
+                                                                                    elements. This is far greater than 10 x 10000 elements
+                                                                                    used in our model (where an object is represented by 10
+unsuitable for parallel processing and need constant remeshing                      cross sections).
+to incorporate crack propagation or plastic deformation where                    2) The problem of cutting requires the mesh to be updated
+individual elements may no longer exist or become highly                            for every time interval and the location of the contact
+distorted for simulation to proceed. Mesh-less methods, mean-                       between the knife edge and the object keeps on changing
+while, offer the flexibility to simulate crack discontinuities and                  as well. This will cause an extremely large number of
+plastic deformation without the need to constantly update the                       writes to the GPU memory, which is a costly operation.
+mesh and, at the same time, lend themselves naturally to the                   In general though, GPUs offer an alternative path to speeding
+processing power offered by massively parallelizable graphic                   up the execution and can be particularly useful with mesh-free
+processing units (GPUs). In the future, we will look at how                    methods.
+to incorporate these methods into our modeling scheme.
+
+                                                                                                     IX. ACKNOWLEDGMENT
+B. Friction, Knife Sharpness, and Simulation Speed
+                                                                                  The authors would like to thank the anonymous reviewers
+   The simple static Coulomb friction model used in our
+                                                                               for their valuable suggestions of improvement.
+approach may be insufficient for sticky objects such as dough
+and cheese. Fig. 20 shows an instance where our model does
+not take into account the sticky friction between the knife                                                  R EFERENCES
+blade and cheese. The predicted force is below the actual force                 [1] X. Mu, Y. Xue, and Y.-B. Jia, “Dexterous robotic cutting based on
+with the gap widening as the knife cuts further into the cheese.                    fracture mechanics and force control,” IEEE Trans. Autom. Sci. Eng.,
+The friction model can be improved in several ways.                                 2023, DOI: 10.1109/TASE.2023.3309784.
+                                                                                [2] X. Mu, Y. Xue, and Y. B. Jia, “Robotic cutting: Mechanics and control
+   More complex models, such as the one used by Khadem et                           of knife motion,” in Proc. IEEE Int. Conf. Robot. Automat., 2019, pp.
+al. [18], can be employed to better represent friction between                      3066–3072.
+the blade and biological materials. Currently, we assume that                   [3] T. Atkins, The Science and Engineering of Cutting.            Oxford, UK:
+                                                                                    Elsevier, 2009.
+during slicing, the nodes in contact with the knife edge move                   [4] A. G. Atkins, X. Xu, and G. Jeronimidis, “Cutting, by ’pressing and
+in the horizontal direction as though they are fixed on the edge,                   slicing,’ of thin floppy slices of materials illustrated by experiments on
+under sufficient friction. This is, however, often not the case                     cheddar cheese and salami,” J. Mater. Sci., vol. 39, no. 8, pp. 2761–2766,
+                                                                                    2004.
+as slippage can happen in the tangential direction. A better
+                                                                                [5] T. L. Anderson, Fracture Mechanics: Fundamentals and Applications.
+friction model will allow us to simulate slicing at higher slice-                   4th ed. Boca Raton, FL: CRC Press, 2017.
+push ratios and cutting of highly nonlinear food materials.                     [6] A.-D. Cheng, J. Rencis, and Y. Abousleiman, “Generalized plane strain
+   Another important issue is handling the effect of the blade                      elasticity problems,” in WIT Trans. Model. Simul., vol. 10, 1995, pp.
+                                                                                    167–174.
+sharpness. In our simulation, we explicitly model the contact                   [7] E. Reyssat, T. Tallinen, M. Le Merrer, and L. Mahadevan, “Slicing softly
+between the knife edge and the object using a separation layer                      with shear,” Phys. Rev. Lett., vol. 109, p. 244301, Dec 2012.
+(cf. Fig. 3). The knife’s sharpness is inversely proportional to                [8] P. Jamdagni and Y.-B. Jia, “Robotic cutting of solids based on fracture
+                                                                                    mechanics and FEM,” in Proc. IEEE Int. Conf. Intell. Robots Syst., 2019,
+the layer, which will increase as the knife edge dulls. Thus,                       pp. 8252–8257.
+the effect of knife sharpness can be incorporated inherently in                 [9] ——, “Robotic slicing of fruits and vegetables: Modeling the effects of
+our simulation. And this will not incur any extra computational                     fracture toughness and knife geometry,” in Proc. IEEE Int. Conf. Robot.
+                                                                                    Automat., 2021, pp. 6607–6613.
+cost as we can have larger mesh elements when the separation                   [10] A. A. Griffith, “The phenomena of rupture and flow in solids,” Philo.
+layer becomes wider.                                                                Trans. Royal Society London, vol. 221, pp. 163–198, Jan. 1921.
+JOURNAL OF LATEX CLASS FILES                                                                                                                                   17
+
+
+
+[11] G. R. Irwin, “Analysis of stresses and strains near the end of a crack        [38] H. G. Delorenzi, “Energy release rate calculations by the finite element
+     traversing a plate,” J. Appl. Mech., vol. 24, no. 3, pp. 361–364, Sep.             method,” Eng. Fract. Mech., vol. 21, no. 1, pp. 129–143, 1985.
+     1957.                                                                         [39] T. Chanthasopeephan, J. P. Desai, and A. C. Lau, “Measuring forces in
+[12] W. O. Soboyejo, Mechanical Properties of Engineered Materials. New                 liver cutting: New equipment and experimental results,” Ann. Biomed.
+     York, NY: Marcel Dekker, 2003.                                                     Eng., vol. 31, no. 11, pp. 1372–1382, Dec. 2003.
+[13] J. R. Rice, “A path independent integral and the approximate analysis         [40] ——, “Modeling soft-tissue deformation prior to cutting for surgical
+     of strain concentration by notches and cracks,” J. Appl. Mech., vol. 35,           simulation: Finite element analysis and study of cutting parameters,”
+     no. 2, pp. 379–386, 1968.                                                          IEEE Trans. Biomed. Eng., vol. 54, no. 3, pp. 349–359, Mar. 2007.
+[14] B. Takabi and B. L. Tai, “A review of cutting mechanics and modeling          [41] B. Ghali and S. Sirouspour, “Nonlinear finite element-based modeling
+     techniques for biological materials,” Med. Eng. Phys., vol. 45, pp. 1–14,          of soft-tissue cutting,” in Proc. IEEE Toronto Int. Conf. Sci. Tech.
+     2017.                                                                              Humanity, 2009, pp. 141–146.
+[15] A. G. Atkins, “Toughness and cutting: A new way of simultaneously             [42] T. P. Fries and T. Belytschko, “The extended/generalized finite element
+     determining ductile fracture toughness and strength,” Eng. Fract. Mech.,           method: An overview of the method and its applications,” Int. J. Numer.
+     vol. 72, no. 6, pp. 849–860, 2005.                                                 Methods Eng., vol. 84, no. 3, pp. 253–304, Oct. 2010.
+[16] C. Gokgol, C. Basdogan, and D. Canadinc, “Estimation of fracture              [43] N. Moës, J. Dolbow, and T. Belytschko, “A finite element method for
+     toughness of liver tissue: Experiments and validation,” Med. Eng. Phys.,           crack growth without remeshing,” Int. J. Numer. Methods Eng., vol. 46,
+     vol. 34, no. 7, pp. 882–891, Sep. 2012.                                            no. 1, pp. 131–150, Sep. 1999.
+[17] T. Azar and V. Hayward, “Estimation of the fracture toughness of soft         [44] L. Jeřábková and T. Kuhlen, “Stable cutting of deformable objects
+     tissue from needle insertion,” in Biomed. Simul., 2008, pp. 166–175.               in virtual environments using XFEM,” IEEE Comput. Graph. Appl.,
+[18] M. Khadem, C. Rossa, R. S. Sloboda, N. Usmani, and M. Tavakoli,                    vol. 29, no. 2, pp. 61–71, Mar.–Apr. 2009.
+     “Mechanics of Tissue Cutting during Needle Insertion in Biological            [45] D. Koschier, S. Lipponer, and J. Bender, “Adaptive tetrahedral meshes
+     Tissue,” IEEE Robot. Autom. Lett., vol. 1, no. 2, pp. 800–807, Jul. 2016.          for brittle fracture simulation,” in Proc. ACM SIGGRAPH/Eurograph.
+[19] A. G. Atkins and X. Xu, “Slicing of soft flexible solids with industrial           Symp. Comput. Animat., ser. SCA ’14, 2015, pp. 57–66.
+     applications,” Int. J. Mech. Sci., vol. 47, no. 4-5, pp. 479–492, 2005.       [46] M. J. Borden, T. J. Hughes, C. M. Landis, A. Anvari, and I. J. Lee, “A
+[20] M. A. Moore, F. S. King, P. F. Davis, and T. C. Manby, “The effect of              phase-field formulation for fracture in ductile materials: Finite defor-
+     knife geometry on cutting force and fracture in sugar beet topping,” J.            mation balance law derivation, plastic degradation, and stress triaxiality
+     Agric. Eng. Res., vol. 24, no. 1, pp. 11–27, Mar. 1979.                            effects,” Comput. Methods Appl. Mech. Eng., vol. 312, pp. 130–166,
+[21] D. Zhou, M. R. Claffee, K. M. Lee, and G. V. McMurray, “Cutting,                   Dec. 2016.
+     ’by pressing and slicing’, applied to robotic cutting bio-materials, Part     [47] D. Bielser, P. Glardon, M. Teschner, and M. Gross, “A state machine for
+     I: Modeling of stress distribution,” in Proc. IEEE Int. Conf. Robot.               real-time cutting of tetrahedral meshes,” Graph. Models, vol. 66, no. 6,
+     Automat., 2006, pp. 2896–2901.                                                     pp. 398–417, Nov. 2004.
+[22] ——, “Cutting, ’by pressing and slicing’, applied to the robotic cut of        [48] A. Mor and T. Kanade, “Modifying soft tissue models: Progressive
+     bio-materials, Part II: Force during slicing and pressing cuts,” in Proc.          cutting with minimal new element creation,” in Proc. 3rd Int. Conf. Med.
+     IEEE Int. Conf. Robot. Automat., 2006, pp. 2256–2261.                              Image Comput. Comput.-Assist. Interv., October 2000, pp. 598–607.
+[23] D. Zhou and G. McMurray, “Modeling of blade sharpness and com-                [49] Molino Neil, Bao Zhaosheng, and Fedkiw Ron, “A virtual node al-
+     pression cut of biomaterials,” Robotica, vol. 28, no. 2, pp. 311–319,              gorithm for changing mesh topology during simulation,” ACM Trans.
+     2010.                                                                              Graph., vol. 23, no. 3, pp. 385–392, Aug. 2004.
+[24] ——, “Slicing cuts on food materials using robotic-controlled razor            [50] E. Sifakis, K. G. Der, and R. Fedkiw, “Arbitrary cutting of deformable
+     blade,” Modelling and Simulation in Engineering, vol. 2011, 2011.                  tetrahedralized objects,” in Proc. ACM SIGGRAPH/Eurograph. Symp.
+[25] A. Spagnoli, R. Brighenti, M. Terzano, and F. Artoni, “Cutting resistance          Comput. Animat., ser. SCA ’07, 2007, pp. 73–80.
+     of soft materials: Effects of blade inclination and friction,” Theor. Appl.   [51] Y. Chen and A. Kaufman, “Real-time biomechanically-based muscle
+     Fract. Mech., vol. 101, pp. 200–206, Jun. 2019.                                    volume deformation using fem,” pp. 275–284, Sep. 1998.
+[26] K. R. Deibel, C. Raemy, and K. Wegener, “Modeling slice-push cutting          [52] R. A. Gingold and J. J. Monaghan, “Smoothed particle hydrodynamics:
+     forces of a sheet stack based on fracture mechanics,” Eng. Fract. Mech.,           theory and application to non-spherical stars,” Mon. Not. R. Astron. Soc.,
+     vol. 124-125, pp. 234–247, Jul. 2014.                                              vol. 181, no. 3, pp. 375–389, Dec. 1977.
+[27] K. R. Deibel, S. Lämmlein, and K. Wegener, “Model of slice-push              [53] W. Zeng and G. R. Liu, “Smoothed finite element methods (S-FEM):
+     cutting forces of stacked thin material,” J. Mater. Process. Technol., vol.        An overview and recent developments,” Arch. Comput. Methods Eng.,
+     214, no. 3, pp. 667–672, Mar. 2014.                                                vol. 25, no. 2, pp. 397–435, Apr. 2018.
+[28] J. Wang, C. Li, and S. C. Chen, “Sectioning soft materials with an            [54] D. Sulsky, Z. Chen, and H. L. Schreyer, “A particle method for history-
+     oscillating blade,” Precis. Eng., vol. 56, pp. 96–100, Mar. 2019.                  dependent materials,” Comput. Methods Appl. Mech. Eng., vol. 118,
+[29] T. Brown, S. J. James, and G. L. Purnell, “Cutting forces in foods:                no. 1, pp. 179–196, Sep. 1994.
+     Experimental measurements,” J. Food Eng., vol. 70, no. 2, pp. 165–170,        [55] I. Ionescu, J. E. Guilkey, M. Berzins, R. M. Kirby, and J. A. Weiss,
+     Sep. 2005.                                                                         “Simulation of soft tissue failure using the material point method,” J.
+[30] O. Kabas and A. Ozmerzi, “Determining the mechanical properties of                 Biomech. Eng., vol. 128, no. 6, pp. 917–924, Dec. 2006.
+     cherry tomato varieties for handling,” J. Texture Stud., vol. 39, no. 3,      [56] A. Stomakhin, C. Schroeder, L. Chai, J. Teran, and A. Selle, “A material
+     pp. 199–209, Jun. 2008.                                                            point method for snow simulation,” ACM Trans. Graph., vol. 32, no. 4,
+[31] M. Bentini, C. Caprara, and R. Martelli, “Physico-mechanical properties            pp. 1–10, Jul. 2013.
+     of potato tubers during cold storage,” Biosyst. Eng., vol. 104, no. 1, pp.    [57] R. Ambati, X. Pan, H. Yuan, and X. Zhang, “Application of material
+     25–32, Sep. 2009.                                                                  point methods for cutting process simulations,” Comput. Mater. Sci.,
+[32] M. Grotte, F. Duprat, E. Piétri, and D. Loonis, “Young’s modulus,                 vol. 57, pp. 102–110, May 2012.
+     poisson’s ratio, and Lame’s coefficients of Golden Delicious apple,” Int.     [58] J.-S. Chen, M. Hillman, and S.-W. Chi, “Meshfree Methods: Progress
+     J. Food Prop., vol. 5, no. 2, pp. 333–349, 2002.                                   Made after 20 Years,” J. Eng. Mech., vol. 143, no. 4, p. 04017001, Apr.
+[33] S. H. Miraei Ashtiani, M. R. Golzarian, J. Baradaran Motie, B. Emadi,              2017.
+     N. Nikoo Jamal, and H. Mohammadinezhad, “Effect of loading position           [59] G. Zeng and A. Hemami, “An adaptive control strategy for robotic
+     and storage duration on the textural properties of eggplant,” Int. J. Food         cutting,” in Proc. IEEE Int. Conf. Robot. Automat., 1997, pp. 22–27.
+     Prop., vol. 19, no. 4, pp. 814–825, 2016.                                     [60] S. Jung and T. C. Hsia, “Adaptive force tracking impedance control of
+[34] P. J. Olver, Introduction to Partial Differential Equations, P. J.                 robot for cutting nonhomogeneous workpiece,” in Proc. IEEE Int. Conf.
+     Olver, Ed. New York, NY: Springer, 2013. [Online]. Available:                      Robot. Automat., 1999, pp. 1800–1805.
+     http://www.math.umn.edu/∼olver/pde.html                                       [61] P. Long, W. Khalil, and P. Martinet, “Modeling & control of a meat-
+[35] T. Hughes, The Finite Element Method. Linear Static and Dynamic                    cutting robotic cell,” in Proc. Int. Conf. Adv. Robot., 2013, pp. 1–6.
+     Finite Element Analysis. Mineola, NY: Dover Publications Inc., 1987.          [62] ——, “Force/vision control for robotic cutting of soft materials,” in Proc.
+[36] J. M. Huang and J. T. Black, “An evaluation of chip separation criteria            IEEE Int. Conf. Intell. Robots Syst., 2014, pp. 4716–4721.
+     for the FEM simulation of machining,” J. Manuf. Sci. Eng. Trans. ASME,        [63] X. Mu and Y. B. Jia, “Physical property estimation and knife trajectory
+     vol. 118, no. 4, pp. 545–554, Nov. 1996.                                           optimization during robotic cutting,” 2022, pp. 2700–2706.
+[37] S. K. Chan, I. S. Tuba, and W. K. Wilson, “On the finite element method       [64] M. C. Gemici and A. Saxena, “Learning haptic representation for
+     in linear fracture mechanics,” Eng. Fract. Mech., vol. 2, no. 1, pp. 1–17,         manipulating deformable food objects,” in Proc. IEEE Int. Conf. Intell.
+     Jul. 1970.                                                                         Robots Syst., 2014, pp. 638–645.
+JOURNAL OF LATEX CLASS FILES                                                                                                                                     18
+
+
+
+[65] I. Lenz, R. Knepper, and A. Saxena, “DeepMPC: Learning deep latent                                        Yan-Bin Jia (Senior Member, IEEE) received the
+     features for model predictive control,” in Proc. Robot.: Sci. Syst., vol. 11,                             B. S. degree in computer science from the University
+     2015.                                                                                                     of Science and Technology of China, Hefei, China,
+[66] I. Mitsioni, Y. Karayiannidis, J. A. Stork, and D. Kragic, “Data-driven                                   in 1988, and the M. S. and Ph. D. degrees in robotics
+     model predictive control for the contact-rich task of food cutting,” in                                   from Carnegie Mellon University, Pittsburgh, PA,
+     Proc. IEEE-RAS Int. Conf. on Humanoid Robots, 2019, pp. 244–250.                                          USA, in 1993 and 1997, respectively.
+[67] B. Thananjeyan, A. Garg, S. Krishnan, C. Chen, L. Miller, and K. Gold-                                       He is currently a Professor with the Department
+     berg, “Multilateral surgical pattern cutting in 2D orthotropic gauze with                                 of Computer Science, Iowa State University, Ames,
+     deep reinforcement learning policies for tensioning,” in Proc. IEEE Int.                                  IA, USA. His research interests include dynamic
+     Conf. Robot. Automat., 2017, pp. 2371–2378.                                                               finger gaiting, dexterous cutting, impact mechanics,
+[68] K. Zhang, M. Sharma, M. Veloso, and O. Kroemer, “Leveraging                                               impulsive manipulation, deformable modeling and
+     multimodal haptic sensory data for robust cutting,” in Proc. IEEE-RAS           grasping, pose and motion estimation, and tactile shape recognition and
+     Int. Conf. on Humanoid Robots, 2019, pp. 409–416.                               reconstruction.
+[69] E. Heiden, M. Macklin, Y. Narang, D. Fox, A. Garg, and F. Ramos,                   Dr. Jia received the US National Science Foundation Faculty Early Ca-
+     “DiSECt: A differentiable simulation engine for autonomous robotic              reer Development Award in 2002. He was Associate Editors of the IEEE
+     cutting,” in Proc. Robot.: Sci. Syst., Jul. 2021.                               Transactions on Robotics from 2017 to 2021 and Automation Science and
+[70] Z. Xu, Z. Xian, X. Lin, C. Chi, Z. Huang, C. Gan, and S. Song,                  Engineering from 2008-2011, and a Co-Editor of a Special Issue on Tactile
+     “Roboninja: Learning an adaptive cutting policy for multi-material              Presence of the International Journal of Robotics Research in 2000.
+     objects,” in Proc. Robot.: Sci. Syst., 2023.
+[71] J. Boussinesq, Application des Potentiels a I’Etude de l’Euqilibre et
+     du Mouvement des Solides Elastiques. Paris, France: Gauthier-Villars,
+     1885.
+[72] P. Podio-Guidugli and A. Favata, “The Boussinesq Problem,” in Elastic-
+     ity For Geotechnicians. Switzerland: Springer, 2014, ch. 5, pp. 79–114.
+[73] R. O. Davis and A. P. S. Selvadurai, Elasticity and Geomechanics. New
+     York, NY: Cambridge University Press, 1996.
+[74] N. Perez, Fracture Mechanics. 2nd ed. Boston, MA: Kluwer Academic
+     Publishers, 2017.
+[75] The CGAL Project, CGAL User and Reference Manual, 5.5.1 ed.
+     CGAL Editorial Board, 2022. [Online]. Available: https://doc.cgal.org/
+     5.5.1/Manual/packages.html
+[76] C. Geuzaine and J.-F. Remacle, “Gmsh: A 3-D finite element mesh
+     generator with built-in pre- and post-processing facilities,” Int. J. Numer.
+     Methods Eng., vol. 79, no. 11, pp. 1309–1331, Sep. 2009.
+[77] Y. Renard and K. Poulios, “Getfem: Automated fe modeling of multi-
+     physics problems based on a generic weak form language,” ACM Trans.
+     Math. Softw., vol. 47, no. 1, Dec. 2020.
+[78] X. Mu and Y.-B. Jia, “Physical property estimation and knife trajectory
+     optimization during robotic cutting,” in Proc. IEEE Int. Conf. Robot.
+     Automat., 2022, pp. 2700–2706.
+[79] P. H. Holmström, A. H. Clausen, T. Berstad, D. Morin, and O. S. Hop-
+     perstad, “A pragmatic orthotropic elasticity-based damage model with
+     spatially distributed properties applied to short glass-fibre reinforced
+     polymers,” Int. J. Solids Struc., vol. 230-231, p. 111142, 2021.
+[80] Y. Zhu, L. Zhu, W. Guo, Z. Han, R. Wang, W. Zhang, Y. Yuan, J. Gao,
+     and S. Liu, “Multiscale static compressive damage characteristics of
+     kiwifruit based on the finite element method,” Foods, vol. 13, no. 5,
+     2024.
+[81] H. Mebatsion, P. Verboven, Q. Ho, B. Verlinden, and B. Nicolaı̈,
+     “Modelling fruit (micro)structures, why and how?” Trends Food Sci.
+     Tech., vol. 19, no. 2, pp. 59–66, 2008.
+[82] N. Corporation. (2024) Nvidia developer. [Online]. Available: https:
+     //developer.nvidia.com/cholmod
+
+
+
+
+                         Prajjwal Jamdagni received the B. Tech. degree
+                         in mechanical engineering from Indian Institute
+                         of Technology Patna, Bihar, India, in 2012, the
+                         M. S. degree in information technology from Indian
+                         Institute of Technology Delhi, New Delhi, India, in
+                         2016, and the Ph. D. degree in computer science
+                         from Iowa State University, Ames, IA, USA, in
+                         2022.
+                            He is currently a senior software engineer with
+                         LeapThought Corp., Kirkland, WA, USA, where he
+                         currently works on developing computational geom-
+etry algorithms for Building Information Modeling. His research interests
+include physics-based simulation and modeling for dexterous robot control
+and design optimization.
+

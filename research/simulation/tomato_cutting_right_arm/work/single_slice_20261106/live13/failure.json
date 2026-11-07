@@ -1,0 +1,807 @@
+{
+  "step": 54,
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/run_live_slice_v3.py\", line 80, in <module>\n    try:s.audited_step(a,b,step_dt,eligibility=elig.eligible.copy(),acceptance_audit=audit)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_live_fracture_candidate.py\", line 37, in audited_step\n    FractionBoundaryCandidate.step(self, state_in, scratch, None, None, dt)\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_boundary.py\", line 30, in step\n    update=memory.observe(self.x,self.rhs);counts=self.assembly.assemble(self.x,dt);linear_rhs=memory.transform(self.rhs);linear=self._linear_direction(linear_rhs);fallback=not linear['linear_valid']\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_grouped_pressure_assembly.py\", line 28, in assemble\n    self.prepare();self.accumulated.zero_();wp.launch(grouped_blocks,dim=(n,3,3),inputs=[self.group,p.bary,p.sample_hessian],outputs=[self.accumulated],block_dim=64);wp.launch(grouped_indices,dim=(self.groups,3,3),inputs=[self.group_ids,self.free,self.accumulated],outputs=[self.rows,self.columns,self.values],block_dim=64);sparse.bsr_set_from_triplets(self.extra,self.rows,self.columns,self.values);sparse.bsr_axpy(self.extra,self.base.matrix,alpha=1.,beta=1.)\n    ^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_grouped_pressure_assembly.py\", line 24, in prepare\n    ids,inverse=np.unique(p.indices.numpy(),axis=0,return_inverse=True);self.group_ids=wp.array(ids,dtype=wp.vec3i);self.group=wp.array(inverse.astype(np.int32),dtype=int);self.groups=len(ids);self.accumulated=wp.zeros(9*self.groups,dtype=wp.mat33d);self.rows=wp.empty(9*self.groups,dtype=int);self.columns=wp.empty(9*self.groups,dtype=int);self.values=wp.empty(9*self.groups,dtype=wp.mat33d);self.packet_key=key\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py\", line 340, in unique\n    output = _unique1d(consolidated, return_index,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py\", line 379, in _unique1d\n    perm = ar.argsort(kind='mergesort' if return_index else 'quicksort')\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+  "rows": [
+    {
+      "step": 946,
+      "sim_time_s": 0.3796875000000053,
+      "dt": 2.604166666666667e-05,
+      "wall_s": 334.00090730599914,
+      "stroke_m": 0.007593750000000106,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 134364,
+      "solver_iterations": 8,
+      "retries": 4,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        },
+        {
+          "attempt": 3,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 5.208333333333334e-05
+        }
+      ],
+      "wrench": [
+        -0.4732374128094698,
+        0.050400624790615,
+        0.708325026963869,
+        -0.07912035997500784,
+        0.010794445028500407,
+        -0.05347588842158425
+      ]
+    },
+    {
+      "step": 947,
+      "sim_time_s": 0.3797135416666719,
+      "dt": 2.604166666666667e-05,
+      "wall_s": 350.41598818000057,
+      "stroke_m": 0.007594270833333439,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 133392,
+      "solver_iterations": 8,
+      "retries": 4,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        },
+        {
+          "attempt": 3,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 5.208333333333334e-05
+        }
+      ],
+      "wrench": [
+        -0.4841249691255759,
+        0.050422616350567225,
+        0.7061188754247036,
+        -0.0788681587397001,
+        0.011123416451183943,
+        -0.054731278181058114
+      ]
+    },
+    {
+      "step": 948,
+      "sim_time_s": 0.37973958333333857,
+      "dt": 2.604166666666667e-05,
+      "wall_s": 368.27400347300136,
+      "stroke_m": 0.007594791666666771,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 132156,
+      "solver_iterations": 8,
+      "retries": 4,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        },
+        {
+          "attempt": 3,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 5.208333333333334e-05
+        }
+      ],
+      "wrench": [
+        -0.49246415468015664,
+        0.050454316540358486,
+        0.7043458579666121,
+        -0.07866539042632116,
+        0.01137774403765789,
+        -0.055690980851253666
+      ]
+    },
+    {
+      "step": 949,
+      "sim_time_s": 0.3797656250000052,
+      "dt": 2.604166666666667e-05,
+      "wall_s": 385.0528251100004,
+      "stroke_m": 0.007595312500000105,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 132396,
+      "solver_iterations": 8,
+      "retries": 4,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        },
+        {
+          "attempt": 3,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 5.208333333333334e-05
+        }
+      ],
+      "wrench": [
+        -0.49841941452155225,
+        0.050491988726396896,
+        0.7029480440774212,
+        -0.07850555535301988,
+        0.011562546436926103,
+        -0.056374568734582145
+      ]
+    },
+    {
+      "step": 950,
+      "sim_time_s": 0.37981770833333856,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 399.634175479001,
+      "stroke_m": 0.007596354166666771,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 132492,
+      "solver_iterations": 13,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5056217418913818,
+        0.050541946605833075,
+        0.7006082112038612,
+        -0.07823863147898305,
+        0.011795355789276991,
+        -0.0572022229093801
+      ]
+    },
+    {
+      "step": 951,
+      "sim_time_s": 0.3798697916666719,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 414.7794435830001,
+      "stroke_m": 0.007597395833333438,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 133164,
+      "solver_iterations": 11,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5139566416264993,
+        0.05045250157310608,
+        0.6966072702190902,
+        -0.07778191188577183,
+        0.012065686538858854,
+        -0.05816851554656638
+      ]
+    },
+    {
+      "step": 952,
+      "sim_time_s": 0.37992187500000524,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 429.7683145310002,
+      "stroke_m": 0.007598437500000105,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 133296,
+      "solver_iterations": 11,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5240174661838646,
+        0.05023774212960706,
+        0.6911057171365266,
+        -0.07715334310862317,
+        0.012388229274310446,
+        -0.05934236224377429
+      ]
+    },
+    {
+      "step": 953,
+      "sim_time_s": 0.3799739583333386,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 444.2164899899981,
+      "stroke_m": 0.007599479166666772,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 136044,
+      "solver_iterations": 12,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5342166430588832,
+        0.04995482146194606,
+        0.685034233094226,
+        -0.07645964461312546,
+        0.012713299009729798,
+        -0.06053746036450456
+      ]
+    },
+    {
+      "step": 954,
+      "sim_time_s": 0.3800260416666719,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 458.6810784070003,
+      "stroke_m": 0.007600520833333438,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 137412,
+      "solver_iterations": 11,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5432629739272166,
+        0.04966773644131836,
+        0.6794043770604984,
+        -0.07581628214311939,
+        0.013000273197008588,
+        -0.061600278111615746
+      ]
+    },
+    {
+      "step": 955,
+      "sim_time_s": 0.38007812500000526,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 474.40644161199816,
+      "stroke_m": 0.007601562500000106,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 138300,
+      "solver_iterations": 14,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5492357008478242,
+        0.049387895911880794,
+        0.674009439888473,
+        -0.07520296737392616,
+        0.013194137236041325,
+        -0.06231093395357415
+      ]
+    },
+    {
+      "step": 956,
+      "sim_time_s": 0.3801302083333386,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 489.38952173800135,
+      "stroke_m": 0.007602604166666772,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 138468,
+      "solver_iterations": 14,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5512075873839254,
+        0.049025600305444436,
+        0.6671179330967824,
+        -0.07442439760056835,
+        0.013274815753556725,
+        -0.06256317332926924
+      ]
+    },
+    {
+      "step": 957,
+      "sim_time_s": 0.38018229166667195,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 505.3253885749982,
+      "stroke_m": 0.007603645833333439,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 140808,
+      "solver_iterations": 18,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5508595302692109,
+        0.048675999684470714,
+        0.6603259756185461,
+        -0.07366065932159145,
+        0.013286187701105257,
+        -0.06254047413609584
+      ]
+    },
+    {
+      "step": 958,
+      "sim_time_s": 0.3802343750000053,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 520.2942335320004,
+      "stroke_m": 0.007604687500000106,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 142812,
+      "solver_iterations": 13,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5468710657770963,
+        0.048446216817342826,
+        0.6559891644535276,
+        -0.07317684941828718,
+        0.013180569813894278,
+        -0.062089148756834384
+      ]
+    },
+    {
+      "step": 959,
+      "sim_time_s": 0.38028645833333863,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 535.9324200629999,
+      "stroke_m": 0.007605729166666773,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 143808,
+      "solver_iterations": 13,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5353130317102033,
+        0.04836174974213252,
+        0.6552165431631077,
+        -0.0730968060377058,
+        0.0128384996158634,
+        -0.06076741309672064
+      ]
+    },
+    {
+      "step": 960,
+      "sim_time_s": 0.38033854166667197,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 552.0778557320009,
+      "stroke_m": 0.007606770833333439,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 143700,
+      "solver_iterations": 13,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5245588028029997,
+        0.04829591357226255,
+        0.6538327332246904,
+        -0.0729472260810428,
+        0.01252503467450621,
+        -0.05954415417665782
+      ]
+    },
+    {
+      "step": 961,
+      "sim_time_s": 0.3803906250000053,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 566.6434424239997,
+      "stroke_m": 0.007607812500000107,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 143508,
+      "solver_iterations": 13,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5172481278872931,
+        0.04803312048448178,
+        0.6483807609643099,
+        -0.07234487926217935,
+        0.012333730749003728,
+        -0.05873123052450307
+      ]
+    },
+    {
+      "step": 962,
+      "sim_time_s": 0.38044270833333865,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 581.4176845430011,
+      "stroke_m": 0.007608854166666773,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 143904,
+      "solver_iterations": 14,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5101659113132367,
+        0.04753819078000941,
+        0.6370900207828326,
+        -0.0710997906046542,
+        0.01217957876529383,
+        -0.05795223432953382
+      ]
+    },
+    {
+      "step": 963,
+      "sim_time_s": 0.380494791666672,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 597.7808757499988,
+      "stroke_m": 0.00760989583333344,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 141672,
+      "solver_iterations": 14,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.5003971604626867,
+        0.0468537645704403,
+        0.6198561087605036,
+        -0.06920731267310389,
+        0.011975165351498465,
+        -0.056862278312969604
+      ]
+    },
+    {
+      "step": 964,
+      "sim_time_s": 0.38054687500000534,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 614.2052777960016,
+      "stroke_m": 0.007610937500000107,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 138072,
+      "solver_iterations": 16,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.49236654428090865,
+        0.046052348406055016,
+        0.5982620124788435,
+        -0.06684114881682353,
+        0.011839667573300176,
+        -0.055947848961956925
+      ]
+    },
+    {
+      "step": 965,
+      "sim_time_s": 0.3805989583333387,
+      "dt": 5.208333333333334e-05,
+      "wall_s": 630.9073112400001,
+      "stroke_m": 0.007611979166666774,
+      "eligible": 5,
+      "damage_max": 0.0,
+      "damage_min": 0.0,
+      "failed_patches": 0,
+      "pressure_samples": 138060,
+      "solver_iterations": 15,
+      "retries": 3,
+      "retry_details": [
+        {
+          "attempt": 0,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.0004166666666666667
+        },
+        {
+          "attempt": 1,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00020833333333333335
+        },
+        {
+          "attempt": 2,
+          "reason": "No admissible descending corrected step; state/history not committed",
+          "dt": 0.00010416666666666667
+        }
+      ],
+      "wrench": [
+        -0.4918148172672759,
+        0.04536268278097538,
+        0.5795653640411251,
+        -0.06479340738236089,
+        0.01191221201376109,
+        -0.05583291481935942
+      ]
+    }
+  ],
+  "trace": []
+}

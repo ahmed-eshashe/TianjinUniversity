@@ -1,0 +1,14 @@
+{
+  "all_physics_intervals": "Complete compressed trace, clocks, raw actual node-force work, physical-point reaction wrench from ALL node forces, impulse/moment channels, nonlinear/geometry/domain bounds, replay and clear checks.",
+  "independent_full_CAD_oracle": "First interval and every fixed contact-clock endpoint (1/38400s), all loaded cases. Extra physics substeps use the unchanged previously qualified CAD operator; their saved force vectors are checked for force/moment balance and mechanical work. Do not claim a separate full CAD oracle at every microstep.",
+  "basis": "Source5full CAD readback passes128factor4 intervals. Source6factor4ALL128 state/force/E/wrench/robot trajectories match that reference fixture;89sharedsourceinputs unchanged. Each source6contact refresh additionally performs full independent native/host force/E/wrench and refinement checks live.",
+  "unchanged_budgets": {
+    "force_n": 1e-09,
+    "energy_j": 1e-12,
+    "wrench_n_or_nm": 1e-10,
+    "work_j": 1e-15,
+    "impulse_ns": 1e-12,
+    "domain_motion_m": 5e-06
+  },
+  "scope": "Readback component qualification only, no whole-system work, instantaneous joint-moment precision, global base momentum, cut or route qualification."
+}

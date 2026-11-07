@@ -1,0 +1,127 @@
+{
+  "id": "mounted_nonfracturing_touch_design_20261102_01",
+  "status": "specified_not_executable",
+  "new_native_runs": 0,
+  "objective": "One bounded genuine robot-driven nonfracturing touch, after a clear combined-scene entry check; never infer full23B qualification from contact visibility.",
+  "scope_preserved": {
+    "fixed_knife_mount": true,
+    "experimental_validation": "pending",
+    "damage_enabled": false,
+    "training": false,
+    "video_work": false,
+    "original_physical_parameters_unchanged": true
+  },
+  "reuse": {
+    "robot_controller": "Corrected dry tracking controller; original mount and gains. Do not use old zero-gain coasting worker as if it were this controller.",
+    "target": "Existing full4032-node supported equilibrium, original25-node remainder fixture and free cap, original material rest state and gravity/board model.",
+    "contact": "Existing actual-CAD positive material quadrature, fixed-domain bounds, remap audits and exact wrench-origin transport.",
+    "no_repeats": "Reuse coupon, static calibration, support, preload and dry-route evidence. No automatic rerun of passed suites."
+  },
+  "entry_stage": {
+    "name": "Live combined-scene clear check",
+    "next_implementation_task": true,
+    "maximum_simulated_duration_s": 0.1,
+    "robot_dt_s": 0.004166666666666667,
+    "target_dt_s": 0.0004166666666666667,
+    "robot_steps": 24,
+    "target_steps": 240,
+    "setup_steps_separate": true,
+    "wall_deadline_s": 600,
+    "initial_state": "Explicitly initialize supported target and robot at the verified20mm standoff. This is an assembly check, not replay of a continuously coupled approach from home.",
+    "motion": "Hold this pose with corrected controller. Do not lower tool.",
+    "checks": [
+      "Show the full target surface from actual Newton node coordinates; replace/hide the old stationary visual and avoid a duplicate collider.",
+      "Advance both engines to exactly matched endpoints;10target substeps per robot step, no unlogged stepping.",
+      "Actual current-CAD geometry establishes positive clearance; reject any target/tool overlap or nonzero contact exchange.",
+      "Support/board and original target admissibility gates hold; cap remains free; no damage or history changes.",
+      "Robot tracking, fixed mount, other-arm hold and original forbidden-contact/board/joint/speed limits pass.",
+      "No initial-state or robot pose rewrites after initialization; actual support dynamics and CAD geometry must be traceable."
+    ],
+    "success_claim": "Live robot/target assembly and clock/display consistency only. This cannot close the moving contact/work gate."
+  },
+  "touch_stage": {
+    "launch_ready": false,
+    "entry_conditions": [
+      "Clear combined-scene stage passed.",
+      "A new adapter combines corrected controller with live target pressure and once-only Native reaction. Existing dry and coasting workers cannot simply be concatenated.",
+      "Actual body pose versus q-derived CAD geometry, wrench origins and controller/applied effort channels verified for this configuration.",
+      "Complete work accounting and any required damping provenance are resolved, or a prospective fixture-specific replacement measurement contract is explicitly approved before results. Original failure verdicts remain.",
+      "Actual signed gap and motion/error bounds make the last approach and finite contact safe within the unchanged100micrometre penetration stop.",
+      "Freeze near-contact initial state, exact run counts/clocks, route and wall budget from the implementation before launch; reject unresolved manifest fields."
+    ],
+    "motion": "From an explicitly clear measured pose, approach at no more than the existing2mm/s diagnostic speed. Stop commanded descent on first resolved positive contact, command withdrawal, then settle. Do not force reaching a preset depth or force.",
+    "target_signal_n": [
+      0.0015,
+      0.005
+    ],
+    "signal_provenance": "Existing static host candidate range, exploratory only; achieved load not guaranteed. Failure to reach it is inconclusive, never permission to deepen automatically.",
+    "stops": {
+      "resultant_force_n": 0.01,
+      "moment_nm": 0.0002,
+      "penetration_m": 0.0001,
+      "minimum_volume_ratio": 0.1,
+      "blade_board_height_m": 0.004,
+      "other_body_target_inflated_gap_m": 0.01,
+      "fixed_packet_domain_motion_m": 5e-06
+    },
+    "stop_semantics": "Stop/ramp down the command at a warning boundary that accounts for one coupling interval; hard-limit crossing terminates and records failure. The command stop is not a claim of instantaneous physical braking. Never clamp or overwrite the actual state to conceal a crossing.",
+    "exchange": "PhysX owns robot motion and measured tool state. Newton owns target motion. Evaluate contact from actual state, apply opposite wrench once at the correct Native COM origin, record timing/lag/remap and accepted impulses. No duplicate J-transpose effort and no prescribed blade pose labelled as robot dynamics.",
+    "controls": "One serialized protected invocation, with predeclared clear/loaded/replay/no-feedback controls if the executable contract can fit a justified budget. Reversed/off-centre and refinement requirements remain later23B gates, not implicitly passed by this screen.",
+    "exits": [
+      "No target damage, topology change, bond deletion or slice pinning.",
+      "Positive contact comes from current geometry and material, not a scripted force waveform.",
+      "Independent raw readback verifies signs/origins, once-only transfer, actual robot response, matched clocks and replay/clear.",
+      "Apply the existing force/work gates below; an unmet gate stays failed/incomplete even if a contact animation looks plausible.",
+      "Complete withdrawal/clearance and loaded replay are distinct checks; this is not a post-cut reset."
+    ],
+    "target_signal_definition": "Sum of absolute contact quadrature-sample force magnitudes, matching the static host candidate; distinct from the resultant-force hard stop."
+  },
+  "existing_measurement_gates_retained": {
+    "per_step_force_balance_n": 1e-06,
+    "per_step_moment_balance_nm": 1e-07,
+    "velocity_rounding_allowance": "Only the already registered half-ULP allowance and cap; it did not close the old failed audit.",
+    "contact_work_relative_budget": 0.01,
+    "contact_work_absolute_floor_j": 1e-14,
+    "clear_work_budget": "1e-6*initial robot kinetic energy+1e-15J",
+    "no_silent_change": "No averaging away the failed per-step requirement; impulse evidence is separate. Any alternative contract requires independent uncertainty justification and a held-out test specification before adoption."
+  },
+  "performance": {
+    "support_record_wall_s": 1070.0054042310003,
+    "support_record_simulated_s_total": 20.0,
+    "preload_record_wall_s": 983.4883910219942,
+    "preload_record_simulated_s_total": 0.0033333333333333335,
+    "interpretation": "These are total job costs, including setup/logging/controls, not steady-state timings. Dry GUI performance cannot predict live contact throughput.",
+    "contact_runtime_freeze": "Do not promise a seconds-long visible contact episode at the fine contact clock. Freeze a finite contact horizon and estimate cost from actual saved timing before approving a touch launch. If it cannot fit, return a concrete performance/design decision; do not silently coarsen or widen gates."
+  },
+  "immediate_stopping_rule": "Next implementation is only the0.1s live clear-stage adapter/check with a10minute wall cap and no repeated diagnostic branches. Return its verdict and one concrete touch-launch readiness decision before lowering the knife. No long contact run, shallow cut, full separation or training is authorized by this design document.",
+  "evidence_paths": {
+    "near_approach": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measurements.json",
+    "near_approach_audit": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/near_approach_20261102/independent_readback01/measurements.json",
+    "corrected_controller": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_dry_tracking_worker_v02.py",
+    "supported_target": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/static_preparation_cached_20261102_01/prepared_equilibrium.npz",
+    "support_hold": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/prepared_scene_device_hold_20261102_01/supervisor_result.json",
+    "preload_work": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/preload_contact_work_r128_20261102_02/measurements.json",
+    "preload_cost": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/mounted_target_com_r128_20261102_02/supervisor_result.json",
+    "moving_force_work_failure": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/joint_state_interface_pgs_work_20261102_01/measurements.json",
+    "old_moving_protocol": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/moving_contact_protocol_20261102_01/plan.json",
+    "contact_candidate": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/prepared_contact_candidate_20261102_03/measurements.json",
+    "candidate_motion": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_moving_contact_worker.py",
+    "motion_precision_interface": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_joint_state_contact_robot.py",
+    "coverage_bound": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_bounded_cad_interval.py"
+  },
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measurements.json": "a721fb79d23865f6d3c2b28d11dd0b039c37b2dcb30902dda2e69de9fb8fbcba",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/near_approach_20261102/independent_readback01/measurements.json": "11715ca6402de415b9c01bed54bebb111518604e124cea1fa1614ded21920359",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_dry_tracking_worker_v02.py": "f718f47b5bf32672ff171b029dd235785ad97792bd948ebf3128cb7d81ab1855",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/static_preparation_cached_20261102_01/prepared_equilibrium.npz": "7101378ffcbac97d4eb45b950c5796023ad22a5b27ba2ebef5abaaa728dc17aa",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/prepared_scene_device_hold_20261102_01/supervisor_result.json": "99791d55470c9bb76d7039e2da93ff2c7c5b74c050098cb4586eef117caa8bfe",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/preload_contact_work_r128_20261102_02/measurements.json": "0cf2555c733ea69ab3f2fb0bff6c495fd38fcd51ed8b820f05f2787091ed33d6",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/mounted_target_com_r128_20261102_02/supervisor_result.json": "869014d7373fc9439d40b8c66df2ba51c34e9d63ca82e8a9b236a561f68ba388",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/joint_state_interface_pgs_work_20261102_01/measurements.json": "5406b2c6fff27d1a25dfcd5d7f5bcba719bb22433b04031d4eb5e705431832ed",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/moving_contact_protocol_20261102_01/plan.json": "dc7459d775a13c3917124e5373fb509b8506c14571fdfd207fae92e685d7a07a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/prepared_contact_candidate_20261102_03/measurements.json": "e00b1a0cf2bc199554a90d89ebf121e1b2b404e5baf0f073564014da29a64a94",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_moving_contact_worker.py": "d115b4aea88f2c8181ae0e74dfa3cd45f8dfb86cffbbf5c7f19cd51f07ce26be",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_joint_state_contact_robot.py": "53abd5d3a8353181638d50bcb49fbc6a61c03580c51fdd0814d68a12e6ee5bcf",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_bounded_cad_interval.py": "69731d8554f244cdcee721143f1357611b8687039de977a576761e85be5d410e"
+  }
+}

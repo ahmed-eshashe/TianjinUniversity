@@ -1,0 +1,21 @@
+Objective cohesive force derivation (candidate v0.1)
+
+For paired positions x_i^-/x_i^+, define midpoint m_i=(x_i^-+x_i^+)/2 and gap g_i=x_i^+-x_i^-.
+A deterministic nondegenerate anchor triangle defines u=m_b-m_a, v=m_c-m_a, t=u/|u|, n=s(u cross v)/|u cross v|, b=n cross t.
+E0 = 1/2 sum_i w_i e_i^T K e_i, e=(max(g dot n,0),g dot t,g dot b).
+The physical loading force is -(1-D(q))*grad E0, q=sqrt(2E0/Kn), with irreversible bilinear history and eligibility.
+
+Let h_i=w_i K e_i, and set h_i,n=0 in compression. Gap gradient is h_n*n+h_t*t+h_b*b.
+Frame gradients accumulate N=sum h_n*g, T=sum h_t*g, B=sum h_b*g, followed by N += t cross B and T += B cross n.
+C_gradient = s*(I-n*n^T)*N/|u cross v|.
+U_gradient = (I-t*t^T)*T/|u| + v cross C_gradient.
+V_gradient = C_gradient cross u.
+Anchor-midpoint gradients are (-U_gradient-V_gradient, U_gradient, V_gradient). Each midpoint distributes half to both corresponding nodes. Multiplying all gradients by (1-D) gives the conservative material force including frame forces and moment balance.
+
+For loading q>=history, stored energy alone is not the incremental potential. Add the exact fracture dissipation increment:
+Phi=(1-D)*E0 + [Kn*a*b/(2*(b-a))]*(clamp(kappa,a,b)-clamp(kappa_old,a,b)).
+Its damage derivative cancels the damage derivative of stored energy, leaving grad Phi=(1-D)*grad E0. At complete failure Phi is the fracture budget, with zero residual cohesive force/stiffness.
+
+The explicit force kernel can itself be differentiated by Warp. With graph-clique coloring (at most one node of each color in each patch), seeding all same-color force components gives exact diagonal Hessian rows in three reverse passes. No cross-patch same-color Hessian contribution contaminates a diagonal block.
+
+This candidate is not yet a full-fruit contact or dynamic qualification. Degenerate anchor triangles must be refused. Native float32 integration and full-frame history/reset require separate tests.

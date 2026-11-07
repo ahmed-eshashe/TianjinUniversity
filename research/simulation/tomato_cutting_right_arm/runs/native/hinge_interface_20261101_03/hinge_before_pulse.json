@@ -1,0 +1,104 @@
+{
+  "cases": [
+    {
+      "id": "hinge_identity",
+      "link_index": 1,
+      "body_names": [
+        "base",
+        "link"
+      ],
+      "before": {
+        "joint_position": [
+          0.0
+        ],
+        "joint_velocity": [
+          0.0
+        ],
+        "link_pose": [
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "link_com_velocity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "force_world_n": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "torque_com_world_nm": [
+        0.0,
+        0.0,
+        0.0012
+      ],
+      "expected": {
+        "effective_inertia_kg_m2": 0.00010199999733967707,
+        "generalized_effort_nm": 0.031199999329447746,
+        "joint_velocity_rad_s": 0.127450980977098,
+        "joint_position_rad": 2.8211805685034715e-05
+      },
+      "mass_matrix_kg_m2": 0.00010199999815085903
+    },
+    {
+      "id": "hinge_yaw90",
+      "link_index": 1,
+      "body_names": [
+        "base",
+        "link"
+      ],
+      "before": {
+        "joint_position": [
+          0.0
+        ],
+        "joint_velocity": [
+          0.0
+        ],
+        "link_pose": [
+          1.19209286886246e-09,
+          0.010000000707805157,
+          0.0,
+          0.0,
+          0.0,
+          0.7071068286895752,
+          0.7071068286895752
+        ],
+        "link_com_velocity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "force_world_n": [
+        -3.0,
+        0.0,
+        0.0
+      ],
+      "torque_com_world_nm": [
+        0.0,
+        0.0,
+        0.0012
+      ],
+      "expected": {
+        "effective_inertia_kg_m2": 0.00010199999771220613,
+        "generalized_effort_nm": 0.03120000212341547,
+        "joint_velocity_rad_s": 0.1274509919248828,
+        "joint_position_rad": 2.82118081083725e-05
+      },
+      "mass_matrix_kg_m2": 0.0001020000854623504
+    }
+  ]
+}

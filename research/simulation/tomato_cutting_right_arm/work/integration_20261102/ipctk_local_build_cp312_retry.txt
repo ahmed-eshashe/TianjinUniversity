@@ -1,0 +1,158 @@
+running build_ext
+-- Using CPM cache folder: /home/omen/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Third-party: creating target 'Eigen3::Eigen'
+-- CPM: Adding package eigen@5.0.1 (5.0.1 at /home/omen/.cache/CPM/eigen/5.0.1)
+-- Third-party: creating target 'igl::core'
+-- Creating target: igl::core (igl_core)
+-- Creating target: igl::predicates (igl_predicates)
+-- Third-party: creating target 'predicates::predicates'
+-- CPM: Adding package libigl@2.6.0 (v2.6.0 at /home/omen/.cache/CPM/libigl/9850)
+-- Third-party: creating target 'TBB::tbb' (OneTBB)
+CMake Warning at /home/omen/.cache/CPM/onetbb/3244/CMakeLists.txt:160 (message):
+  You are building oneTBB as a static library.  This is highly discouraged
+  and such configuration is not supported.  Consider building a dynamic
+  library to avoid unforeseen issues.
+
+
+-- GNU Assembler version: 2.42  (2042)
+-- TBBBind build targets are disabled due to unsupported environment
+-- CPM: Adding package oneTBB@2022.3.0 (v2022.3.0 at /home/omen/.cache/CPM/onetbb/3244)
+-- Third-party: creating target 'tight_inclusion::tight_inclusion'
+-- Using CPM cache folder: /home/omen/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- Third-party: creating target 'spdlog::spdlog'
+-- Build spdlog: 1.17.0
+-- Build type: Release
+-- Generating install
+-- CPM: Tight-Inclusion: Adding package spdlog@1.17.0 (v1.17.0 at /home/omen/.cache/CPM/spdlog/7d8f)
+-- Searching for AVX...
+-- Using CPU native flags for AVX optimization:  -march=native
+--   Found AVX 2.0 extensions, using flags:  -march=native -mavx2 -mno-avx512f -mno-avx512pf -mno-avx512er -mno-avx512cd
+-- CPM: Adding package Tight-Inclusion@1.0.6 (v1.0.6 at /home/omen/.cache/CPM/tight-inclusion/6ee0)
+-- Third-party: creating target 'scalable_ccd::scalable_ccd'
+-- Using CPM cache folder: /home/omen/.cache/CPM
+-- Adding global flags: $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>
+-- CPM: Adding package scalable-ccd@0 (ccf4bc19aba432b9d5abdd41ae55d15ea166a0a5 at /home/omen/.cache/CPM/scalable-ccd/bb08)
+-- Third-party: creating target 'TinyAD::TinyAD'
+-- Building TinyAD in Release mode
+-- Building TinyAD with oneTBB backend.
+-- CPM: Adding package tinyad@0 (957ede5bcf4b8d924f27230083508c664a9f7a7d at /home/omen/.cache/CPM/tinyad/6834)
+-- Third-party: creating target 'tsl::robin_map'
+-- CPM: Adding package robin-map@1.4.1 (v1.4.1 at /home/omen/.cache/CPM/robin-map/5c0c)
+-- Third-party: creating target 'absl::flat_hash_map'
+-- CPM: Adding package abseil-cpp@0 (d407ef122a08203648451e0fec77b3f868b71112 at /home/omen/.cache/CPM/abseil-cpp/9514)
+-- Third-party: creating target 'filib::filib'
+-- CPM: Adding package filib@0 (7cf13519b0db72df2493c9c8997a8bef9e372848 at /home/omen/.cache/CPM/filib/c410)
+-- Third-party: creating target 'pybind11::pybind11'
+-- pybind11 v3.0.1 
+-- Found Python: /home/omen/miniconda3/envs/isaaclab_6/bin/python (found suitable version "3.12.14", minimum required is "3.8") found components: Interpreter Development.Module missing components: Development.Embed
+Using compatibility mode for Python, set PYBIND11_FINDPYTHON to NEW/OLD to silence this message
+-- CPM: Adding package pybind11@3.0.1 (v3.0.1 at /home/omen/.cache/CPM/pybind11/3d7d)
+-- Configuring done (0.6s)
+-- Generating done (0.2s)
+-- Build files have been written to: /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipc-toolkit-v1.6.1-source/build/temp.linux-x86_64-cpython-312/ipctk
+[  0%] Built target igl_core
+[ 19%] Built target filib
+[ 19%] Built target igl_predicates
+[ 20%] Built target predicates
+[ 22%] Built target spdlog
+[ 31%] Built target tbb
+[ 31%] Built target absl_log_severity
+[ 31%] Built target absl_spinlock_wait
+[ 34%] Built target tight_inclusion
+[ 36%] Built target scalable_ccd
+[ 36%] Built target TinyAD
+[ 38%] Built target absl_raw_logging_internal
+[ 38%] Built target absl_throw_delegate
+[ 39%] Built target absl_base
+[ 42%] Built target absl_city
+[ 42%] Built target absl_strings_internal
+[ 42%] Built target absl_int128
+[ 47%] Built target absl_strings
+[ 49%] Built target absl_hash
+[ 77%] Built target ipc_toolkit
+[ 77%] Building CXX object python/CMakeFiles/ipctk.dir/src/collision_mesh.cpp.o
+[ 77%] Building CXX object python/CMakeFiles/ipctk.dir/src/bindings.cpp.o
+[ 77%] Building CXX object python/CMakeFiles/ipctk.dir/src/ipc.cpp.o
+[ 77%] Building CXX object python/CMakeFiles/ipctk.dir/src/adhesion/adhesion.cpp.o
+[ 77%] Building CXX object python/CMakeFiles/ipctk.dir/src/barrier/adaptive_stiffness.cpp.o
+[ 79%] Building CXX object python/CMakeFiles/ipctk.dir/src/barrier/barrier_force_magnitude.cpp.o
+[ 79%] Building CXX object python/CMakeFiles/ipctk.dir/src/barrier/barrier.cpp.o
+[ 79%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/aabb.cpp.o
+[ 79%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/broad_phase.cpp.o
+[ 79%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/brute_force.cpp.o
+[ 79%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/hash_grid.cpp.o
+[ 80%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/lbvh.cpp.o
+[ 80%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/spatial_hash.cpp.o
+[ 80%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/sweep_and_prune.cpp.o
+[ 80%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/sweep_and_tiniest_queue.cpp.o
+[ 80%] Building CXX object python/CMakeFiles/ipctk.dir/src/broad_phase/voxel_size_heuristic.cpp.o
+[ 82%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/collision_stencil.cpp.o
+[ 82%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/edge_edge.cpp.o
+[ 82%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/edge_face.cpp.o
+[ 82%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/edge_vertex.cpp.o
+[ 82%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/face_face.cpp.o
+[ 82%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/face_vertex.cpp.o
+[ 84%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/plane_vertex.cpp.o
+[ 84%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/vertex_vertex.cpp.o
+[ 84%] Building CXX object python/CMakeFiles/ipctk.dir/src/candidates/candidates.cpp.o
+[ 84%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/aabb.cpp.o
+[ 84%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/additive_ccd.cpp.o
+[ 85%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/check_initial_distance.cpp.o
+[ 85%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/inexact_ccd.cpp.o
+[ 85%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/inexact_point_edge.cpp.o
+[ 85%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/narrow_phase_ccd.cpp.o
+[ 85%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/nonlinear_ccd.cpp.o
+[ 85%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/point_static_plane.cpp.o
+[ 87%] Building CXX object python/CMakeFiles/ipctk.dir/src/ccd/tight_inclusion_ccd.cpp.o
+[ 87%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/edge_edge.cpp.o
+[ 87%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/edge_vertex.cpp.o
+[ 87%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/face_vertex.cpp.o
+[ 87%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/normal_collision.cpp.o
+[ 87%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/normal_collisions.cpp.o
+[ 88%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/plane_vertex.cpp.o
+[ 88%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/normal/vertex_vertex.cpp.o
+[ 88%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/edge_edge.cpp.o
+[ 88%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/edge_vertex.cpp.o
+[ 88%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/face_vertex.cpp.o
+[ 90%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/plane_vertex.cpp.o
+[ 90%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/tangential_collision.cpp.o
+[ 90%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/tangential_collisions.cpp.o
+[ 90%] Building CXX object python/CMakeFiles/ipctk.dir/src/collisions/tangential/vertex_vertex.cpp.o
+[ 90%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/distance_type.cpp.o
+[ 90%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/edge_edge_mollifier.cpp.o
+[ 92%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/edge_edge.cpp.o
+[ 92%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/line_line.cpp.o
+[ 92%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/point_edge.cpp.o
+[ 92%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/point_line.cpp.o
+[ 92%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/point_plane.cpp.o
+[ 92%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/point_point.cpp.o
+[ 93%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/point_triangle.cpp.o
+[ 93%] Building CXX object python/CMakeFiles/ipctk.dir/src/distance/signed_distance.cpp.o
+[ 93%] Building CXX object python/CMakeFiles/ipctk.dir/src/friction/smooth_friction_mollifier.cpp.o
+[ 93%] Building CXX object python/CMakeFiles/ipctk.dir/src/friction/smooth_mu.cpp.o
+[ 93%] Building CXX object python/CMakeFiles/ipctk.dir/src/geometry/area.cpp.o
+[ 95%] Building CXX object python/CMakeFiles/ipctk.dir/src/geometry/angle.cpp.o
+[ 95%] Building CXX object python/CMakeFiles/ipctk.dir/src/geometry/normal.cpp.o
+[ 95%] Building CXX object python/CMakeFiles/ipctk.dir/src/geometry/intersection.cpp.o
+[ 95%] Building CXX object python/CMakeFiles/ipctk.dir/src/math/interval.cpp.o
+[ 95%] Building CXX object python/CMakeFiles/ipctk.dir/src/ogc/feasible_region.cpp.o
+[ 95%] Building CXX object python/CMakeFiles/ipctk.dir/src/ogc/trust_region.cpp.o
+[ 96%] Building CXX object python/CMakeFiles/ipctk.dir/src/potentials/barrier_potential.cpp.o
+[ 96%] Building CXX object python/CMakeFiles/ipctk.dir/src/potentials/friction_potential.cpp.o
+[ 96%] Building CXX object python/CMakeFiles/ipctk.dir/src/potentials/normal_adhesion_potential.cpp.o
+[ 96%] Building CXX object python/CMakeFiles/ipctk.dir/src/potentials/normal_potential.cpp.o
+[ 96%] Building CXX object python/CMakeFiles/ipctk.dir/src/potentials/tangential_adhesion_potential.cpp.o
+[ 98%] Building CXX object python/CMakeFiles/ipctk.dir/src/potentials/tangential_potential.cpp.o
+[ 98%] Building CXX object python/CMakeFiles/ipctk.dir/src/tangent/closest_point.cpp.o
+[ 98%] Building CXX object python/CMakeFiles/ipctk.dir/src/tangent/relative_velocity.cpp.o
+[ 98%] Building CXX object python/CMakeFiles/ipctk.dir/src/tangent/tangent_basis.cpp.o
+[ 98%] Building CXX object python/CMakeFiles/ipctk.dir/src/utils/eigen_ext.cpp.o
+[ 98%] Building CXX object python/CMakeFiles/ipctk.dir/src/utils/logger.cpp.o
+[100%] Building CXX object python/CMakeFiles/ipctk.dir/src/utils/profiler.cpp.o
+[100%] Building CXX object python/CMakeFiles/ipctk.dir/src/utils/thread_limiter.cpp.o
+[100%] Building CXX object python/CMakeFiles/ipctk.dir/src/utils/vertex_to_min_edge.cpp.o
+[100%] Building CXX object python/CMakeFiles/ipctk.dir/src/utils/world_bbox_diagonal_length.cpp.o
+[100%] Linking CXX shared module /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-local-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+[100%] Built target ipctk

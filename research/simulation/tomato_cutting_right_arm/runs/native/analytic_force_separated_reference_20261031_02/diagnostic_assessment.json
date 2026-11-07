@@ -1,0 +1,68 @@
+{
+  "result": "PASS: separated stationary analytic geometry and force-arithmetic references, version 2.",
+  "reference_change": "Replaced one combined geometry-to-force acceptance test with explicit geometry accuracy and exact arithmetic replay gates. This is a new diagnostic policy, not a claim that the earlier policy passed.",
+  "geometry_policy": {
+    "surface_and_penetration_m": 1e-07,
+    "normal_vector_error": 1e-06,
+    "provenance": "Existing analytic-box contact geometry tolerances."
+  },
+  "arithmetic_policy": "Exact equality to rational binary32 fused-interpolation replay, using independently mixed stiffness and recorded rigid point.",
+  "reaction_hessian_policy": {
+    "reaction_n": 1e-05,
+    "moment_nm": 1e-06,
+    "hessian_n_m": 0.0001
+  },
+  "historical_geometry_force_gate_passed": false,
+  "historical_failure_preserved": "runs/native/analytic_force_reaction_20261031_01 and _02",
+  "metrics": {
+    "exact_arithmetic_matches": 4,
+    "max_penetration_error_m": 6.990507395165935e-09,
+    "max_surface_error_m": 1.1641532182693481e-09,
+    "max_normal_error": 0.0,
+    "max_reconstructed_reaction_error_n": 0.0,
+    "max_reconstructed_moment_error_nm": 6.304623424228832e-10,
+    "max_hessian_error_n_m": 0.0
+  },
+  "native_attempts_this_step": 2,
+  "first_attempt": "Stopped on tuple/list representation mismatch before force comparison; preserved. Reader normalized sequence representation; regression test added.",
+  "passing_run_cases": 6,
+  "passing_run_force_evaluations": 4,
+  "mechanical_steps": 0,
+  "focused_tests_passed": 25,
+  "native_force_kernel_unchanged": true,
+  "original_pinned_sources_unchanged": true,
+  "limits": [
+    "Stationary, frictionless analytic boxes and axis-unit normals only; no dynamic qualification.",
+    "Reconstructed opposite force and COM moment are bookkeeping, not independently measured body response.",
+    "No real-blade mesh, two-way robot coupling, cutting or training validation.",
+    "The replay uses the recorded native rigid point; geometry is separately checked against the independent box surface."
+  ],
+  "next_step": "Qualify the real-blade full-surface contact path: choose and validate a solver-integrated replacement for the failing thin-feature SDF path.",
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 3.754443425000318,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 17,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25590349824,
+    "min_free_vram_bytes": 7675576320,
+    "mode": "analytic_forces",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "analytic_force_cases_completed": 6,
+      "mechanical_steps": 0,
+      "force_evaluations": 4,
+      "reference_version": 2,
+      "geometry_checks_passed": true,
+      "arithmetic_checks_passed": true,
+      "training": false,
+      "real_blade_force_validated": false
+    }
+  }
+}

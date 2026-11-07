@@ -1,0 +1,1425 @@
+{
+  "result": "Finite-fixture audit passed: both sampled candidates keep a separated normal branch and unique sampled depth across the reported checks; no global certificate.",
+  "cases": [
+    {
+      "id": "authored_blade_edge_through_soft_interior",
+      "sampled_minimum": {
+        "sample_count": 886,
+        "deepest_sampled_penetration_m": 0.0033202715075635997,
+        "bands": [
+          {
+            "depth_band_m": 1e-12,
+            "near_best_sample_count": 1,
+            "maximum_location_spread_m": 0.0,
+            "minimum_normal_dot": 1.0
+          },
+          {
+            "depth_band_m": 1e-09,
+            "near_best_sample_count": 1,
+            "maximum_location_spread_m": 0.0,
+            "minimum_normal_dot": 1.0
+          },
+          {
+            "depth_band_m": 1e-07,
+            "near_best_sample_count": 1,
+            "maximum_location_spread_m": 0.0,
+            "minimum_normal_dot": 1.0
+          }
+        ],
+        "global_minimum_certified": false
+      },
+      "binary32_modeled_soft_point_m": [
+        -0.21106868982315063,
+        -0.0008001684909686446,
+        0.0012241380754858255
+      ],
+      "point_quantization_shift_m": 4.778896335054775e-09,
+      "point_audits": [
+        {
+          "point_m": [
+            -0.21106869005219714,
+            -0.0008001637181471455,
+            0.0012241381500701243
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.0033202715075635993,
+            "closest_point_m": [
+              -0.21111023778881194,
+              -0.0008001628002805473,
+              -0.0020958733965242547
+            ],
+            "face_normal": [
+              -0.012513355163921195,
+              2.7644323544395743e-07,
+              -0.9999217049061717
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.003334628669240322,
+            "closest_point_m": [
+              -0.21110844097877435,
+              -0.0008001646942153885,
+              0.004558529882538699
+            ],
+            "face_normal": [
+              -0.011920645601079222,
+              -2.927067268520729e-07,
+              0.9999289465798897
+            ]
+          },
+          "different_normal_distance_gap_m": 1.4357161676722789e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.003334628669240322,
+            "closest_point_m": [
+              -0.21110844097877435,
+              -0.0008001646942153885,
+              0.004558529882538699
+            ],
+            "face_normal": [
+              -0.011920645601079222,
+              -2.927067268520729e-07,
+              0.9999289465798897
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.4357161676722789e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "authored_reference",
+          "signed_reference_m": -0.0033202715075635993,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106868982315063,
+            -0.0008001684909686446,
+            0.0012241380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.0033202714358525997,
+            "closest_point_m": [
+              -0.21111023755886807,
+              -0.0008001675731020663,
+              -0.002095873399403169
+            ],
+            "face_normal": [
+              -0.012513355163921195,
+              2.7644323544395743e-07,
+              -0.9999217049061717
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.003334628746548306,
+            "closest_point_m": [
+              -0.2111084407506494,
+              -0.0008001694670369103,
+              0.004558529885256891
+            ],
+            "face_normal": [
+              -0.011920645601079222,
+              -2.927067268520729e-07,
+              0.9999289465798897
+            ]
+          },
+          "different_normal_distance_gap_m": 1.435731069570614e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.003334628746548306,
+            "closest_point_m": [
+              -0.2111084407506494,
+              -0.0008001694670369103,
+              0.004558529885256891
+            ],
+            "face_normal": [
+              -0.011920645601079222,
+              -2.927067268520729e-07,
+              0.9999289465798897
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.435731069570614e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "binary32_point_authored_mesh",
+          "signed_reference_m": -0.0033202714358525997,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106868982315063,
+            -0.0008001684909686446,
+            0.0012241380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.003320271323219939,
+            "closest_point_m": [
+              -0.21111023755360264,
+              -0.0008001675858546969,
+              -0.002095873286827586
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346286484173078,
+            "closest_point_m": [
+              -0.21110844074769283,
+              -0.0008001694505049268,
+              0.004558529787154171
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.4357325197368598e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346286484173078,
+            "closest_point_m": [
+              -0.21110844074769283,
+              -0.0008001694505049268,
+              0.004558529787154171
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.4357325197368598e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "binary32_point_and_mesh",
+          "signed_reference_m": -0.003320271323219939,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106878982315064,
+            -0.0008001684909686446,
+            0.0012241380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.003320270071884539,
+            "closest_point_m": [
+              -0.21111033753794425,
+              -0.0008001675858550379,
+              -0.002095872035590159
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346274563528016,
+            "closest_point_m": [
+              -0.21110854073348265,
+              -0.0008001694505045838,
+              0.004558528595174366
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.435738446826278e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346274563528016,
+            "closest_point_m": [
+              -0.21110854073348265,
+              -0.0008001694505045838,
+              0.004558528595174366
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.435738446826278e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:0:-1",
+          "signed_reference_m": -0.003320270071884539,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106858982315063,
+            -0.0008001684909686446,
+            0.0012241380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.0033202725745553395,
+            "closest_point_m": [
+              -0.21111013756926103,
+              -0.0008001675858543557,
+              -0.002095874538065013
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.003334629840481814,
+            "closest_point_m": [
+              -0.21110834076190302,
+              -0.0008001694505052698,
+              0.004558530979133977
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.4357265926474416e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.003334629840481814,
+            "closest_point_m": [
+              -0.21110834076190302,
+              -0.0008001694505052698,
+              0.004558530979133977
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.4357265926474416e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:0:1",
+          "signed_reference_m": -0.0033202725745553395,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106868982315063,
+            -0.0008002684909686446,
+            0.0012241380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.0033202713232471995,
+            "closest_point_m": [
+              -0.21111023755360298,
+              -0.0008002675858546967,
+              -0.002095873286854844
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346286483885326,
+            "closest_point_m": [
+              -0.2111084407476925,
+              -0.0008002694505049267,
+              0.004558529787125398
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.4357325141333126e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346286483885326,
+            "closest_point_m": [
+              -0.2111084407476925,
+              -0.0008002694505049267,
+              0.004558529787125398
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.4357325141333126e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:1:-1",
+          "signed_reference_m": -0.0033202713232471995,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106868982315063,
+            -0.0008000684909686447,
+            0.0012241380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.003320271323192679,
+            "closest_point_m": [
+              -0.2111102375536023,
+              -0.0008000675858546969,
+              -0.0020958732868003277
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346286484460825,
+            "closest_point_m": [
+              -0.21110844074769317,
+              -0.0008000694505049268,
+              0.004558529787182944
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.4357325253403636e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033346286484460825,
+            "closest_point_m": [
+              -0.21110844074769317,
+              -0.0008000694505049268,
+              0.004558529787182944
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.4357325253403636e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:1:1",
+          "signed_reference_m": -0.003320271323192679,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106868982315063,
+            -0.0008001684909686446,
+            0.0012240380754858255
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.0033201713310494476,
+            "closest_point_m": [
+              -0.21111023630236522,
+              -0.0008001675858819549,
+              -0.002095873302485989
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033347286413119674,
+            "closest_point_m": [
+              -0.21110844193967265,
+              -0.0008001694505336996,
+              0.004558529772943994
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.455731026251978e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033347286413119674,
+            "closest_point_m": [
+              -0.21110844193967265,
+              -0.0008001694505336996,
+              0.004558529772943994
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.455731026251978e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:2:-1",
+          "signed_reference_m": -0.0033201713310494476,
+          "nearest_normal_dot_original": 1.0
+        },
+        {
+          "point_m": [
+            -0.21106868982315063,
+            -0.0008001684909686446,
+            0.0012242380754858256
+          ],
+          "nearest": {
+            "triangle_id": 79,
+            "distance_m": 0.0033203713153904316,
+            "closest_point_m": [
+              -0.21111023880484006,
+              -0.0008001675858274387,
+              -0.0020958732711691833
+            ],
+            "face_normal": [
+              -0.01251335400256244,
+              2.726024049560562e-07,
+              -0.9999217049207064
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033345286555226485,
+            "closest_point_m": [
+              -0.21110843955571304,
+              -0.000800169450476154,
+              0.0045585298013643485
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "different_normal_distance_gap_m": 1.4157340132216981e-05,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 78,
+            "distance_m": 0.0033345286555226485,
+            "closest_point_m": [
+              -0.21110843955571304,
+              -0.000800169450476154,
+              0.0045585298013643485
+            ],
+            "face_normal": [
+              -0.011920645065250472,
+              -2.8774906693975237e-07,
+              0.999928946586279
+            ]
+          },
+          "opposing_normal_distance_gap_m": 1.4157340132216981e-05,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:2:1",
+          "signed_reference_m": -0.0033203713153904316,
+          "nearest_normal_dot_original": 1.0
+        }
+      ],
+      "minimum_opposing_surface_gap_m": 1.4157340132216981e-05,
+      "minimum_normal_dot_original": 1.0,
+      "distinct_normal_branch_within_largest_reporting_band": false
+    },
+    {
+      "id": "wide:edge_through_authored_blade_face",
+      "sampled_minimum": {
+        "sample_count": 5,
+        "deepest_sampled_penetration_m": 0.0025207782046922757,
+        "bands": [
+          {
+            "depth_band_m": 1e-12,
+            "near_best_sample_count": 1,
+            "maximum_location_spread_m": 0.0,
+            "minimum_normal_dot": 0.9999999999999999
+          },
+          {
+            "depth_band_m": 1e-09,
+            "near_best_sample_count": 1,
+            "maximum_location_spread_m": 0.0,
+            "minimum_normal_dot": 0.9999999999999999
+          },
+          {
+            "depth_band_m": 1e-07,
+            "near_best_sample_count": 1,
+            "maximum_location_spread_m": 0.0,
+            "minimum_normal_dot": 0.9999999999999999
+          }
+        ],
+        "global_minimum_certified": false
+      },
+      "binary32_modeled_soft_point_m": [
+        -0.2775190770626068,
+        0.005343955010175705,
+        0.0012506443308666348
+      ],
+      "point_quantization_shift_m": 1.4178449292719248e-08,
+      "point_audits": [
+        {
+          "point_m": [
+            -0.2775190912390406,
+            0.00534395524911881,
+            0.0012506443234422413
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.002520778204692276,
+            "closest_point_m": [
+              -0.27755032205617325,
+              0.005342900302471309,
+              -0.001269940188213818
+            ],
+            "face_normal": [
+              -0.012389355427817819,
+              -0.0004185003843406951,
+              -0.9999231614126715
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521516585524235,
+            "closest_point_m": [
+              -0.2775488366666667,
+              0.005342898499999999,
+              0.0037719852333333334
+            ],
+            "face_normal": [
+              -0.011796641670657729,
+              -0.0004190926702117386,
+              0.999930329376316
+            ]
+          },
+          "different_normal_distance_gap_m": 7.383808319589777e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521516585524235,
+            "closest_point_m": [
+              -0.2775488366666667,
+              0.005342898499999999,
+              0.0037719852333333334
+            ],
+            "face_normal": [
+              -0.011796641670657729,
+              -0.0004190926702117386,
+              0.999930329376316
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.383808319589777e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "authored_reference",
+          "signed_reference_m": -0.002520778204692276,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.0025207783876529787,
+            "closest_point_m": [
+              -0.2775503078820062,
+              0.005342900063451635,
+              -0.0012699403637360688
+            ],
+            "face_normal": [
+              -0.012389355427817819,
+              -0.0004185003843406951,
+              -0.9999231614126715
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025215167452345287,
+            "closest_point_m": [
+              -0.27754882249211693,
+              0.005342898260989961,
+              0.003771985400456893
+            ],
+            "face_normal": [
+              -0.011796641670657729,
+              -0.0004190926702117386,
+              0.999930329376316
+            ]
+          },
+          "different_normal_distance_gap_m": 7.383575815500011e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025215167452345287,
+            "closest_point_m": [
+              -0.27754882249211693,
+              0.005342898260989961,
+              0.003771985400456893
+            ],
+            "face_normal": [
+              -0.011796641670657729,
+              -0.0004190926702117386,
+              0.999930329376316
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.383575815500011e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "binary32_point_authored_mesh",
+          "signed_reference_m": -0.0025207783876529787,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.002520778391043473,
+            "closest_point_m": [
+              -0.2775503078803462,
+              0.005342900051494338,
+              -0.001269940367142387
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521516807256087,
+            "closest_point_m": [
+              -0.2775488224904588,
+              0.005342898245888461,
+              0.0037719854624960053
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 7.384162126139807e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521516807256087,
+            "closest_point_m": [
+              -0.2775488224904588,
+              0.005342898245888461,
+              0.0037719854624960053
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.384162126139807e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "binary32_point_and_mesh",
+          "signed_reference_m": -0.002520778391043473,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775191770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.002520777152107998,
+            "closest_point_m": [
+              -0.2775504078649966,
+              0.005342900052012839,
+              -0.0012699391283021101
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025215156275920146,
+            "closest_point_m": [
+              -0.2775489224765427,
+              0.005342898246382857,
+              0.003771984282914121
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 7.384754840164369e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025215156275920146,
+            "closest_point_m": [
+              -0.2775489224765427,
+              0.005342898246382857,
+              0.003771984282914121
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.384754840164369e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:0:-1",
+          "signed_reference_m": -0.002520777152107998,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775189770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.0025207796299789487,
+            "closest_point_m": [
+              -0.2775502078956958,
+              0.005342900050975837,
+              -0.0012699416059826643
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521517986920159,
+            "closest_point_m": [
+              -0.27754872250437485,
+              0.005342898245394066,
+              0.0037719866420778893
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 7.383569412102234e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521517986920159,
+            "closest_point_m": [
+              -0.27754872250437485,
+              0.005342898245394066,
+              0.0037719866420778893
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.383569412102234e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:0:1",
+          "signed_reference_m": -0.0025207796299789487,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775190770626068,
+            0.005343855010175705,
+            0.0012506443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.0025207783491929597,
+            "closest_point_m": [
+              -0.27755030787982765,
+              0.005342800051511852,
+              -0.0012699403252950897
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025215167653462227,
+            "closest_point_m": [
+              -0.27754882248996443,
+              0.005342798245906026,
+              0.0037719854205890604
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 7.38416153263019e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025215167653462227,
+            "closest_point_m": [
+              -0.27754882248996443,
+              0.005342798245906026,
+              0.0037719854205890604
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.38416153263019e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:1:-1",
+          "signed_reference_m": -0.0025207783491929597,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775190770626068,
+            0.005344055010175705,
+            0.0012506443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.0025207784328939854,
+            "closest_point_m": [
+              -0.27755030788086466,
+              0.005343000051476823,
+              -0.001269940408989684
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521516849165952,
+            "closest_point_m": [
+              -0.2775488224909532,
+              0.005342998245870897,
+              0.0037719855044029502
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 7.38416271966677e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.002521516849165952,
+            "closest_point_m": [
+              -0.2775488224909532,
+              0.005342998245870897,
+              0.0037719855044029502
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 7.38416271966677e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:1:1",
+          "signed_reference_m": -0.0025207784328939854,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.0012505443308666348
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.0025206783987273304,
+            "closest_point_m": [
+              -0.2775503066415059,
+              0.005342900093341635,
+              -0.0012699403825095123
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025216168002890264,
+            "closest_point_m": [
+              -0.2775488236700407,
+              0.005342898203981516,
+              0.003771985448562368
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 9.384015616960284e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025216168002890264,
+            "closest_point_m": [
+              -0.2775488236700407,
+              0.005342898203981516,
+              0.003771985448562368
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 9.384015616960284e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:2:-1",
+          "signed_reference_m": -0.0025206783987273304,
+          "nearest_normal_dot_original": 0.9999999999999999
+        },
+        {
+          "point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.001250744330866635
+          ],
+          "nearest": {
+            "triangle_id": 85,
+            "distance_m": 0.0025208783833596147,
+            "closest_point_m": [
+              -0.27755030911918643,
+              0.00534290000964704,
+              -0.0012699403517752613
+            ],
+            "face_normal": [
+              -0.012389354752615296,
+              -0.00041850512727163,
+              -0.9999231614190524
+            ]
+          },
+          "nearest_different_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025214168142231484,
+            "closest_point_m": [
+              -0.27754882131087694,
+              0.005342898287795407,
+              0.0037719854764296425
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "different_normal_distance_gap_m": 5.384308635336676e-07,
+          "nearest_opposing_normal_facet": {
+            "triangle_id": 71,
+            "distance_m": 0.0025214168142231484,
+            "closest_point_m": [
+              -0.27754882131087694,
+              0.005342898287795407,
+              0.0037719854764296425
+            ],
+            "face_normal": [
+              -0.011796640722914673,
+              -0.0004190986489570364,
+              0.9999303293849912
+            ]
+          },
+          "opposing_normal_distance_gap_m": 5.384308635336676e-07,
+          "bands": [
+            {
+              "band_m": 1e-12,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-09,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            },
+            {
+              "band_m": 1e-07,
+              "nearby_facet_count": 1,
+              "different_normal_branch_present": false
+            }
+          ],
+          "normal_grouping_scope": "dot < 1-1e-6 labels different face directions for reporting only; not a force/manifold rule.",
+          "id": "rounded_stencil:2:1",
+          "signed_reference_m": -0.0025208783833596147,
+          "nearest_normal_dot_original": 0.9999999999999999
+        }
+      ],
+      "minimum_opposing_surface_gap_m": 5.384308635336676e-07,
+      "minimum_normal_dot_original": 0.9999999999999999,
+      "distinct_normal_branch_within_largest_reporting_band": false
+    },
+    {
+      "id": "wide:translated_clear_negative_control",
+      "sampled_minimum": {
+        "sample_count": 0,
+        "bands": []
+      },
+      "point_audits": []
+    }
+  ],
+  "sensitivity_bands_m": [
+    1e-12,
+    1e-09,
+    1e-07
+  ],
+  "stencil_offsets_m": [
+    -1e-07,
+    1e-07
+  ],
+  "band_scope": "Reporting sensitivity and discrete point probes only; not physical slop, a robustness bound or a force-acceptance threshold.",
+  "tests_passed": 6,
+  "host_point_audits": 18,
+  "native_launches": 0,
+  "force_evaluations": 0,
+  "mechanical_steps": 0,
+  "elapsed_wall_s": 0.22697457899994333,
+  "source_and_input_sha256": {
+    "runs/offline/blade_contact_candidate_probe_20261031_01/authored_blade_edge_through_soft_interior.json": "471519ebe71049ef9174b422d2d91ee3fe8b6b54d6ad4a663df0664a8a226298",
+    "runs/offline/blade_contact_candidate_probe_20261031_01/wide_edge_through_authored_blade_face.json": "b30a71bd57e7cb8e10e25e7519c2bde2810183b59038a0383f01a148d98a99d1",
+    "runs/offline/blade_contact_candidate_probe_20261031_01/wide_translated_clear_negative_control.json": "f862bfb02b770329ff8b1bfd826cc214ca2f6278d64403228a8ea507dda368fa",
+    "rl/tomato_blade_ambiguity_audit.py": "02b58d9a9b2347440aeecd55de49df517dba128c4bdbc1d809b5b246d10504ed",
+    "rl/tests/test_tomato_blade_ambiguity_audit.py": "3f2be48c41e09fc36898258d9ff75e2bf6cfa0c2beead9411231027d4b509c6c",
+    "rl/tomato_contact_precision_audit.py": "856e7435a4cdab05b57149822e330fc705bf4d25b160373c24f68208e0070b8c",
+    "rl/tomato_mesh_contact_contract.py": "6b07677a41f42cdba3994e5fa9e96c9e94bfd38f08a43cccb96dbdee41096c74",
+    "rl/tomato_triangle_distance.py": "427318789e9a52bf554b42ac1f4caedb0c294e35b59eebbfd0c89fe80aff467c",
+    "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+    "work/run_real_blade_ambiguity_audit.py": "afe1ed4c9faad16c6caa051329e1336c581bceddd6cce07a361b6e4639e5cf61",
+    "runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json": "2af92da3d2ea59c14e3b1cdd918283937d037ba55cb89a9da44b928fe7493b23"
+  },
+  "limits": [
+    "Only the two saved deepest sampled blade candidates and a six-axis-offset stencil are examined, not a global minimizer search or a continuous neighborhood.",
+    "Binary32 variants are host-modeled conversion/interpolation, not captured native blade state or a GPU collision run.",
+    "Face-normal grouping distinguishes reported directions; edge/vertex normal-cone uniqueness is not generally certified.",
+    "Finite sampling cannot exclude unsampled equal or deeper minima; no native contact writer, coupling or cutting qualification."
+  ],
+  "next_step": "If the measured candidates remain isolated at the reporting bands, run an isolated single-selected-record native buffer roundtrip for these explicit fixtures, retaining their provenance and no physical manifold claim.",
+  "item_12_complete": false,
+  "original_pinned_sources_unchanged": true
+}

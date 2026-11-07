@@ -1,0 +1,45 @@
+{
+  "status": "audit_complete_no_physical_gate_closed",
+  "preserved_evidence_hashes_checked": 146,
+  "saved_known_input_estimator_comparisons": [
+    {
+      "case": "no_feedback",
+      "intervals": 8,
+      "known_input_midpoint_work_j": -8.048449489701116e-05,
+      "known_input_displacement_work_j": 1.8559331015323604e-06,
+      "displacement_minus_midpoint_j": 8.234042799854352e-05,
+      "conditional_velocity_storage_rounding_envelope_j": 2.9458017705301616e-12
+    },
+    {
+      "case": "feedback",
+      "intervals": 8,
+      "known_input_midpoint_work_j": -8.048011030563708e-05,
+      "known_input_displacement_work_j": 1.8559328724895324e-06,
+      "displacement_minus_midpoint_j": 8.233604317812661e-05,
+      "conditional_velocity_storage_rounding_envelope_j": 2.9458017788674697e-12
+    },
+    {
+      "case": "replay",
+      "intervals": 6,
+      "known_input_midpoint_work_j": -6.03607111526898e-05,
+      "known_input_displacement_work_j": 1.3919712075789163e-06,
+      "displacement_minus_midpoint_j": 6.175268236026871e-05,
+      "conditional_velocity_storage_rounding_envelope_j": 2.2093504764001756e-12
+    }
+  ],
+  "observability_counterexample": {
+    "interval_s": 0.004166666666666667,
+    "same_mean_torque_nm": 1.0,
+    "same_endpoint_velocity_rad_s": 0.001,
+    "same_displacement_rad": 4.166666666666667e-06,
+    "work_plus_j": 4.1875e-06,
+    "work_minus_j": 4.145833333333334e-06,
+    "difference_j": 4.166666666666655e-08,
+    "scope": "Analytic information counterexample, not a measured simulator trajectory"
+  },
+  "implication": "Endpoint states plus interval-average total load do not uniquely determine motor work without a justified discrete identity or within-step drive impulse/velocity information.",
+  "native_runs": 0,
+  "physics_changed": false,
+  "thresholds_changed": false,
+  "full_motor_work_gate_closed": false
+}

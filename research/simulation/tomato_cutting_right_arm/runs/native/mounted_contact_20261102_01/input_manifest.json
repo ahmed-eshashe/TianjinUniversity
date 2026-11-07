@@ -1,0 +1,116 @@
+{
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/scene/phase3.usda": "f4dedf722703f5027c7a15f5d16e12e2f4839cc989d888553d86ccd13b552381",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/scene/minimal_benchmark.usda": "850a765acdec138313fd0ca036c29487e14d6f9d50d37bbf6f20bc2f1d2a071b",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/assets/robots/Collected_whole_robot_updated/Collected_whole_robot/whole_robot_2.usd": "07d6b54590102f237ce781a3edc6dcef07faeac75547b5f55d6658ea7c13c68a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/phase3_physics.json": "ce16bf3947c3ec6d4968e7ec9be3f8e8a8b58ef95c442293796b443f6d238fd9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/scene/manifest.json": "1e7989fd3e7b7bcd96bd688f6e31c31fba9e44b60b81026a1e73174b0396d2ee",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json": "2af92da3d2ea59c14e3b1cdd918283937d037ba55cb89a9da44b928fe7493b23",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/robot_scene_20261101_01/scene_audit.json": "1f6ab03f9d66da0d373f22b2db104be323b3c0ae186dbe112674c4e47f22b15e",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/robot_scene_20261101_01/local_cutting_scene.usda": "3abbc7e1d34aff48c7947d64af716f573f60588833ee2a1e05e00191f27ed20c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fixed_mount_scene.py": "41e557d48667f5e403c382a68f628b4f04ecab07a4b860431a457df8e7feaa36",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_01/contract.json": "822f9ccd133382b8b8ac7763974a2d730f6b2d84841e5a4a8ed705433d4f6fee",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda": "df906ab8b04a289b8e393df203646515475180a33e5ef3abf0238cdc7edd7d92",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_mounted_contact_worker.py": "ade19a0c4316e9ab640cf00ef6986f863a731e37b7a9ddf80f1cb928271ef6e0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_mesh_weighted_contact.py": "3fda8fb870a4a2edc191e37515627c60c60f4249c31a1aaec8e982988f41db89",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_half_step_reaction.py": "6add6848db06f9aa33aa868c81c0dfe57b15285d7fc5c24d7f59eb117ed25f4c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_blade_quadrature.py": "c9cc9eed1d149f9cc64e1bc8c148a4e5b3293799278f86b2e298869fe3f246b5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_coverage.py": "e04d79ee64e49c0b535a424058cbc2853d7639d0a9045df61329cb291fb8ff8c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_queries.py": "b73eaf8d2d50c8a403f723da6969b8db8af40ad20f020b32f7e8a69dacb53476",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/exact_blade_cells.json": "e6e4b4411e409ec292d70b820dc16b3090dda14d8592dbcbc6fe7a2a9a7fcb5f"
+  },
+  "contract": {
+    "version": "integration-0.1",
+    "date": "2026-11-02",
+    "status": "active_for_nonfracturing_integration_only",
+    "scope": "Numerical simulation; no hardware safety or experimental tomato accuracy claim",
+    "geometry": {
+      "benchmark": "curved nominal 10 mm end cap",
+      "cut_x_m": -0.0225,
+      "target_world_shift_m": [
+        0,
+        0,
+        0.002
+      ],
+      "uniform_slice": false,
+      "quality_metric": "released cap versus reference curved thickness profile, not uniform thickness"
+    },
+    "mount": "existing ideal fixed right mount",
+    "experimental_validation": "pending at user request",
+    "mechanics": {
+      "production_law": "preserve existing tensile-qualified model; extensions versioned separately",
+      "fracture_enabled_in_mounted_test": false,
+      "self_contact_status": "whole-fruit combined volume/self-contact not yet qualified"
+    },
+    "mounted_coupon": {
+      "dt_s": 0.0004166666666666667,
+      "intervals_per_case": 4,
+      "cases": [
+        "passive_no_feedback",
+        "passive_feedback",
+        "passive_replay",
+        "driven_no_feedback",
+        "driven_feedback",
+        "clear"
+      ],
+      "particle_mass_kg": 0.001,
+      "spring_stiffness_n_m": 1000.0,
+      "contact_pressure_n_m3": 1750000000.0,
+      "initial_penetration_m": 5e-05,
+      "gravity_m_s2": [
+        0,
+        0,
+        0
+      ],
+      "friction": 0.0,
+      "damping": 0.0,
+      "gates": {
+        "force_ceiling_n": 10.0,
+        "particle_impulse_error_ns": 2e-07,
+        "wrench_balance_n": 1e-05,
+        "moment_balance_nm": 2e-06,
+        "frame_echo_m": 1e-07,
+        "reset_joint_rad": 1e-07,
+        "replay_position_m": 1e-07,
+        "replay_velocity_m_s": 2e-05,
+        "robot_response_min_rad_s": 1e-07,
+        "virtual_response_min": 0.0,
+        "maximum_penetration_m": 0.0001
+      },
+      "gate_provenance": "Synthetic diagnostic engineering bounds fixed before execution; impulse/replay bounds carried from qualified short exchange. Not physical safe loads."
+    },
+    "sustained_support": {
+      "dt_s": 0.0004166666666666667,
+      "minimum_duration_s": 10.0,
+      "fixture": "saved 25-node remainder fixture",
+      "slice_pinned": false,
+      "gravity_m_s2": [
+        0,
+        0,
+        -9.81
+      ],
+      "settling_speed_m_s": 0.001,
+      "settling_window_s": 1.0,
+      "board_max_penetration_m": 0.0001,
+      "gate_provenance": "proposed engineering criteria; feasibility must be tested, no retuning after observing a failure"
+    },
+    "release_later": {
+      "minimum_blade_absent_observation_s": 1.0,
+      "all_material_links_removed": true,
+      "material_components": 2
+    },
+    "missing_physical_inputs": [
+      "measured material and friction",
+      "wrist channels and latency",
+      "hardware force/torque limits",
+      "bruise/crush limits"
+    ],
+    "source_sha256": {
+      "runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+      "runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+      "docs/rl/slicing_criteria.json": "d42ffb898ddca047000df612e6f4e7c273b77cc7cf11d8c1d0502a843ee79100"
+    }
+  },
+  "scope": "Actual mounted robot; synthetic elastic coupon; no damage"
+}

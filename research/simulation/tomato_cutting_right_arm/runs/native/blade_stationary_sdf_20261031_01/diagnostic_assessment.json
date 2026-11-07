@@ -1,0 +1,29 @@
+{
+  "execution_result": "12 stationary steps and 482 native SDF queries completed",
+  "stationary_control": "zero retained contacts; final particle positions exactly equal initial",
+  "accuracy_result": "not qualified; measured surface errors, one sign disagreement and large sampled normal disagreement require investigation",
+  "journal_chain_and_source_snapshot_verified": true,
+  "native_contact_or_cutting_pass": false,
+  "next_step": "Controlled SDF-resolution comparison using unchanged authored geometry and the identical query registry; investigate sign and normal mismatches before positive-contact experiments.",
+  "native_attempts_this_session": 1,
+  "offline_tests": {
+    "guard": 9,
+    "independent_signed_reference": 4
+  },
+  "metrics": {
+    "surface_query_count": 434,
+    "signed_offset_query_count": 48,
+    "maximum_surface_abs_distance_m": 0.00100856798235327,
+    "maximum_signed_distance_error_m": 0.0006255928999744356,
+    "sign_mismatch_count": 1,
+    "undefined_gradient_count": 0,
+    "maximum_normal_angle_error_deg": 48.90433371821732,
+    "acceptance_thresholds_selected": false,
+    "native_sdf_accuracy_qualified": false,
+    "limitations": [
+      "Normals compared only at sampled offsets, not sharp surface edges.",
+      "Floating-point winding sign assumes the authored closed surface; self-intersections not certified.",
+      "Samples do not prove contact completeness or thin-edge preservation."
+    ]
+  }
+}

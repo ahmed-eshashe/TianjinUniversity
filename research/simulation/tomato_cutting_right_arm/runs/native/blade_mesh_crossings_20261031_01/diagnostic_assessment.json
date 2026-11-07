@@ -1,0 +1,45 @@
+{
+  "result": "All 11 finite-feature geometry fixtures agree with independent reference distances and crossing/clear expectations.",
+  "native_pair_evaluations": 726,
+  "native_attempts": 1,
+  "mechanical_steps": 0,
+  "max_distance_disagreement_m": 2.7755575615628914e-17,
+  "numerical_fixture_comparison_tolerance_m": 1e-09,
+  "tolerance_scope": "Numerical geometry-fixture comparison only; no material, physical contact or solver threshold was selected or changed. Nearest declared clear negative control is 1 micrometre, 1000x this comparison tolerance.",
+  "historical_fixture_clarification": "The old 0.1 mm crossing fixture has one interior soft vertex and therefore did not prove a vertex-only detector would miss it. It was preserved; new crossings have every soft vertex outside.",
+  "new_fixture_sizes": "Wide facet halfspan 0.01 m; reverse crossing soft-facet circumradius 0.4 m. Disclosed geometry-only probes, not simulated material or approved physical motion.",
+  "tests": {
+    "guard": 9,
+    "fixture_geometry": 2
+  },
+  "scope_limitations": [
+    "No exact/adaptive predicates or continuous collision detection.",
+    "No solver contact records, normals, impulses or forces were created.",
+    "Passing finite fixtures does not establish global contact completeness."
+  ],
+  "integrity": "Launch source snapshots, historical blade/fixture hashes and old production-source hashes verified.",
+  "next_step": "Prepare contact-record requirements and independent checks for surface locations, barycentric weights, normal conventions, duplicate reduction and capacities before wiring a force-producing solver route. Intersection witnesses alone do not determine penetration or a unique contact normal.",
+  "runtime_resources": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 2.4528137560000687,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 11,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 26061230080,
+    "min_free_vram_bytes": 7816085504,
+    "mode": "mesh_crossings",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "crossing_cases_completed": 11,
+      "mechanical_steps": 0,
+      "training": false,
+      "full_surface_contact_validated": false
+    }
+  }
+}

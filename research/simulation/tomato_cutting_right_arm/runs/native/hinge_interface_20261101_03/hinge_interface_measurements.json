@@ -1,0 +1,223 @@
+{
+  "cases": [
+    {
+      "id": "hinge_identity",
+      "link_index": 1,
+      "body_names": [
+        "base",
+        "link"
+      ],
+      "before": {
+        "joint_position": [
+          0.0
+        ],
+        "joint_velocity": [
+          0.0
+        ],
+        "link_pose": [
+          0.009999999776482582,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "link_com_velocity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "force_world_n": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "torque_com_world_nm": [
+        0.0,
+        0.0,
+        0.0012
+      ],
+      "expected": {
+        "effective_inertia_kg_m2": 0.00010199999733967707,
+        "generalized_effort_nm": 0.031199999329447746,
+        "joint_velocity_rad_s": 0.127450980977098,
+        "joint_position_rad": 2.8211805685034715e-05
+      },
+      "mass_matrix_kg_m2": 0.00010199999815085903,
+      "after_pulse": {
+        "joint_position": [
+          2.821180532919243e-05
+        ],
+        "joint_velocity": [
+          0.12745097279548645
+        ],
+        "link_pose": [
+          0.009999999776482582,
+          2.82118037375767e-07,
+          4.743968700931697e-19,
+          1.6815544182785525e-12,
+          0.0,
+          1.4105902664596215e-05,
+          1.0
+        ],
+        "link_com_velocity": [
+          0.0,
+          0.0012745095882564783,
+          0.0,
+          1.519333814314905e-08,
+          0.0,
+          0.12745097279548645
+        ]
+      },
+      "pulse_check": {
+        "mass_matrix_error_kg_m2": 8.111819592773739e-13,
+        "joint_position_error_rad": 3.5584228502715844e-13,
+        "joint_velocity_error_rad_s": 8.181611554913815e-09
+      },
+      "after_coast": {
+        "joint_position": [
+          8.131640061037615e-05
+        ],
+        "joint_velocity": [
+          0.12745097279548645
+        ],
+        "link_pose": [
+          0.009999999776482582,
+          8.131639788189204e-07,
+          3.941271600534474e-18,
+          4.846834739113959e-12,
+          0.0,
+          4.0658200305188075e-05,
+          1.0
+        ],
+        "link_com_velocity": [
+          -1.0363851288275328e-07,
+          0.0012745097046718001,
+          1.2354671796786613e-14,
+          1.519333814314905e-08,
+          0.0,
+          0.12745097279548645
+        ]
+      },
+      "coast_joint_velocity_change_rad_s": 0.0
+    },
+    {
+      "id": "hinge_yaw90",
+      "link_index": 1,
+      "body_names": [
+        "base",
+        "link"
+      ],
+      "before": {
+        "joint_position": [
+          0.0
+        ],
+        "joint_velocity": [
+          0.0
+        ],
+        "link_pose": [
+          1.19209286886246e-09,
+          0.010000000707805157,
+          0.0,
+          0.0,
+          0.0,
+          0.7071068286895752,
+          0.7071068286895752
+        ],
+        "link_com_velocity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "force_world_n": [
+        -3.0,
+        0.0,
+        0.0
+      ],
+      "torque_com_world_nm": [
+        0.0,
+        0.0,
+        0.0012
+      ],
+      "expected": {
+        "effective_inertia_kg_m2": 0.00010199999771220613,
+        "generalized_effort_nm": 0.03120000212341547,
+        "joint_velocity_rad_s": 0.1274509919248828,
+        "joint_position_rad": 2.82118081083725e-05
+      },
+      "mass_matrix_kg_m2": 0.0001020000854623504,
+      "after_pulse": {
+        "joint_position": [
+          2.8211792596266605e-05
+        ],
+        "joint_velocity": [
+          0.12745092809200287
+        ],
+        "link_pose": [
+          -2.8014181907565217e-07,
+          0.010000000707805157,
+          4.743384504624082e-19,
+          1.189038125772035e-12,
+          1.189038125772035e-12,
+          0.7071167826652527,
+          0.7070968747138977
+        ],
+        "link_com_velocity": [
+          -0.0012745092390105128,
+          1.519333409083501e-10,
+          0.0,
+          1.8111864106748737e-15,
+          1.519333459043537e-08,
+          0.12745094299316406
+        ]
+      },
+      "pulse_check": {
+        "mass_matrix_error_kg_m2": 8.775014426838559e-11,
+        "joint_position_error_rad": 1.551210589557754e-11,
+        "joint_velocity_error_rad_s": 6.383287992628439e-08
+      },
+      "after_coast": {
+        "joint_position": [
+          8.131635695463046e-05
+        ],
+        "joint_velocity": [
+          0.12745092809200287
+        ],
+        "link_pose": [
+          -8.112191949294356e-07,
+          0.010000000707805157,
+          3.940397270627005e-18,
+          3.4272281193570286e-12,
+          3.4272281193570286e-12,
+          0.7071355581283569,
+          0.7070780992507935
+        ],
+        "link_com_velocity": [
+          -0.0012745093554258347,
+          -1.033866112720716e-07,
+          1.2354665867555983e-14,
+          3.0024171252765897e-15,
+          1.519333636679221e-08,
+          0.12745095789432526
+        ]
+      },
+      "coast_joint_velocity_change_rad_s": 0.0
+    }
+  ],
+  "controlled_steps": 2,
+  "cuda_state_echoes": 4,
+  "dt_s": 0.0004166666666666667,
+  "baseline_physx_steps": 0,
+  "final_physx_steps": 2,
+  "newton_contact_connected": false,
+  "scope": "Prescribed force/torque interface on passive fixed-base hinges only."
+}

@@ -1,0 +1,66 @@
+{
+  "result": "Native CUDA Newton Contacts synthetic round-trip and exclusive read-only capture passed.",
+  "native_buffer_type": "newton.Contacts, CUDA device, soft capacity 8, rigid capacity 1",
+  "raw_records": 5,
+  "target_records": 4,
+  "features": [
+    "particle",
+    "edge",
+    "face"
+  ],
+  "all_seven_record_fields_exactly_match_float32_preview": true,
+  "raw_duplicate_preserved": true,
+  "foreign_body_filtered_after_global_validation": true,
+  "cleared_active_prefix_records": 0,
+  "contact_generation_before": 0,
+  "contact_generation_after": 1,
+  "negative_controls": [
+    "saturated_native_count",
+    "saturated_target_collector",
+    "stale_native_generation",
+    "stale_episode_snapshot"
+  ],
+  "native_launches": 1,
+  "mechanical_steps": 0,
+  "force_evaluations": 0,
+  "focused_tests_passed": {
+    "capture": 5,
+    "guard": 9
+  },
+  "pose_capture": "Read from an owned synthetic native transform array in the same exclusive worker; not a running robot/solver pose.",
+  "limitations": [
+    "synthetic manually populated Contacts, not collision-generated contacts",
+    "exclusive worker ownership only; no concurrent live solver/IPC",
+    "generation/count clear is not full physics history reset",
+    "no force, penetration or physical normal qualification",
+    "Count/generation checks cannot detect same-count in-place concurrent writes; this diagnostic excluded other writers.",
+    "No atomic live-solver snapshot, IPC or complete physics reset demonstrated.",
+    "Native dtype round-trip does not qualify normal/penetration/force accuracy."
+  ],
+  "next_step": "Read-only capture of collision-generated contacts in a separately disclosed simple analytic nonfracturing fixture; compare positions, barycentrics, normals and mappings, with no force-producing solve.",
+  "integrity": "Snapshot source hashes, fixture hash and historical production-source hashes verified; previous evidence preserved.",
+  "resources": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 2.4643300550005733,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 11,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25829568512,
+    "min_free_vram_bytes": 7813988352,
+    "mode": "contact_roundtrip",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "native_buffer_roundtrip_passed": true,
+      "mechanical_steps": 0,
+      "force_evaluations": 0,
+      "training": false,
+      "full_surface_contact_validated": false
+    }
+  }
+}

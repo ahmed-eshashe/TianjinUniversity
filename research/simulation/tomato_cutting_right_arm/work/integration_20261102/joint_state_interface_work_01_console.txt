@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/validate_joint_state_interface_work.py", line 19, in <module>
+    raw=run/(label+'_robot_interval'+str(count-1)+'.npz');pins[str(raw)]=hashlib.sha256(raw.read_bytes()).hexdigest();z=np.load(raw);bpose=z['robot_body_link_pose_before'];apose=z['robot_body_link_pose_after'];bv=z['robot_body_com_velocity_before'];av=z['robot_body_com_velocity_after'];qd0=np.array(row['qd_before']);qd1=np.array(row['qd_after']);K0,R0=kinetic(bpose,bv,qd0);K1,R1=kinetic(apose,av,qd1);audit=row['robot_audit'];tau=np.array(audit['commanded_effort_nm']);requested=np.array(audit['requested_gravity_effort_nm']);quantized=z['body_wrench'].astype(np.float32).astype(float)if label!='no_feedback'else np.zeros(6);gravity=float(dt*np.sum(mass*(-9.81)*.5*(bv[:,2]+av[:,2])));actuator=float(dt*tau@(.5*(qd0+qd1)));contact=float(dt*quantized@(.5*(bv[tool]+av[tool])));Kerror=max(abs(K0-row['robot_kinetic_energy_before_j']),abs(K1-row['robot_kinetic_energy_after_j']));gerror=abs(gravity-audit['gravity_work_j']);aerror=abs(actuator-audit['actuator_work_j']);cerror=abs(contact-audit['actual_applied_contact_work_velocity_midpoint_j']);rootv=float(max(abs(bv[0]).max(),abs(av[0]).max()));rootmotion=float(abs(apose[0]-bpose[0]).max())
+                                                                                        ^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/joint_state_interface_20261102_01/down_profile_robot_interval0.npz'

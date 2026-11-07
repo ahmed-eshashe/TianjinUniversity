@@ -1,0 +1,43 @@
+ASTRA BLOCKER AUDIT — 2 November 2026
+
+Conclusion
+There are two immediate contact prerequisites (work/force measurement and bounded final approach), one later material implementation gap (accepted live fracture), and several dependent or intentionally deferred checklist items. They should not all be treated as independent active debugging tasks. No new simulation was run in this audit; no scientific gate was closed or relaxed.
+
+1. Large joint-effort offset — resolved within the documented readout scope
+The previous audit identified and reconstructed the omitted descendant feedforward bias. Use rl/tomato_tgs_feedforward_readback.py and work/astra_effort_resolution_20261102/verification01. All146 pinned raw/source inputs were checked unchanged in this audit. Do not repeat experiments to explain the old11Nm discrepancy. The offline correction is not a universal motor-work sensor, and does not apply to old PGS runs.
+
+2. Motor work and whole-system force/work — immediate unresolved blocker
+The 155pJ maximum held-out reconstruction discrepancy compares two estimators sharing the SAME midpoint velocity. It is not a measurement of complete physical energy error, nor a precision bound for the current implicit-drive controller. The old PGS force/moment failures are a different test configuration and remain failed; the TGS correction does not fix them.
+
+New saved-data check: across eight known-input intervals, midpoint-velocity motor work is about-80.48microJ while raw joint-displacement work is about+1.856microJ. This does not select either as truth. It demonstrates that substituting recorded joint differences is not a validated remedy in these tiny-coordinate-update records. The conditional float32 endpoint-velocity storage envelope is only2.95pJ for this estimator; it excludes solver, torque reconstruction, configuration and temporal errors. It is neither a total error bound nor permission to dismiss the155pJ residual as rounding.
+
+There is also an information gap independent of arithmetic: interval-average torque and endpoint velocities/positions do not uniquely determine work. audit.py supplies an exact analytic counterexample with identical mean torque, endpoint velocities and displacement, but different torque–velocity covariance and hence work. This is an information counterexample, not a claim that the synthetic paths occurred in PhysX. A controller-specific discrete identity could remove this ambiguity only if derived from the actual solver and independently checked.
+
+Next action: finish one measurement specification before another simulator launch. Enumerate implicit drive contribution, explicit feedforward, rotor kinetic energy, gravity, body damping, external contact and any active passive constraints. For each, state whether the measurement is interval impulse, endpoint value or within-step work and identify its time/frame convention. Require a justified solver-discrete work identity or direct within-step drive impulse/velocity information, plus a numerical precision budget for the intended signal. Existing post-step load plus endpoint fields alone do not establish this. If the installed interface cannot provide the required information within the existing architecture, report that exact instrumentation limitation and present the architectural decision; do not silently alter controller, physical damping, time-step limits, tolerances or benchmark claims.
+
+Finite exit: one source/interface feasibility assessment producing either an implementable measurement contract with independent validation and an unchanged-gate error budget, or a concrete unsupported-interface finding. No new native run until the former exists. Repeating the same120-step capture cannot answer missing within-step information. Do not relaunch historical PGS/solver/damping cohorts.
+
+3. Final near-contact approach — immediate unresolved motion prerequisite
+The near-target dry route and stationary hold pass within their respective scopes. The full-route65.7micrometre tracking peak is not a local stopping-distance bound; the0.486micrometre final clear hold is not a moving tracking bound. Static CAD pressure at20.84micrometres penetration is not an executed approach. Freeze a final approach plan with measured signed gap, reaction latency, actual velocity/acceleration and retreat bound before touch. Check pressure-packet validity and remapping at the actual coupling clock. Retain100micrometre penetration and all force/moment/board stops. No blind lowering or global dry-route rerun. This can be specified offline while measurement feasibility is resolved, but loaded execution remains gated.
+
+4. Live accepted fracture — later implementation gap, milestone16
+rl/tomato_failed_safe_global.py:FailedSafeFractionCandidate.step explicitly refuses active damage eligibility. Prepared damaged states, frame/history operators and coupon fracture are valuable but do not provide a transaction for the currently used whole-target integrator. Later work must implement candidate-history isolation, acceptance-only commit, rollback on rejected steps, monotone irreversible history, energy accounting and replay/reset in a separate version. Do not remove the refusal as a shortcut. Do not start this branch before nonfracturing moving-contact qualification; full separation is not one checkbox away.
+
+5. Items that are not separate current debugging failures
+Milestone17: independent measured-tomato validation intentionally pending by user decision; retain published-reference limits.
+Milestone20: supported holds and synthetic load pulses pass. Actual cutting-load support validation depends on qualified loaded interaction. Do not repeat unloaded holds to mark it complete.
+Milestone22: component/unloaded/prepared-history reset passes; loaded and post-cut reset requires the corresponding qualified loaded/cutting state. Do not call it failed or close it using another unloaded reset.
+Milestones23–26: controlled cut, separation, refinement and baseline archive are downstream work.
+Milestones27–32: dual-arm and learning are downstream work, not present blockers to diagnose.
+
+What changed in this audit
+Added reproducible offline audit.py and measurements.json; verified146 evidence hashes; isolated the work-observability limitation; identified the actual live-fracture refusal; reconciled stale checklist wording; added roadmap section13. Existing successes, failures, sources and physics are preserved. No video, contact, cutting, training or simulator invocation.
+
+Evidence
+work/astra_effort_resolution_20261102/verification01/measurements.json
+runs/offline/joint_state_interface_pgs_work_20261102_01/measurements.json
+work/nonfracturing_contact_plan_20261102/contact_test_contract.json
+work/near_approach_20261102/NEAR_TARGET_DRY_APPROACH_20261102.txt
+work/live_clear_assembly_20261102/LIVE_CLEAR_ASSEMBLY_20261102.txt
+rl/tomato_failed_safe_global.py
+work/astra_blocker_audit_20261102/measurements.json

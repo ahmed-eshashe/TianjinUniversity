@@ -1,0 +1,44 @@
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7fffc43ff6c0 (LWP 159895)]
+[New Thread 0x7fffc3bfe6c0 (LWP 159896)]
+[New Thread 0x7fffc33fd6c0 (LWP 159897)]
+[New Thread 0x7fffc2bfc6c0 (LWP 159898)]
+[New Thread 0x7fffc23fb6c0 (LWP 159899)]
+[New Thread 0x7fffc1bfa6c0 (LWP 159900)]
+[New Thread 0x7fffc13f96c0 (LWP 159901)]
+[New Thread 0x7fffc0bf86c0 (LWP 159902)]
+[New Thread 0x7fffc03f76c0 (LWP 159903)]
+[New Thread 0x7fffbfbf66c0 (LWP 159904)]
+[New Thread 0x7fffbf3f56c0 (LWP 159905)]
+[New Thread 0x7fffbebf46c0 (LWP 159906)]
+[New Thread 0x7fffbe3f36c0 (LWP 159907)]
+[New Thread 0x7fffbdbf26c0 (LWP 159908)]
+[New Thread 0x7fffbd3f16c0 (LWP 159909)]
+[New Thread 0x7fffbcbf06c0 (LWP 159910)]
+[New Thread 0x7fffbc3ef6c0 (LWP 159911)]
+[New Thread 0x7fffbbbee6c0 (LWP 159912)]
+[New Thread 0x7fffbb3ed6c0 (LWP 159913)]
+[New Thread 0x7fffbabec6c0 (LWP 159914)]
+[New Thread 0x7fffba3eb6c0 (LWP 159915)]
+[New Thread 0x7fffb9bea6c0 (LWP 159916)]
+[New Thread 0x7fffb93e96c0 (LWP 159917)]
+
+Thread 1 "python" received signal SIGILL, Illegal instruction.
+0x00007fffb8369318 in ?? () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+=> 0x7fffb8369318:	vinsertf64x2 $0x1,%xmm3,%ymm4,%ymm3
+   0x7fffb836931f:	vxorpd %xmm4,%xmm4,%xmm4
+   0x7fffb8369323:	vmovupd %ymm3,(%rdi)
+   0x7fffb8369327:	vmovq  0x29f841(%rip),%xmm3        # 0x7fffb8608b70
+#0  0x00007fffb8369318 in ?? () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+#1  0x00007fffb8369527 in ipc::point_triangle_distance_type(Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&) () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+#2  0x00007fffb83755da in ipc::point_triangle_distance(Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, ipc::PointTriangleDistanceType) () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+#3  0x00007fffb834f000 in ipc::TightInclusionCCD::point_triangle_ccd(Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, Eigen::Ref<Eigen::Matrix<double, 3, 1, 0, 3, 1> const, 0, Eigen::InnerStride<1> > const&, double&, double, double) const () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+#4  0x00007fffb828bf91 in ?? () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so
+#5  0x00007fffb817996a in ?? () from /home/omen/teamwork_projects/tomato_cutting_right_arm/.deps/ipctk-1.6.1-cp312/ipctk.cpython-312-x86_64-linux-gnu.so

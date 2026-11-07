@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "case": "freefall",
+      "absolute_nodal_residual_ns": 5.74439766553561e-13,
+      "global_residual_ns": 5.74439766553561e-13,
+      "reference_error_ns": 3.3657971046847027e-22,
+      "reaction_n": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "case": "cancelling_errors",
+      "absolute_nodal_residual_ns": 4.166666676240664e-05,
+      "global_residual_ns": 5.74439766553561e-13,
+      "reference_error_ns": 0.0,
+      "reaction_n": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "case": "fixed_reaction",
+      "absolute_nodal_residual_ns": 4.786998053201287e-13,
+      "global_residual_ns": 4.786998053201287e-13,
+      "reference_error_ns": 2.8048309205705856e-22,
+      "reaction_n": [
+        -1.0,
+        0.2,
+        -0.29019
+      ]
+    }
+  ],
+  "scope": "Three synthetic native force/impulse operator controls only, zero mechanical steps. Shows why cancelling errors need a local residual audit; no target support or cutting qualification."
+}

@@ -1,0 +1,184 @@
+{
+  "physx_rigid_object": {
+    "path": "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object.py",
+    "sha256": "0fd17152d133805412776d8cc90eebe85159a383a2e052dafc2eafdd14e54390",
+    "matches": [
+      {
+        "line": 144,
+        "excerpt": "        self._permanent_wrench_composer.reset(env_ids)\n\n    def write_data_to_sim(self) -> None:\n        \"\"\"Write external wrench to the simulation.\n\n        .. note::\n            We write external wrench to the simulation here since this function is called before the simulation step.\n            This ensures that the external wrench is applied at every simulation step.\n        \"\"\"\n        # write external wrench\n        if self._instantaneous_wrench_composer.active or self._permanent_wrench_composer.active:\n            if self._instantaneous_wrench_composer.active:\n                composer = self._instantaneous_wrench_composer\n                composer.add_raw_buffers_from(self._permanent_wrench_composer)\n                get_force_data = self._get_inst_wrench_force_f32\n                get_torque_data = self._get_inst_wrench_torque_f32\n            else:\n                composer = self._permanent_wrench_composer\n                get_force_data = self._get_perm_wrench_force_f32\n                get_torque_data = self._get_perm_wrench_torque_f32\n            composer.compose_to_body_frame()\n            self.root_view.apply_forces_and_torques_at_position("
+      },
+      {
+        "line": 212,
+        "excerpt": "    \"\"\"\n\n    def write_root_pose_to_sim_index(\n        self,\n        *,\n        root_pose: torch.Tensor | wp.array,\n        env_ids: Sequence[int] | torch.Tensor | wp.array | None = None,\n        skip_forward: bool = False,\n    ) -> None:\n        \"\"\"Set the root pose over selected environment indices into the simulation.\n\n        The root pose comprises of the cartesian position and quaternion orientation in (x, y, z, w).\n\n        .. note::\n            This method expects partial data.\n\n        .. tip::\n            For maximum performance we recommend using the index method. This is because in PhysX, the tensor API\n            is only supporting indexing, hence masks need to be converted to indices.\n\n        Args:\n            root_pose: Root poses in simulation frame. Shape is (len(env_ids), 7)"
+      },
+      {
+        "line": 505,
+        "excerpt": "        )\n\n    def write_root_com_velocity_to_sim_index(\n        self,\n        *,\n        root_velocity: torch.Tensor | wp.array,\n        env_ids: Sequence[int] | torch.Tensor | wp.array | None = None,\n        full_data: bool = False,\n        skip_forward: bool = False,\n    ) -> None:\n        \"\"\"Set the root center of mass velocity over selected environment indices into the simulation.\n\n        The velocity comprises linear velocity (x, y, z) and angular velocity (x, y, z) in that order.\n\n        .. note::\n            This sets the velocity of the root's center of mass rather than the root's frame.\n\n        .. note::\n            This method expects partial data or full data.\n\n        .. tip::\n            For maximum performance we recommend using the index method. This is because in PhysX, the tensor API"
+      }
+    ]
+  },
+  "base_rigid_object": {
+    "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/assets/rigid_object/base_rigid_object.py",
+    "sha256": "3ed285c781418f08c53801c33ab7eb1d20de9f8a1e3ede52f1e4e038b9c40dbc",
+    "matches": [
+      {
+        "line": 143,
+        "excerpt": "\n    @abstractmethod\n    def write_data_to_sim(self) -> None:\n        \"\"\"Write external wrench to the simulation.\n\n        .. note::\n            We write external wrench to the simulation here since this function is called before the simulation step.\n            This ensures that the external wrench is applied at every simulation step.\n        \"\"\"\n        raise NotImplementedError()\n\n    @abstractmethod\n    def update(self, dt: float) -> None:\n        \"\"\"Updates the simulation data.\n\n        Args:\n            dt: The time step size in seconds.\n        \"\"\"\n        raise NotImplementedError()\n\n    \"\"\"\n    Operations - Finders."
+      },
+      {
+        "line": 194,
+        "excerpt": "\n    @abstractmethod\n    def write_root_pose_to_sim_index(\n        self,\n        *,\n        root_pose: torch.Tensor | wp.array,\n        env_ids: Sequence[int] | torch.Tensor | wp.array | None = None,\n        skip_forward: bool = False,\n    ) -> None:\n        \"\"\"Set the root pose over selected environment indices into the simulation.\n\n        The root pose comprises of the cartesian position and quaternion orientation in (x, y, z, w).\n\n        .. note::\n            This method expects partial data.\n\n        .. tip::\n            For maximum performance we recommend looking at the actual implementation of the method in the backend.\n            Some backends may provide optimized implementations for masks / indices.\n\n        Args:\n            root_pose: Root poses in simulation frame. Shape is (len(env_ids), 7) or"
+      },
+      {
+        "line": 426,
+        "excerpt": "\n    @abstractmethod\n    def write_root_com_velocity_to_sim_index(\n        self,\n        *,\n        root_velocity: torch.Tensor | wp.array,\n        env_ids: Sequence[int] | torch.Tensor | wp.array | None = None,\n        skip_forward: bool = False,\n    ) -> None:\n        \"\"\"Set the root center of mass velocity over selected environment indices into the simulation.\n\n        The velocity comprises linear velocity (x, y, z) and angular velocity (x, y, z) in that order.\n\n        .. note::\n            This sets the velocity of the root's center of mass rather than the root's frame.\n\n        .. note::\n            This method expects partial data.\n\n        .. tip::\n            For maximum performance we recommend looking at the actual implementation of the method in the backend.\n            Some backends may provide optimized implementations for masks / indices."
+      },
+      {
+        "line": 884,
+        "excerpt": "        self.set_inertias_index(inertias=inertias, body_ids=body_ids, env_ids=env_ids)\n\n    def set_external_force_and_torque(\n        self,\n        forces: torch.Tensor | wp.array,\n        torques: torch.Tensor | wp.array,\n        positions: torch.Tensor | wp.array | None = None,\n        body_ids: Sequence[int] | slice | None = None,\n        env_ids: Sequence[int] | torch.Tensor | wp.array | None = None,\n        is_global: bool = False,\n    ) -> None:\n        \"\"\"Deprecated. Resets target environments, then adds forces and torques via the permanent wrench composer.\"\"\"\n        warnings.warn(\n            \"The function 'set_external_force_and_torque' is deprecated. Please use\"\n            \" 'permanent_wrench_composer.reset' followed by 'permanent_wrench_composer.add_forces_and_torques'\"\n            \" instead.\",\n            DeprecationWarning,\n            stacklevel=2,\n        )\n        # Reset only target env_ids then add (not set which clears all envs globally)\n        self.permanent_wrench_composer.reset(env_ids=env_ids)\n        self.permanent_wrench_composer.add_forces_and_torques("
+      }
+    ]
+  },
+  "base_rigid_data": {
+    "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/assets/rigid_object/base_rigid_object_data.py",
+    "sha256": "841ca674429d5bd405d212f93494c42ff32ae162e4add373474193adbec746f7",
+    "matches": [
+      {
+        "line": 142,
+        "excerpt": "    @abstractmethod\n    @leapp_tensor_semantics(kind=InputKindEnum.BODY_POSE, element_names=POSE7_ELEMENT_NAMES)\n    def root_link_pose_w(self) -> ProxyArray:\n        \"\"\"Root link pose ``[pos, quat]`` in simulation world frame.\n\n        Shape is (num_instances,), dtype = wp.transformf. In torch this resolves to (num_instances, 7).\n\n        This quantity is the pose of the actor frame of the root rigid body relative to the world.\n        The orientation is provided in (x, y, z, w) format.\n        \"\"\"\n        raise NotImplementedError()\n\n    @property\n    @abstractmethod\n    @leapp_tensor_semantics(kind=InputKindEnum.BODY_VEL, element_names=POSE6_ELEMENT_NAMES)\n    def root_link_vel_w(self) -> ProxyArray:\n        \"\"\"Root link velocity ``[lin_vel, ang_vel]`` in simulation world frame.\n\n        Shape is (num_instances,), dtype = wp.spatial_vectorf. In torch this resolves to (num_instances, 6).\n\n        This quantity contains the linear and angular velocities of the actor frame of the root\n        rigid body relative to the world."
+      },
+      {
+        "line": 181,
+        "excerpt": "    @abstractmethod\n    @leapp_tensor_semantics(kind=InputKindEnum.BODY_VEL, element_names=POSE6_ELEMENT_NAMES)\n    def root_com_vel_w(self) -> ProxyArray:\n        \"\"\"Root center of mass velocity ``[lin_vel, ang_vel]`` in simulation world frame.\n\n        Shape is (num_instances,), dtype = wp.spatial_vectorf. In torch this resolves to (num_instances, 6).\n\n        This quantity contains the linear and angular velocities of the root rigid body's center of mass frame\n        relative to the world.\n        \"\"\"\n        raise NotImplementedError()\n\n    @property\n    @abstractmethod\n    @leapp_tensor_semantics(kind=\"state/body/state\")\n    def root_state_w(self) -> ProxyArray:\n        \"\"\"Deprecated, same as :attr:`root_link_pose_w` and :attr:`root_com_vel_w`.\"\"\"\n        raise NotImplementedError()\n\n    @property\n    @abstractmethod\n    @leapp_tensor_semantics(kind=\"state/body/link_state\")"
+      }
+    ]
+  },
+  "wrench_composer": {
+    "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/utils/wrench_composer.py",
+    "sha256": "16914d155c28e0d02ab7135b2627112042bd420b023bfabd9eae1dc3c69960ce",
+    "matches": [
+      {
+        "line": 229,
+        "excerpt": "    # ------------------------------------------------------------------\n\n    def add_forces_and_torques_index(\n        self,\n        forces: wp.array | torch.Tensor | None = None,\n        torques: wp.array | torch.Tensor | None = None,\n        positions: wp.array | torch.Tensor | None = None,\n        body_ids: Sequence[int] | torch.Tensor | wp.array | slice | None = None,\n        env_ids: torch.Tensor | None = None,\n        is_global: bool = False,\n    ):\n        \"\"\"Add forces and torques into the input buffers using index-based selection.\n\n        Accumulates onto whatever is already in the buffers. The result is always composed into the\n        body frame when the output properties are accessed.\n\n        Args:\n            forces: Forces [N]. Shape: (len(env_ids), len(body_ids), 3). Defaults to None.\n            torques: Torques [N\u00b7m]. Shape: (len(env_ids), len(body_ids), 3). Defaults to None.\n            positions: The positions [m] at which forces act. If `is_global` is True, these are global\n                positions expressed in the world frame. If `is_global` is False, these are offsets from the\n                body's CoM expressed in the body frame. If None, forces are assumed to act at the body's"
+      }
+    ]
+  },
+  "simulation_context": {
+    "path": "/home/omen/IsaacLab/source/isaaclab/isaaclab/sim/simulation_context.py",
+    "sha256": "5a9ecddbdec7de384b73079021aa6ae30cbf051c0b284d13c3b39bbf0e78815e",
+    "matches": [
+      {
+        "line": 806,
+        "excerpt": "        self._is_stopped = False\n\n    def step(self, render: bool = True) -> None:\n        \"\"\"Step physics and optionally render.\n\n        If the timeline is paused (e.g. via the GUI), this method blocks and keeps\n        the visualizer responsive until the timeline is resumed or stopped.\n\n        Args:\n            render: Whether to render the scene after stepping. Defaults to True.\n        \"\"\"\n        # Block while the GUI timeline is paused so the entire training loop freezes.\n        # See: https://github.com/isaac-sim/IsaacLab/issues/4279\n        self.physics_manager.wait_for_playing()\n        self._physics_step_count += 1\n        self.physics_manager.step()\n        if render and self.is_rendering:\n            self.render()\n\n    def render(self, mode: int | None = None, skip_app_pumping: bool = False) -> None:\n        \"\"\"Update visualizers and render the scene.\n"
+      }
+    ]
+  },
+  "isaac_newton_coupler": {
+    "path": "/home/omen/IsaacLab/source/isaaclab_contrib/isaaclab_contrib/coupling/coupler.py",
+    "sha256": "f8573aee5966ec6d89dc0462542122b86b4ad37e6bbb7694010db1cd08217632",
+    "matches": []
+  },
+  "isaac_coupler_config": {
+    "path": "/home/omen/IsaacLab/source/isaaclab_contrib/isaaclab_contrib/coupling/coupler_cfg.py",
+    "sha256": "44b19e9db28b001f98c3f114659af6241f2de75b42ffa25aa6452cde40b1fff7",
+    "matches": [
+      {
+        "line": 30,
+        "excerpt": "\n@configclass\nclass CouplerEntryCfg:\n    \"\"\"Configuration for one named sub-solver and its model ownership.\n\n    Bodies are selected by full Newton body-label regex.\n    Joints and shapes attached to selected bodies are included by default;\n    additional shapes can be selected directly by their full labels.\n    \"\"\"\n\n    name: str = MISSING\n    \"\"\"Unique name used by coupling mappings to reference this entry.\"\"\"\n\n    solver_cfg: NewtonSolverCfg = MISSING\n    \"\"\"Configuration used to construct this entry's Newton solver.\"\"\"\n\n    bodies: list[str] = field(default_factory=list)\n    \"\"\"Bodies owned by this entry.\n\n    Each string is treated as a regex matched against full Newton body labels,\n    including all descendant body labels below the matched path.\n    \"\"\""
+      }
+    ]
+  },
+  "newton_model": {
+    "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/model.py",
+    "sha256": "602f6a10afb090a58f58a9662f31b32c1de6011de8f957f7635dfdd87139d892",
+    "matches": []
+  },
+  "vbd_solver": {
+    "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py",
+    "sha256": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13",
+    "matches": [
+      {
+        "line": 288,
+        "excerpt": "        iterations: int = 10,\n        friction_epsilon: float = 1e-2,\n        integrate_with_external_rigid_solver: bool = False,\n        # Particle parameters\n        particle_enable_self_contact: bool = False,\n        particle_self_contact_radius: float | None = None,\n        particle_self_contact_margin: float | None = None,\n        particle_self_contact_gap: float | None = None,\n        particle_conservative_bound_relaxation: float = 0.85,\n        particle_vertex_contact_buffer_size: int = 32,\n        particle_edge_contact_buffer_size: int = 64,\n        particle_collision_detection_interval: int | None = None,\n        particle_edge_parallel_epsilon: float = 1e-5,\n        particle_enable_tile_solve: bool = True,\n        particle_topological_contact_filter_threshold: int = 2,\n        particle_rest_shape_contact_exclusion_radius: float = 0.0,\n        particle_external_vertex_contact_filtering_map: dict | None = None,\n        particle_external_edge_contact_filtering_map: dict | None = None,\n        # Rigid body - constraint formulation and stabilization\n        rigid_compliant_alm: bool | None = None,  # None retains legacy and emits the scoped migration warning\n        rigid_avbd_alpha: float | None = None,  # Shared alpha override; None uses mode defaults\n        rigid_avbd_joint_alpha: float | None = None,  # Joint alpha override"
+      },
+      {
+        "line": 344,
+        "excerpt": "            friction_epsilon: Threshold to smooth small relative velocities in friction computation (used for both particle\n                and rigid body contacts).\n            integrate_with_external_rigid_solver: Indicator for coupled rigid body-cloth simulation. When set to `True`,\n                the solver assumes rigid bodies are integrated by an external solver (one-way coupling).\n\n            Particle parameters:\n\n            particle_enable_self_contact: Whether to enable self-contact detection for particles.\n            particle_self_contact_radius: Deprecated; use ``particle_self_contact_margin`` +\n                ``particle_self_contact_gap`` instead. When set, the legacy interpretation applies\n                exactly: radius = interaction distance and ``particle_self_contact_margin`` = detection\n                query radius.\n            particle_self_contact_margin: Self-contact interaction distance [m] \u2014 the surface offset at\n                which vertex-triangle and edge-edge pairs start to interact. Defaults to 0.2.\n                (Legacy meaning \u2014 the detection query radius \u2014 applies only while the deprecated\n                ``particle_self_contact_radius`` is set or when ``particle_self_contact_gap`` is omitted.)\n            particle_self_contact_gap: Additional detection-only distance [m]; self-contact detection\n                queries use ``margin + gap``, mirroring the ``ShapeConfig.margin`` / ``gap`` convention.\n                Defaults to 0. Give it ~0.5-1x the margin of slack to avoid missing contacts.\n            particle_conservative_bound_relaxation: Relaxation factor for conservative penetration-free projection.\n            particle_vertex_contact_buffer_size: Preallocation size for each vertex's vertex-triangle collision\n                buffer. Pairs beyond this capacity are silently dropped during detection."
+      },
+      {
+        "line": 463,
+        "excerpt": "                restore penalty k only. Contact geometry remains owned by the\n                collision pipeline. Requires ``CollisionPipeline(contact_matching=\"latest\")`` or ``\"sticky\"``.\n                Ignored when ``integrate_with_external_rigid_solver=True`` or\n                ``model.body_count == 0``. During graph capture, construct the\n                collision pipeline before ``SolverVBD`` so history is pre-allocated,\n                or run one uncaptured solver step before capture.\n            rigid_contact_stick_motion_eps: Deprecated and ignored. SolverVBD no longer\n                classifies contacts as sticking. Use\n                ``CollisionPipeline(contact_matching=\"sticky\",\n                contact_matching_pos_threshold=...)`` for persistent contact geometry.\n\n                .. deprecated:: 1.5\n            rigid_contact_stick_freeze_translation_eps: Deprecated and ignored. The\n                SolverVBD body-level contact deadzone was removed.\n\n                .. deprecated:: 1.5\n            rigid_contact_stick_freeze_angular_eps: Deprecated and ignored. The\n                SolverVBD body-level contact deadzone was removed.\n\n                .. deprecated:: 1.5\n            rigid_contact_k_start: Body-body and body-particle contact penalty seed for\n                legacy AVBD ramping [N/m]. Used when ``rigid_avbd_linear_beta`` (or"
+      },
+      {
+        "line": 534,
+        "excerpt": "\n        Note:\n            - The `integrate_with_external_rigid_solver` argument enables one-way coupling between rigid body and soft body\n              solvers. If set to True, the rigid states should be integrated externally, with `state_in` passed to `step`\n              representing the previous rigid state and `state_out` representing the current one. Frictional forces are\n              computed accordingly.\n            - `particle_vertex_contact_buffer_size`, `particle_edge_contact_buffer_size`, `rigid_body_contact_buffer_size`,\n              and `rigid_body_particle_contact_buffer_size` are fixed and will not be dynamically resized during runtime.\n              Setting them too small may result in undetected collisions (particles) or contact overflow (rigid body\n              contacts).\n              Setting them excessively large may increase memory usage and degrade performance.\n            - Dahl hysteresis friction for rod angular response is controlled by custom model attributes\n              ``model.vbd.dahl_eps_max`` and ``model.vbd.dahl_tau``. Register them with\n              ``SolverVBD.register_custom_attributes`` before building the model. Dahl friction is\n              enabled only when positive Dahl parameters are authored.\n\n        \"\"\"\n        integrates_rigid_bodies = model.body_count > 0 and not integrate_with_external_rigid_solver\n\n        # TODO: Complete the Newton 1.6 deprecation by defaulting omitted\n        # rigid_compliant_alm to True and removing this warning after the migration window.\n        if rigid_compliant_alm is None:"
+      },
+      {
+        "line": 549,
+        "excerpt": "\n        \"\"\"\n        integrates_rigid_bodies = model.body_count > 0 and not integrate_with_external_rigid_solver\n\n        # TODO: Complete the Newton 1.6 deprecation by defaulting omitted\n        # rigid_compliant_alm to True and removing this warning after the migration window.\n        if rigid_compliant_alm is None:\n            if integrates_rigid_bodies:\n                warnings.warn(\n                    \"Omitting rigid_compliant_alm is deprecated as of Newton 1.6 because the default will \"\n                    \"change from the legacy penalty/AVBD path (False) to unified compliant ALM (True), which \"\n                    \"is becoming the standard for rigid VBD. The legacy path is deprecated and will be removed \"\n                    \"in a future release. Pass rigid_compliant_alm=True to adopt compliant ALM now, or \"\n                    \"rigid_compliant_alm=False to keep the legacy path during the migration window.\",\n                    DeprecationWarning,\n                    stacklevel=2,\n                )\n            rigid_compliant_alm = False\n\n        if rigid_avbd_beta < 0:\n            raise ValueError(f\"rigid_avbd_beta must be >= 0, got {rigid_avbd_beta}\")\n        rigid_avbd_linear_beta = rigid_avbd_linear_beta if rigid_avbd_linear_beta is not None else rigid_avbd_beta"
+      },
+      {
+        "line": 754,
+        "excerpt": "        # solver (one-way coupling). SolverVBD will not move rigid bodies, but can still\n        # participate in particle-rigid interaction on the particle side.\n        self.integrate_with_external_rigid_solver = integrate_with_external_rigid_solver\n        self._integrates_rigid_bodies = integrates_rigid_bodies\n\n        # Initialize particle system\n        self._init_particle_system(\n            model,\n            particle_enable_self_contact,\n            _sc_margin,\n            _sc_gap,\n            particle_conservative_bound_relaxation,\n            particle_vertex_contact_buffer_size,\n            particle_edge_contact_buffer_size,\n            particle_collision_detection_interval,\n            particle_edge_parallel_epsilon,\n            particle_enable_tile_solve,\n            particle_topological_contact_filter_threshold,\n            particle_rest_shape_contact_exclusion_radius,\n            particle_external_vertex_contact_filtering_map,\n            particle_external_edge_contact_filtering_map,\n        )"
+      },
+      {
+        "line": 1271,
+        "excerpt": "        return contacts\n\n    def coupling_harvest_proxy_wrenches(\n        self,\n        body_local_to_proxy_global: wp.array[int],\n        out_body_f: wp.array[wp.spatial_vector],\n        *,\n        body_qd_before: wp.array[wp.spatial_vector],\n        state: State,\n        state_out: State,\n        contacts: Contacts | None,\n        dt: float,\n    ) -> None:\n        \"\"\"Harvest contact-only proxy-body wrenches.\n\n        VBD deliberately does not rely on the default momentum harvest here.\n        The generic proxy path filters proxy-vs-proxy and proxy-vs-static rigid\n        contacts so harvested momentum only reflects coupling-relevant\n        interactions. VBD relaxes that restriction because allowing some proxy\n        interaction inside the destination solve can strengthen the coupled\n        solve. Those extra interactions still must not feed back through the\n        coupling interface, so VBD harvests explicit contact forces instead of"
+      },
+      {
+        "line": 1413,
+        "excerpt": "            and self.body_particle_contact_penalty_k.shape[0] >= contacts.soft_contact_max\n        ):\n            if self.integrate_with_external_rigid_solver:\n                body_q_for_particles = state_out.body_q\n                body_q_prev_for_particles = state.body_q\n                body_qd_for_particles = state_out.body_qd\n            else:\n                body_q_for_particles = state.body_q\n                body_q_prev_for_particles = self._coupling_body_q_prev_snapshot if self.model.body_count > 0 else None\n                body_qd_for_particles = state.body_qd\n\n            wp.launch(\n                _harvest_vbd_proxy_particle_body_contact_forces_kernel,\n                dim=contacts.soft_contact_max,\n                inputs=[\n                    float(dt),\n                    particle_local_to_proxy_global,\n                    state.particle_q,\n                    self.particle_q_prev,\n                    self.model.particle_flags,\n                    self.model.particle_inv_mass,\n                    int(ParticleFlags.ACTIVE),"
+      },
+      {
+        "line": 2227,
+        "excerpt": "\n    @override\n    def step(\n        self,\n        state_in: State,\n        state_out: State,\n        control: Control,\n        contacts: Contacts | None,\n        dt: float,\n    ) -> None:\n        \"\"\"Execute one simulation timestep using VBD (particles) and AVBD (rigid bodies).\n\n        The solver follows a 3-phase structure:\n        1. Initialize: Forward integrate particles and rigid bodies, detect collisions, initialize contact state\n        2. Iterate: Interleave particle and rigid-body VBD iterations\n        3. Finalize: Update velocities and persistent state (Dahl friction)\n\n        To control rigid body substepping behavior, call set_rigid_history_update().\n        When True (default), the step rebuilds rigid contact lists, re-initializes\n        rigid contact state (penalty_k, lambda, C0), and restores from history if enabled.\n        When False, reuses previous rigid contact state. The flag is reset to True when consumed.\n"
+      },
+      {
+        "line": 3134,
+        "excerpt": "\n        # Select rigid-body poses for particle-rigid contact evaluation\n        if self.integrate_with_external_rigid_solver:\n            body_q_for_particles = state_out.body_q\n            body_q_prev_for_particles = state_in.body_q\n            body_qd_for_particles = state_out.body_qd\n        else:\n            body_q_for_particles = state_in.body_q\n            if model.body_count > 0:\n                body_q_prev_for_particles = self.body_q_prev\n            else:\n                body_q_prev_for_particles = None\n            body_qd_for_particles = state_in.body_qd\n\n        # Early exit if no particles\n        if model.particle_count == 0:\n            return\n\n        # Update collision detection if needed (penetration-free mode only)\n        if self.particle_enable_self_contact:\n            _Frequency = SolverBase.CollisionFrequencyType\n            if (self._sc_mode_this_step == _Frequency.PRE_POST_INIT and iter_num == 0) or ("
+      },
+      {
+        "line": 3336,
+        "excerpt": "        if skip_rigid_solve:\n            if model.particle_count > 0 and contacts is not None:\n                body_q = state_out.body_q if self.integrate_with_external_rigid_solver else state_in.body_q\n                if body_q is None:\n                    body_q = self._empty_body_q\n\n                wp.launch(\n                    kernel=update_duals_body_particle_contacts,\n                    dim=contacts.soft_contact_max,\n                    inputs=[\n                        contacts.soft_contact_count,\n                        contacts.soft_contact_indices,\n                        contacts.soft_contact_shape,\n                        contacts.soft_contact_body_pos,\n                        contacts.soft_contact_normal,\n                        contacts.soft_contact_barycentric,\n                        state_in.particle_q,\n                        model.particle_radius,\n                        model.shape_body,\n                        model.shape_margin,\n                        body_q,\n                        self.body_particle_contact_material_ke,"
+      },
+      {
+        "line": 3883,
+        "excerpt": "        \"\"\"\n        view = State()\n        if self.integrate_with_external_rigid_solver:\n            view.body_q = state_out.body_q\n            view.body_qd = state_out.body_qd\n        else:\n            view.body_q = state_in.body_q\n            view.body_qd = state_in.body_qd\n        view.particle_q = state_out.particle_q if state_out.particle_q is not None else state_in.particle_q\n        view.particle_qd = state_in.particle_qd\n        return view\n\n    def _resolve_self_contact_schedule(self):\n        \"\"\"Resolve the self-contact slot to a concrete (mode, frequency) pair.\n\n        ``AUTO`` resolution lives in :meth:`_default_collision_frequency_type`,\n        so base-level queries agree with the schedule used here; the deprecated\n        interval also supplies the ITERATIONS frequency.\n        \"\"\"\n        Frequency = SolverBase.CollisionFrequencyType\n        slot = SolverBase.CollisionSlot.SOFT_SELF_CONTACT\n        mode = self._resolved_collision_frequency_type(slot)"
+      }
+    ]
+  },
+  "vbd_coupling": {
+    "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/vbd_coupling_kernels.py",
+    "sha256": "dd8ac0cc17eb01fd81e54643732dc6c644858904fdd8fe9c88e2f9612beaa2a4",
+    "matches": [
+      {
+        "line": 134,
+        "excerpt": "\n@wp.kernel(enable_backward=False)\ndef _harvest_vbd_body_particle_contact_forces_on_proxy_bodies_kernel(\n    dt: float,\n    body_local_to_proxy_global: wp.array[int],\n    particle_q: wp.array[wp.vec3],\n    particle_q_prev: wp.array[wp.vec3],\n    particle_radius: wp.array[float],\n    body_q: wp.array[wp.transform],\n    body_q_prev: wp.array[wp.transform],\n    body_qd: wp.array[wp.spatial_vector],\n    body_com: wp.array[wp.vec3],\n    friction_epsilon: float,\n    body_particle_contact_penalty_k: wp.array[float],\n    body_particle_contact_material_kd: wp.array[float],\n    body_particle_contact_material_mu: wp.array[float],\n    body_particle_contact_count: wp.array[int],\n    soft_contact_indices: wp.array[wp.vec3i],\n    soft_contact_barycentric: wp.array[wp.vec3],\n    body_particle_contact_shape: wp.array[int],\n    body_particle_contact_body_pos: wp.array[wp.vec3],\n    body_particle_contact_body_vel: wp.array[wp.vec3],"
+      }
+    ]
+  },
+  "coupling_interface": {
+    "path": "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/coupled/interface.py",
+    "sha256": "c8d1f160d4ffcac22841e870f3cd0375c7aad30f799549052692097ab4a1fdb9",
+    "matches": [
+      {
+        "line": 60,
+        "excerpt": "\n\n    def coupling_harvest_proxy_wrenches(\n        body_local_to_proxy_global,\n        out_body_f,\n        *,\n        body_qd_before,\n        state,\n        state_out,\n        contacts,\n        dt,\n    ) -> None: ...\n\n\n    def coupling_harvest_proxy_particle_forces(\n        particle_local_to_proxy_global,\n        out_particle_f,\n        *,\n        particle_qd_before,\n        state,\n        state_out,\n        contacts,"
+      },
+      {
+        "line": 360,
+        "excerpt": "        )\n\n    def coupling_harvest_proxy_wrenches(\n        self,\n        body_local_to_proxy_global: wp.array[int],\n        out_body_f: wp.array[wp.spatial_vector],\n        *,\n        body_qd_before: wp.array[wp.spatial_vector],\n        state: State,\n        state_out: State,\n        contacts: Contacts | None,\n        dt: float,\n    ) -> None:\n        \"\"\"Accumulate proxy-body feedback from destination momentum change.\"\"\"\n        del state, contacts\n        if body_local_to_proxy_global.shape[0] == 0:\n            return\n        if state_out.body_qd is None:\n            raise ValueError(\"Default body proxy harvest requires state_out.body_qd\")\n        if dt <= 0.0:\n            raise ValueError(\"Default body proxy harvest requires dt > 0\")\n"
+      }
+    ]
+  },
+  "bridge_reference": {
+    "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_physx_bridge_reference.py",
+    "sha256": "9de2398b32ef01a1887737285bbf9032eb67a2ad5f148f65ed6a18b8d11d6563",
+    "matches": []
+  },
+  "bridge_tests": {
+    "path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_physx_bridge_reference.py",
+    "sha256": "787fabc1a94d6456bb973a80faafc23534612ac6abff5a75d21b13f6384a701b",
+    "matches": []
+  }
+}

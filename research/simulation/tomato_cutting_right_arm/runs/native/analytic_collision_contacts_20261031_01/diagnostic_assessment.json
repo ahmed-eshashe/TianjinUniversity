@@ -1,0 +1,65 @@
+{
+  "result": "Six analytic collision-generated record fixtures passed; no integration/forces.",
+  "case_counts": {
+    "particle_inside": 1,
+    "particle_clear": 0,
+    "edge_inside_vertices_outside": 1,
+    "face_inside_vertices_outside": 1,
+    "face_clear": 0,
+    "transformed_face_inside": 1
+  },
+  "metrics": {
+    "max_raw_surface_error_m": 2.3283064365386963e-10,
+    "max_projected_gap_error_m": 2.3283064365386963e-10,
+    "max_outward_normal_vector_error": 0.0,
+    "max_barycentric_sum_error": 1.9371509552001953e-07
+  },
+  "test_counts": {
+    "analytic_reference": 4,
+    "owned_capture": 5,
+    "guard": 9
+  },
+  "native_attempts": 1,
+  "collision_queries": 6,
+  "mechanical_steps": 0,
+  "force_evaluations": 0,
+  "comparison_policy": {
+    "coordinate_m": 1e-07,
+    "normal_and_weight": 1e-06,
+    "scope": "Numerical comparisons for this float32 analytic fixture only; not a physical acceptance threshold. Transformed coordinates are up to 0.3m and float32 rounding/weight errors are reported."
+  },
+  "geometry": "Synthetic kinematic analytic box half-extents (0.01,0.01,0.002)m. Zero particle radii, shape margins and detection gap; no authored blade or calibrated tomato replacement.",
+  "frame_checks": "Translated shape/body and rotated body fixture captured actual owned native pose and mapped body-local raw points to world before independent analytic comparison.",
+  "remaining_limits": [
+    "No force/Hessian, impulse, energy/work or dynamics behavior tested.",
+    "No proof of collision candidate completeness outside the disclosed fixtures.",
+    "Real blade uses a mesh: the unresolved native full-surface mesh/SDF route is unchanged.",
+    "No robot coupling, damage/fracture, release, reset-history completeness or training validation."
+  ],
+  "integrity": "Launch source snapshot, source pins, content hashes and historical source hashes verified.",
+  "next_step": "A small bounded analytic force-and-reaction diagnostic using the existing contact law, explicit parameter provenance and an independent reference; do not promote this box evidence to real-blade cutting.",
+  "resources": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 11.07003817199984,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 50,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25661464576,
+    "min_free_vram_bytes": 7801405440,
+    "mode": "analytic_contacts",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "analytic_collision_cases_completed": 6,
+      "mechanical_steps": 0,
+      "force_evaluations": 0,
+      "training": false,
+      "real_blade_contact_validated": false
+    }
+  }
+}

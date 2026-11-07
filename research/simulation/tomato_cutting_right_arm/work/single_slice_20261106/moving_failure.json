@@ -1,0 +1,387 @@
+{
+  "step": 45,
+  "traceback": "Traceback (most recent call last):\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/moving_contact.py\", line 34, in <module>\n    packet,value,report=refresh_packet(blade,np.asarray(solid['cells']),a.particle_q.numpy()+origin,triangles,world['x'],R,t+origin,ref['com_local'],packet)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_material_packet_refresh.py\", line 15, in refresh_packet\n    domain=padded_coverage(vertices,cells,x,triangles,reference,padding_m=1e-5,level=level);packet=packet_from_samples(domain['samples']);value=evaluate_fixed(blade,x,packet,rotation,translation,com);scale=max(np.linalg.norm(value['force_n']),np.linalg.norm(old['force_n']),1e-12);energy_scale=max(abs(old['energy_j']),abs(value['energy_j']));force_old=float(np.linalg.norm(value['force_n']-old['force_n']));energy_old=float(value['energy_j']-old['energy_j']);force_step=None if last is None else float(np.linalg.norm(value['force_n']-last['force_n']));energy_step=None if last is None else float(abs(value['energy_j']-last['energy_j']));force_budget=.01*scale+1e-5;energy_budget=.01*energy_scale+1e-11;row=dict(level=level,samples=len(packet['areas']),force_difference_from_old_n=force_old,energy_jump_from_old_j=energy_old,successive_force_difference_n=force_step,successive_energy_difference_j=energy_step,force_budget_n=float(force_budget),energy_budget_j=float(energy_budget));history.append(row)\n                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_host_fixed_pressure.py\", line 15, in evaluate_fixed\n    x=np.asarray(x);ids=packet['indices'];bary=packet['barycentric'];area=packet['areas'];points=np.einsum('ni,nij->nj',bary,x[ids]);query=query_mesh(blade['vertices'],blade['triangles'],(points-t)@R);normal=query['normal']@R.T;phi=np.minimum(query['phi'],0);sample=-(1.75e9*area*phi)[:,None]*normal;force=np.zeros_like(x)\n                                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_host_blade_geometry.py\", line 17, in query_mesh\n    face=np.argmin(best,1);q=closest[np.arange(len(p)),face];distance=np.sqrt(best[np.arange(len(p)),face]);ra=a-p[:,None];rb=b-p[:,None];rc=c-p[:,None];la=np.linalg.norm(ra,axis=2);lb=np.linalg.norm(rb,axis=2);lc=np.linalg.norm(rc,axis=2);numerator=np.einsum('pfi,pfi->pf',ra,np.cross(rb,rc));denominator=la*lb*lc+np.sum(ra*rb,2)*lc+np.sum(rb*rc,2)*la+np.sum(rc*ra,2)*lb;winding=np.sum(2*np.arctan2(numerator,denominator),1)/(4*np.pi);sign=np.where(abs(winding)>.5,-1.,1.);normal=np.zeros_like(p);valid=distance>1e-15;normal[valid]=sign[valid,None]*(p[valid]-q[valid])/distance[valid,None]\n                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^\n  File \"/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/fromnumeric.py\", line 2466, in sum\n    return _wrapreduction(\n           ^^^^^^^^^^^^^^^\n  File \"/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/fromnumeric.py\", line 86, in _wrapreduction\n    return ufunc.reduce(obj, axis, dtype, out, **passkwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+  "rows": [
+    {
+      "step": 25,
+      "sim_time_s": 0.000677083333333333,
+      "wall_s": 74.01379455799906,
+      "stroke_m": 1.3541666666666661e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009625210738194355,
+        4.116176442236168e-05,
+        0.0009583686881708969,
+        -0.00010758603791679984,
+        2.4171515954475094e-05,
+        -0.0001090921859725833
+      ]
+    },
+    {
+      "step": 26,
+      "sim_time_s": 0.0007031249999999996,
+      "wall_s": 81.92040662399995,
+      "stroke_m": 1.4062499999999993e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009500364727439486,
+        4.101162042103709e-05,
+        0.0009571838552150018,
+        -0.00010745386304058141,
+        2.3805341362859915e-05,
+        -0.00010767283464679136
+      ]
+    },
+    {
+      "step": 27,
+      "sim_time_s": 0.0007291666666666663,
+      "wall_s": 82.1683695339998,
+      "stroke_m": 1.4583333333333326e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009415308443876116,
+        4.084081670235917e-05,
+        0.0009537073989216497,
+        -0.0001070614120756844,
+        2.3568348533641708e-05,
+        -0.00010670712215878364
+      ]
+    },
+    {
+      "step": 28,
+      "sim_time_s": 0.0007552083333333329,
+      "wall_s": 82.40847185999883,
+      "stroke_m": 1.5104166666666658e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009403153270908873,
+        4.04995014474253e-05,
+        0.0009444067694007859,
+        -0.00010602025318162007,
+        2.357595599964795e-05,
+        -0.00010656456687523777
+      ]
+    },
+    {
+      "step": 29,
+      "sim_time_s": 0.0007812499999999995,
+      "wall_s": 93.48034160899988,
+      "stroke_m": 1.562499999999999e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009370169712265317,
+        4.029201731824271e-05,
+        0.0009397393228729546,
+        -0.00010549028791167908,
+        2.3499404207658308e-05,
+        -0.00010619511635902136
+      ]
+    },
+    {
+      "step": 30,
+      "sim_time_s": 0.0008072916666666661,
+      "wall_s": 93.9848788319996,
+      "stroke_m": 1.6145833333333324e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009357912063219545,
+        4.0134665150234735e-05,
+        0.0009351294223446074,
+        -0.00010497130764497007,
+        2.3484497508051575e-05,
+        -0.00010605644703841806
+      ]
+    },
+    {
+      "step": 31,
+      "sim_time_s": 0.0008333333333333327,
+      "wall_s": 94.64306512099938,
+      "stroke_m": 1.6666666666666654e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009348213691905585,
+        4.000272515297533e-05,
+        0.0009312438526453624,
+        -0.00010453354606027137,
+        2.3473800607183177e-05,
+        -0.00010594726884622521
+      ]
+    },
+    {
+      "step": 32,
+      "sim_time_s": 0.0008593749999999994,
+      "wall_s": 109.26461046700024,
+      "stroke_m": 1.7187499999999987e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009271811041125169,
+        4.001262601449727e-05,
+        0.0009332701621297691,
+        -0.00010476303395090131,
+        2.323680360287303e-05,
+        -0.00010507889002167447
+      ]
+    },
+    {
+      "step": 33,
+      "sim_time_s": 0.000885416666666666,
+      "wall_s": 109.66979064899897,
+      "stroke_m": 1.770833333333332e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009304418589078239,
+        3.9639351731500436e-05,
+        0.0009215308474097801,
+        -0.00010344050859427628,
+        2.3388925843241256e-05,
+        -0.00010544993542284411
+      ]
+    },
+    {
+      "step": 34,
+      "sim_time_s": 0.0009114583333333326,
+      "wall_s": 110.07349227499981,
+      "stroke_m": 1.822916666666665e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009221108421763548,
+        3.97021973395129e-05,
+        0.0009253982310887804,
+        -0.00010387626549954758,
+        2.3122698980750426e-05,
+        -0.00010450377900762831
+      ]
+    },
+    {
+      "step": 35,
+      "sim_time_s": 0.0009374999999999992,
+      "wall_s": 125.02147778299877,
+      "stroke_m": 1.8749999999999985e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009189021736665172,
+        3.971027277764994e-05,
+        0.0009260136005359423,
+        -0.00010394552372623107,
+        2.3024264474872136e-05,
+        -0.00010413914062551067
+      ]
+    },
+    {
+      "step": 36,
+      "sim_time_s": 0.0009635416666666658,
+      "wall_s": 125.3534762929994,
+      "stroke_m": 1.927083333333332e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009250504130306053,
+        3.9504695910335515e-05,
+        0.0009179791837260333,
+        -0.00010304074789358921,
+        2.324504079348258e-05,
+        -0.00010483703872332739
+      ]
+    },
+    {
+      "step": 37,
+      "sim_time_s": 0.0009895833333333325,
+      "wall_s": 125.69194166299894,
+      "stroke_m": 1.9791666666666652e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009204789292550183,
+        3.972784591581684e-05,
+        0.0009254565260958005,
+        -0.00010388126709195474,
+        2.307379156122302e-05,
+        -0.00010431892342780183
+      ]
+    },
+    {
+      "step": 38,
+      "sim_time_s": 0.0010156249999999992,
+      "wall_s": 140.3844119969981,
+      "stroke_m": 2.0312499999999982e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009237688431659987,
+        3.979674912132912e-05,
+        0.0009263262715545444,
+        -0.00010398062744473411,
+        2.3167745863963084e-05,
+        -0.00010469081538649385
+      ]
+    },
+    {
+      "step": 39,
+      "sim_time_s": 0.0010416666666666658,
+      "wall_s": 140.70648440500008,
+      "stroke_m": 2.0833333333333316e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009312338108699768,
+        3.983802413560592e-05,
+        0.0009246629406602109,
+        -0.00010379154977377339,
+        2.3397830546159414e-05,
+        -0.00010553868352401151
+      ]
+    },
+    {
+      "step": 40,
+      "sim_time_s": 0.0010677083333333324,
+      "wall_s": 141.04162742599874,
+      "stroke_m": 2.135416666666665e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009301817915153118,
+        4.0218980038694045e-05,
+        0.0009358400378649496,
+        -0.00010504735616963896,
+        2.3314013689740958e-05,
+        -0.00010542070560921556
+      ]
+    },
+    {
+      "step": 41,
+      "sim_time_s": 0.001093749999999999,
+      "wall_s": 155.5231086729982,
+      "stroke_m": 2.187499999999998e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009387451523650727,
+        4.038796782648736e-05,
+        0.0009381550379581748,
+        -0.00010530837280200672,
+        2.3558225459504318e-05,
+        -0.00010639145752235703
+      ]
+    },
+    {
+      "step": 42,
+      "sim_time_s": 0.0011197916666666656,
+      "wall_s": 155.94551007599875,
+      "stroke_m": 2.2395833333333313e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009487629201867599,
+        4.060624055808762e-05,
+        0.0009410280428865786,
+        -0.00010562988167280546,
+        2.384307495345265e-05,
+        -0.00010752855988459785
+      ]
+    },
+    {
+      "step": 43,
+      "sim_time_s": 0.0011458333333333323,
+      "wall_s": 156.44746207799835,
+      "stroke_m": 2.2916666666666647e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009500776327026829,
+        4.113454800135542e-05,
+        0.0009556130441990994,
+        -0.00010726794509656775,
+        2.3813755207294948e-05,
+        -0.00010767917185154182
+      ]
+    },
+    {
+      "step": 44,
+      "sim_time_s": 0.0011718749999999989,
+      "wall_s": 156.7849169129986,
+      "stroke_m": 2.3437499999999977e-05,
+      "eligible": 0,
+      "damage_max": 0.0,
+      "wrench": [
+        -0.0009626103166065486,
+        4.1326707782083e-05,
+        0.0009577330608416338,
+        -0.00010750791753347945,
+        2.4177159593938846e-05,
+        -0.00010909868906461365
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "outer": 0,
+      "absolute_nodal_impulse_residual_ns": 2.371690132921766e-06,
+      "maximum_euler_velocity_defect_m_s": 0.019056425880883823,
+      "incremental_energy_j": 0.0012325938669735387,
+      "active_contact_stencils": 456,
+      "triplets": 529440,
+      "pressure_samples": 82944,
+      "cg_iterations": 20,
+      "cg_true_residual_n": 1.466956400141523e-11,
+      "cg_rhs_norm_n": 0.022001144749741047,
+      "linear_valid": true,
+      "preconditioner_shifted_blocks": 0,
+      "preconditioner_maximum_relative_shift": 0.0,
+      "lbfgs_update": {
+        "accepted": false,
+        "curvature_j": 0.0,
+        "relative_curvature": 0.0,
+        "memory_pairs": 0
+      },
+      "plain_gn_fallback": false,
+      "line_search_halvings": 0,
+      "step_fraction": 1.0,
+      "descent": 1.1679079760022987e-08,
+      "line_accepted": true
+    },
+    {
+      "outer": 1,
+      "absolute_nodal_impulse_residual_ns": 2.9090590894889282e-11,
+      "maximum_euler_velocity_defect_m_s": 1.5341771673567933e-06,
+      "incremental_energy_j": 0.0012325880273872936,
+      "active_contact_stencils": 456,
+      "triplets": 529440,
+      "pressure_samples": 82944,
+      "cg_iterations": 30,
+      "cg_true_residual_n": 3.9534572580977404e-16,
+      "cg_rhs_norm_n": 4.93551043336962e-07,
+      "linear_valid": true,
+      "preconditioner_shifted_blocks": 0,
+      "preconditioner_maximum_relative_shift": 0.0,
+      "lbfgs_update": {
+        "accepted": true,
+        "curvature_j": 1.16789619526448e-08,
+        "relative_curvature": 0.6137237850728852,
+        "memory_pairs": 1
+      },
+      "plain_gn_fallback": false,
+      "line_search_halvings": 0,
+      "step_fraction": 1.0,
+      "descent": 1.4922767074638455e-17,
+      "line_accepted": true
+    },
+    {
+      "outer": 2,
+      "absolute_nodal_impulse_residual_ns": 6.580148496002809e-15,
+      "maximum_euler_velocity_defect_m_s": 2.4783423359009765e-11,
+      "incremental_energy_j": 0.0012325880273872914,
+      "converged": true
+    }
+  ]
+}

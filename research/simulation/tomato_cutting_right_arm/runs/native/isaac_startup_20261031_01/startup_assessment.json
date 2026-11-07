@@ -1,0 +1,23 @@
+{
+  "startup_milestone_observed": true,
+  "original_supervisor_passed": false,
+  "source_snapshot_verified": {
+    "rl/tomato_isaac_startup_guard.py": true,
+    "rl/tomato_isaac_startup_worker.py": true,
+    "rl/tomato_preupgrade_guard.py": true,
+    "rl/guard_benchmark.py": true
+  },
+  "native_attempts": 1,
+  "final_reporting_fix_native_retested": false,
+  "current_source_sha256": {
+    "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+    "rl/tomato_isaac_startup_guard.py": "a7d9e03c271d84361f603e06a2a4cfb5892a1ec601d12d46e31d3f4460d4117c",
+    "rl/tests/test_tomato_isaac_startup_guard.py": "8ecf0168750a4cc98b8ace9263f338f613326c8a45ee0f3a9c5f2d6a36758048"
+  },
+  "next_step": "One bounded repeat to validate pre-close reporting and supervisor acceptance before contact experiments.",
+  "limitations": [
+    "Original run lacked final worker result because app.close() exits directly. Original result retained unchanged.",
+    "Seven final stdlib protection tests passed; corrected reporting not yet validated in Isaac.",
+    "Empty CPU PhysX scene only; no robot, Newton cohesion, contact, cutting, or training validation."
+  ]
+}

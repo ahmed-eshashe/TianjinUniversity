@@ -1,0 +1,285 @@
+{
+  "result": "PASS: existing native stationary contact helper agrees with independent references for the two explicit blade-reference records.",
+  "native_attempts": 1,
+  "force_evaluations": 2,
+  "mechanical_steps": 0,
+  "focused_tests_passed": 15,
+  "metrics": {
+    "max_force_error_n": 3.301138191449843e-07,
+    "max_reaction_error_n": 3.301138191449843e-07,
+    "max_moment_error_nm": 5.633887352127046e-08,
+    "max_hessian_error_n_m": 5.88952300404344e-05,
+    "max_geometry_penetration_error_m": 1.4773100884962753e-10
+  },
+  "parameters": {
+    "soft_ke": 1000.0,
+    "soft_kd": 10.0,
+    "soft_mu": 0.5,
+    "shape_ke": 2500.0,
+    "shape_kd": 100.0,
+    "shape_mu": 0.0,
+    "cold_start_k": -1.0,
+    "friction_epsilon": 0.01
+  },
+  "parameter_scope": "Disclosed synthetic scalars reused from analytic box checks; mixed ke=1750 N/m, kd=55, mu=0, fixed penalty seed=-1. No calibrated material or production parameter change.",
+  "comparison_policy": "Selected stationary identity-frame references, zero radius/margin/velocity, frictionless mix. Force/reaction 1e-5 N, moment 1e-6 Nm, Hessian 1e-4 N/m; mesh penetration 1e-7 m.",
+  "reaction_scope": "Opposite force and moment reconstructed about the diagnostic body origin (COM=0), not an independently measured blade/robot response.",
+  "objects": "Owned contact/pose/particle arrays and parameter carriers only. No native blade body, Model, Solver or collision pipeline instantiated.",
+  "original_pinned_sources_unchanged": true,
+  "limits": [
+    "Selected static identity-frame references with zero radii, margins and velocities only; no general moving contact acceptance.",
+    "No particle-force/stiffness assembly, impulse/work, two-way coupling, cutting or fracture qualification.",
+    "No collision-generated blade backend, complete candidate search or global minimum/manifold certificate."
+  ],
+  "next_step": "Verify native barycentric force/stiffness distribution to soft particles and its consistency with the point force and reconstructed reaction, using the same explicit stationary records.",
+  "item_12_complete": false,
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 3.357392847000483,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 15,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25104867328,
+    "min_free_vram_bytes": 7690256384,
+    "mode": "blade_record_forces",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "blade_force_cases_completed": 3,
+      "stationary_force_checks_passed": true,
+      "force_evaluations": 2,
+      "mechanical_steps": 0,
+      "training": false,
+      "full_surface_contact_validated": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "wide:edge_through_authored_blade_face",
+        "contact_count": 1,
+        "comparison": {
+          "modeled_binary32_soft_point_m": [
+            -0.2775190770626068,
+            0.005343955010175705,
+            0.0012506443308666348
+          ],
+          "projected_penetration_m": 0.00252077823992197,
+          "expected_force_n": [
+            -0.054653930354606285,
+            -0.0018461566957947598,
+            -4.411022993219437
+          ],
+          "native_force_n": [
+            -0.05465392768383026,
+            -0.0018461565487086773,
+            -4.411022663116455
+          ],
+          "expected_reconstructed_reaction_n": [
+            0.054653930354606285,
+            0.0018461566957947598,
+            4.411022993219437
+          ],
+          "expected_reconstructed_moment_nm": [
+            0.023570000526572443,
+            1.2242113915068749,
+            -0.0008044118632322538
+          ],
+          "force_error_n": 3.301138191449843e-07,
+          "reaction_error_n": 3.301138191449843e-07,
+          "moment_error_nm": 5.633887352127046e-08,
+          "hessian_error_n_m": 2.4873623033272452e-05,
+          "independent_mesh_penetration_m": 0.0025207783876529787,
+          "geometry_penetration_error_m": 1.4773100884962753e-10
+        },
+        "native_arrays": {
+          "ke": [
+            1750.0
+          ],
+          "kd": [
+            55.0
+          ],
+          "mu": [
+            0.0
+          ],
+          "material_ke": [
+            1750.0
+          ],
+          "force": [
+            [
+              -0.05465392768383026,
+              -0.0018461565487086773,
+              -4.411022663116455
+            ]
+          ],
+          "hessian": [
+            [
+              [
+                0.2686181962490082,
+                0.00907366257160902,
+                21.679706573486328
+              ],
+              [
+                0.00907366257160902,
+                0.0003064995107706636,
+                0.7323194146156311
+              ],
+              [
+                21.679706573486328,
+                0.7323194146156311,
+                1749.7310791015625
+              ]
+            ]
+          ],
+          "rigid_point": [
+            [
+              -0.2775503098964691,
+              0.005342900287359953,
+              -0.0012699401704594493
+            ]
+          ],
+          "wrench": [
+            [
+              0.05465392768383026,
+              0.0018461565487086773,
+              4.411022663116455,
+              0.023569999262690544,
+              1.22421133518219,
+              -0.0008044118294492364
+            ]
+          ]
+        },
+        "state_and_contacts_unchanged": true
+      },
+      {
+        "id": "authored_blade_edge_through_soft_interior",
+        "contact_count": 1,
+        "comparison": {
+          "modeled_binary32_soft_point_m": [
+            -0.21106868982315063,
+            -0.0008001684909686446,
+            0.0012241380754858255
+          ],
+          "projected_penetration_m": 0.003320271378444978,
+          "expected_force_n": [
+            -0.07270853734113449,
+            1.6062665408108633e-06,
+            -5.810019832959548
+          ],
+          "native_force_n": [
+            -0.07270853966474533,
+            1.606266550879809e-06,
+            -5.8100199699401855
+          ],
+          "expected_reconstructed_reaction_n": [
+            0.07270853734113449,
+            -1.6062665408108633e-06,
+            5.810019832959548
+          ],
+          "expected_reconstructed_moment_nm": [
+            -0.004648965026377458,
+            1.2264022601003015,
+            5.851776515550747e-05
+          ],
+          "force_error_n": 1.370003438577705e-07,
+          "reaction_error_n": 1.370003438577705e-07,
+          "moment_error_nm": 2.2615213810016472e-08,
+          "hessian_error_n_m": 5.88952300404344e-05,
+          "independent_mesh_penetration_m": 0.0033202714358525997,
+          "geometry_penetration_error_m": 5.740762162517732e-11
+        },
+        "native_arrays": {
+          "ke": [
+            1750.0
+          ],
+          "kd": [
+            55.0
+          ],
+          "mu": [
+            0.0
+          ],
+          "material_ke": [
+            1750.0
+          ],
+          "force": [
+            [
+              -0.07270853966474533,
+              1.606266550879809e-06,
+              -5.8100199699401855
+            ]
+          ],
+          "hessian": [
+            [
+              [
+                0.27402210235595703,
+                -6.053656761650927e-06,
+                21.896657943725586
+              ],
+              [
+                -6.053656761650927e-06,
+                1.3373652185677543e-10,
+                -0.0004837377928197384
+              ],
+              [
+                21.896657943725586,
+                -0.0004837377928197384,
+                1749.725830078125
+              ]
+            ]
+          ],
+          "rigid_point": [
+            [
+              -0.21111023426055908,
+              -0.0008001627866178751,
+              -0.0020958734676241875
+            ]
+          ],
+          "wrench": [
+            [
+              0.07270853966474533,
+              -1.606266550879809e-06,
+              5.8100199699401855,
+              -0.00464896485209465,
+              1.2264022827148438,
+              5.851776586496271e-05
+            ]
+          ]
+        },
+        "state_and_contacts_unchanged": true
+      },
+      {
+        "id": "wide:translated_clear_negative_control",
+        "contact_count": 0,
+        "comparison": null,
+        "native_arrays": null,
+        "state_and_contacts_unchanged": true
+      }
+    ],
+    "parameters": {
+      "soft_ke": 1000.0,
+      "soft_kd": 10.0,
+      "soft_mu": 0.5,
+      "shape_ke": 2500.0,
+      "shape_kd": 100.0,
+      "shape_mu": 0.0,
+      "cold_start_k": -1.0,
+      "friction_epsilon": 0.01
+    },
+    "mixed_ke": 1750.0,
+    "mixed_kd": 55.0,
+    "mixed_mu": 0.0,
+    "force_evaluations": 2,
+    "mechanical_steps": 0,
+    "comparison_scope": "Selected stationary identity-frame references, zero radius/margin/velocity, frictionless mix. Force/reaction 1e-5 N, moment 1e-6 Nm, Hessian 1e-4 N/m; mesh penetration 1e-7 m.",
+    "reaction_is_reconstructed_not_measured": true,
+    "solver_instantiated": false,
+    "collision_generated": false,
+    "particle_force_distribution_validated": false,
+    "full_blade_contact_path_validated": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "source_sha256": {
+    "rl/tomato_spin_near_origin_worker.py": "436b0a0840e68d3893617fed1182f14989db451a105e445111f1e1c745a2866f",
+    "rl/tomato_spin_reference.py": "9e141b343e4b7372a59f6c44633bf9a5dea55166ebdb6bb05a12b2395752e64f",
+    "rl/tomato_spin_accuracy_audit.py": "f8845ea73f68693d6819f573a75d9c2cbea2b19babeb5fcdf295a0eefab67661",
+    "rl/tomato_isaac_startup_guard.py": "5d893c2b4d4213e6b37fbb3ea5305837b83f8e0dd13158e94daea89008c597f2"
+  },
+  "physx_step_cap": 32,
+  "newton_step_cap": 0,
+  "dt_s": 0.0004166666666666667,
+  "refinement": 2,
+  "limits": {
+    "angular_velocity_rad_s": 0.0002,
+    "rotation_rad": 2e-05,
+    "relative_angular_momentum": 0.0002,
+    "relative_energy": 0.0002,
+    "linear_velocity_m_s": 2e-06,
+    "com_position_m": 1e-07
+  },
+  "actor_origins": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "overlap_safe_because_collisions_disabled": true,
+  "scope": "Near-origin torque-free unequal-inertia free spin; two gyro-enabled bodies plus one disabled control. CPU PhysX owns all motion. CUDA Newton state echoes only."
+}

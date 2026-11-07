@@ -1,0 +1,15 @@
+{
+  "scope": "Unit-label correction only; no numerical values, pass/fail criteria, force/impulse/work traces or physical inputs changed.",
+  "corrections": [
+    {
+      "field": "paired_positive_virtual_response_j",
+      "expression": "(J_com.T @ wrench_com) dot (qd_feedback_after - qd_no_feedback_after)",
+      "correct_quantity": "Increment in virtual mechanical power",
+      "correct_unit": "W (N m / s)",
+      "canonical_name": "paired_virtual_power_increment_w",
+      "legacy_field_suffix_incorrect": true,
+      "reason": "Generalized torque [N m] times generalized velocity difference [rad/s] is power, not energy. The positivity-only causal-response criterion is unchanged."
+    }
+  ],
+  "evidence_policy": "Keep original native/independent-readback JSONs intact; interpret the legacy value in W and use the corrected name in new summaries. Actual dt-integrated particle/robot/actuator work remains correctly in joules."
+}

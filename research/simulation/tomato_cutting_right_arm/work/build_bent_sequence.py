@@ -1,0 +1,15 @@
+from pathlib import Path
+r=Path('rl');s=(r/'tomato_two_joint_sequence_worker.py').read_text().replace('DT=1/2400','DT=1/2400\nINITIAL_Q=[math.pi/6,-math.pi/3]')
+s=s.replace('two_joint_sequence_checks_passed','bent_sequence_checks_passed').replace('two_joint_sequence_cases_completed','bent_sequence_cases_completed')
+s=s.replace('position=torch.zeros((1,2))','position=torch.tensor([INITIAL_Q],dtype=torch.float32)')
+s=s.replace("if max(abs(x) for x in before['joint_position']+before['joint_velocity'])>1e-7:raise ValueError('Hinge not initially at rest')", "if max(abs(a-b) for a,b in zip(before['joint_position'],INITIAL_Q))>1e-7 or max(abs(v) for v in before['joint_velocity'])>1e-7:raise ValueError('Bent chain not at requested initial rest state')\n            expected_pose,_=geometry(i*math.pi/2,INITIAL_Q)\n            if math.dist(before['link_pose'],expected_pose)>1e-6:raise ValueError('Bent forward kinematics mismatch')")
+s=s.replace('expected_matrix=dynamics([0.,0.],[0.,0.],[0.,0.])[0]','expected_matrix=dynamics(INITIAL_Q,[0.,0.],[0.,0.])[0]')
+s=s.replace('hinge_sequence_','bent_sequence_').replace('Two persistent passive two-joint chains','Two initially bent persistent passive two-joint chains').replace('32 persistent coupled two-joint exchanges','32 persistent coupled bent-chain exchanges')
+(r/'tomato_bent_sequence_worker.py').write_text(s)
+p=r/'tomato_isaac_startup_guard.py';s=p.read_text().replace('BENT_CONTACT_WORKER =',"BENT_SEQUENCE_WORKER = ROOT / 'rl/tomato_bent_sequence_worker.py'\nBENT_CONTACT_WORKER =",1)
+a=s.index("    if mode == 'two_joint_sequence':");b=s.index("    if mode == 'hinge_sequence':",a)
+s=s[:a]+s[a:b].replace("'two_joint_sequence'","'bent_sequence'").replace('two_joint_sequence_checks_passed','bent_sequence_checks_passed').replace('two_joint_sequence_cases_completed','bent_sequence_cases_completed')+s[a:]
+s=s.replace("('startup', 'bent_contact'","('startup', 'bent_sequence', 'bent_contact'")
+s=s.replace("    if mode == 'bent_contact':\n        worker_path = BENT_CONTACT_WORKER", "    if mode == 'bent_sequence':\n        worker_path = BENT_SEQUENCE_WORKER\n    if mode == 'bent_contact':\n        worker_path = BENT_CONTACT_WORKER")
+s=s.replace("({ROOT/'rl/tomato_two_joint_reference.py'} if mode == 'two_joint_interface' else set()) |", "({ROOT/'rl/tomato_two_joint_sequence_reference.py', ROOT/'rl/tomato_half_step_reaction.py', ROOT/'rl/tomato_offset_contact_reference.py', ROOT/'rl/tomato_reaction_metadata.py', ROOT/'rl/tomato_wrench_contract.py'} if mode == 'bent_sequence' else set()) |\n                                                ({ROOT/'rl/tomato_two_joint_reference.py'} if mode == 'two_joint_interface' else set()) |")
+p.write_text(s)

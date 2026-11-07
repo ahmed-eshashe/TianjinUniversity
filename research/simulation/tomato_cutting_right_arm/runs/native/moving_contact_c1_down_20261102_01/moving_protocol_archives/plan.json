@@ -1,0 +1,51 @@
+{
+  "registered_before_moving_native_results": true,
+  "fixture": "Whole original prepared 4032-node undamaged target; actual fixed-mount robot initialized with bounded 2mm/s downward or reversed coasting velocity. Native bounded gravity feedforward, all implicit gains zero, original mass/inertia/effort/target/material/contact gates.",
+  "target_dt_s": 8.138020833333334e-07,
+  "target_intervals_per_case": 1024,
+  "duration_s": 0.0008333333333333334,
+  "coupling_refinements": [
+    1,
+    2,
+    4
+  ],
+  "robot_dt_s": [
+    0.00010416666666666667,
+    5.208333333333334e-05,
+    2.604166666666667e-05
+  ],
+  "fixed_contact_refresh_clock_s": 2.604166666666667e-05,
+  "subcycles": [
+    128,
+    64,
+    32
+  ],
+  "exchange": "Actual robot pose held per coupling block, no extrapolated geometry. All accepted target fine-step opposite impulses accumulated; apply their average once at actual knifeCOM. Then real PhysX advances, end-pose contact potential recomputed. Both delay and geometry-jump work retained.",
+  "minimum_actual_tool_displacement_m": 5e-07,
+  "minimum_loaded_actual_robot_contact_work_j": 1e-10,
+  "maximum_initial_joint_speed_rad_s": 0.01,
+  "position_component_convergence_m": 1e-05,
+  "velocity_component_convergence_m_s": 0.001,
+  "force_relative_budget": 0.05,
+  "force_absolute_budget_n": 1e-05,
+  "impulse_relative_budget": 0.05,
+  "impulse_absolute_budget_ns": 1e-09,
+  "knife_force_balance_budget_n": 1e-06,
+  "knife_moment_balance_budget_nm": 1e-07,
+  "robot_contact_work_relative_budget": 0.01,
+  "robot_contact_work_absolute_floor_j": 1e-14,
+  "whole_contact_signal_relative_budget": 0.01,
+  "whole_contact_signal_absolute_floor_j": 1e-14,
+  "whole_contact_signal_definition": "max(initial positive contact potential, maxabs cumulative target pressure work, maxabs cumulative actual robot contact work), excludes initial robot kinetic and target gravity/bulk baselines.",
+  "energy_error": "Maxabs whole defect AND max(abs(whole defect-signed remap)+cumulativeABSremap) separately must fit contact signal budget. Include actual float32 applied wrench in robot work.",
+  "clear_control_energy_budget": "1e-6 times initial robot kinetic energy +1e-15J, both robot and whole assembly, since clear has no contact signal. This is a separate nonzero-speed control precision check, not added to loaded-contact budgets.",
+  "no_feedback_scope": "Intentional one-way negative control; not required to conserve a closed target+robot contact system.",
+  "replay_position_m": 1e-10,
+  "replay_velocity_m_s": 1e-08,
+  "robot_replay_q_rad": 1e-06,
+  "robot_replay_qd_rad_s": 1e-06,
+  "physical_stop_budgets": "Original mounted whole-target force/moment/penetration/board/volume/domain/source-motion/speed/fixture/forbidden-body/nodal impulse gates unchanged.",
+  "additional_moving_gate": "Actual tool pose change must exceed0.5micrometre; loaded work must exceed1e-10J. Initial native body velocity must equal actual J*written qd. No setup step hidden from accounting.",
+  "qualification_scope": "Only bounded undamaged coasting moving-contact fixture. Not an executed route, controlled cut, generalized contact/CCD guarantee, live history transaction, release or learning baseline. Complete23B remains open until controller-enabled/disabled routes, reversed/off-centre cases and all fixture gates are independently checked.",
+  "experimental_validation": "pending"
+}

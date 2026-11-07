@@ -1,0 +1,66 @@
+{
+  "cases": [
+    {
+      "id": "rest",
+      "force_error_n": 0.0,
+      "energy_error_j": 0.0,
+      "net_force_n": 0.0,
+      "net_moment_nm": 0.0,
+      "maximum_damage": 0.0,
+      "total_energy_j": 0.0
+    },
+    {
+      "id": "tensile",
+      "force_error_n": 4.7562303524530754e-17,
+      "energy_error_j": 5.421010862427522e-20,
+      "net_force_n": 3.752553823233029e-14,
+      "net_moment_nm": 5.581904089367314e-17,
+      "maximum_damage": 0.0,
+      "total_energy_j": 0.007310244443930109
+    },
+    {
+      "id": "mixed_open",
+      "force_error_n": 2.177077962350893e-16,
+      "energy_error_j": 4.336808689942018e-19,
+      "net_force_n": 1.0269417635057562e-14,
+      "net_moment_nm": 2.525543249462663e-16,
+      "maximum_damage": 0.6739183996446807,
+      "total_energy_j": 0.03898511325037274
+    },
+    {
+      "id": "mixed_compressed",
+      "force_error_n": 4.163336342344337e-16,
+      "energy_error_j": 4.336808689942018e-19,
+      "net_force_n": 2.0387736161587238e-14,
+      "net_moment_nm": 2.2199115177091897e-15,
+      "maximum_damage": 0.479504147188849,
+      "total_energy_j": 0.036229792755334146
+    },
+    {
+      "id": "rotated_mixed",
+      "force_error_n": 4.44956571588051e-16,
+      "energy_error_j": 4.336808689942018e-19,
+      "net_force_n": 1.0023381156698767e-14,
+      "net_moment_nm": 6.591032480562964e-15,
+      "maximum_damage": 0.673918399644681,
+      "total_energy_j": 0.03898511325037274
+    },
+    {
+      "id": "pure_compression",
+      "force_error_n": 0.0,
+      "energy_error_j": 0.0,
+      "net_force_n": 0.0,
+      "net_moment_nm": 0.0,
+      "maximum_damage": 0.0,
+      "total_energy_j": 0.0
+    }
+  ],
+  "patches": 47,
+  "precision": "float64 candidate operator; no float32 production solver integration",
+  "scope": "All 47 actual patches: moving-frame forces, mixed opening/compression-shear and rotations. No native tangent, damage stepping, self-contact or full-fruit fracture qualification.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_operator_worker.py": "43a58f4dced440e0e7eec71b8ff7294bd71ab84920663d5e0853523ec71a5847",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_objective_reference.py": "3f373e02d95d2648eb273ce285a1810ba5e84446ef181a9d082828330f09f5b9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_cohesion_reference.py": "0aeb6a72d8514eaf1a207c9d3922df31a60f29950d2192002756466b43fc3a87"
+  }
+}

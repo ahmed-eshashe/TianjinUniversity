@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "native_static_cases": [
+    {
+      "case": "home",
+      "native_J_error_m_or_rad_per_rad": 6.704441276594864e-07,
+      "native_M_error_kg_m2": 3.235922837463434e-07,
+      "native_gravity_error_nm": 6.491703936184479e-06
+    },
+    {
+      "case": "contact",
+      "native_J_error_m_or_rad_per_rad": 9.776663237037742e-07,
+      "native_M_error_kg_m2": 3.5569415390845904e-07,
+      "native_gravity_error_nm": 7.837232080420975e-06
+    }
+  ],
+  "manufactured_FD_cases": 4,
+  "maximum_FD_linear_jacobian_error_m_per_rad": 2.99940471765181e-10,
+  "maximum_FD_angular_jacobian_error_rad_per_rad": 8.006456608811163e-11,
+  "maximum_gravity_gradient_error_nm": 1.5809598075122722e-09,
+  "maximum_body_vs_generalized_kinetic_energy_error_j": 6.776263578034403e-21,
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_kinematic_binding_20261102_01/home_kinematic_binding.npz": "5159248a49f49b48365923005bdd341b97afbdda3167bc7945c28e2c25432979",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_kinematic_binding_20261102_01/contact_kinematic_binding.npz": "52bd81382651768c7bbd1dd109f8a0fb18d38aaa57913f37be0d9350338e4e41",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/joint_recenter_v03_20261102_01/robot_kinematic_snapshot_recenter.json": "204b0382b5fbc8148bd8d7efaef4d406af1efd9cff4571287664f9a472b368d5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_kinematic_binding_20261102_01/binding_scope.json": "c83961006eed632f82891e9d715a78875840673f35b3a92bdfc5e11a906e2774",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_articulation_kinematic_reference.py": "897bf900689b102e8779b9c285dded0daa0825459966be2f3afa85447fa7790a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exported_robot.py": "5a4ee0c6a32c7594432821f63f9c15e02a61e9996e5b0d6c625b04709383578c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/qualify_articulation_q_reference.py": "c263f35c6656cb7c0e6e63d44ce7b5e515fbd91a8433fb79741340dd7b71b8d1"
+  },
+  "scope": "Independent full46body36DOF double COM kinematics/Jacobian/M/g/K from actual joint coordinates and unchanged native local COM/mass/inertia/armature. Native home/contact comparisons and manufactured finite differences only. Not yet moving wrench/work or target qualification."
+}

@@ -1,0 +1,38 @@
+{
+  "registered_before_any_moving_native_result": true,
+  "basis": "Analytic propagation of half-ULP uncertainty from TWO binary32 endpoint velocity measurements into mass*(v1-v0)/dt. Coasting initial speed2mm/s gives a different measurement resolution from the zero-velocity preload. This is an additional measurement-reference version, not a material/contact/force-path modification.",
+  "original_absolute_force_gate_n": 1e-06,
+  "original_absolute_moment_gate_nm": 1e-07,
+  "additional_velocity_rounding_bound": "Per Cartesian component b_i=m*(0.5*abs(spacing(float32(v0_i)))+0.5*abs(spacing(float32(v1_i))))/robot_dt. Compare norm(momentum-rate residual) <=1e-6+norm(b). No fitted correction, offset subtraction, sign adjustment or observed force scale enters b.",
+  "maximum_admissible_added_velocity_rounding_bound_n": 3e-06,
+  "moment_gate": "Original1e-7Nm retained without added allowance.",
+  "reporting": "Always retain original raw1e-6 force pass/fail separately. A new quantization-aware measurement pass must be explicitly labelled with its actual resolution; it cannot relabel an old failure or claim the original1micronewton moving-velocity accuracy.",
+  "scope": "Measured instantaneous knife Newton-Euler force derivative at the three declared moving coupling clocks only. Integrated target/robot impulse, float32 applied wrench, force arithmetic, CAD action/reaction, kinetic/work budgets and all physical stops remain unchanged.",
+  "analytic_controls": [
+    {
+      "dt_s": 0.00010416666666666667,
+      "analytic_cases": 10001,
+      "maximum_binary32_momentum_rate_error_n": 5.352653503416013e-07,
+      "maximum_component_rounding_bound_n": 5.587935447692871e-07,
+      "original_one_micronewton_gate_failures": 0
+    },
+    {
+      "dt_s": 5.208333333333334e-05,
+      "analytic_cases": 10001,
+      "maximum_binary32_momentum_rate_error_n": 1.0870027542116655e-06,
+      "maximum_component_rounding_bound_n": 1.1175870895385742e-06,
+      "original_one_micronewton_gate_failures": 120
+    },
+    {
+      "dt_s": 2.604166666666667e-05,
+      "analytic_cases": 10001,
+      "maximum_binary32_momentum_rate_error_n": 2.1981346130374273e-06,
+      "maximum_component_rounding_bound_n": 2.2351741790771484e-06,
+      "original_one_micronewton_gate_failures": 3059
+    }
+  ],
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/register_moving_velocity_resolution.py": "d760f22e1fb3b8b5d8118a264d0360716d505c454adf859e9a907022aae9ba34"
+  },
+  "experimental_validation": "pending"
+}

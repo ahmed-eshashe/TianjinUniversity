@@ -1,0 +1,6 @@
+from pathlib import Path
+import sys,json,numpy as np
+from scipy.spatial.transform import Rotation
+r=Path(__file__).resolve().parents[2];w=Path(__file__).parent;sys.path.insert(0,str(r/'rl'))
+from tomato_live_slice_engine import live_engine
+z=np.load(w/'profile_partition_start.npz');ref=np.load(r/'runs/offline/padded_cad_packet_20261102_01/cad_pressure_reference.npz');origin=np.array([-.0225,0,.0295]);R=z['blade_rotation'];pose=np.r_[z['blade_translation']+origin,Rotation.from_matrix(R).as_quat()];g=live_engine(pose,ref['com_local'],checkpoint=w/'profile_partition_start.npz');before=next(g);pose[:3]+=np.array([R[2,2]/R[0,2],0,-1])*.02/2400;after=g.send(dict(pose=pose,dt=1/2400));baseline=np.load(w/'profile_partition/checkpoint.npz');result=dict(position_error_m=float(abs(after['x']-origin-baseline['x']).max()),velocity_error_m_s=float(abs(after['v']-baseline['v']).max()),history_error=float(abs(after['history']-baseline['history']).max()));result['passed']=result['position_error_m']<1e-12 and result['velocity_error_m_s']<1e-9 and result['history_error']<1e-12;(w/'engine_check.json').write_text(json.dumps(result,indent=2));print(result);assert result['passed']

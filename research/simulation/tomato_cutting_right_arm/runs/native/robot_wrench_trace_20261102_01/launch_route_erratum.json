@@ -1,0 +1,7 @@
+{
+  "intended": "tomato_robot_wrench_calibration_worker.py,136robot-only steps",
+  "actual": "tomato_mounted_target_screen_worker_v05.py --refinement2",
+  "cause": "New mode was accidentally appended to a shared fine-contact routing/argument tuple by a broad textual replacement. Intended initial worker_path assignment was subsequently shadowed.",
+  "qualification": "None; dedicated result identity/count contract cannot qualify this worker as the intended calibration.",
+  "action": "Owned cooperative stop requested; next version uses exact, nonoverlapping mode routing."
+}

@@ -1,0 +1,55 @@
+{
+  "component_passed": true,
+  "cases": [
+    {
+      "case": "no_feedback",
+      "steps": 512,
+      "wall_s": 219.9014820040029,
+      "first_contact_force_n": 0.0014612788359118906,
+      "maximum_whole_energy_work_residual_j": 1.5118014518974966e-10,
+      "maximum_contact_work_potential_residual_j": 4.1780676566326504e-14,
+      "scope": "Work diagnostic only; no whole-system work qualification."
+    },
+    {
+      "case": "feedback",
+      "steps": 512,
+      "wall_s": 220.33782797800086,
+      "first_contact_force_n": 0.0014612788359118906,
+      "maximum_whole_energy_work_residual_j": 1.5091642679517986e-10,
+      "maximum_contact_work_potential_residual_j": 4.114680609589162e-14,
+      "scope": "Work diagnostic only; no whole-system work qualification."
+    },
+    {
+      "case": "replay",
+      "steps": 512,
+      "wall_s": 222.40563965099864,
+      "first_contact_force_n": 0.0014612788359118906,
+      "maximum_whole_energy_work_residual_j": 1.5091642679517986e-10,
+      "maximum_contact_work_potential_residual_j": 4.114680609589162e-14,
+      "scope": "Work diagnostic only; no whole-system work qualification."
+    },
+    {
+      "case": "clear",
+      "steps": 512,
+      "wall_s": 20.17594525300956,
+      "first_contact_force_n": 0.0,
+      "maximum_whole_energy_work_residual_j": 1.548460910415791e-15,
+      "maximum_contact_work_potential_residual_j": 0.0,
+      "scope": "Work diagnostic only; no whole-system work qualification."
+    }
+  ],
+  "replay_errors_x_v_q_qd": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "paired_first_step_joint_velocity_response_rad_s": 4.70933439042482e-09,
+  "paired_positive_virtual_response_j": 2.817902573612519e-12,
+  "deformable_steps": 2048,
+  "matched_physx_steps": 2048,
+  "actual_whole_target_work_qualified": false,
+  "actual_approach_qualified": false,
+  "cutting_qualified": false,
+  "scope": "Short nonfracturing actual mounted authored blade + original whole-target feedback COMPONENT at assigned contact initial configuration. PhysX owns robot, custom float64 Newton-registry solver owns target. Actual opposite pressure wrench consumed once and paired response/replay/clear pass. Work traces remain diagnostic pending independent readback and coupling/contact/time refinement. No route, fracture, full cut, post-cut reset or training."
+}

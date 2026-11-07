@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "case": "rest",
+      "active_contact_stencils": 0,
+      "triplets": 412704,
+      "nnz_blocks": 70376,
+      "relative_symmetry_error": 9.005881905408352e-18,
+      "quadratic_forms": [
+        10322864.99209024,
+        1572.9713666684024,
+        5180.039368783024,
+        2767812.8662875406
+      ],
+      "cg_iterations": 110,
+      "cg_recursive_residual": 1.2752593322364812e-05,
+      "cg_absolute_tolerance": 1.5512627336016637e-05,
+      "cg_true_relative_residual": 8.220782974492387e-11,
+      "cg_solution_relative_error": 1.136841830678968e-09,
+      "wall_s": 9.510197518997302
+    },
+    {
+      "case": "affine",
+      "active_contact_stencils": 10240,
+      "triplets": 3034144,
+      "nnz_blocks": 107324,
+      "relative_symmetry_error": 1.8471414945494697e-18,
+      "quadratic_forms": [
+        25759196.03572186,
+        12362.756113831885,
+        15741991.023018133,
+        2774437.8842182755
+      ],
+      "cg_iterations": 260,
+      "cg_recursive_residual": 0.0003544665404634495,
+      "cg_absolute_tolerance": 0.0003761409981660138,
+      "cg_true_relative_residual": 9.42380492182633e-11,
+      "cg_solution_relative_error": 7.635628369443808e-09,
+      "wall_s": 3.483719392999774
+    },
+    {
+      "case": "captured_contact",
+      "active_contact_stencils": 5515,
+      "triplets": 1824544,
+      "nnz_blocks": 95880,
+      "relative_symmetry_error": 4.623435997712589e-19,
+      "quadratic_forms": [
+        13855955.276288342,
+        1581.528479615692,
+        15735356.92953644,
+        2767715.7500711214
+      ],
+      "cg_iterations": 300,
+      "cg_recursive_residual": 0.00036741630756601223,
+      "cg_absolute_tolerance": 0.00037476410497479397,
+      "cg_true_relative_residual": 9.803944031559957e-11,
+      "cg_solution_relative_error": 2.981055867432289e-08,
+      "wall_s": 2.8739826170058222
+    }
+  ],
+  "scope": "Three actual full-registry coupled matrix controls versus independent NumPy/CPU-autograd actions, symmetry/positive quadratic forms and known-solution PCG residuals. Zero mechanical steps; no solver integration, support, robot work or cut qualification."
+}

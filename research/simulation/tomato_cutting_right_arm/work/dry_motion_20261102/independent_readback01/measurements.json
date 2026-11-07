@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "checks": {
+    "raw_arrays_and_trace_counts": true,
+    "actual_half_speed_command_sequence": true,
+    "only_right_arm_trajectory_commanded": true,
+    "all_seven_joints_follow_direction": true,
+    "phase_directions": true,
+    "native_pose_matches_actual_joint_fk": true,
+    "mount_position": true,
+    "mount_angle": true,
+    "inherited_joint_tracking": true,
+    "arm_limits": true,
+    "final_stationary": true,
+    "frozen_sources_unchanged": true
+  },
+  "actual_physics_steps": 4091,
+  "route_duration_s": 16.03333333333333,
+  "maximum_joint_tracking_rad": 0.015549957752227783,
+  "maximum_tool_tracking_m": 0.009730710172624144,
+  "final_tool_tracking_m": 0.006738830351992438,
+  "maximum_tool_fk_position_difference_m": 4.196669321720206e-07,
+  "maximum_left_joint_deviation_rad": 0.011163516901433468,
+  "joint_command_actual_correlations": [
+    0.9995712565796683,
+    0.9995896172056958,
+    0.9995897087469717,
+    0.9993553272882214,
+    0.9996102876510052,
+    0.9996092137454958,
+    0.9996114322962729
+  ],
+  "phase_displacements": [
+    {
+      "phase": "approach down",
+      "actual_tool_dz_m": -0.06622597575187683,
+      "commanded_tool_dz_m": -0.059999999736191856,
+      "same_direction": true
+    },
+    {
+      "phase": "stroke down",
+      "actual_tool_dz_m": -0.08784621208906174,
+      "commanded_tool_dz_m": -0.08799998441992873,
+      "same_direction": true
+    },
+    {
+      "phase": "withdraw up",
+      "actual_tool_dz_m": 0.08778475970029831,
+      "commanded_tool_dz_m": 0.08800001508869054,
+      "same_direction": true
+    },
+    {
+      "phase": "return up",
+      "actual_tool_dz_m": 0.059913814067840576,
+      "commanded_tool_dz_m": 0.059999986934234556,
+      "same_direction": true
+    }
+  ],
+  "minimum_blade_to_other_body_aabb_gap_m": 0.0733824696784644,
+  "closest_body": "right_rh_thumb_distal",
+  "scope": "Independent readback of one slow dry route; no target deformation/contact qualification. Correlation checks direction, not zero tracking lag. Joint tracking passes inherited0.03rad limit; actual tool tracking error remains reported without a new Cartesian pass claim.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/measurements.json": "7621f91c96c73803c23af07f3a11a0715ba01766c8eedfec386c9f9e9c1ed6b4",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/input_manifest.json": "e5888aaf4c40cf3cde7652e06171ee4129749c2c9cf419c0c44441e93898f547",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/supervisor_result.json": "36bfc5f547c919ac8154259c6a694664eac199fc0ed779b034acd5f467509281",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/motion_trace.jsonl": "27dd21f09698dafd4fd0c2cda0bba1417d1998a4f5c925da03ebc4f1fe7bcd9f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/visible_dry_motion_20261102_01/measured_motion.npz": "57f0390c5e2b319f1e29b63ec0359c27118e987356a148f5d3fe21fc8ceaa62b"
+  }
+}

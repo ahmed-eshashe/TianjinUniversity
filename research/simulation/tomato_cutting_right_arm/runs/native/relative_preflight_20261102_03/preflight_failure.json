@@ -1,0 +1,92 @@
+{
+  "audit": {
+    "momentum_kg_m_s": [
+      -0.008069522644906168,
+      -0.00012806829691906934,
+      -0.009126126413733806
+    ],
+    "angular_momentum_kg_m2_s": [
+      7.857373790220518e-06,
+      -0.0003591125404521403,
+      -3.3235463099678298e-06
+    ],
+    "gravity_board_fixture_impulse_ns": [
+      [
+        0.0,
+        0.0,
+        -0.06166908090839506
+      ],
+      [
+        0.0,
+        0.0,
+        0.034688403283917105
+      ],
+      [
+        -0.008168091389716105,
+        -0.0001388367169336059,
+        0.017884609521538728
+      ]
+    ],
+    "gravity_board_fixture_angular_impulse_nms": [
+      [
+        1.0790607454569473e-07,
+        -2.5804310461075816e-05,
+        0.0
+      ],
+      [
+        1.3663563193207373e-06,
+        0.00011470672247615512,
+        0.0
+      ],
+      [
+        6.881371433959656e-06,
+        -0.00045199470490584127,
+        -3.4040319365378606e-06
+      ]
+    ],
+    "gravity_board_fixture_force_n": [
+      [
+        0.0,
+        0.0,
+        -1.193595114355411
+      ],
+      [
+        0.0,
+        0.0,
+        2.909222918787162
+      ],
+      [
+        0.388858575373888,
+        -0.005385701369959861,
+        -0.32196350649707906
+      ]
+    ],
+    "linear_impulse_residual_ns": 0.00010361109192957831,
+    "angular_impulse_residual_nms": 4.011629403854999e-06,
+    "energy": {
+      "kinetic_j": 0.0009335489204504036,
+      "gravity_j": 0.02802527408815928,
+      "spring_j": 0.006065454563429683,
+      "volume_barrier_j": 2.7500157762815643e-05,
+      "cohesion_stored_j": 3.6541494914427093e-06,
+      "self_contact_j": 6.649953841453709e-08,
+      "board_j": 4.170445303214179e-06,
+      "total_j": 0.035059668824135255
+    },
+    "time_s": 0.05166666666666667,
+    "energy_increase_j": -0.00015138704934940933,
+    "minimum_volume_ratio": 0.10000001816798032,
+    "board_penetration_m": 6.540515044324222e-06,
+    "maximum_displacement_m": 0.014795470787850354
+  },
+  "contract": {
+    "version": "support-ledger-0.1",
+    "scope": "Undamaged standalone full-target gravity fixture; engineering numerical checks, not experimental validation",
+    "initial_momentum": "zero",
+    "linear_impulse_error_ns": 0.0001,
+    "angular_impulse_error_nms": 1e-05,
+    "maximum_energy_increase_above_initial_j": 1e-05,
+    "provenance": "Frozen before first ledger run. Absolute impulse budget is about 0.08% of one second of total target weight; angular budget uses a 0.1 m characteristic length. Energy bound is an added numerical injection stop, not physical material accuracy. Original volume, board and settling gates remain unchanged.",
+    "limitations": "No actuator, robot, fracture or moving-support work in this fixture. Fixed support work is zero only after the exact fixed-position check passes. Record numerical dissipation; do not present loss of energy alone as a full work qualification."
+  }
+}

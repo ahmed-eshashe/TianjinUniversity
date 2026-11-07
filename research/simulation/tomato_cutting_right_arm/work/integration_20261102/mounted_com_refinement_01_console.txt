@@ -1,0 +1,82 @@
+{
+  "refinement_passed": true,
+  "factors": [
+    64,
+    128
+  ],
+  "comparisons": [
+    {
+      "case": "no_feedback",
+      "common_physical_clocks": 512,
+      "maximum_position_component_error_m": 1.834872074418792e-08,
+      "maximum_velocity_component_error_m_s": 0.0006499854896979684,
+      "maximum_force_error_n": 2.4573967560897872e-06,
+      "force_scale_n": 0.0014612849993064661,
+      "force_impulse_error_ns": 2.346835444664821e-10,
+      "force_impulse_scale_ns": 7.99950227837579e-07,
+      "maximum_robot_q_error_rad": 2.682298827494378e-13,
+      "maximum_robot_qd_error_rad_s": 1.5643308870494366e-09,
+      "criteria": {
+        "position": true,
+        "velocity": true,
+        "force": true,
+        "force_impulse": true
+      }
+    },
+    {
+      "case": "feedback",
+      "common_physical_clocks": 512,
+      "maximum_position_component_error_m": 1.834872074418792e-08,
+      "maximum_velocity_component_error_m_s": 0.0006499854896979684,
+      "maximum_force_error_n": 2.4573967560897872e-06,
+      "force_scale_n": 0.0014612849993064661,
+      "force_impulse_error_ns": 2.346835444664821e-10,
+      "force_impulse_scale_ns": 7.99950227837579e-07,
+      "maximum_robot_q_error_rad": 3.8813396940895473e-13,
+      "maximum_robot_qd_error_rad_s": 1.3478711480274796e-09,
+      "criteria": {
+        "position": true,
+        "velocity": true,
+        "force": true,
+        "force_impulse": true
+      }
+    },
+    {
+      "case": "replay",
+      "common_physical_clocks": 512,
+      "maximum_position_component_error_m": 1.834872074418792e-08,
+      "maximum_velocity_component_error_m_s": 0.0006499854896979684,
+      "maximum_force_error_n": 2.4573967560897872e-06,
+      "force_scale_n": 0.0014612849993064661,
+      "force_impulse_error_ns": 2.346835444664821e-10,
+      "force_impulse_scale_ns": 7.99950227837579e-07,
+      "maximum_robot_q_error_rad": 3.8813396940895473e-13,
+      "maximum_robot_qd_error_rad_s": 1.3478711480274796e-09,
+      "criteria": {
+        "position": true,
+        "velocity": true,
+        "force": true,
+        "force_impulse": true
+      }
+    },
+    {
+      "case": "clear",
+      "common_physical_clocks": 512,
+      "maximum_position_component_error_m": 0.0,
+      "maximum_velocity_component_error_m_s": 0.0,
+      "maximum_force_error_n": 0.0,
+      "force_scale_n": 0.0,
+      "force_impulse_error_ns": 0.0,
+      "force_impulse_scale_ns": 0.0,
+      "maximum_robot_q_error_rad": 2.682298827494378e-13,
+      "maximum_robot_qd_error_rad_s": 1.5643308870494366e-09,
+      "criteria": {
+        "position": true,
+        "velocity": true,
+        "force": true,
+        "force_impulse": true
+      }
+    }
+  ],
+  "qualification_scope": "Only the identical assigned, nonfracturing 0.8333ms preload fixture at all coarse physical timestamps. No executed route, moving-blade work, fracture, release or training qualification."
+}

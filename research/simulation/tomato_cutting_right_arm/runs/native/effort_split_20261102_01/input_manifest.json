@@ -1,0 +1,33 @@
+{
+  "contract": {
+    "purpose": "Test whether CPU TGS incoming/projected joint force depends incorrectly on allocation of the same equilibrium generalized torque to feedforward versus implicit drive",
+    "fractions": [
+      0.0,
+      1.0,
+      0.5
+    ],
+    "steps_per_case": 24,
+    "setup_steps": 3,
+    "total_steps": 75,
+    "dt_s": 0.004166666666666667,
+    "wall_cap_s": 180,
+    "controller": "Same original robot gains/damping/limits/mount/solver. Diagnostic targets q0+(1-fraction)*native_gravity/K, explicit effort fraction*native_gravity; desired velocity0. Initial-state reset only between cases. Arms only; hands unchanged.",
+    "prediction": "At comparable actual states, net transmitted load should be independent of torque-source split. Large split-dependent readout changes with unchanged equilibrium would contradict using the readout as actual generalized motor torque.",
+    "validity": "Keep all inherited clear-space checks. Require arm pose drift<0.0001rad and maximum arm speed<0.001rad/s for static comparison; archive actual body velocities/mass for independent dynamic bound.",
+    "comparison": "Report exact split differences and independent subtree gravity reference; no replacement of old force/work thresholds. No full-work qualification from this diagnostic.",
+    "stop": "One invocation; no parameter sweep or contact. If controls fail or hypothesis unsupported, stop with saved result. No automatic production change."
+  },
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_effort_split_worker.py": "a86a627215e641b9785a93aefed06f14d77125d46972dc507d4715c90d5a6400",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_evidence_snapshot.py": "13847b1b27f76b8de8203c253c178a9e6c5b874354f1a88a19d4586cd52876bf",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_parked_robot.py": "84934bd2109b1fb43b8b99ea1457bf131b1228c78c10fb2ac27224770cdc6cec",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/load_down_20261102_01/robot_kinematic_snapshot.json": "d9f4c6d7206ee19cef73fbd9aa7ad3801ca0c6888eea0ed2b967e76ac97c3e87",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/static_preparation_cached_20261102_01/prepared_equilibrium.npz": "7101378ffcbac97d4eb45b950c5796023ad22a5b27ba2ebef5abaaa728dc17aa",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda": "df906ab8b04a289b8e393df203646515475180a33e5ef3abf0238cdc7edd7d92",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/near_approach_plan_20261102_02/near_approach_plan.json": "d35ec27039d037b9f0f14df218b720c9f3fbe788dacc2ec8dd9e5d7bd6864e79",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/astra_effort_resolution_20261102/effort_split_contract.json": "8a0c1e57a005507449a5f2e4b9e647774a56eec0ed8d9309f16908e1af63f43f"
+  },
+  "scope": "Diagnostic equivalent equilibrium torque splits; no loaded contact, work qualification or production modification"
+}

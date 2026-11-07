@@ -1,0 +1,24 @@
+{
+  "scope": "Equivalent right-seven-joint angle origins at contact. Keep fixedCOM mount, original TGS32 and all physical mass/inertia/armature/motor properties. Shiftjointlimits/drivetargets consistently; compare nativephysicalhome/contact and signedloads; realcoast/reversal/replay before any newcoupledtarget.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_moving_contact_robot.py": "48a7543983fd71d263036d9bb4bb3b2cc61673cefb3312a280979c869f1ea1cc",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/moving_contact_protocol_20261102_01/initial_velocity.json": "328298a8276e0fae76c9e8116eecd375fc83ea06676142b2b5a9a41180c4b7b8",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_joint_recenter_worker_v03.py": "dae3bb63978c7795f0ba157c217ceec9281d5c3f15e0a24551e960c427111b66",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exported_robot.py": "5a4ee0c6a32c7594432821f63f9c15e02a61e9996e5b0d6c625b04709383578c"
+  },
+  "unchanged_knife_force_moment_budgets": "1e-6N/1e-7Nm on known signed load calibration",
+  "coast_joint_position_velocity_budget_rad": 1e-09,
+  "coast_COM_geometry_velocity_budget_m": 1e-07,
+  "all_native_steps": 264,
+  "cases": 21,
+  "experimental_validation": "pending",
+  "cutting_qualified": false,
+  "reference_correction": "41 compared mapped physical hard limits to planner limits inset0.002rad; failed at0 mechanical steps. 42 uses original authored hard limits, unchanged1e-6rad gate. No coordinate/physical settings changed.",
+  "new_reference_scope": "42 restored native joint-position/velocity agreement to1.6759e-11rad but raw native body-pose/velocity agreement failed original100nm gate at176.977nm. 43 retains original raw pose flag; verifies float64 forward kinematics derived ONLY from actual native q, with unchanged authored joint frames and no commanded/prescribed pose. Require q-derivedCOM vs native integrated velocity<=1nm and native-vs-reconstructed pose<=1um/1e-5rad. A later contact adapter must explicitly transform wrench and velocity origins and record BOTH native and reconstructed poses.",
+  "original_native_pose_gate_preserved": true,
+  "actual_q_kinematic_velocity_budget_m": 1e-09,
+  "native_kinematic_pose_gap_budgets": {
+    "position_m": 1e-06,
+    "rotation_rad": 1e-05
+  }
+}

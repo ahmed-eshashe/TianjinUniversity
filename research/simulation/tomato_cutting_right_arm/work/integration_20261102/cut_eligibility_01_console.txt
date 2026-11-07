@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/qualify_cut_eligibility.py", line 10, in <module>
+    e=build();deep=pose.copy();deep[2]=0.;trial=e.trial(x,deep);e.commit(trial,accepted=False)
+                                                ^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cut_eligibility.py", line 48, in trial
+    f0,m0,r0=self._geometry(self.world,self.pose);f1,m1,r1=self._geometry(world,pose);angle=float(Rotation.from_matrix(r1@r0.T).magnitude())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cut_eligibility.py", line 37, in _geometry
+    rotation=Rotation.from_quat(pose[3:]).as_matrix();front=(self.local_vertices@rotation.T+pose[:3])[self.faces];material=current_footprints(world,self.registration);return front,material,rotation
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/spatial/transform/_rotation.py", line 474, in from_quat
+    return Rotation(quat, normalize=True, scalar_first=scalar_first)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/spatial/transform/_rotation.py", line 370, in __init__
+    self._quat: Array = self._backend.from_quat(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "scipy/spatial/transform/_rotation_cy.pyx", line 396, in scipy.spatial.transform._rotation_cy.from_quat
+  File "<stringsource>", line 664, in View.MemoryView.memoryview_cwrapper
+  File "<stringsource>", line 352, in View.MemoryView.memoryview.__cinit__
+ValueError: buffer source array is read-only

@@ -1,0 +1,36 @@
+{
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp": "2cfc606e474dd95395c90e8494697cfc9292586fc1a389c863b7ee939bec2dfc",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx/source/lowleveldynamics/src/DyTGSDynamics.cpp": "51926a47b990e4aac3de92d14f18e982bcaadbf0b4046df79df35913a300cf23",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx/source/lowleveldynamics/src/DyFeatherstoneForwardDynamic.cpp": "8d9d835213358a43ff16ef3f6c1e0861988e02aa705cfad68cf86701232b135c"
+  },
+  "finding": "applyTgsSubstepForces injects jointForce*stepDt into a deferred articulated impulse combined with body external forces. The current drive-row recorder does not observe this stage or the resulting full generalized velocity transition.",
+  "next_observation_sites": [
+    {
+      "file": "DyFeatherstoneArticulation.cpp",
+      "function": "applyTgsSubstepForces",
+      "required": "Record actual joint actuation impulse separately from body external forces, and frozen articulation state needed for independent work reconstruction. Deferred storage is not itself a velocity measurement."
+    },
+    {
+      "file": "DyFeatherstoneArticulation.cpp",
+      "function": "recordDeltaMotionTGS / PxcFsFlushVelocity",
+      "required": "Identify actual substep generalized/link velocities and configuration updates, without forcing an extra flush or changing solver execution."
+    }
+  ],
+  "acceptance": [
+    "Retain separate override and frozen original evidence",
+    "Trace counts and full state equivalence off/on",
+    "Independent coupled two-joint control with feedforward and gravity separately tested before full robot claim",
+    "Account for armature, effective damping, limits and numerical terms without fitting residual",
+    "Evaluate original force/work budgets without substitution"
+  ],
+  "not_authorized_by_result": [
+    "Contact",
+    "Cutting",
+    "Training",
+    "Controller change",
+    "Solver sweep"
+  ],
+  "native_run_justified_now": false,
+  "reason": "The current recorder cannot supply the missing stage; repeating this capture would reproduce the same information."
+}

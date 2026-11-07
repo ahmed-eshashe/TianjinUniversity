@@ -1,0 +1,20 @@
+{
+  "frame_side": "remainder",
+  "selection": "canonical reference coordinates",
+  "model_extension": true,
+  "asymmetric": true,
+  "original_traction_quadrature": true,
+  "original_bilinear_law": true,
+  "experimental_validation": "pending",
+  "fresh_trajectory_required": true,
+  "references": [
+    {
+      "url": "https://portal.research.lu.se/en/publications/framework-for-non-coherent-interface-models-at-finite-displacemen/",
+      "scope": "Energy depends on gap and surface tangents; retain frame derivatives for objectivity and angular momentum. Does not validate this specific implementation or tomato parameters."
+    },
+    {
+      "url": "https://mooseframework.inl.gov/source/materials/cohesive_zone_model/CZMComputeGlobalTractionTotalLagrangian.html",
+      "scope": "Finite-deformation cohesive rotations require consistent derivatives; MOOSE uses average deformation gradient, not the one-sided choice implemented here."
+    }
+  ]
+}
