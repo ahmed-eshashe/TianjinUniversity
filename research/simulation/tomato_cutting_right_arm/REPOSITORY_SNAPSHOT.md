@@ -12,8 +12,9 @@ are not guaranteed to represent one atomic checkpoint. Read each experiment's
 contracts and reports before using its results. No paper claims are promoted.
 
 Large assets, model weights, arrays, recordings and other excluded files remain
-local and are indexed by source path and size in the update manifest. Dependencies,
-builds and third-party checkouts are excluded. Historical Git revisions retain
+local and are indexed by source path and size in the update manifest. Installed environments, builds, and selected third-party checkouts are excluded;
+small vendored source snapshots may remain with experiment provenance.
+The manifest records the actual inclusion policy. Historical Git revisions retain
 previous snapshots; no source workspace or simulation was changed for publication.
 
 ---
