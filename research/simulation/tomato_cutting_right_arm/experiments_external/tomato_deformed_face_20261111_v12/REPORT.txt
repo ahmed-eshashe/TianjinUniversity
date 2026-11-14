@@ -1,0 +1,123 @@
+Deformed-material and finer-front study — final bounded result, 11 November 2026
+
+RESULT
+The isolated GPU candidate now creates and extends a geometric partial cut in a
+freely deforming, initially nonuniformly compressed/bent block. Fine-front state
+transfer, mass, restart and sufficiently fine mechanical timestep checks pass.
+The combined blade-update/refinement accuracy check FAILS. Do not proceed to
+physical knife contact, claim a qualified tomato cut, or promote this to RL.
+The current Isaac/DiSECt setup remains unchanged. No dependencies were installed.
+
+This study used one baseline (v11) and one diagnosed correction (v12), within the
+same two-hour scope. All v10 and earlier evidence, including the failed v11
+results, is preserved. The checks finished in well under the campaign budget;
+there is no background simulation still running.
+
+WHAT CHANGED
+1. Front-aligned quadratic knot insertion replaces the 3 mm whole-support delay.
+   A static 50-micrometre (0.05 mm) score can now enable an opening only behind
+   its visited front, while the uncut bridge remains connected. The old complete
+   displacement and velocity fields are prolonged exactly into the new space.
+   Full mass-matrix pullback, virtual-work pullback, strain and energy checks
+   accompany insertion. Extra modes deliberately change discrete inertia and
+   stiffness spectra; equal transferred state does not mean identical dynamics.
+   Refinement inserts tensor layers across the cross-section. It is not a fully
+   local 3D adaptive mesh and is not yet a scalable arbitrary-cut representation.
+2. v11's exact planar centreline map passed selected non-affine analytic fields
+   but rejected an actual freely evolved field. The rejected surface varied by
+   less than a micrometre in the short probe; exact planarity was too restrictive.
+   v12 instead certifies a conservative reference patch inside the real swept
+   finite-width CAD cutting face (original triangles 15/14/16 and 16/17/15).
+   An inscribed rectangle uses the actual minimum half-width 0.4078507 mm.
+   No hypothetical blade thickening, material rescaling or contact-law change
+   was used. The selected planar patch approximates the centreline preimage;
+   the full material may deform nonuniformly and its exact preimage may curve.
+3. Continuous spline coefficient bounds constrain the normal offset to 10 um
+   and curved-front spread to 10 um in this candidate. Monotonicity and common
+   finite edge coverage give an inner visited patch, rather than a bounding-box
+   fill. A cumulative monotone proof chain can join visited curved-front strips;
+   withdrawal/lateral repositioning resets that chain. Negative disjoint-stroke
+   tests preserve their skipped material band. All cut history remains material-
+   attached and no future trajectory or cut plane is supplied to the selector.
+
+SPATIAL AND TEMPORAL QUALIFICATION
+The earlier 3.90625e-7 s mechanical timestep was insufficient for fine-front
+velocities. Sparse original observation points missed the problem. At actual
+near-front points, halving that timestep changed velocity by 0.3564 m/s, despite
+sub-micrometre position and well-converged material-work results. That v11
+failure was retained; its criteria were not loosened.
+
+A read-only tangent-mode audit explains why small spatial changes are costly:
+the intact block's fastest linearized period was about 171 us; a 50 um front
+introduced a 3.83 us period, and an extra 25 um layer a 1.55 us period. These are
+local linearization estimates, not nonlinear stability guarantees. The original
+timestep provided only about 10 or 4 steps per new fast period respectively.
+
+v12 tested dt=2.44140625e-8 s (16 times finer) against half that timestep, without
+damping, mass lumping, altered stiffness or changed physical stops. For the same
+loaded 50 um partial-cut state over 0.1 ms:
+  whole-field displacement difference bound: 8.79e-10 m
+  whole-field velocity difference bound:     0.002716 m/s (screen 0.005 m/s)
+  relative applied material-work difference: 2.54e-8
+  primary energy residual:                  -4.02e-12 J
+  primary/half GPU rollout wall time:        2.95 / 5.20 s
+These opening loads are material test forces, not knife reactions or fracture work.
+
+COMBINED FREELY DEFORMING GPU TEST
+The same nonuniformly prestrained block evolved freely while the commanded CAD
+edge advanced in two 50 us actions. The reference patch was selected online.
+After the first action its conservative depth was 44.15 um; after the second,
+82.24 um. The commanded geometric advance is not the actual depth in deforming
+material. The block remains one connected body with an intact bridge.
+
+Mass remained 0.001728 kg. Cut insertion preserved existing state, and a loaded
+restart reproduced the continuation exactly. Independent dense crossing checks
+confirmed that sampled points of each new patch had been traversed by the actual
+edge face under the declared endpoint interpolation. The continuous coverage
+argument uses coefficient bounds; dense samples are an independent check, not
+the sole geometric certificate.
+
+Maximum bounds in the primary combined run:
+  normal offset from edge centre plane: 0.767 um
+  curved-front spread:                  3.493 um
+  mechanical half-step position:        1.40e-10 m
+  mechanical half-step velocity:        0.001099 m/s
+  energy residual over 0.1 ms:          -1.83e-12 J
+
+THE REMAINING FAILED GATE
+Repeating the same blade route with 25 us action intervals at the finer mechanical
+timestep changes local front refinement as well as activation times. Results:
+  whole-field displacement difference bound: 0.943 um (position screen passes)
+  whole-field velocity difference bound:     0.3682 m/s (0.005 m/s screen FAILS)
+  actual dense near-front velocity witness:  0.3662 m/s at 2050 sampled points
+The failure is therefore not merely a loose coefficient bound. Topology remains
+partial in both runs and energy/mass checks pass; those do not override the local
+velocity failure. Timing and approximation-space changes are confounded in this
+comparison. It does not prove that timing alone or spatial resolution alone is
+responsible. No further correction was attempted in this bounded study.
+
+COST AND SCOPE
+Primary combined rollout: 2.856 s for 0.0001 simulated seconds, about 28,563 wall
+seconds per simulated second. This is a single tiny-block diagnostic, not an
+episode-time forecast or an RL benchmark. It is an expensive accuracy reference,
+not an efficient production solver recommendation. The smaller timestep solves
+one accuracy issue but worsens the already open throughput problem.
+
+The model is still the synthetic 12 mm block: E=100 kPa, nu=0.4, rho=1000 kg/m^3,
+full consistent mass, order-5 integration, 512 original observation points and
+additional front modes. No tomato exterior, gravity, support board, robot, knife
+reaction, friction, recontact or irreversible material-failure law was included.
+Gc remains unused. The 2 N and 0.1 mm physical contact limits were retained but
+not exercised or passed by these geometry-only tests. Endpoint interpolation is
+not a proof of continuous physical knife contact or full-material nonpenetration.
+General curved cut surfaces, arbitrary orientations and long multi-cut episodes
+remain unsupported. Experimental validation remains pending.
+
+EVIDENCE
+geometry_controls.json: 16 checks pass.
+time_controls.json: 9 checks pass.
+coupled_controls.json: 36 pass, 1 fails (blade-update/refinement velocity accuracy).
+The pre-entry substep correctly has no cut. A harness assertion that initially
+expected a partial cut before blade entry was corrected using saved checkpoints;
+the original report is retained and the actual velocity failure remains.
+See qualification.json, preservation_check.json and NEXT_STEPS.txt.

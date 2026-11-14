@@ -1,0 +1,38 @@
+Recommended next decision after the bounded v11/v12 study
+
+Do not start physical knife contact, full tomato trajectories or RL from v12.
+Keep the existing Isaac/DiSECt environment and all earlier evidence unchanged.
+The two requested representation improvements now have positive component
+evidence, but their combined blade-update/refinement convergence is unqualified.
+
+Primary unresolved issue: changing the blade update interval also changes when
+fine degrees of freedom appear and which local approximation spaces are used.
+The 50 us / 25 us comparison agrees in position below 1 um but differs in actual
+near-front velocity by 0.366 m/s. Both bulk integrations are already very fine.
+Do not call this a pure mechanical timestep failure or silently drop that check.
+
+Recommended bounded follow-up (one focused diagnostic, not another broad solver
+campaign):
+1. From the saved schedules, construct an explicitly offline comparison fixture
+   with a common approximation space, preserving mass and all carried fields.
+   This isolates activation timing from spatial refinement. A fixture prepared
+   from recorded paths must never be advertised as the online cutting backend.
+2. Compare material work, near-front velocity, continuous displacement/volume and
+   energy at shared times. Retain the 0.005 m/s / 0.1 mm screens and report force
+   quantities only when an actual force channel exists.
+3. Use the result to propose ONE online correction to cut activation/refinement
+   coupling. Assess event timing and enrichment projection together. Do not make
+   the whole solver ever finer, add arbitrary damping, soften material, remove
+   mass, manufacture a gap or introduce force thresholds merely to pass.
+4. If a change to numerical inertia, constitutive/failure law or accepted accuracy
+   contract is needed, present the concrete formulation and consequences for
+   review before adopting it. No such production change is authorized by this
+   evidence. Any physical fracture law requires explicit energy/work accounting.
+
+This is an accuracy reference, not a fast RL engine. Primary v12 cost was about
+28,563 wall seconds per simulated second for a tiny 0.1 ms block trial. Review
+the architecture and likely end-to-end cost before investing in long runs. A
+successful future physical cut would still not prove interactive or RL speed.
+
+No follow-up test described here has been executed. The bounded correction
+campaign has ended; all failed and successful evidence is preserved separately.

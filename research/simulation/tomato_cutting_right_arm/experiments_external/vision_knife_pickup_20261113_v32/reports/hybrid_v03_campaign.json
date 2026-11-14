@@ -1,0 +1,158 @@
+{
+  "updated": "2026-11-14T02:11:28.969123+08:00",
+  "frozen_hashes_unchanged": {
+    "hybrid_pickup_v03.py": true,
+    "visual_grasp.py": true,
+    "hybrid_calibration_v01.json": true,
+    "handle_vision.py": true,
+    "policies/handle_vision_v01/best.pt": true,
+    "pickup_criteria.json": true,
+    "curriculum_split_v01.json": true,
+    "knife_short_blade_v02.usda": true
+  },
+  "validation_successes": 3,
+  "validation_completed": 3,
+  "test_successes": 2,
+  "test_completed": 4,
+  "placement_success_wilson_95": null,
+  "scope": "Learned handle position/yaw from head RGB-D, engineered arm and balanced compliant grip; same short knife, bounded flat-rest placements, uncalibrated contact parameters. Not full-motion learning or any-knife/any-rest qualification.",
+  "rows": [
+    {
+      "dataset": "hybrid_v03_test",
+      "episode": "test_000",
+      "completed": true,
+      "success": true,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "checks": {
+        "continuous_hold": true,
+        "clear_of_support": true,
+        "opposed_contact": true,
+        "slip": true,
+        "rotation": true,
+        "load": true
+      },
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0007286882662441407,
+      "maximum_contact_load_N": 33.8358271420002,
+      "min_tool_height_m": 0.11844360520975873,
+      "wall_s": 169.34854794602143,
+      "vision_accepted": true
+    },
+    {
+      "dataset": "hybrid_v03_test",
+      "episode": "test_001",
+      "completed": true,
+      "success": true,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "checks": {
+        "continuous_hold": true,
+        "clear_of_support": true,
+        "opposed_contact": true,
+        "slip": true,
+        "rotation": true,
+        "load": true
+      },
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0003011307468308525,
+      "maximum_contact_load_N": 31.375856399536133,
+      "min_tool_height_m": 0.1187606596477301,
+      "wall_s": 168.25241701302002,
+      "vision_accepted": true
+    },
+    {
+      "dataset": "hybrid_v03_test",
+      "episode": "test_002",
+      "completed": true,
+      "success": false,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "failure": "ValueError: ('Contact stop', [('/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal', '/dual_ar5_o6/MountedKnife', 101.78988814353943), ('/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal', '/dual_ar5_o6/MountedKnife', 81.3204619884491), ('/dual_ar5_o6/MountedKnife', '/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal', 101.78988814353943), ('/dual_ar5_o6/MountedKnife', '/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_index_proximal/right_rh_index_distal', 81.3204619884491), ('/dual_ar5_o6/MountedKnife', '/Indoor/RZ/SM_kitchen_Board', 122.78146362304688)])",
+      "vision_accepted": true
+    },
+    {
+      "dataset": "hybrid_v03_test",
+      "episode": "test_003",
+      "completed": true,
+      "success": false,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "failure": "ValueError: ('Contact stop', [('/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal', '/dual_ar5_o6/MountedKnife', 54.26316452026367), ('/dual_ar5_o6/MountedKnife', '/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link/right_rh_thumb_metacarpals_base2/right_rh_thumb_metacarpals/right_rh_thumb_distal', 54.26316452026367), ('/dual_ar5_o6/MountedKnife', '/Indoor/RZ/SM_kitchen_Board', 61.77088928222656)])",
+      "vision_accepted": true
+    },
+    {
+      "dataset": "hybrid_v03_validation",
+      "episode": "validation_000",
+      "completed": true,
+      "success": true,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "checks": {
+        "continuous_hold": true,
+        "clear_of_support": true,
+        "opposed_contact": true,
+        "slip": true,
+        "rotation": true,
+        "load": true
+      },
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0006389502654348188,
+      "maximum_contact_load_N": 32.61352413892746,
+      "min_tool_height_m": 0.11817096009779521,
+      "wall_s": 169.4278431479761,
+      "vision_accepted": true
+    },
+    {
+      "dataset": "hybrid_v03_validation",
+      "episode": "validation_001",
+      "completed": true,
+      "success": true,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "checks": {
+        "continuous_hold": true,
+        "clear_of_support": true,
+        "opposed_contact": true,
+        "slip": true,
+        "rotation": true,
+        "load": true
+      },
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0003318827347075819,
+      "maximum_contact_load_N": 36.05472469329834,
+      "min_tool_height_m": 0.11875624453554659,
+      "wall_s": 166.36393619701266,
+      "vision_accepted": true
+    },
+    {
+      "dataset": "hybrid_v03_validation",
+      "episode": "validation_002",
+      "completed": true,
+      "success": true,
+      "physics_hz": 1920,
+      "ablation": "none",
+      "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+      "checks": {
+        "continuous_hold": true,
+        "clear_of_support": true,
+        "opposed_contact": true,
+        "slip": true,
+        "rotation": true,
+        "load": true
+      },
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0007851316232691523,
+      "maximum_contact_load_N": 35.48655539751053,
+      "min_tool_height_m": 0.11884691459221809,
+      "wall_s": 172.58277693000855,
+      "vision_accepted": true
+    }
+  ]
+}

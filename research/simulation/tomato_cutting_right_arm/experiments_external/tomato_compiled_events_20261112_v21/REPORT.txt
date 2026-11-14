@@ -1,0 +1,59 @@
+V21 — COMPILED CUT GEOMETRY AND REUSED GPU DATA
+Completed: 2026-11-12T19:49:29.906146+08:00
+
+OUTCOME
+The two requested implementation changes are complete and validated in an isolated version. Compiled convex-geometry work reduces warm large-block events to about 0.10-0.13 s; the preceding v20 implementation took about 0.36-0.59 s in the corresponding saved warm-event screen. Reusing GPU buffers and graphs reduces four GPU replacements in the matched episode from 0.664 to 0.041 s, about 16.3x faster.
+The full one-body diagnostic improves 2.12x: 2.666 -> 1.258 s wall time for 0.2 simulated seconds. Eight independent geometric event streams with four host workers reach 17.06 aggregate diagnostic transitions/s. This is BELOW the 100/s RL entry target even before blade contact, physical fracture, robot and policy work. It is not an RL-ready tomato or physical slicing result.
+
+Isaac/DiSECt, the kitchen, robot, knife grip and previous evidence remain unchanged. All 1951 protected files match their saved hashes. No package was installed/upgraded; compilation uses the existing compiler and Qhull library and writes only inside this experiment.
+
+WHAT WAS IMPLEMENTED
+- C++ geometric clipping/moments using installed reentrant Qhull 8.0.2, with unchanged material-region/history semantics. The initial reference-moment cache preserves tied source-root choices. No mass or tiny region is deleted.
+- Compiled construction of the same reduced gradient/incidence data; exact coupled inertia remains unchanged.
+- Persistent GPU arrays with active counts and 64-substep graph reuse across geometry events. Active data are still repacked/uploaded; this is not a claim of a completely GPU-resident topology algorithm.
+- Independent stream packing for different geometry, loading and cut-front parameters. No future cut path is supplied to reset and no common geometry is imposed on the eight environments.
+- Explicit capacity rejection, invalid-state rejection/rollback and loaded restart. Stored capacities do not silently erase history or suppress fragments.
+- Four-worker host execution of independent current geometry events; serial and parallel outputs agree.
+
+VALIDATION
+27 native geometry/setup checks pass, including partial-to-complete history, four cut slots, capacity, restart, world-space planes and 60 mm cases.
+24 additional seeded geometry checks pass across different directions, two successive cuts, 3/6 mm grids, rotation/deformation and world/reference coordinates. They compare topology, two-way convex containment, material force, energy, mass and extension operators.
+46 GPU/storage checks pass: compiled operator data, strict trajectories, separate stream topology/loading, unchanged graph and array pointers across replacement, restart, capacity rejection, invalid replacement and deliberate unstable-step rollback.
+32 combined-loop checks pass, including strict v20/v21 trajectory and serial/parallel equivalence. The recorded combined-loop position, velocity and deformation-gradient differences were zero at the sampled checkpoints; no accuracy tolerance was relaxed.
+
+One initially failing check compared raw convex vertex-array shapes after a fourth cut. Qhull can produce different redundant coplanar vertices while the convex region is the same. The diagnostic is preserved. Independent two-way hull containment (1e-12 m), unchanged topology/mass/forces/extension matrices and dynamic evaluation on the UNION of both vertex sets establish equivalence. Surface errors are not hidden by ignoring unmatched vertices. See reports/native_vertex_array_diagnostic.json, geometry_holdout.json and FORMULATION.txt.
+
+MATCHED ONE-BODY AND INDEPENDENT-BATCH COST
+Model: 60 mm CUBIC diagnostic material block, 6 mm grid; compressible neo-Hookean E=100 kPa, nu=0.4, rho=1000 kg/m^3; 12.5 us substeps. Ten 50 Hz controls per episode, four geometric front events per environment, 0.2 simulated seconds/body. Initial compression is 0.1% plus 0.05% shear; independent batch states/planes vary slightly. Geometry is chosen as each event occurs. A two-component geometric result is not paid material fracture or a legitimate physical tomato slice.
+
+Phase                       V20 one   V21 one   V21 eight/4 workers (seconds)
+reset                      0.0839    0.0783       0.3434
+cut_and_aggregation        1.5130    0.8376       2.4273
+GPU_initial                0.1340    0.0122       0.0596
+GPU_replace                0.6642    0.0406       0.3152
+material                   0.1591    0.1776       0.6528
+observations               0.0305    0.0308       0.2738
+checks                     0.0753    0.0749       0.5724
+Total wall:                    2.6659    1.2578       4.6903
+
+One-body cold episodes include body reset, initial aggregate/GPU setup and reference geometry-cache preparation. All episodes include cut events, mass/projection/aggregate preparation, GPU upload/replacement, material advancement, CPU observations and conservation checks. Native/JIT/kernel compilation is warmed separately; initial Numba compilation is about 3.25 s in persistent_validation.json.
+The eight-body runs copy a pristine material template with NO cut history or future cut data. Preparing that template costs 0.344 s separately. With four workers: 17.06/s warm-template throughput; 15.89/s if template preparation is charged once to this episode. Per-environment state reset remains included in both figures. GPU arrays plus step backups occupy about 22.47 MB; temporary rollback buffers, CPU working data, CUDA context, robot and policy memory are not included in this array count.
+The serial eight-body run takes 6.522 s (12.27/s), compared with 4.690 s (17.06/s) using four host workers. This is a host implementation improvement, not a change to equations.
+Maximum mass residual across the reported episodes is below 1e-6, and numerical energy residual stays below 0.05. Actual recorded large-block batch energy residual is 0.00953%.
+
+WHAT THE MEASUREMENT MEANS
+Unlike earlier material-only numbers, this batch measurement includes real changes to geometric history, setup, resets and output. It still excludes physical blade contact, work-dependent fracture, recontact, board/support, robot and policy. Therefore 17/s is not a completed RL benchmark and cannot be presented as a pass. The same project entry target of 100 aggregate ACTUAL environment transitions/s and preferred 500/s remain unchanged.
+
+REMAINING COST AND DECISION
+At eight environments/four workers, cut-plus-aggregate work still costs 2.427 s of 4.690 s. Global topology/mass rebuilding and CPU-side state/energy inspection remain, and material advancement costs another 0.653 s. Removing repeated GPU allocation/graph construction did not close the throughput gap. There is no measured basis to promise that another small patch will make this a near-term RL backend.
+Preserve this version as a faster numerical reference. Do not start physical robot cuts or RL from these component results. Further work needs a deliberate choice between a substantial fully GPU-resident implementation of the current model and a separately validated lower-cost training approximation. Neither is implemented or silently authorized by this report. Current physical limits and model assumptions remain intact; see NEXT_DECISION.txt.
+
+UNQUALIFIED
+No anatomical tomato, actual blade-driven paid fracture, physical separation/slice, general arbitrary curved cutting, small-fragment timestep proof, general source-root locality, full spatial convergence, experimental calibration, robot contact or RL training. The 2 N force stop and 0.1 mm whole-material penetration limit are unchanged but not exercised by these bulk/geometric tests. All inherited restrictions from v19/v20 remain.
+
+EVIDENCE
+native_validation.json / geometry_holdout.json: geometry, mechanics and operator comparisons.
+persistent_validation.json: reuse, independent streams, strict precision and rollback checks.
+combined_loop.json: matched complete diagnostic loop and independent-batch timing breakdown.
+preservation.json: original setup/evidence unchanged.
+FORMULATION.txt / src/ / tests/: method, native source, build artifact and reproducible procedures.

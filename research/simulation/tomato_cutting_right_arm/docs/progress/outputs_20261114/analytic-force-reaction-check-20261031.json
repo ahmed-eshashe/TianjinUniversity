@@ -1,0 +1,115 @@
+{
+  "result": "FAIL: transformed stationary face force exceeds original numerical comparison tolerance. No tolerance change.",
+  "native_attempts": 2,
+  "retry_reason": "Second attempt added per-contact comparison evidence; identical diagnostic thresholds and physical fixture.",
+  "cases_per_attempt": 6,
+  "force_evaluations_per_attempt": 4,
+  "mechanical_steps": 0,
+  "comparison_tolerances": {
+    "force_n": 1e-05,
+    "moment_nm": 1e-06,
+    "hessian_n_m": 0.0001
+  },
+  "case_errors": {
+    "particle_inside": {
+      "force_error_n": 3.608874976634979e-08,
+      "reaction_error_n": 3.608874976634979e-08,
+      "moment_error_nm": 0.0,
+      "hessian_error_n_m": 0.0
+    },
+    "edge_inside_vertices_outside": {
+      "force_error_n": 3.608874976634979e-08,
+      "reaction_error_n": 3.608874976634979e-08,
+      "moment_error_nm": 2.824109973653677e-10,
+      "hessian_error_n_m": 0.0
+    },
+    "transformed_face_inside": {
+      "force_error_n": 1.2233387941540386e-05,
+      "reaction_error_n": 1.2233387941540386e-05,
+      "moment_error_nm": 6.637854300568941e-08,
+      "hessian_error_n_m": 0.0
+    },
+    "face_inside_vertices_outside": {
+      "force_error_n": 9.80216960932978e-08,
+      "reaction_error_n": 9.80216960932978e-08,
+      "moment_error_nm": 3.186753171219987e-10,
+      "hessian_error_n_m": 0.0
+    }
+  },
+  "parameters": {
+    "soft_ke": 1000.0,
+    "soft_kd": 10.0,
+    "soft_mu": 0.5,
+    "shape_ke": 2500.0,
+    "shape_kd": 100.0,
+    "shape_mu": 0.0,
+    "cold_start_k": -1.0,
+    "friction_epsilon": 0.01
+  },
+  "transformed_case_native_force_n": [
+    1.749977469444275,
+    0.0,
+    0.0
+  ],
+  "transformed_case_reference_force_n": [
+    1.7499652360563334,
+    0.0,
+    0.0
+  ],
+  "interpretation": "Small translated/rotated-coordinate discrepancy is consistent with float32 barycentric/transform arithmetic; cause not yet isolated. Existing tolerance is exceeded, so no pass or physical coupling claim.",
+  "reaction_scope": "Equal-and-opposite force and COM moment reconstructed from native helper output, not independently measured body response.",
+  "test_counts": {
+    "analytic_geometry": 4,
+    "stationary_force_reference": 4,
+    "guard": 9
+  },
+  "integrity": {
+    "launch_sources_snapshotted": true,
+    "original_pinned_sources_unchanged": true
+  },
+  "supervisors": [
+    {
+      "passed": false,
+      "reason": "exited",
+      "launched": true,
+      "child_exit_code": 1,
+      "elapsed_wall_s": 4.308347977000267,
+      "remaining_live_group_members": [],
+      "warning_requested": false,
+      "samples": 19,
+      "monitor_errors": 0,
+      "min_available_ram_bytes": 25715138560,
+      "min_free_vram_bytes": 7724859392,
+      "mode": "analytic_forces",
+      "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+      "worker": {
+        "diagnostic_passed": false,
+        "shutdown_requested": true
+      }
+    },
+    {
+      "passed": false,
+      "reason": "exited",
+      "launched": true,
+      "child_exit_code": 1,
+      "elapsed_wall_s": 3.760187685999881,
+      "remaining_live_group_members": [],
+      "warning_requested": false,
+      "samples": 17,
+      "monitor_errors": 0,
+      "min_available_ram_bytes": 25734893568,
+      "min_free_vram_bytes": 7731150848,
+      "mode": "analytic_forces",
+      "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+      "worker": {
+        "diagnostic_passed": false,
+        "shutdown_requested": true
+      }
+    }
+  ],
+  "next_step": "Isolate translated float32 barycentric interpolation and rigid transform rounding using saved records before further motion.",
+  "limits": [
+    "No robot motion, solver step, cutting or training.",
+    "No real-blade contact qualification or two-way physics validation."
+  ]
+}

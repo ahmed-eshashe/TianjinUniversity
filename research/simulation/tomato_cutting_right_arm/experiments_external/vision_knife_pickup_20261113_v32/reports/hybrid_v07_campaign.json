@@ -1,0 +1,280 @@
+{
+  "updated": "2026-11-14T02:55:58.517024+08:00",
+  "frozen_sources_unchanged": {
+    "hybrid_pickup_v07.py": true,
+    "visual_grasp.py": true,
+    "hybrid_calibration_v01.json": true,
+    "handle_vision.py": true,
+    "policies/handle_vision_v01/best.pt": true,
+    "pickup_criteria.json": true,
+    "curriculum_recovery_v02.json": true,
+    "knife_short_blade_v02.usda": true
+  },
+  "validation_successes": 3,
+  "validation_attempts": 3,
+  "test_successes": 7,
+  "test_attempts": 8,
+  "wilson_95_interval": [
+    0.5291118177871563,
+    0.9775825085499423
+  ],
+  "forbidden_test_violations": [],
+  "limited_curriculum_physical_gate_passed": true,
+  "scope": "Head RGB-D learns handle location/yaw; calibrated flat-rest target and engineered contact-guided motion. Short knife, bounded placement/yaw only. Real contact and no attachment. No full-motion/RL, any-knife/any-rest, or physical-transfer claim.",
+  "rows": [
+    {
+      "dataset": "hybrid_v07_blank",
+      "id": "recovery_validation_000",
+      "complete": true,
+      "success": false,
+      "failure": "ValueError: ('Visual grasp rejected before approach', ['Handle landmarks insufficiently localized', 'Estimated handle landmark spacing outside calibrated range'])"
+    },
+    {
+      "dataset": "hybrid_v07_geometry_compact",
+      "id": "recovery_validation_000",
+      "complete": true,
+      "success": false,
+      "checks": {
+        "hold": false,
+        "opposed": true,
+        "support": true,
+        "clearance": false,
+        "slip": false,
+        "rotation": false,
+        "max_load": true
+      },
+      "slip_m": null,
+      "hold_s": 0.0,
+      "min_height_m": 0.00197253738761267,
+      "max_load_N": 23.423850059509277,
+      "wall_s": 260.47861861099955
+    },
+    {
+      "dataset": "hybrid_v07_geometry_medium",
+      "id": "recovery_validation_000",
+      "complete": true,
+      "success": false,
+      "failure": "ValueError: ('Opposed handle support lost during supported balancing', 0.15989583333333293)"
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_000",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 2.0185384409915125e-05,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11772173339673352,
+      "max_load_N": 35.86934852600098,
+      "wall_s": 208.27317754898104
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_001",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00012292974588653754,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11861865534854166,
+      "max_load_N": 27.586840629577637,
+      "wall_s": 207.3151979079994
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_002",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.0002059267126416823,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.1181995075781686,
+      "max_load_N": 27.588090896606445,
+      "wall_s": 207.76030680097756
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_003",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00013864127952560424,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11871606678707916,
+      "max_load_N": 27.58630084991455,
+      "wall_s": 209.96272726901225
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_004",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00014910315814112293,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11858033005991388,
+      "max_load_N": 27.586360931396484,
+      "wall_s": 213.53758725099033
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_005",
+      "complete": true,
+      "success": false,
+      "checks": {
+        "hold": false,
+        "opposed": false,
+        "support": false,
+        "clearance": false,
+        "slip": false,
+        "rotation": false,
+        "max_load": true
+      },
+      "slip_m": null,
+      "hold_s": 0.0,
+      "min_height_m": -0.0002008645614632737,
+      "max_load_N": 38.23405170440674,
+      "wall_s": 260.8958347699954
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_006",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 3.0582540511362176e-05,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11763194887098236,
+      "max_load_N": 33.416985511779785,
+      "wall_s": 213.8177557750023
+    },
+    {
+      "dataset": "hybrid_v07_test",
+      "id": "recovery_test_007",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 3.9980206439063035e-05,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.1181615356052102,
+      "max_load_N": 27.59293842315674,
+      "wall_s": 211.64060030601104
+    },
+    {
+      "dataset": "hybrid_v07_validation",
+      "id": "recovery_validation_000",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 4.87387143554711e-05,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11834341268065618,
+      "max_load_N": 27.588046073913574,
+      "wall_s": 208.24820828498923
+    },
+    {
+      "dataset": "hybrid_v07_validation",
+      "id": "recovery_validation_001",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00021159311915356293,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11744439449922912,
+      "max_load_N": 27.58767032623291,
+      "wall_s": 212.23782824800583
+    },
+    {
+      "dataset": "hybrid_v07_validation",
+      "id": "recovery_validation_002",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 1.0573677052355383e-05,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11820118976373789,
+      "max_load_N": 27.59226131439209,
+      "wall_s": 212.4003288380045
+    }
+  ]
+}

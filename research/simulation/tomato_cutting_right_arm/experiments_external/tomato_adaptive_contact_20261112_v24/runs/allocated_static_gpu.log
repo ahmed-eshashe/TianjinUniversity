@@ -1,0 +1,29 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.55 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.42 ms  (cached)
+Module allocated_gpu 7d5f2a3 load on device 'cuda:0' took 26017.12 ms  (compiled)
+Module allocated_gpu defc4b8 load on device 'cuda:0' took 25707.12 ms  (compiled)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.52 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.41 ms  (cached)
+{'t': 0.0095, 'tol': 0.002, 'status': 'completed', 'wall_s': 51.73428426399187, 'force_N': [8.765399979893118e-05, -0.008695332333445549, -0.00013635665527544916], 'force_error_N': 5.339521037249653e-07, 'reference_force_N': [8.765357112514098e-05, -0.008694831116560706, -0.00013646850217351132], 'U_error_J': 7.736293296441747e-13, 'max_leaves': 4, 'leaves': 54, 'queries': 640}
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/allocated_static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                                           ^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/pipeline_gpu.py", line 27, in check
+    if self.bad_view[0]:raise ValueError(('pipeline mechanics rejected',int(self.bad_view[0])))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('pipeline mechanics rejected', 5)
+{'t': 0.01, 'tol': 0.002, 'status': 'completed', 'wall_s': 0.010260191993438639, 'force_N': [-0.00017025497800204903, -0.0026118329260498285, 7.455604645656422e-05], 'force_error_N': 6.873940650034634e-07, 'reference_force_N': [-0.00017013419145885816, -0.0026112864372760908, 7.476814125414782e-05], 'U_error_J': 2.1977882519867625e-13, 'max_leaves': 5, 'leaves': 56, 'queries': 680}
+{'t': 0.01, 'tol': 0.0005, 'status': 'completed', 'wall_s': 0.01243751599395182, 'force_N': [-0.00017015414778143167, -0.0026118329260498285, 7.490265852538869e-05], 'force_error_N': 5.13330231485194e-07, 'reference_force_N': [-0.00017015445963564985, -0.0026113299574638143, 7.49063397188438e-05], 'U_error_J': 2.3307575304688305e-13, 'max_leaves': 7, 'leaves': 75, 'queries': 1060}
+{'t': 0.01025, 'tol': 0.002, 'status': 'completed', 'wall_s': 0.003216172000975348, 'force_N': [-7.117929726518923e-06, -0.00010567833669483662, -1.9893517674063332e-05], 'force_error_N': 8.227471949319743e-08, 'reference_force_N': [-7.112339339490754e-06, -0.00010559765071226092, -1.9878389556106484e-05], 'U_error_J': 9.443613073313787e-15, 'max_leaves': 2, 'leaves': 20, 'queries': 200}
+{'t': 0.01025, 'tol': 0.0005, 'status': 'completed', 'wall_s': 0.002959202989586629, 'force_N': [-7.117929726518923e-06, -0.00010567833669483662, -1.9893517674063332e-05], 'force_error_N': 8.227471949319743e-08, 'reference_force_N': [-7.112339339490754e-06, -0.00010559765071226092, -1.9878389556106484e-05], 'U_error_J': 9.443613073313787e-15, 'max_leaves': 2, 'leaves': 20, 'queries': 200}

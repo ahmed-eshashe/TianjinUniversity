@@ -1,0 +1,34 @@
+V16 LOCAL-STATE APPROXIMATION PILOT — NOT RL READY
+
+Outcome
+The approved isolated pilot was implemented and tested. Its early intact-mechanics checks pass, but angled cutting fails a necessary mechanical rank check. The fastest predeclared intact timestep gives 46.61 equivalent aggregate 50 Hz transitions/s in the eight-copy bulk-only diagnostic, below the 100/s entry target before contact, evolving topology, robot, reset or policy work. No full tomato or RL-ready engine was produced. No physical cutting simulation or training was started.
+
+What changed in this isolated candidate
+New trilinear reference-grid fields, positive row-sum local nodal mass, persistent nodal displacement/velocity, variational neo-Hookean forces, velocity Verlet, float64 CPU reference and float32 GPU implementation. Position and deformation gradient derive from the same state; there is no recurrent velocity-transfer filter. The constitutive parameters remain E=100 kPa, nu=0.4, rho=1000 kg/m^3. This is our particle-integrated nodal method, not official BladeMaster or CRESSim. Local inertia and spatial resolution differ from the v14 reference; no matched-accuracy speedup over v14 is claimed.
+
+Verified components
+- Analytical affine deformation/strain/energy, frame objectivity, internal force and torque balance, and finite-difference force/energy consistency passed. Energy-gradient relative discrepancy: 4.81e-8.
+- CPU/GPU short-state comparison passed: maximum point-position discrepancy 2.8e-10 m, velocity 1.65e-8 m/s, F entries 8.04e-8.
+- Intact, aligned full cut, aligned partial cut and one offset full cut have expected strain-operator rank. Their geometric node-split transfers preserved mass, momentum and mechanical state to reported roundoff. These are topology unit fixtures, not blade-created physical fracture.
+- Intact release comparison at dt=25 and 12.5 microseconds over 20 ms: maximum point-position difference 1.55 micrometres, velocity 1.99 mm/s. Energy residual at 25 microseconds: 0.3303%, within the 5% screen. This does not qualify any cut/contact timestep.
+
+Decisive mechanics failure
+For normal [1,0.27,0.13] and offset 1 mm, the order-2 cut model has tangent rank 119 instead of 120. It contains an extra non-rigid deformation mode with no corresponding linear strain energy. Other angled cuts have two or six extra modes. Increasing to order-3 quadrature does not reliably fix it: the first case still has rank 133 instead of 135. The failed controls are retained in preflight.json and rank_sampling.json. Do not hide this with damping or advance it to physical tomato qualification.
+
+Measured bulk-only performance on RTX 5060 Laptop GPU
+Body: intact 60 mm cube, 6 mm grid cells, 8000 Gauss material points and 1331 nodes per copy. dt=25 microseconds; 20 ms per copy per sample; three warm synchronized GPU runs per batch. Counts of actual logical history states and evolving blade work were not measured, because the candidate failed angled-cut mechanics first.
+
+Copies | Median wall s for 20 ms | Aggregate 50 Hz step equivalents/s
+1      | 0.073971               | 13.52
+4      | 0.087874               | 45.52
+8      | 0.171646               | 46.61
+
+These are optimistic fixed-topology bulk diagnostics, NOT real RL transitions, full scenes, valid cuts or training throughput. Eight-copy backend arrays occupy about 19.9 MB; this excludes CUDA context, graph allocations, solver-independent memory and full environment needs. The GPU has 8151 MiB total memory and driver 595.99.02. The earlier 12.5 microsecond diagnostic peaked at 22.58 equivalent steps/s for four copies. Short-run variability exists; none of these rates passes 100/s, and no further tuning of the failed representation was adopted.
+
+One concrete next decision
+RECOVERY_PROPOSAL.txt specifies a separate linear tetrahedral virtual-node representation with exact clipped volume/first moments and the same material law. A static algebra feasibility check (proposal_rank.json) passed expected rank and component counts in six aligned/oblique full/partial fixtures, with volume errors below 5e-14. Its smallest linearized stability bound among those fixtures is about 52 microseconds. This is a prospective diagnostic, not implementation or qualification of a new dynamic backend; near-vertex cuts, inertia, spatial error, speed and physical fracture remain open.
+
+The proposed correction is limited to two focused hours and needs the scope decision requested in chat after the failed mechanics gate. No answer is inferred from silence. No new physical representation is adopted until that decision arrives. The old reference, robot, kitchen, grip, Isaac/DiSECt setup and previous evidence remain preserved. Experimental tomato calibration remains pending.
+
+Reproduction
+Use the existing project .venv-native Python with OPENBLAS_NUM_THREADS=1 and PYTHONDONTWRITEBYTECODE=1. Tests: tests/preflight.py (expected nonzero exit for recorded oblique failure); tests/rank_sampling.py; tests/intact_cost.py; tests/final_cost_control.py; tests/proposal_rank.py (static algebra only). Evidence files retain exact inputs and results. Failed candidate results are not counted as a completed tomato milestone.

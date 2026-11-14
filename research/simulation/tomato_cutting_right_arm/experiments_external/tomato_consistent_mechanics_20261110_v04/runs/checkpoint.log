@@ -1,0 +1,29 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp/1.17.0
+Module consistent_kernels b146b7a load on device 'cuda:0' took 0.78 ms  (cached)
+{
+  "status": "pass",
+  "checks": {
+    "x": true,
+    "v": true,
+    "F": true,
+    "q": true,
+    "vg": true,
+    "same_clock": true,
+    "fresh_reset": true
+  },
+  "differences": {
+    "x": 1.734723475976807e-18,
+    "v": 3.780829815891451e-15,
+    "F": 6.661338147750939e-16,
+    "q": 1.734723475976807e-18,
+    "vg": 3.186340080674199e-14
+  },
+  "scope": "Intact loaded state q,vg and reference basis, no contacts/cuts. Baseline compression survives checkpoint reconstruction; acceleration recomputed from q."
+}

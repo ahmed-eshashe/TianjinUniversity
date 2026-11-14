@@ -1,0 +1,37 @@
+// SPDX-FileCopyrightText: Copyright (c) 2018-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+#pragma once
+
+#include "CameraFollow.h"
+
+#include <carb/Types.h>
+
+#include <PxPhysicsAPI.h>
+
+
+namespace omni
+{
+namespace physx
+{
+
+class CameraFollowVelocity : public CameraFollow
+{
+private:
+    CameraFollowVelocity(const PXR_NS::UsdPrim& prim, const PXR_NS::UsdPrim& subjectPath);
+    virtual ~CameraFollowVelocity();
+
+public:
+    static CameraFollowVelocity* create(const PXR_NS::UsdPrim& prim, const PXR_NS::UsdPrim& subjectPrim);
+
+protected:
+    virtual ::physx::PxTransform updateTransform(float timeStep) override;
+
+    virtual void updateActorPosition();
+    virtual void updateFollowVectorAngles();
+    virtual void updateFollowVector(float timeStep);
+    virtual void updateLookPosition();
+};
+
+} // namespace physx
+} // namespace omni

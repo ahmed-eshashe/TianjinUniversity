@@ -1,0 +1,26 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp/1.17.0
+Module consistent_kernels b146b7a load on device 'cuda:0' took 579.11 ms  (compiled)
+{
+  "status": "pass",
+  "checks": {
+    "x": true,
+    "v": true,
+    "F": true,
+    "q": true,
+    "vg": true
+  },
+  "differences": {
+    "x": 2.6020852139652106e-18,
+    "v": 9.783840404509192e-15,
+    "F": 1.3322676295501878e-15,
+    "q": 4.336808689942018e-18,
+    "vg": 7.860379014346108e-14
+  },
+  "scope": "GPU tensor-product full mass solve against independent CPU sparse full mass solve"
+}

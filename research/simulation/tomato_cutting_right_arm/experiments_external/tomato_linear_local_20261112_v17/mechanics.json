@@ -1,0 +1,248 @@
+{
+  "status": "pass_initial_component_controls",
+  "checks": {
+    "mass": true,
+    "partition": true,
+    "affine_position": true,
+    "affine_strain": true,
+    "affine_energy": true,
+    "energy_gradient": true,
+    "force_balance": true,
+    "torque_balance": true,
+    "objectivity": true,
+    "CPU_GPU_fields": true,
+    "intact_rank": true,
+    "intact_components": true,
+    "aligned_rank": true,
+    "aligned_components": true,
+    "oblique_rank": true,
+    "oblique_components": true,
+    "oblique2_rank": true,
+    "oblique2_components": true,
+    "diagonal_rank": true,
+    "diagonal_components": true,
+    "partial_rank": true,
+    "partial_components": true,
+    "partial_oblique_rank": true,
+    "partial_oblique_components": true,
+    "sliver10um_rank": true,
+    "sliver10um_components": true,
+    "sliver1um_rank": true,
+    "sliver1um_components": true,
+    "restart_arrays": true,
+    "independent_fragment": true
+  },
+  "results": {
+    "gradient_relative": 2.4438996848350225e-09,
+    "CPU_GPU": {
+      "x": 2.309045532902787e-10,
+      "v": 2.3368918970062547e-08,
+      "F": 9.629135860325308e-08
+    },
+    "intact": {
+      "transfer": null,
+      "audit": {
+        "rank": 75,
+        "expected_rank": 75,
+        "nullity": 6,
+        "components": 1,
+        "nodes": 27,
+        "regions": 48,
+        "minimum_mass_kg": 1.7999999999999987e-05,
+        "linearized_stability_dt_s": 0.00026445528714949404
+      }
+    },
+    "aligned": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.734723475976807e-18,
+        "volume": 1.4823076576950256e-21,
+        "U": 5.421010862427522e-20,
+        "T": 3.705769144237564e-22,
+        "momentum": 6.615538801775157e-21,
+        "angular": 4.2661995464164374e-23
+      },
+      "audit": {
+        "rank": 96,
+        "expected_rank": 96,
+        "nullity": 12,
+        "components": 2,
+        "nodes": 36,
+        "regions": 48,
+        "minimum_mass_kg": 1.7999999999999984e-05,
+        "linearized_stability_dt_s": 0.00025363158685264204
+      }
+    },
+    "oblique": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.5178830414797062e-18,
+        "volume": 1.0587911840678754e-21,
+        "U": 4.0657581468206416e-20,
+        "T": 2.6469779601696886e-22,
+        "momentum": 6.2960250125631194e-21,
+        "angular": 3.0549740956820456e-23
+      },
+      "audit": {
+        "rank": 141,
+        "expected_rank": 141,
+        "nullity": 12,
+        "components": 2,
+        "nodes": 51,
+        "regions": 84,
+        "minimum_mass_kg": 4.989470215133951e-09,
+        "linearized_stability_dt_s": 8.636349793423495e-05
+      }
+    },
+    "oblique2": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.3010426069826053e-18,
+        "volume": 1.2705494208814505e-21,
+        "U": 4.0657581468206416e-20,
+        "T": 3.1763735522036263e-22,
+        "momentum": 6.984812619815426e-21,
+        "angular": 3.540487631549585e-23
+      },
+      "audit": {
+        "rank": 147,
+        "expected_rank": 147,
+        "nullity": 12,
+        "components": 2,
+        "nodes": 53,
+        "regions": 90,
+        "minimum_mass_kg": 5.794639333538755e-09,
+        "linearized_stability_dt_s": 0.00010863297404895872
+      }
+    },
+    "diagonal": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.0842021724855044e-18,
+        "volume": 4.235164736271502e-22,
+        "U": 0.0,
+        "T": 2.117582368135751e-22,
+        "momentum": 3.169307083934955e-21,
+        "angular": 1.766374425758374e-23
+      },
+      "audit": {
+        "rank": 147,
+        "expected_rank": 147,
+        "nullity": 12,
+        "components": 2,
+        "nodes": 53,
+        "regions": 90,
+        "minimum_mass_kg": 6.611342592592581e-13,
+        "linearized_stability_dt_s": 5.224939700380224e-05
+      }
+    },
+    "partial": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.734723475976807e-18,
+        "volume": 1.4823076576950256e-21,
+        "U": 5.421010862427522e-20,
+        "T": 4.235164736271502e-22,
+        "momentum": 8.26671177120581e-21,
+        "angular": 4.175418957681514e-23
+      },
+      "audit": {
+        "rank": 84,
+        "expected_rank": 84,
+        "nullity": 6,
+        "components": 1,
+        "nodes": 30,
+        "regions": 48,
+        "minimum_mass_kg": 1.7999999999999984e-05,
+        "linearized_stability_dt_s": 0.0002545690523023275
+      }
+    },
+    "partial_oblique": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.5178830414797062e-18,
+        "volume": 1.4823076576950256e-21,
+        "U": 4.743384504624082e-20,
+        "T": 3.1763735522036263e-22,
+        "momentum": 8.565090612733343e-21,
+        "angular": 2.7781449202730643e-23
+      },
+      "audit": {
+        "rank": 102,
+        "expected_rank": 102,
+        "nullity": 6,
+        "components": 1,
+        "nodes": 36,
+        "regions": 72,
+        "minimum_mass_kg": 4.989470215133951e-09,
+        "linearized_stability_dt_s": 9.084037750105193e-05
+      }
+    },
+    "sliver10um": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.951563910473908e-18,
+        "volume": 2.117582368135751e-21,
+        "U": 6.098637220230962e-20,
+        "T": 4.235164736271502e-22,
+        "momentum": 5.8377717197899705e-21,
+        "angular": 4.7402573588712977e-23
+      },
+      "audit": {
+        "rank": 147,
+        "expected_rank": 147,
+        "nullity": 12,
+        "components": 2,
+        "nodes": 53,
+        "regions": 90,
+        "minimum_mass_kg": 2.3148148148148105e-17,
+        "linearized_stability_dt_s": 1.449137674613903e-05
+      }
+    },
+    "sliver1um": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 1.0842021724855044e-18,
+        "volume": 8.470329472543003e-22,
+        "U": 3.3881317890172014e-20,
+        "T": 2.6469779601696886e-22,
+        "momentum": 5.744856954857805e-21,
+        "angular": 3.349826168452786e-23
+      },
+      "audit": {
+        "rank": 147,
+        "expected_rank": 147,
+        "nullity": 12,
+        "components": 2,
+        "nodes": 53,
+        "regions": 90,
+        "minimum_mass_kg": 2.3148148148148103e-21,
+        "linearized_stability_dt_s": 4.582575694955839e-06
+      }
+    },
+    "restart_max_x": 0.0,
+    "independence": {
+      "untouched_m_s": 0.0,
+      "touched_m_s": 0.060411869888305485,
+      "ratio": 0.0,
+      "scope": "geometry fixture; no contact or fracture law"
+    }
+  },
+  "wall_s": 0.7653464480026742
+}

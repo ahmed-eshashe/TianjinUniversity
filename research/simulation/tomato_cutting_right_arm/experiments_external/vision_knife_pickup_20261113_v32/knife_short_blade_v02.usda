@@ -1,0 +1,31 @@
+#usda 1.0
+(
+    subLayers = [
+        @/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v01.usda@
+    ]
+)
+
+over "dual_ar5_o6"
+{
+    over "MountedKnife"
+    {
+        over "CollisionHandle" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Phase3ContactMaterial> (
+                bindMaterialAs = "strongerThanDescendants"
+            )
+        }
+
+        over "CollisionBlade" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding:physics = </Phase3ContactMaterial> (
+                bindMaterialAs = "strongerThanDescendants"
+            )
+        }
+    }
+}
+

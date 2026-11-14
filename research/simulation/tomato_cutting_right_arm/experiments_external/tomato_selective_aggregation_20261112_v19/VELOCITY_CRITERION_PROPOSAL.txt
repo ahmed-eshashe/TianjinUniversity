@@ -1,0 +1,36 @@
+CONCRETE SCOPE DECISION: DEFORMABLE-MATERIAL VELOCITY ERROR
+2026-11-12 — Not implemented or adopted without the user's decision
+
+Current result
+The selective correction resolves v18's large force/deformation mismatch in the original test set. Seven small-block cases, larger 60 mm oblique blocks, loaded restart and changing geometric history pass their tested controls. An additional signed-diagonal cut fails the current maximum-per-material-point velocity comparison. A CPU float64 reference agrees closely with the GPU float32 reference in a separate two-millisecond check, so this failure cannot be dismissed as GPU precision noise.
+
+The five-millisecond diagnostic with samples every 0.25 ms gives:
+- maximum material-position discrepancy: 0.00012335 mm (limit 0.1 mm);
+- internal-force RMS relative discrepancy: 0.006346% (limit 5%, plus existing near-zero floor);
+- maximum total-energy drift: 0.0008688% (limit 5%);
+- maximum pointwise velocity discrepancy: 45.391 mm/s (current limit 5 mm/s, FAILED);
+- conservative mass-weighted velocity RMS upper bound: 0.013361 mm/s;
+- at each sample, regions exceeding the 5 mm/s pointwise bound contain at most 8.681e-10 of total material mass (less than one-billionth).
+
+Reference timestep refinement passes the current diagnostic screens. These are uncalibrated geometric block tests. Internal force is not blade reaction; no actual physical cut or RL suitability has been demonstrated. Neither sampling nor these results establish behavior between observations or under future contact.
+
+Recommended optional change
+For cross-representation and timestep comparisons of the deformable material, replace the 5 mm/s maximum-pointwise velocity acceptance test with a 5 mm/s mass-weighted RMS velocity bound. Keep the maximum-pointwise velocity error in every report as a diagnostic. Retain all other existing limits, including maximum material-position error 0.1 mm; force/impulse/work error 5%; numerical/projection energy error 5%; mass and momentum checks; positive admissible material volume; 2 N blade force stop; whole-material blade penetration limit 0.1 mm. CPU/GPU same-operator implementation checks retain their separate strict precision tolerances.
+
+Conservative definition used in the diagnostic
+For each retained material polyhedron p, compute d_p as the largest velocity-difference norm at its vertices. Both numerical fields are affine within the same polyhedron, so d_p bounds the difference throughout that polyhedron. With actual material mass m_p=rho*V_p, use sqrt(sum(m_p*d_p^2)/sum(m_p)). This bounds the mass-weighted continuum L2 velocity error from above. It is not a centroid-only sample, unweighted mean or a cancellation of opposite errors. Every material region remains represented; no tiny material is deleted. Correspondence and mass must be established explicitly in any comparison with a different topology.
+
+Consequence and limitation
+This permits differences in rapid local motion of extremely small material regions. It does not permit large position errors, missed blade intersections, contact-force/work violations, or relabeling numerical loss as fracture. It is a deliberate change in the validation contract, not evidence that the old velocity test passed. The maximum-local-velocity requirement is retained unless the user chooses this option. A task-relevant error norm is reasonable to investigate for RL, but the later blade-contact tests must establish whether the permitted local differences affect cutting. The paper motivating aggregation does not certify this particular metric, selector or tomato model.
+
+If approved
+1. Record the user's decision in a separate contract addendum; preserve all previous failures and thresholds.
+2. Re-evaluate the declared material fixtures with the explicit weighted bound and unchanged force/position/energy criteria, including initial-state transfers, temporal refinement, the held-out direction and repeated history.
+3. Only if those checks pass, implement equivalent GPU dynamics, verify CPU/GPU agreement and measure bounded fixed-topology throughput with all exclusions stated.
+4. A speed pass permits contact/history feasibility work; it does not mark the tomato or RL environment complete. No production Isaac/DiSECt changes or training.
+
+If the current pointwise limit is retained
+Do not adopt this aggregation candidate. Preserve the full local deformation state. The next numerical strategy to assess would be local time integration of the unmodified reference equations, concentrating fine steps around restrictive cut regions. That is a separate follow-up plan; no new engine or prolonged branch has been started.
+
+Evidence
+velocity_metric_audit.json; heldout_reference_audit.json; history_and_holdout.json; final_selector.json; response.json; algebra_1e-16.json; projection_1e-16.json. The existing setup and previous evidence remain protected by manifest.json.

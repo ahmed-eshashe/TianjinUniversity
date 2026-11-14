@@ -1,0 +1,28 @@
+[Taichi] version 1.7.4, llvm 15.0.4, commit b4b956fd, linux, python 3.11.16
+[Taichi] Starting on arch=cuda
+===> Processing mesh(es) /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/raw/knife.obj and vis /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/raw/knife.obj.
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/robo_benchmark.py", line 13, in <module>
+    env.setup_agent(knife)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/taichi_env.py", line 64, in setup_agent
+    self.agent.add_effector(
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/agents/agent.py", line 40, in add_effector
+    effector.setup_mesh(**mesh_cfg)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/effectors/rigid.py", line 21, in setup_mesh
+    self.mesh = Dynamic(
+                ^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/meshes/dynamic.py", line 16, in __init__
+    super(Dynamic, self).__init__(**kwargs)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/meshes/mesh.py", line 43, in __init__
+    self.load_file()
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/meshes/mesh.py", line 48, in load_file
+    self.process_mesh()
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/meshes/mesh.py", line 92, in process_mesh
+    processed_mesh.export(self.processed_file_path)
+  File "/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/trimesh/base.py", line 2825, in export
+    return export_mesh(mesh=self, file_obj=file_obj, file_type=file_type, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/trimesh/exchange/export.py", line 55, in export_mesh
+    file_obj = open(file_path, "wb")
+               ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/processed/knife-knife.obj'

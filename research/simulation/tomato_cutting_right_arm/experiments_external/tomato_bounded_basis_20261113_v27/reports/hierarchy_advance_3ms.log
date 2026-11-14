@@ -1,0 +1,18 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/tests/continue_paid.py", line 46, in <module>
+    checkpoint=json.loads((opt.resume/'ledger.json').read_text());a=Aggregate(Body.restore(opt.resume/'last_accepted.npz'));s=Surface(a);t=tstart=last_event_time=checkpoint['time'];pending=checkpoint['pending_fracture_J'];paid=checkpoint['paid_fracture_J'];birth=checkpoint['contact_birth_J'];accum=checkpoint['prefix_work']
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'runs/event_250us_sparse/ledger.json'

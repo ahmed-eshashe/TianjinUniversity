@@ -1,0 +1,40 @@
+V14 EVENT-LOCALIZED LOCAL-BAND COMPONENT STUDY
+Completed UTC: 2026-11-10T19:28:34.799694+00:00
+
+Decision: the previously failed blade-update comparison passes in this restricted numerical representation. Full Gate 2 and physical Gate 3 remain incomplete. No production adoption.
+
+DIAGNOSIS (v13, preserved)
+Offline same-start, same-final-space controls separated update timing from resolution changes. Space-only continuous velocity bound: 0.223045 m/s. Timing-only: 0.0513613 m/s. Mechanical half-step controls were about 0.000493 m/s. These are not additive error components. The offline common mesh used future saved data and is NOT an online design.
+
+ONE CORRECTION (v14)
+Select a candidate plane and a 0.3 mm / 50 um interaction band from current blade/material geometry before entry. Exact knot insertion preserves carried displacement, velocity, strain, energy and the full consistent mass-matrix pullback. No cut is released during this initialization. The band does not read future commands.
+As actual blade motion accumulates conservative finite-CAD-face coverage, release an enrichment mode only after its full fixed support has been covered. Use transactional trial propagation/bisection to locate release within 0.25 ns. GPU bulk velocity-Verlet uses dt 24.4140625 ns; fractional boundary steps use the same CPU equations, verified against GPU. No damping, lumping, material softening, widened blade or relaxed physical limit.
+The band is deliberately restricted: it does not roll or grow; leaving it or changing the blade plane/orientation is rejected. Extra numerical modes already exist consistently before motion. This is a change in discrete approximation scheduling; it does not retroactively qualify v12.
+
+TEST FIXTURE
+12 mm block; mass 0.001728 kg; E=100 kPa, nu=0.4, rho=1000 kg/m^3; order-5 quadrature, float64. 512 observation points carry no individual point masses. 648 initial generalized modes. Initial nonuniform field x=X, y=0.99Y+2Y^2+1.5X^2, z=Z; free mechanical evolution, no external blade load. Gc=80 is retained as metadata but unused; paid fracture area/work stay zero.
+Each trajectory lasts 0.1 ms. Primary route has one activation; independently specified faster second motion has two. Comparisons use the same world-space command split into 50/25 us calls, probe interval 25/12.5 us, dt/half dt, and event bracket/half bracket. Continuous coefficient-hull position and velocity bounds are assessed at common 50 and 100 us snapshots, not just at the sparse original observations. This is not a proof over every intermediate time or every blade path.
+
+RESULTS
+half_action: position bound 5.34307085e-14 m; velocity bound 5.81995638e-08 m/s; internal generalized force relative difference 1.64061e-07; activation counts [1, 1].
+half_probe: position bound 1.0337893e-13 m; velocity bound 9.66979983e-08 m/s; internal generalized force relative difference 2.79966e-07; activation counts [1, 1].
+half_dt: position bound 1.23555394e-09 m; velocity bound 0.00218441014 m/s; internal generalized force relative difference 0.0030886; activation counts [1, 1].
+half_event: position bound 8.93226825e-13 m; velocity bound 7.98500108e-07 m/s; internal generalized force relative difference 1.02424e-07; activation counts [1, 1].
+restart: position bound 5.34307085e-14 m; velocity bound 5.81995638e-08 m/s; internal generalized force relative difference 1.64061e-07; activation counts [1, 1].
+heldout_half_action: position bound 1.57085892e-17 m; velocity bound 2.94691933e-11 m/s; internal generalized force relative difference 7.32484e-12; activation counts [2, 2].
+heldout_half_dt: position bound 1.23990886e-09 m; velocity bound 0.0021769148 m/s; internal generalized force relative difference 0.00316256; activation counts [2, 2].
+
+All 257 active checks passed (counts include negative controls and bookkeeping, not independent scientific experiments). All 1,429 protected files, including 81 production reference files, remain byte-identical.
+Preflight: no cut before traversal; held/reverse/near-miss queries do not release modes; unsupported off-plane/out-of-band requests reject without mutation; fractional CPU/GPU mechanics agree. Mass, transfer energy, intact bridge, full-cell volume certificates and restart pass. A checkpoint at 75 us after a real geometric activation resumes to the same result. Query/bisection previews cannot commit topology.
+The first two v14 runs failed only the exact checkpoint fingerprint: numpy.float64 and Python float had identical numeric values but different tuple-string representations. Runtime scalar normalization fixed the bookkeeping; original failures and source snapshot are retained.
+
+COST / LIMITS
+primary: 15.303 wall seconds / 0.1 ms; 153033 wall seconds per simulated second over this tiny measured window; 22 previews including discarded trials; peak process RSS 653.7 MiB.
+half_dt: 25.434 wall seconds / 0.1 ms; 254343 wall seconds per simulated second over this tiny measured window; 22 previews including discarded trials; peak process RSS 652.2 MiB.
+heldout: 40.896 wall seconds / 0.1 ms; 408964 wall seconds per simulated second over this tiny measured window; 39 previews including discarded trials; peak process RSS 744.5 MiB.
+heldout_half_dt: 72.241 wall seconds / 0.1 ms; 722413 wall seconds per simulated second over this tiny measured window; 39 previews including discarded trials; peak process RSS 747.9 MiB.
+One NVIDIA observation during the refined held-out case: 340 MiB compute-process VRAM, 1084 MiB total device use / 8151 MiB. Not a peak VRAM certificate. Backend array estimates are 48-52 MiB and exclude the driver/context. Timings include bisection replay, model assembly, checks and checkpoint writing; no kernel-only throughput claim. Ratios are short-window measurements, not a full-cut duration forecast.
+Main primary recorded propagation cost: 14.201 s; geometry preview 0.162 s. Repeated mechanics dominates. The candidate remains unsuitable for interactive/RL use. No physical knife reaction, fracture-work qualification, real tomato validation, full slice, arbitrary orientation or changing tomato shape is established.
+
+NEXT DECISION
+Do not launch a full tomato or physical contact campaign with this implementation yet. First do one bounded cost/representation review against this frozen accuracy reference. Separate accepted mechanics from discarded event trials, mass solve/force integration, setup and checks. Consider equivalent event-state reuse before any change to arithmetic, timestep, mass or material laws. Any equivalent implementation must reproduce these field/history controls. If the measured cost cannot plausibly approach the intended product target, report that mismatch and request a revised model/accuracy scope rather than adding diagnostic branches. A moving-band/general-path and spatial-refinement study would still be needed before claiming complete Gate 2, even after a speed gain.

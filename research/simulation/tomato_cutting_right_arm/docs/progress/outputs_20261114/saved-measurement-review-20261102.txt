@@ -1,0 +1,28 @@
+SAVED MEASUREMENT REVIEW — original Astra gates retained,2November2026
+
+Outcome: the permitted offline review is complete. No simulator invocation. No contact/work gate has been closed; original scientific scope, thresholds, failed evidence and fixed mount are retained.
+
+Documentation clarification
+The NVIDIA PhysX5.6 articulation guide specifies that incoming joint forces are averages over a simulation step. It also distinguishes the reported joint-internal mechanisms (drive, explicitly applied torque, friction, velocity clamping and joint limits) from armature/tendon effects. Thus the previous blanket statement that interval averaging was undocumented is too broad: it is documented at SDK level. The installed Python tensor API describes projection/frame conventions but does not independently establish that the captured installed binary reproduces all SDK assumptions. This is a versioned clarification, not a rewrite of historical reports or runtime qualification.
+
+Primary reference: https://nvidia-omniverse.github.io/PhysX/physx/5.6.0/docs/Articulations.html#link-incoming-joint-force
+
+What can be ruled out with saved data
+All120capture intervals have declared armature and actual before/after joint velocities. Remapping saved armature from backend order to user joint order gives0.01–0.1kgm2. The largest interval-average rotor inertia contribution A*(qd_after-qd_before)/dt is0.02494374Nm. At the largest measured-versus-approximate difference (left-arm joint2, step0,11.20458984Nm), that contribution is only-4.214417e-7Nm. Rotor inertia alone cannot explain that discrepancy. No coefficient was fitted and no term was added to a passing ledger. The derived rotor kinetic-energy change over the episode is8.656862e-6J; it is a separate mechanical-energy component, not proof of missing motor work.
+
+A check of the known child-joint/COM lever for that initial left-arm state also does not reproduce the11.20Nm difference; there is no justification for silently shifting the reported torque origin or choosing an alternative sign. Existing documented frame conventions remain in use. No new frame/solver branch was implemented.
+
+Required work definition
+A meaningful motor-energy input is the integral of actual generalized motor torque times actual joint velocity, with dissipative terms declared separately. An interval-average torque and endpoint velocities do not alone determine this integral: they omit within-step torque/velocity correlation. Multiplying a mean torque by net joint displacement is not automatically an exact discrete solver-work identity. In addition, the reported transmitted active-axis load includes multiple mechanisms, so its motor-only interpretation needs independent justification. Agreement of two projections of the same incoming-wrench data does not supply that justification.
+
+This does NOT mean a complete discrete work ledger is impossible. It means it has not been demonstrated for the installed corrected-controller setup. A justified ledger must specify where motor input, joint/rigid-body dissipation, rotor energy, external pressure exchange, supports, contact remapping and numerical dissipation enter, and verify the relevant measurements independently. Existing strict work/force gates cannot be satisfied by relabelling the measured-load channel or selecting a favorable quadrature.
+
+Stopping decision
+No further native run is justified merely to record the same two effort channels again. The current evidence does not establish a validated correction for the discrepancy. Contact remains blocked within the original plan until the installed transmitted-load-to-generalized-drive-work mapping is independently established. Do not automatically repeat the dry route, tune damping, disable drives, change the solver, launch contact/refinement or weaken the benchmark. The earlier smaller demonstration proposal was explicitly declined by the user and is not authorized.
+
+The specific prerequisite for a future experiment is a source-backed measurement/ledger definition with an independently checkable prediction. Its protocol must be frozen before launch, explain why it supplies information missing from these120records, and have a finite stopping rule. There is no such executable qualification protocol established by this review; no new simulator test is scheduled. Preserve the valid completed motion, support and handoff components.
+
+Evidence
+work/motor_work_review_20261102/saved_semantics01/measurements.json
+work/motor_work_review_20261102/independent_capture01/measurements.json
+runs/native/motor_effort_capture_20261102_01

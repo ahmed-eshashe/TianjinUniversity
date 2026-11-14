@@ -1,0 +1,48 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp/1.17.0
+Module consistent_kernels b146b7a load on device 'cuda:0' took 0.69 ms  (cached)
+{
+  "status": "pass",
+  "checks": {
+    "coarse": true,
+    "fine": true,
+    "spatial_refinement": true
+  },
+  "results": {
+    "coarse": {
+      "particle_count": 2560,
+      "spacing": 0.0015,
+      "h": 0.003,
+      "dt": 1.25e-05,
+      "max_displacement_error_over_amplitude": 0.001528210698982451,
+      "max_velocity_error_over_peak": 0.010792796560445437,
+      "max_energy_relative_error": 1.0639962093107924e-05,
+      "wall_s": 0.10244484400027432
+    },
+    "fine": {
+      "particle_count": 20480,
+      "spacing": 0.00075,
+      "h": 0.0015,
+      "dt": 6.25e-06,
+      "max_displacement_error_over_amplitude": 0.00037637455652356,
+      "max_velocity_error_over_peak": 0.005496915780394994,
+      "max_energy_relative_error": 2.7800256069692526e-06,
+      "wall_s": 0.6692965350011946
+    }
+  },
+  "reference": {
+    "equation": "u=A cos(pi*(X+L/2)/L) cos(c*pi*t/L), c=sqrt(E/rho)",
+    "model": "Small-strain longitudinal free bar, nu=0 analytic fixture only",
+    "amplitude_m": 1e-07,
+    "length_m": 0.06,
+    "period_s": 0.012,
+    "candidate_project_nu_unchanged": 0.4
+  },
+  "limits": "A small-strain analytical check of intact dynamics; not a tomato or cut validation."
+}

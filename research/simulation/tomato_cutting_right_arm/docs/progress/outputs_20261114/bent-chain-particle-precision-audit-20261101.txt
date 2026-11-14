@@ -1,0 +1,45 @@
+Bent-chain particle precision audit — 1 November 2026
+
+AUDIT CHECKS PASS. The original repeated bent-chain native test remains FAILED at interval 5 on the unchanged 2e-7 N s cumulative particle impulse gate. No native solver was launched for this audit, no installed library or production file was changed, and no tolerance was relaxed.
+
+Read-only evidence: saved before/after particle positions, velocities and native cached contact forces from both five-interval fixture traces. The identity fifth assessment failed before the yaw fixture's fifth post-PhysX assessment; both Newton particle updates are present. The audit uses only saved Newton-side data for the yaw fifth interval and does not claim that its articulated fifth interval was fully assessed.
+
+Installed implementation inspected:
+- particle_vbd_kernels.py forward_step stores previous position and constructs the inertial position prediction from current position plus velocity*dt (no gravity or external particle force here).
+- update_velocity at lines 1504–1506 computes (position - previous_position)/dt using Warp vec3/float values.
+- solver_vbd.py launches update_velocity at lines 3796–3797 after the position solve.
+- The particle position solve balances mass*(inertial_position-position)/dt² with contact force. The audit checks its equilibrium using the collected final native contact force, rather than replacing that force with the independent plane reference.
+
+A host emulation rounds arithmetic through IEEE binary32 using struct pack/unpack. Reconstructing velocity from the two saved positions and binary32 dt matches every stored particle velocity exactly in all ten available updates. A reciprocal-multiply variant also matches to at most 1.8e-15 m/s. This establishes the saved velocities' dependence on rounded absolute position differences in this fixture.
+
+For each axis, the audit predicts the inertial position with both fused-add and separately rounded multiply/add variants, then forms the force-balance position x_equilibrium = x_inertia + dt32²*F_native/m. Every observed solved position lies less than one local binary32 position spacing from this prediction: maximum 0.848851 spacing for identity and 0.922891 for yaw. These are checks against stored force equilibrium, not a new simulation or an exact emulation of every Newton iteration. Force-kernel roundoff, convergence and position quantization cannot be uniquely separated by these endpoint data alone.
+
+At an x coordinate around 0.0316 m, one binary32 spacing is 3.725290298e-9 m. Dividing by dt=1/2400 s corresponds to roughly 8.94e-6 m/s, or 8.94e-8 N s for a 0.01 kg particle. A sub-spacing force-balance residual can therefore be significant relative to a 2e-7 N s accumulated gate over several updates.
+
+The audit decomposes each observed impulse residual exactly (within arithmetic rounding) into:
+  m/dt * (x_inertia - x_previous - dt*v_before)
+  + [m/dt * (x_after - x_inertia) - dt*F_native]
+  + m * [v_after - (x_after-x_previous)/dt].
+These respectively describe inertial prediction rounding, the position-solve force-balance residual and final velocity reconstruction rounding. This algebraic identity is an accounting check, not independent proof of a unique root cause. In this saved run the position-solve term dominates; the inertial predictor term is negligible. Combined with exact velocity reconstruction and sub-spacing equilibrium offsets, the evidence points to a binary32 position-resolution limitation contributing to the gate failure.
+
+bent_sequence_identity:
+  cumulative particle impulse error 2.1478593349e-07 N s
+  maximum saved velocity reconstruction error 0 m/s
+  maximum position-equilibrium offset 0.848850479 binary32 spacings
+  norm of accumulated forward_rounding_impulse_ns: 8.88262144723e-18 N s
+  norm of accumulated stationarity_impulse_ns: 2.1478593349e-07 N s
+  norm of accumulated velocity_rounding_impulse_ns: 8.89505555931e-18 N s
+  maximum residual-decomposition identity error 2.77555491458e-19 N s
+
+bent_sequence_yaw90:
+  cumulative particle impulse error 1.21592244611e-07 N s
+  maximum saved velocity reconstruction error 0 m/s
+  maximum position-equilibrium offset 0.922890741 binary32 spacings
+  norm of accumulated forward_rounding_impulse_ns: 8.88262144723e-18 N s
+  norm of accumulated stationarity_impulse_ns: 1.2156523627e-07 N s
+  norm of accumulated velocity_rounding_impulse_ns: 1.49011608122e-10 N s
+  maximum residual-decomposition identity error 2.77555491458e-19 N s
+
+The unchanged identity impulse failure remains 2.147859335e-7 N s versus the 2e-7 N s gate. The rotated case's saved particle error is 1.215922446e-7 N s. All three audit assertions pass for both cases: exact velocity reconstruction, position-equilibrium offsets below one spacing, and decomposition identity error below 1e-15 N s. Original frozen production sources and every source/dependency pinned by the failed native run remain unchanged. Evidence and code snapshots/hashes are saved with the offline audit.
+
+Next bounded step: translate the entire chain, fixed anchor and particle together so contact occurs close to the numerical origin, then repeat the native 32-interval test with the same physical dimensions, orientations, time step, materials and acceptance gate. A whole-fixture translation preserves the intended mechanics but changes absolute position resolution. This comparison can test the coordinate-precision explanation. It does not justify replacing the original failed result or claiming arbitrary-coordinate accuracy. Full coupling and repeated bent-chain qualification remain open.

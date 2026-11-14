@@ -1,0 +1,9 @@
+{
+  "version": "local-force-residual-0.1",
+  "scope": "Undamaged standalone target integration; no robot or fracture work",
+  "cumulative_absolute_nodal_impulse_residual_ns": 0.0001,
+  "formula": "sum over accepted substeps and free nodes of norm(m_i*(v_i_new-v_i_old)-dt*F_i(x_new))",
+  "force_source": "Fresh final-state float64 bulk gradient, objective cohesive force, full contact force, board and gravity; no solver last-color arrays or acceleration-inferred reaction",
+  "provenance": "Additional numerical audit declared after the captured failure exposed cancelling internal errors. Uses the existing 0.0001 Ns absolute support impulse budget as a stricter sum of nonnegative local errors. Does not replace or relax global impulse, angular, energy, volume, board, replay, accuracy or sustained-support gates.",
+  "limitation": "Finite solver convergence criterion for the original implicit-Euler fixture, not experimental material accuracy. Declare history/eligibility treatment separately before fracture."
+}

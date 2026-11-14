@@ -1,0 +1,31 @@
+Newton–CPU PhysX jointed reset and replay — 1 November 2026
+
+PASS for reset after natural separation and reset during active contact in both persistent passive-hinge fixtures. All compared replay fields matched exactly. Checklist item 15 remains open for broader coupling. Item 22, concerning the eventual robot/material scene, is not completed by this isolated reset test.
+
+The same near-origin identity and 90-degree-yaw hinge articulations, Newton particle models, kinematic link proxies, solvers, state pairs and collision pipelines were kept alive. No fresh process, model or solver was used to stand in for reset. The fixture masses, synthetic inertia, zero drive/friction/damping/gravity, dt=1/2400 s and native 1750 N/m contact stiffness were unchanged.
+
+Schedule: baseline 32 coupled intervals per fixture (10 active contact and 22 coast); reset both fixtures after coast; replay two contact intervals; reset both fixtures again with one active contact record present; replay all 32 intervals. Exactly 66 shared CPU PhysX steps and 132 Newton steps were executed, with two reset cycles, four dirty-wrench reset checks and four trace comparisons. There were 138 exact actual Newton link-state packet echo events, including four reset synchronizations.
+
+Before each reset, both instantaneous and permanent articulation wrench queues were deliberately filled for the moving link with force (99,-55,33) N and torque (1,2,3) N m. These test loads were never applied in a simulation step. Articulation.reset cleared both queues. The PhysX owner restored the initial joint position and velocity with the current fused write API and wrote the cleared wrench state to the backend. Initial joint state matched exactly; initial moving-link pose/COM twist also matched exactly.
+
+SolverVBD.reset restored PARTICLE_Q/PARTICLE_QD in both Newton states, and state force arrays were cleared. Each call was checked not to mutate the externally owned Newton link pose/twist. The pipeline's reset_contact_matching cleared correspondence history, Contacts.clear invalidated the active prefix, and actual restored PhysX link pose/twist copied into both Newton states. The next solve regenerated contacts before use. Installed VBD particle history rebases/rebuilds on the next step; this test validates resulting behavior rather than claiming every history array becomes zero immediately.
+
+Both two-interval replay prefixes and both full 32-interval replays matched the baseline in interval/contact count; before/after joint position and velocity; particle position and velocity; force and COM torque; and after-step link pose/quaternion/world COM velocity. Final replay again separated naturally after 10 contact intervals, then coasted for 22 intervals without a new wrench. Every inherited per-step/full-trajectory, accumulated impulse and hinge-axis angular-balance check passed.
+
+Maximum replay differences:
+  particle_position_m: 0
+  particle_velocity_m_s: 0
+  joint_position_rad: 0
+  joint_velocity_rad_s: 0
+  force_n: 0
+  torque_nm: 0
+  link_position_m: 0
+  link_quaternion: 0
+  link_linear_velocity_m_s: 0
+  link_angular_velocity_rad_s: 0
+
+Retained replay limits: particle/link position 1e-7 m, particle/link linear velocity 2e-5 m/s, joint position 1e-6 rad, joint velocity 2e-5 rad/s, force 2e-5 N, COM torque 2e-7 N m, link quaternion-component distance 5e-7, link angular velocity 2e-6 rad/s. No tolerances were relaxed. Four focused replay/guard-contract tests and nine supervisor tests passed; controls reject stale joint velocity, force, contact count and moving-link angular velocity.
+
+The protected run completed in 10.61 seconds, retaining at least 23.40 GB available RAM and 7.47 GB free GPU memory. No memory warning or monitor error occurred, and no owned live processes remained. Source snapshots/hashes were saved. Original frozen project inputs and previously pinned installed dependencies remain unchanged.
+
+Next bounded step: validate force distribution through a simple two-joint articulated proxy, where joint motion must follow the coupled mass matrix and link Jacobian. Multi-joint Newton feedback, general jointed work/energy, robot/material reset histories, larger coordinate precision, cutting material and the real blade contact backend remain unvalidated. No robot or real blade was loaded.

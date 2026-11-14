@@ -1,0 +1,95 @@
+{
+  "updated": "2026-11-10T19:54:18.961759+08:00",
+  "gate": 3,
+  "status": "failed_physical_qualification",
+  "gate_complete": false,
+  "physical_cut_achieved": false,
+  "new_candidate_adopted": false,
+  "existing_setup_changed": false,
+  "experimental_validation": "pending",
+  "checks": [
+    {
+      "id": "law",
+      "status": "documented_new_candidate",
+      "description": "Bulk, normal contact, friction, ideal cutting work and numerical loss are explicit; synthetic parameters and limits disclosed.",
+      "evidence": "physical_model.md"
+    },
+    {
+      "id": "area_and_transaction",
+      "status": "pass_unit_scope",
+      "description": "Reference-area budget, partitioning, no unpaid commit, rejection, repeat query, pause/reversal/re-entry and checkpoint controls. Not a coupled physical cut.",
+      "evidence": "cutting_work_controls.json"
+    },
+    {
+      "id": "CAD_geometry",
+      "status": "pass_component_scope",
+      "description": "Independent signed-distance check, force/moment/power adjoint, conservative whole declared-volume intrusion bound and exposed-face reconstruction.",
+      "evidence": "geometry_controls.json"
+    },
+    {
+      "id": "shallow_contact_refinement",
+      "status": "pass_numerical_component_only",
+      "description": "Edge and broad-face load/unload force/impulse/work/position comparisons pass, but subsequently discovered strain/geometry discrepancy prevents coupled physical qualification.",
+      "evidence": "contact_comparison.json"
+    },
+    {
+      "id": "reaction_balance",
+      "status": "pass_component_scope",
+      "description": "Newton units, reaction sign and moment origin specified; blade/support impulse balance independently checked. Conservation does not cure null-mode motion.",
+      "evidence": "force_work_ledger.json"
+    },
+    {
+      "id": "blunt_and_miss",
+      "status": "partial",
+      "description": "Finite broad-face and near-miss contact controls plus decision-law negative tests pass; loaded integrated tip/spine and new physical cut-face tests remain pending.",
+      "evidence": "runs/miss_certified/result.json"
+    },
+    {
+      "id": "fragment_recontact",
+      "status": "failed_refinement_unqualified",
+      "description": "Pre-separated pieces collide, slide and separate without healing. Original dt/half-dt forces and friction work fail comparison. Smaller-step run completes, but matched half-step was not launched after structural failure.",
+      "evidence": "recontact_comparison.json"
+    },
+    {
+      "id": "material_volume",
+      "status": "failed_candidate_guard_corrected",
+      "description": "Independent guard detects reconstructed-volume collapse missed by stored F. The corrected bounded pilot rejects the next trial at J=0.09943; no state clipping.",
+      "evidence": "runs/paid_cut_refined_guard/result.json"
+    },
+    {
+      "id": "physical_paid_cut",
+      "status": "failed",
+      "description": "Zero paid fracture area; no physical topology event. Unit ledger tests do not qualify cutting.",
+      "evidence": "runs/paid_cut_refined_guard/result.json"
+    },
+    {
+      "id": "bulk_contact_consistency",
+      "status": "failed",
+      "description": "Independent reference reproduces nonrigid particle motion invisible to stored constitutive strain; repair and mechanics requalification required.",
+      "evidence": "reports/null_mode_diagnosis.json"
+    },
+    {
+      "id": "preservation",
+      "status": "pass",
+      "description": "All 547 protected files unchanged; no new candidate adoption.",
+      "evidence": "preservation_check.json"
+    }
+  ],
+  "primary_blocker": "Nonrigid particle motion and material geometry can evolve without corresponding constitutive strain; loaded contact causes local reconstructed-volume collapse.",
+  "concrete_failure": {
+    "last_accepted_sim_time_s": 0.029174999999998827,
+    "rejected_trial_volume_J": 0.09942793250163737,
+    "peak_force_N": 0.10557748780346335,
+    "paid_fracture_area_m2": 0.0,
+    "physical_topology_event": false
+  },
+  "next_action": "Scope review of RECOVERY_PROPOSAL.md; do not start Gate 4 or another cutting branch.",
+  "supplementary_unfinished": [
+    "Integrated tip/spine controls",
+    "Physically created cut-face contact",
+    "Matched refined recontact comparison",
+    "Positive coupled work-gated topology event",
+    "Matched refinement of a positive physical cut"
+  ],
+  "component_passes_do_not_imply_cutting_qualification": true
+}

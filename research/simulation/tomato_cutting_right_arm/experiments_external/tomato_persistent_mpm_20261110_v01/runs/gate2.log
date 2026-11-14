@@ -1,0 +1,374 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/cache/warp/1.17.0
+Module kernels 68444bc load on device 'cuda:0' took 0.89 ms  (cached)
+PROGRESS ['cpu_gpu_partial'] failed []
+PROGRESS ['untouched'] failed []
+PROGRESS ['partial'] failed []
+PROGRESS ['full'] failed []
+PROGRESS ['full'] failed []
+PROGRESS ['parallel'] failed []
+PROGRESS ['intersecting'] failed []
+PROGRESS ['moved_history'] failed []
+PROGRESS ['half_step'] failed []
+PROGRESS ['rotated'] failed []
+PROGRESS ['four_cuts'] failed []
+{
+  "status": "pass",
+  "checks": {
+    "pair_conservation": true,
+    "common_velocity": true,
+    "history_cpu_gpu": true,
+    "cpu_gpu_partial": true,
+    "untouched_connected": true,
+    "partial_bridge": true,
+    "partial_transmits": true,
+    "full_split": true,
+    "resolved_gap": true,
+    "full_independent": true,
+    "parallel_three": true,
+    "intersect_four": true,
+    "intersect_independent": true,
+    "moved_history": true,
+    "half_full_same_codes": true,
+    "half_full_same_components": true,
+    "half_partial_same_codes": true,
+    "half_partial_bridge": true,
+    "translated_split": true,
+    "rotated_split": true,
+    "finite_edge_bridge": true,
+    "near_miss_no_change": true,
+    "four_nine_pieces": true,
+    "overflow_rejected": true,
+    "all_mass_unchanged": true
+  },
+  "results": {
+    "pair_algebra": {
+      "momentum_error": 1.7763568394002505e-15,
+      "impulse_error": 1.7763568394002505e-15
+    },
+    "cpu_gpu_partial": {
+      "x_error": 1.6297656332125987e-09,
+      "v_error": 2.1023933025315217e-07,
+      "F_error": 2.751841936543542e-07
+    },
+    "untouched": {
+      "components": 1,
+      "sizes": [
+        64000
+      ],
+      "active_codes": [
+        0
+      ],
+      "occupied_node_states": 12167,
+      "graph_edges": 1728000,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 1,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0
+    },
+    "partial": {
+      "components": 1,
+      "sizes": [
+        64000
+      ],
+      "active_codes": [
+        0,
+        1,
+        2
+      ],
+      "occupied_node_states": 15479,
+      "graph_edges": 1730622,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 3,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0,
+      "bridge_response_fraction": 0.39110299944877625
+    },
+    "full": {
+      "components": 2,
+      "sizes": [
+        32000,
+        32000
+      ],
+      "active_codes": [
+        0,
+        1,
+        2
+      ],
+      "occupied_node_states": 16928,
+      "graph_edges": 1731174,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 3,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0,
+      "free_opening_gap_m": 0.003999946638941765,
+      "probe": {
+        "peak_undriven_mean_fraction": 3.9185398037488994e-08,
+        "final_driven_mean_fraction": 1.000000103743514,
+        "peak_undriven_particle_fraction": 1.9337610865477473e-05,
+        "wall_s": 2.9096842330000072,
+        "tool_present": false
+      }
+    },
+    "parallel": {
+      "components": 3,
+      "sizes": [
+        19200,
+        25600,
+        19200
+      ],
+      "active_codes": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "occupied_node_states": 18515,
+      "graph_edges": 1731174,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 5,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0
+    },
+    "intersecting": {
+      "components": 4,
+      "sizes": [
+        16000,
+        16000,
+        16000,
+        16000
+      ],
+      "active_codes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "occupied_node_states": 23552,
+      "graph_edges": 1738488,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 9,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0,
+      "probe": {
+        "peak_undriven_mean_fraction": 2.2428656620832044e-07,
+        "final_driven_mean_fraction": 0.9999997101200279,
+        "peak_undriven_particle_fraction": 4.273208833183162e-05,
+        "wall_s": 3.671633081999971,
+        "tool_present": false
+      }
+    },
+    "moved_history": {
+      "codes_identical": true,
+      "scope": "Current-state frame transform then dynamic continuation; reference state and cut history unchanged",
+      "probe": {
+        "peak_undriven_mean_fraction": 6.705238320137141e-08,
+        "final_driven_mean_fraction": 0.9999999283518295,
+        "peak_undriven_particle_fraction": 0.009332526475191116,
+        "wall_s": 3.2857780039994395,
+        "tool_present": false
+      }
+    },
+    "half_step": {
+      "full_components": 2,
+      "partial_components": 1
+    },
+    "translated": {
+      "components": 2,
+      "sizes": [
+        32000,
+        32000
+      ],
+      "active_codes": [
+        0,
+        1,
+        2
+      ],
+      "occupied_node_states": 16928,
+      "graph_edges": 1731174,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 3,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0
+    },
+    "rotated": {
+      "components": 2,
+      "sizes": [
+        32000,
+        32000
+      ],
+      "active_codes": [
+        0,
+        1,
+        2
+      ],
+      "occupied_node_states": 16928,
+      "graph_edges": 1731174,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 3,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 0.9999607801437378,
+      "maxJ": 1.0000381469726562
+    },
+    "finite_edge": {
+      "components": 1,
+      "sizes": [
+        64000
+      ],
+      "active_codes": [
+        0,
+        1,
+        2
+      ],
+      "occupied_node_states": 14444,
+      "graph_edges": 1730070,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 3,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0
+    },
+    "four_cuts": {
+      "components": 9,
+      "sizes": [
+        5760,
+        7680,
+        5760,
+        7680,
+        10240,
+        7680,
+        5760,
+        7680,
+        5760
+      ],
+      "active_codes": [
+        10,
+        11,
+        12,
+        14,
+        15,
+        19,
+        20,
+        21,
+        23,
+        24,
+        28,
+        29,
+        30,
+        32,
+        33,
+        46,
+        47,
+        48,
+        50,
+        51,
+        55,
+        56,
+        57,
+        59,
+        60
+      ],
+      "occupied_node_states": 28175,
+      "graph_edges": 1739316,
+      "array_bytes": 113556704,
+      "particles": 64000,
+      "reference_nodes": 12167,
+      "active_states": 25,
+      "reserved_states": 81,
+      "mass_kg": 0.216,
+      "minJ": 1.0,
+      "maxJ": 1.0
+    },
+    "performance": [
+      {
+        "case": "zero",
+        "sim_s": 0.02,
+        "physics_wall_s": 1.2240013909995469,
+        "wall_per_sim_s": 61.20006954997734,
+        "array_bytes": 113556704,
+        "particles": 64000,
+        "reference_nodes": 12167,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      {
+        "case": "one",
+        "sim_s": 0.02,
+        "physics_wall_s": 1.3981679730004544,
+        "wall_per_sim_s": 69.90839865002272,
+        "array_bytes": 113556704,
+        "particles": 64000,
+        "reference_nodes": 12167,
+        "active_states": 3,
+        "reserved_states": 81
+      },
+      {
+        "case": "two",
+        "sim_s": 0.02,
+        "physics_wall_s": 1.4216487829999096,
+        "wall_per_sim_s": 71.08243914999548,
+        "array_bytes": 113556704,
+        "particles": 64000,
+        "reference_nodes": 12167,
+        "active_states": 9,
+        "reserved_states": 81
+      },
+      {
+        "case": "four",
+        "sim_s": 0.02,
+        "physics_wall_s": 1.765372200999991,
+        "wall_per_sim_s": 88.26861004999955,
+        "array_bytes": 113556704,
+        "particles": 64000,
+        "reference_nodes": 12167,
+        "active_states": 25,
+        "reserved_states": 81
+      }
+    ],
+    "peak_host_RSS_MiB": 1207.5390625
+  },
+  "timestamp": "2026-11-10T18:43:21.341209+08:00",
+  "total_wall_s": 231.4149094660006,
+  "scope": "Persistent topology and mechanics component tests only; geometry-driven cut labels, not physical tomato failure or contact qualification"
+}

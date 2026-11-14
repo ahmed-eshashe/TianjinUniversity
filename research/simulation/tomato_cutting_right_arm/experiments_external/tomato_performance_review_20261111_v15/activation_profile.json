@@ -1,0 +1,1727 @@
+{
+  "status": "completed",
+  "simulated_interval_s": 5e-05,
+  "action_wall_s": 11.24130636400514,
+  "summary": {
+    "checkpoint_read": {
+      "calls": 1,
+      "inclusive_s": 0.19273052800417645,
+      "exclusive_s": 0.19273052800417645
+    },
+    "GPU_constructor": {
+      "calls": 20,
+      "inclusive_s": 2.52314665101585,
+      "exclusive_s": 2.52314665101585
+    },
+    "graph_lookup_capture": {
+      "calls": 34,
+      "inclusive_s": 0.23188820298673818,
+      "exclusive_s": 0.23188820298673818
+    },
+    "GPU_checked_chunk": {
+      "calls": 20,
+      "inclusive_s": 7.924750452984881,
+      "exclusive_s": 7.692862249998143
+    },
+    "GPU_export": {
+      "calls": 20,
+      "inclusive_s": 0.011238184000831097,
+      "exclusive_s": 0.011238184000831097
+    },
+    "continuous_volume_check": {
+      "calls": 22,
+      "inclusive_s": 0.037567920015135314,
+      "exclusive_s": 0.037567920015135314
+    },
+    "propagate": {
+      "calls": 20,
+      "inclusive_s": 10.865752369012625,
+      "exclusive_s": 0.0022857129952171817
+    },
+    "coverage_preview": {
+      "calls": 20,
+      "inclusive_s": 0.16024546798144002,
+      "exclusive_s": 0.16024546798144002
+    },
+    "trial_total": {
+      "calls": 20,
+      "inclusive_s": 11.033666589006316,
+      "exclusive_s": 0.007668752012250479
+    },
+    "CPU_fractional_mechanics": {
+      "calls": 10,
+      "inclusive_s": 0.37111048200313235,
+      "exclusive_s": 0.37111048200313235
+    },
+    "coverage_and_topology_commit_proposal": {
+      "calls": 3,
+      "inclusive_s": 0.16188455899828114,
+      "exclusive_s": 0.15968810799677158
+    },
+    "accepted_geometry_commit": {
+      "calls": 3,
+      "inclusive_s": 0.0003110739999101497,
+      "exclusive_s": 0.0003110739999101497
+    },
+    "action_total": {
+      "calls": 1,
+      "inclusive_s": 11.241298148997885,
+      "exclusive_s": 0.04543592699337751
+    },
+    "checkpoint_write": {
+      "calls": 1,
+      "inclusive_s": 0.0036245299997972324,
+      "exclusive_s": 0.0036245299997972324
+    },
+    "checkpoint_write_verified": {
+      "calls": 1,
+      "inclusive_s": 0.0036411110049812123,
+      "exclusive_s": 1.658100518397987e-05
+    }
+  },
+  "trial_groups": {
+    "accepted": {
+      "trials": 3,
+      "trial_wall_s": 3.279926457005786,
+      "GPU_microsteps": 2046,
+      "GPU_chunk_excluding_graph_s": 2.6130389040117734,
+      "GPU_setup_s": 0.425787644002412,
+      "geometry_preview_s": 0.021445403996040113
+    },
+    "discarded": {
+      "trials": 17,
+      "trial_wall_s": 7.75374013200053,
+      "GPU_microsteps": 4869,
+      "GPU_chunk_excluding_graph_s": 5.0798233459863695,
+      "GPU_setup_s": 2.097359007013438,
+      "geometry_preview_s": 0.1388000639853999
+    }
+  },
+  "trials": [
+    {
+      "id": 0,
+      "start_time_s": 5e-05,
+      "duration_s": 2.5e-05,
+      "would_activate": true,
+      "wall_s": 1.3144445269936114,
+      "accepted": false
+    },
+    {
+      "id": 1,
+      "start_time_s": 5e-05,
+      "duration_s": 1.25e-05,
+      "would_activate": true,
+      "wall_s": 0.665924464003183,
+      "accepted": false
+    },
+    {
+      "id": 2,
+      "start_time_s": 5e-05,
+      "duration_s": 6.25e-06,
+      "would_activate": true,
+      "wall_s": 0.3966245329938829,
+      "accepted": false
+    },
+    {
+      "id": 3,
+      "start_time_s": 5e-05,
+      "duration_s": 3.125e-06,
+      "would_activate": false,
+      "wall_s": 0.2701720779950847,
+      "accepted": false
+    },
+    {
+      "id": 4,
+      "start_time_s": 5e-05,
+      "duration_s": 4.6875000000000004e-06,
+      "would_activate": false,
+      "wall_s": 0.3331364539990318,
+      "accepted": false
+    },
+    {
+      "id": 5,
+      "start_time_s": 5e-05,
+      "duration_s": 5.468750000000001e-06,
+      "would_activate": false,
+      "wall_s": 0.3704926520003937,
+      "accepted": false
+    },
+    {
+      "id": 6,
+      "start_time_s": 5e-05,
+      "duration_s": 5.859375e-06,
+      "would_activate": true,
+      "wall_s": 0.38999631400656654,
+      "accepted": false
+    },
+    {
+      "id": 7,
+      "start_time_s": 5e-05,
+      "duration_s": 5.6640625000000005e-06,
+      "would_activate": true,
+      "wall_s": 0.3836589799975627,
+      "accepted": false
+    },
+    {
+      "id": 8,
+      "start_time_s": 5e-05,
+      "duration_s": 5.56640625e-06,
+      "would_activate": false,
+      "wall_s": 0.3825634210006683,
+      "accepted": false
+    },
+    {
+      "id": 9,
+      "start_time_s": 5e-05,
+      "duration_s": 5.615234375e-06,
+      "would_activate": true,
+      "wall_s": 0.39637472400499973,
+      "accepted": false
+    },
+    {
+      "id": 10,
+      "start_time_s": 5e-05,
+      "duration_s": 5.5908203125e-06,
+      "would_activate": false,
+      "wall_s": 0.3840101349996985,
+      "accepted": false
+    },
+    {
+      "id": 11,
+      "start_time_s": 5e-05,
+      "duration_s": 5.6030273437499996e-06,
+      "would_activate": true,
+      "wall_s": 0.41948173499986297,
+      "accepted": false
+    },
+    {
+      "id": 12,
+      "start_time_s": 5e-05,
+      "duration_s": 5.596923828125e-06,
+      "would_activate": true,
+      "wall_s": 0.417535371001577,
+      "accepted": false
+    },
+    {
+      "id": 13,
+      "start_time_s": 5e-05,
+      "duration_s": 5.5938720703125006e-06,
+      "would_activate": true,
+      "wall_s": 0.4157578380036284,
+      "accepted": false
+    },
+    {
+      "id": 14,
+      "start_time_s": 5e-05,
+      "duration_s": 5.592346191406251e-06,
+      "would_activate": true,
+      "wall_s": 0.4048660749976989,
+      "accepted": false
+    },
+    {
+      "id": 15,
+      "start_time_s": 5e-05,
+      "duration_s": 5.591583251953126e-06,
+      "would_activate": true,
+      "wall_s": 0.4031220739998389,
+      "accepted": false
+    },
+    {
+      "id": 16,
+      "start_time_s": 5e-05,
+      "duration_s": 5.5912017822265625e-06,
+      "would_activate": true,
+      "wall_s": 0.4051021760024014,
+      "accepted": true
+    },
+    {
+      "id": 17,
+      "start_time_s": 5e-05,
+      "duration_s": 5.591011047363282e-06,
+      "would_activate": false,
+      "wall_s": 0.40557875700324075,
+      "accepted": false
+    },
+    {
+      "id": 18,
+      "start_time_s": 5.5591201782226565e-05,
+      "duration_s": 2.5e-05,
+      "would_activate": false,
+      "wall_s": 1.6136725649994332,
+      "accepted": true
+    },
+    {
+      "id": 19,
+      "start_time_s": 8.059120178222656e-05,
+      "duration_s": 1.9408798217773442e-05,
+      "would_activate": false,
+      "wall_s": 1.2611517160039512,
+      "accepted": true
+    }
+  ],
+  "records": [
+    {
+      "name": "checkpoint_read",
+      "trial_id": null,
+      "inclusive_s": 0.19273052800417645,
+      "exclusive_s": 0.19273052800417645
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 0,
+      "modes": null,
+      "inclusive_s": 0.20732591100386344,
+      "exclusive_s": 0.20732591100386344
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 0,
+      "modes": 648,
+      "inclusive_s": 0.015690599000663497,
+      "exclusive_s": 0.015690599000663497
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 0,
+      "modes": 648,
+      "n": 1024,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 1.0975281010032631,
+      "exclusive_s": 1.0818375020025996
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 0,
+      "modes": 648,
+      "inclusive_s": 0.0005899940006202087,
+      "exclusive_s": 0.0005899940006202087
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 0,
+      "inclusive_s": 0.001579827003297396,
+      "exclusive_s": 0.001579827003297396
+    },
+    {
+      "name": "propagate",
+      "trial_id": 0,
+      "inclusive_s": 1.3071313990003546,
+      "exclusive_s": 0.00010756598931038752
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 0,
+      "inclusive_s": 0.0069848779967287555,
+      "exclusive_s": 0.0069848779967287555
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 0,
+      "duration_s": 2.5e-05,
+      "inclusive_s": 1.3144445269936114,
+      "exclusive_s": 0.00032824999652802944
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 1,
+      "modes": null,
+      "inclusive_s": 0.1186423340041074,
+      "exclusive_s": 0.1186423340041074
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 1,
+      "modes": 648,
+      "inclusive_s": 0.009204376001434866,
+      "exclusive_s": 0.009204376001434866
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 1,
+      "modes": 648,
+      "n": 512,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.537598530005198,
+      "exclusive_s": 0.5283941540037631
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 1,
+      "modes": 648,
+      "inclusive_s": 0.0005327690014382824,
+      "exclusive_s": 0.0005327690014382824
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 1,
+      "inclusive_s": 0.00153817399404943,
+      "exclusive_s": 0.00153817399404943
+    },
+    {
+      "name": "propagate",
+      "trial_id": 1,
+      "inclusive_s": 0.658419266997953,
+      "exclusive_s": 0.0001074599931598641
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 1,
+      "inclusive_s": 0.007108550002158154,
+      "exclusive_s": 0.007108550002158154
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 1,
+      "duration_s": 1.25e-05,
+      "inclusive_s": 0.665924464003183,
+      "exclusive_s": 0.0003966470030718483
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 2,
+      "modes": null,
+      "inclusive_s": 0.11437067099905107,
+      "exclusive_s": 0.11437067099905107
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 2,
+      "modes": 648,
+      "inclusive_s": 0.009539610000501852,
+      "exclusive_s": 0.009539610000501852
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 2,
+      "modes": 648,
+      "n": 256,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.2731516979984008,
+      "exclusive_s": 0.2636120879978989
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 2,
+      "modes": 648,
+      "inclusive_s": 0.000577856000745669,
+      "exclusive_s": 0.000577856000745669
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 2,
+      "inclusive_s": 0.0015777769949636422,
+      "exclusive_s": 0.0015777769949636422
+    },
+    {
+      "name": "propagate",
+      "trial_id": 2,
+      "inclusive_s": 0.38979493900114903,
+      "exclusive_s": 0.00011693700798787177
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 2,
+      "inclusive_s": 0.006440044999180827,
+      "exclusive_s": 0.006440044999180827
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 2,
+      "duration_s": 6.25e-06,
+      "inclusive_s": 0.3966245329938829,
+      "exclusive_s": 0.00038954899355303496
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 3,
+      "modes": null,
+      "inclusive_s": 0.11730555399844889,
+      "exclusive_s": 0.11730555399844889
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 3,
+      "modes": 648,
+      "inclusive_s": 0.009302963000664022,
+      "exclusive_s": 0.009302963000664022
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 3,
+      "modes": 648,
+      "n": 128,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.1416741089997231,
+      "exclusive_s": 0.13237114599905908
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 3,
+      "modes": 648,
+      "inclusive_s": 0.0006251039958442561,
+      "exclusive_s": 0.0006251039958442561
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 3,
+      "inclusive_s": 0.0017922859988175333,
+      "exclusive_s": 0.0017922859988175333
+    },
+    {
+      "name": "propagate",
+      "trial_id": 3,
+      "inclusive_s": 0.26149330599582754,
+      "exclusive_s": 9.625300299376249e-05
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 3,
+      "inclusive_s": 0.008315908999065869,
+      "exclusive_s": 0.008315908999065869
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 3,
+      "duration_s": 3.125e-06,
+      "inclusive_s": 0.2701720779950847,
+      "exclusive_s": 0.0003628630001912825
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 4,
+      "modes": null,
+      "inclusive_s": 0.11458933200628962,
+      "exclusive_s": 0.11458933200628962
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 4,
+      "modes": 648,
+      "inclusive_s": 0.009330843000498135,
+      "exclusive_s": 0.009330843000498135
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 4,
+      "modes": 648,
+      "n": 192,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.2087414559937315,
+      "exclusive_s": 0.19941061299323337
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 4,
+      "modes": 648,
+      "inclusive_s": 0.000506286000018008,
+      "exclusive_s": 0.000506286000018008
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 4,
+      "inclusive_s": 0.001593514003616292,
+      "exclusive_s": 0.001593514003616292
+    },
+    {
+      "name": "propagate",
+      "trial_id": 4,
+      "inclusive_s": 0.3255303370024194,
+      "exclusive_s": 9.974899876397103e-05
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 4,
+      "inclusive_s": 0.007248146001074929,
+      "exclusive_s": 0.007248146001074929
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 4,
+      "duration_s": 4.6875000000000004e-06,
+      "inclusive_s": 0.3331364539990318,
+      "exclusive_s": 0.000357970995537471
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 5,
+      "modes": null,
+      "inclusive_s": 0.12034269099967787,
+      "exclusive_s": 0.12034269099967787
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 5,
+      "modes": 648,
+      "inclusive_s": 0.00944161100051133,
+      "exclusive_s": 0.00944161100051133
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 5,
+      "modes": 648,
+      "n": 224,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.24017100099445088,
+      "exclusive_s": 0.23072938999393955
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 5,
+      "modes": 648,
+      "inclusive_s": 0.0005770100033259951,
+      "exclusive_s": 0.0005770100033259951
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 5,
+      "inclusive_s": 0.0015562509943265468,
+      "exclusive_s": 0.0015562509943265468
+    },
+    {
+      "name": "propagate",
+      "trial_id": 5,
+      "inclusive_s": 0.36275179899530485,
+      "exclusive_s": 0.0001048460035235621
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 5,
+      "inclusive_s": 0.007331904002057854,
+      "exclusive_s": 0.007331904002057854
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 5,
+      "duration_s": 5.468750000000001e-06,
+      "inclusive_s": 0.3704926520003937,
+      "exclusive_s": 0.00040894900303101167
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 6,
+      "modes": null,
+      "inclusive_s": 0.11959263800235931,
+      "exclusive_s": 0.11959263800235931
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 6,
+      "modes": 648,
+      "inclusive_s": 0.009189017000608146,
+      "exclusive_s": 0.009189017000608146
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 6,
+      "modes": 648,
+      "inclusive_s": 0.004586732997267973,
+      "exclusive_s": 0.004586732997267973
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 6,
+      "modes": 648,
+      "n": 240,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.2608777990026283,
+      "exclusive_s": 0.2471020490047522
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 6,
+      "modes": 648,
+      "inclusive_s": 0.0005717159947380424,
+      "exclusive_s": 0.0005717159947380424
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 6,
+      "inclusive_s": 0.001659943001868669,
+      "exclusive_s": 0.001659943001868669
+    },
+    {
+      "name": "propagate",
+      "trial_id": 6,
+      "inclusive_s": 0.3828093850024743,
+      "exclusive_s": 0.00010728900087997317
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 6,
+      "inclusive_s": 0.006831166996562388,
+      "exclusive_s": 0.006831166996562388
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 6,
+      "duration_s": 5.859375e-06,
+      "inclusive_s": 0.38999631400656654,
+      "exclusive_s": 0.0003557620075298473
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 7,
+      "modes": null,
+      "inclusive_s": 0.12153781500092009,
+      "exclusive_s": 0.12153781500092009
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 7,
+      "modes": 648,
+      "inclusive_s": 0.009654747998865787,
+      "exclusive_s": 0.009654747998865787
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 7,
+      "modes": 648,
+      "inclusive_s": 0.0023837100015953183,
+      "exclusive_s": 0.0023837100015953183
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 7,
+      "modes": 648,
+      "n": 232,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.25266908499907004,
+      "exclusive_s": 0.24063062699860893
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 7,
+      "modes": 648,
+      "inclusive_s": 0.0005623830002150498,
+      "exclusive_s": 0.0005623830002150498
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 7,
+      "inclusive_s": 0.0015842759967199527,
+      "exclusive_s": 0.0015842759967199527
+    },
+    {
+      "name": "propagate",
+      "trial_id": 7,
+      "inclusive_s": 0.3764641110028606,
+      "exclusive_s": 0.00011055200593546033
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 7,
+      "inclusive_s": 0.00682550499914214,
+      "exclusive_s": 0.00682550499914214
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 7,
+      "duration_s": 5.6640625000000005e-06,
+      "inclusive_s": 0.3836589799975627,
+      "exclusive_s": 0.00036936399555997923
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 8,
+      "modes": null,
+      "inclusive_s": 0.12249042099574581,
+      "exclusive_s": 0.12249042099574581
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 8,
+      "modes": 648,
+      "inclusive_s": 0.009526542999083176,
+      "exclusive_s": 0.009526542999083176
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 8,
+      "modes": 648,
+      "inclusive_s": 0.0011613780006882735,
+      "exclusive_s": 0.0011613780006882735
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 8,
+      "modes": 648,
+      "n": 228,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.24868623899965314,
+      "exclusive_s": 0.2379983179998817
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 8,
+      "modes": 648,
+      "inclusive_s": 0.0005227240035310388,
+      "exclusive_s": 0.0005227240035310388
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 8,
+      "inclusive_s": 0.0015353440030594356,
+      "exclusive_s": 0.0015353440030594356
+    },
+    {
+      "name": "propagate",
+      "trial_id": 8,
+      "inclusive_s": 0.37332770899956813,
+      "exclusive_s": 9.298099757870659e-05
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 8,
+      "inclusive_s": 0.00883472099667415,
+      "exclusive_s": 0.00883472099667415
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 8,
+      "duration_s": 5.56640625e-06,
+      "inclusive_s": 0.3825634210006683,
+      "exclusive_s": 0.0004009910044260323
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 9,
+      "modes": null,
+      "inclusive_s": 0.11693274499702966,
+      "exclusive_s": 0.11693274499702966
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 9,
+      "modes": 648,
+      "inclusive_s": 0.009346431004814804,
+      "exclusive_s": 0.009346431004814804
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 9,
+      "modes": 648,
+      "inclusive_s": 0.0017111560009652749,
+      "exclusive_s": 0.0017111560009652749
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 9,
+      "modes": 648,
+      "n": 230,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.25312536899582483,
+      "exclusive_s": 0.24206778199004475
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 9,
+      "modes": 648,
+      "inclusive_s": 0.0005192210010136478,
+      "exclusive_s": 0.0005192210010136478
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 9,
+      "inclusive_s": 0.001786647000699304,
+      "exclusive_s": 0.001786647000699304
+    },
+    {
+      "name": "propagate",
+      "trial_id": 9,
+      "inclusive_s": 0.3724850850048824,
+      "exclusive_s": 0.00012110301031498238
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 9,
+      "inclusive_s": 0.023477188995457254,
+      "exclusive_s": 0.023477188995457254
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 9,
+      "duration_s": 5.615234375e-06,
+      "inclusive_s": 0.39637472400499973,
+      "exclusive_s": 0.00041245000466005877
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 10,
+      "modes": null,
+      "inclusive_s": 0.12151097099558683,
+      "exclusive_s": 0.12151097099558683
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 10,
+      "modes": 648,
+      "inclusive_s": 0.009253953001461923,
+      "exclusive_s": 0.009253953001461923
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 10,
+      "modes": 648,
+      "inclusive_s": 0.0014193500028341077,
+      "exclusive_s": 0.0014193500028341077
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 10,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.2525194699992426,
+      "exclusive_s": 0.24184616699494654
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 10,
+      "modes": 648,
+      "inclusive_s": 0.0005253159979474731,
+      "exclusive_s": 0.0005253159979474731
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 10,
+      "inclusive_s": 0.0015414959998452105,
+      "exclusive_s": 0.0015414959998452105
+    },
+    {
+      "name": "propagate",
+      "trial_id": 10,
+      "inclusive_s": 0.3761923359998036,
+      "exclusive_s": 9.508300718152896e-05
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 10,
+      "inclusive_s": 0.007423180999467149,
+      "exclusive_s": 0.007423180999467149
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 10,
+      "duration_s": 5.5908203125e-06,
+      "inclusive_s": 0.3840101349996985,
+      "exclusive_s": 0.00039461800042772666
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 11,
+      "modes": null,
+      "inclusive_s": 0.12205831000028411,
+      "exclusive_s": 0.12205831000028411
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 11,
+      "modes": 648,
+      "inclusive_s": 0.009996583001338877,
+      "exclusive_s": 0.009996583001338877
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 11,
+      "modes": 648,
+      "inclusive_s": 0.0014934430000721477,
+      "exclusive_s": 0.0014934430000721477
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 11,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.25295038399781333,
+      "exclusive_s": 0.2414603579964023
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 11,
+      "modes": 648,
+      "inclusive_s": 0.000535605002369266,
+      "exclusive_s": 0.000535605002369266
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 11,
+      "inclusive_s": 0.03463793999981135,
+      "exclusive_s": 0.03463793999981135
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 11,
+      "inclusive_s": 0.0015783269991516136,
+      "exclusive_s": 0.0015783269991516136
+    },
+    {
+      "name": "propagate",
+      "trial_id": 11,
+      "inclusive_s": 0.4118822239979636,
+      "exclusive_s": 0.00012165799853391945
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 11,
+      "inclusive_s": 0.007243658998049796,
+      "exclusive_s": 0.007243658998049796
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 11,
+      "duration_s": 5.6030273437499996e-06,
+      "inclusive_s": 0.41948173499986297,
+      "exclusive_s": 0.00035585200384957716
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 12,
+      "modes": null,
+      "inclusive_s": 0.12031287200079532,
+      "exclusive_s": 0.12031287200079532
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 12,
+      "modes": 648,
+      "inclusive_s": 0.009221471002092585,
+      "exclusive_s": 0.009221471002092585
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 12,
+      "modes": 648,
+      "inclusive_s": 0.0014360789937200025,
+      "exclusive_s": 0.0014360789937200025
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 12,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.25397815199539764,
+      "exclusive_s": 0.24332060199958505
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 12,
+      "modes": 648,
+      "inclusive_s": 0.0005104610027046874,
+      "exclusive_s": 0.0005104610027046874
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 12,
+      "inclusive_s": 0.034264374000485986,
+      "exclusive_s": 0.034264374000485986
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 12,
+      "inclusive_s": 0.001518125005532056,
+      "exclusive_s": 0.001518125005532056
+    },
+    {
+      "name": "propagate",
+      "trial_id": 12,
+      "inclusive_s": 0.41069482000602875,
+      "exclusive_s": 0.00011083600111305714
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 12,
+      "inclusive_s": 0.006482299999333918,
+      "exclusive_s": 0.006482299999333918
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 12,
+      "duration_s": 5.596923828125e-06,
+      "inclusive_s": 0.417535371001577,
+      "exclusive_s": 0.00035825099621433765
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 13,
+      "modes": null,
+      "inclusive_s": 0.12048783000500407,
+      "exclusive_s": 0.12048783000500407
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 13,
+      "modes": 648,
+      "inclusive_s": 0.009465357994486112,
+      "exclusive_s": 0.009465357994486112
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 13,
+      "modes": 648,
+      "inclusive_s": 0.0014787859981879592,
+      "exclusive_s": 0.0014787859981879592
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 13,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.2507021330020507,
+      "exclusive_s": 0.23975798900937662
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 13,
+      "modes": 648,
+      "inclusive_s": 0.0005784120003227144,
+      "exclusive_s": 0.0005784120003227144
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 13,
+      "inclusive_s": 0.03460497600462986,
+      "exclusive_s": 0.03460497600462986
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 13,
+      "inclusive_s": 0.0015252050070557743,
+      "exclusive_s": 0.0015252050070557743
+    },
+    {
+      "name": "propagate",
+      "trial_id": 13,
+      "inclusive_s": 0.4080301590001909,
+      "exclusive_s": 0.00013160298112779856
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 13,
+      "inclusive_s": 0.007381143004749902,
+      "exclusive_s": 0.007381143004749902
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 13,
+      "duration_s": 5.5938720703125006e-06,
+      "inclusive_s": 0.4157578380036284,
+      "exclusive_s": 0.00034653599868761376
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 14,
+      "modes": null,
+      "inclusive_s": 0.11240283700317377,
+      "exclusive_s": 0.11240283700317377
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 14,
+      "modes": 648,
+      "inclusive_s": 0.009382520998769905,
+      "exclusive_s": 0.009382520998769905
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 14,
+      "modes": 648,
+      "inclusive_s": 0.0014909339952282608,
+      "exclusive_s": 0.0014909339952282608
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 14,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.24685561399383005,
+      "exclusive_s": 0.23598215899983188
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 14,
+      "modes": 648,
+      "inclusive_s": 0.0005942229981883429,
+      "exclusive_s": 0.0005942229981883429
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 14,
+      "inclusive_s": 0.035073227001703344,
+      "exclusive_s": 0.035073227001703344
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 14,
+      "inclusive_s": 0.0015114150010049343,
+      "exclusive_s": 0.0015114150010049343
+    },
+    {
+      "name": "propagate",
+      "trial_id": 14,
+      "inclusive_s": 0.3965560570068192,
+      "exclusive_s": 0.0001187410089187324
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 14,
+      "inclusive_s": 0.007916884998849127,
+      "exclusive_s": 0.007916884998849127
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 14,
+      "duration_s": 5.592346191406251e-06,
+      "inclusive_s": 0.4048660749976989,
+      "exclusive_s": 0.00039313299203058705
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 15,
+      "modes": null,
+      "inclusive_s": 0.11334403599903453,
+      "exclusive_s": 0.11334403599903453
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 15,
+      "modes": 648,
+      "inclusive_s": 0.009013023998704739,
+      "exclusive_s": 0.009013023998704739
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 15,
+      "modes": 648,
+      "inclusive_s": 0.001425289003236685,
+      "exclusive_s": 0.001425289003236685
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 15,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.24629574499704177,
+      "exclusive_s": 0.23585743199510034
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 15,
+      "modes": 648,
+      "inclusive_s": 0.000609167997026816,
+      "exclusive_s": 0.000609167997026816
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 15,
+      "inclusive_s": 0.03412480700353626,
+      "exclusive_s": 0.03412480700353626
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 15,
+      "inclusive_s": 0.0015687280028942041,
+      "exclusive_s": 0.0015687280028942041
+    },
+    {
+      "name": "propagate",
+      "trial_id": 15,
+      "inclusive_s": 0.39608376899559516,
+      "exclusive_s": 0.00014128499606158584
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 15,
+      "inclusive_s": 0.006643084998358972,
+      "exclusive_s": 0.006643084998358972
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 15,
+      "duration_s": 5.591583251953126e-06,
+      "inclusive_s": 0.4031220739998389,
+      "exclusive_s": 0.0003952200058847666
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 16,
+      "modes": null,
+      "inclusive_s": 0.11401435900188517,
+      "exclusive_s": 0.11401435900188517
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 16,
+      "modes": 648,
+      "inclusive_s": 0.009372376996907406,
+      "exclusive_s": 0.009372376996907406
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 16,
+      "modes": 648,
+      "inclusive_s": 0.001505136999185197,
+      "exclusive_s": 0.001505136999185197
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 16,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.2469732120007393,
+      "exclusive_s": 0.2360956980046467
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 16,
+      "modes": 648,
+      "inclusive_s": 0.0005885979990125634,
+      "exclusive_s": 0.0005885979990125634
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 16,
+      "inclusive_s": 0.034340827995038126,
+      "exclusive_s": 0.034340827995038126
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 16,
+      "inclusive_s": 0.0015036170007078908,
+      "exclusive_s": 0.0015036170007078908
+    },
+    {
+      "name": "propagate",
+      "trial_id": 16,
+      "inclusive_s": 0.3975469389988575,
+      "exclusive_s": 0.0001263250014744699
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 16,
+      "inclusive_s": 0.007151564997911919,
+      "exclusive_s": 0.007151564997911919
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 16,
+      "duration_s": 5.5912017822265625e-06,
+      "inclusive_s": 0.4051021760024014,
+      "exclusive_s": 0.00040367200563196093
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 17,
+      "modes": null,
+      "inclusive_s": 0.11411203900206601,
+      "exclusive_s": 0.11411203900206601
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 17,
+      "modes": 648,
+      "inclusive_s": 0.00940874599473318,
+      "exclusive_s": 0.00940874599473318
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 17,
+      "modes": 648,
+      "inclusive_s": 0.001446456000849139,
+      "exclusive_s": 0.001446456000849139
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 17,
+      "modes": 648,
+      "n": 229,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 0.24830017200292787,
+      "exclusive_s": 0.23744497000734555
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 17,
+      "modes": 648,
+      "inclusive_s": 0.000586050002311822,
+      "exclusive_s": 0.000586050002311822
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 17,
+      "inclusive_s": 0.034236992003570776,
+      "exclusive_s": 0.034236992003570776
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 17,
+      "inclusive_s": 0.0015584830034640618,
+      "exclusive_s": 0.0015584830034640618
+    },
+    {
+      "name": "propagate",
+      "trial_id": 17,
+      "inclusive_s": 0.3989094600037788,
+      "exclusive_s": 0.00011572398943826556
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 17,
+      "inclusive_s": 0.006311796998488717,
+      "exclusive_s": 0.006311796998488717
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 17,
+      "duration_s": 5.591011047363282e-06,
+      "inclusive_s": 0.40557875700324075,
+      "exclusive_s": 0.0003575000009732321
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": null,
+      "inclusive_s": 0.0021964510015095584,
+      "exclusive_s": 0.0021964510015095584
+    },
+    {
+      "name": "coverage_and_topology_commit_proposal",
+      "trial_id": null,
+      "inclusive_s": 0.14883719699719222,
+      "exclusive_s": 0.14664074599568266
+    },
+    {
+      "name": "accepted_geometry_commit",
+      "trial_id": null,
+      "inclusive_s": 0.0001265460014110431,
+      "exclusive_s": 0.0001265460014110431
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 18,
+      "inclusive_s": 0.04244271000061417,
+      "exclusive_s": 0.04244271000061417
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 18,
+      "modes": null,
+      "inclusive_s": 0.15557775900379056,
+      "exclusive_s": 0.15557775900379056
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 18,
+      "modes": 684,
+      "inclusive_s": 0.009346963997813873,
+      "exclusive_s": 0.009346963997813873
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 18,
+      "modes": 684,
+      "inclusive_s": 0.00871796299907146,
+      "exclusive_s": 0.00871796299907146
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 18,
+      "modes": 684,
+      "n": 1023,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 1.3601662299988675,
+      "exclusive_s": 1.3421013030019822
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 18,
+      "modes": 684,
+      "inclusive_s": 0.0005403469986049458,
+      "exclusive_s": 0.0005403469986049458
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 18,
+      "inclusive_s": 0.043962721996649634,
+      "exclusive_s": 0.043962721996649634
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 18,
+      "inclusive_s": 0.002242146001663059,
+      "exclusive_s": 0.002242146001663059
+    },
+    {
+      "name": "propagate",
+      "trial_id": 18,
+      "inclusive_s": 1.6050697739992756,
+      "exclusive_s": 0.0001378599990857765
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 18,
+      "inclusive_s": 0.008152880996931344,
+      "exclusive_s": 0.008152880996931344
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 18,
+      "duration_s": 2.5e-05,
+      "inclusive_s": 1.6136725649994332,
+      "exclusive_s": 0.0004499100032262504
+    },
+    {
+      "name": "coverage_and_topology_commit_proposal",
+      "trial_id": null,
+      "inclusive_s": 0.006544515999848954,
+      "exclusive_s": 0.006544515999848954
+    },
+    {
+      "name": "accepted_geometry_commit",
+      "trial_id": null,
+      "inclusive_s": 9.883700113277882e-05,
+      "exclusive_s": 9.883700113277882e-05
+    },
+    {
+      "name": "CPU_fractional_mechanics",
+      "trial_id": 19,
+      "inclusive_s": 0.043421905997092836,
+      "exclusive_s": 0.043421905997092836
+    },
+    {
+      "name": "GPU_constructor",
+      "trial_id": 19,
+      "modes": null,
+      "inclusive_s": 0.15619552599673625,
+      "exclusive_s": 0.15619552599673625
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 19,
+      "modes": 684,
+      "inclusive_s": 0.009566221997374669,
+      "exclusive_s": 0.009566221997374669
+    },
+    {
+      "name": "graph_lookup_capture",
+      "trial_id": 19,
+      "modes": 684,
+      "inclusive_s": 0.007377829002507497,
+      "exclusive_s": 0.007377829002507497
+    },
+    {
+      "name": "GPU_checked_chunk",
+      "trial_id": 19,
+      "modes": 684,
+      "n": 794,
+      "dt": 2.44140625e-08,
+      "inclusive_s": 1.0517859540050267,
+      "exclusive_s": 1.0348419030051446
+    },
+    {
+      "name": "GPU_export",
+      "trial_id": 19,
+      "modes": 684,
+      "inclusive_s": 0.0005849410008522682,
+      "exclusive_s": 0.0005849410008522682
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": 19,
+      "inclusive_s": 0.0024693049999768846,
+      "exclusive_s": 0.0024693049999768846
+    },
+    {
+      "name": "propagate",
+      "trial_id": 19,
+      "inclusive_s": 1.2545794940015185,
+      "exclusive_s": 0.00012186200183350593
+    },
+    {
+      "name": "coverage_preview",
+      "trial_id": 19,
+      "inclusive_s": 0.00614095800119685,
+      "exclusive_s": 0.00614095800119685
+    },
+    {
+      "name": "trial_total",
+      "trial_id": 19,
+      "duration_s": 1.9408798217773442e-05,
+      "inclusive_s": 1.2611517160039512,
+      "exclusive_s": 0.00043126400123583153
+    },
+    {
+      "name": "coverage_and_topology_commit_proposal",
+      "trial_id": null,
+      "inclusive_s": 0.006502846001239959,
+      "exclusive_s": 0.006502846001239959
+    },
+    {
+      "name": "accepted_geometry_commit",
+      "trial_id": null,
+      "inclusive_s": 8.569099736632779e-05,
+      "exclusive_s": 8.569099736632779e-05
+    },
+    {
+      "name": "action_total",
+      "trial_id": null,
+      "inclusive_s": 11.241298148997885,
+      "exclusive_s": 0.04543592699337751
+    },
+    {
+      "name": "checkpoint_write",
+      "trial_id": null,
+      "inclusive_s": 0.0036245299997972324,
+      "exclusive_s": 0.0036245299997972324
+    },
+    {
+      "name": "checkpoint_write_verified",
+      "trial_id": null,
+      "inclusive_s": 0.0036411110049812123,
+      "exclusive_s": 1.658100518397987e-05
+    },
+    {
+      "name": "continuous_volume_check",
+      "trial_id": null,
+      "inclusive_s": 0.0021505830009118654,
+      "exclusive_s": 0.0021505830009118654
+    }
+  ],
+  "GPU_setup_breakdown": [
+    {
+      "trial_id": 0,
+      "preparation_s": 0.06859808199806139,
+      "packing_upload_s": 0.13855215100193163,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 1,
+      "preparation_s": 0.06291817699820967,
+      "packing_upload_s": 0.05562026899860939,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 2,
+      "preparation_s": 0.06287296799564501,
+      "packing_upload_s": 0.051389028994890396,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 3,
+      "preparation_s": 0.062207220995333046,
+      "packing_upload_s": 0.05496838800172554,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 4,
+      "preparation_s": 0.06056985699979123,
+      "packing_upload_s": 0.053042699000798166,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 5,
+      "preparation_s": 0.06570001399813918,
+      "packing_upload_s": 0.05381411000416847,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 6,
+      "preparation_s": 0.06571563900070032,
+      "packing_upload_s": 0.053018421996966936,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 7,
+      "preparation_s": 0.06692408700473607,
+      "packing_upload_s": 0.05368210600136081,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 8,
+      "preparation_s": 0.06510473100206582,
+      "packing_upload_s": 0.05727859600301599,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 9,
+      "preparation_s": 0.06345432600210188,
+      "packing_upload_s": 0.05270132499572355,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 10,
+      "preparation_s": 0.06697338999947533,
+      "packing_upload_s": 0.05373770199366845,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 11,
+      "preparation_s": 0.06751936699583894,
+      "packing_upload_s": 0.05374086100346176,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 12,
+      "preparation_s": 0.0657337529992219,
+      "packing_upload_s": 0.05367698400368681,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 13,
+      "preparation_s": 0.06719548699766165,
+      "packing_upload_s": 0.05317854500026442,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 14,
+      "preparation_s": 0.060773026998504065,
+      "packing_upload_s": 0.05152131999784615,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 15,
+      "preparation_s": 0.06157089400221594,
+      "packing_upload_s": 0.0516496560012456,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 16,
+      "preparation_s": 0.0615618430019822,
+      "packing_upload_s": 0.052344091003760695,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 17,
+      "preparation_s": 0.061272635000932496,
+      "packing_upload_s": 0.052725127003213856,
+      "memory_bytes": 38828524
+    },
+    {
+      "trial_id": 18,
+      "preparation_s": 0.08453132800059393,
+      "packing_upload_s": 0.07042105800064746,
+      "memory_bytes": 50055980
+    },
+    {
+      "trial_id": 19,
+      "preparation_s": 0.08388008499605348,
+      "packing_upload_s": 0.07156385000416776,
+      "memory_bytes": 50055980
+    }
+  ],
+  "checks": {
+    "exact_final_fingerprint": true,
+    "same_activations": true,
+    "fields_identical": true
+  },
+  "field_difference": {
+    "q": 0.0,
+    "vg": 0.0
+  },
+  "peak_RSS_bytes": 662069248,
+  "note": "Exact saved-case replay with timed wrappers. Categories are nested; exclusive times sum without double counting. Accepted/discarded trial wall sums include their cloning, propagation and preview. Actual commit plus diagnostics sit outside those trials. No mechanics changed."
+}

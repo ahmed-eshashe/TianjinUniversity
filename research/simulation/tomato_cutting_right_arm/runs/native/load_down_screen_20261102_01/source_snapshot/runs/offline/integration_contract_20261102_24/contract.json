@@ -1,0 +1,657 @@
+{
+  "version": "integration-0.24",
+  "date": "2026-11-02",
+  "status": "active_for_trace_reconstructible_bounded_synthetic_loads_only",
+  "scope": "Numerical simulation; no hardware safety or experimental tomato accuracy claim",
+  "geometry": {
+    "benchmark": "curved nominal 10 mm end cap",
+    "cut_x_m": -0.0225,
+    "target_world_shift_m": [
+      0,
+      0,
+      0.002
+    ],
+    "uniform_slice": false,
+    "quality_metric": "released cap versus reference curved thickness profile, not uniform thickness",
+    "reference_profile_m": [
+      0.010000000000000002,
+      0.007783362981000002,
+      0.007783362981000002,
+      0.007783362981000002,
+      0.007783362981000002
+    ],
+    "sample_yz_reference_m": [
+      [
+        0.0,
+        0.027500000000000004
+      ],
+      [
+        0.011726039399558574,
+        0.027500000000000004
+      ],
+      [
+        -0.011726039399558574,
+        0.027500000000000004
+      ],
+      [
+        0.0,
+        0.03742203333808802
+      ],
+      [
+        0.0,
+        0.01757796666191198
+      ]
+    ],
+    "shape_evaluator": "Area-weighted proper rigid registration of corresponding cap surface nodes, no scaling or deformable fit; compare five X-ray cut-to-exterior thicknesses in registered reference coordinates. Missing/multiple surface intersections invalidate the metric.",
+    "pose_metric": "Report the rigid registration separately; cap shape registration must not conceal remainder drift or blade-relative displacement."
+  },
+  "mount": "existing ideal fixed right mount",
+  "experimental_validation": "pending at user request",
+  "mechanics": {
+    "production_law": "preserve existing tensile-qualified model; extensions versioned separately",
+    "fracture_enabled_in_mounted_test": false,
+    "self_contact_status": "whole-fruit combined volume/self-contact not yet qualified",
+    "candidate": "Versioned moving-frame mixed-mode cohesive law, explicit unilateral full-surface contact, unchanged bulk spring/barrier parameters, checked actual-stored volume updates. Component verification does not qualify sustained dynamics.",
+    "production_original_preserved": true
+  },
+  "mounted_coupon": {
+    "dt_s": 0.0004166666666666667,
+    "intervals_per_case": 4,
+    "cases": [
+      "passive_no_feedback",
+      "passive_feedback",
+      "passive_replay",
+      "driven_no_feedback",
+      "driven_feedback",
+      "clear"
+    ],
+    "particle_mass_kg": 0.001,
+    "spring_stiffness_n_m": 1000.0,
+    "contact_pressure_n_m3": 1750000000.0,
+    "initial_penetration_m": 5e-05,
+    "gravity_m_s2": [
+      0,
+      0,
+      0
+    ],
+    "friction": 0.0,
+    "damping": 0.0,
+    "gates": {
+      "force_ceiling_n": 10.0,
+      "particle_impulse_error_ns": 2e-07,
+      "wrench_balance_n": 1e-05,
+      "moment_balance_nm": 2e-06,
+      "frame_echo_m": 1e-07,
+      "reset_joint_rad": 1e-07,
+      "replay_position_m": 1e-07,
+      "replay_velocity_m_s": 2e-05,
+      "robot_response_min_rad_s": 1e-07,
+      "virtual_response_min": 0.0,
+      "maximum_penetration_m": 0.0001
+    },
+    "gate_provenance": "Synthetic diagnostic engineering bounds fixed before execution; impulse/replay bounds carried from qualified short exchange. Not physical safe loads."
+  },
+  "sustained_support": {
+    "dt_s": 0.0004166666666666667,
+    "minimum_duration_s": 10.0,
+    "fixture": "saved 25-node remainder fixture",
+    "slice_pinned": false,
+    "gravity_m_s2": [
+      0,
+      0,
+      -9.81
+    ],
+    "settling_speed_m_s": 0.001,
+    "settling_window_s": 1.0,
+    "board_max_penetration_m": 0.0001,
+    "gate_provenance": "proposed engineering criteria; feasibility must be tested, no retuning after observing a failure"
+  },
+  "release_later": {
+    "minimum_blade_absent_observation_s": 1.0,
+    "all_material_links_removed": true,
+    "material_components": 2
+  },
+  "missing_physical_inputs": [
+    "measured material and friction",
+    "wrist channels and latency",
+    "hardware force/torque limits",
+    "bruise/crush limits"
+  ],
+  "source_sha256": {
+    "runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+    "runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "docs/rl/slicing_criteria.json": "d42ffb898ddca047000df612e6f4e7c273b77cc7cf11d8c1d0502a843ee79100",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_01/contract.json": "822f9ccd133382b8b8ac7763974a2d730f6b2d84841e5a4a8ed705433d4f6fee",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/benchmark_geometry_20261102_01/measurements.json": "47e77784c70ce6bf2fa1e5361e6a5bcc1395dafb32c43497a5b730766eb74f52",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json": "2af92da3d2ea59c14e3b1cdd918283937d037ba55cb89a9da44b928fe7493b23",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_benchmark_metrics.py": "e57a5bb079dbaf12f45f3cb20769f5557d84fd44c8c431c031ffcdf67a8b964c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/freeze_benchmark_contract_v02.py": "26409fe0d203f5651e756d9a9a282760586856921bd6a40b6355e16fea0724c7",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_02/contract.json": "6af58f8c7dbb3302a04e06535be4b8efc650c3a74ce439314cb6f71739569251",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_frame.py": "8ce4ba6b143897bb86b82ea115f74467037a2f45b7c0791a4c571670347b1e7a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_frame_ledger.py": "3d8f68fe1848e20cae74d8676bc7fcea8ccd542c1f6041fc91aafcf332736ee0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/local_frame_20261102_01/local_frame_measurements.json": "bbfcd89152e0bf12418d3fb1502f534ef3bc477dc7b1ed166cc84419d7e7b3c1",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_03/contract.json": "9d018779b10820e4e9f0b1f681bb3fdf4fa45e7a7552301ab81752a7b3ad400c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_global_lbfgs.py": "cf142f8178c3a98109aa8e353e03456e7f96b32ad3b5ec3e7ae5da18b9afc2a4",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_lbfgs_preflight_worker.py": "eb97128a83839446af5fd8ecd6d4379b708395e1825444ae0776c7d86616c8b6",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_block_preconditioner.py": "5a95612db253ab10ef5615788efbd674d3429f6893454e16c470c59a4e1582c0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_block_preconditioner_worker.py": "5ce8af0514ba27df0ef41ee4f236f4bf9c160dbf1e98549d217a6397798ad616",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_block_integrator_worker.py": "e7925e819f9c0e8027e70d95c849dd1d73493af00501cfb4d9d42c91ca151e55",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_block_preflight_worker.py": "23af7fa538ead7c48a79a5a287decdcefcbd6c8799357ebd7dc18d1ed09ea535",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/block_preconditioner_20261102_01/block_preconditioner_measurements.json": "10d8a57d0eaf572ec91de1ccc8894f501e6cd26be7eed2464ae5f94ce7b6f270",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/block_integrator_20261102_01/block_integrator_measurements.json": "a1c83bd4b657e310199e804eca9908ea2189e0c84b77f517f82c534d6ed3c805",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/block_short_20261102_01/block_preflight_measurements.json": "507d3b4982c17f8e43d5ac1fb282d5744f72cddd34c61d9264c4e51e987244a2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_04/contract.json": "a528ed05365069d93c2d452326ce3fef29dfb8b755c0800d864efc8e96fbb99a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tight_block.py": "a128366b5e0857ae0fc111917ea6d96f6dfd519d7d19d2787ec4a74d45e75129",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tight_linear_worker.py": "3466b6bc824460ac41bd874ddd1a4ab184677ccc45aedf8a037518e7c2d2a9bc",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tight_integrator_worker.py": "9b7b0ad2bed4ef7cad4bfc021a2062c3e3718d5763e8ccbe7f558a34e49feec3",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tight_preflight_worker.py": "22e595a4fa015e81975b94c506f7ecf5ce5e1e361bac083cc09853bc66da1eac",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_timestep_preflight_worker.py": "da7eeb16cb5de2be5d46d552dac9e4da61e11b9d16138cc72f34a1935bccc493",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/tight_linear_20261102_02/tight_linear_measurements.json": "55f037b3f6d58d5230700e32c599a67ef24fb3f77b4be293baf38d866ec55a02",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/tight_integrator_20261102_02/tight_integrator_measurements.json": "afc73ad7d5559b6ae441dfd3ebd2c7cc89145daaefe5337736765140de33cf17",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/tight_short_20261102_02/tight_preflight_measurements.json": "07a6ff17c358e2e96234ff3542ee48a4b393691478af08cd71f588a6e5c8ea37",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_05/contract.json": "0a1143f3aa898ee81c556ac7b8884e79451aead74339935b719ba82a8cb63c50",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tangent_gn.py": "e49b40fb265feff22d7975273246b579c693d687032d78c9f11fd8b2df380195",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tangent_cpu_reference.py": "0a15ea53ec0867b7f945f44905597139510b56ad6cfd6f184fdffb2e9a60993d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tangent_operator_worker.py": "61f857a70fd3f6975e1d765c44c2d9fc670455b9dbe0a9b3bd07bd8c8b2d6088",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tangent_integrator_worker.py": "42cab5ed1c32b55330c7e1c481885257dac9f08a37cd9534f8ccd37584e1a1c8",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tangent_preflight_worker.py": "9a7d9594981a7d37284f8b036bf224ca42c5e2ebf6ba88fe2f65fa7cfb76d6a1",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/tangent_operator_20261102_01/tangent_operator_measurements.json": "cdfff32d1d7bf098347a1af5851c2fcdf39485f6df497a101c6a08e9418fd910",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_06/contract.json": "90f89fcbd9c1b39bac69f381fb0adad2abddf7f3f8c7f8f8dd2336ee3d0dc92c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_boundary.py": "5d645cdfe0fc9fc8ef512417800bdec7bd40ab886fb7a6075bf0fb9884601354",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_operator_worker.py": "b2c89211c77a03c3ea55f59d68de8f753190aad9958d61500b535263cf774f73",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_integrator_worker.py": "746ba1bc794bcdb9a3644f67690417858ac7075711a960d567351d7aaa8b4655",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_preflight_worker.py": "0bb161c0ecf937ba821ed37b478678db7999a09204454ab14932596725103c41",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_07/contract.json": "2c88ab4941d2865a8f392c54fd2dc235b1d03f5b2469237fb4b471fe408d11ff",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_streamed_hold_worker.py": "525f3fa7bfd383ce9fce5f6cea5a440bf98f5c7f4c33f442247040118b0c1089",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/fraction_duration_20261102_01/fraction_preflight_measurements.json": "847e98a00827b63dedaa9479150364f668619d9656f1885f4df101ebdda694e0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fraction_tangent_equivalence_20261102_01/measurements.json": "febe7a4a64e10270e0926025979b6e2326334569afbe6d151c84030a2cfc23f0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_08/contract.json": "926ca3ade7c7d6b0bf2d9885ceb9fe527637e607a473ba27a4d12a04a6aa87a5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_failed_safe_global.py": "923cd18ab02413e4ec03c6fc48ab91f670f13815ec5d05233bda662e428afe65",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_failed_safe_ledger.py": "aed3738f7ec7500fe36655a3433794e4e708109430830f6587287f640b4e71c9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_failed_safe_global_cpu_reference.py": "b667e16c1019d70235313bf62e79d7d8256c39ec80a7ac68e837755fc55e20c2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_failed_safe_global_operator_worker.py": "0d819b568997c7cb7a8b54a7bcb72ef832f0bb8a72bbf450eb9a19a7fa76cdc5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_failed_safe_integrator_worker.py": "f0f27fa75744c00564ee3ffc05517ebbbb448db55037c9f69aaa8fcb361c89df",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_09/contract.json": "305b1f54cf7cb27ef82b0cad0576111cd2bb903cd9036b0aa347eca3f4f7bd75",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_gravity.py": "ea9dc43713a39722d20f50ab1fdef43f4bc044cc6940f9cc2ffe87d00348da68",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_operator_worker.py": "1434674ad2a47f7e2fc97a3c92ba99bb1a03c51d428d0d9d9c9e50ddbd341201",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_energy_cpu_reference.py": "f9c95df11651b1990fe0a95777937713b490f7c44d5c9b8d2a84dac085f5d86b",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_preparation_worker.py": "fd467f799d351cbedad69e7f5f8257330110e792cf5ed0692af470327167707d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_10/contract.json": "e9e46f084e97ec68f930418b4b49599424c2e66eae2de87a3a955e7e0fc20dff",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_regularized_worker.py": "aa079185ca2dc777b15856cfc05502ab1837c2b2fa0b5f17fcd1490f379ddb93",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/static_preparation_20261102_01/static_failure_trace.json": "01e79d0fabfdcb8e6a4e0561013afa269825e7163d83138328bf273a09b5f2e2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_11/contract.json": "863297750693f6b4345d624c2e834612f47fe870b8c4f08225fa11f9af36a431",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_iterative_worker.py": "ed440db621a38930001926aee5d90df9a03aa3f533d41ee50b5fa31dec9020b0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/static_regularized_failure_cpu.json": "6b37f1a5dde5d7bd83deecef89713fd9bff77c7d67dd0a0f00930f2e01651ef3",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_12/contract.json": "d2d6fd942abc8bd143fbdb26d3e3d7f319b942d1162b2891c0eac101469d9227",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_safeguarded.py": "da909a14470aeb0f9ae891db5908a9f9bbc9eb3994403e9ee70406533eb1a703",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_safeguarded_worker.py": "dfa7761c4d0a854a2d40368fec1f28afcabc52690e510c53c952b0d337e3e1ea",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_13/contract.json": "650125135aa908efc76714652ff4065be4c41f0dbd8d27b45858d26642002b07",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_loaded_force_worker.py": "85b254ad1a5e8dd65d289ffedfbfb5ef30799f9325af251a706f82dfc00016a0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_loaded_force_cpu_reference.py": "763b86235d52cdae71beaae5360ce5bbfa95b2c5fbd4ed1ccbe1c77e49e68693",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_14/contract.json": "43fdd51f8cbd8b4993b7e01f35697e3a60fab8e6c5d239efff94f6edd8827eff",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_15/contract.json": "8873f1066194401f34b0a6a7e1e9c8f51b6a26afab9543fa11f8c963d5b86f8a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_direct_static.py": "9ae6c38c45c8c1b3c4603de3c6c715a61d32b665041e2994e6452fcaf7939660",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_direct_static_operator_worker.py": "10698f0d708ef63635c70c03c0f2dc1172236d30b17a0bc4b06981cd115cabed",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_direct_worker.py": "af83126d357e4a272fd9d144485a9ad61d83cd6a26f6c849d95e36e770f92589",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_16/contract.json": "e077b2fdaebb8920a3b42bba38a5ec26a1c9389ea24308ac3955b093c4836d8e",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cached_static.py": "ce7e5dba2adf11be1c3e96e0c0b68aa04be7b9c5b5f9c90ea54338cdbed93334",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cached_static_operator_worker.py": "fa5c449f676ee14cfde74011555c222cb57906e5fbe7ef71d0673be51a1fc962",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_static_cached_worker.py": "b558c3631def48be7636b79447a53ac1839defc2d9197d7bfdbaf951c17d1619",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_17/contract.json": "fc4ce45814402ae1347f18fd0c2d22c2c9380c9eb4a6b9dc01e31af8a7efb798",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_global_pressure.py": "75a8f9c06b5519ce56f30171ea7e056c547d571010cd249a0aa54a4426120e79",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_global_pressure_worker.py": "0973d3b0911a5e75de1ec297458d2d715d7a671203d048ad8c6bca26588c9afd",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_18/contract.json": "ce5ef9d995c4f859f7a65083e68056fd4d9d2ad97acc099df40d2cbe7468e0eb",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_parked_robot.py": "84934bd2109b1fb43b8b99ea1457bf131b1228c78c10fb2ac27224770cdc6cec",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_prepared_scene_hold_worker.py": "5b9b6a8357694ce13886ed98a6f99cacf5d237408e59057d4e311d374b6dbc3f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_19/contract.json": "6f1799080d45f4e12cfcf3782afe47bd1685b7bb551e25b6f290e8629edefa64",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_prepared_scene_device_worker.py": "454b9d44cbb51024eaa794e6ee585448d8e4423557348a5d2883e53eb39cba19",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_20/contract.json": "5244ba0071da919d4db7535e5c5e98afc647091247b34820e9df8fa16a557ed7",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_prepared_scene_clock_worker.py": "040a09e6c93f6ed3c5b3090bf83c21d47e71b2a51986cbc2ebb0597d853419e5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_21/contract.json": "fc4c8643103214541e97131896b2d18475b40bda8b1e39b707b7a8abcbf2588a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_external_load.py": "57284659002c72b6e51bd23a652684b6d2d28ed8a6cb6ef5d2bb0d7971ed75a1",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_external_load_worker.py": "325b5a0ccd84487be48ec8a9a4140d712e8789c06a573002bada88e4141e24f5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_22/contract.json": "8f75bca7234c5b21976ff5ac7251c8bf2276e820bc18a6dc4203eb830202bdd6",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_interval_load.py": "d9924a1b805d420d944ff52cacee5ec4bfc44bff3ded9a3062a0ce3483e3ea6d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_loaded_scene_worker.py": "0f556feb0142c408b9aea74b89ed86e8bb3368cf983b13e660d2e29618c76e81",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/external_load_operator_20261102_01/external_load_measurements.json": "97465bff14d9598c86a4e854122ab9f3648b3bda54d98ba1a2b297c4b957df32",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/prepared_scene_device_hold_20261102_01/hold_measurements.json": "f932f143d9cc358d9accc55cd33bb4742a02094859a5fcc7d336ca346b3d2e64",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_23/contract.json": "0a3b9b56f5f788cb13ad196066cd49d841e47e9b4e34ba7cb0dd3162d44b539d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_loaded_scene_traced_worker.py": "42b65c3e66b03321edaaa17086cecfab9e71b7e42e41dd92b05aa2dd53f66827"
+  },
+  "parent_contract": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_14/contract.json",
+  "registered_inputs": {
+    "mesh_nodes": 4032,
+    "cut_patches": 47,
+    "cut_surface_triangles_per_side": 448,
+    "fixture_node_ids": [
+      916,
+      917,
+      921,
+      922,
+      923,
+      928,
+      929,
+      930,
+      935,
+      936,
+      937,
+      942,
+      943,
+      944,
+      949,
+      950,
+      951,
+      956,
+      957,
+      962,
+      965,
+      968,
+      969,
+      973,
+      976
+    ],
+    "knife_mass_kg": 0.25,
+    "knife_scene": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda",
+    "mount_hand_from_knife": [
+      [
+        -0.1526914100434704,
+        -0.9882722079936777,
+        0.001837445574597624,
+        0.1426623324480551
+      ],
+      [
+        -0.7208957422779673,
+        0.11010866374180443,
+        -0.6842407550961093,
+        -0.07827216414755789
+      ],
+      [
+        0.6760138031611754,
+        -0.10580229239622842,
+        -0.7292538740790259,
+        0.1409758321793664
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "bracket_mass_kg": 0.0,
+    "robot_home_rad": {
+      "left_AR5_5_07L_W4C4A2_joint_1": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_2": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_3": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_4": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_5": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_6": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_7": 0.0,
+      "left_lh_thumb_cmc_yaw": 0.0,
+      "left_lh_thumb_cmc_pitch": 0.0,
+      "left_lh_thumb_ip": 0.0,
+      "left_lh_index_mcp_pitch": 0.0,
+      "left_lh_index_dip": 0.0,
+      "left_lh_middle_mcp_pitch": 0.0,
+      "left_lh_middle_dip": 0.0,
+      "left_lh_ring_mcp_pitch": 0.0,
+      "left_lh_ring_dip": 0.0,
+      "left_lh_pinky_mcp_pitch": 0.0,
+      "left_lh_pinky_dip": 0.0,
+      "right_AR5_5_07R_W4C4A2_joint_1": -0.7384778199264214,
+      "right_AR5_5_07R_W4C4A2_joint_2": -1.4951815551823568,
+      "right_AR5_5_07R_W4C4A2_joint_3": 1.044223841023167,
+      "right_AR5_5_07R_W4C4A2_joint_4": 1.3985230173815075,
+      "right_AR5_5_07R_W4C4A2_joint_5": -0.9978099453104773,
+      "right_AR5_5_07R_W4C4A2_joint_6": 0.19669422833290084,
+      "right_AR5_5_07R_W4C4A2_joint_7": 0.4273492454266195,
+      "right_rh_thumb_cmc_yaw": 0.0,
+      "right_rh_thumb_cmc_pitch": 0.0,
+      "right_rh_thumb_ip": 0.0,
+      "right_rh_index_mcp_pitch": 0.0,
+      "right_rh_index_dip": 0.0,
+      "right_rh_middle_mcp_pitch": 0.0,
+      "right_rh_middle_dip": 0.0,
+      "right_rh_ring_mcp_pitch": 0.0,
+      "right_rh_ring_dip": 0.0,
+      "right_rh_pinky_mcp_pitch": 0.0,
+      "right_rh_pinky_dip": 0.0
+    },
+    "right_joint_names": [
+      "right_AR5_5_07R_W4C4A2_joint_1",
+      "right_AR5_5_07R_W4C4A2_joint_2",
+      "right_AR5_5_07R_W4C4A2_joint_3",
+      "right_AR5_5_07R_W4C4A2_joint_4",
+      "right_AR5_5_07R_W4C4A2_joint_5",
+      "right_AR5_5_07R_W4C4A2_joint_6",
+      "right_AR5_5_07R_W4C4A2_joint_7"
+    ],
+    "knife_rotation": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "coordinates": "Saved metre-scale blade-local CAD, actual PhysX link world pose xyzw; tool wrench expressed in world coordinates about actual tool COM. Newton deformation uses rest-relative storage, physical geometry reconstructed in float64.",
+    "inertia_source": "Read actual mounted-body COM/inertia from the fixed scene at runtime and archive; no guessed uniform-solid inertia substitution."
+  },
+  "board_interaction": {
+    "mode": "initially above-board only",
+    "blade_board_contact_qualified": false,
+    "stop": "Any blade-board contact stops the experiment. Actual full CAD minimum world Z must remain positive with declared route-specific tracking margin.",
+    "route_status": "Existing dry route is laterally offset by 90 mm and is not a contact-capable cutting route. A fresh 23A qualification is required; minimum clearance cannot be inferred from old dry motion."
+  },
+  "clocks": {
+    "initial_coupling_dt_s": 0.0004166666666666667,
+    "status": "Diagnostic starting value, not qualified for full-target cutting. Time-step refinement must pass before adopting a cutting clock.",
+    "ownership": "PhysX owns actual robot; Newton owns deformable. Exchange measured accepted pose/wrench at synchronized timestamps. Never teleport the blade to the commanded path."
+  },
+  "fracture_eligibility": {
+    "status": "not dynamically qualified",
+    "definition_required": "Swept actual finite CAD cutting-front band against current-deformation material footprints, plus a documented local overlap/state rule; no time, depth or proximity-only activation and no permanently active row.",
+    "material_areas": "Keep existing traction and fracture-energy areas; geometric Voronoi footprints are eligibility geometry only.",
+    "registered_front_report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/cut_front_registration_20261102_02/registration.json"
+  },
+  "future_cut_gates": {
+    "shallow_cut": "Requires P1/P2 and 23A/B, actual mounted whole-target force/work traces and a new bounded preregistered case.",
+    "release": "All 47 cohesive histories fully failed, no cross-piece material graph ties, exactly two bulk components, blade absent at least one second, free cap motion under the qualified support/contact model. Damage fraction or tool depth alone cannot pass.",
+    "shape_error_proposed_m": 0.001,
+    "refinement_relative_error_max": 0.1,
+    "peak_force_absolute_floor_n": 0.001,
+    "cutting_work_absolute_floor_j": 1e-06,
+    "refinement_formula": "abs(a-b)/max(abs(a),abs(b),floor); compare two finest independent levels and investigate nonmonotone results.",
+    "floor_provenance": "Synthetic engineering resolution floors chosen before cutting, not measured sensor resolution or hardware limits.",
+    "remainder_pose_proposed_translation_m": 0.005,
+    "remainder_pose_proposed_rotation_rad": 0.08726646259971647,
+    "whole_system_work_budget": "OPEN: derive fixture-specific independent budget including robot kinetic energy, actuator work, gravity, fixture/base reactions, contact, bulk, cohesion/fracture and numerical loss before cut execution. Equal force arrays alone cannot close it.",
+    "loaded_reset": "Milestone 22 post-cut checks require an actual coupled cut first; seed/history/contact queues, velocities, articulation state, controller targets, cloth/bulk state and randomization state must reset and replay."
+  },
+  "evidence_scope": "Coordinate covariance, underlying matrix, energy and original analytic integration components pass. L-BFGS recursion and integration require separate controls. No long support, cutting or training gate is closed.",
+  "numerical_backend": {
+    "name": "Float64 fraction-to-volume-boundary positive-tensile-curvature block-Jacobi GN L-BFGS/PCG candidate",
+    "native_vbd_steps": 0,
+    "world_from_sim_translation_m": [
+      -0.0225,
+      0,
+      0.0295
+    ],
+    "rotation": "identity; force/velocity axes remain world-aligned",
+    "world_board_height_m": 0.0,
+    "simulation_board_height_m": -0.0295,
+    "canonical_source_values": "Original mass, stiffness, cell volume, spring rest length, objective anchor choices, frame sign, material stiffness and fracture values retained. Simulation coordinates alone are translated.",
+    "accepted_source_registry": "unchanged 4032 nodes,33996 springs,16291 cells,5504 collision triangles,47 cohesive patches,25 remainder fixture nodes; cap unpinned",
+    "nonlinear_stops": "Original noncancelling impulse audit plus stricter per-node velocity-defect target, unchanged during the new frame test.",
+    "per_declared_01s_velocity_defect_budget_m_s": 1e-06,
+    "maximum_outer_iterations": 256,
+    "maximum_cg_iterations": 1000,
+    "cg_relative_tolerance": 1e-09,
+    "cg_absolute_tolerance_n": 1e-16,
+    "line_search": "Full unchanged incremental potential, Armijo1e-4,40halvings; conservative contact coverage and positive-volume paths; no rejected history commit.",
+    "lbfgs_memory_pairs": 8,
+    "curvature_filter": "sTy > max(1e-280 J,1e-10*norm(s)*norm(y)); otherwise skip; memory resets each physical step",
+    "fallback": "If the corrected direction fails its linear solve or descent test, clear memory and use the qualified plain global GN direction with the same true-residual gate.",
+    "physics_change": "None. Search matrix extended as declared; block Cholesky shift remains preconditioner-only.",
+    "linear_preconditioner": "Symmetrized normalized 3x3 Cholesky block Jacobi. Factorization-only relative shift 1e-12 then x10, at most 8 attempts when normalized pivot <=1e-14. No change to system matrix, exact forces, energy or physical parameters. Fail if no positive finite factor.",
+    "true_linear_residual_gate": "norm(Ap-b) <= max(5e-9*norm(b),1e-15 N); tighter floor only, no physical/nonlinear/replay gate relaxed.",
+    "spring_search_matrix": "Existing radial k*n*nT plus max(0,k*(1-l0/l))*(I-n*nT), assembled with full signed endpoint cross-blocks. This explicitly changes only the numerical search matrix, adding the positive tangential part of the exact spring Hessian. The exact central spring force/potential, rest length, material stiffness, mass, contact and acceptance gates are unchanged.",
+    "qualification": "Independent full-registry CPU-autograd tensile-energy HVP plus existing CPU bulk/contact/cohesive references passes three static cases. No mechanical/sustained support pass is inferred.",
+    "volume_trial_strategy": "For each nonlinear search trial, require conservative exact-cubic lower path bound J_lower > .1+.2*(J_current-.1). Retain at least 20% of current gap, equivalent to a maximum .8 approach fraction. Repeated valid trials may approach the same physical J>.1 boundary. No higher constitutive floor, force/energy change, altered final admissibility, or altered nonlinear/replay tolerance.",
+    "scope": "Numerical search safeguard; operator and dynamics qualification separate."
+  },
+  "method_reference": {
+    "primary": "https://users.iems.northwestern.edu/~nocedal/lbfgs.html",
+    "paper": "https://people.sc.fsu.edu/~inavon/5420a/liu89limited.pdf",
+    "scope": "Two-loop limited-memory BFGS method; this custom geometry-constrained preconditioned integrator is not validated by citation alone."
+  },
+  "registered_numerical_diagnostics": "block preconditioner 3 static controls, 16 basic integration steps and strict 48-step/10ms two-episode replay pass. Longer support and time/contact convergence remain open.",
+  "temporal_refinement_study": {
+    "duration_s": 0.01,
+    "long_diagnostic_s": 0.1,
+    "dt_s": [
+      0.0004166666666666667,
+      0.00020833333333333335,
+      0.00010416666666666667
+    ],
+    "episodes_per_setting": 2,
+    "position_screen_m": 1e-05,
+    "velocity_screen_m_s": 0.001,
+    "provenance": "Original standalone numerical sensitivity screen retained. Compare matching canonical source geometry/parameters and accepted clocks, saved final x/v, no fit or rescaling. A short screen is not full cutting convergence.",
+    "gating": "Each setting must pass physical/numerical/admissibility and strict replay; failed or incomplete levels do not qualify finer/coarser settings. Compare finest two valid matched levels; refine further or report unconverged if discrepancy exceeds bounds."
+  },
+  "method_reference_volume_safeguard": {
+    "primary": "https://cepac.cheme.cmu.edu/pasilectures/biegler/ipopt.pdf",
+    "doi": "10.1007/s10107-004-0559-y",
+    "relation": "Wachter & Biegler, Mathematical Programming106 (2006), Eq15, fraction-to-boundary for positive variables. Our nonlinear determinant-path adaptation and .8 choice are project numerical settings, independently tested; we do not implement their complete primal-dual filter method or inherit its convergence theorem."
+  },
+  "streamed_diagnostics": {
+    "screen": {
+      "duration_s": 0.01,
+      "episodes": 2,
+      "dt_refinements": [
+        8,
+        16,
+        32,
+        64
+      ],
+      "endpoint_position_screen_m": 1e-05,
+      "endpoint_velocity_screen_m_s": 0.001
+    },
+    "preview": {
+      "duration_s": 0.25,
+      "episodes": 1,
+      "scope": "Longer gravity/admissibility component only, no replay or ten-second settling pass"
+    },
+    "hold": {
+      "duration_s": 10.0,
+      "episodes": 2,
+      "settling_final_window_s": 1.0,
+      "maximum_speed_m_s": 0.001
+    },
+    "trace": "Each accepted state receives the original independent force/energy/global and noncancelling nodal audits. All per-step audits and nonlinear traces stream to gzip JSONL; summary checkpoints do not replace raw records.",
+    "gates": "Unchanged J>.1, board penetration<=.0001m, original fixed remainder nodes/free cap, no damage/eligibility, impulse/energy contracts, preflight displacement stop .02m. Two-episode tests retain replay<=1e-10m/1e-8m/s. No hidden warm-up or native-VBD/robot-step count.",
+    "scope": "No actual mounted whole-target work, bounded load challenge, coupled fracture, loaded cutting reset, separation or training qualification."
+  },
+  "prepared_history_components": {
+    "operator_cases": 3,
+    "integrator_cases": 3,
+    "deformable_steps": 16,
+    "integrator_dt_s": 2.604166666666667e-05,
+    "states": [
+      "intact fixed fixture under gravity",
+      "prepared partial damage on unloading branch, live eligibility off",
+      "prepared fully failed cap with proper independent rotation and analytic freefall"
+    ],
+    "unchanged": "Source mass, stiffness, geometry, fracture budget, board, fixture and full contact; failed branch avoids constructing a vanished frame. Search strategy remains fraction-to-volume-boundary/Tangent/PCG.",
+    "ledger": "Fresh safe cohesive force, skip zero failed stored-energy frame, explicitly add committed fracture dissipation. Original global/local/energy/replay budgets.",
+    "guard": "This candidate refuses nonzero live eligibility before advancing state or history. Actual accepted fracture/geometry transaction remains unqualified.",
+    "scope": "Prepared-history mechanics/operators only; no performed fracture, knife-driven separation, independent one-second release, full robot work or loaded cutting reset qualification."
+  },
+  "gravity_preparation": {
+    "physical_time_advanced_s": 0.0,
+    "load_fractions": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "maximum_iterations_per_load": 2000,
+    "force_l1_budget_n": 1e-06,
+    "maximum_force_acceleration_m_s2": 1e-05,
+    "external_net_force_budget_n": 1e-06,
+    "external_net_moment_budget_nm": 1e-07,
+    "independent_force_moment_crosscheck_budget": 1e-08,
+    "search_regularizer_s": 0.0004166666666666667,
+    "physical_damping": 0.0,
+    "friction": 0.0,
+    "potential": "Original source bulk/cohesive/contact/board potential plus -sum(m*g dot (x-reference)); numerical mass regularization occurs in the search matrix only.",
+    "preserve": "Original constitutive rest geometry, spring rest lengths, volumes, masses, fixture positions, cap freedom, material values, zero history and disabled eligibility. Prepared x is a new prestressed initial configuration, never a new stress-free rest mesh.",
+    "scope": "A force-balanced initial-condition preparation only. Does not qualify the previous failed floating-target transient, stability under perturbations, ten-second dynamic support, time/contact convergence, actual mounted work or cutting. Any later prepared hold must identify and hash its initial-state file.",
+    "numerical_revision": "Physical force/potential and all acceptance bounds remain unchanged. A poorly progressing corrected trial competes with a plain-GN trial on actual admissible potential; choose the better descending trial and clear stale memory if GN is selected. Larger positive-curvature memory affects search only.",
+    "maximum_cg_iterations": 5000,
+    "lbfgs_memory_pairs": 64,
+    "plain_gn_comparison_after_line_halvings": 4
+  },
+  "loaded_gradient_diagnostic": {
+    "cases": 2,
+    "poses": [
+      "actual stalled static iterate, gravity load .1",
+      "accepted 250 ms gravity pose, full gravity"
+    ],
+    "force_absolute_budget_n": 1e-08,
+    "force_relative_budget": 1e-06,
+    "energy_absolute_budget_j": 1e-10,
+    "energy_relative_budget": 1e-09,
+    "reference": "Independent CPU autograd of full original bulk/cohesive/contact/board/gravity potential. Contact uses raw embedding arrays and independent CPU minimizing closest features, not native cached scatter coefficients.",
+    "physical_time_advanced_s": 0.0,
+    "scope": "Posed loaded force/potential consistency only. No new mechanics, equilibrium, support or cutting qualification."
+  },
+  "direct_static_search": {
+    "linear_backend": "CPU SciPy sparse LU with independent actual GPU BSR true residual",
+    "matrix_mutation_permitted": false,
+    "search_regularizer_s": 0.02,
+    "physical_force_or_potential_changed": false,
+    "true_residual_relative_budget": 5e-09,
+    "true_residual_floor_n": 1e-15,
+    "maximum_refinements": 3,
+    "known_solution_maximum_error_m": 1e-10,
+    "controls": 3,
+    "static_loads": [
+      0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "maximum_static_iterations_per_load": 2000,
+    "force_l1_budget_n": 1e-06,
+    "maximum_force_acceleration_m_s2": 1e-05,
+    "scope": "Zero physical-time preparation only; existing geometry, source parameters, force/potential, admissibility and final equilibrium gates unchanged. New prestressed initial state requires later dynamic hold/load checks. Old drop and settling failures remain failures."
+  },
+  "cached_static_search": {
+    "changes": "Old sparse LU used as preconditioner only. Bounded CPU CG on actual current matrix; actual GPU true-residual gate unchanged; fresh sparse LU with bounded refinement on failure. No force, potential, acceptance or geometry change.",
+    "cg_rtol": 1e-10,
+    "cg_atol": 1e-16,
+    "maximum_cpu_cg_iterations": 128,
+    "fresh_factor_fallback": true,
+    "controls": 4,
+    "required_branches": [
+      "fresh factor",
+      "cached factor, different RHS",
+      "cached factor, changed matrix"
+    ],
+    "same_load_sequence_and_final_equilibrium_gates": true,
+    "preparation_physical_time_s": 0.0,
+    "previous_direct_attempt": "Checkpoint-stopped incomplete for rescheduling, not a physical failure or pass."
+  },
+  "global_frozen_pressure": {
+    "scope": "Frozen planar packet on original complete material registry. No packet generation, coverage, mechanics, mounted interval/work, support or cutting claim. Candidate explicitly refuses steps.",
+    "force_budget_n": 1e-09,
+    "energy_budget_j": 1e-12,
+    "wrench_budget_n_or_nm": 1e-10,
+    "matrix_action_budget_n": 1e-08,
+    "finite_work_absolute_budget_n": 1e-07,
+    "cases": 3,
+    "pressure_n_m3": 1750000000.0,
+    "reference_area_weighting": true,
+    "body_reaction_moment_origin": "current physical soft point relative to actual tool COM",
+    "material_contact_parameters_changed": false,
+    "physical_time_advanced_s": 0.0
+  },
+  "prepared_scene_hold": {
+    "new_initial_condition": "Zero-time, six-stage independently force-balanced full-gravity PRESTRESSED intact state. Original constitutive rest geometry/fixture retained. Not the old floating drop.",
+    "prerequisites": [
+      "parent supervisor pass",
+      "unchanged parent source/input closure",
+      "zero stored history/eligibility/velocity",
+      "original reference geometry preserved",
+      "fresh full-gravity force balance and geometry checked before dynamic stepping"
+    ],
+    "force_l1_n": 1e-06,
+    "maximum_force_acceleration_m_s2": 1e-05,
+    "duration_s": 10.0,
+    "episodes": 2,
+    "dt_s": 0.0004166666666666667,
+    "target_deformable_steps": 48000,
+    "matched_actual_physx_steps": 48000,
+    "rigid_contact_monitor_setup_physx_steps": 3,
+    "initial_contact_energy": "Fresh full-surface detection/evaluation after each state reset, before taking the energy baseline.",
+    "target_gates": "Original unchanged support global/local impulse, energy, volume, board, maximum source displacement and final-one-second maximum speed <=1 mm/s.",
+    "robot_gates": "Inherited fixed-mount dry scene geometry, mount, speed, tracking and forbidden contact budgets; positive/clear monitor control; q/qd/tool replay <=1e-5 rad/2e-5 rad/s/2e-6 pose component.",
+    "scope": "Actual parked robot and prepared target share episode timestamps. Blade must remain clear. No load challenge, actual mounted target feedback/work, performed fracture, cutting reset, separation or learning qualification."
+  },
+  "engine_device_boundary": {
+    "issue": "Installed SimulationContext sets global Warp device to cpu at initialization; target custom kernels without explicit device must not execute against CUDA buffers under CPU default.",
+    "repair": "Explicitly select cuda:0 after PhysX setup/reset and after every PhysX step, before any custom target kernel call.",
+    "physical_or_numerical_budgets_changed": false,
+    "prior_attempt": "prepared_scene_screen_20261102_01 crashed after rigid monitor control, zero qualified target episode; preserved."
+  },
+  "result_identity": {
+    "change": "Distinct prepared_scene_device_* pass flags; original and repaired worker evidence cannot cross-qualify guard modes.",
+    "physical_or_numerical_change": false,
+    "prior_evidence": "Device-safe screen01 completes both episodes, actual48 target/48 matched PhysX+3 setup, passed physical gates. First result-contract test detected flag alias between original and repaired modes; repeated screen required with corrected result identity."
+  },
+  "held_load_operator": {
+    "scope": "Four zero-step full-registry held force/moment controls and manufactured-motion ledger checks. Does not qualify an actual dynamic support challenge, robot contact or cutting.",
+    "force_difference_budget_n": 1e-10,
+    "potential_difference_budget_j": 1e-12,
+    "matrix_action_difference_budget_n": 1e-08,
+    "load_impulse_budget_ns": 1e-12,
+    "load_moment_budget_nms": 1e-12,
+    "held_force_displacement_work_budget_j": 1e-14,
+    "energy_minus_work_budget_j": 1e-14,
+    "finite_external_work_derivative_budget_n": 1e-08,
+    "loads": "Clear; -0.01N vertical; -0.01N lateral +0.0001Nm centroidal twist; reversed lateral/twist. Synthetic diagnostic envelope, not measured tomato loads.",
+    "reference": "Independent sums of actual nodal forces, world moment arms, physical displacement work and finite potential differences. All reported errors must be finite.",
+    "constitutive_parameters_changed": false,
+    "physical_time_advanced_s": 0.0
+  },
+  "synthetic_scene_challenge": {
+    "prerequisites": [
+      "qualified synchronized two-episode ten-second unloaded hold using identical prepared NPZ",
+      "independent held-load force/potential/matrix/work/impulse/moment/reset operator pass",
+      "fresh intact zero-velocity and full-gravity initial force/geometry checks"
+    ],
+    "full_episode_duration_s": 1.1,
+    "load_pulse_duration_s": 0.1,
+    "unforced_observation_duration_s": 1.0,
+    "episodes": 2,
+    "dt_s": 0.0004166666666666667,
+    "screen_duration_s": 0.01,
+    "pulse": "Endpoint sampled sin(pi*t/.1), zero for t>=.1, held throughout each interval.",
+    "maximum_force_n": 0.010000000001,
+    "maximum_actual_moment_about_prepared_cap_centroid_nm": 0.0002,
+    "nominal_moment_nm": 0.0001,
+    "maximum_speed_m_s": 0.1,
+    "force_directions": "Down: -Z; lateral/twist: -X/+Y moment; reversed: +X/-Y moment. Distinct cases; numerical synthetic envelope, not measured cutting limits.",
+    "energy_gate": "Physical energy minus exact held-force displacement work may not rise more than original 1e-5 J above initial. Not a change to the separate unloaded hold gate.",
+    "impulse_volume_board_displacement_replay_gates": "Original unchanged support and replay bounds",
+    "solver_declared_duration_s": 1.1,
+    "solver_total_velocity_defect_budget_m_s": 1e-06,
+    "search_load_potential_reference": "Previous accepted interval state; subtracts a constant only, fixed during nonlinear trials.",
+    "postpulse_settling_required": false,
+    "reason": "This is bounded transient response and one-second observation under zero physical damping/friction, not a new resettling test. Original unloaded hold retains final-one-second speed <=1mm/s.",
+    "scope": "Prescribed synthetic support loading with parked robot on matching clocks. No knife contact, actual mounted target work, material calibration, live fracture, cut or loaded cutting-reset qualification."
+  },
+  "held_load_work_trace": {
+    "change": "Record sum_i(F_base_i dot (x_current_i-x_initial_i)) each accepted step. Independent read-back reconstructs exact held-force displacement work as sum_n amplitude_n*(projection_n-projection_previous).",
+    "physical_solver_parameters_or_gates_changed": false,
+    "scope": "Sufficient scalar work statistic only for these fixed spatial nodal fields with scalar pulse amplitude; does not qualify actual blade/robot contact work.",
+    "prior_clear_control": "load_clear_screen_20261102_01 passed both episodes with stricter 1.1s total-velocity-defect allocation, source23. Source24 adds telemetry only."
+  }
+}

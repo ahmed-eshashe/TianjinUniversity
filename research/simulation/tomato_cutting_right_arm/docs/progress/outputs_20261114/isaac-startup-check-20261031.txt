@@ -1,0 +1,15 @@
+Isaac Sim startup check — 31 October 2026
+
+One native attempt completed in 4.71 seconds. Isaac Sim initialized an empty CPU PhysX scene, reset it and completed one step at 1/240 second. Child exit code was 0. No live process-group members remained after cleanup.
+
+Minimum observed available RAM: 25.09 GB. Minimum observed free VRAM: 7.13 GiB. No memory warnings or monitoring errors.
+
+Launch protection added: both shared locks, one-thread environment settings, startup RAM/VRAM floors, live hardware monitoring, stop on three reader failures, warning shutdown, independent 60-second kill timer, signal handling and owned-process-group cleanup. No new dependencies. Existing disabled Newton/coupon worker and historical preparation session were preserved.
+
+The original supervisor reported passed=false because Isaac Sim app.close() exits the process directly, before the final worker report. The saved step-status file and actual process exit establish the observed startup milestone, but do not complete the final reporting gate. Original evidence was retained unchanged with verified source snapshots.
+
+Reporting was corrected to write a pre-close record and require actual successful process exit in the supervisor. Seven focused stdlib tests passed, including direct-exit reporting, failed-exit refusal, timeout/descendant cleanup, memory refusal/warning/hard stop, interruption and monitor failures. The corrected reporting has not been rerun in Isaac Sim; only one native launch was performed.
+
+Next step: one bounded repeat to confirm the corrected report before starting blade-contact experiments. No robot motion, cutting or training was performed or validated.
+
+Working source and full evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/isaac_startup_20261031_01

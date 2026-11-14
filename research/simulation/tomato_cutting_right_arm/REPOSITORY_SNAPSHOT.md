@@ -1,3 +1,23 @@
+# Update — 14 November 2026
+
+Code, plans, tests, reports, successful and failed experiment evidence are archived
+in PUBLICATION_UPDATE_20261114.json. Later solver and vision-pickup experiments
+are under experiments_external/; dashboard snapshots are under
+docs/progress/outputs_20261114/.
+
+This is an archival snapshot of ongoing research, not a completed evaluation or
+portable training release. Some live progress files may describe incomplete runs.
+Individual included files are SHA-256 verified; files across a running experiment
+are not guaranteed to represent one atomic checkpoint. Read each experiment's
+contracts and reports before using its results. No paper claims are promoted.
+
+Large assets, model weights, arrays, recordings and other excluded files remain
+local and are indexed by source path and size in the update manifest. Dependencies,
+builds and third-party checkouts are excluded. Historical Git revisions retain
+previous snapshots; no source workspace or simulation was changed for publication.
+
+---
+
 # Update — 7 November 2026
 
 The incremental update is indexed in `PUBLICATION_UPDATE_20261107.json`.

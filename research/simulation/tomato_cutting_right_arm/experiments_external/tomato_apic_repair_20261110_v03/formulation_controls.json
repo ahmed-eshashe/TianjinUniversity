@@ -1,0 +1,67 @@
+{
+  "status": "pass",
+  "checks": {
+    "null_filter": true,
+    "null_energy_accounted": true,
+    "translation": true,
+    "rotation": true,
+    "affine": true,
+    "internal_energy_gradient": true,
+    "external_balance": true,
+    "support": true,
+    "compatible_exchange": true
+  },
+  "results": {
+    "null_mode": {
+      "old_particle_motion_m": 2.5000000000025e-07,
+      "old_F_change": 2.598337335374372e-19,
+      "new_particle_motion_m": 0.0,
+      "new_remaining_velocity_fraction": 5.865154943039963e-16,
+      "initial_energy_J": 1.3577954833995832e-08,
+      "recorded_transfer_loss_J": 1.3577954833995832e-08,
+      "final_kinetic_J": 9.576455037660615e-39
+    },
+    "translation": {
+      "velocity_error": 3.469446951953614e-17,
+      "C_error": 1.2884165221125959e-14,
+      "F_error": 1.3393149436713437e-19,
+      "momentum_error": 0.0,
+      "angular_error": 1.246075855260119e-23,
+      "transfer_loss_J": 3.1763735522036263e-22
+    },
+    "rotation": {
+      "velocity_error": 3.122502256758253e-17,
+      "C_error": 1.0658141036401503e-14,
+      "F_error": 1.4399560103323106e-19,
+      "momentum_error": 1.2201979271665038e-19,
+      "angular_error": 4.6994997087165074e-23,
+      "transfer_loss_J": 1.0587911840678754e-22
+    },
+    "affine": {
+      "velocity_error": 3.8163916471489756e-17,
+      "C_error": 1.4453716001838757e-14,
+      "F_error": 1.3488999685024733e-19,
+      "momentum_error": 4.177169408824393e-20,
+      "angular_error": 3.814673488761712e-23,
+      "transfer_loss_J": 3.705769144237564e-22
+    },
+    "internal_energy_gradient_relative": 5.03148620364927e-10,
+    "external_adjoint": {
+      "momentum_error": 3.410553037019251e-23,
+      "angular_error": 8.819389392613438e-26
+    },
+    "support": {
+      "drift_m": 0.0,
+      "speed_m_s": 9.79272578012589e-16,
+      "momentum_error": 3.4576248549624334e-23,
+      "angular_error": 9.540517387653115e-26
+    },
+    "compatible_exchange": {
+      "momentum_error": 9.57968363341458e-23,
+      "angular_error": 4.725916853765829e-25,
+      "transfer_loss_J": 2.4367505459076816e-09
+    }
+  },
+  "wall_s": 0.14975256199977593,
+  "scope": "Independent CPU formulation and one-step algebra; no dynamic/contact qualification"
+}

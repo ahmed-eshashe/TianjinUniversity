@@ -1,0 +1,49 @@
+MOTOR-WORK INTERFACE FEASIBILITY — 2 November 2026
+
+Decision
+The finite review is complete. No qualified motor-work method is presently implementable using the inspected, installed Python measurement interfaces alone. This is a scoped interface finding, not proof that PhysX cannot measure work or that every private binary facility has been inspected. No new native test is justified with the same observations. No contact/work gate is closed. No physics, controller, time step or threshold was changed.
+
+What was inspected
+The exact installed110.3.2 tensor api.py and PhysX binding stubs; IsaacLab implicit actuator source; matching release-family110.3/PhysX5.9.1 CPU articulation and forward-dynamics source. interface_inventory.json records paths, SHA256, relevant method documentation and source lines. Public family source is not proof of exact installed binary identity.
+
+Available versus missing
+- get_dof_actuation_forces: explicit effort command channel; does not include a newly measured implicit-drive contribution.
+- get_dof_projected_joint_forces / get_link_incoming_joint_force: active-axis projection / total transmitted load. The earlier additive TGS correction remains useful, but does not isolate all mechanisms or supply within-step work.
+- get_dof_drive_model_properties / max forces / gains: drive parameters and limits, not applied drive impulse samples.
+- link/joint endpoint velocities and link accelerations: state samples, not an independent motor-only energy channel.
+- subscribe_physics_on_step_events: documented callbacks before/after a physics step, not a callback for each internal TGS constraint update. Rendering or Python callback frequency cannot recover unsampled internal updates.
+- Older eJOINT_SOLVER_FORCES: NVIDIA documents this cache output as deprecated and incorrect. It is not a defensible fallback.
+- IsaacLab implicit applied_effort: explicitly an approximation; substituting it does not solve the measurement problem.
+
+Why the simple reconstruction is insufficient
+Matching-family CPU source computes a driveDeltaF (impulse increment), updates jointV by driveDeltaF*constraint.response, and combines drive/friction/position-limit/velocity-limit impulses before applying the response to the articulation. The relevant intermediate velocity and individual impulse increments are not exposed by the inspected bindings. The source also distinguishes TGS temporal/velocity iterations and external-force-per-step handling. Final torque limits and PD formulas alone do not reconstruct this sequence.
+
+For an isolated frozen-inertia impulse update with generalized impulse p, the kinetic-energy increment is p dot (v_before+v_after)/2. For a scalar row with response r and impulse lambda it is lambda*v_before + r*lambda^2/2. These identities suggest the observation needed; summing arbitrary internal iterations is NOT automatically continuous motor work. A production ledger must reconcile solver corrections, changing configuration, deferred articulated responses, numerical work and every other mechanism. Neither a generic mean-torque times endpoint-velocity rule nor inverse-dynamics subtraction supplies that independent validation.
+
+Complete ledger specification required before qualification
+1. Explicit feedforward: actual applied impulse at its solver stage, including any limit/envelope handling, and corresponding velocity convention.
+2. Implicit drive: separately identified actual drive impulse/velocity increments or an independently proven discrete identity, preserving gain and saturation settings.
+3. Rigid-body and rotor kinetic energy: actual inertias, frames and state at matched clocks; armature included once.
+4. Gravity: declared work/potential convention consistent with state integration, without double counting gravity compensation.
+5. Body damping and joint friction: effective runtime properties, discrete application and separate work; do not substitute inferred defaults.
+6. Limits, contacts, supports and constraints: account for active mechanisms rather than calling all projected load motor torque.
+7. Target/contact: target elastic and kinetic changes, board/fixture work, accepted pressure work and contact-remap jumps, retaining existing independent checks.
+8. Numerical error: separately bounded discretization and floating-point/measurement errors, not a residual fitted into damping or motor work.
+
+Precision decision
+The old PGS knife-force1microN and moment0.1microNm limits remain unchanged. Historical robot-work budgets are of order10pJ in the small-contact fixtures. The corrected TGS held-out155pJ difference is a discrepancy between estimators on another fixture, not a universal instrument uncertainty or the future touch-test budget. Current within-step drive and effective damping terms do not have an independently justified finite total uncertainty budget. Therefore accuracy cannot yet be certified against the original requirements. Increasing contact depth to improve signal or selecting a passing work estimator is not authorized.
+
+Concrete routes and recommendation
+A. Preserve the existing implicit controller: add observation-only instrumentation to a compatible native solver backend. Record internal drive/external/dissipative impulses and the associated solver state, retain raw outputs, and reconcile its discrete ledger independently. This is the preferred route for preserving the verified robot behavior, but requires a compatible native build/integration path; a Python extension wrapping the same endpoint getters is insufficient. No compatible instrumented build or internal callback was established here, and no feasibility or completion-time promise is made.
+B. Use a separate explicitly effort-controlled robot version: commanded actuator effort becomes known, but this changes controller architecture and requires new stability/tracking and work-convergence validation. It does NOT automatically solve the remaining velocity/discretization/damping or force-precision requirements. It must not silently replace the verified implicit controller.
+
+Do not embark on either architecture change as a continuation of the endpoint-capture diagnostic. Present the choice to the user per roadmap sections9B/13. Recommendation: preserve the working controller and pursue routeA only if a compatible native instrumentation path is available; otherwise explicitly decide whether routeB is acceptable. No SDK replacement, downgrade, solver swap, weakened gate, contact experiment or long build was performed.
+
+If routeA is selected, its finite first deliverable is a compatible instrumentation build/path, not a contact test. Acceptance before production use: trace-enabled versus trace-disabled state/command equivalence, exact count/order/clock integrity, no dropped samples, known analytic impulse controls with independent energy accounting, then held-out coupled-articulation work at the unchanged budget. A source-only patch without a compatible loaded backend does not pass. Stop if no compatible integration path exists.
+
+Primary references
+https://nvidia-omniverse.github.io/PhysX/physx/5.6.0/docs/Articulations.html (drive force reporting and deprecated solver-force flag)
+https://nvidia-omniverse.github.io/PhysX/physx/5.6.0/_downloads/6acf3afb8f69452757e0e766b5a22978/implicitDrives.pdf (implicit drive and TGS formulation)
+https://github.com/NVIDIA-Omniverse/PhysX/blob/110.3-omni-and-physx-5.9.1/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp (drive impulse update around4303–4384)
+
+Result: review complete; production motor-work qualification unresolved due to a concrete observation/integration limitation. No repeated simulation, new force investigation or expanded material branch.

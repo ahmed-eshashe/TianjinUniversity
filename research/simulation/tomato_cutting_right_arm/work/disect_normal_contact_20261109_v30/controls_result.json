@@ -1,0 +1,41 @@
+{
+  "scope": "Independent normal-contact operator/velocity-step/benchmark controls only; no tomato contact or fracture pass",
+  "checks": {
+    "force_error_N": 0.0,
+    "hessian_error": 1.7763568394002505e-15,
+    "diagonal_error": 8.881784197001252e-16,
+    "energy_gradient_error_N": 1.7763568394002505e-15,
+    "trial_purity": true,
+    "fresh_reset": true,
+    "independent_dense_velocity_error_m_s": 3.469446951953614e-18,
+    "rigid_force_error_N": 1.4210854715202004e-14,
+    "wrench_error_Nm": 7.105427357601002e-15,
+    "no_adhesion": true
+  },
+  "stiffness_benchmark": [
+    {
+      "stiffness_N_per_m": 20000.0,
+      "penetration_m": 4.975124378109453e-06,
+      "force_N": 0.09950248756218906,
+      "constrained_force_N": 0.1,
+      "relative_force_error": 0.004975124378109458
+    },
+    {
+      "stiffness_N_per_m": 200000.0,
+      "penetration_m": 4.997501249375313e-07,
+      "force_N": 0.09995002498750626,
+      "constrained_force_N": 0.1,
+      "relative_force_error": 0.000499750124937498
+    },
+    {
+      "stiffness_N_per_m": 2000000.0,
+      "penetration_m": 4.9997500124993755e-08,
+      "force_N": 0.0999950002499875,
+      "constrained_force_N": 0.1,
+      "relative_force_error": 4.99975001250208e-05
+    }
+  ],
+  "selected_stiffness_N_per_m": 2000000.0,
+  "benchmark_converged": true,
+  "passed": true
+}

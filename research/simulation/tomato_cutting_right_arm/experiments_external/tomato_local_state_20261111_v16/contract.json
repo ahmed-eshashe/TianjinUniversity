@@ -1,0 +1,68 @@
+{
+  "created": "2026-11-11T14:20:17.752771+00:00",
+  "pilot_budget_s": 14400,
+  "per_case_wall_limit_s": 600,
+  "first_hour_goal": "intact mechanics and short cost screen",
+  "material": {
+    "E": 100000,
+    "nu": 0.4,
+    "rho": 1000,
+    "law": "compressible neo-Hookean, unchanged initially"
+  },
+  "spatial": {
+    "basis": "new trilinear reference-grid basis, not existing enriched spline mass matrix",
+    "integration": "2x2x2 Gauss material points per full cell; order3 independent quadrature check",
+    "grid_h_m": [
+      0.006,
+      0.003
+    ],
+    "local_mass": "positive row-sum mass of new un-enriched particle-integrated basis",
+    "state": "persistent nodal displacement/velocity; point position and F reconstructed from same nodal field; no recurring P2G/G2P velocity filter"
+  },
+  "precision": {
+    "CPU_reference": "float64",
+    "GPU_candidate": "float32, independently compared; no inheritance of v14 float64 equivalence"
+  },
+  "time": {
+    "integrator": "velocity Verlet, same discrete energy gradient",
+    "initial_dt_s": 1.25e-05,
+    "reference_dt_s": 6.25e-06,
+    "predeclared_candidates_s": [
+      2.5e-05,
+      1.25e-05,
+      6.25e-06
+    ],
+    "no_arbitrary_damping": true
+  },
+  "history": {
+    "maximum_cuts": 4,
+    "labels": "persistent ternary cut-side labels assigned by present finite blade motion",
+    "local_compatibility": "at each original grid node, compatibility-connected groups within each old group; only split, never merge",
+    "transfer": "clone parent nodal displacement/velocity for every child; repartition positive nodal mass exactly; x,F,U,T,momentum invariant"
+  },
+  "screens": {
+    "mass_relative": 1e-06,
+    "CPU_GPU_x_m": 1e-06,
+    "CPU_GPU_v_m_s": 0.0001,
+    "CPU_GPU_F": 0.0001,
+    "halfstep_x_m": 0.0001,
+    "halfstep_v_m_s": 0.005,
+    "force_work_relative": 0.05,
+    "energy_drift_relative": 0.05,
+    "angular_drift_relative": 0.01,
+    "untouched_fragment_response_ratio": 0.01,
+    "J_range": [
+      0.1,
+      10
+    ],
+    "force_stop_N": 2,
+    "whole_material_penetration_m": 0.0001
+  },
+  "cost_target": {
+    "control_Hz": 50,
+    "entry_aggregate_transitions_s": 100,
+    "preferred_aggregate_transitions_s": 500,
+    "material_only_pass_is_not_final_RL_pass": true
+  },
+  "stop": "No continued repair chain after substantive mechanics/topology/cost failure. Preserve one diagnosis. No physical tomato/robot rollout until applicable mechanics/contact/cost gates pass. No claim of paid fracture from geometry labels."
+}

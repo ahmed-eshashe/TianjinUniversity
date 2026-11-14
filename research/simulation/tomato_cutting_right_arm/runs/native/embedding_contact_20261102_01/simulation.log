@@ -1,0 +1,27 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793555678.078720  109678 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793555678.078750  109678 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T17:54:38Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.05 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.73 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.79 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1253.67 ms  (compiled)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.81 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.04 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_embedding_contact_worker.py", line 30, in main
+    if not np.isfinite(force).all() or mapping_error>1e-5+1e-6*scale or balance>2e-5+1e-6*scale or moment>2e-6+1e-6*moment_scale or power>1e-8+1e-6*abs(float(np.sum(force*random_velocity))):raise ValueError('Embedding contact force/moment/work mapping failed '+str(row))
+                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Embedding contact force/moment/work mapping failed {'margin_m': 0.0001, 'id': 'rotated_compression', 'net_left_force_x_n': -67.08376991064142, 'peak_nodal_force_n': 40.40685628268628, 'total_absolute_force_n': 148.7494409886944, 'force_balance_n': 0.0002826197972764385, 'moment_balance_nm': 1.7589611626183538e-05, 'mapping_force_error_n': 1.3629151141003604e-06, 'virtual_power_error_w': 1.4846678886293319e-09, 'vertex_triangle_candidates': 2806, 'edge_edge_candidates': 17084, 'minimum_physical_motion_bound_m': 3.6037723475601524e-05, 'maximum_proxy_recession_m': 0.0002400313677418005, 'local_filters': {'vertex_pairs': 16512, 'edge_pairs': 104384, 'cross_piece_excluded': 0}, 'setup_wall_s': 5.848882203998073}

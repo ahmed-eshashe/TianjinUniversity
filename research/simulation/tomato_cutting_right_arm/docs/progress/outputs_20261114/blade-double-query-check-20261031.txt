@@ -1,0 +1,24 @@
+Native double-precision closest-point check — 31 October 2026
+
+Result: the double-precision distance diagnostic resolved the measured point-query discrepancies on the unchanged authored blade. This is geometric query evidence only.
+
+All 562 previous reference points were queried against every one of the blade's 144 triangles (80,928 point/triangle evaluations per float64 batch). The kernel uses float64 authored vertices and query coordinates, region-based triangle closest points, and a full candidate scan. The independent reference uses plane/segment projection and separate winding sign. Physical geometry, topology and thickness were unchanged.
+
+Measured results:
+- Maximum surface distance: 1.10692e-12 m, reduced from 51.607 micrometres.
+- Maximum off-surface signed-distance disagreement: 5.10795e-17 m.
+- Maximum off-surface normal disagreement: 8.53774e-07 degrees.
+- Sign mismatches: 0, including zero thin-feature sign mismatches.
+- The previously erroneous face-92 surface query selected face 92 correctly. All five previously discrepant facet probes returned numerical-precision-level surface distances.
+
+Important scope: the sign is still supplied by the unchanged installed float32-mesh one-ray parity query. Distance magnitude and closest-point arithmetic are float64. This is not a complete double-precision collision method, and the measured numerical precision is not a claim of physical or sensor accuracy. Edge/vertex normal ambiguities, untested degenerate geometries and global sign robustness remain separate concerns.
+
+Two float32 comparison/parity batches and two float64 all-facet batches were executed, with zero physics calls. The raw generic query_batches field denotes two cold/warm calls per route; four geometry-query batches occurred overall. The current float32 comparison values exactly matched the original saved run, isolating the change to the new distance computation.
+
+Total protected process time: 1.578 s. Float64 first compile/query call: 0.344 s; warm 562-point all-facet call including synchronization: 0.688 ms. These tiny geometry timings do not establish simulation throughput.
+
+Memory reserves and three-minute watchdog remained active. Minimum available RAM 26.04 GB; minimum free VRAM 7.19 GiB. No warnings, monitor errors or live leftover owned processes. Nine guard tests passed. Exact reference identities, original float32 comparison outputs, source snapshots and historical source hashes were verified. No engine/library file or contact solver was modified.
+
+Next: check geometric edge/triangle-interior crossings and clear negative controls with the double-precision route. A later full-surface contact implementation still needs conservative candidate coverage, barycentric contact records, capacity/reset histories and force/work validation. No robot coupling, damage/fracture, cutting or training was validated.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_direct_double_20261031_01

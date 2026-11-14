@@ -1,0 +1,25 @@
+CPU PhysX unequal-inertia spin/coast accuracy check — 31 October 2026
+
+FAIL at the preset COM position accuracy gate. The intended 16-step test stopped after nine PhysX steps. General free-spin/gyroscopic accuracy is not qualified by this run. No tolerances were changed and no rerun was used to hide the failure.
+
+Three isolated 0.02 kg CPU PhysX bodies used synthetic unequal principal moments (0.0001, 0.0002, 0.00025) kg m². One had identity orientation/zero COM offset; the other two had the earlier 60-degree oblique orientation and local COM (0.002, -0.001, 0.0005) m. Gyroscopic forces were enabled for the first two and disabled for the third as a control. Each began with body-frame angular velocity (1,2,3) rad/s and world COM linear velocity (0.02,-0.01,0.03) m/s. Gravity, damping, collisions and force queues were disabled/empty. No input wrench was submitted on any step.
+
+The independent reference integrates continuous torque-free Euler equations and quaternion orientation with RK4 and 16 reference substeps per physical step. Host tests verify angular momentum/energy invariants, refinement, principal-axis spin and rotational covariance. CPU PhysX used dt=1/1200 s, TGS with 16 position iterations and zero velocity iterations. Numerical integration is allowed bounded error against the continuous solution; these newly declared sustained-spin gates are separate from the prior initially-resting impulse test.
+
+Preset gates, saved before launch: angular velocity error 0.0002 rad/s; rotation error 0.00002 rad; relative angular-momentum drift 0.0002; relative energy drift 0.0002; linear velocity drift 0.000002 m/s; COM position error 0.0000001 m. The disabled-gyro control was intended to distinguish the full trajectory by at least 0.001 rad/s after 16 steps. That final control gate was not reached.
+
+The identity body completed nine measured samples, the oblique gyro-enabled body nine, and the disabled-gyro control eight. At the ninth oblique-body sample, computed world COM position error was 1.041460411e-7 m (0.104146 micrometres), above the 1e-7 m limit. Linear COM velocity error was zero. Its angular velocity error was 6.68964e-5 rad/s, orientation error 1.20323e-5 rad, relative angular-momentum drift 1.70012e-5 and relative energy drift 5.34260e-6, all within their gates at that sample. These are partial results, not a 16-step pass. The disabled control already differed from continuous Euler angular velocity by about 0.0255 rad/s at sample eight; the complete control comparison is still unvalidated.
+
+Maximum errors in the available enabled-body samples:
+  angular_velocity_error_rad_s: 7.05118267e-05
+  rotation_error_rad: 1.2032338e-05
+  relative_angular_momentum_drift: 1.77819985e-05
+  relative_energy_drift: 9.66335195e-06
+  linear_velocity_error_m_s: 0
+  com_position_error_m: 1.04146041e-07
+
+All 26 available measured CPU state packets copied exactly into actual CUDA Newton State body arrays. Newton did not run a solver step and no Newton contacts were present: this was a PhysX free-spin/transfer accuracy diagnostic, not a contact-feedback test.
+
+Five focused independent-reference/guard-contract tests and nine supervisor tests passed. The native worker reported failure and exited with code 1; the supervisor correctly rejected it. It stopped in 5.09 seconds, retaining at least 22.32 GB available RAM and 7.60 GB free GPU memory. No resource warning/monitor error occurred and no owned live processes remained. Source snapshots/hashes and the failed partial data were saved. Original frozen production inputs and pinned installed dependencies remain unchanged.
+
+Next bounded step: compare smaller physical time steps over the same elapsed time, read the engine's direct world COM state alongside the reconstructed link-pose-plus-local-COM value, and investigate float32 position accumulation. These are hypotheses to test, not established explanations. Preserve the failed gate. No new accuracy tolerance should be adopted without an explicit error budget. Checklist item 15 is now an open issue; item 12 remains open. All earlier passed fixture-specific results remain valid within their stated scope.

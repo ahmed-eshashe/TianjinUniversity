@@ -1,0 +1,87 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.94 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.82 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.77 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.69 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.68 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.63 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.93 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.03 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.25 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.42 ms  (cached)
+{
+  "scope": "Component controls; not damage-enabled moving-contact or full-stroke qualification",
+  "whole_volume_negative_control": {
+    "passed": false,
+    "actual_violation": true,
+    "original_tet": 0,
+    "violating_point": [
+      -0.0005,
+      -0.0005,
+      -0.0005
+    ],
+    "minimum_sample_SDF_m": -0.0005,
+    "query_count": 1,
+    "depth": 0,
+    "wall_s": 0.24627729700023338
+  },
+  "whole_volume_positive_control": {
+    "passed": true,
+    "unresolved_cells": 0,
+    "depth": 0,
+    "query_count": 0,
+    "lower_bound_m": 0.0,
+    "minimum_sample_SDF_m": 0.0,
+    "wall_s": 4.8595999942335766e-05
+  },
+  "repeated_trial_history_pure": true,
+  "reset_clears_contact_and_fracture": true,
+  "coupled_final_quadrature": [
+    {
+      "run": "coarse",
+      "orders": [
+        512,
+        1024
+      ],
+      "force_quadrature_relative": 0.26545293152545485,
+      "passed": false
+    },
+    {
+      "run": "coarse",
+      "orders": [
+        1024,
+        2048
+      ],
+      "force_quadrature_relative": 0.1296110720537184,
+      "passed": false
+    },
+    {
+      "run": "fine",
+      "orders": [
+        512,
+        1024
+      ],
+      "force_quadrature_relative": 0.2654512632920108,
+      "passed": false
+    },
+    {
+      "run": "fine",
+      "orders": [
+        1024,
+        2048
+      ],
+      "force_quadrature_relative": 0.12960943760019722,
+      "passed": false
+    }
+  ],
+  "passed": false
+}

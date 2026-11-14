@@ -1,0 +1,15 @@
+Analytic force reference recheck — 31 October 2026
+
+PASS under the revised, explicitly separated reference policy.
+
+All six stationary analytic-box fixtures passed. Four positive contacts matched the independent binary32 arithmetic replay exactly; two clear fixtures generated no contacts. Geometry was checked separately using the existing 1e-7 m surface/penetration and 1e-6 normal-vector tolerances. Reconstructed reaction, moment and contact stiffness checks also passed.
+
+Maximum penetration discrepancy: 6.99e-9 m. Maximum rigid-point surface error: 1.16e-9 m. Normal and contact-Hessian errors were zero. The passing run took 3.75 seconds, retained 25.59 GB available RAM and 7.68 GB free GPU memory, and left no owned worker processes. Zero mechanical integration steps occurred.
+
+The diagnostic policy changed: geometry accuracy and exact force arithmetic are now independent checks. The old 1e-5 N geometry-to-native force comparison remains failed and is still reported as such. Its historical evidence was not changed. The native force evaluation kernel, physical parameters and original pinned project files are unchanged.
+
+Two bounded attempts were made this step. The first stopped on tuple/list representation in the reference reader; that compatibility issue was fixed and covered by a regression test. The second passed. All 25 focused reference, geometry and guard tests passed.
+
+Scope: stationary frictionless analytic boxes with axis-unit normals. The body reaction is reconstructed from the native force, not independently measured through body motion. This does not qualify the real blade, dynamic coupling or cutting.
+
+Checklist item 11 is complete. Next: resolve the real-blade full-surface contact path (item 12).

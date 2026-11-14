@@ -1,0 +1,116 @@
+V23 — FIRST PHYSICAL CONTACT INTEGRATION; QUALIFICATION REMAINS OPEN
+12 November 2026
+
+Outcome
+The v22 bulk runtime now has an isolated, state-driven blade-contact adapter.
+It applies the original saved CAD blade and the previously declared v02 normal
+potential/friction law to the same affine deformation used by material stress.
+The original material, contact/fracture parameters, force and penetration limits
+were not changed. The Isaac/DiSECt setup is unchanged; 2,108 protected files match.
+
+This is a 6 mm supported material cube, NOT a tomato. No fracture topology was
+enabled, no physical slice was made, and no complete RL environment was tested.
+The physical gate remains open because contact sampling has not converged under
+the retained 5% force criterion. The finer tests also demonstrate that this dense
+contact implementation is currently unsuitable for the intended RL throughput.
+
+What is verified
+59 selected operator/geometry/work-adapter checks pass. Actual CAD contact force,
+normal potential, resultant, moment and power mapping agree with independent
+references. The final 80-step loaded CPU/GPU comparison has maximum position
+error 0.211 nanometres, velocity error 2.95 micrometres/s and F error 8.81e-8.
+A deliberately excessive force rolls back mechanical state, clock, impulse and
+work. A new instance initializes independently. Unqualified cut surfaces are
+rejected rather than accepted by the intact-tet contact adapter.
+
+Closed affine material tetrahedra are bounded with signed distance, a covering
+radius, adaptive subdivision, motion allowance and a 2 micrometre query allowance.
+The bound covers the full declared volume and the piecewise-linear swept path;
+it is not a point-center clearance test. Deep penetration is rejected. Accepted
+press/hold/release cycles keep the 2 N and 0.1 mm stops. Early edge, near-miss,
+broad-face and tangential-slide cycles have finite, positive volumes and proper
+work/impulse balance; these are component controls, not fracture qualification.
+No board-contact or fragment-recontact qualification is inferred from fixed nodes.
+
+An independent loaded reference exposed contact-coordinate roundoff. The isolated
+correction retains the exact original CAD vertices, recomputes closest-triangle
+distance and normal in float64 after BVH candidate lookup, and uses a float64 tool
+clock. The bulk operator and material constants remain unchanged. Early failed
+comparison evidence is preserved. One early ledger test incorrectly expected a
+uniform nodal marker to yield despite tiny nodal inertia; the corrected test uses
+a defined center-of-mass marker and preserves the same physical law and limits.
+
+Existing work law, not a new cutting claim
+The preserved v02 ideal rate-independent cutting resistance uses Gc=80 J/m^2;
+this synthetic parameter and law are NOT the old DiSECt cohesive law. Its new
+adapter uses the exact reduced inverse inertia, rather than the old particle-mass
+shortcut. Stick/slip/reversal/ineligible controls close the kinetic/tool-work,
+fracture-work and identified numerical-loss ledger. Area previews do not commit
+history; unpaid and duplicate-area cases remain guarded. This is a standalone
+work-law component test. It is not coupled blade-driven physical separation.
+New cut surfaces, paid topology commits, recontact and loaded reset remain open.
+
+Refinement results
+Material: compressible neo-Hookean E=100 kPa, nu=0.4, rho=1000 kg/m^3.
+Fixture: 6 mm cube, 48 linear tetrahedra, 27 nodes, h=3 mm. Fixed bottom nodes.
+CAD: 74 vertices / 144 triangles, unchanged. One 13 ms shallow contact cycle.
+Normal contact K=1e9 N/m^3; friction coefficient 0.2; regularization speed 1 mm/s.
+Uniform surface quadrature spacing is an integration resolution, not mesh spacing.
+
+Temporal comparison at 125 micrometre surface spacing, dt=6.25 vs 3.125 us:
+- maximum shared-time force discrepancy 1.490%, passes 5%; impulse 0.574%;
+- tool work 0.217%; friction work 0.185%; position 0.0445 micrometres;
+- material-weighted velocity upper RMS discrepancy 0.155 mm/s, below 5 mm/s.
+This temporal pass does not establish spatial convergence or a physical cut.
+
+Spatial comparison at dt=3.125 us, spacing 62.5 vs 31.25 micrometres:
+- force discrepancy reaches 59.36% near release at 10.25 ms; limit is 5%;
+- force magnitudes there are about 0.1713 and 0.1075 mN. This is a small absolute
+  load, but it exceeds the pre-existing 0.1 mN denominator floor and cannot be
+  discarded or passed by changing the criterion after seeing the result;
+- position differs by 0.1646 micrometres; weighted velocity upper RMS by 0.503 mm/s;
+- impulse 0.157%, tool work 0.581%, friction work 0.325% all pass;
+- the largest absolute force difference anywhere in the cycle is 0.2405 mN.
+Only the force criterion fails in this final spatial comparison. No tolerance
+was relaxed. Still finer uniform sampling was not expanded into another long
+campaign: its measured cost grows rapidly and does not offer an RL solution.
+Material-mesh spatial convergence is a separate, still-uncompleted requirement.
+
+Performance and diagnosis
+Parallel force mapping and a staged deterministic force-stop reduction remove
+serial accumulation hotspots. An exact CAD bounding-box exclusion avoids distance
+queries where the force is provably zero. It does not replace the blade by its
+box or convex hull. A convexity audit finds the actual CAD is nonconvex; replacing
+it by its convex hull would change the shape and is not adopted.
+
+Matched 62.5 um / 3.125 us contact cycle, same positions/velocities/force histories:
+  before bounding-box exclusion: 22.517 wall seconds
+  after bounding-box exclusion:  11.084 wall seconds
+All compared trajectory/force differences are zero. This is about 2.03x faster.
+The final separately measured profile takes 10.535 wall seconds for 0.013 sim s:
+  GPU advancement and host observation: 9.142 s
+  conservative whole-volume certificate: 0.399 s
+  accepted state transfer:               0.0025 s
+  remaining observations, metrics, logging and control overhead: about 0.992 s
+Initial surface generation/GPU setup are outside this episode timer; initial graph
+capture is included. These are diagnostic contact costs, not full RL transitions.
+The ratio is about 810 wall seconds per simulated second for this one tiny coupon.
+The profile tracks 43.59 MB of device buffers; process peak RSS is 593,892 KiB.
+Neither figure includes a robot, kitchen or policy. General batched contact was
+not measured. The finest 31.25 um comparison uses 887,808 samples and takes 41.95 s.
+
+The previous v22 103-109 geometric transitions/s result is preserved and remains
+valid in its stated scope. It omitted physical contact/fracture/robot/policy and
+must not be described as full tomato or RL performance. This test is different in
+size, resolution, timestep and environment count; it is not an equal-model speed
+comparison with v22 or DiSECt.
+
+Next action
+Keep physical slicing and training gated. Replace globally dense surface sampling
+with local, error-controlled integration of contact on the actual CAD/material
+surfaces, then repeat these saved press/release comparisons and measure the full
+contact cost early. Preserve the existing law and all limits. Validate on the
+stored worst release states before launching another coupled trajectory. Only
+after that passes should paid fracture/new cut faces be added. See NEXT_STEPS.txt.
+
+No simulation remains running. Experimental validation remains pending.

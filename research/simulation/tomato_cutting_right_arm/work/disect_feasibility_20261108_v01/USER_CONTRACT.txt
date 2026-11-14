@@ -1,0 +1,93 @@
+Prepare and execute a bounded DiSECt feasibility study for our tomato-cutting project. The objective is to determine whether DiSECt can deliver reliable tomato separation substantially faster than our current solver. Do not adopt it merely because its example runs quickly.
+Read these first:
+- /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/REPORT.txt
+- /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/comparison.json
+- /home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/RESEARCH_ROADMAP_REVIEW_20261102.md
+1. Preserve the current work and define the trial
+Keep the original simulation paused at checkpoint 6,925. Preserve its checkpoints, evidence and source files. Work in a separate versioned experiment directory.
+Keep the robot, kitchen, natural handle grip, fixed attachment and existing motion interface. Experimental validation remains pending. Do not begin training or modify the production robot integration during the initial trial.
+Write down the test configurations and acceptance criteria before running comparisons. Distinguish:
+- Software compatibility.
+- Stable contact and deformation.
+- Actual material separation.
+- Runtime improvement.
+- Suitability for later learned motion.
+Passing one does not imply passing the others.
+2. Resolve DiSECt compatibility
+Use the existing isolated installation and recorded compatibility patches as the starting point.
+Investigate both known problems:
+- Cutting-mesh generation reports an error.
+- The process crashes during shutdown after producing results.
+Determine whether mesh generation produces invalid or incomplete cutting topology. Do not suppress the warning or count a partially generated mesh as valid without checking it. Diagnose the shutdown crash separately.
+Run the established example at least twice after repairs. Record versions, patches, exit status, mesh counts, finite-state checks and repeatability.
+Gate: proceed only when the example has a validated cutting mesh and exits normally. If solving this requires a substantial rewrite, report the blocker and options instead of expanding into unrelated diagnostic branches.
+3. Build the tomato comparison
+Use our existing research tomato geometry as the source. Create a separate DiSECt representation; preserve the original model.
+Match where feasible:
+- Tomato dimensions, volume and mass.
+- Blade geometry, orientation and thickness.
+- Cutting location, stroke speed and withdrawal direction.
+- Gravity, support arrangement and board geometry.
+- Material stiffness and other parameters that have a defensible mapping.
+Document what cannot be matched directly, especially skin structure, fracture law, damping, friction and contact treatment. Do not invent equivalent parameters or describe synthetic settings as experimentally calibrated.
+Record node, element and cutting-interface counts, mesh quality and timestep. Validate units and coordinate conventions before dynamics.
+If DiSECt cannot reproduce an important feature of our existing tomato model, identify the omission explicitly and explain what conclusions the comparison can still support.
+4. Establish unloaded stability
+Let the tomato settle on its support without blade contact.
+Check:
+- Finite positions and velocities.
+- Mesh inversion or degeneration.
+- Excessive drift, collapse or board penetration.
+- Mass and support consistency.
+Save the settled state for repeatable contact and cutting tests.
+Gate: do not proceed with an unstable initial scene.
+5. Run a short nonfracturing contact test
+Indent the tomato with the blade using a short prescribed motion, then unload it. Use a setup that genuinely prevents fracture for this test and document how.
+Measure blade displacement, deformation and reaction force. Verify how DiSECt computes force: distinguish net resultant force from a sum of contact-force magnitudes.
+Compare against a short saved segment of our current solver where the conditions are comparable. Use this to assess differences, not to claim that matching the current uncalibrated solver establishes physical accuracy.
+Gate: no nonfinite values, unexplained force spikes or unacceptable penetration. Explain material differences before attributing force differences to numerical error.
+6. Attempt one complete slice
+Use one prescribed cutting plane initially. Execute the cutting stroke, followed by horizontal withdrawal toward the robot body, preserving the intended blade orientation.
+Evaluate separation using the actual DiSECt topology and active material connections. Establish the correct connectivity criterion from its implementation.
+Success requires:
+- No remaining load-bearing material connection across the intended cut.
+- Two substantial pieces consistent with the intended slice, rather than isolated particles or tiny fragments.
+- Stable behaviour after the blade clears.
+- No artificial repositioning, hiding of connections or visual replacement to create apparent separation.
+Record fracture progression, force history, blade position, piece masses and post-withdrawal state. A visual gap or zero stiffness in most springs is insufficient by itself.
+Gate: if separation fails, identify whether the cause is mesh preparation, stroke coverage, contact, material failure or the separation assessment. Use evidence to choose one bounded corrective test at a time.
+7. Measure efficiency fairly
+Separate:
+- Mesh and cutting-interface preparation.
+- Compilation and initialization.
+- Material/contact stepping.
+- Output writing.
+- Rendering, if used.
+Report wall-clock seconds per simulated second, peak RAM and GPU memory, simulated duration and total elapsed time. Run headless for timing.
+Compare equivalent physical intervals where possible. Clearly label unmatched examples and model differences. Do not extrapolate a brief contact test into a full-cut speed claim.
+The previous approval for numerical changes—0.1 mm position agreement, 5% force agreement and identical separation—must not be presented as proof that two different physical models are equivalent.
+8. Test repeatability, resolution and limited variation
+After a successful baseline slice:
+- Repeat it to assess consistency.
+- Test one finer mesh to assess sensitivity of force, separation and runtime.
+- Test one changed tomato size, documenting how mass and mesh resolution change.
+- Test one changed cutting path.
+For path variation, distinguish a newly prepared cutting interface from a trajectory changed after interface preparation. Determine what deviations the method supports and what would require rebuilding the mesh.
+Explain the implications for imitation learning and small learned corrections. Do not claim unrestricted learned cutting paths from successful scripted cuts.
+9. Produce a recommendation before robot integration
+Deliver a concise comparison covering:
+Question	Required evidence
+Is DiSECt compatible with this laptop?	Clean repeated runs and documented fixes
+Is contact stable?	Force, deformation and penetration results
+Does a slice actually detach?	Connectivity and post-withdrawal checks
+Is it sufficiently faster?	Measured full-cut and initialization timings
+Are results resolution-sensitive?	Baseline versus finer mesh
+Can size and path change?	Explicit variation tests and limitations
+What remains unvalidated?	Material, force and experimental limitations
+
+
+Recommend one of: proceed to isolated robot integration, retain DiSECt only for a restricted use, or reject it for this project.
+10. Keep progress visible without overstating completion
+Update the existing learning checklist with verified results, current blockers and links to evidence. Distinguish “example passed,” “tomato cut passed” and “robot-integrated cut passed.”
+Work continuously through routine steps without requesting approval between them. Provide brief updates at meaningful milestones. Ask only when a decision changes the agreed model, scope or acceptance criteria.
+Do not resume the original slow run, start training, or launch a large parameter sweep. If a gate fails and a bounded repair does not resolve it, finish with the evidence and recommended next action.

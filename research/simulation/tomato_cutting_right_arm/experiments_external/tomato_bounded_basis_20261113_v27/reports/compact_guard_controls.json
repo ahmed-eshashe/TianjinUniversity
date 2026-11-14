@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "compact": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.216620007501255e-05,
+        "intersection_pairs": 2384,
+        "triangle_queries": 9820,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.018799733006744646,
+        "motion_bound_m": 0.0,
+        "conservative_grouping": {
+          "groups": 62,
+          "original_regions": 356,
+          "proof_tets": 370,
+          "original_tets": 3756
+        }
+      },
+      "compact_wall_s": 0.01886181699228473,
+      "case": "advance_6ms_checkpoint",
+      "reference": {
+        "passed": true,
+        "reason": "certified_affine_material_volume",
+        "bound_m": 9.999995238888616e-05,
+        "observed_m": 8.837460406624409e-05,
+        "queries": 875896,
+        "max_pending": 54988,
+        "depth": 23,
+        "motion_bound_m": 0.0
+      },
+      "candidate": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.216620007501255e-05,
+        "intersection_pairs": 35344,
+        "triangle_queries": 107870,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.25957236599060707,
+        "motion_bound_m": 0.0
+      },
+      "warm": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.216620007501255e-05,
+        "intersection_pairs": 35344,
+        "triangle_queries": 107870,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.24457023199647665,
+        "motion_bound_m": 0.0
+      },
+      "reference_wall_s": 0.384839947000728,
+      "warm_wall_s": 0.24457910099590663,
+      "agreement": true
+    },
+    {
+      "compact": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.41785164777996e-05,
+        "intersection_pairs": 2240,
+        "triangle_queries": 8978,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.018085730000166222,
+        "motion_bound_m": 0.0,
+        "conservative_grouping": {
+          "groups": 62,
+          "original_regions": 370,
+          "proof_tets": 358,
+          "original_tets": 3894
+        }
+      },
+      "compact_wall_s": 0.01829498799634166,
+      "case": "contact_limit_resolution",
+      "reference": {
+        "passed": true,
+        "reason": "certified_affine_material_volume",
+        "bound_m": 9.999998530301351e-05,
+        "observed_m": 9.030169194207883e-05,
+        "queries": 1038806,
+        "max_pending": 63434,
+        "depth": 24,
+        "motion_bound_m": 0.0
+      },
+      "candidate": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.41785164777996e-05,
+        "intersection_pairs": 36716,
+        "triangle_queries": 111938,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.25405647499428596,
+        "motion_bound_m": 0.0
+      },
+      "warm": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.41785164777996e-05,
+        "intersection_pairs": 36716,
+        "triangle_queries": 111938,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.2533916969987331,
+        "motion_bound_m": 0.0
+      },
+      "reference_wall_s": 0.4491647679969901,
+      "warm_wall_s": 0.2534000930027105,
+      "agreement": true
+    },
+    {
+      "case": "deep_penetration_negative_control",
+      "candidate": {
+        "passed": false,
+        "reason": "resolved_penetration",
+        "bound_m": null,
+        "intersection_pairs": 17,
+        "triangle_queries": 234,
+        "fallback_tets": 1,
+        "ill_conditioned_pairs": 0,
+        "fallback": {
+          "passed": false,
+          "reason": "resolved_penetration",
+          "observed_m": 0.0031375792257120013,
+          "queries": 1
+        },
+        "wall_s": 0.0005297000025166199,
+        "motion_bound_m": 0.0
+      },
+      "agreement": true
+    }
+  ],
+  "scope": "Whole-material original-CAD penetration proof, unchanged 0.1 mm limit and 2 micrometre allowance. Convex-distance bound with legacy fallback; no physics or material change."
+}

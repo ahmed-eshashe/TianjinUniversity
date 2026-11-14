@@ -1,0 +1,31 @@
+DiSECt section 3 recovery: convergence repaired; short coupled accuracy passes; speed unresolved
+
+Scope
+Separate v19/v20 candidates using the approved v18 mesh: 9394 nodes, 42523 tetrahedra, preserved 3450-point collision proxy, 47 original cohesive groups and their energy budgets. Original surface, mass, cut plane, material coefficients and support coordinates retained. Damage disabled. No blade, robot integration, cutting, training or experimental-validation claim.
+
+Resolved component problems
+1. The previous implicit stall near17ms was traced to Newton steps crossing the narrow board-friction stick interval. A friction-event step limit and contact-aware search curvature/preconditioning allow a fresh500us backward-Euler run to complete20ms. The original energy line search and force-residual acceptance are retained. Runtime120.015s; maximum accepted force residual7.695e-7N against1e-6N.
+2. The exact analytic bulk Hessian agrees with autograd at roundoff; contact search curvature approximations affect the search only, not the accepted physical force balance.
+3. Full-surface moving-frame cohesive forces now execute directly onGPU, including the frame derivatives. Independent original-autograd comparisons at rest, nonuniform deformation and rotation pass (~7.5e-15 maximum relative force error).
+4. Preserved closure forces now remain onGPU. Original proxy/filter/law retained; closure force agrees with the existing implementation to1.13e-13 relative. No topology or friction-law replacement.
+5. GPU IMEX at12.5us versus6.25us completes the fresh20ms unloaded coupled interval, with no sampled inversion, penetration or support drift. Position error0.000586mm, velocity0.921mm/s, internal-force difference0.1384%: all below unchanged0.1mm/5mm/s/5% limits. An independent12.5us repeat agrees to1.1e-12m/s and passes.
+
+What did not pass
+- Runtime:12.5us costs20.385s for20ms (~1019wallseconds/simsecond);6.25us costs32.441s (~1622). Both exceed120. Startup is excluded; saved sampling/output is included. No equal-accuracy speedup claim against the previous stalled or coarser implicit runs.
+- The25us comparison initially passed, but its independent repeat failed velocity (10.07mm/s). It is NOT accepted. The graph-PCG25us path also failed velocity comparison (6.40mm/s) and did not improve runtime materially. These failures remain saved.
+- BDF2 completed but failed velocity refinement (43.35mm/s). GPU GMRES implicit recovery was slower. Neither is adopted.
+
+Remaining section3 gate
+The short20ms scoped pass does not establish full assembled settling, live damage/separation, mounted-blade forces, or whole-section qualification. The intact-model1s settling and blade probe passes remain historical scoped evidence only. The speed gate is still failed. Section4 has not started.
+
+Recommended next implementation
+Work on the coupled solver execution/integration cost, using the passing12.5us/6.25us trajectories as a reference and the original residual/accuracy limits. Do not repeat full long holds or start cuts while speed is unqualified. A complete GPU coupled implicit update is the justified next candidate; batching only the inner CG was insufficient. Any candidate must pass repeatability as well as half-step comparison before adoption. This is an implementation recommendation, not a validated speed prediction.
+
+Evidence
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v19
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v20
+
+Preservation
+Original checkpoint step_006925.npz SHA256:
+dc6faaf7a834680a89014c86efe5ab056810e27c546baf9a56beb7706d044737 (verified unchanged).
+Robot, kitchen, grip and motion interface were not edited. Experimental validation remains pending. All bounded runs have finished; no simulation is running.

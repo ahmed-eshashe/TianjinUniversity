@@ -1,0 +1,27 @@
+Blade contact selection and writer design — 31 October 2026
+
+The isolated writer design is recorded, but the blade contact-selection policy remains unresolved. No native buffer was written and no forces or motion were run.
+
+Key finding
+The candidate sets contain nearly opposite outward normals: about 178.6 degrees apart in the soft-edge crossing fixture and 179.8 degrees in the blade-edge/interior fixture. A single deepest sample drops a distinct direction. Emitting every seed makes penalty force depend on sampling density. Neither is established as a physical contact manifold.
+
+Selection preview
+Every raw record is revalidated against its reference geometry. Raw saturation is refused before reduction. Only exactly identical events are reduced; spatially close points and different supports are not merged. One aligned-normal patch on one support can produce a diagnostic-only deepest representative. Mixed supports or conflicting normal branches are refused. This does not authorize any native write or establish resampling invariance.
+
+Both real-blade crossing cases were correctly refused by this restricted policy. The clear control stayed empty. In the large probe, 886 sampled records reduced to 688 exact unique events, still with conflicting normals. All seven focused policy tests passed, including duplicate/reorder behavior, raw capacity, mixed support, conflicting normals, bad reference provenance and input immutability.
+
+Installed solver findings
+Newton Contacts uses a unified active prefix containing seven fields: particle-only ID, padded corner IDs, barycentric weights, shape ID, body-local rigid point/velocity and world normal. SolverVBD supports this stream. Particle-only solvers must be excluded using the full-surface capability metadata. A collision pipeline attached to SolverVBD can regenerate contacts, so a custom diagnostic stream needs exclusive ownership and a detached pipeline.
+
+Contacts.clear resets counters and changes contact_generation, but can leave stale storage. It does not reset solver material, friction or history state. Kinematic bodies are omitted from dynamic-body adjacency; full-stream observation remains necessary.
+
+Future isolated writer sequence
+1. Verify source/run/state identity, mappings, raw capacity and accepted selection policy. Recheck geometry after float32 conversion.
+2. Allocate a fresh owned non-differentiable Contacts buffer and declare full-surface capability using the pinned private API in the isolated worker.
+3. Exclude concurrent producers/consumers. Clear and synchronize; keep count zero while writing all seven fields.
+4. Synchronize before publishing count last. Capture the active prefix and verify fields/count/generation before consumption. This is exclusive ownership, not a general atomic live-solver transaction.
+5. Keep count zero and invalidate the generation on failure. Discard/rebuild the isolated objects for initial reset tests.
+6. First test one explicitly single-normal fixture without forces or integration. Keep the current multi-normal blade fixtures refused until their manifold policy is validated.
+
+Next step
+Use a simple thin-slab reference to specify behavior for both contact directions and check sampling-density dependence. Then choose and validate a representative-contact rule before writing real-blade contacts. Checklist item 12 remains open. Original pinned files and installed libraries are unchanged.

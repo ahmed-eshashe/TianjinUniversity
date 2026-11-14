@@ -1,0 +1,160 @@
+{
+  "plan_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/ASTRA_HIGH_TOMATO_MODEL_EXECUTION_PLAN_20261110.md",
+  "plan_sha256": "5d7151e636ff84d0fdd446cefb4a509f658c49f39fb5237604737433566de94b",
+  "status": "blade_motion_geometric_topology_component_pass_physical_cut_pending",
+  "model": "Astra",
+  "reasoning": "high",
+  "new_candidate_adopted": false,
+  "experimental_validation": "pending",
+  "existing_solver_modified": false,
+  "initial_decision_budget_focused_hours": 8,
+  "gates": [
+    {
+      "id": 0,
+      "title": "Gate 0 Freeze the experiment and remove stale assumptions",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate0.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 1,
+      "title": "Gate 1 Establish trustworthy intact mechanics",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/intact_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09/qualification.json"
+      ],
+      "scope_note": "Historical intact mechanics preserved. v09 GPU matches v07 integrated block forces and short trajectories at primary/half timesteps; no arbitrary tomato/contact qualification."
+    },
+    {
+      "id": 2,
+      "title": "Gate 2 Prove persistent cuts on a small block",
+      "status": "blade_motion_geometric_topology_component_pass_full_gate_incomplete",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/persistent_cut_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate2_supplement.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_multicut_20261110_v07/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/qualification.json"
+      ],
+      "scope_note": "v10 finite CAD-edge motion selects persistent partial/full block cuts on the GPU; bridges and loaded opening pass. Geometry-only: non-affine maps, arbitrary directions, contact and irreversible failure remain unqualified."
+    },
+    {
+      "id": 3,
+      "title": "Gate 3 Establish cutting resistance and reliable contact",
+      "status": "pending_after_multicut_component_proof",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/contact_fracture_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/RECOVERY_PROPOSAL.md",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/mechanics_refined_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/conditioning_diagnosis.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_multicut_20261110_v07/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/REPORT.txt"
+      ],
+      "scope_note": "No new physical tomato cut. v10 diagnoses affine-map restriction and 3 mm support-release delay; full finite-CAD contact, fragment contact and fracture-work qualification pending."
+    },
+    {
+      "id": 4,
+      "title": "Gate 4 Build the reusable tomato and complete one slice",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 5,
+      "title": "Gate 5 Verify freedom to change the cutting technique",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 6,
+      "title": "Gate 6 Measure interactive and RL performance",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 7,
+      "title": "Gate 7 Connect the existing robot and verify resets",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 8,
+      "title": "Gate 8 Prepare a small learning demonstration",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "updated": "2026-11-11T01:44:54.347539+08:00",
+  "candidate_directory": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10",
+  "execution_status_path": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/status.json",
+  "simulation_running": false,
+  "runtime_qualification": "v10 short blade-motion block traversal: 21.245 wall seconds / 0.014 simulated seconds; not RL qualified. Prior paired GPU acceleration evidence retained.",
+  "next_action": "Prepare bounded continuous deformed-material intersection and local crack-front representation proposal; current affine mapper and 3 mm activation delay block physical knife contact.",
+  "repair_authorization": {
+    "decision": "Repair the isolated backend and revalidate",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/reports/approved_recovery_proposal.md",
+    "result": "implemented; revalidation failed; stopped"
+  },
+  "active_candidate_qualification": {
+    "version": "v10",
+    "gate0": "freeze_pass",
+    "gate1": "unchanged_v09_mechanics",
+    "gate2": "blade_motion_selected_geometric_topology_component_pass_full_gate_incomplete",
+    "gate3": "contact_and_paid_fracture_pending",
+    "arbitrary_tomato_shape_supported": false,
+    "physical_cut": false,
+    "rl_ready": false,
+    "passed_component_checks": 137,
+    "evidence": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/qualification.json",
+    "restriction": "Only affine-certified material maps; Reference-axis rectangular finite-edge sweeps; One unfinished incision per connected fragment; Maximum four started cuts; Geometry-only cut selection; no reaction/fracture-work law; Full-CAD withdrawal clearance is a fixed-state pose query; No tomato, board or robot integration; 3 mm first support activation not a 0.1 mm crack-front resolution proof"
+  },
+  "repair_authorization_v04": {
+    "decision": "User said ok do it after the proposed damping/timestep repair",
+    "result": "Intact mechanics reference/candidate passes; no production adoption"
+  },
+  "cut_basis_v05": {
+    "decision": "User requested pursue work after v04 next-step proposal",
+    "result": "Restricted unit proof completed; off-grid sampling is a demonstrated blocker; proposed integration revision not adopted"
+  },
+  "integration_v06_authorization": {
+    "decision": "Validate cut-aware integration",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/reports/approved_scope.txt",
+    "time_budget_s": 7200,
+    "result": "Approved bounded integration repair completed; restricted component pass; no production adoption"
+  },
+  "multicut_v07_scope": {
+    "decision": "User requested continue with the next steps",
+    "scope": "Sequential reference-axis partial/full cuts; preserved fragment state; no physical knife cut",
+    "result": "77 restricted component checks pass; no physical knife cut, GPU or RL qualification"
+  },
+  "gpu_comparison_v08_v09": {
+    "authorization": "User requested GPU speed and accuracy comparison with current setup unchanged",
+    "baseline_directory": "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v08",
+    "final_directory": "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09",
+    "result": "211 checks pass; full float64 physical/numerical contract unchanged; one profile-driven parallel force-sum optimization",
+    "paired_speedup_range": [
+      28.74794942686634,
+      53.3620835790227
+    ],
+    "production_adopted": false
+  },
+  "blade_motion_v10": {
+    "authorization": "Test cuts created by actual blade motion using GPU version; current setup unchanged",
+    "result": "137 component checks passed; no physical fracture or new tomato slice",
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/qualification.json",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/REPORT.txt",
+    "next_proposal": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/NEXT_STEPS.txt",
+    "production_adopted": false
+  }
+}

@@ -1,0 +1,15 @@
+Stationary blade/coupon check — 31 October 2026
+
+PASS for the isolated initial no-contact step only.
+
+The actual authored blade, collision SDF and 4-particle synthetic nonfracturing test block were constructed in Newton on the laptop GPU. One stationary step completed at 1/1200 second (0.833 ms simulated time). Reported contact count: 0, as expected for the prescribed initial clearance. Maximum particle displacement: 0 m. The contact observer compiled and ran, but no nonzero-contact force was tested.
+
+Total real elapsed time: 34.96 seconds, within the new 180-second allowance. The supervisor observed process exit code 0 and no remaining live owned process-group members. No memory warnings or monitoring errors occurred. Minimum available RAM: 25.71 GB. Minimum free VRAM: 7.19 GiB.
+
+The journal record/checkpoint link and saved source snapshot hashes were verified. This diagnostic checkpoint remains nonresumable. Earlier failed and timed-out attempts are preserved separately.
+
+Scope: isolated Newton CUDA initial state. This is separate from the previously tested empty CPU PhysX Isaac scene. No robot, supported PhysX/Newton bridge, positive-contact accuracy, fracture, cutting or training was validated.
+
+Next step: a short stationary sequence of up to 12 steps, plus native SDF distance/normal checks before moving-contact experiments. Full blade motion requires reviewed continuation; no timestep or trajectory was changed here.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_coupon_initial_20261031_03

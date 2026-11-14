@@ -1,0 +1,15 @@
+SECTION4 — PHYSICAL STOP BEFORE FRACTURE; MATERIAL SCOPE DECISION NEEDED
+10November2026
+
+Verified accepted loading through155.971875ms /49,911steps from the fresh target. No damage, no fracture dissipation, no separation. The next step at155.975ms would take one tetrahedron to volume ratio0.099997967101, below the unchanged0.1 stop. That step was rejected before fracture commit. Last accepted ratio0.100002509532. Whole-volume proof, solver residual and force balance passed; this was a local compression limit, not a force or performance stop. Sampled blade load1.113N versus2N stop; opening0.063316mm versus1mm onset. All six cutting milestones remain open.
+
+One equivalent batching candidate passed analytical, static saved-geometry, fresh/half-step and loaded-prefix checks. Static contact speedup4.14x/6.57x at two saved states; actual short loaded stepping/sampling1.62x, fresh probe1.20x. Do not generalize these to full-cut speed. Retained physics stepping/sampling wall5098.21s; loading campaign wall4784.82s includes initialization/reviews/checkpoints. No worker running.
+
+A1.2degree alignment idea was screened using clearly inadmissible frozen penetrated geometry fixtures and discarded for lack of convincing contact-direction improvement. No rotation was adopted or dynamically tested; no angle sweep. Accepted snapshot geometry shows substantial downward loading of the remainder with little lateral opening. That is descriptive evidence, not proof of a unique cause.
+
+The material parameter audit corrected an interpretation error: stabilized bulk coefficients12,000/12,000Pa correspond to effective E21kPa, nu1/6, not my earlier classical-Lame reading30kPa/0.25. Independent analytic and finite-difference tangent checks agree. No old forces or evidence changed.
+
+Prepared but NOT ADOPTED: one literature-inspired E0.4MPa/nu0.3 candidate from the2024 tomato-cutting paper. Keep original fracture laws/energy budgets, geometry/grip, mass/supports and all stops, then independently revalidate from fresh settling. No experimental calibration/validation claim; no promise of cutting. This changes the material constants frozen by Astra's plan, so a genuine scope decision is needed before implementation. Do not keep rerunning the same failing plunge or weaken fracture just to show a slice.
+
+Proposal: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bulk_material_proposal_20261110_v42/PROPOSAL.txt
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_batched_cutting_20261110_v40/final_campaign_review.json

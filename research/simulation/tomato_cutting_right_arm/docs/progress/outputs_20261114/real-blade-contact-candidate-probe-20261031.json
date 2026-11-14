@@ -1,0 +1,304 @@
+{
+  "result": "PASS: two all-vertices-outside blade crossing fixtures yield signed face-projection reference records; clear fixture yields none.",
+  "cases": [
+    {
+      "id": "wide:edge_through_authored_blade_face",
+      "expected_crossing": true,
+      "all_soft_vertices_outside": true,
+      "vertex_signed_distances_m": [
+        0.010000000000000002,
+        0.004955515270269685,
+        0.009999999999999998
+      ],
+      "witness_count": 4,
+      "seed_count": 11,
+      "accepted_count": 5,
+      "exclusions": {
+        "off_facet": 0,
+        "surface_ambiguous": 2,
+        "outside": 4,
+        "non_face_normal": 0
+      },
+      "deepest_sampled_candidate": {
+        "record": {
+          "id": "candidate:4",
+          "source_kind": "signed_surface_reference",
+          "normal_source": "outward_rigid_face_reference",
+          "step": 0,
+          "shape_id": 0,
+          "body_id": 0,
+          "feature": "face",
+          "corners": [
+            0,
+            1,
+            2
+          ],
+          "barycentric": [
+            0.37392417072378825,
+            0.6260758292762117,
+            0.0
+          ],
+          "rigid_triangle_id": 85,
+          "rigid_barycentric": [
+            0.33333341053158844,
+            0.33333323801276415,
+            0.3333333514556474
+          ],
+          "rigid_surface_body_m": [
+            -0.27755032205617325,
+            0.005342900302471309,
+            -0.001269940188213818
+          ],
+          "normal_world": [
+            -0.012389355427817819,
+            -0.0004185003843406951,
+            -0.9999231614126715
+          ],
+          "projected_signed_gap_m": -0.002520778204692276,
+          "rigid_surface_velocity_body_m_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "review": {
+          "id": "candidate:4",
+          "step": 0,
+          "shape_id": 0,
+          "body_id": 0,
+          "corners": [
+            0,
+            1,
+            2
+          ],
+          "weights": [
+            0.37392417072378825,
+            0.6260758292762117,
+            0.0
+          ],
+          "soft_point_world_m": [
+            -0.2775190912390406,
+            0.00534395524911881,
+            0.0012506443234422413
+          ],
+          "rigid_surface_body_m": [
+            -0.27755032205617325,
+            0.005342900302471294,
+            -0.0012699401882138178
+          ],
+          "rigid_surface_world_m": [
+            -0.27755032205617325,
+            0.005342900302471294,
+            -0.0012699401882138178
+          ],
+          "normal_world": [
+            -0.012389355427817819,
+            -0.0004185003843406951,
+            -0.9999231614126715
+          ],
+          "rigid_surface_velocity_body_m_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "projected_signed_gap_m": -0.0025207782046922757,
+          "maximum_particle_radius_m": 0.0,
+          "shape_margin_m": 0.0,
+          "reference_penetration_m": 0.0025207782046922757,
+          "reference_force_law_active": true,
+          "normal_and_penetration_physically_validated": false,
+          "solver_launch_enabled": false
+        },
+        "winding_number": 1.0000000000000004
+      },
+      "strict_soft_face_interior_sample_count": 3,
+      "strict_interior_count_scope": "All three weights > 1e-8 for reporting only; not a physical contact threshold.",
+      "deepest_strict_interior_sample_m": 0.0024912259996593277
+    },
+    {
+      "id": "wide:translated_clear_negative_control",
+      "expected_crossing": false,
+      "all_soft_vertices_outside": true,
+      "vertex_signed_distances_m": [
+        0.21050456467712678,
+        0.21059245785310265,
+        0.20056311498055346
+      ],
+      "witness_count": 0,
+      "seed_count": 4,
+      "accepted_count": 0,
+      "exclusions": {
+        "off_facet": 0,
+        "surface_ambiguous": 0,
+        "outside": 4,
+        "non_face_normal": 0
+      },
+      "deepest_sampled_candidate": null,
+      "strict_soft_face_interior_sample_count": 0,
+      "strict_interior_count_scope": "All three weights > 1e-8 for reporting only; not a physical contact threshold.",
+      "deepest_strict_interior_sample_m": null
+    },
+    {
+      "id": "authored_blade_edge_through_soft_interior",
+      "expected_crossing": true,
+      "all_soft_vertices_outside": true,
+      "vertex_signed_distances_m": [
+        0.38345564345973865,
+        0.39846527910804636,
+        0.200705620623443
+      ],
+      "witness_count": 48,
+      "seed_count": 968,
+      "accepted_count": 886,
+      "exclusions": {
+        "off_facet": 0,
+        "surface_ambiguous": 58,
+        "outside": 17,
+        "non_face_normal": 7
+      },
+      "deepest_sampled_candidate": {
+        "record": {
+          "id": "candidate:885",
+          "source_kind": "signed_surface_reference",
+          "normal_source": "outward_rigid_face_reference",
+          "step": 0,
+          "shape_id": 0,
+          "body_id": 0,
+          "feature": "face",
+          "corners": [
+            0,
+            1,
+            2
+          ],
+          "barycentric": [
+            0.3463690235352871,
+            0.0,
+            0.6536309764647129
+          ],
+          "rigid_triangle_id": 79,
+          "rigid_barycentric": [
+            0.27236219236527964,
+            0.36971632883049593,
+            0.3579214788042245
+          ],
+          "rigid_surface_body_m": [
+            -0.21111023778881194,
+            -0.0008001628002805473,
+            -0.0020958733965242547
+          ],
+          "normal_world": [
+            -0.012513355163921195,
+            2.7644323544395743e-07,
+            -0.9999217049061717
+          ],
+          "projected_signed_gap_m": -0.0033202715075635993,
+          "rigid_surface_velocity_body_m_s": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "review": {
+          "id": "candidate:885",
+          "step": 0,
+          "shape_id": 0,
+          "body_id": 0,
+          "corners": [
+            0,
+            1,
+            2
+          ],
+          "weights": [
+            0.3463690235352871,
+            0.0,
+            0.6536309764647129
+          ],
+          "soft_point_world_m": [
+            -0.21106869005219714,
+            -0.0008001637181471455,
+            0.0012241381500701243
+          ],
+          "rigid_surface_body_m": [
+            -0.21111023778881194,
+            -0.0008001628002805459,
+            -0.002095873396524255
+          ],
+          "rigid_surface_world_m": [
+            -0.21111023778881194,
+            -0.0008001628002805459,
+            -0.002095873396524255
+          ],
+          "normal_world": [
+            -0.012513355163921195,
+            2.7644323544395743e-07,
+            -0.9999217049061717
+          ],
+          "rigid_surface_velocity_body_m_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "projected_signed_gap_m": -0.0033202715075635997,
+          "maximum_particle_radius_m": 0.0,
+          "shape_margin_m": 0.0,
+          "reference_penetration_m": 0.0033202715075635997,
+          "reference_force_law_active": true,
+          "normal_and_penetration_physically_validated": false,
+          "solver_launch_enabled": false
+        },
+        "winding_number": 1.0000000000000002
+      },
+      "strict_soft_face_interior_sample_count": 885,
+      "strict_interior_count_scope": "All three weights > 1e-8 for reporting only; not a physical contact threshold.",
+      "deepest_strict_interior_sample_m": 0.003260405289824879
+    }
+  ],
+  "elapsed_wall_s": 6.066347042999951,
+  "mechanical_steps": 0,
+  "native_contact_writes": 0,
+  "force_evaluations": 0,
+  "focused_unit_tests_passed": 4,
+  "method": "All disclosed blade facets are scanned for noncoplanar surface intersections. Pairwise witness midpoints and centroid seed a bounded finite search. Seeds are checked by full authored-mesh winding sign, closest surface, barycentric support and existing record contract. No SDF is used.",
+  "limitations": [
+    "Finite heuristic seed search, not a complete collision backend, global SDF minimum or force manifold.",
+    "Coplanar intersections do not generate witnesses; exact/adaptive predicates, degeneracies and CCD remain unresolved.",
+    "Nearest-edge/vertex normals are rejected unless an unambiguous outward-face projection is demonstrated.",
+    "Sampled penetration is a local signed point-to-surface distance, not a minimum translation depth for an entire soft triangle.",
+    "No deduplication/manifold/force scaling policy, engine writer, runtime resets, coupling or motion qualification.",
+    "Identity frames and zero diagnostic radii/margins only; authored blade geometry unchanged."
+  ],
+  "next_step": "Read-only solver-integration design for an isolated complete-stream contact writer, including manifold policy and unsupported-case handling; do not emit all seeds as forces.",
+  "item_12_complete": false,
+  "original_pinned_sources_unchanged": true,
+  "summary": [
+    {
+      "id": "wide:edge_through_authored_blade_face",
+      "seed_count": 11,
+      "admissible_sample_count": 5,
+      "deepest_sampled_signed_penetration_m": 0.0025207782046922757,
+      "barycentric": [
+        0.37392417072378825,
+        0.6260758292762117,
+        0.0
+      ]
+    },
+    {
+      "id": "wide:translated_clear_negative_control",
+      "seed_count": 4,
+      "admissible_sample_count": 0,
+      "deepest_sampled_signed_penetration_m": null,
+      "barycentric": null
+    },
+    {
+      "id": "authored_blade_edge_through_soft_interior",
+      "seed_count": 968,
+      "admissible_sample_count": 886,
+      "deepest_sampled_signed_penetration_m": 0.0033202715075635997,
+      "barycentric": [
+        0.3463690235352871,
+        0.0,
+        0.6536309764647129
+      ]
+    }
+  ]
+}

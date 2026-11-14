@@ -1,0 +1,11 @@
+from pathlib import Path
+import sys,os,json,numpy as np
+W=Path(__file__).resolve().parents[1];sys.path.insert(0,str(W/'src'));os.environ['NUMBA_CACHE_DIR']=str(W/'cache/numba')
+z=np.load(W/'assets/blade_partition.npz');cells=z['x'][z['tets']];data=json.loads((W/'assets/blade_export.json').read_text());v=np.array(data['vertices']);v-=np.array([-.24,v[:,1].min(),.00125]);tri=v[np.array(data['triangles'])];p=cells[:,None,:,:];a=tri[None,:,None,0,:];b=tri[None,:,None,1,:];c=tri[None,:,None,2,:];e=b-a;f=c-a;r=p-a;aa=np.sum(e*e,axis=-1);ab=np.sum(e*f,axis=-1);bb=np.sum(f*f,axis=-1);den=aa*bb-ab*ab;u=(np.sum(r*e,axis=-1)*bb-np.sum(r*f,axis=-1)*ab)/den;w=(np.sum(r*f,axis=-1)*aa-np.sum(r*e,axis=-1)*ab)/den;q=a+u[...,None]*e+w[...,None]*f;distance=np.linalg.norm(p-q,axis=-1);distance[(u<0)|(w<0)|(u+w>1)]=np.inf
+for x,y in [(a,b),(b,c),(c,a)]:
+ edge=y-x;t=np.clip(np.sum((p-x)*edge,axis=-1)/np.sum(edge*edge,axis=-1),0,1);dd=np.linalg.norm(p-(x+t[...,None]*edge),axis=-1);distance=np.minimum(distance,dd)
+# Distance to one fixed triangle is convex. Its maximum over each tetrahedron
+# is bounded by the maximum over its four vertices. Choose the tightest such
+# original triangle; this gives a bound for distance to the whole CAD surface.
+upper=distance.max(2).min(1)+1e-11;cellmin=cells.min(1);cellmax=cells.max(1);tmin=tri.min(1);tmax=tri.max(1);gap=np.maximum(np.maximum(tmin[None]-cellmax[:,None],cellmin[:,None]-tmax[None]),0.);lower=np.linalg.norm(gap,axis=-1);candidates=lower<=upper[:,None];ptr=np.r_[0,np.cumsum(candidates.sum(1))].astype(np.int32);ids=np.concatenate([np.flatnonzero(row) for row in candidates]).astype(np.int32);np.savez(W/'assets/inside_candidates.npz',ptr=ptr,ids=ids,upper=upper)
+out=dict(cells=len(cells),original_faces=len(tri),minimum_candidates=int(candidates.sum(1).min()),mean_candidates=float(candidates.sum(1).mean()),maximum_candidates=int(candidates.sum(1).max()),proof='A fixed triangle convex-distance upper bound over each solid cell, with conservative AABB lower bounds. Applies only to points inside that verified exact solid cell; general CAD queries remain unchanged.');(W/'reports/inside_candidates_preparation.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))

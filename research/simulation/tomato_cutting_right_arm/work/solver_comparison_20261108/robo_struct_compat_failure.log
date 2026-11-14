@@ -1,0 +1,34 @@
+[Taichi] version 1.7.4, llvm 15.0.4, commit b4b956fd, linux, python 3.11.16
+[Taichi] Starting on arch=cuda
+===> Processing mesh(es) /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/raw/knife.obj and vis /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/raw/knife.obj.
+===> Processed mesh saved as /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/processed/knife-knife.obj.
+===> Computing sdf for /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/raw/knife.obj. This might take minutes...
+===> sdf saved as /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/assets/meshes/processed/knife-128.sdf.
+===>    42000 particles of     meat     cube added.
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/robo_benchmark.py", line 23, in <module>
+    t=time.perf_counter();env.step(a);ti.sync();stepwall.append(time.perf_counter()-t)
+                          ^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/taichi_env.py", line 156, in step
+    self.simulator.step(action=action)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 707, in step
+    self.step_(action)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 727, in step_
+    self.substep(self.cur_step_local, is_none_action)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 521, in substep
+    self.reset_grid_and_grad(f)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/lib/python3.11/site-packages/taichi/lang/kernel_impl.py", line 1178, in __call__
+    raise type(e)("\n" + str(e)) from None
+taichi.lang.exception.TaichiCompilationError: 
+File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 225, in reset_grid_and_grad:
+            self.grid[f, I].fill(0)
+            ^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/lib/python3.11/site-packages/taichi/lang/ast/ast_transformer_utils.py", line 27, in __call__
+    return method(ctx, node)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/lib/python3.11/site-packages/taichi/lang/ast/ast_transformer.py", line 1040, in build_Attribute
+    node.ptr = getattr(node.value.ptr, node.attr)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: '_IntermediateStruct39' object has no attribute 'fill'
+

@@ -1,0 +1,56 @@
+{
+  "created": "2026-11-10T21:34:45.518644+08:00",
+  "scope": "User requested pursue work: one isolated cut-basis/conditioning proof after v04, preserving production and evidence",
+  "budget_s": 7200,
+  "per_pilot_wall_s": 600,
+  "material": {
+    "E": 100000.0,
+    "nu": 0.4,
+    "rho": 1000,
+    "Gc": 80
+  },
+  "stops": {
+    "force_N": 2,
+    "whole_material_penetration_m": 0.0001,
+    "J_range": [
+      0.1,
+      10
+    ]
+  },
+  "discretization": {
+    "degree": 2,
+    "grid_h_m": 0.003,
+    "particle_spacing_m": 0.0015,
+    "particles": 512,
+    "dt_s": 3.90625e-07,
+    "reference_dt_s": 1.953125e-07
+  },
+  "candidate": "Nested local enrichment of v04 reference basis via exact knot insertion and localized displacement/gradient jumps. Consistent mass and velocity Verlet unchanged.",
+  "screens": {
+    "mass_relative": 1e-06,
+    "transfer_position_m": 1e-11,
+    "transfer_velocity_m_s": 1e-10,
+    "transfer_F": 1e-10,
+    "transfer_energy_relative": 1e-08,
+    "energy_floor_J": 1e-12,
+    "mass_condition_limit": 100000000.0,
+    "mass_rank_relative": 1e-12,
+    "gradient_consistency": 2e-05,
+    "independent_fragment_velocity_fraction": 0.01,
+    "refinement_position_m": 0.0001,
+    "refinement_velocity_m_s": 0.005,
+    "energy_balance_relative": 0.05,
+    "bridge_jump_ahead_m": 1e-11,
+    "cpu_dynamics_relative_floor_m_s": 1e-08
+  },
+  "fixtures": [
+    "untouched",
+    "finite partial incision and intact bridge",
+    "full prescribed cut",
+    "translate and rotate detached fragment",
+    "loaded state transfer/checkpoint",
+    "off-grid conditioning negative control"
+  ],
+  "claims": "Prescribed topology unit fixtures only. No paid fracture, physical slice or RL qualification. Only one plane initially, no claim of arbitrary paths.",
+  "stop": "Stop this representation study on substantive rank/energy/bridge/independence failure. Do not silently add mass, remove particles, soften material or change physical limits. Report unsupported cases explicitly."
+}

@@ -1,0 +1,33 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793539451.273443   53053 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793539451.273476   53053 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T13:24:11Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.02 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.73 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.66 ms  (cached)
+Module tomato_native_volume_steps e599ed7 load on device 'cuda:0' took 0.96 ms  (cached)
+Module tomato_native_full_gather 1896973 load on device 'cuda:0' took 1.00 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels fa8d30f load on device 'cuda:0' took 2.62 ms  (cached)
+Module tomato_native_group_cohesion 25a0579 load on device 'cuda:0' took 0.64 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_damage_worker.py", line 37, in main
+    old=solver.history.numpy().copy();solver.invalid.zero_();solver.volume_invalid.zero_();solver.step(sin,sout,None,None,DT);wp.synchronize();steps+=1;x=sout.particle_q.numpy();v=sout.particle_qd.numpy();expected=expected_history(x,old);gaps=x[pairs[:,1]]-x[pairs[:,0]]-rest;write(out,'precommit_geometry.json',dict(interval=i,min_normal_gap_m=float(min(gaps[:,0])),compressed_shearing_pairs=int(sum((gaps[:,0]<-1e-12)&(np.linalg.norm(gaps[:,1:],axis=1)>1e-12))),volume_trial_clips=int(solver.volume_clip_count.numpy()[0])));solver.commit_cohesion(sout);wp.synchronize();actual=solver.history.numpy();qerror=float(np.max(abs(actual[:,0]-expected[:,0])));derror=float(np.max(abs(actual[:,1]-expected[:,1])));e=energy(x,v,actual);gain=e['total_j']-initial_energy['total_j'];me=float(np.linalg.norm((mass[:,None]*v).sum(axis=0)-initial_momentum));ratios=np.linalg.det(x[data['cells'][:,1:]]-x[data['cells'][:,:1]])/(6*data['volumes'])
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_full_model.py", line 104, in commit_cohesion
+    super().commit_cohesion(state)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_group_cohesion.py", line 64, in commit_cohesion
+    if int(self.invalid.numpy()[0]):raise ValueError('Unsupported compression/shear trial; shared history not committed')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Unsupported compression/shear trial; shared history not committed

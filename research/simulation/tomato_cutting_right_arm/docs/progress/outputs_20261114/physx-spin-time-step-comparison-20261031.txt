@@ -1,0 +1,42 @@
+CPU PhysX spin time-step and COM readout comparison — 31 October 2026
+
+MEASUREMENT AUDIT COMPLETE. Original physical accuracy gate remains FAILED at every tested time step. A successful audit supervisor result only means all bounded finite measurements were collected; it does not mean physical qualification passed. The original fail-fast run and its limits remain unchanged.
+
+Three separate guarded runs compared dt=1/1200, 1/2400 and 1/4800 s over the same 0.0133333 s elapsed time, taking 16, 32 and 64 PhysX steps. Each retained the same three original free-spin fixture definitions, initial poses, COM offsets, velocities, unequal principal inertias and gyro settings. No forces were submitted. The same continuous Euler/RK4 reference and accuracy limits were used. All 112 controlled PhysX steps and 336 CUDA Newton body-state echoes completed. No Newton contact solve or mechanical step ran.
+
+COM API provenance: inspection of installed RigidObjectData.root_com_pose_w shows it calls get_root_com_pose_from_root_link_pose on the link pose plus body-local COM. It is therefore a float32 reconstructed COM, not independent telemetry from a hidden engine COM accumulator. The host path reconstructs COM in double precision from the same measured inputs with a normalized quaternion. Both paths were logged. Their small difference is insufficient to explain the coast drift.
+
+Maximum error for the oblique, offset-COM, gyro-enabled fixture:
+  dt             COM host (µm)   COM API (µm)   rotation (rad)   angular velocity (rad/s)
+  1/1200           0.182507       0.181185   2.13536461e-05           0.000120510591
+  1/2400           0.183289       0.181265   1.09003607e-05           8.84617387e-05
+  1/4800           0.216027       0.214324   5.16664465e-06           6.14378705e-05
+
+The gyro-enabled rotation error approximately halves with each time-step halving. Half/quarter-step rotation passes the original 2e-5 rad limit; the original-step full-duration run slightly exceeds it. Angular-velocity error, relative angular-momentum drift and relative energy drift remain within their original gates for the gyro-enabled fixtures. The disabled-gyro control is clearly distinguishable at all three resolutions. COM velocity remains unchanged, while COM position still exceeds 1e-7 m for offset fixtures. Smaller steps do not monotonically improve that position error; the gyro-disabled control at quarter step accumulates about 3.64 µm.
+
+Offline binary32 replay: the independently coded replay advances constant COM velocity with 16 position increments per physical step, explicitly rounding the substep duration, multiply and addition to binary32. It is seeded only with each fixture's initial COM API position and measured initial constant linear velocity. There is no fitted coefficient, step-dependent correction or tolerance change. A one-increment-per-frame model is retained as a contrast.
+
+Maximum API residuals against the 16-substep binary32 model:
+  1/1200 identity_gyro: 0 m (one-increment model: 6.48377236e-10 m)
+  1/1200 oblique_offset_gyro: 4.79992668e-10 m (one-increment model: 1.78904806e-07 m)
+  1/1200 oblique_offset_no_gyro_control: 4.79992668e-10 m (one-increment model: 2.38490718e-07 m)
+  1/2400 identity_gyro: 0 m (one-increment model: 2.38029481e-09 m)
+  1/2400 oblique_offset_gyro: 4.79992668e-10 m (one-increment model: 2.3864977e-07 m)
+  1/2400 oblique_offset_no_gyro_control: 4.69285165e-10 m (one-increment model: 2.38648031e-07 m)
+  1/4800 identity_gyro: 0 m (one-increment model: 5.20739021e-09 m)
+  1/4800 oblique_offset_gyro: 3.75428132e-09 m (one-increment model: 2.6656181e-07 m)
+  1/4800 oblique_offset_no_gyro_control: 4.79992668e-10 m (one-increment model: 3.81655958e-06 m)
+
+The identity-origin trajectory matches the 16-substep binary32 positions exactly at every frame. The offset/rotated cases agree within COM reconstruction rounding. This strongly attributes the translational discrepancy to accumulated finite-precision substep additions rather than the continuous rigid-body trajectory or a change in linear velocity. It is numerical evidence, not direct inspection of hidden PhysX state. No general error budget has yet been adopted.
+
+Original limits remain: COM position 1e-7 m, COM linear velocity 2e-6 m/s, continuous spin angular velocity 2e-4 rad/s, rotation 2e-5 rad, relative angular momentum/energy 2e-4. Per-sample violations are preserved rather than stopping collection early. Existing initially-resting impulse and isotropic-contact checks retain their original references and scope.
+
+Four focused audit-classification tests, four binary32-replay tests and nine supervisor tests passed. Controls preserve the historical COM failure and distinguish measurement completion from physical qualification. Native resource protection remained active for every run.
+
+1/1200: 5.31 s wall time, minimum RAM 21.92 GB, free GPU memory 7.67 GB; exit 0; no owned live processes.
+1/2400: 6.47 s wall time, minimum RAM 22.12 GB, free GPU memory 7.62 GB; exit 0; no owned live processes.
+1/4800: 8.42 s wall time, minimum RAM 21.99 GB, free GPU memory 7.65 GB; exit 0; no owned live processes.
+
+No memory warning or resource-monitor error occurred. Source snapshots/hashes include the COM getter and independent arithmetic model. Original frozen project inputs and previously pinned installed dependencies remain unchanged.
+
+Next bounded step: translate the same isolated fixtures nearer the origin and repeat the fixed-duration check, preserving local geometry/COM/inertia and original gates. This tests the prediction that smaller absolute coordinates reduce accumulation error before considering any error-budget change. Do not claim the general blade/robot pipeline is qualified; checklist items 12 and 15 remain open.

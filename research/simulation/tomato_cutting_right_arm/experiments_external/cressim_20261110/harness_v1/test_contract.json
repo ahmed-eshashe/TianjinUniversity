@@ -1,0 +1,13 @@
+{
+ "scope": "Isolated unmodified CRESSim engine feasibility, not tomato qualification",
+ "current_project": "No modifications or integration",
+ "stock": "Preserve supplied example physics and trajectory; remove visualizer; stop after 300 frames",
+ "small_block": {"nominal_dimensions_m":[0.06,0.06,0.06],"particles":8000,"spacing_m":0.003,"cell_m":0.006,"mass_kg":0.216,"gravity":0,"mls_E_Pa":100000,"mls_nu":0.4,"pb_relaxation":100,"pb_elasticity_ratio":0.9,"pb_iterations":20},
+ "material_comparison": "PB parameters are not calibrated to MLS. This is a throughput and mechanism comparison, not equal accuracy.",
+ "cut_test": "Sweep through x=0, withdraw fully, sweep through z=0, withdraw fully. Labels only analyze particles and are not supplied to engine. Compare unforced and single-quarter 0.01 m/s tangential pulse continuations.",
+ "independence_probe": "Two material halves with 1 mm nominal gap. Apply 0.01 m/s tangential velocity to one half. Compare held slicer, absent slicer, 24 mm nominal gap. No friction, gravity or tool motion during probe.",
+ "independence_screen": "Undriven half mean velocity below 1% of applied pulse when geometrically separated. A failure blocks adoption; passing is not full validation.",
+ "force_note": "Dynamic shape flag records grid momentum exchange. getShapeForce returns accumulated impulse in this code; divide by actual integration duration, label unvalidated contact reaction. No fracture energy law is added.",
+ "stability_screen": "Finite positions and velocities, preserved mass/count, inspect geometry and speed. No claim of convergence or experimental validation.",
+ "bounds": "600 wall seconds per test maximum; stop adoption on persistent-cut failure; do not patch engine to repair fracture within this study"
+}

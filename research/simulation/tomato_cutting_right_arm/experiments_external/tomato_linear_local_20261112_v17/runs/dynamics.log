@@ -1,0 +1,18 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/cache/warp/1.17.0
+Module linear_gpu 3fcd6bf load on device 'cuda:0' took 0.78 ms  (cached)
+{'name': 'intact', 'dt_s': 2.5e-05, 'half_dt_s': 1.25e-05, 'stability_dt_s': 0.00026445528714949404, 'duration_s': 0.02, 'energy_residual_max': 0.0037207257474658755, 'half_energy_residual_max': 0.0009320172323361237, 'field_difference': {'x': 1.1195053243104478e-06, 'v': 0.01057945763402345, 'F': 0.00048826187549669286, 'force_max': 0.006389773867542573}, 'force_rms_difference_N': 0.0018630511693603876, 'force_rms_reference_N': 0.03180375194182786, 'force_relative': 0.05857960321059253, 'wall_s': 0.0569647490119678, 'regions': 48, 'nodes': 27}
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/tests/dynamics.py", line 25, in <module>
+    check(name+'_energy',max(ea,ec)<=.05,row);check(name+'_position',diffs['x']<=1e-4,row);check(name+'_velocity',diffs['v']<=.005,row);check(name+'_force',force_abs<=max(1e-5,.05*force_ref),row);a.save(W/'states'/f'{name}_dynamic_final.npz')
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/tests/dynamics.py", line 9, in check
+    if not v:raise AssertionError((k,d))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('intact_velocity', {'name': 'intact', 'dt_s': 2.5e-05, 'half_dt_s': 1.25e-05, 'stability_dt_s': 0.00026445528714949404, 'duration_s': 0.02, 'energy_residual_max': 0.0037207257474658755, 'half_energy_residual_max': 0.0009320172323361237, 'field_difference': {'x': 1.1195053243104478e-06, 'v': 0.01057945763402345, 'F': 0.00048826187549669286, 'force_max': 0.006389773867542573}, 'force_rms_difference_N': 0.0018630511693603876, 'force_rms_reference_N': 0.03180375194182786, 'force_relative': 0.05857960321059253, 'wall_s': 0.0569647490119678, 'regions': 48, 'nodes': 27})
+failed

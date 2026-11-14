@@ -1,0 +1,13 @@
+PROPOSED NEXT SCOPE — COST-FIRST, SAME MATERIAL MODEL
+
+Do not launch a long cut, robot integration or RL training from this result. The current ~100 material-only equivalents/s does not meet the complete-environment requirement.
+
+A focused successor can retain the accepted selective representation and approved norm, then profile the GPU material path once to identify a concrete remaining bandwidth/launch or assembly bottleneck. Target at least 200 material equivalents/s (eight bodies advanced 20 ms in <=40 ms wall time), leaving measured room for changing cuts/contact. This is a planning target, not a promised result. Validate any equivalent implementation change against the frozen v19 fields and energy before timing.
+
+The separate major cost is global CPU geometry reconstruction. A local update should touch only blade-intersected tetrahedra and affected neighboring history/mass blocks; preserve all untouched state, all material volume, cut history and exact reduced inertia. Do not approximate by removing material or treating unsupported small fragments as frozen. Compare incremental and full-rebuild outputs before claiming an improvement. This is future implementation work, not completed by v19.
+
+First measure a complete material-plus-geometry-changing loop on the small block, including uploads, graph rebuilding, observations and resets. Retest history, partial bridges, independent fragments, root connectivity and unresolved small-region timesteps. Count all costs, including new-cut events, in the reported throughput.
+
+If those costs cannot leave credible room above 100 aggregate actual environment transitions/s, stop this route for online RL and report the limitation. Offline demonstrations or a separately validated surrogate would be different scopes; neither is silently adopted here. If the cost gate passes, proceed to the separately gated physical blade contact and paid-fracture tests, preserving 2 N and 0.1 mm limits. A geometric split is not a physical cut.
+
+No current Isaac/DiSECt setup changes, no new material approximation, no further accuracy relaxation, no new engine, and no model training have been implemented in this proposed next scope.

@@ -1,0 +1,51 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_event_front_20261111_v14/cache/warp/1.17.0
+{
+  "status": "pass",
+  "checks": {
+    "identical_knots_primary_half_dt": true,
+    "half_dt_frame1_topology": true,
+    "half_dt_frame1_position": true,
+    "half_dt_frame1_velocity": true,
+    "half_dt_frame1_energy": true,
+    "half_dt_frame1_activation_count": true,
+    "half_dt_frame2_topology": true,
+    "half_dt_frame2_position": true,
+    "half_dt_frame2_velocity": true,
+    "half_dt_frame2_energy": true,
+    "half_dt_frame2_activation_count": true
+  },
+  "results": {
+    "half_dt": {
+      "frame1": {
+        "q": 5.685153195982929e-10,
+        "vg": 0.001025218715304597,
+        "energy_difference_relative": 1.4464388509763343e-07,
+        "coverage_area_delta_m2": 1.3255365034050006e-12,
+        "activation_times_delta_s": [],
+        "activation_count": [
+          0,
+          0
+        ]
+      },
+      "frame2": {
+        "q": 1.2355539421289475e-09,
+        "vg": 0.002184410139337216,
+        "energy_difference_relative": 1.40846828929229e-07,
+        "coverage_area_delta_m2": 3.669137077533821e-12,
+        "activation_times_delta_s": [
+          1.9073486328080548e-10
+        ],
+        "activation_count": [
+          1,
+          1
+        ]
+      }
+    }
+  }
+}

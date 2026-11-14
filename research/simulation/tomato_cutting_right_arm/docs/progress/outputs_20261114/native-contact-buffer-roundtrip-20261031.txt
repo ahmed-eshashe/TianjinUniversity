@@ -1,0 +1,19 @@
+Native contact-buffer round-trip — 31 October 2026
+
+PASS for private synthetic buffer storage/capture only. One protected native process allocated actual Newton Contacts storage on the laptop GPU (soft capacity 8), wrote particle/edge/face reference records, and captured the active stream. No collision pipeline, force law, solver, robot or physics step ran.
+
+Five raw records were stored: four for the synthetic target-body mapping (including an intentional exact duplicate) and one foreign-body record. All seven contact fields returned exactly the float32/int32 preview values. The full-stream collector returned four target records after checking all five global records, independently of an empty dynamic-adjacency preview. This does not validate a running solver's blade reaction path.
+
+The worker deliberately placed invalid indices in an inactive tail slot; count-limited capture ignored it. Fast Contacts.clear() advanced the contact generation and reset the active count while leaving stored indices unchanged. A subsequent capture returned zero active records despite stale storage. This tests contact-counter clearing only, not complete physical history reset.
+
+Four native/snapshot refusal controls passed: saturated native count, saturated target collector, old native generation after clear, and old episode snapshot after clear. Five capture consistency tests and nine guard tests also passed; tests include changed count/generation during transfer and truncated fields.
+
+An owned GPU transform array supplied the target pose, replacing a solely host-reference pose for this fixture. Contact counts and generation were checked before and after capture. Exclusive worker ownership prevented concurrent writers. This is not an atomic live-solver snapshot: same-count in-place writes would not be detected by these checks, and no IPC or shared solver capture was attempted.
+
+Total protected runtime 2.464 s; zero mechanical steps and zero force evaluations. Minimum available RAM 25.83 GB, minimum free VRAM 7.28 GiB. No memory warnings, monitor failures or leftover live owned processes. The three-minute watchdog, reserve thresholds and both locks remained in force. Saved source/fixture hashes and historical production source hashes were verified.
+
+No production writer or force route was enabled. Only private synthetic diagnostic buffers were populated. Float32 round-trip integrity is not a physical accuracy pass for normals, penetration or reactions. Existing SDF/contact-route problems, fracture, robot coupling, cutting and learning remain separate gates.
+
+Next: collect collision-generated contacts from a separately disclosed simple analytic nonfracturing fixture, and independently compare record locations, barycentric weights, normals and mappings before any force-producing solve.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/contact_buffer_roundtrip_20261031_01

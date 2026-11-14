@@ -1,0 +1,198 @@
+SECTION 3 COMPLETION ATTEMPT — 8 NOVEMBER 2026
+Verdict: 4/5 checklist checks verified. Section 3 is NOT fully qualified;
+section 4 remains blocked. No cutting or training was attempted.
+
+Resolved
+1. Intact original-CAD contact accuracy: half/quarter original timestep
+   comparison passes unchanged limits. Force 4.5877%, moment 4.6570%,
+   position 1.23 nm. Both probes load and unload. This is prescribed intact
+   contact, not mounted-robot cutting or contact on the new split assembly.
+2. Original 47-patch transfer: virtual work, rotation, net force/torque,
+   tangent, irreversible history and component reset controls pass.
+3. Coverage defect found by negative control: 303 of 604 cut-face vertices
+   had zero nonzero-weight participation in the original mapped quadrature.
+   Opening one of these vertices by 10 micrometres changed cohesive force
+   and energy by exactly zero. Bulk resistance was not part of that test.
+4. User-approved full-surface sampling implemented separately: 3426 positive
+   points over 1142 cut triangles; 47 original laws, stiffness budgets and
+   total fracture budget 0.11696391110288158 J retained. Local distribution
+   changes as explicitly approved. All 604 interface vertices are covered.
+   Uniform energy agrees to 1.42e-15 relative. Nonuniform 3-to-12-point
+   quadrature comparison: force 3.3301%, energy 0.01328%. Rotation,
+   force-energy, failure/no-healing/reset and released-frame controls pass.
+5. Existing research closure method transferred to the new geometry:
+   prescribed rest/open cases exert zero force; closure/reclosure repels,
+   with balanced reactions. These are component fixtures, not cut trials.
+6. Applied-nodal-blade-force eligibility adapter implemented and tested with
+   prescribed inputs. No contact means no enabled patch; localized contact
+   enables only an incident patch; rejected trials do not commit damage.
+   It has NOT been validated in a real coupled blade/fracture run.
+
+Assembled evidence
+Full-surface cohesion + existing closure + corrected FEM + ground friction
+completed 100 ms at dt=7.462686567e-6 s. Saved arrays are finite, minimum
+sampled volume ratio 0.58853, no sampled board penetration or support drift.
+Final maximum speed 81.67 mm/s: this is NOT a settled target. A full one-second
+hold and refined comparison have not passed for this assembly.
+Runtime: 223.39 wall seconds / 0.1 simulated seconds = 2233.9 wall s/s,
+versus the frozen development ceiling of 120. The intact refined CAD probe
+cost 5405 wall s/s. Neither is a qualified fast cutting engine.
+
+Rejected numerical candidates
+- 200 microsecond original solver: linear convergence failure.
+- Exact constant-viscosity preconditioner: independent same-step control
+  agrees within 5.7e-17 m and 2.9e-13 m/s, with 120 -> 16 iterations on
+  the fixture. Nonetheless, larger coupled steps fail, and its small-step
+  implementation is slower. It is NOT adopted.
+- 100 microsecond coupled candidate: physical stop. Not adopted.
+- 100 ms factored small-step run stopped for performance after a saved
+  admissible early sample; not a physical pass/failure. Replaced by the
+  completed reference-backend 100 ms diagnostic above.
+- One coupled implicit numerical trial at 0.5 ms: bulk potential derivative
+  matches corrected CUDA force within 1.74e-16 N, but the first trial step
+  fails nonlinear force residual: 3.382e-4 N versus 1e-6 N. Not adopted;
+  no successful implicit trajectory or speed claim.
+
+Remaining work / gate
+The full-surface material candidate is implemented, but coupled integration
+still requires a successful method. The next work is a properly converged
+coupled implicit solve/preconditioner covering interface and closure forces,
+with independent tangent/force-balance controls and a short unchanged-limit
+reference comparison. Do not infer success from the rejected L-BFGS trial.
+A candidate must pass that comparison AND the runtime gate before committing
+to costly full settling/refinement and the new assembly's blade-contact test.
+Only then can section 4's shallow controlled cut begin.
+
+Preservation
+Original production checkpoint 6925, robot, kitchen, grip and motion interface
+were not changed. No original v06 evidence was overwritten. Experimental
+validation remains pending. No claim of a full slice or engine adoption.
+The new candidate and all failed trials are in this v07 directory.
+
+
+SECTION 3 COUPLED SOLVER FOLLOW-UP — 8 November 2026
+
+No material laws, fracture budgets, geometry, supports or accuracy gates were changed. Prior evidence preserved in v07. No cutting or training ran.
+
+1. Extending L-BFGS to 1250 evaluations reduced first-step force residual to 3.18587e-6 N but failed the unchanged 1e-6 N gate; 29.18 seconds for an unaccepted 0.5 ms step. Iteration increases alone are not a viable speed repair.
+2. Independent closure directional energy-gradient control at 10 micrometres compression agreed to 4.75e-10 relative at the largest tested difference increment; two smaller increments also agreed within 8.22e-7. This is a scoped directional control, not a full Hessian qualification.
+3. Lagged damping operator symmetry agreed to 5.52e-16 relative and tested quadratic form was positive (0.20774). This is not a proof of all configurations.
+4. A Newton correction with exact automatic differentiation of bulk/cohesive energy and explicit damping action passed one isolated first step: residual 1.33988e-8 N, 229 linear operator evaluations, 8.06 seconds total. Closure was inactive during that correction. This does not meet throughput requirements or qualify coupled contact.
+5. Fresh continuation attempt activated closure in its first trial and stopped before accepting any step. The guard correctly rejected using an incomplete Hessian. Results differ between independent optimizer runs; first-step success is not repeatable qualification. No 20 ms accepted trajectory was obtained.
+
+NEXT REQUIRED IMPLEMENTATION
+Implement the active closure force derivative (including embedding, cross-node coupling and mollifier derivatives), validate its Hessian action independently, then include it in the Newton system with a suitable preconditioner. The custom autograd closure backward currently returns a saved gradient; differentiating it again does not provide this Hessian. Do not silently omit active contact stiffness or relax tolerances. Only after a converged short coupled run should time refinement, force comparison and runtime be assessed.
+
+Section 3 remains 4/5; total 15/35. Section 4 remains blocked. No simulation remains running. Experimental validation pending.
+
+
+COUPLED CONTACT FOLLOW-UP v09 — 8 November 2026
+
+Implemented a numerical Hessian action from central differences of the complete existing closure force. This includes geometry, embedding and mollifier changes. It is an approximate derivative, not an analytic Hessian. Material laws and final acceptance gates unchanged.
+
+Compressed-fixture checks passed: coarse perturbation refinement error <=0.0141%; fine perturbation refinement <=3.56e-7 relative; fine bilinear symmetry error 7.86e-9. These scoped checks do not qualify every active-set transition.
+
+Conjugate-gradient trial failed. GMRES with an inexact inner solve and unchanged final nonlinear residual gate completed a separate 1ms trial. A bounded 5ms continuation accepted six 0.5ms steps (3ms total) then failed the seventh linear solve, before committing that step. Accepted-step residuals <=8.52e-7 N against 1e-6 N gate. The result-level max residual also includes a rejected trial; inspect accepted rows for accepted residuals.
+
+At matched 1, 2 and 3ms snapshots: maximum position difference <=0.00725mm, maximum velocity difference <=0.001823m/s; internal-force relative L2 differences 4.6964%, 3.1416%, 2.9008%. This is a short snapshot comparison, not full trajectory, settling, separation or cutting qualification. No damage enabled.
+
+Elapsed solver-loop time 48.25s including the rejected step for 0.003s accepted simulation. Speed requirement not passed; this numerical derivative is a diagnostic bridge, not a production acceleration. Stable v07 reference remains intact.
+
+Next: robust contact-aware preconditioning/linear solve, preferably assembled local analytic or automatic-differentiation contact blocks, validated against this complete-force derivative. Do not extend long runs or loosen force tolerance to mask linear-solve failure. Section3 remains4/5, section4 blocked, total15/35. No simulation running.
+
+
+COUPLED SOLVER v10 — 8 November 2026
+
+Added a sparse factored deviatoric FEM preconditioner in Newton coordinates; evaluated material/contact laws unchanged. Strict inner-solve trial reached 4ms then failed step9. Inexact-Newton variant independently checks true linear residual <=0.1 and descent before line search; final accepted nonlinear force balance remains <=1e-6 N. This is an inner iteration strategy, not a relaxed physical acceptance criterion.
+
+The inexact candidate completed 10 steps / 5ms in42.053s. Removing the preliminary L-BFGS optimization completed the same 5ms in9.312s (4.52x faster than that candidate, not a claim against production solver). Direct variant maximum accepted force residual6.8544e-7 N. Both completed finite geometry/support/board checks coded in the probe.
+
+Direct candidate vs small-step v07 reference at1ms-spaced snapshots: maximum position error0.012107mm, velocity0.0023245m/s, force-vector relative L2 <=4.6964%. These satisfy the short sampled comparison limits; not a full settling/refinement or cutting qualification. Damage disabled, no separation claim. Run timing excludes environment startup and preconditioner assembly. Effective solver-loop cost~1862wall seconds per simulated second remains above120 requirement. No production engine switched.
+
+Next gate: extend this candidate to the existing20ms reference window, check all matched samples and time refinement. If that passes, profile and improve dominant contact/Hessian work before long settling. Section3 stays4/5 and total15/35; section4 blocked. Experimental validation pending. No simulation running.
+
+
+20ms EXTENSION TEST v11 — 8 November 2026
+
+Unchanged v10 direct-Newton candidate extended from10 to40 requested steps. No laws, tolerances, geometry or numerical coefficients changed. Stopped on step13: true inner linear residual0.187604 exceeds0.1 direction gate. Rejected step not committed.
+
+Accepted12 steps /6ms of20ms target. Accepted maximum nonlinear residual8.061e-7N (<1e-6N). Last accepted minimum volume ratio0.971137; maximum speed0.058904m/s (not settled). Solver-loop elapsed66.804s including rejected step; last accepted sample44.413s. Result top-level residual includes rejected trial and is not an accepted-state residual.
+
+Matched1ms reference snapshots through6ms: maximum position difference0.014560mm, velocity0.002521m/s, internal force-vector relative L2 <=4.6964%. These scoped comparisons pass but20ms completion fails. No refinement/settling qualification, no speed pass, no cutting or training.
+
+Finding: startup convergence improvement does not persist through developing contact. A contact-aware stiffness/preconditioner treatment remains required; repeating this same long attempt or relaxing limits is not justified. Preserve this failed boundary as a regression case for analytic/local contact-block work, then retry a short saved interval around6ms before another full window.
+
+Section3 remains4/5; total15/35. Section4 blocked. Experimental validation pending. No simulation running.
+
+
+SAVED-STATE CONTACT PRECONDITIONER TEST v12 — 8 November 2026
+
+Resumed exact saved positions/velocities at6ms from v11. Damage remains disabled; history transfer is not qualified by this test. Added nonnegative diagonal entries of the existing positive contact stiffness blocks to the three coordinate-wise sparse preconditioner factors. This is a preconditioner approximation, not the exact coupled contact Hessian. Evaluated forces, numerical Hessian action and acceptance gates unchanged.
+
+Previously failing step13 and following step14 both accepted, reaching7ms. Maximum accepted nonlinear force residual7.643e-7N (<1e-6N). At7ms vs existing reference: maximum position difference0.017053mm, velocity0.002690m/s, internal-force relative L2 difference1.57331%. Scoped recovery/comparison passes; full20ms and time refinement still unqualified.
+
+Solver-loop runtime66.818s for1ms additional simulation, excluding startup. Severe iteration cost remains; speed requirement fails. The diagonal contact approximation improves this specific convergence failure but is not suitable evidence of efficient cutting simulation. No long hold/cutting/training started.
+
+Next technical task: replace repeated finite-difference contact Hessian queries with validated local contact blocks including cross-node coupling; retain this saved6ms recovery as regression. Do not spend hours extending this slow diagnostic implementation.
+
+Initial launcher attempt had an incorrect checkpoint filename and exited before recovery; corrected path and rerun retained separately. Section3 remains4/5; total15/35. Section4 blocked. Experimental validation pending. No simulation running.
+
+
+DIRECT CONTACT DERIVATIVE v13 — 8 November 2026
+
+Implemented differentiable closest-feature contact energy with original embedding, vertex-triangle and edge-edge distances, parallel-edge mollifier and piecewise normal potential. Broad-phase stencils refreshed at Newton iterates; feature-dependent geometry differentiated through PyTorch, including cross-node coupling. No contact/material law changed.
+
+Independent existing-force comparisons: relative force difference2.97e-14 in compressed fixture,2.87e-9 at saved6ms. Compressed Hessian action agrees with numerical force derivative to1.66e-7 relative. Saved6ms comparison at1e-10 perturbation failed3.88%; reducing perturbation to1e-12 gives6.87e-6 relative, then rounding error increases at1e-13. This supports the local derivative; broad-feature transition smoothness is not claimed. Initial controls.json and refinement_controls.json preserve the original failed coarse-perturbation verdict, not silently rewritten as passes.
+
+Saved6–7ms recovery completed both steps, max accepted nonlinear residual5.876e-7N (<1e-6N). Differences from prior finite-difference recovery: max position1.166e-9m, velocity2.382e-6m/s, nodal internal force4.576e-7N. Runtime37.715s versus66.818s previously,1.77x improvement on this interval only. Timing excludes initialization and no repeated performance benchmark claimed. Speed target still fails severely.
+
+Remaining: full20ms convergence/refinement and efficient contact block application/preconditioning. This change removes repeated force perturbations from inner solves, but retained automatic-differentiation graphs and CPU sparse solves still incur cost; profile before claiming the next bottleneck. No cutting/training or production switch. Section3 remains4/5; total15/35; section4 blocked. Experimental validation pending. No simulation running.
+
+
+SECTION 3 COMPLETION ATTEMPT — v14–v17, 8 November 2026
+
+OUTCOME: Section4 is NOT cleared. Section3 remains4/5, overall15/35. No simulation is running. User decision requested on a separate quality-controlled cut mesh versus preserving the exact current mesh and continuing solver engineering. No new mesh has been generated. Original production scene/checkpoint, material laws, tolerances and experimental-validation status unchanged.
+
+v14: Cached local12x12 contact Hessians reproduce direct Hessian action; bulk cache algebraic control relative error1.833e-16. Contact-only recovery36.906s (profile enabled); cached contact+bulk recovery24.352s for6–7ms, unchanged final force checks. Profile: CPU transfers/synchronization16.08s cumulative, sparse triangular solves7.08s, autograd5.22s, factorization5.04s; overlapping cumulative categories must not be summed. Source timing includes GPU synchronization effects, not pure transfer bandwidth.
+
+v14 extended continuation: accepted through15.5ms, then failed nonlinear force residual7.7076e-4N (>1e-6N). Runtime136.37s including rejected trial. Halving timestep at this boundary also failed4.6246e-4N. Failed iterate retained. Contact force/energy audit at this iterate agrees5.43e-11 relative with independent differentiable expression; directional energy differences converge with smaller perturbations and observed candidate counts remain20731. No evidence here for a force/energy inconsistency or candidate-count jump.
+
+v15: Full coupled contact/bulk/viscous sparse preconditioner reduced linear iterations to3–9 but recovery56.950s, slower due rebuilding/factorization. Passed force balance, not adopted as a speed improvement.
+
+v16: Positive projection of local contact curvature ONLY in Newton search matrix, original energy/force and final acceptance unchanged. Stabilized halfstep continuation15.5–20ms completes18steps, maximum accepted force residual8.526e-7N. Runtime151.888s for4.5ms. Compared at matched1ms reference samples: max position difference0.056899mm (<0.1mm), internal force-vector relative L2 difference2.6824% (<5%), but velocity difference0.022789m/s FAILS0.005m/s. This is a checkpoint continuation with changed numerical method/timestep, not a fresh fixed-step20ms qualification or timestep convergence proof. Successful completion is not gate passage.
+
+v17: CuPy installed only in task-local folders; no simulator/global package replacement. Version14.2 incompatible with existing NumPy; version13.6 control passes after per-process CUDA library paths. CPU/GPU sparse-factor application control relative error7.584e-17, cached triangular setup controls pass multiple right-hand sides. Uncached GPU recovery interrupted after excessive runtime, no adopted state. Cached GPU recovery completes6–7ms with force residual3.203e-7N but53.652s, slower than best24.352s CPU/GPU candidate. Not adopted. Source basis: https://docs.cupy.dev/en/stable/reference/scipy_sparse_linalg.html and installed CuPy source. Timing includes first-use effects; no overall GPU acceleration claimed.
+
+Mesh audit:39280 tetrahedra,8752 vertices; minimum volume4.582e-16m3 vs median2.722e-9m3; minimum node mass4.598e-13kg vs median5.265e-6kg. Worst edge-matrix condition829.85. These motivate, but do not prove benefit of, quality remeshing. The smallest nodal mass is about11.45million times below median.
+
+REMAINING GATES: viable120wall-seconds/simulated-second runtime; accurate robust coupled integration and timestep refinement; fresh assembled settling/refinement; actual nonfracturing blade contact on new split assembly. Existing intact/component passes do not substitute. No shallow cut, full separation or training started.
+
+PROPOSED MESH STUDY (awaiting decision): preserve exterior, total mass, cut plane,25 support coordinates,47 constitutive laws and group energy budgets. Build a separate conforming mesh with improved element quality; preserve original physical contact/cohesive sampling where feasible and explicitly audit any changed interpolation. Compare geometry/volume/mass/supports and quality before simulations. Recheck derivative/history/reset/closure controls, then the same short6–7ms and20ms accuracy/runtime cases. Reject if geometry/law constraints or unchanged accuracy fail. Do not run long settling until short qualification supports it. Old evidence remains intact. No promise of speed or qualification from remeshing alone.
+
+
+LATEST MESH STUDY: disect-mesh-study-20261108.txt
+Improved mesh study v18 — completed feasibility checks
+
+User authorized a separate mesh with unchanged exterior, mass, cut plane, support coordinates, material laws and fracture budgets. Original research assets and saved checkpoints have not been replaced.
+
+Geometry and material transfer: PASS (component only).
+Exact coplanar face markers prevent TetGen from merging distinct exterior planes. The cut cap uses constrained triangulation. Independent polygon-union audits cover every exterior plane and both cut faces. All 25 support coordinates and total mass are unchanged.
+
+Mesh: 9394 nodes, 42523 tetrahedra, 480 paired interface nodes. Minimum nodal mass 2.86016339e-09 kg; worst element condition 179.421. This is an improved discretization, not a change to the constitutive model.
+
+Cohesive integration: all 47 original laws and 0.11696391110288158 J total fracture budget retained. A coarse point-assignment scheme failed its nonuniform force refinement (7.44%). Exact nearest-centroid region clipping fixes that sampling artifact; refined force difference is 2.28028e-15. Force/energy, rigid rotation, release and reset controls pass.
+
+Closure: rebuilding contact sampling on the new mesh changes the prescribed closure resultant (~58.55 N versus ~70.31 N). That alternative is not adopted. Original collision proxy points, triangles, adjacency filters and normal law are now retained and positively embedded into the new material mesh. Mapping error <7e-18 m; closure/open/reclosure controls pass. This preserves sampled contact geometry; it does not prove arbitrary deformed trajectories are equivalent across meshes.
+
+Dynamics: qualification FAILED.
+- Native new-surface contact sampling is not adopted. Faster explicit trials inverted elements: 500 us at 8 ms, 100 us at 9 ms; with preserved original collision sampling, 100 us at 13 ms.
+- Fresh implicit 500 us: last accepted state 17 ms, minimum volume ratio 0.81156, accepted residuals <=9.671e-7 N. Attempt at 17.5 ms rejected at residual 0.00420572 N (limit 1e-6 N). Total integration attempt 186.04 seconds.
+- Fresh implicit 250 us: last accepted state 16.75 ms; attempt at 17 ms rejected at residual 0.00100652 N. Total attempt 233.11 seconds.
+- Matched samples through 16.5 ms: position difference 0.02472 mm (limit 0.1 mm); internal force-vector difference 3.353% (limit 5%); velocity difference 0.01756 m/s FAILS 0.005 m/s. Neither run completes 20 ms, so this is not a timestep-convergence pass.
+- Wall time per simulated second including rejected work: 10,944 and 13,917, versus 120 required. Accepted-only coarse-run cost is about 9,952. Startup is outside this integration timing. Timings are not an equal-accuracy speedup comparison to historical runs.
+
+Conclusion: improved geometry and local constitutive/contact-transfer controls pass, but mesh improvement alone does not qualify the coupled simulator. The candidate remains isolated; it is not promoted to section 4. No long settling, blade contact, cutting, training, or video work ran.
+
+Next action: address convergence and cost of coupled contact/time integration using the saved failing interval. Preserve these mesh and mapping controls as prerequisites. A full fresh 20 ms timestep comparison, <=120 wall-seconds/sim-second performance, assembled settling, and nonfracturing blade contact must pass before section 4. Further mesh refinement alone is not supported by these results. No tolerances, material coefficients or fracture budgets were relaxed.
+
+Evidence: mesh_build.json, geometry_audit.json, piece_mass_audit.json, full_surface_result.json, quadrature_refinement_result.json, contact_remap.json, preserved_closure_control.json, implicit500us_result.json, implicit250us_result.json, timestep_comparison.json, candidate_manifest.json. Failed runs and checkpoint arrays are retained in this directory. No simulation remains running.

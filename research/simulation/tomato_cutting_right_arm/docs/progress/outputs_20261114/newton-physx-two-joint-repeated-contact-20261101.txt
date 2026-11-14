@@ -1,0 +1,40 @@
+Repeated Newton contact on two passive joints — 1 November 2026
+
+PASS for 32 persistent exchanges in identity and 90-degree yaw orientations. Each case has nine contact intervals followed by 23 natural coast intervals. Neither particle is repositioned or reset during the sequence. Full coupling item 15 remains open.
+
+The isolated near-origin fixture uses a fixed base and two passive Z joints, with two 0.02 kg links of 0.02 m length, COM halfway along each link, and explicit diagonal COM inertia 0.0001 kg m². Actuators, stiffness, damping, friction and gravity are absent. CPU PhysX owns articulated motion; a CUDA Newton kinematic box proxy represents only the end link. One 0.01 kg zero-radius particle starts at end-link local (0.004,0.004,0) against the box +Y face, penetrating 0.001 m. Box half sizes are (0.01,0.005,0.002) m. Contact uses SolverVBD with 16 iterations, externally owned rigid state, fixed actual penalty 1750 N/m, no damping or friction, and dt=1/2400 s. The second fixture rotates both particle and chain by 90 degrees.
+
+Each interval regenerates collision records and checks the signed-depth contact count and updated world normal. The native cached contact evaluator's force, point and reaction COM torque are compared with an independent planar implicit-particle calculation. The actual collected reaction is sent to only the end link. PhysX advances both joints and sends the measured end-link pose and world COM velocity back to BOTH actual Newton State buffers, with exact equality. The same model, solver, pipeline and buffers persist for the complete sequence; Newton is checked not to advance its externally owned proxy.
+
+An independent planar two-link reference uses changing joint geometry, the full coupled 2x2 mass matrix and velocity-dependent Coriolis terms. It maps the contact wrench through the analytic end-COM Jacobian and predicts joint acceleration. Position follows the established 16-substep TGS factor 17/32 for force increments. This is a short-step approximation, using interval-start acceleration; it is qualified only for this small-motion 32-interval fixture. Both a per-interval reference from measured input and a complete independently propagated trajectory are checked. Native mass matrix is independently checked at initialization. The reference is not a general-purpose long-trajectory or large-motion validation.
+
+Generalized impulse is checked per interval using M*delta(qdot)+C*dt against joint effort impulse. It is not treated as conserved individual joint momentum. Whole-chain angular momentum about the fixed base uses the first row of M(q) times both joint velocities, balanced with particle angular momentum. Accumulated particle impulse is independently checked. Coast acceptance compares velocity with unforced coupled dynamics, allowing normal Coriolis evolution rather than assuming each joint speed must be constant.
+
+Gates unchanged: per-step and trajectory joint position 1e-6 rad; joint velocity 2e-5 rad/s; particle position 1e-7 m; particle velocity 2e-5 m/s; generalized impulse and total angular balance 2e-8 N m s; accumulated particle impulse 2e-7 N s; coast joint velocity reference error 2e-6 rad/s. Contact gates are 2e-5 N force, 2e-7 N m torque and 1e-7 m point. Initial mass matrix gate is 1e-8 kg m². No limit was relaxed.
+
+Natural separation is required after an active contact phase and no contact reappearance is allowed. All later intervals submit no new wrench, both force queues remain clear, and at least three coast intervals are required. Active normal change must exceed 1e-5. Actual changes are about 0.000985. Exactly 32 shared PhysX steps, 64 Newton steps and 66 exact actual-state feedback echoes passed.
+
+Maximum errors:
+  joint_position_error_rad: 3.5529817222e-09
+  joint_velocity_error_rad_s: 2.82943633745e-07
+  particle_position_error_m: 2.18831514622e-09
+  particle_velocity_error_m_s: 5.25195634954e-06
+  trajectory_joint_position_error_rad: 5.37729487214e-08
+  trajectory_joint_velocity_error_rad_s: 2.02939821903e-06
+  trajectory_particle_position_error_m: 8.26189510044e-08
+  trajectory_particle_velocity_error_m_s: 8.09040533886e-06
+  interval_generalized_impulse_error_nms: 5.94782283194e-11
+  cumulative_particle_impulse_error_ns: 8.05320084867e-08
+  hinge_axis_angular_balance_error_nms: 6.30904975791e-10
+  coast_joint_velocity_reference_error_rad_s: 7.21061876874e-09
+  force_error_n: 1.82880247626e-06
+  torque_error_nm: 9.97680905078e-09
+  point_error_m: 5.42106210923e-09
+
+hinge_sequence_identity: 9 contact intervals, 23 natural coast intervals; active normal change 0.000984715296; final joint state [-0.007682532537728548, 0.0020293889101594687], [-0.6344401836395264, 0.16759167611598969].
+
+hinge_sequence_yaw90: 9 contact intervals, 23 natural coast intervals; active normal change 0.000984803201; final joint state [-0.007682639639824629, 0.0020293884444981813], [-0.6344411969184875, 0.16759151220321655].
+
+Thirteen two-joint reference/contract tests and nine supervisor tests passed. They include a finite-difference kinematic Jacobian check, bent-chain unforced dynamics with nonzero Coriolis bias, initial contact response, natural separation and strict count contracts. The protected run exited successfully in 8.62 seconds, retaining at least 22.64 GB available RAM and 7.44 GB free GPU memory. No resource warning, monitor error or owned live process remained. Frozen original production inputs and previously pinned installed libraries remain unchanged; source snapshots and hashes are preserved. Run evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/two_joint_sequence_20261101_01
+
+Next bounded step: reset and replay this two-joint contact fixture, including reset while contact is active and clearing deliberately queued forces. Broader configurations, large motion, robot drives, long trajectories, contact work/energy, real blade collision generation and cutting material remain unvalidated.

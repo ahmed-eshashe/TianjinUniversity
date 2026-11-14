@@ -1,0 +1,27 @@
+V21 — COMPILED GEOMETRIC EVENTS AND PERSISTENT GPU STORAGE
+
+Authorized successor to v20: speed implementation changes only, current Isaac/DiSECt setup unchanged. Material, geometric history semantics, selective extension, exact reduced mass, timestep and approved accuracy criteria are retained. No physical cutting or RL qualification is inherited.
+
+Compiled geometry
+The existing normalized convex-hull clipping/moment algorithm is implemented in C++17, linked to the already installed reentrant Qhull 8.0.2 library. No software package is installed or upgraded. It uses the same Qt hull option, positive-volume regions and no material-volume cutoff, mass flooring or deletion. Parent volume/centroid data are cached with the exact original Python reference operation, preserving root selection in floating-point ties. One-time cache preparation is counted in cold episode results and stated separately for shared pristine-template resets.
+
+The native loop processes the current region list. It returns unchanged moments directly and computes moments for changed children. The existing Python history/node-connectivity logic and projection remain. Thus this is faster host geometry, not a fully GPU-resident incremental topology algorithm; global array construction and full aggregate rebuilding still occur.
+
+Qhull triangulation and floating-point ordering can introduce different redundant coplanar vertices. An initial raw vertex-array equality check rejected the fourth geometric cut despite identical connectivity, fields and mass. The retained diagnostic is superseded by an independent two-way convex-containment check: every vertex of each representation must lie in the other's convex hull within 1e-12 m, while topology, mass, moments and extension operators are also checked. Dynamic comparisons evaluate both affine fields on the union of BOTH vertex sets. This establishes the same convex material region rather than ignoring a surface discrepancy. Physical position limits are not relaxed.
+
+Compiled reduced-data preparation
+Numba compiles assembly of the same reduced gradients, with the same sorted node indices, zero-gradient exclusion and translation-invariant first-gradient correction. Exact singleton/coupled inverse-mass data are retained. CPU float64 changes in inverse-mass rounding are below the recorded tolerance and produce identical float32 GPU states in the strict fixtures. First compilation takes about three seconds and is reported separately from warm execution.
+
+Persistent GPU storage
+Node, region and sparse-entry buffers are allocated with declared spare capacity. Active counts gate kernels; inactive slots represent no material and carry no mass, force or history. The same 64-substep graph is reused after replacement. New events still repack and upload active arrays, so this is storage/graph reuse, not a claim that only changed bytes are uploaded. Different environment geometries and states are packed with independent index offsets, not forced to share a cut path. Shared material constants are an explicit adapter restriction.
+
+The same stress and exact reduced-inertia update use staggered Verlet velocity. On replacement, physical velocity is converted to the new half-step phase; no velocity reset is hidden. Capacity overflow is rejected before mutation; invalid replacement is checked and rollback snapshots protect the current state. A failed material step restores positions, staggered velocities and the step cursor. Capacity growth is not silently performed. A new larger allocation would require explicit handling and cost accounting.
+
+Validation scope
+Native geometry is checked against the saved reference through four cut slots, partial/complete/tangent/outside/current-world cases, large blocks and seeded held-out directions/deformations/resolutions. GPU tests cover strict field agreement, different stream topology, independent loading, graph/pointer reuse, loaded restart, capacity exhaustion, invalid replacement and deliberately invalid-step rollback. These are numerical component tests.
+
+Episode scope
+Ten controls at 50 Hz (0.2 s/body), with four geometric front advances per body, all chosen when the event occurs. One-body cold episodes include geometry-cache preparation. Eight-body tests reuse a pristine material template without cut history or future paths, and include per-environment state reset, aggregate construction, independent events, upload, observation export and conservation checks. A four-worker host pool is compared to serial processing and must return equivalent states. This is CPU parallel execution, not additional AI agents.
+
+Unchanged limits and remaining exclusions
+The synthetic compressible neo-Hookean law remains E=100 kPa, nu=0.4, density=1000 kg/m^3. The tested timestep is 12.5 microseconds. Cross-representation velocity uses the explicitly approved material-weighted norm; strict same-operator limits remain position 1 micrometre, velocity 0.1 mm/s and deformation gradient 1e-4. Material mass, energy, volume guards remain. Blade-force stop 2 N and whole-material penetration limit 0.1 mm are unchanged but not exercised: there is no physical blade/contact/fracture law in this bulk-geometric trial. General partial/curved crack root locality, unresolved small fragments, full spatial refinement, tomato shape/skin, actual slice success, robot integration and RL remain unqualified.

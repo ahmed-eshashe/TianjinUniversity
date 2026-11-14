@@ -1,0 +1,10 @@
+{
+  "at": "2026-11-10T21:00:09.719593+08:00",
+  "observed": "Full mass removes artificial damping: compression energy error 0.153% / 0.0384%, but the coarse 12.5/6.25us pair fails maximum velocity consistency after sudden boundary release. Localized work/strain and invariants pass.",
+  "decision": "One bounded conservative refinement pair with unchanged material, spatial basis, force and accuracy screens; no new solver branch.",
+  "dt_s": 3.90625e-07,
+  "reference_dt_s": 1.953125e-07,
+  "hypothesis": "Velocity-Verlet phase error accumulates for the fast elastic modes exposed by unfiltered sudden release. At fixed spectrum the leading phase error is quadratic in dt; the coarse pair may be outside that asymptotic regime. This is a hypothesis to test, not a pass assumed from energy conservation.",
+  "pair_wall_cap_each_s": 600,
+  "stop": "If this pair fails the unchanged screen, report the failure; do not keep shrinking dt."
+}

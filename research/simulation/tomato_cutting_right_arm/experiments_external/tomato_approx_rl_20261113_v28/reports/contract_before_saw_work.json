@@ -1,0 +1,64 @@
+{
+  "version": "v28",
+  "started_utc": "2026-11-13T07:16:21.410621+00:00",
+  "authorization": "Build a separate approximate RL model (Recommended)",
+  "parent": "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27",
+  "pilot_budget_seconds": 7200,
+  "model": "3D central-force 26-neighbour elastic bond network; symplectic Euler; irreversible work-paid bond deletion",
+  "physics_changed": true,
+  "production_setup_changed": false,
+  "material": {
+    "nominal_E_Pa": 100000,
+    "effective_small_strain_nu": 0.25,
+    "reference_nu": 0.4,
+    "density_kg_m3": 1000,
+    "pair_damping_ratio": 0.02
+  },
+  "fracture": {
+    "Gc_J_m2": 80,
+    "bond_area": "h^2/9, exact planar-grid count only for grid-axis cuts; directional error must be measured",
+    "law": "Blade bond-plane intersection plus finite edge/advance process zone. Irreversible work accumulated from resisting force and actual relative blade motion; no geometry-only removal. Elastic bond energy lost on deletion is separately recorded.",
+    "slicing_approximation": "Resistance direction follows total relative knife motion, magnitude scales edge-normal advance / total relative speed; an empirical training law, not measured tomato physiology."
+  },
+  "geometry": {
+    "h_m": 0.0035,
+    "particle_radius_over_h": 0.45,
+    "exterior": "occupied lattice centers within convex hull of saved tomato exterior; not an exact reproduction of its continuum surface",
+    "knife": "finite 120 x 30 x 1 mm rectangular blade proxy; differs from original CAD",
+    "mass": "uniform per-node masses rescaled to saved 121.253418 g at scale 1; effective boundary density differs",
+    "contact": "per-particle sphere/box and sphere/plane unilateral projection; world material represented as spheres plus massless bonds; no inherited whole-continuum penetration qualification"
+  },
+  "integration": {
+    "dt_s": 0.0001,
+    "control_s": 0.02
+  },
+  "hard_stops": {
+    "tool_total_contact_plus_cut_load_N": 2,
+    "particle_knife_penetration_m": 0.0001,
+    "nonfinite": true,
+    "unbounded_velocity_m_s": 10
+  },
+  "not_yet_implemented": [
+    "particle recontact",
+    "energy audit",
+    "online rotation",
+    "batched observations/rewards/resets",
+    "visible live Isaac viewer"
+  ],
+  "acceptance": {
+    "persistent_full_and_partial_cuts": true,
+    "second_intersecting_cut": true,
+    "mass_history_preserved": true,
+    "minimum_complete_task_transitions_s": 100,
+    "model_50Hz_control": true,
+    "robot_throughput_separate": true,
+    "experimental_validation": "pending",
+    "reference_5percent_hard_gate": false
+  },
+  "references": [
+    "https://matthias-research.github.io/pages/publications/XPBD.pdf",
+    "https://www.roboticsproceedings.org/rss17/p067.pdf",
+    "https://goldberg.berkeley.edu/pubs/Multilateral-Surgical-Pattern-Cutting-Tensioning-ICRA-under-review-May-2017.pdf"
+  ],
+  "research_note": "These sources establish relevant families of compliant constraints, cutting springs and task-learning simulators; none supplies or validates this specific network. Current pilot uses explicit springs, not XPBD."
+}

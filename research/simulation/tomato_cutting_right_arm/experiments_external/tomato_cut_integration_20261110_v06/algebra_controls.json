@@ -1,0 +1,400 @@
+{
+  "status": "pass",
+  "checks": {
+    "box_integrals": true,
+    "rest": true,
+    "affine_energy": true,
+    "objectivity": true,
+    "force_balance": true,
+    "energy_gradient": true,
+    "quadrature_convergence": true,
+    "continuous_volume": true,
+    "inversion_control": true,
+    "offset_0": true,
+    "offset_0.0003": true,
+    "offset_0.00075": true,
+    "offset_0.0015": true,
+    "offset_0.0029": true,
+    "offset_-0.0029": true,
+    "offset_0.0057": true,
+    "offset_-0.0057": true,
+    "ultrathin_rejection": true
+  },
+  "results": {
+    "box_integrals": {
+      "mass": 0.0017279999999999995,
+      "mass_relative_error": 2.509727251123853e-16,
+      "center_m": [
+        -1.293666438324397e-19,
+        -9.202863007136552e-20,
+        2.943958777315464e-20
+      ],
+      "second_moment_relative_error": 3.8191955553844666e-16,
+      "quadrature_points": 8000,
+      "mass_condition": 1148.763484884776
+    },
+    "energy_gradient_relative": 9.406403968644444e-10,
+    "quadrature_comparison": {
+      "energy_relative": 2.52589094214118e-14,
+      "force_relative": 6.116644280000061e-14
+    },
+    "offsets": [
+      {
+        "plane": 0,
+        "mass_audit": {
+          "dofs": 288,
+          "mass_rank": 288,
+          "mass_condition": 1590.6579927805387,
+          "min_eigenvalue": 1.1204244323951439e-08,
+          "max_eigenvalue": 1.782212078695934e-05
+        },
+        "first_transfer": {
+          "x": 2.6020852139652106e-18,
+          "v": 4.336808689942018e-19,
+          "F": 1.1449174941446927e-15,
+          "energy": 1.9989977555201488e-19,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 2.168404344971009e-19
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7304227107522335e-05,
+          "mass": 2.168404344971009e-19
+        },
+        "integration_points": 8000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0011918022635808,
+            "maxJ_upper_bound": 1.0092481937950482,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0002543839326201,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": 0.0003,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 4976.524286340296,
+          "min_eigenvalue": 3.8171511536132165e-09,
+          "max_eigenvalue": 1.8996145420588053e-05
+        },
+        "first_transfer": {
+          "x": 3.469446951953614e-18,
+          "v": 4.336808689942018e-19,
+          "F": 1.3322676295501878e-15,
+          "energy": -4.404571325722362e-20,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 0.0
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.730377019396169e-05,
+          "mass": 0.0
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.00119180486835,
+            "maxJ_upper_bound": 1.0092481918791605,
+            "cells": 48,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.000254415535203,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": 0.00075,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 2322.3872945753888,
+          "min_eigenvalue": 7.980292463995414e-09,
+          "max_eigenvalue": 1.8533329825378672e-05
+        },
+        "first_transfer": {
+          "x": 2.6020852139652106e-18,
+          "v": 4.336808689942018e-19,
+          "F": 1.3322676295501878e-15,
+          "energy": 6.776263578034403e-21,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 2.168404344971009e-19
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7303905975231773e-05,
+          "mass": 2.168404344971009e-19
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0011918062835508,
+            "maxJ_upper_bound": 1.009248191684276,
+            "cells": 48,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0002554432375468,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": 0.0015,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 2218.975568929211,
+          "min_eigenvalue": 8.146155681607223e-09,
+          "max_eigenvalue": 1.807612043818031e-05
+        },
+        "first_transfer": {
+          "x": 2.6020852139652106e-18,
+          "v": 5.421010862427522e-19,
+          "F": 1.2212453270876722e-15,
+          "energy": 0.0,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 0.0
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7304236864213938e-05,
+          "mass": 0.0
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0011918051933069,
+            "maxJ_upper_bound": 1.0092481916533622,
+            "cells": 48,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0002572283222946,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": 0.0029,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 13677.88334249236,
+          "min_eigenvalue": 1.3434638222094084e-09,
+          "max_eigenvalue": 1.8375741435039184e-05
+        },
+        "first_transfer": {
+          "x": 2.6020852139652106e-18,
+          "v": 4.336808689942018e-19,
+          "F": 1.1102230246251565e-15,
+          "energy": 1.9989977555201488e-19,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 0.0
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7303867564501078e-05,
+          "mass": 0.0
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0011918051260231,
+            "maxJ_upper_bound": 1.0092481921969978,
+            "cells": 48,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0002596974631282,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": -0.0029,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 13677.883342489584,
+          "min_eigenvalue": 1.343463822209679e-09,
+          "max_eigenvalue": 1.8375741435039157e-05
+        },
+        "first_transfer": {
+          "x": 3.469446951953614e-18,
+          "v": 6.505213034913027e-19,
+          "F": 1.5543122344752192e-15,
+          "energy": 2.507217523872729e-19,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 0.0
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7303961629416345e-05,
+          "mass": 0.0
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0011975029250564,
+            "maxJ_upper_bound": 1.009246985717496,
+            "cells": 32,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0002543839326201,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 48,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": 0.0057,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 28449.079607873213,
+          "min_eigenvalue": 6.096780803204172e-10,
+          "max_eigenvalue": 1.734478024221087e-05
+        },
+        "first_transfer": {
+          "x": 2.6020852139652106e-18,
+          "v": 4.336808689942018e-19,
+          "F": 1.1102230246251565e-15,
+          "energy": 7.792703114739563e-20,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 0.0
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7303440596630608e-05,
+          "mass": 0.0
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0006653040437792,
+            "maxJ_upper_bound": 1.0092481922132162,
+            "cells": 64,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0008381530926018,
+            "maxJ_upper_bound": 1.0093985219645196,
+            "cells": 16,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      },
+      {
+        "plane": -0.0057,
+        "mass_audit": {
+          "dofs": 324,
+          "mass_rank": 324,
+          "mass_condition": 28449.07960788018,
+          "min_eigenvalue": 6.096780803202668e-10,
+          "max_eigenvalue": 1.7344780242210835e-05
+        },
+        "first_transfer": {
+          "x": 4.336808689942018e-18,
+          "v": 6.505213034913027e-19,
+          "F": 1.4432899320127035e-15,
+          "energy": 1.5246593050577406e-19,
+          "energy_before": 1.7304031265097183e-05,
+          "mass": 2.168404344971009e-19
+        },
+        "full_transfer": {
+          "x": 0.0,
+          "v": 0.0,
+          "F": 0.0,
+          "energy": 0.0,
+          "energy_before": 1.7304330190893994e-05,
+          "mass": 0.0
+        },
+        "integration_points": 10000,
+        "volume_bounds": [
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0013157294283528,
+            "maxJ_upper_bound": 1.0092598199052616,
+            "cells": 16,
+            "gradient_roundoff_allowance": 1e-08
+          },
+          {
+            "passed": true,
+            "minJ_lower_bound": 1.0002543839326201,
+            "maxJ_upper_bound": 1.0093998003975075,
+            "cells": 64,
+            "gradient_roundoff_allowance": 1e-08
+          }
+        ]
+      }
+    ],
+    "ultrathin_rejection": {
+      "reason": "unresolved or ill-conditioned integrated mass",
+      "detail": {
+        "dofs": 324,
+        "mass_rank": 324,
+        "mass_condition": 85463941908.76718,
+        "min_eigenvalue": 2.0322684868092285e-16,
+        "max_eigenvalue": 1.736856758996821e-05
+      }
+    }
+  },
+  "wall_s": 2.10979655799747,
+  "scope": "Integration and prescribed topology algebra only"
+}

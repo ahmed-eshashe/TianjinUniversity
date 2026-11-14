@@ -1,0 +1,44 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/cache/warp/1.17.0
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.77 ms  (cached)
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.55 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.42 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.71 ms  (cached)
+Module compact_contact_gpu b420b9d load on device 'cuda:0' took 1876.15 ms  (compiled)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.49 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.42 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.48 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.43 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.69 ms  (cached)
+{
+  "checks": {
+    "initial_whole_volume_clear": true,
+    "initial_force_zero": true,
+    "complete_cycle": true,
+    "positive_contact": true,
+    "force_stop": true,
+    "volume_bounds": true,
+    "independent_other_fragment": true,
+    "energy": true,
+    "impulse": true,
+    "history_preserved": true
+  },
+  "passed": true,
+  "status": "completed",
+  "wall_s": 5.345130222995067,
+  "energy_relative": 0.004418979452665146,
+  "unloaded_fragment_max_motion_or_velocity": 1.4975666973865431e-10,
+  "impulse_residual_Ns": 1.279084815157005e-10,
+  "physical_cut": false,
+  "initial_tool_position": [
+    -0.0010247291562499993,
+    -0.03,
+    0.0
+  ],
+  "scope": "Pre-separated geometric fixture only: one newly exposed face loaded by original CAD broad side; not a fracture qualification."
+}

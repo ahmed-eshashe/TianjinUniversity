@@ -1,0 +1,310 @@
+{
+  "updated": "2026-11-12T22:34:08.882212+08:00",
+  "decision": "contact_operator_components_pass_spatial_force_refinement_fails_no_physical_cut_or_RL_qualification",
+  "component_checks_passed": 59,
+  "component_checks": {
+    "geometry_surface_area": true,
+    "geometry_initial_state": true,
+    "geometry_initial_no_force": true,
+    "geometry_cad_distance": true,
+    "geometry_contact_force_cpu_gpu": true,
+    "geometry_contact_potential_cpu_gpu": true,
+    "geometry_resultant_pullback": true,
+    "geometry_moment_pullback": true,
+    "geometry_power_pullback": true,
+    "geometry_whole_volume_contact_certified": true,
+    "geometry_deep_volume_rejected": true,
+    "geometry_finite_step": true,
+    "geometry_correct_elapsed": true,
+    "geometry_fixed_nodes": true,
+    "cpu_gpu_position": true,
+    "cpu_gpu_velocity": true,
+    "cpu_gpu_F": true,
+    "cpu_gpu_support_impulse": true,
+    "cpu_gpu_tool_impulse": true,
+    "force_rejected": true,
+    "force_rejection_atomic": true,
+    "unqualified_cut_surface_rejected": true,
+    "intact_stick_work": true,
+    "intact_stick_no_mutation": true,
+    "intact_stick_force_limit": true,
+    "intact_stick_no_fracture": true,
+    "intact_slip_work": true,
+    "intact_slip_no_mutation": true,
+    "intact_slip_force_limit": true,
+    "intact_slip_positive_work": true,
+    "intact_reverse_work": true,
+    "intact_reverse_no_mutation": true,
+    "intact_reverse_force_limit": true,
+    "intact_reverse_no_fracture": true,
+    "intact_blunt_work": true,
+    "intact_blunt_no_mutation": true,
+    "intact_blunt_force_limit": true,
+    "intact_blunt_no_fracture": true,
+    "aggregated_stick_work": true,
+    "aggregated_stick_no_mutation": true,
+    "aggregated_stick_force_limit": true,
+    "aggregated_stick_no_fracture": true,
+    "aggregated_slip_work": true,
+    "aggregated_slip_no_mutation": true,
+    "aggregated_slip_force_limit": true,
+    "aggregated_slip_positive_work": true,
+    "aggregated_reverse_work": true,
+    "aggregated_reverse_no_mutation": true,
+    "aggregated_reverse_force_limit": true,
+    "aggregated_reverse_no_fracture": true,
+    "aggregated_blunt_work": true,
+    "aggregated_blunt_no_mutation": true,
+    "aggregated_blunt_force_limit": true,
+    "aggregated_blunt_no_fracture": true,
+    "preview_no_mutation": true,
+    "unpaid_rejected": true,
+    "unpaid_no_mutation": true,
+    "reentry_no_double_charge": true,
+    "checkpoint_ledger": true
+  },
+  "comparisons": {
+    "coarse_time": {
+      "a": "precise_edge_d1_s500",
+      "b": "precise_edge_half_d1_s500",
+      "metrics": {
+        "position_m": 1.7427392300977463e-07,
+        "velocity_material_weighted_upper_RMS_m_s": 0.0007488203375969323,
+        "velocity_max_pointwise_m_s": 0.0027363484239015085,
+        "force_relative_max": 0.7891370333776834,
+        "force_absolute_max_N": 0.0003089909869369195,
+        "impulse_relative_max": 0.012991284053006869,
+        "tool_work_relative_max": 0.005774783675049741,
+        "friction_work_relative_max": 0.004697743409554089
+      },
+      "checks": {
+        "positions": true,
+        "velocity": true,
+        "force": false,
+        "impulse": true,
+        "tool_work": true,
+        "friction_work": true
+      },
+      "passed": false,
+      "worst_force_time_s": 0.01025,
+      "worst_force_A_N": [
+        4.619304693420645e-06,
+        3.719252008238527e-05,
+        5.823805514282299e-06
+      ],
+      "worst_force_B_N": [
+        2.1387326316180122e-05,
+        0.0001763877256095725,
+        2.79805102234576e-05
+      ]
+    },
+    "refined_time": {
+      "a": "parallel_edge_d2_s125",
+      "b": "parallel_edge_d4_s125",
+      "metrics": {
+        "position_m": 4.452758240873508e-08,
+        "velocity_material_weighted_upper_RMS_m_s": 0.00015532773274189667,
+        "velocity_max_pointwise_m_s": 0.000546488562632102,
+        "force_relative_max": 0.014897670362353248,
+        "force_absolute_max_N": 7.49059078606123e-05,
+        "impulse_relative_max": 0.005735618165996164,
+        "tool_work_relative_max": 0.002170538414861454,
+        "friction_work_relative_max": 0.0018466401259693843
+      },
+      "checks": {
+        "positions": true,
+        "velocity": true,
+        "force": true,
+        "impulse": true,
+        "tool_work": true,
+        "friction_work": true
+      },
+      "passed": true,
+      "worst_force_time_s": 0.01,
+      "worst_force_A_N": [
+        0.00023644098027619798,
+        0.0033861860180195436,
+        -2.1515521015924577e-05
+      ],
+      "worst_force_B_N": [
+        0.00023901202948617417,
+        0.0034374545706441495,
+        -2.1098954432585693e-05
+      ]
+    },
+    "spatial_125_62": {
+      "a": "parallel_edge_d4_s125",
+      "b": "parallel_edge_d4_s62",
+      "metrics": {
+        "position_m": 5.438706716018449e-07,
+        "velocity_material_weighted_upper_RMS_m_s": 0.0027070201425226886,
+        "velocity_max_pointwise_m_s": 0.008419605507396757,
+        "force_relative_max": 1.0,
+        "force_absolute_max_N": 0.0010070797444359425,
+        "impulse_relative_max": 0.007524565197018185,
+        "tool_work_relative_max": 0.03633475323475703,
+        "friction_work_relative_max": 0.006784755958545502
+      },
+      "checks": {
+        "positions": true,
+        "velocity": true,
+        "force": false,
+        "impulse": true,
+        "tool_work": true,
+        "friction_work": true
+      },
+      "passed": false,
+      "worst_force_time_s": 0.01025,
+      "worst_force_A_N": [
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      "worst_force_B_N": [
+        1.2332213612012075e-05,
+        0.00016800636357261478,
+        3.1241504723479585e-05
+      ]
+    },
+    "spatial_62_31": {
+      "a": "culled_edge_d4_s62",
+      "b": "culled_edge_d4_s31",
+      "metrics": {
+        "position_m": 1.645864927673082e-07,
+        "velocity_material_weighted_upper_RMS_m_s": 0.0005033028185190863,
+        "velocity_max_pointwise_m_s": 0.0015696247489650297,
+        "force_relative_max": 0.5935706148799549,
+        "force_absolute_max_N": 0.0002404943848981238,
+        "impulse_relative_max": 0.0015683590100382691,
+        "tool_work_relative_max": 0.005813799703482836,
+        "friction_work_relative_max": 0.003251760112488898
+      },
+      "checks": {
+        "positions": true,
+        "velocity": true,
+        "force": false,
+        "impulse": true,
+        "tool_work": true,
+        "friction_work": true
+      },
+      "passed": false,
+      "worst_force_time_s": 0.01025,
+      "worst_force_A_N": [
+        1.2332213612012075e-05,
+        0.00016800636357261478,
+        3.1241504723479585e-05
+      ],
+      "worst_force_B_N": [
+        7.128357687195391e-06,
+        0.0001054211046864473,
+        1.9888629760148242e-05
+      ]
+    },
+    "broadphase_equivalence": {
+      "a": "parallel_edge_d4_s62",
+      "b": "culled_edge_d4_s62",
+      "metrics": {
+        "position_m": 0.0,
+        "velocity_material_weighted_upper_RMS_m_s": 0.0,
+        "velocity_max_pointwise_m_s": 0.0,
+        "force_relative_max": 0.0,
+        "force_absolute_max_N": 0.0,
+        "impulse_relative_max": 0.0,
+        "tool_work_relative_max": 0.0,
+        "friction_work_relative_max": 0.0
+      },
+      "checks": {
+        "positions": true,
+        "velocity": true,
+        "force": true,
+        "impulse": true,
+        "tool_work": true,
+        "friction_work": true
+      },
+      "passed": true,
+      "worst_force_time_s": 0.00025,
+      "worst_force_A_N": [
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      "worst_force_B_N": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    "final_profile_equivalence": {
+      "a": "culled_edge_d4_s62",
+      "b": "profile_edge_d4_s62",
+      "metrics": {
+        "position_m": 0.0,
+        "velocity_material_weighted_upper_RMS_m_s": 0.0,
+        "velocity_max_pointwise_m_s": 0.0,
+        "force_relative_max": 0.0,
+        "force_absolute_max_N": 0.0,
+        "impulse_relative_max": 0.0,
+        "tool_work_relative_max": 0.0,
+        "friction_work_relative_max": 0.0
+      },
+      "checks": {
+        "positions": true,
+        "velocity": true,
+        "force": true,
+        "impulse": true,
+        "tool_work": true,
+        "friction_work": true
+      },
+      "passed": true,
+      "worst_force_time_s": 0.00025,
+      "worst_force_A_N": [
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      "worst_force_B_N": [
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    }
+  },
+  "scope": "6 mm intact supported cube, 48 affine tetrahedra, h=3 mm, actual saved CAD. v22 material and v02 contact/work laws. This is neither a tomato nor a fracture trajectory.",
+  "physics_laws_changed": false,
+  "material_constants_changed": false,
+  "accuracy_limits_changed": false,
+  "production_timestep_changed": false,
+  "diagnostic_timesteps_s": [
+    1.25e-05,
+    6.25e-06,
+    3.125e-06
+  ],
+  "separation_enabled": false,
+  "physical_cut": false,
+  "physical_tomato_model_completed": false,
+  "rl_ready": false,
+  "actual_RL_speed_qualified": false,
+  "experimental_validation": "pending",
+  "current_setup_changed": false,
+  "simulation_running": false,
+  "performance": {
+    "scope": "one 13 ms contact-only coupon cycle including checks/output; not complete RL steps",
+    "selected_profile_wall_s": 10.53526865800086,
+    "simulated_s": 0.013,
+    "wall_seconds_per_sim_second": 810.4052813846815,
+    "categories_s": {
+      "GPU_step_host_read_s": 9.142159160022857,
+      "whole_volume_certificate_s": 0.3985049789916957,
+      "accepted_state_transfer_s": 0.0025267109158448875
+    },
+    "tracked_GPU_bytes": 43593316,
+    "peak_process_RSS_KiB": 593892,
+    "reference_no_broadphase_wall_s": 22.517147238002508,
+    "matched_broadphase_wall_s": 11.084336608997546
+  },
+  "preservation": {
+    "checked": 2108,
+    "changed": [],
+    "all_unchanged": true
+  }
+}

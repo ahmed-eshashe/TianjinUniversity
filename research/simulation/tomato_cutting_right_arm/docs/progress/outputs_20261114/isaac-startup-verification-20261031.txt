@@ -1,0 +1,15 @@
+Isaac Sim startup verification — 31 October 2026
+
+PASS: the corrected reporting worked in the second bounded startup attempt.
+
+Isaac Sim initialized an empty CPU PhysX scene, reset it, completed one physics step at 1/240 second, recorded the pre-close result and exited with status 0. The supervisor independently observed successful exit and no live process-group members remaining. Total elapsed time: 3.09 seconds, within the 60-second worker limit.
+
+Minimum available RAM: 25.01 GB. Minimum free VRAM: 7.25 GiB. No memory warnings or monitoring errors.
+
+The original incomplete-report attempt remains unchanged. This attempt has its own launch manifest, runtime log, resource samples, worker result, supervisor result and hash-verified source snapshot.
+
+Scope: startup and one empty-scene CPU PhysX step only. No robot motion, blade contact, fracture or training was tested.
+
+Next step: connect the separate Newton blade/nonfracturing-coupon diagnostic to reviewed launch protection, then validate model/SDF construction and stationary initial-state behavior. The existing coupon worker remains disabled. The 12-step segment covers only 0.01 seconds; a full moving-contact trajectory still needs reviewed continuation.
+
+Full evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/isaac_startup_20261031_02

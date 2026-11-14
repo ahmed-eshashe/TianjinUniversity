@@ -1,0 +1,113 @@
+{
+  "status": "pass",
+  "checks": {
+    "intact_CPU_GPU": true,
+    "oblique_CPU_GPU": true,
+    "partial_CPU_GPU": true,
+    "corner_CPU_GPU": true,
+    "heldout_CPU_GPU": true,
+    "action_change_velocity_phase": true,
+    "batch_independence": true,
+    "gpu_loaded_restart": true
+  },
+  "rows": [
+    {
+      "case": "intact",
+      "duration_s": 0.02,
+      "dt_s": 1.25e-05,
+      "difference": {
+        "position_m": 9.761819802815003e-10,
+        "velocity_m_s": 1.0224096834512911e-05,
+        "force_rms_error_N": 6.509858753458568e-07,
+        "force_rms_reference_N": 0.042884340209704164,
+        "force_relative": 1.5180037098916289e-05,
+        "velocity_mass_weighted_RMS_upper_bound_m_s": 2.059054365693802e-06
+      },
+      "F_max": 2.2340895265704486e-07,
+      "energy_drift_relative": 0.0002909988410395169,
+      "accepted": true
+    },
+    {
+      "case": "oblique",
+      "duration_s": 0.02,
+      "dt_s": 1.25e-05,
+      "difference": {
+        "position_m": 1.239105642879595e-09,
+        "velocity_m_s": 1.2733711197999216e-05,
+        "force_rms_error_N": 4.368057318085338e-07,
+        "force_rms_reference_N": 0.03011806657977617,
+        "force_relative": 1.4503113294192738e-05,
+        "velocity_mass_weighted_RMS_upper_bound_m_s": 1.954108478738231e-06
+      },
+      "F_max": 1.209420070117425e-06,
+      "energy_drift_relative": 0.0003739680175258829,
+      "accepted": true
+    },
+    {
+      "case": "partial",
+      "duration_s": 0.02,
+      "dt_s": 1.25e-05,
+      "difference": {
+        "position_m": 1.0921763178921277e-09,
+        "velocity_m_s": 8.085126147127412e-06,
+        "force_rms_error_N": 4.944004567878834e-07,
+        "force_rms_reference_N": 0.03684162342463213,
+        "force_relative": 1.3419616478065666e-05,
+        "velocity_mass_weighted_RMS_upper_bound_m_s": 1.9647181791850246e-06
+      },
+      "F_max": 7.440383704634956e-07,
+      "energy_drift_relative": 0.0002911140037171174,
+      "accepted": true
+    },
+    {
+      "case": "corner",
+      "duration_s": 0.02,
+      "dt_s": 1.25e-05,
+      "difference": {
+        "position_m": 1.8265935860679129e-09,
+        "velocity_m_s": 1.0179889799188766e-05,
+        "force_rms_error_N": 3.948122622253838e-07,
+        "force_rms_reference_N": 0.028848845734697082,
+        "force_relative": 1.3685547971527166e-05,
+        "velocity_mass_weighted_RMS_upper_bound_m_s": 2.1645838987661297e-06
+      },
+      "F_max": 6.784542404807831e-07,
+      "energy_drift_relative": 0.00040975080460584865,
+      "accepted": true
+    },
+    {
+      "case": "heldout",
+      "duration_s": 0.02,
+      "dt_s": 1.25e-05,
+      "difference": {
+        "position_m": 1.5308796966168554e-09,
+        "velocity_m_s": 7.190916250741739e-06,
+        "force_rms_error_N": 4.408299048919624e-07,
+        "force_rms_reference_N": 0.03336985249122374,
+        "force_relative": 1.3210424139810044e-05,
+        "velocity_mass_weighted_RMS_upper_bound_m_s": 2.151102630403703e-06
+      },
+      "F_max": 4.317045283475096e-07,
+      "energy_drift_relative": 0.00043321453511052763,
+      "accepted": true
+    },
+    {
+      "case": "force_direction_change",
+      "difference": {
+        "position_m": 2.8906668200718686e-10,
+        "velocity_m_s": 1.3743768944748384e-06,
+        "force_rms_error_N": 1.1810251081242988e-07,
+        "force_rms_reference_N": 0.0026341745197889467,
+        "force_relative": 4.483473282624129e-05,
+        "velocity_mass_weighted_RMS_upper_bound_m_s": 3.8605996016203927e-07
+      }
+    },
+    {
+      "case": "gpu_restart",
+      "position_m": 2.2737367544323206e-13,
+      "velocity_m_s": 0.0
+    }
+  ],
+  "wall_s": 12.364897557999939,
+  "physical_contact_qualified": false
+}

@@ -1,0 +1,70 @@
+SECTION 3 COMPLETION ATTEMPT — 8 NOVEMBER 2026
+Verdict: 4/5 checklist checks verified. Section 3 is NOT fully qualified;
+section 4 remains blocked. No cutting or training was attempted.
+
+Resolved
+1. Intact original-CAD contact accuracy: half/quarter original timestep
+   comparison passes unchanged limits. Force 4.5877%, moment 4.6570%,
+   position 1.23 nm. Both probes load and unload. This is prescribed intact
+   contact, not mounted-robot cutting or contact on the new split assembly.
+2. Original 47-patch transfer: virtual work, rotation, net force/torque,
+   tangent, irreversible history and component reset controls pass.
+3. Coverage defect found by negative control: 303 of 604 cut-face vertices
+   had zero nonzero-weight participation in the original mapped quadrature.
+   Opening one of these vertices by 10 micrometres changed cohesive force
+   and energy by exactly zero. Bulk resistance was not part of that test.
+4. User-approved full-surface sampling implemented separately: 3426 positive
+   points over 1142 cut triangles; 47 original laws, stiffness budgets and
+   total fracture budget 0.11696391110288158 J retained. Local distribution
+   changes as explicitly approved. All 604 interface vertices are covered.
+   Uniform energy agrees to 1.42e-15 relative. Nonuniform 3-to-12-point
+   quadrature comparison: force 3.3301%, energy 0.01328%. Rotation,
+   force-energy, failure/no-healing/reset and released-frame controls pass.
+5. Existing research closure method transferred to the new geometry:
+   prescribed rest/open cases exert zero force; closure/reclosure repels,
+   with balanced reactions. These are component fixtures, not cut trials.
+6. Applied-nodal-blade-force eligibility adapter implemented and tested with
+   prescribed inputs. No contact means no enabled patch; localized contact
+   enables only an incident patch; rejected trials do not commit damage.
+   It has NOT been validated in a real coupled blade/fracture run.
+
+Assembled evidence
+Full-surface cohesion + existing closure + corrected FEM + ground friction
+completed 100 ms at dt=7.462686567e-6 s. Saved arrays are finite, minimum
+sampled volume ratio 0.58853, no sampled board penetration or support drift.
+Final maximum speed 81.67 mm/s: this is NOT a settled target. A full one-second
+hold and refined comparison have not passed for this assembly.
+Runtime: 223.39 wall seconds / 0.1 simulated seconds = 2233.9 wall s/s,
+versus the frozen development ceiling of 120. The intact refined CAD probe
+cost 5405 wall s/s. Neither is a qualified fast cutting engine.
+
+Rejected numerical candidates
+- 200 microsecond original solver: linear convergence failure.
+- Exact constant-viscosity preconditioner: independent same-step control
+  agrees within 5.7e-17 m and 2.9e-13 m/s, with 120 -> 16 iterations on
+  the fixture. Nonetheless, larger coupled steps fail, and its small-step
+  implementation is slower. It is NOT adopted.
+- 100 microsecond coupled candidate: physical stop. Not adopted.
+- 100 ms factored small-step run stopped for performance after a saved
+  admissible early sample; not a physical pass/failure. Replaced by the
+  completed reference-backend 100 ms diagnostic above.
+- One coupled implicit numerical trial at 0.5 ms: bulk potential derivative
+  matches corrected CUDA force within 1.74e-16 N, but the first trial step
+  fails nonlinear force residual: 3.382e-4 N versus 1e-6 N. Not adopted;
+  no successful implicit trajectory or speed claim.
+
+Remaining work / gate
+The full-surface material candidate is implemented, but coupled integration
+still requires a successful method. The next work is a properly converged
+coupled implicit solve/preconditioner covering interface and closure forces,
+with independent tangent/force-balance controls and a short unchanged-limit
+reference comparison. Do not infer success from the rejected L-BFGS trial.
+A candidate must pass that comparison AND the runtime gate before committing
+to costly full settling/refinement and the new assembly's blade-contact test.
+Only then can section 4's shallow controlled cut begin.
+
+Preservation
+Original production checkpoint 6925, robot, kitchen, grip and motion interface
+were not changed. No original v06 evidence was overwritten. Experimental
+validation remains pending. No claim of a full slice or engine adoption.
+The new candidate and all failed trials are in this v07 directory.

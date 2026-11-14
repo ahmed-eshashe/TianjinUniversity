@@ -1,0 +1,55 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/cache/warp/1.17.0
+Module gpu_kernels 352560d load on device 'cuda:0' took 1.16 ms  (cached)
+{
+  "status": "assessment_complete",
+  "checks": {
+    "halfstep_whole_field_position_bound": true,
+    "spatial_refined_dynamic_guard": true,
+    "spatial_whole_field_position_bound": true,
+    "spatial_work": true,
+    "spatial_volume": true,
+    "spatial_mass": true
+  },
+  "results": {
+    "halfstep_continuous_field": {
+      "position_convex_hull_bound_m": 2.9639020861756567e-07,
+      "velocity_convex_hull_bound_m_s": 0.4659951998608513,
+      "sampled_near_front_velocity_difference_m_s": 0.3564377409644085,
+      "note": "Position bound is continuous; velocity reported explicitly because sparse observations underresolve these local modes."
+    },
+    "spatial": {
+      "position_convex_hull_bound_m": 4.564010077662946e-07,
+      "work_relative_difference": 4.9160637341586113e-05,
+      "fine_work_J": 4.4810779193216086e-08,
+      "old_dofs": 324,
+      "fine_dofs": 432,
+      "fine_condition": 1027079.3140319877,
+      "wall_s": 0.2836920040062978,
+      "sim_s": 0.0001,
+      "energy_residual_J": -5.036859003769256e-09
+    },
+    "mapping_diagnosis": {
+      "sim_s": 5e-05,
+      "normal_axis_coefficient_residual_m": 1.0024890839020577e-05,
+      "exact_chart_tolerance_m": 1e-11,
+      "candidate_mean_reference_plane_m": 0.00029985879482362685,
+      "whole_plane_world_normal_offset_bound_m": 4.149798625195872e-07,
+      "global_normal_derivative_lower_bound": 0.9951115732801955,
+      "reference_preimage_offset_bound_m": 4.17018426538529e-07,
+      "sampled_preimage_range_m": [
+        0.0002994465589526948,
+        0.0003002738038771356
+      ],
+      "frozen_field": "/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/runs/gpu/rejected_mapping_field.npz",
+      "interpretation": "The exact planar chart is too restrictive for this evolved field. The measured bound is diagnostic, not an adopted geometric error allowance or a contact proof. No cut was committed."
+    }
+  },
+  "wall_s": 1.4922059329983313,
+  "physical_fracture": false
+}

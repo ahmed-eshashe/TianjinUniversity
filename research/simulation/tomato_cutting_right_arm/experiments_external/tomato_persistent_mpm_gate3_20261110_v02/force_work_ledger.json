@@ -1,0 +1,196 @@
+{
+  "units": {
+    "force": "N",
+    "moment": "N m",
+    "impulse": "N s",
+    "energy": "J"
+  },
+  "tool_reaction": "Negative of applied material force; moment about instantaneous tool origin T. Interval impulse and endpoint force samples are distinct.",
+  "blade_contact": {
+    "edge_clock": {
+      "status": "completed",
+      "dt": 1.25e-05,
+      "sim_time": 0.013000000000000244,
+      "wall_s": 11.65357016300004,
+      "max_force_N": 0.02670486213368077,
+      "max_impulse_balance_error_Ns": 1.9475195731814227e-13,
+      "reaction_impulse_Ns": [
+        1.0353978002842334e-08,
+        1.403218301405759e-05,
+        4.413239340568878e-08
+      ],
+      "support_impulse_Ns": [
+        1.1455416846811383e-07,
+        1.8063941231248777e-05,
+        9.114241028294115e-09
+      ],
+      "work_J": 2.482721558865616e-07,
+      "friction_J": 4.855306705174616e-09,
+      "trace": "runs/edge_clock/result.json#rows",
+      "numerical_energy_residual_max_J": 2.3931280269904002e-09
+    },
+    "edge_clock_half": {
+      "status": "completed",
+      "dt": 6.25e-06,
+      "sim_time": 0.012999999999999588,
+      "wall_s": 22.994122206999236,
+      "max_force_N": 0.02667503975303546,
+      "max_impulse_balance_error_Ns": 1.6310243541835114e-13,
+      "reaction_impulse_Ns": [
+        1.0476494144978989e-08,
+        1.403048670906651e-05,
+        4.329721341917852e-08
+      ],
+      "support_impulse_Ns": [
+        1.1504349206343773e-07,
+        1.8065024960027945e-05,
+        7.897053181530557e-09
+      ],
+      "work_J": 2.486975537406505e-07,
+      "friction_J": 4.9618328852956475e-09,
+      "trace": "runs/edge_clock_half/result.json#rows",
+      "numerical_energy_residual_max_J": 1.1516493601340466e-09
+    },
+    "broad_clock": {
+      "status": "completed",
+      "dt": 1.25e-05,
+      "sim_time": 0.013000000000000244,
+      "wall_s": 14.667655946001105,
+      "max_force_N": 0.0075481665404730745,
+      "max_impulse_balance_error_Ns": 8.590660001013182e-14,
+      "reaction_impulse_Ns": [
+        2.089231270313036e-08,
+        5.031275535847411e-06,
+        2.2954073531288963e-07
+      ],
+      "support_impulse_Ns": [
+        4.824905570043514e-08,
+        5.19993872838716e-06,
+        2.565369882870865e-08
+      ],
+      "work_J": 6.105380031319147e-08,
+      "friction_J": 4.465739381731387e-09,
+      "trace": "runs/broad_clock/result.json#rows",
+      "numerical_energy_residual_max_J": 5.506718926921148e-10
+    },
+    "broad_clock_half": {
+      "status": "completed",
+      "dt": 6.25e-06,
+      "sim_time": 0.012999999999999588,
+      "wall_s": 28.076912680000532,
+      "max_force_N": 0.007551221297002388,
+      "max_impulse_balance_error_Ns": 6.958278576244091e-14,
+      "reaction_impulse_Ns": [
+        2.1277906944041563e-08,
+        5.030142503837366e-06,
+        2.298917329887605e-07
+      ],
+      "support_impulse_Ns": [
+        4.786843112043532e-08,
+        5.1995312900272556e-06,
+        2.6431201262200394e-08
+      ],
+      "work_J": 6.118313287380654e-08,
+      "friction_J": 4.4891511507431845e-09,
+      "trace": "runs/broad_clock_half/result.json#rows",
+      "numerical_energy_residual_max_J": 2.7057450287054194e-10
+    },
+    "miss_certified": {
+      "status": "completed",
+      "dt": 1.25e-05,
+      "sim_time": 0.013000000000000244,
+      "wall_s": 9.236612368000351,
+      "max_force_N": 0.0,
+      "max_impulse_balance_error_Ns": 0.0,
+      "reaction_impulse_Ns": [
+        -0.0,
+        -0.0,
+        -0.0
+      ],
+      "support_impulse_Ns": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "work_J": 0.0,
+      "friction_J": 0.0,
+      "trace": "runs/miss_certified/result.json#rows",
+      "numerical_energy_residual_max_J": 0.0
+    }
+  },
+  "recontact": {
+    "recontact_rhs_fixed": {
+      "dt": 1.25e-05,
+      "sim_time": 0.029999999999998736,
+      "wall_s": 21.301072062999083,
+      "peak_force_N": 0.11784223943774198,
+      "initial_energy_J": 3.888e-07,
+      "friction_dissipated_J": 7.748355892280829e-09,
+      "total_momentum_error_Ns": 1.1250974697885375e-11,
+      "max_net_force_N": 4.688178366687056e-17,
+      "max_net_moment_Nm": 3.1748449862231054e-13,
+      "sampled_force_integral_note": "Original comparison integrates sparse logged forces; this is a quadrature estimate, not the unavailable substep force integral. No fully qualified reaction-impulse channel claimed for recontact.",
+      "trace": "runs/recontact_rhs_fixed/result.json#rows"
+    },
+    "recontact_rhs_fixed_half": {
+      "dt": 6.25e-06,
+      "sim_time": 0.029999999999997716,
+      "wall_s": 42.95606749199942,
+      "peak_force_N": 0.11798492261057314,
+      "initial_energy_J": 3.888e-07,
+      "friction_dissipated_J": 6.321892447491995e-09,
+      "total_momentum_error_Ns": 9.304977015015735e-12,
+      "max_net_force_N": 6.960591845177633e-17,
+      "max_net_moment_Nm": 4.062551850174497e-13,
+      "sampled_force_integral_note": "Original comparison integrates sparse logged forces; this is a quadrature estimate, not the unavailable substep force integral. No fully qualified reaction-impulse channel claimed for recontact.",
+      "trace": "runs/recontact_rhs_fixed_half/result.json#rows"
+    },
+    "recontact_spectral": {
+      "dt": 5e-07,
+      "sim_time": 0.012000000000001674,
+      "wall_s": 326.7228901899998,
+      "peak_force_N": 0.11815813316887398,
+      "initial_energy_J": 3.888e-07,
+      "friction_dissipated_J": 5.516992976695056e-09,
+      "total_momentum_error_Ns": 6.530608845390094e-12,
+      "max_net_force_N": 1.140783585068918e-16,
+      "max_net_moment_Nm": 6.256152467854045e-13,
+      "sampled_force_integral_note": "Original comparison integrates sparse logged forces; this is a quadrature estimate, not the unavailable substep force integral. No fully qualified reaction-impulse channel claimed for recontact.",
+      "trace": "runs/recontact_spectral/result.json#rows"
+    }
+  },
+  "cutting_pilots": {
+    "paid_cut": {
+      "status": "whole_material_contact_stop",
+      "last_accepted_state_s": 0.04149999999999747,
+      "last_logged_sample_s": 0.0415,
+      "last_logged_tool_work_J": 6.884792825841919e-06,
+      "last_logged_friction_J": 2.303866134999631e-08,
+      "last_logged_cut_projection_numerical_loss_J": 1.1542534898076608e-08,
+      "last_logged_bulk_kinetic_J": 6.849743236839998e-06,
+      "final_paid_area_m2": 0.0,
+      "final_fracture_work_J": 0.0,
+      "cut_created": false,
+      "max_impulse_balance_Ns": 5.98174489527847e-13,
+      "trace": "runs/paid_cut/result.json#rows",
+      "energy_closure_qualified": false,
+      "reason": "No successful physical cut; cumulative last logged work is not mislabeled as an exact final-step closure. Geometry/strain inconsistency invalidates coupled qualification."
+    },
+    "paid_cut_refined_guard": {
+      "status": "reconstructed_volume_stop",
+      "last_accepted_state_s": 0.029174999999998827,
+      "last_logged_sample_s": 0.029,
+      "last_logged_tool_work_J": 5.996981933133499e-06,
+      "last_logged_friction_J": 2.297184663174696e-08,
+      "last_logged_cut_projection_numerical_loss_J": 1.1531673795015379e-08,
+      "last_logged_bulk_kinetic_J": 5.929642081264711e-06,
+      "final_paid_area_m2": 0.0,
+      "final_fracture_work_J": 0.0,
+      "cut_created": false,
+      "max_impulse_balance_Ns": 5.123372579320937e-13,
+      "trace": "runs/paid_cut_refined_guard/result.json#rows",
+      "energy_closure_qualified": false,
+      "reason": "No successful physical cut; cumulative last logged work is not mislabeled as an exact final-step closure. Geometry/strain inconsistency invalidates coupled qualification."
+    }
+  }
+}

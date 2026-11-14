@@ -1,0 +1,38 @@
+Newton–CPU PhysX repeated hinge contact and natural separation — 1 November 2026
+
+PASS for 32 persistent coupled exchanges in each of two passive-hinge fixtures. The particles separated naturally with no reposition, velocity reset or artificial contact deletion. Checklist item 15 remains open for broader coupling qualification.
+
+Both near-origin, locally authored fixed-base articulations retain the previous identity and 90-degree-yaw orientations. Each moving link has mass 0.02 kg, COM radius 0.01 m from its Z hinge and synthetic COM Z inertia 0.0001 kg m². One 0.01 kg CUDA Newton particle starts 1 mm inside the link's +Y side at link-local (0.004,0.004,0) m. CPU PhysX owns joint motion and constraints; Newton owns the particle and carries a kinematic link proxy. No drive, joint stiffness/damping/friction, gravity or PhysX collisions were enabled. There are no cross-fixture constraints. No robot, real blade, remote asset or cutting material was loaded.
+
+The same model, solver, pipeline, contact buffers and pair of Newton states were reused. Every interval validated the latest PhysX link pose/COM twist in both Newton body states, regenerated collisions, solved the particle for 16 iterations against the frozen proxy, collected the native contact force/COM torque using actual solver caches, delivered the world wrench once to the selected moving link, stepped PhysX, copied actual rigid state back exactly and swapped soft states. The fixed contact stiffness was 1750 N/m with zero damping/friction/radius/margin. dt=1/2400 s, TGS position substeps=16, velocity iterations=0.
+
+Exactly 64 Newton steps and 32 shared CPU PhysX steps ran, for 0.0133333 s per fixture. There were 66 exact link-state packet echo events (initial plus after every PhysX step for each fixture), each copying pose and COM twist into both actual Newton states. Every fixture generated 10 contact intervals followed by 22 cleared-contact coast intervals. No new wrench was queued during coast; contact did not reappear. Normals were checked against the updated link orientation, and both fixtures exercised a measurable contact-normal change.
+
+The independent reference uses incoming particle velocity and the current frozen +Y plane to solve unilateral soft contact. Generalized hinge effort includes both force about the pivot and the reaction torque about COM. The effective one-DOF inertia was independently checked against I_COM+m*r². Per-interval particle/joint state and a separately advanced full trajectory were checked. Actual delivered effort and particle force were integrated independently to compare accumulated hinge/particle impulses. Particle orbital angular momentum plus effective hinge inertia times joint velocity was checked about the free hinge axis. This does not assert free-body linear momentum conservation for the fixed-base constraint. Joint coast velocity stayed constant after contact disappeared. General contact work/energy was not qualified in this step.
+
+Fixture coverage:
+  hinge_sequence_identity: 10 contact steps, 22 coast steps; normal change 0.00124916712; final joint velocity -0.497590899467 rad/s.
+  hinge_sequence_yaw90: 10 contact steps, 22 coast steps; normal change 0.00124923258; final joint velocity -0.497591108084 rad/s.
+
+Maximum errors across all fixture intervals:
+  force_error_n: 1.60735113e-06
+  point_error_m: 2.53451964e-09
+  torque_error_nm: 8.77513454e-09
+  joint_position_error_rad: 2.32209762e-09
+  joint_velocity_error_rad_s: 2.2651938e-07
+  particle_position_error_m: 9.32634915e-10
+  particle_velocity_error_m_s: 2.2383238e-06
+  trajectory_joint_position_error_rad: 2.05243273e-08
+  trajectory_joint_velocity_error_rad_s: 1.18992273e-06
+  trajectory_particle_position_error_m: 5.54395604e-08
+  trajectory_particle_velocity_error_m_s: 6.09461909e-06
+  cumulative_joint_impulse_error_nms: 6.24179113e-11
+  cumulative_particle_impulse_error_ns: 5.96193164e-08
+  hinge_axis_angular_balance_error_nms: 6.84420938e-10
+  coast_joint_velocity_change_rad_s: 0
+
+Retained gates: force 2e-5 N, projected point/particle position and particle trajectory 1e-7 m, COM torque 2e-7 N m, joint position/trajectory 1e-6 rad, joint/particle velocity and accumulated velocity reference 2e-5 in their respective units, accumulated particle impulse 2e-7 N s, joint impulse/hinge-axis angular balance 2e-8 N m s, and coast joint velocity change 2e-6 rad/s. Each fixture required at least three coast intervals and active-normal change of at least 1e-5. No tolerance was relaxed. Four focused host-reference/guard-contract tests and nine supervisor tests passed, including natural separation, rotational equivalence, angular balance and stale-force expectations.
+
+The protected run completed in 8.11 seconds, retaining at least 23.09 GB available RAM and 7.34 GB free GPU memory. No memory warnings or monitor errors occurred, and no owned live processes remained. Source snapshots/hashes were saved. Original frozen production inputs and previously pinned installed dependencies remain unchanged.
+
+Next bounded step: reset and replay these coupled articulated fixtures after coast and during contact, checking joint state, force queues, Newton state and collision history. Multi-joint robot dynamics, jointed contact work/energy, broader coordinate precision, material cutting and the real blade's collision backend remain unvalidated.

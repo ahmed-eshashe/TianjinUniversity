@@ -1,0 +1,21 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/cache/warp/1.17.0
+non-affine loaded shallow-front force comparison
+Module gpu_kernels 352560d load on device 'cuda:0' took 710.75 ms  (compiled)
+primary loaded GPU dynamics
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/tests/gpu.py", line 39, in <module>
+    progress(label+' loaded GPU dynamics');a=FrontSystem.restore(R/'initial');before=a.metrics();x0=a.observations()[0];gpu=GPUReference(a,f,dt=dt);t=time.perf_counter();gpu.step(round(.0001/dt));gpu.export();wall=time.perf_counter()-t
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/src/multicut.py", line 179, in restore
+    with np.load(path,allow_pickle=False) as z:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/runs/gpu/initial'

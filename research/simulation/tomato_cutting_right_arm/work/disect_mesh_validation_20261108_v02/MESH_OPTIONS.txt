@@ -1,0 +1,15 @@
+Decision needed before creating a new FEM tessellation
+
+Recommended: independently remesh the SAME original tomato exterior into a conforming volume mesh in this isolated study. Preserve the 65 x 65 x 55 mm shape, the 121.671 g total mass, nominal cut x=-22.5 mm and the original 25 support coordinates. Validate boundary closure, positive volumes, paired interior faces, mass and support mapping before dynamics. Preserve the source spring/cohesion research branch and evidence.
+
+What changes: internal tetrahedral connectivity and possibly interior node locations/count, mass lumping and constitutive representation. DiSECt FEM and cutting springs are not identical to the original spring/skin/cohesion law. Even a successful cut would be a synthetic DiSECt tomato result, not experimental validation or an equal-accuracy replacement.
+
+Mesh preparation scope: one constrained tetrahedralization route from the audited original exterior, target roughly the original order of 16000 cells, exact support-coordinate retention or an explicitly reported mapping failure. No automatic nearest-node support substitution. No geometry smoothing, changed fruit size or deleted material ties. A route requiring major mesher development stops with a feasibility report. Record any resolution change rather than claiming a matched resolution.
+
+Material starting evidence: original tomato_surface_mechanics.py constructs synthetic small-strain central-force bulk with nominal E=30000 Pa and nu=0.25 under prescribed-surface probes. These are a defensible nominal bulk reference only; no direct equality of relaxed response, skin or fracture law follows. Report calibration/mapping limits separately before contact. No parameters chosen after seeing separation.
+
+Alternative: keep the original exact internal point set and attempt a conforming retriangulation. This better preserves node identity but may retain poor-quality/sliver elements and require robust coplanar handling; explicit-solver stability can suffer. It still changes connectivity and does not preserve the spring material law.
+
+Alternative: retain DiSECt as an example-only speed reference and do not create a tomato FEM representation. This avoids a model conversion but cannot answer whether DiSECt can efficiently slice our tomato.
+
+No new tetrahedralization or tomato dynamics has been performed in this follow-up. Proposed exterior input and audits are saved for review.

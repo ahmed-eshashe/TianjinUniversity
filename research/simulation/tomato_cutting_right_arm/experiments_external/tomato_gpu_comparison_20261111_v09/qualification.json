@@ -1,0 +1,59 @@
+{
+  "updated": "2026-11-11T00:58:31.533900+08:00",
+  "status": "pass_restricted_GPU_accuracy_comparison",
+  "production_adopted": false,
+  "production_changed": false,
+  "protected_files_unchanged": 1100,
+  "primary_checks_passed": 208,
+  "additional_rejection_checks_passed": 3,
+  "total_checks_passed": 211,
+  "precision": "float64",
+  "material_timestep_integration_mass_unchanged": true,
+  "model_reference": "v07 integrated quadratic Galerkin block with prescribed sequential cuts; custom isolated backend, not a production CRESSim/DiSECt replacement",
+  "GPU_version": "v09 32-lane force reduction; preserved v08 serial-gather comparison",
+  "CPU_source": "tomato_multicut_20261110_v07",
+  "scope": "Fixed-topology GPU mechanics and CPU-assisted carried topology checkpoints; one material, short 1 ms no-contact trials",
+  "current_accuracy": {
+    "force_error_N": 6.331175535858592e-15,
+    "force_relative": 7.363115325143351e-12,
+    "acceleration_relative": 3.6335569169899513e-11,
+    "energy_error_J": 3.411006437761874e-18,
+    "reaction_error_N": 3.337212684437876e-16,
+    "mass_solve_relative": 3.481402084723501e-15
+  },
+  "paired_CPU_GPU_median_speedup_range": [
+    28.74794942686634,
+    53.3620835790227
+  ],
+  "paired_GPU_wall_s_per_sim_s_range": [
+    1124.0658001042902,
+    1339.995479938807
+  ],
+  "loaded_primary_GPU_checked_wall_s_per_1ms": {
+    "partial": 1.4826999030010484,
+    "full": 1.3040344520013605
+  },
+  "gate2": "GPU and prescribed multicut component controls pass; actual tool-generated cuts and whole gate remain pending",
+  "gate3": "contact and paid physical fracture not qualified",
+  "actual_new_tomato_slice": false,
+  "arbitrary_free_cutting": false,
+  "rl_qualified": false,
+  "experimental_validation": "pending",
+  "evidence": [
+    "comparison.json",
+    "rejection_control.json",
+    "profile.json",
+    "setup_costs.json",
+    "environment.json",
+    "preservation_check.json"
+  ],
+  "scope_limits": [
+    "12 mm tensor block; 512 observations, not a tomato",
+    "No blade/contact/paid fracture/fragment recontact or robot",
+    "Only prescribed reference-axis cuts, one active partial incision per connected piece",
+    "CPU assembles cut topology and full mass inverse; this cost is not hidden in rollout speed claims",
+    "GPU double-precision accuracy demonstrated over short test windows only",
+    "Desktop graphics work remained active; three repeat cost samples are not a statistical benchmark campaign"
+  ],
+  "next_action": "Use this isolated GPU reference for a bounded finite-blade-sweep topology test; do not launch full tomato episodes or RL. Keep longer-term performance qualification open."
+}

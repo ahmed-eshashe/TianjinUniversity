@@ -1,0 +1,424 @@
+{
+  "status": "pass",
+  "checks": {
+    "n4_frame0": true,
+    "n4_frame1": true,
+    "n4_frame2": true,
+    "n4_frame3": true,
+    "n4_frame4": true,
+    "n4_frame5": true,
+    "n4_frame6": true,
+    "n4_frame7": true,
+    "n4_frame8": true,
+    "n4_frame9": true,
+    "n4_reuse": true,
+    "n10_frame0": true,
+    "n10_frame1": true,
+    "n10_frame2": true,
+    "n10_frame3": true,
+    "n10_frame4": true,
+    "n10_frame5": true,
+    "n10_frame6": true,
+    "n10_frame7": true,
+    "n10_frame8": true,
+    "n10_frame9": true,
+    "n10_reuse": true,
+    "batch8_workers1_reuse": true,
+    "batch8_workers4_reuse": true,
+    "parallel_identical_0": true,
+    "parallel_identical_1": true,
+    "parallel_identical_2": true,
+    "parallel_identical_3": true,
+    "parallel_identical_4": true,
+    "parallel_identical_5": true,
+    "parallel_identical_6": true,
+    "parallel_identical_7": true
+  },
+  "timings": [
+    {
+      "new": false,
+      "n": 4,
+      "batch": 1,
+      "workers": 1,
+      "warm_geometry_template": false,
+      "simulated_duration_per_body_s": 0.2,
+      "controls_per_body": 10,
+      "geometry_events_per_body": 4,
+      "wall_s": 0.31153979199007154,
+      "diagnostic_transitions_per_s": 32.09862835216469,
+      "phases": {
+        "reset": 0.00707485199382063,
+        "cut_and_aggregation": 0.10944269498577341,
+        "GPU_initial": 0.013064365004538558,
+        "GPU_replace": 0.0598692060157191,
+        "material": 0.10717059999296907,
+        "observations": 0.007083798016537912,
+        "checks": 0.00707671299460344
+      },
+      "maximum_mass_error_relative": 1.3322676295501878e-15,
+      "maximum_energy_residual_relative": 0.00027992334072329535,
+      "graphs_and_storage_reused": false,
+      "array_memory_bytes": 109732,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy."
+    },
+    {
+      "new": true,
+      "n": 4,
+      "batch": 1,
+      "workers": 1,
+      "warm_geometry_template": false,
+      "simulated_duration_per_body_s": 0.2,
+      "controls_per_body": 10,
+      "geometry_events_per_body": 4,
+      "wall_s": 0.23298055901250336,
+      "diagnostic_transitions_per_s": 42.92203625223223,
+      "phases": {
+        "reset": 0.006502272008219734,
+        "cut_and_aggregation": 0.09096834299270995,
+        "GPU_initial": 0.0052491230017039925,
+        "GPU_replace": 0.006069066017516889,
+        "material": 0.10962245201517362,
+        "observations": 0.007375690038315952,
+        "checks": 0.006596057995921001
+      },
+      "maximum_mass_error_relative": 1.3322676295501878e-15,
+      "maximum_energy_residual_relative": 0.00027992334072302104,
+      "graphs_and_storage_reused": true,
+      "array_memory_bytes": 188460,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy."
+    },
+    {
+      "new": false,
+      "n": 10,
+      "batch": 1,
+      "workers": 1,
+      "warm_geometry_template": false,
+      "simulated_duration_per_body_s": 0.2,
+      "controls_per_body": 10,
+      "geometry_events_per_body": 4,
+      "wall_s": 2.6659129159961594,
+      "diagnostic_transitions_per_s": 3.7510602615702267,
+      "phases": {
+        "reset": 0.08385856400127523,
+        "cut_and_aggregation": 1.5130375620210543,
+        "GPU_initial": 0.13399262700113468,
+        "GPU_replace": 0.664195675009978,
+        "material": 0.1591319179860875,
+        "observations": 0.03051625200896524,
+        "checks": 0.07525384098698851
+      },
+      "maximum_mass_error_relative": 4.440892098500626e-16,
+      "maximum_energy_residual_relative": 7.88152537760938e-05,
+      "graphs_and_storage_reused": false,
+      "array_memory_bytes": 1593532,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy."
+    },
+    {
+      "new": true,
+      "n": 10,
+      "batch": 1,
+      "workers": 1,
+      "warm_geometry_template": false,
+      "simulated_duration_per_body_s": 0.2,
+      "controls_per_body": 10,
+      "geometry_events_per_body": 4,
+      "wall_s": 1.2578111460024957,
+      "diagnostic_transitions_per_s": 7.950319117286752,
+      "phases": {
+        "reset": 0.07833465999283362,
+        "cut_and_aggregation": 0.8375766599929193,
+        "GPU_initial": 0.012196921001304872,
+        "GPU_replace": 0.04062770999735221,
+        "material": 0.1776272709830664,
+        "observations": 0.030760743989958428,
+        "checks": 0.07487939401471522
+      },
+      "maximum_mass_error_relative": 4.440892098500626e-16,
+      "maximum_energy_residual_relative": 7.88152537760938e-05,
+      "graphs_and_storage_reused": true,
+      "array_memory_bytes": 2808944,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy."
+    },
+    {
+      "new": true,
+      "n": 10,
+      "batch": 8,
+      "workers": 1,
+      "warm_geometry_template": true,
+      "simulated_duration_per_body_s": 0.2,
+      "controls_per_body": 10,
+      "geometry_events_per_body": 4,
+      "wall_s": 6.522398917004466,
+      "diagnostic_transitions_per_s": 12.265425806973104,
+      "phases": {
+        "reset": 0.3526017160038464,
+        "cut_and_aggregation": 4.244271204006509,
+        "GPU_initial": 0.06217837499571033,
+        "GPU_replace": 0.3215809329994954,
+        "material": 0.6474388760252623,
+        "observations": 0.276833787036594,
+        "checks": 0.5717623759846902
+      },
+      "maximum_mass_error_relative": 4.440892098500626e-16,
+      "maximum_energy_residual_relative": 9.52530059992772e-05,
+      "graphs_and_storage_reused": true,
+      "array_memory_bytes": 22470640,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy."
+    },
+    {
+      "new": true,
+      "n": 10,
+      "batch": 8,
+      "workers": 4,
+      "warm_geometry_template": true,
+      "simulated_duration_per_body_s": 0.2,
+      "controls_per_body": 10,
+      "geometry_events_per_body": 4,
+      "wall_s": 4.690336316009052,
+      "diagnostic_transitions_per_s": 17.056346199939664,
+      "phases": {
+        "reset": 0.343407994005247,
+        "cut_and_aggregation": 2.427334077990963,
+        "GPU_initial": 0.05956562000210397,
+        "GPU_replace": 0.31516396399820223,
+        "material": 0.652841500021168,
+        "observations": 0.27380664099473506,
+        "checks": 0.5723513300035847
+      },
+      "maximum_mass_error_relative": 4.440892098500626e-16,
+      "maximum_energy_residual_relative": 9.52530059992772e-05,
+      "graphs_and_storage_reused": true,
+      "array_memory_bytes": 22470640,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy."
+    }
+  ],
+  "differences": [
+    {
+      "n": 4,
+      "frame": 0,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 1,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 2,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 3,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 4,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 5,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 6,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 7,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 8,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 4,
+      "frame": 9,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 0,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 1,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 2,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 3,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 4,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 5,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 6,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 7,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 8,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "n": 10,
+      "frame": 9,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 0,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 1,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 2,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 3,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 4,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 5,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 6,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "thread_equivalence",
+      "environment": 7,
+      "topology": true,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    }
+  ],
+  "warm_template_preparation_s": 0.34440093900775537,
+  "RL_qualified": false,
+  "physical_cut": false
+}

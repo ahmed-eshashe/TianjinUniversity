@@ -1,0 +1,26 @@
+/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/tests/conditioning_diagnosis.py:9: RuntimeWarning: divide by zero encountered in scalar divide
+  X=block(8,.0015);b=CutReference(X);d=b._plane_data(.0003);A=d['Wfull'].toarray();u,s,vt=np.linalg.svd(A,full_matrices=False);rank=int(np.sum(s>s[0]*1e-12));z=vt[-1].copy();grad=np.stack([g@z for g in d['Gfull']],axis=1);z*=.001/np.max(np.linalg.norm(grad,axis=1));uobs=A@z;grad=np.stack([g@z for g in d['Gfull']],axis=1);F=np.tile(np.eye(3),(len(X),1,1));F[:,0,:]+=grad;E=b.vol*energy_stress(F,b.mu,b.lam)[0].sum();oldmass=float(b.mass*np.sum(uobs**2))
+/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/tests/conditioning_diagnosis.py:9: RuntimeWarning: invalid value encountered in multiply
+  X=block(8,.0015);b=CutReference(X);d=b._plane_data(.0003);A=d['Wfull'].toarray();u,s,vt=np.linalg.svd(A,full_matrices=False);rank=int(np.sum(s>s[0]*1e-12));z=vt[-1].copy();grad=np.stack([g@z for g in d['Gfull']],axis=1);z*=.001/np.max(np.linalg.norm(grad,axis=1));uobs=A@z;grad=np.stack([g@z for g in d['Gfull']],axis=1);F=np.tile(np.eye(3),(len(X),1,1));F[:,0,:]+=grad;E=b.vol*energy_stress(F,b.mu,b.lam)[0].sum();oldmass=float(b.mass*np.sum(uobs**2))
+/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/linalg/_linalg.py:2430: RuntimeWarning: invalid value encountered in det
+  r = _umath_linalg.det(a, signature=signature)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/tests/conditioning_diagnosis.py", line 16, in <module>
+    (W/'conditioning_diagnosis.json').write_text(json.dumps(result,indent=2,allow_nan=False));print(json.dumps(result,indent=2))
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 398, in _iterencode_dict
+    yield _floatstr(value)
+          ^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 240, in floatstr
+    raise ValueError(
+ValueError: Out of range float values are not JSON compliant: nan

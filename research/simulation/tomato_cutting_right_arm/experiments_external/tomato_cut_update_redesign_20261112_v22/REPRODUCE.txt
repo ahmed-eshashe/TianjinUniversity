@@ -1,0 +1,22 @@
+ISOLATED V22 REPRODUCTION
+
+Python: /home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python
+Set OPENBLAS_NUM_THREADS=1, PYTHONDONTWRITEBYTECODE=1 and NUMBA_CACHE_DIR to this trial's cache/numba.
+The installed g++ and Qhull produce build/geometry.so and build/facets.so. build/dispatch.so uses the installed CUDA driver and header, with no package update or installation. Source and build artifacts are included.
+
+Selected runtime: src/compiled_body.py, src/fast_aggregation.py, src/fast_data.py, src/pipeline_gpu.py (which uses active_gpu and cached_gpu), plus native surface/dispatch helpers.
+Rejected kernel alternatives remain in src/ for audit; they are not imported by the selected runtime.
+
+Run validation scripts with the listed Python and an individual 600-second timeout:
+ tests/native_validate.py
+ tests/geometry_holdout.py
+ tests/persistent_validate.py
+ tests/pipeline_validate.py
+ tests/invariants.py
+ tests/combined_loop.py
+ tests/final_performance.py
+ tests/steady_performance.py
+
+The last three scripts measure performance and must run without competing simulation jobs. Compilation and first-template preparation are reported separately. The steady benchmark includes per-episode reset while reusing GPU objects. Numerical comparisons run outside the reported episode timers; per-control physical conservation checks and full-state observations are inside them.
+
+Scripts write result JSON in this directory. Preserve the frozen evidence and use a separate copy or new result directory for future changes/reruns. The original Isaac/DiSECt production setup is not replaced by this experiment.

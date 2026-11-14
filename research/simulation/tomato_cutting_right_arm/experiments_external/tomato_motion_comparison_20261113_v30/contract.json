@@ -1,0 +1,28 @@
+{
+  "scope": "Controller-only cutting-motion comparison authorized by user. Original approximate material, fracture law, blade geometry, fixture and hard stops unchanged. No production adoption before comparing results.",
+  "cases": [
+    "unchanged baseline",
+    "same saw, twice feed",
+    "same saw, four times feed",
+    "smooth 0.8Hz +/-20mm sliding with twice baseline mean feed",
+    "same smooth sliding with four times baseline mean feed"
+  ],
+  "checks": [
+    "fresh identical body for every case",
+    "actual two-piece separation, horizontal withdrawal and existing terminal success",
+    "2N total-load, 0.1mm particle-penetration and board stops unchanged",
+    "force, relative deformation, bonded strain, cutting duration and reset",
+    "baseline and best passing candidate at finer timestep before recommendation"
+  ],
+  "precision_scope": "Existing approximate model; no new measured-tomato calibration. Coarse/fine differences will be reported.",
+  "source_hashes": {
+    "/home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/src/environment.py": "d0dbf8c1fda992be8df6d2fa6f6fb1c74b73fbf5bd4d99a4b6544ccbc660f6de",
+    "/home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/src/solver.py": "e35410356293ee1de8b1751fb73c3e78af7f80a7db90c6801378c8e1ac90e50b",
+    "/home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/src/model.py": "91499013abe977f58d5ff5f69b72e2dba5a41afe4d5d4606355e1e7fec48f4e5"
+  },
+  "targeted_followup": {
+    "case": "smooth_sync_2x",
+    "reason": "The constant-feed smooth stroke accumulated load near sliding reversals; smooth_4x stopped at 2.103N with only 8.83mm/s sliding speed. Test one synchronized stroke that pauses downward feed at reversal, retaining the same long-run average feed, material and stops.",
+    "controls": "Same 0.8Hz +/-20mm stroke as smooth_2x; only downward feed waveform changes."
+  }
+}

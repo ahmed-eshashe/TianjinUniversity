@@ -1,0 +1,41 @@
+CPU PhysX spin near-origin comparison — 31 October 2026
+
+PASS within the original free-spin accuracy limits for the isolated near-origin setup at dt=1/2400 s. This does not reverse or delete the failed original/far-origin results, or qualify arbitrary world coordinates. Checklist item 15 remains open for complete coupling validation.
+
+The half-step baseline was repeated for the same 0.0133333 seconds: 32 PhysX steps, three fixtures, 96 exact CPU-to-CUDA Newton State echoes, no Newton solver/contact steps. Only initial actor translations changed: the identity body stayed at (0,0,0), while the two oblique/offset-COM bodies moved from (0,0.05,0) and (0,0.10,0) to (0,0,0) m. They can overlap in this isolated test because all collisions are disabled and there are no constraints between the bodies. Rotations, body-local COM, principal inertia, gyro settings, initial COM velocities, time step, duration, reference algorithm and limits were unchanged. Actual starting readbacks were checked for exact matching of all non-translation fields.
+
+Both gyro-enabled bodies satisfied every original gate over all 32 intervals: COM position 1e-7 m, COM velocity 2e-6 m/s, continuous-reference angular velocity 2e-4 rad/s, rotation 2e-5 rad, relative angular-momentum drift 2e-4 and relative energy drift 2e-4. The disabled-gyro control satisfied the translation gates while remaining clearly different from the torque-free Euler angular solution, as expected. All force queues remained inactive. The original-step orientation issue is not solved by translation; the already-tested half-step setting is retained.
+
+Comparison by fixture:
+
+identity_gyro:
+  COM error before: 0.002424 µm; near origin: 0.002424 µm; reduction factor 1.000.
+  COM API error: 2.42391391e-09 m.
+  Angular velocity error: 9.20935446e-05 rad/s; rotation error: 1.06448979e-05 rad.
+  Relative angular-momentum/energy drift: 2.33540849e-05 / 3.70462713e-05.
+  Angular velocity difference from translated baseline: 0 rad/s; quaternion difference: 0.
+  Maximum COM API residual against explicit binary32 substep replay: 0 m.
+
+oblique_offset_gyro:
+  COM error before: 0.183289 µm; near origin: 0.008510 µm; reduction factor 21.538.
+  COM API error: 8.64437279e-09 m.
+  Angular velocity error: 8.84617387e-05 rad/s; rotation error: 1.09003607e-05 rad.
+  Relative angular-momentum/energy drift: 2.23956799e-05 / 3.40874226e-05.
+  Angular velocity difference from translated baseline: 0 rad/s; quaternion difference: 0.
+  Maximum COM API residual against explicit binary32 substep replay: 4.83509145e-10 m.
+
+oblique_offset_no_gyro_control:
+  COM error before: 0.184087 µm; near origin: 0.008445 µm; reduction factor 21.797.
+  COM API error: 8.59840064e-09 m.
+  Angular velocity error: 0.0508868088 rad/s; rotation error: 0.000339638586 rad.
+  Relative angular-momentum/energy drift: 0.0089824102 / 2.56630098e-05.
+  Angular velocity difference from translated baseline: 0 rad/s; quaternion difference: 0.
+  Maximum COM API residual against explicit binary32 substep replay: 4.83509145e-10 m.
+
+The oblique-body translational drift falls by over 20 times while angular traces are unchanged. Together with the earlier explicit binary32 substep replay, this supports accumulated position-rounding as the cause of the far-origin accuracy failure in these fixtures. It is a tested numerical mitigation, not an exposed hidden engine accumulator or a proof that any arbitrary scene can meet a 100 nm position requirement. The COM API remains a float32 reconstruction of link pose plus local offset, not independent native COM telemetry.
+
+The new guard mode requires actual physical_accuracy_passed=True, all 32 steps, all 96 exact state echoes, correct refinement, all three cases and a distinguished gyro control. A guard-contract test rejects data-collection-only success, failed accuracy and wrong counts; nine existing supervisor tests also pass. No tolerances were relaxed and no production scene coordinates were changed.
+
+The protected worker completed in 5.56 seconds, retaining at least 22.14 GB available RAM and 7.46 GB free GPU memory. No resource warning or monitor error occurred, and no owned live processes remained. Source snapshots/hashes and baseline evidence hashes were saved. Frozen production inputs and installed dependencies remain unchanged.
+
+Next bounded step: combine the validated near-origin/half-step setting with repeated unequal-inertia Newton contact feedback, checking updated world COM torque, angular response and clearing. Any later adoption of scene-local coordinates for real robot links needs its own frame mapping and error budget. Articulated-link dynamics, general contact work/energy, material cutting, broad coordinate precision, long-run stability and the real blade contact backend remain unvalidated.

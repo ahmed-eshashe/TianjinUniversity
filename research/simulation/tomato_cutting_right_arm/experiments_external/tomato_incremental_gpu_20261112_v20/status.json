@@ -1,0 +1,122 @@
+{
+  "version": "v20",
+  "updated": "2026-11-12T19:12:24.090144+08:00",
+  "decision": "equivalent_speed_improvements_verified_RL_cost_gate_not_passed",
+  "simulation_running": false,
+  "current_setup_changed": false,
+  "production_adopted": false,
+  "physical_tomato_model_completed": false,
+  "physical_cut": false,
+  "rl_ready": false,
+  "experimental_validation": "pending",
+  "scope": "Implementation-only optimization of frozen v19; geometric diagnostic cutting only.",
+  "passed_check_sets": {
+    "local_geometry_setup": 27,
+    "GPU_precision": 8,
+    "changing_loop": 23,
+    "matched_GPU_comparison": 3
+  },
+  "failed_final_checks": [],
+  "historical_failures_preserved": true,
+  "matched_GPU_material_rates": [
+    {
+      "case": "intact",
+      "batch": 8,
+      "old_wall_s": [
+        0.06847927501075901,
+        0.07007891598914284,
+        0.06864914299512748,
+        0.06885500700445846,
+        0.06912434499827214
+      ],
+      "new_wall_s": [
+        0.05020897199574392,
+        0.050364416994852945,
+        0.04896490799728781,
+        0.050355100000160746,
+        0.051222670008428395
+      ],
+      "matched_speedup": 1.367388943805864,
+      "old_material_equivalents_s": 116.1861765475093,
+      "new_material_equivalents_s": 158.87169323414037,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "oblique",
+      "batch": 8,
+      "old_wall_s": [
+        0.08625258500978816,
+        0.08405657100956887,
+        0.08409622100589331,
+        0.08557830000063404,
+        0.08842885299236514
+      ],
+      "new_wall_s": [
+        0.06141196799580939,
+        0.06172135299129877,
+        0.05773343099281192,
+        0.0616668760048924,
+        0.07233693900343496
+      ],
+      "matched_speedup": 1.3877515052626406,
+      "old_material_equivalents_s": 93.48164195760758,
+      "new_material_equivalents_s": 129.72928934109314,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    },
+    {
+      "case": "corner",
+      "batch": 8,
+      "old_wall_s": [
+        0.07584344799397513,
+        0.07811297800799366,
+        0.07786773800035007,
+        0.07698952799546532,
+        0.07913378400553484
+      ],
+      "new_wall_s": [
+        0.06343309300427791,
+        0.06387362600071356,
+        0.06455984199419618,
+        0.06499446299858391,
+        0.07438617099251132
+      ],
+      "matched_speedup": 1.2061327226815433,
+      "old_material_equivalents_s": 102.73831249552971,
+      "new_material_equivalents_s": 123.91604057394048,
+      "position_m": 0.0,
+      "velocity_m_s": 0.0,
+      "F": 0.0
+    }
+  ],
+  "changing_geometry_loop": {
+    "extent_m": 0.06,
+    "controls": 10,
+    "simulated_duration_s": 0.2,
+    "front_events": 4,
+    "old_total_wall_s": 6.0422017609962495,
+    "new_total_wall_s": 2.7240137240005424,
+    "speedup": 2.2181245666128833,
+    "old_geometry_setup_s": 4.735504433992901,
+    "new_geometry_setup_s": 1.5979894010233693,
+    "geometry_setup_speedup": 2.963414169681122,
+    "new_single_environment_diagnostic_transitions_s": 3.6710534575845655,
+    "complete_batched_RL_rate_measured": false,
+    "remaining_cost_scope": "Includes reset, geometry, setup, observations and checks; excludes blade/contact/fracture/robot/policy."
+  },
+  "target_material_headroom_s": 200,
+  "target_minimum_actual_RL_transitions_s": 100,
+  "target_preferred_actual_RL_transitions_s": 500,
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/NEXT_ACTION.txt",
+  "report": "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/REPORT.txt",
+  "preservation": {
+    "checked_at": "2026-11-12T19:09:45.440192+08:00",
+    "protected_files": 1891,
+    "changed": [],
+    "missing": [],
+    "passed": true
+  }
+}

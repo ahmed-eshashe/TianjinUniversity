@@ -1,0 +1,120 @@
+{
+  "contact_comparison": {
+    "scope": "Intact original-CAD contact at half/quarter original timestep; unchanged law and tolerances",
+    "position_max_error_m": 1.2253219142189963e-09,
+    "velocity_max_error_m_s": 3.076549949197705e-05,
+    "force_max_relative_error": 0.045876893543953697,
+    "moment_max_relative_error": 0.0465703604902646,
+    "force_worst_time_s": 0.008,
+    "both_component_pass": true,
+    "quarter_wall_s_per_sim_s": 5404.959656777727,
+    "runtime_budget_wall_s_per_sim_s": 120,
+    "contact_comparison_passed": true,
+    "runtime_passed": false
+  },
+  "transfer": {
+    "scope": "Original 47-patch objective reference force transfer to FEM nodes; no coupled dynamics, closure or eligibility-detector pass",
+    "virtual_work_relative_error": 8.883120255586377e-10,
+    "rotation_force_relative_error": 1.1045956809296611e-13,
+    "net_force_N": 1.1634182441064436e-14,
+    "net_torque_Nm": 1.6962508563854854e-16,
+    "ineligible_damage_max": 0.0,
+    "eligible_full_open_damage_min": 1.0,
+    "trial_does_not_mutate_history": true,
+    "released_force_norm_N": 0.0,
+    "original_fracture_budget_J": 0.11696391110288158,
+    "passed": true
+  },
+  "tangent_reset": {
+    "scope": "Exact reference tangent pullback and component history/reset; no loaded simulator reset qualification",
+    "tangent_relative_error": 4.368536114806311e-09,
+    "partial_damage_min": 0.447811459911915,
+    "partial_damage_max": 0.44892532434451177,
+    "no_healing": true,
+    "reset_matches_fresh": true,
+    "passed": true
+  },
+  "interface_coverage": {
+    "scope": "Negative control of interface quadrature coverage, independent of bulk stiffness",
+    "interface_nodes_per_side": 604,
+    "nodes_with_nonzero_original_quadrature_weight": 301,
+    "unsampled_interface_nodes": 303,
+    "test_node": 6268,
+    "test_opening_m": 1e-05,
+    "cohesive_force_change_norm_N": 0.0,
+    "cohesive_energy_change_J": 0.0,
+    "maximum_damage": 0.0,
+    "coverage_passed": false,
+    "interpretation": "Original quadrature transfer alone cannot resist every resolved interface opening mode. A constant-gap coupon does not qualify this full discretization. New surface quadrature or kinematic constraints are required; either changes the discrete model."
+  },
+  "full_surface": {
+    "scope": "Approved full-surface original-law candidate component checks; no closure or dynamic qualification",
+    "uniform_energy_relative_error": 1.4203255846362008e-15,
+    "previously_unsampled_node_now_resisted": true,
+    "local_opening_energy_J": 2.6553326561794286e-09,
+    "force_energy_relative_error": 3.3382050622840704e-09,
+    "rotation_relative_error": 4.891239126660441e-14,
+    "net_force_N": 2.4487614330289377e-14,
+    "net_torque_Nm": 8.423415470260131e-17,
+    "released_force_norm_N": 0.0,
+    "reset_matches_fresh": true,
+    "passed": true
+  },
+  "quadrature_refinement": {
+    "scope": "Prescribed nonuniform smooth opening, 3 versus 12 quadrature points per triangle; not a dynamic refinement",
+    "coarse_points": 3426,
+    "fine_points": 13704,
+    "force_relative_error": 0.033301225272772954,
+    "energy_relative_error": 0.00013277978967858343,
+    "passed": true
+  },
+  "contact_history": {
+    "scope": "Applied-nodal-force eligibility adapter and irreversible state controls, prescribed inputs; not a real blade-cut test",
+    "zero_contact_enables_no_groups": true,
+    "localized_contact_groups": 1,
+    "ineligible_damage_max": 0.0,
+    "only_eligible_groups_damaged": true,
+    "rejected_trial_uncommitted": true,
+    "no_healing": true,
+    "released_collapsed_frame_force_N": 0.0,
+    "reset": true,
+    "passed": true
+  },
+  "closure_fixture": {
+    "scope": "Existing research closure algorithm on new split geometry, prescribed piece translations only",
+    "stop": "completed",
+    "wall_s": 39.713078840999515,
+    "passed": true
+  },
+  "factored_control": {
+    "scope": "Same force/operator and step, old versus factored preconditioner",
+    "position_max_error_m": 5.681219383824043e-17,
+    "velocity_max_error_m_s": 2.8307924784093906e-13,
+    "old_iterations": 120,
+    "new_iterations": 16,
+    "old_residual": 1.8451772426099697e-11,
+    "new_residual": 3.039249356741622e-13,
+    "passed": true
+  },
+  "window_reference": {
+    "scope": "Full-surface cohesion plus research cut-face contact, damage disabled; bounded unloaded assembled check",
+    "stop": "completed",
+    "dt_s": 7.462686567164179e-06,
+    "wall_s": 40.805332545991405,
+    "component_passed": true
+  },
+  "factored_200us": {
+    "scope": "Full-surface cohesion plus research cut-face contact, damage disabled; bounded unloaded assembled check",
+    "stop": "RuntimeError('Contact PCG residual 0.0006426251643646188')",
+    "dt_s": 0.0002,
+    "wall_s": 6.777252272993792,
+    "component_passed": false
+  },
+  "factored_100us": {
+    "scope": "Full-surface cohesion plus research cut-face contact, damage disabled; bounded unloaded assembled check",
+    "stop": "physical_stop",
+    "dt_s": 0.0001,
+    "wall_s": 10.969102351999027,
+    "component_passed": false
+  }
+}

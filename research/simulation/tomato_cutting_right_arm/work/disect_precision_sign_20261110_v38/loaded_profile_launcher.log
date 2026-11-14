@@ -1,0 +1,141 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.00 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.84 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.74 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.71 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.70 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.69 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.92 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 5.91 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.27 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.45 ms  (cached)
+{
+  "scope": "One immutable corrected-contact 50 ms saved state; one warm uncommitted solve plus two timed reset solves and one cold/cached volume guard. No candidate adoption, cutting episode, history commit, physical parameter or tolerance change. No new coarser timestep.",
+  "warm_uninstrumented_solve_s": 0.3709312310020323,
+  "repetitions": [
+    {
+      "repetition": 0,
+      "total_s": 0.10340280600212282,
+      "solver": {
+        "iterations": 32,
+        "relative_residual": 1.9549475982901713e-12,
+        "inner_max_residual": 7.99520725964791e-11,
+        "newton_iterations": 1,
+        "wall_s": 0.1033577130001504
+      },
+      "timings": {
+        "bulk_elastic_geometry": {
+          "wall_s": 0.00012175499432487413,
+          "calls": 1
+        },
+        "step_edge_triangle_intersections": {
+          "wall_s": 0.004412425048940349,
+          "calls": 115
+        },
+        "step_solid_CAD_query": {
+          "wall_s": 0.028972999949473888,
+          "calls": 522,
+          "points": 5010
+        },
+        "contact_total": {
+          "wall_s": 0.07328667099500308,
+          "calls": 1
+        },
+        "cohesive_evaluation": {
+          "wall_s": 0.0011363939993316308,
+          "calls": 1
+        },
+        "compressive_closure": {
+          "wall_s": 0.0018815419971360825,
+          "calls": 1
+        },
+        "geometry_total": {
+          "wall_s": 0.0841186409961665,
+          "calls": 1
+        },
+        "damping_GPU_events": {
+          "gpu_s": 0.002858368009328842,
+          "calls": 37
+        }
+      },
+      "difference_from_uninstrumented_trial": {
+        "position_m": 0.0,
+        "velocity_m_s": 9.81547334535603e-18
+      }
+    },
+    {
+      "repetition": 1,
+      "total_s": 0.09654036100255325,
+      "solver": {
+        "iterations": 32,
+        "relative_residual": 1.9549475350250224e-12,
+        "inner_max_residual": 7.995207199281568e-11,
+        "newton_iterations": 1,
+        "wall_s": 0.09649767699738732
+      },
+      "timings": {
+        "bulk_elastic_geometry": {
+          "wall_s": 0.00012031599908368662,
+          "calls": 1
+        },
+        "step_edge_triangle_intersections": {
+          "wall_s": 0.004652173942304216,
+          "calls": 115
+        },
+        "step_solid_CAD_query": {
+          "wall_s": 0.023264984949491918,
+          "calls": 522,
+          "points": 5010
+        },
+        "contact_total": {
+          "wall_s": 0.06724838499940233,
+          "calls": 1
+        },
+        "cohesive_evaluation": {
+          "wall_s": 0.0010987010027747601,
+          "calls": 1
+        },
+        "compressive_closure": {
+          "wall_s": 0.0015151890038396232,
+          "calls": 1
+        },
+        "geometry_total": {
+          "wall_s": 0.07758319999993546,
+          "calls": 1
+        },
+        "damping_GPU_events": {
+          "gpu_s": 0.0028370879665017127,
+          "calls": 37
+        }
+      },
+      "difference_from_uninstrumented_trial": {
+        "position_m": 0.0,
+        "velocity_m_s": 9.813077866773595e-18
+      }
+    }
+  ],
+  "cold_volume_guard_s": 0.023902911998447962,
+  "identical_state_cached_guard_s": 0.00016503299411851913,
+  "volume_query_timings": {
+    "volume_solid_CAD_query": {
+      "wall_s": 0.008123027000692673,
+      "calls": 16,
+      "points": 3980
+    }
+  },
+  "volume_guard_passed": true,
+  "compressed_snapshot_write_s": 0.01363209199917037,
+  "source_checkpoint_unchanged": true,
+  "history_uncommitted_and_unchanged": true,
+  "wall_s": 1.356282877997728,
+  "qualified_physical_episode": false
+}

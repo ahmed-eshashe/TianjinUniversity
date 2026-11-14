@@ -1,0 +1,16 @@
+Thin-slab contact reference — 31 October 2026
+
+Eight analytic tests passed. No native simulation, force evaluation or motion was run.
+
+A symmetric slab 4 mm thick and an edge with endpoints at z = +/-10 mm were examined with a reference stiffness of 1750 N/m. At the centre, signed distance is -2 mm but the nearest outward normal has two opposite limiting directions. The point-penalty forces approach -3.5 N and +3.5 N from opposite sides. Assigning a unique normal there requires an explicit rule; more samples do not remove this ambiguity.
+
+Raw-sample comparison
+Using 4, 8, 16, 32 and 64 samples kept net force approximately zero through symmetry, while individual endpoint loads increased with sample count. Increasing samples from 4 to 32 multiplied each raw endpoint load by eight. Net balance alone therefore cannot validate the contact rule.
+
+Weighted mathematical comparison
+An independently integrated penalty over normalized edge parameter gave endpoint forces of +/-0.0116666667 N and energy 0.000233333333 J. Split Gaussian quadrature reproduced those results at every tested density. Its weights define a different model from the native per-contact law; they were not adopted or used to rescale production stiffness.
+
+Installed source clarification and decision
+The installed Newton edge/face kernels each optimize signed distance and emit at most one record per feature-shape candidate pair. Different particle/edge/face passes can still emit multiple contacts. We will preserve those per-feature and material semantics. The previous aligned-normal preview remains a restricted refusal diagnostic; different normals elsewhere in a candidate set do not by themselves invalidate a single-minimum policy.
+
+The relevant next question is whether the selected minimum has an ambiguous nearest normal, and how the native optimizer behaves at that tie. Next: a bounded analytic-slab native query with reversed edge order and small offsets, recording geometry only. No alternate force model, native writer, robot motion or cutting is qualified. Checklist item 12 remains open.

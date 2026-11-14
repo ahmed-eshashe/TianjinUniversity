@@ -1,0 +1,39 @@
+{
+  "production_preserved": true,
+  "production_checkpoint": "work/single_slice_20261106/robot_cut18/checkpoints/step_006925.npz",
+  "current_solver": {
+    "checkpoint": "robot_cut17/step_006400",
+    "intervals": 4,
+    "dt": 0.0016666666666666668,
+    "native_dt": 0.0004166666666666667,
+    "profile": "cProfile CPU wall attribution incl synchronization; not CUDA event attribution",
+    "extra_io": "one checkpoint at final interval to measure write cost"
+  },
+  "disect": {
+    "example": "examples/basic_cutting.py",
+    "duration_s": 5,
+    "dt": 0.0001,
+    "wall_budget_s": 600,
+    "render": false,
+    "requires_grad": false,
+    "compatibility_patches": "Python3.11 AST/collections, modern CUDA architecture and compiler flags, migrated ANSYS reader"
+  },
+  "roboninja": {
+    "physics": "original MLS-MPM, forward only, grid gradient allocation disabled",
+    "quality": 2,
+    "density": 8000000.0,
+    "cases": [
+      "straight nominal block",
+      "curved nominal block",
+      "straight 0.8 scale block"
+    ],
+    "omissions": [
+      "rigid core",
+      "loss",
+      "renderer"
+    ],
+    "wall_budget_s_per_case": 600,
+    "reason": "Published default backward-capable grid alone allocates approximately 7.28 GB before particles; forward-only benchmark fits laptop."
+  },
+  "adoption": "No alternate engine adopted; cases differ in material, resolution, geometry, motion, contact and force semantics; no equivalent accuracy or speedup claim."
+}

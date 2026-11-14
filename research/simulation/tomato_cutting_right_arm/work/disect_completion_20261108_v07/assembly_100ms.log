@@ -1,0 +1,29 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.99 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.87 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.92 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.28 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.81 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.92 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.20 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.32 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v07/assembled_factored_window.py", line 25, in <module>
+    world=b.x@A.T+T;b.mask=base*torch.all(world[:,:2]@H[:,:2].T+H[:,2]<=0,dim=1);info=b.implicit(h)
+                                                                                      ^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v07/factored_contact.py", line 34, in implicit
+    zz=self.precondition(r,h);nr=(r*zz).sum();p=zz+(nr/rz)*p;rz=nr
+       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v07/factored_contact.py", line 58, in precondition
+    root=np.sqrt(self._factor_mass)[:,None];rhs=r.cpu().numpy()*root;ans=np.zeros_like(rhs);free=self._factor_free;ans[free]=self._factor.solve(rhs[free]);ans*=root
+                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

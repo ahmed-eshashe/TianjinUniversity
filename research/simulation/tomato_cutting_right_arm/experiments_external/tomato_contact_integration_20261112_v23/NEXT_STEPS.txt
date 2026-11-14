@@ -1,0 +1,43 @@
+NEXT FOCUSED TASK — CONTACT ACCURACY AND COST, BEFORE CUTTING
+
+The current adapter is a checked intact-coupon component with an unresolved force
+sampling gate. Do not enable free geometric splits and call them physical cuts.
+Do not resume the old slow DiSECt campaign or alter the robot/kitchen/grip.
+
+1. Freeze and use the saved 9.5, 10.0 and 10.25 ms states in the 62.5/31.25 um runs.
+   Compare static force/potential and its derivative under the unchanged original
+   CAD and K/mu/vs. This isolates spatial integration from trajectory differences.
+   The actual blade is nonconvex. A box may exclude zero-force queries only;
+   neither a box nor a convex hull may replace the collision shape.
+2. Prepare one local adaptive surface-integration implementation, preserving the
+   affine material map, reference-area measure and exact force transpose mapping.
+   Use current material/tool state and the current action's motion bound. Do not
+   supply the future cut path. Conservatively inactive patches can contribute
+   exact zero; unresolved contact patches require finer integration. A heuristic
+   point mask alone must not certify missing contact or whole-material clearance.
+3. On those fixed saved states, compare force, potential, virtual work, moment and
+   force/potential derivatives against an independent refined integral. Include
+   shallow edge, broad face, tangential motion and near miss. Keep the original
+   0.1 mN / 0.1 uN s / 10 nJ denominator floors and 5% limits. Do not redefine
+   meaningful force after inspecting the release discrepancy. If a scope/limit
+   change is actually needed, present evidence and a concrete user decision.
+4. Replay the complete 13 ms cycle from a fresh state. Repeat time and spatial
+   refinement, the whole-volume swept certificate, the 2 N stop and 0.1 mm limit,
+   energy/impulse balance and rejection rollback. Profile contact, certificate,
+   transfers, reset and logging. Benchmark a single environment first; then only
+   independent batching that retains actual current states and histories.
+5. If accuracy and cost support further work, extend boundary mapping to current
+   cut polyhedra, with coverage/area/orientation checks and coupled reduced inertia
+   under support constraints. The current intact-only adapter explicitly refuses
+   these inputs. Preserve the exact reduced mass; do not relump.
+6. Connect the preserved work-law adapter to actual sharp-edge contact, charge
+   only newly swept reference area, and commit history/topology once after all
+   checks pass. New-face contact, compression-only recontact and loaded restart
+   must then pass before a tomato slice or RL rollout is claimed. Gc=80 J/m^2
+   implies a 25 mm upper engaged-width limit under 2 N even before other loads;
+   never silently soften Gc or ignore that constraint to get a full tomato cut.
+
+Do not interpret an accounting component pass as an adopted physical failure
+model, an intact press as a slice, or geometric throughput as an RL benchmark.
+The retained physics/laws do not need a new user decision for an equivalent
+implementation. A different law, boundary geometry or accuracy contract does.

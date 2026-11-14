@@ -1,0 +1,67 @@
+{
+  "scope": "Single isolated APIC-style repair; derive and test before continuation; not production adoption",
+  "started": "2026-11-10T20:16:15.710591+08:00",
+  "formulation_budget_s": 7200,
+  "conditional_qualification_budget_s": 14400,
+  "max_pilot_wall_s": 600,
+  "units": "m kg s Pa N J",
+  "material": {
+    "E": 100000.0,
+    "nu": 0.4,
+    "rho": 1000,
+    "Gc": 80,
+    "provenance": "Unchanged synthetic block/cutting parameters; no experimental tomato calibration"
+  },
+  "discretization": {
+    "h": 0.003,
+    "spacing": 0.0015,
+    "dt": 1.25e-05,
+    "half_dt": 6.25e-06,
+    "precision": "float64",
+    "repair": "Current-spatial-grid APIC, replacing fixed-reference pure-FLIP transfer; reference particle positions and ternary material history remain attached",
+    "order": "P2G affine momentum; compatible momentum-only exchange; add energy-derived stress and adjoint contact force; grid support projection; PIC positions/velocity and APIC affine moment; F update from same spatial grid velocity gradient",
+    "force_path": "No direct particle velocity injection in integrated contact",
+    "boundary": "Finite allocated grid with explicit overflow stop; no wrap or clamping"
+  },
+  "contact": {
+    "K_area": 1000000000.0,
+    "mu": 0.2,
+    "vs": 0.001,
+    "force_stop_N": 2,
+    "penetration_m": 0.0001,
+    "stored_and_reconstructed_J_range": [
+      0.1,
+      10
+    ],
+    "geometry": "Existing CAD and declared trilinear-cell reconstruction with conservative guards; all its approximation limits retained"
+  },
+  "screens": {
+    "mass_relative": 1e-06,
+    "linear_momentum_relative": 0.001,
+    "linear_momentum_floor_Ns": 1e-09,
+    "angular_momentum_relative": 0.01,
+    "angular_momentum_floor_Nms": 1e-10,
+    "position_refinement_m": 0.0001,
+    "velocity_refinement_m_s": 0.005,
+    "force_impulse_work_relative": 0.05,
+    "force_floor_N": 0.0001,
+    "impulse_floor_Ns": 1e-07,
+    "work_floor_J": 1e-08,
+    "energy_error_relative": 0.05,
+    "energy_floor_J": 2e-08,
+    "null_mode_remaining_fraction": 1e-08,
+    "CPU_GPU_relative": 2e-08,
+    "localized_F_geometry_difference_max": 0.02,
+    "localized_geometry_to_stored_strain_rms_ratio": [
+      0.5,
+      2.0
+    ],
+    "localized_ratio_signal_floor": 0.0001
+  },
+  "topology": {
+    "max_cuts": 4,
+    "max_codes": 81,
+    "compatibility": "Inherited ternary no-conflicting-digit relation; momentum exchange at identical current grid coordinates conserves impulse and moment. Still needs partial-bridge qualification."
+  },
+  "stop": "One diagnosed repair; failed conservation, geometry/constitutive consistency, history or contact stops this campaign. No automatic third engine or parameter tuning."
+}

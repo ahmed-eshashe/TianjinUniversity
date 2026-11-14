@@ -1,0 +1,25 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp/1.17.0
+Module contact_geometry 7a11ea9 load on device 'cuda:0' took 0.74 ms  (cached)
+Module kernels 68444bc load on device 'cuda:0' took 1.27 ms  (cached)
+Module physical_kernels ff037cb load on device 'cuda:0' took 0.67 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/tests/recontact.py", line 11, in <module>
+    old=s;ev=contact.evaluate(s['x'],s['v']);maxF=max(maxF,ev['sum_force']);maxmom=max(maxmom,ev['net_moment']);maxnet=max(maxnet,ev['net_force'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/src/fragment_contact.py", line 46, in evaluate
+    mid=.5*(qa+qb);Am=correct_to_point(A,mid,x,self.left,self.cells.spacing);Bm=correct_to_point(B,mid,x,self.right,self.cells.spacing);rel=(Am-Bm)@v;vt=rel-np.sum(rel*n,1)[:,None]*n;speed=np.linalg.norm(vt,axis=1);fr=-self.mu*fn[:,None]*np.tanh(speed/self.vs)[:,None]*vt/np.maximum(speed[:,None],1e-30);force=(A-B).T@normalforce+(Am-Bm).T@fr
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/src/fragment_contact.py", line 35, in correct_to_point
+    D=(x[ids]-old[:,None,:])/spacing;A=np.concatenate((np.ones((len(old),16,1)),D),axis=2).transpose(0,2,1);rhs=np.concatenate((np.zeros((len(old),1)),delta/spacing),axis=1);g=A@A.transpose(0,2,1);sol=np.linalg.solve(g,rhs);corr=np.einsum('nki,nk->ni',A,sol)
+                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/linalg/_linalg.py", line 471, in solve
+    r = gufunc(a, b, signature=signature)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: solve: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (m,m),(m,n)->(m,n) (size 2304 is different from 4)

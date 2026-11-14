@@ -1,0 +1,37 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793528044.161304   24678 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793528044.161333   24678 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T10:14:04Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-11-01T10:14:07Z [3,333ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x5f61c217cc60. Client: carb.scripting-python.plugin
+[INFO]: Registered backend 'physx' for factory Articulation.
+2026-11-01T10:14:08Z [3,843ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+2026-11-01T10:14:08Z [3,917ms] [Warning] [isaaclab.actuators.actuator_collection] Actuator groups cover 0 joints; expected 2 after accounting for fixed tendons.
+[INFO]: Simulation parameters for joints in /World/Hinge0:
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                     Simulation Joint Information (Prim path: /World/Hinge0)                                                     |
++-------+--------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name   | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+--------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | hinge1 |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
+|   1   | hinge2 |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
++-------+--------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+2026-11-01T10:14:08Z [3,933ms] [Warning] [isaaclab.actuators.actuator_collection] Actuator groups cover 0 joints; expected 2 after accounting for fixed tendons.
+[INFO]: Simulation parameters for joints in /World/Hinge1:
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                     Simulation Joint Information (Prim path: /World/Hinge1)                                                     |
++-------+--------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name   | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+--------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | hinge1 |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
+|   1   | hinge2 |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
++-------+--------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_bent_sequence_worker.py", line 192, in main
+    raise ValueError(f'Hinge sequence mismatch: {qe=}, {qve=}, {tqe=}, {tqve=}, {tpe=}, {tve=}, {joint_impulse_error=}, {balance_error=}, {coast_drift=}')
+ValueError: Hinge sequence mismatch: qe=5.343893105802522e-08, qve=2.7246903333555395e-07, tqe=1.1231753349605356e-07, tqve=3.179244297768502e-06, tpe=2.739109274264362e-08, tve=1.999294284619523e-05, joint_impulse_error=6.182010412343055e-11, balance_error=1.533406481421507e-09, coast_drift=0.0
+[INFO]: SimulationContext cleared

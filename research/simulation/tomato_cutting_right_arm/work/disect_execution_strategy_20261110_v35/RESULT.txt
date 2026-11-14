@@ -1,0 +1,23 @@
+SECTION 4 — STRATEGY REVISION FINISHED; NO SLICE QUALIFIED
+Updated: 2026-11-09T17:34:41.127313+00:00
+
+The user chose to finish the bounded pilot and revise execution strategy instead of automatically continuing several days of runs.
+
+Completed pilot: 80 ms, 12,800 steps, 6,974.47 s stepping/logging (about1 h56 min), peak RSS2326028 KiB. Accepted guards passed. Maximum equivalent opening0.125870 mm versus original1 mm onset; damage and fracture dissipation zero. No controlled withdrawal or separation. This was not the complete180 ms loading stroke, and it has no independent corrected-path half-step qualification.
+
+Concrete contact omission: the old adapter excluded cut-to-cut tetrahedron edges. Full-volume review found overlap near90 um while adapter samples reported about7 um. Fifteen tighter80 um certificate attempts failed; later90 um proofs passed. The original100 um hard guard was never relaxed. v34 adds2746 existing physical edges (3125 ->5871), no cross-bank/cohesive edge, retaining exactly960 sampling-budget units. Material/fracture laws, mesh/mass/supports, CAD/grip, normal stiffness and2 N/0.1 mm limits remain unchanged. Static controls pass. Do not apply the corrected operator as a restart to the already overlapping old v33 loaded state.
+
+Measured cost: about91% of a saved solve was CAD signed-distance/solid-angle queries. One allocation-free float64 implementation with four CPU threads keeps the same formulas, triangle order and sign tests. Local queries were27.8x faster, a saved solve7.45x faster, cold volume checking37.5x faster. These are local measurements, not full-cut speed qualification.
+
+Fresh combined-candidate controls: all three independent2 ms/42 um clear-start cases completed, with original per-step guards enforced. Reference/faster-query implementation comparison passed at641 shared times. Maximum position error5.54301e-17 m; nodal-force error4.67795e-15 N. Independent3.125/1.5625 us comparison passed: position error1.82946e-07 m, velocity error0.000329229 m/s, maximum nodal-force discrepancy0.5692% versus unchanged5% allowance. No damage/no healing. Recorded stepping/sampling times: reference199.74 s; faster query55.14 s; independent half step107.13 s. Same-step improvement3.622x. Large trace writes and initialization are separate; avoid extrapolating this short probe to the whole cutting workflow.
+
+Status: combined candidate passes NONFRACTURING component controls only. All six complete Section4 milestones remain open. Full/deep contact, actual damage, controlled horizontal withdrawal, full separation, restart/reliability, size/path variation and successive slices remain unqualified. Speed remains deferred, not passed; experimental validation pending. No native robot/motor-work, video, engine adoption or training.
+
+Revised strategy: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/EXECUTION_STRATEGY.txt
+Primary plan (November10 revision appended): /home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/DISECT_SECTION4_EXECUTION_PLAN_20261109.md
+Fresh control evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/fresh_control_review.json
+Prepared next runner: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py
+Next contract: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/execution_contract.json
+The runner is PREPARED, NOT LAUNCHED: fresh settled target, first horizon45 ms, cap900 s, h3.125 us/ref1.5625 us, existing bevel-reference path and fixed grip; stop on damage or any physical/numerical stop. Measure recent loaded cost before a longer commitment. Actual-damage refinement and horizontal withdrawal still precede GateB qualification.
+
+No simulation or control worker is running. No additional user decision is pending for this revision.

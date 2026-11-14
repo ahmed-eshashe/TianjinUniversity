@@ -1,0 +1,201 @@
+Pulling Physics ovexts dependencies with packman...
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/tools/packman/packman pull deps/target-deps.packman.xml -p manylinux_2_35_x86_64
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/tools/packman/packman pull deps/kit-sdk-target-deps.packman.xml -p manylinux_2_35_x86_64 -t platform_target_abi=manylinux_2_35_x86_64 -t config=release
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/tools/packman/packman pull deps/kit-sdk-target-deps-import.packman.xml -p manylinux_2_35_x86_64 -t platform_target_abi=manylinux_2_35_x86_64 -t config=release
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/tools/packman/packman pull deps/schema-deps.packman.xml -p manylinux_2_35_x86_64 -t platform_target_abi=manylinux_2_35_x86_64 -t config=release
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/tools/packman/packman pull deps/ovruntime-deps.packman.xml -p manylinux_2_35_x86_64 -t platform_target_abi=manylinux_2_35_x86_64
+
+Dependencies pulled successfully!
+
+Fetching ovruntime pip dependencies (Newton schemas)...
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/python/python /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/../ovruntime/tools/pip_fetch.py /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/../ovruntime/deps/pip_newton.toml --python /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/python --target-deps /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps
+INFO: Target already exists, skipping: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/newton_prebundle
+Warning: packman cmake not found at /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/cmake/bin/cmake, falling back to system cmake
+Resolving build-time Kit extensions (release)...
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/kit/kit /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/apps/precacheforbuild.kit --ext-folder /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/extscache --allow-root --portable --ext-precache-mode --/crashreporter/gatherUserStory=0 --/app/settings/persistent=0 --/app/settings/loadUserConfig=0 --/app/extensions/parallelPullEnabled=1 --/exts/omni.kit.registry.nucleus/omitExtVersion=1 --/app/enableStdoutOutput=1 --/app/extensions/registryEnabled=1 --/app/extensions/mkdirExtFolders=0 --/app/extensions/registryCacheFull=/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/exts --/log/flushStandardStreamOutput=1 --/app/extensions/target/config=release --portable-root /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release
+2026-11-02T13:59:53Z [Info] [carb] Logging to file: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/logs/Kit/precacheforbuild/0.0/kit_20261102_215953.log
+[0.146s] Failed to solve some dependencies locally, syncing with extension registry...
+[0.148s] [ext: omni.kit.async_engine-0.0.3] startup
+[0.150s] [ext: omni.client.lib-1.1.1] startup
+[0.162s] [ext: omni.kit.registry.nucleus-0.0.0] startup
+I: Initializing Version 2.73.1-release.7171+gl.9fe356ba
+I: Client ID: RAH4TI3H
+I: Not using Hub: Hub not found
+I: Successfully created Azure provider for https://ovextensionsprod.blob.core.windows.net
+[3.569s] Pulling extension: `omni.kit.loop-default-0.2.2` from the registry.
+[omni.kit.registry.nucleus] [tid: 132244450567872] downloading: 'https://d4i3qtqj3r0z5.cloudfront.net/omni.kit.loop-default-e49e152307f5eefd.zip' -> '/tmp/tmp6tkyx94h/omni.kit.loop-default-0.2.2+00c488ae.lx64.r.zip'...
+I: Successfully created S3 provider for https://d4i3qtqj3r0z5.cloudfront.net
+[omni.kit.registry.nucleus] [tid: 132244450567872] unpacking: /tmp/tmp6tkyx94h/omni.kit.loop-default-0.2.2+00c488ae.lx64.r.zip -> /home/omen/.local/share/ov/data/exts/v2/omni.kit.loop-default-e49e152307f5eefd
+[omni.kit.registry.nucleus] [tid: 132244450567872] creating a link: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/exts/omni.kit.loop-default -> /home/omen/.local/share/ov/data/exts/v2/omni.kit.loop-default-e49e152307f5eefd
+[6.582s] Extension: `omni.kit.loop-default-0.2.2` was installed.
+DevPhysX mode: pulling PhysX source-build dependencies...
++ /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx/buildtools/packman/packman pull /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx/dependencies.xml --platform linux
+Package 'clang-physxmetadata' at version '4.0.0.32489833_public' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/clang-physxmetadata%404.0.0.32489833_public.7z (24.30 MiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+This is taking a while. Estimated time of arrival is 4 seconds from now ...
+100% (speed 5.60 mb/s)
+Total of 36.38 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: clang-physxmetadata@4.0.0.32489833_public.7z (24.30 MiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 652 mb/s)
+Total of 1.36 seconds
+Output size: 105.5 MiB
+Package successfully installed to /home/omen/.cache/packman/chk/clang-physxmetadata/4.0.0.32489833_public
+Package 'rapidjson' at version '1.1.0-67fac85-073453e1_public' is missing from local storage.
+Downloading from https://d4i3qtqj3r0z5.cloudfront.net/rapidjson%401.1.0-67fac85-073453e1_public.7z (626.0 KiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+100% (speed 7.33 mb/s)
+Total of 0.70 seconds
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+Extracting: rapidjson@1.1.0-67fac85-073453e1_public.7z (626.0 KiB)
+No continuous progress report because this is not a proper terminal. Patience is a virtue ...
+
+100% (speed 296 mb/s)
+Total of 0.05 seconds
+Output size: 1.625 MiB
+Package successfully installed to /home/omen/.cache/packman/chk/rapidjson/1.1.0-67fac85-073453e1_public
++ cmake -S . -B _compiler/gcc-linux-x86_64/build-release -G Unix Makefiles -DCMAKE_BUILD_TYPE=Release -DTARGET_BUILD_PLATFORM=linux -DPX_OUTPUT_LIB_DIR=/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64 -DPX_OUTPUT_BIN_DIR=/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64 -DOVEXTS_DEV_PHYSX=ON
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ovruntime_deps: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/ovruntime_deps_release
+-- Found Carbonite SDK: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/carb_sdk_plugins
+-- Found USD: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/usd
+-- Found CUDA: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/cuda
+-- Found Python: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/python
+-- Python extension suffix: .cpython-312-x86_64-linux-gnu.so
+-- Found pybind11: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/pybind11
+-- Found physics schema: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/usd_ext_physics/release
+-- OVRUNTIME_DEV_PHYSX: Building PhysX from source at /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx
+-- OVRUNTIME_DEV_PHYSX: Remapping CMAKE_BUILD_TYPE Release → checked for PhysX subproject
+-- The CUDA compiler identification is NVIDIA 12.8.61
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/cuda/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- Found CUDAToolkit: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/cuda/include (found version "12.8.61") 
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+Building for PUBLIC RELEASE
+PHYSX ROOT /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/physx
+PhysX Build Platform: linux
+Using CXX Compiler: /usr/bin/c++
+Added PhysX
+Added PhysX GPU
+Added PVDRuntime
+-- OVRUNTIME_DEV_PHYSX: Remapping PhysX Release compile defs → checked (multi_config=0, build_type=Release)
+-- Found Kit SDK (release): /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/kit_sdk_release
+-- Found Python: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/python
+-- Found Newton USD schemas: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/newton_prebundle
+-- Generating Newton schema tokens header ...
+Generated /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovruntime/_build/generated/NewtonSchemaTokens.h (97 tokens: 22 classes, 65 attributes, 10 allowed values)
+-- Newton schema tokens header: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovruntime/_build/generated/NewtonSchemaTokens.h
+-- Found doctest: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/doctest
+-- Found cxxopts: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/cxxopts
+Physics ovruntime root dir: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovruntime
+-- omni.physx.cooking: Ujitso SDK found — building with ujitso support
+-- Generated Version.h (4f5f477, tomato-observation-probe, 110.3.2)
+-- Physics Umbrella root dir: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/umbrella
+-- Using pybind11 from packman: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/pybind11
+-- pybind11 v2.11.1 
+CMake Warning (dev) at _build/target-deps/pybind11/tools/FindPythonLibsNew.cmake:98 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  _build/target-deps/pybind11/tools/pybind11Tools.cmake:50 (find_package)
+  _build/target-deps/pybind11/tools/pybind11Common.cmake:188 (include)
+  _build/target-deps/pybind11/CMakeLists.txt:210 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found PythonInterp: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/python/bin/python3 (found suitable version "3.12.13", minimum required is "3.6") 
+-- Found PythonLibs: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/target-deps/python/lib/libpython3.12.so
+-- Performing Test HAS_FLTO
+-- Performing Test HAS_FLTO - Success
+-- Building Python bindings with pybind11
+-- OGN generator found: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/extsbuild/omni.graph.tools/omni/graph/tools/generate_node.py
+-- OGN config dir: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/extsbuild/omni.graph.tools/ogn
+-- Physics ovexts root dir: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts
+--   Test script: tests-python-omni.convexdecomposition
+--   Test script: tests-python-omni.usd.schema.physx
+--   ETM test script: tests-etm-omni.usd.schema.physx
+--   Test script: tests-python-omni.physx.cooking
+--   Test script: tests-python-omni.physx
+--   Test script: tests-python-omni.physx.fabric
+--   Test script: tests-python-omni.physx.camera
+--   ETM test script: tests-etm-omni.physx.camera
+--   Test script: tests-python-omni.physx.pvd
+--   ETM test script: tests-etm-omni.physx.pvd
+--   Test script: tests-python-omni.physx.stageupdate
+--   ETM test script: tests-etm-omni.physx.stageupdate
+--   Test script: tests-python-omni.physx.ui
+--   ETM test script: tests-etm-omni.physx.ui
+--   Test script: tests-python-omni.physx.supportui
+--   ETM test script: tests-etm-omni.physx.supportui
+--   Test script: tests-python-omni.usdphysics.ui
+--   ETM test script: tests-etm-omni.usdphysics.ui
+--   Test script: tests-python-omni.physx.vehicle
+--   ETM test script: tests-etm-omni.physx.vehicle
+--   Test script: tests-python-omni.physx.vehicle.tests
+--   Test script: tests-python-omni.physx.asset_validator
+--   ETM test script: tests-etm-omni.physx.asset_validator
+--   Test script: tests-python-omni.physx.graph
+--   ETM test script: tests-etm-omni.physx.graph
+--   Test script: tests-python-omni.physx.cct
+--   ETM test script: tests-etm-omni.physx.cct
+--   Test script: tests-python-omni.kit.property.physics
+--   ETM test script: tests-etm-omni.kit.property.physics
+--   Test script: tests-python-omni.physx.bundle
+--   ETM test script: tests-etm-omni.physx.bundle
+--   Test script: tests-omniphysx-omni.physx.tests
+--   ETM test script: tests-etm-omni.physx.tests
+--   Test script: tests-visual-omni.physx.tests.visual
+--   ETM test script: tests-etm-omni.physx.tests.visual
+CMake Warning at cmake/OvextsHelpers.cmake:62 (message):
+  ovexts_prebuild_link: source does not exist:
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/data/usd/tests/Physics/Demos
+Call Stack (most recent call first):
+  extensions/ux/source/omni.physx.demos/CMakeLists.txt:13 (ovexts_prebuild_link)
+
+
+--   Test script: tests-demos-omni.physx.demos
+--   Test script: tests-fsddemos-omni.physx.demos.fsdon-fabric
+--   Test script: tests-assetdemos-omni.physx.demos.s3
+--   ETM test script: tests-etm-omni.physx.demos
+--   Test script: tests-python-omni.physx.commands
+--   ETM test script: tests-etm-omni.physx.commands
+--   Test script: tests-python-omni.usd.metrics.assembler.physics
+--   ETM test script: tests-etm-omni.usd.metrics.assembler.physics
+--   Test script: tests-python-omni.physics.ui
+--   ETM test script: tests-etm-omni.physics.ui
+CMake Warning at cmake/OvextsHelpers.cmake:62 (message):
+  ovexts_prebuild_link: source does not exist:
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/data/tests/omni.physics.isaacsimready
+Call Stack (most recent call first):
+  extensions/ux/source/omni.physics.isaacsimready/CMakeLists.txt:13 (ovexts_prebuild_link)
+
+
+--   Test script: tests-python-omni.physics.isaacsimready
+--   ETM test script: tests-etm-omni.physics.isaacsimready
+--   Test script: tests-python-omni.physics.physx.ui
+--   ETM test script: tests-etm-omni.physics.physx.ui
+--   App script: omni.bloky.physx.kit
+-- Configuring done (2.5s)
+-- Generating done (0.2s)
+-- Build files have been written to: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_compiler/gcc-linux-x86_64/build-release
+Generate-only: configuration complete.

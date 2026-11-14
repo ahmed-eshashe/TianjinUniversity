@@ -1,0 +1,58 @@
+ISOLATED GPU CUTTING PROTOTYPE: PERFORMANCE DECISION
+11 November 2026
+
+DECISION
+Do not continue this custom full-consistent-mass, locally refined Galerkin implementation as the laptop's online-RL engine under its current verified accuracy settings. Preserve it as an offline numerical reference. There is no demonstrated credible route from routine kernel tuning, removal of trial overhead or the tested batching to the target. This is an engineering no-go for this formulation/configuration, not a theorem that all cutting simulation or MPM is too slow.
+
+Existing Isaac/DiSECt assets, robot, kitchen, knife grip, controller, source and previous experiment evidence are unchanged. No engine was replaced, no package was installed, no physical law/accuracy limit was modified, and no contact, tomato-cutting or training run was launched. Only isolated profiling artifacts and checklist/status documentation were written.
+
+WHAT WAS MEASURED
+Exact copies of v14 code and its saved initial, one-front and two-front states. The 12 mm block has 512 observation points (not mass particles), 648/684/720 generalized vector coefficients and 20,000/25,000 integration points. Same E=100 kPa, nu=0.4, rho=1000 kg/m^3, float64, full consistent mass, order-5 quadrature and 24.4140625 ns timestep. Geometric partial cuts only; no physical blade force or irreversible fracture work.
+
+Each warm synchronized captured-graph timing advances 256 physics steps = 6.25 microseconds. Five repeats start from identical saved arrays; output is checked for repeatability. Models with four and eight independent block-diagonal copies are compared against the single-copy field. They retain independent mechanics and match the single-copy trajectory. Intact/one-front/two-front kernels are additionally timed over 32 uncaptured steps for diagnosis. Those diagnostic timings are not substituted for captured throughput.
+
+The laptop was on mains, battery full, GPU utilization 100% during sampling. Existing RTX 5060 Laptop GPU / driver 595.99.02, 8151 MiB. Ordinary desktop/browser activity remained. No other simulator was running. Peak process RSS across bulk tests was about 1.3 GB, and the eight-copy backend allocated about 400 MB of tracked device arrays (not total process VRAM). This is a compute-cost finding, not a RAM exhaustion finding.
+
+WARM BULK RESULTS
+Condition                 Median wall s per 6.25 us   Equivalent 50Hz decisions/s (aggregate)
+intact x1                   0.268292                    0.00116478
+one_front x1                0.326726                    0.00095646
+one_front x4                0.635057                    0.00196833
+one_front x8                1.063908                    0.00234983
+two_fronts x1               0.348826                    0.00089586
+
+These are optimistic equivalent decision rates computed from short bulk windows, NOT measured complete RL episodes. They exclude topology changes, physical contact/fracture, rendering, robot integration, observations beyond the existing block checks and policy learning. A long-run duration is not being forecast from these short windows.
+
+The specified control frequency is 50 Hz. The project entry target is 100 aggregate transitions/s and preferred target is 500/s. Best measured batching gives 0.00234983 equivalent transitions/s: 42,556 times below entry and 212,782 times below preferred. The ratio from eight versus one copy is only about 2.46 in aggregate throughput. The eight-copy aggregate simulated-time rate is 4.699654e-05 simulated seconds per wall second, also far below real time.
+
+WHY
+1. The verified timestep requires 40,960,000 explicit microsteps per simulated second: 819,200 per 50 Hz control transition. This is the current qualified setting, not a claim that every possible formulation needs it.
+2. Each step evaluates material stress/forces twice over tens of thousands of integration points and applies an effectively dense full inverse mass operator. The one-front mobility operator stores 467,856 entries per copy even though the underlying mass matrix has 47,520 nonzeros.
+3. In the diagnostic one-front kernel profile, material stress uses 18.9%, force assembly 26.9%, full mass application 30.8%, numerical checks 22.2%, state updates 1.2%. CUDA graphs are already used. The synchronized bulk timings closely track device work; this is not mainly Python/UI or file-writing overhead.
+
+ONE EXISTING ACTIVATION, REPLAYED EXACTLY
+From the saved 50 us state to 100 us: 11.241 wall seconds, with exact final fingerprint, fields and activation record matching v14.
+Accepted trials: 3; 3.280 seconds; 2,046 GPU microsteps plus fractional steps.
+Discarded trials: 17; 7.754 seconds; 4,869 GPU microsteps. About 69% of action wall time is discarded-trial work.
+GPU checked chunks excluding graph construction: 7.693 seconds total. GPU setup/packing: 2.523 seconds. Graph capture/lookup: 0.232 seconds. Fractional CPU mechanics: 0.371 seconds. Coverage preview: 0.160 seconds. Coverage/topology proposal: 0.162 seconds inclusive. Continuous volume checks: 0.038 seconds total; GPU export/observation update: 0.011 seconds. Categories are nested; see activation_profile.json exclusive totals to avoid double counting.
+Checkpoint load was 0.193 seconds; save 0.0036 seconds, both outside action wall time. File writing is not the bottleneck.
+
+CAN ONE OPTIMIZATION SAVE IT?
+Making every discarded trial free would improve this one activation by only about 3.22x with everything else fixed. Warm bulk benchmarking already excludes those trials entirely and still misses entry by over 42,000x with eight copies.
+An Amdahl-style estimate making the entire largest kernel category (mass application) free yields about 1.45x. Making material stress, force assembly AND mass application all free yields only about 4.27x for the profiled kernel workload. These are optimistic arithmetic thought experiments, not achieved optimizations or universal algorithmic bounds. Removing checks is not an acceptable proposed optimization.
+Therefore no implementation optimization was attempted: the profile does not justify spending another cycle on a change that cannot affect this go/no-go decision. Changing the representation, integration method, timestep qualification or accepted resolution is a different scope, not a speed claim for unchanged v14.
+
+RECOMMENDATION
+Freeze v14 as a correctness reference and use these results as an early architecture stop. Before any further tomato/contact integration, review a new speed-first local-state MPM approximation with persistent cut history, explicit operating resolution and an early measured performance gate. Do not automatically implement it or adopt unmodified CRESSim. See REVISED_SCOPE_PROPOSAL.txt for a bounded proposal and the important physical differences.
+
+CONTEXT, NOT EQUAL-ACCURACY SPEEDUP
+The earlier preserved CRESSim test used an 8,000-particle, 60 mm block, 6 mm grid / 3 mm particles and 0.1 ms MLS timestep. It achieved median 0.762 wall s / simulated s but failed fragment independence after blade withdrawal. Different discretization, integration, contact/tool geometry and mechanical behavior mean it is not a validated fast substitute or an equal-accuracy speedup over v14. Its result demonstrates why both speed and retained separation must be tested together before building the kitchen demo again.
+Local evidence: /home/omen/Documents/Codex/experiments/cressim_20261110/REPORT.txt
+Public implementation reference: https://github.com/yafei-ou/CRESSim-MPM
+
+The BladeMaster paper describes fixed-reference particle/grid neighborhoods and local logical-grid mass/momentum states carrying persistent cut labels. That is a relevant design direction, not the global consistent-mass spline system profiled here. Its cutting resistance is empirical and its topology is blade-induced; a new implementation would not inherit our cohesive/fracture qualification or published speed. This recommendation is an inference from the local bottleneck and that different published representation, not a claim of a working replacement on this laptop.
+Primary research: https://arxiv.org/html/2609.27342v1 (Sections III-B–D)
+Official project page inspected: https://jango6324.github.io/blademaster/
+
+EVIDENCE
+bulk_profile.json, activation_profile.json, environment.json, assessment.json, performance-review.png/pdf, reproduction scripts under tests/, and the frozen manifest. 57 measurement/invariance checks passed; 1,614 previously protected artifacts remain identical. All copied numerical source files match v14. Full Gate 2/3, physical tomato cuts, experimental validation and RL remain pending. No simulation remains running.

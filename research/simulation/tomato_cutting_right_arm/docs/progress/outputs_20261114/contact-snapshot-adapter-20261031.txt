@@ -1,0 +1,21 @@
+Disabled contact-buffer adapter and complete-stream collector — 31 October 2026
+
+Implemented a separate stdlib-only native-format preview and snapshot collector. Ten new focused tests passed. No engine package was imported, no native process was launched, and no physics or force evaluation occurred.
+
+The preview emits int32-compatible counts/indices and float32-compatible barycentric weights, raw body-local surface positions/velocities and world normals. It preserves every raw record; exact duplicate information is a separate report. No native buffer writes, force output, solver launch or replay-slot allocation are provided.
+
+The collector checks the entire global active prefix before filtering contacts by rigid-body identity. It does not use the solver dynamic-body list, so the synthetic prescribed-blade record remains visible while dynamic adjacency is empty. It checks field lengths, integer ranges, finite values, padded corner indices, shape/body mappings and agreement between particle-only and unified views. It ignores inactive tail entries and refuses saturated global or collector counts instead of truncating.
+
+Run/episode/step/time/source identities and a content hash bind the snapshot to the expected reference state. Changed or stale identities and altered content are refused. A content hash does not prove native/runtime provenance.
+
+Float32 conversion error is measured and reported without hidden renormalization. A one-third barycentric fixture demonstrates a nonzero rounded weight-sum deviation. Conversion remains unqualified: reading these values does not establish acceptable geometric, normal, penetration or force error. Global structure checks apply before body filtering, so invalid foreign-body rows cannot be hidden by selecting only blade contacts.
+
+Ten tests cover: kinematic contacts despite empty solver adjacency; raw duplicate preservation; rounding/error reporting; stale/hash/source/interval rejection; raw and collector overflow; truncated/nonfinite/wrong-index fields; foreign-row validation before filtering; zero active count with inactive tail data; float32 overflow; and refusing intersection-only reference records.
+
+Saved evidence contains a synthetic float32-format snapshot, full-stream collection result, reference context, source snapshots and installed source excerpts/hashes. Original historical production-source hashes remain unchanged.
+
+Remaining limits: this reader operates on provided snapshots, not an authenticated owned native capture. Body pose is supplied by the reference context. Actual engine-buffer round-trip, IPC, coherent current/previous native state, replay slots, history/reset and numerical conversion acceptance remain unvalidated. No contact reaction force was computed.
+
+Next: a guarded native-buffer round-trip and read-only capture comparison using disclosed synthetic records, with zero physics/force calls. Force-producing blade contacts, robot coupling, fracture, cutting and training remain disabled/pending.
+
+Evidence: runs/source_review/contact_snapshot_adapter_20261031

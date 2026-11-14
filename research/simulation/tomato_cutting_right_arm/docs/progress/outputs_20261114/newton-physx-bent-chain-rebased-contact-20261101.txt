@@ -1,0 +1,40 @@
+Bent-chain contact with rebased joint coordinates — 1 November 2026
+
+PASS for the same physical bent rest pose, with the particle/contact region near the numerical origin and joint coordinates initialized near zero. Both identity and 90-degree world-yaw fixtures complete 32 persistent exchanges: nine contact intervals and 23 natural coast intervals. No particle reposition or reset occurs during the sequence. All previous gates are unchanged. This scoped pass does not replace either earlier failed native run, and full coupling item 15 remains open.
+
+The physical rest bend remains (30,-60) degrees. Instead of asking the solver to accumulate small motion on top of joint coordinates approximately (0.5236,-1.0472) rad, this diagnostic authors that rest geometry into the local joint frames. Link1 is positioned at its rotated halfway COM; link2 at the first rotated link length plus its own rotated halfway COM. Each link body is oriented with its physical rest angle. Hinge1's parent local joint frame is rotated 30 degrees, hinge2's parent frame -60 degrees; child joint rotations are identity. Pivot positions remain unchanged in their respective link frames. The solver joint coordinates start at (0,0), describing displacement from this rest pose. The entire fixture retains the preceding contact-origin translation, including its fixed anchor. The authored scene and native initialization are checked against analytic bent forward kinematics and the coupled mass matrix.
+
+All intended physical properties remain unchanged: fixed base; two 0.02 kg links, each 0.02 m long with halfway COM and diagonal COM inertia 0.0001 kg m²; no actuators, stiffness, damping, friction or gravity. A 0.01 kg zero-radius particle starts at end-link local (0.004,0.004,0), contacting a kinematic Newton box of half sizes (0.01,0.005,0.002) m. SolverVBD has 16 iterations, fixed actual contact penalty 1750 N/m, zero contact damping/friction and dt=1/2400 s. CPU PhysX owns articulated motion; CUDA Newton advances the particle and returns the contact reaction. Only the end link receives that reaction.
+
+A new reference conversion adds the fixed rest angles to solver joint coordinates before evaluating the unchanged analytic geometry, full 2x2 mass matrix and Coriolis bias. It subtracts the rest angles when returning predicted solver coordinates. Velocities, contact forces, generalized efforts and physical link motion retain their original meaning. The translation wrapper still evaluates momentum about the translated fixed anchor. Host tests compare the rebased and original physical reference for all 32 intervals in both orientations, including force/effort and physical angles. This is a coordinate representation change, not a material or tolerance change.
+
+Native checks continue to cover regenerated contact counts/normals, independently predicted contact force/point/torque, joint position/velocity, independently propagated trajectory, generalized impulse per interval, cumulative particle impulse, whole-chain/particle angular balance, force queue clearing, externally owned proxy preservation and exact state feedback into both actual Newton State buffers. The small-motion reference uses interval-start acceleration and the established 16-substep TGS position factor; no general large-motion accuracy is claimed.
+
+Unchanged limits: local and trajectory joint position 1e-6 rad, joint velocity 2e-5 rad/s, particle position 1e-7 m, particle velocity 2e-5 m/s, generalized impulse/angular balance 2e-8 N m s, cumulative particle impulse 2e-7 N s, unforced coast velocity-reference error 2e-6 rad/s, contact force 2e-5 N, contact torque 2e-7 N m, contact point 1e-7 m, initial mass matrix 1e-8 kg m² and forward-kinematic pose 1e-6. Physical angle error equals solver-coordinate error because rest offsets are fixed.
+
+Maximum errors over both complete native sequences:
+  joint_position_error_rad: 2.58946086795e-09
+  joint_velocity_error_rad_s: 2.67959406511e-07
+  particle_position_error_m: 1.21429609844e-10
+  particle_velocity_error_m_s: 2.83122062683e-07
+  trajectory_joint_position_error_rad: 2.98816085209e-08
+  trajectory_joint_velocity_error_rad_s: 1.21105033585e-06
+  trajectory_particle_position_error_m: 2.43263589245e-08
+  trajectory_particle_velocity_error_m_s: 2.2533833184e-06
+  interval_generalized_impulse_error_nms: 6.45359818509e-11
+  cumulative_particle_impulse_error_ns: 6.38639541072e-09
+  hinge_axis_angular_balance_error_nms: 4.3765989422e-10
+  coast_joint_velocity_reference_error_rad_s: 1.48250789977e-08
+  force_error_n: 4.82377242612e-06
+  torque_error_nm: 2.44557703142e-08
+  point_error_m: 3.61152419922e-09
+
+bent_rebased_identity: 9 contact intervals + 23 natural coast intervals; active normal change 0.00102761699; final displacement coordinates [-0.003865769598633051, -0.002055987250059843].
+
+bent_rebased_yaw90: 9 contact intervals + 23 natural coast intervals; active normal change 0.00102749416; final displacement coordinates [-0.0038657791446894407, -0.0020559951663017273].
+
+The peak full-trajectory joint-position error is 2.988160852e-8 rad (0.0299 microrad), below the unchanged 1 microrad limit. The preceding translated fixture stopped at interval 11 with 1.300388882e-6 rad error. The first unshifted bent fixture stopped at interval 5 on particle impulse error; retaining contact near zero keeps the present peak cumulative particle impulse error below 6.4e-9 N s, against the unchanged 2e-7 N s limit. This provides further evidence that coordinate resolution contributed to the earlier failures, while qualifying only the tested translated/rebased setup. It does not establish arbitrary joint-zero or world-coordinate accuracy.
+
+Exactly 32 shared PhysX steps, 64 Newton steps and 66 exact actual-state feedback echoes passed. Thirteen bent-reference/contract tests and nine supervisor tests passed. The protected run exited successfully in 8.19 seconds, with at least 22.34 GB available RAM and 7.57 GB free GPU memory. No resource warning, monitor error or owned live process remained. Frozen original production inputs and previously pinned installed libraries remain unchanged. Source snapshots, hashes and authored local USD are preserved at /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/bent_rebased_20261101_01.
+
+Next bounded step: reset/replay this translated, rebased bent-chain fixture after coast and during active contact, checking dirty force clearing. The original failures remain preserved; broad coordinates/configurations, real robot drives/reset, full coupling, contact work/energy, real blade collision generation and cutting material remain unvalidated.

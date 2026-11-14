@@ -1,0 +1,22 @@
+Direct authored-mesh point-query diagnostic — 31 October 2026
+
+Result: all 562 unique queries returned finite outputs. No inside/outside sign mismatches were measured, including all 32 thin-feature probes (16 inside, 16 outside). This removes the sampled sign failures observed in the tested SDF configurations, but does not establish complete contact detection.
+
+Against the same independent triangle-distance/winding references:
+- Maximum signed-distance error at the 128 off-surface probes: 0.02883 micrometres.
+- Maximum normal disagreement at off-surface probes: 0.1919 degrees; thin-feature subset: 0.0478 degrees.
+- Maximum absolute distance at the 434 exact surface probes: 51.607 micrometres. Five face-interior probes exceeded 1 micrometre. No surface normals were scored, because exact-zero distance and sharp edges make them ambiguous.
+
+The five surface discrepancies occur at face probes 74, 81, 90, 92 and 115, on long narrow triangles with edge/minimum-altitude ratios around 123–966. The worst probe was face 92 (native closest face 90). Precision/closest-point robustness on these facets is a lead requiring investigation, not a confirmed diagnosis. No mesh geometry was modified.
+
+The native query used Warp's direct mesh closest point plus default one-ray parity sign, matching the inspected installed mesh-contact query route. A full-domain query radius derived from combined mesh/probe bounds prevents accidental small-radius misses; missing/nonfinite results fail the diagnostic. Two identical 562-point batches were launched: first batch includes construction/compilation; the second provides warm dispatch timing. Zero mechanical steps, no SDF construction, no solver or robot motion.
+
+Total protected process time 1.568 s. Cold build/compile/query portion 0.391 s. Warm 562-point dispatch including synchronization 0.128 ms. These timings are a single tiny diagnostic, not robot simulation throughput.
+
+Memory safeguards and the 180-second worker budget stayed active. Minimum available RAM 25.25 GB; minimum free VRAM 7.24 GiB. No warnings, monitor failures or live leftover owned processes. Nine guard tests passed. Verified source snapshots, original historical source hashes and the exact same 562-point registry.
+
+No tolerance was selected or relaxed; this is point-query evidence only. The existing full-surface VBD path remains SDF-based and unchanged. Edge/triangle-interior candidate completeness, crossing witnesses, normals/contact records, force/work and damage/release behavior still need a reviewed integration and physical tests.
+
+Next step: investigate direct closest-point numerical behavior on the five surface facets, then decide how to construct and validate a conservative full-surface mesh contact route. No fracture, cutting, robot coupling or training was qualified.
+
+Full evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_direct_mesh_20261031_01

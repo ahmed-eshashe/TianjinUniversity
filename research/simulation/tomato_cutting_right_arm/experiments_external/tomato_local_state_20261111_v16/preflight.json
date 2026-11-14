@@ -1,0 +1,116 @@
+{
+  "status": "failed",
+  "exception": "AssertionError(('full_oblique_no_hourglass', {'rank': 119, 'expected_rank': 120, 'nodes': 44, 'components': 2, 'nullity': 13}))",
+  "checks": {
+    "partition": true,
+    "mass": true,
+    "affine_position": true,
+    "affine_strain": true,
+    "affine_energy": true,
+    "energy_gradient": true,
+    "internal_force_balance": true,
+    "internal_torque_balance": true,
+    "objectivity": true,
+    "CPU_GPU_fields": true,
+    "intact_no_hourglass": true,
+    "full_aligned_no_hourglass": true,
+    "full_aligned_components": true,
+    "partial_aligned_no_hourglass": true,
+    "partial_aligned_components": true,
+    "full_offset_no_hourglass": true,
+    "full_offset_components": true,
+    "full_oblique_no_hourglass": false
+  },
+  "results": {
+    "energy_gradient_relative": 4.8050640860477884e-08,
+    "CPU_GPU": {
+      "x": 2.792667330026033e-10,
+      "v": 1.6404165904121415e-08,
+      "F": 8.038323899969759e-08
+    },
+    "intact_rank": {
+      "rank": 75,
+      "expected_rank": 75,
+      "nodes": 27,
+      "components": 1,
+      "nullity": 6
+    },
+    "full_aligned": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 2.168404344971009e-19,
+        "U": 0.0,
+        "T": 0.0,
+        "momentum": 1.6940658945086007e-21,
+        "angular": 9.35848032643661e-24
+      },
+      "rank": {
+        "rank": 96,
+        "expected_rank": 96,
+        "nodes": 36,
+        "components": 2,
+        "nullity": 12
+      }
+    },
+    "partial_aligned": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 2.168404344971009e-19,
+        "U": 0.0,
+        "T": -5.293955920339377e-23,
+        "momentum": 1.2705494208814505e-21,
+        "angular": 0.0
+      },
+      "rank": {
+        "rank": 84,
+        "expected_rank": 84,
+        "nodes": 30,
+        "components": 1,
+        "nullity": 6
+      }
+    },
+    "full_offset": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 2.168404344971009e-19,
+        "U": 0.0,
+        "T": 0.0,
+        "momentum": 1.6940658945086007e-21,
+        "angular": 9.35848032643661e-24
+      },
+      "rank": {
+        "rank": 96,
+        "expected_rank": 96,
+        "nodes": 36,
+        "components": 2,
+        "nullity": 12
+      }
+    },
+    "full_oblique": {
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "mass": 2.168404344971009e-19,
+        "U": 0.0,
+        "T": 5.293955920339377e-23,
+        "momentum": 1.197885481783886e-21,
+        "angular": 8.104681703510989e-24
+      },
+      "rank": {
+        "rank": 119,
+        "expected_rank": 120,
+        "nodes": 44,
+        "components": 2,
+        "nullity": 13
+      }
+    }
+  },
+  "wall_s": 0.6501362139999856
+}

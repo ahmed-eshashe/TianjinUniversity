@@ -1,0 +1,12 @@
+Initial guard
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/profile_saved_guard.py", line 13, in <module>
+    g=vg.WholeVolumeGuard(cad,mesh['tets']);start=time.perf_counter();print('Initial guard',flush=True);a=g.check(state['x'],T)
+                                                                                                          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/volume_guard.py", line 26, in check
+    result=certify(q,self.tets,vertices,self.cad.triangles,limit=target,max_depth=40 if is_final else 20,wall_cap=180. if is_final else 10.)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/profile_saved_guard.py", line 11, in counted
+    start=time.perf_counter();result=original(*args,**kwargs);print(json.dumps(dict(target=kwargs['limit'],wall_s=time.perf_counter()-start,**result)),flush=True);return result
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dict() got multiple values for keyword argument 'wall_s'

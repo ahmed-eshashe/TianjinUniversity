@@ -1,0 +1,46 @@
+{
+  "status": "v06 frozen before new test outcomes",
+  "initial_scope": "Shorter knife, flat rest, bounded reachable placement/yaw region from curriculum_split_v01.json; no full-board/any-knife claim",
+  "inputs": [
+    "head RGB-D for grasp landmarks",
+    "fixed head/board/flat-rest calibration",
+    "joint feedback and contacts for engineered control and guards"
+  ],
+  "forbidden": [
+    "per-episode object pose in visual prediction or grasp target",
+    "sampled reset parameters in grasp target",
+    "attachment or object teleport after reset"
+  ],
+  "validation_gate": "Physical success on all three recovery_validation placements with original limits.",
+  "test_gate": "Only after validation: all eight recovery_test placements, at least 7/8 successes and zero blade/contact-load violations.",
+  "vision_check": "Blank-image live check must reject before approach; offline mismatched-image check must change grasp target. No ground-truth fallback.",
+  "geometry": "Two prepared held-out assets are excluded from first-student training. Fresh physical teacher and student tests needed before any geometry-generalization claim.",
+  "rest_pose": "Current flat-rest-only curriculum does not qualify other resting poses.",
+  "original_setup": "All mutations confined to v32 and checklist status; preserve earlier models and evidence.",
+  "learned_component": "Two handle landmarks determine grasp position/yaw; arm approach/closure/lift are engineered.",
+  "physical_limits_unchanged": true,
+  "physics_hz": 1920,
+  "control_hz": 20,
+  "closing_efforts_Nm": {
+    "thumb": 0.65,
+    "fingers": 0.1
+  },
+  "holding_efforts_Nm": {
+    "thumb": 0.6,
+    "index": 0.27,
+    "middle": 0.015,
+    "ring": 0.0,
+    "pinky": 0.005
+  },
+  "transition": "1 s ramp beginning at lift; fixed motor limits and contact stops",
+  "prior_failures_preserved": [
+    "hybrid_v01_validation/validation_001",
+    "hybrid_v01_fine_diagnostic/validation_001",
+    "hybrid_v02_validation/validation_001"
+  ],
+  "closing_sequence": "Hold thumb open until any opposing finger reports >.2 N normal contact for .05 s, then ramp thumb over 1 s. Six-second closure timeout. Same opposed-contact readiness before lift.",
+  "evaluation_manifest": "curriculum_recovery_v02.json",
+  "prior_failed_gate": "v03 original test split: 2/4 attempts passed, stopped after 2 contact failures; not qualified. The inspected original test failures are regression cases only for v05.",
+  "supported_balancing_s": 1.5,
+  "prior_failed_validation": "v05 recovery validation 2/3 passed; one dropped during early lift. No recovery_test outcome observed."
+}

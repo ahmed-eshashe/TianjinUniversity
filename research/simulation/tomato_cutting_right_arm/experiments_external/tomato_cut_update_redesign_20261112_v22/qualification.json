@@ -1,0 +1,82 @@
+{
+  "version": "v22",
+  "updated": "2026-11-12T20:58:41.880042+08:00",
+  "decision": "cut_update_redesign_verified_repeated_geometric_speed_screen_passes_actual_RL_pending",
+  "candidate_directory": "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22",
+  "simulation_running": false,
+  "current_setup_changed": false,
+  "production_adopted": false,
+  "physics_or_timestep_changed": false,
+  "accuracy_criteria_changed": false,
+  "physical_cut": false,
+  "physical_tomato_model_completed": false,
+  "rl_ready": false,
+  "actual_RL_speed_qualified": false,
+  "experimental_validation": "pending",
+  "passed_check_sets": {
+    "native_validation": 27,
+    "geometry_holdout": 24,
+    "persistent_validation": 46,
+    "pipeline_validation": 46,
+    "combined_loop": 32,
+    "invariants": 15,
+    "final_performance": 192,
+    "steady_performance": 192
+  },
+  "repeated_geometric_speed_screen": {
+    "passed": true,
+    "minimum_transitions_s": 102.80000670193232,
+    "median_transitions_s": 104.63327649522948,
+    "maximum_transitions_s": 109.03360687504292,
+    "repeats": 8,
+    "independent_environments": 16,
+    "groups": 2,
+    "CPU_workers": 4,
+    "controls_per_environment_episode": 10,
+    "geometric_events_per_environment_episode": 4,
+    "reset_cost_included": true,
+    "GPU_objects_reused": true,
+    "template_preparation_separate_s": 0.5723439569992479,
+    "no_shared_future_cut_path": true,
+    "scope": "Same sixteen independent 60 mm/6 mm synthetic blocks, 12.5 us substeps, ten controls and four current geometric events per episode. Resets/events/uploads/full state observation/conservation included; one-time executable initialization reused after episode zero. No blade/contact/fracture/robot/policy."
+  },
+  "fresh_instance_screen": {
+    "minimum_transitions_s": 98.2999893546502,
+    "median_transitions_s": 104.08218160241937,
+    "maximum_transitions_s": 106.6041234489433,
+    "all_runs_above_100": false
+  },
+  "eight_environment_no_overlap_transitions_s": 74.62889387967924,
+  "prior_v21_eight_environment_transitions_s": 17.056346199939664,
+  "matched_one_body_new_instance_s": {
+    "v21": 1.2616991009999765,
+    "v22": 0.7264639429922681,
+    "simulated_duration_s": 0.2,
+    "compilation_warmed": true
+  },
+  "minimum_actual_RL_steps_s": 100,
+  "preferred_actual_RL_steps_s": 500,
+  "model": {
+    "shape": "60 mm synthetic cubic block",
+    "grid_m": 0.006,
+    "initial_tetrahedra": 6000,
+    "E_Pa": 100000,
+    "nu": 0.4,
+    "rho": 1000,
+    "substep_s": 1.25e-05,
+    "support_selector": 1e-08,
+    "maximum_cut_slots": 4
+  },
+  "maximum_mass_relative": 4.440892098500626e-16,
+  "maximum_numerical_energy_residual_relative": 0.00010275566996489007,
+  "GPU_arrays_and_rollback_bytes": 88988128,
+  "memory_scope": "Array accounting only; excludes CUDA context, CPU/native geometry, pinned staging, robot and policy.",
+  "preservation": {
+    "checked_at": "2026-11-12T20:54:38.624635+08:00",
+    "protected_files": 2001,
+    "changed_or_missing": [],
+    "passed": true
+  },
+  "report": "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/REPORT.txt",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/NEXT_STEPS.txt"
+}

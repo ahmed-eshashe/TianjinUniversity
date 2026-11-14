@@ -1,0 +1,53 @@
+{
+  "scope": "Three independent fresh clear-start nonfracturing controls; physical coverage candidate fixed across all cases. Compare implementation A/B separately from timestep B/C. No new cut, coarse-timestep optimization, law/tolerance relaxation or loaded-state reuse.",
+  "cases": [
+    {
+      "name": "coverage_reference",
+      "backend": "reference",
+      "dt_s": 3.125e-06
+    },
+    {
+      "name": "coverage_fast",
+      "backend": "fast",
+      "dt_s": 3.125e-06
+    },
+    {
+      "name": "coverage_fast_half",
+      "backend": "fast",
+      "dt_s": 1.5625e-06
+    }
+  ],
+  "simulated_duration_each_s": 0.002,
+  "stroke_m": 4.2e-05,
+  "wall_cap_each_s": 600,
+  "wall_cap_all_s": 1800,
+  "stop_on_first_failed_case": true,
+  "material_and_contact_limits": "Original 47 fracture laws/budgets, 2 N, full-volume0.1mm, residual1e-9, min volume0.1, board/support/ledger limits unchanged",
+  "implementation_limits": {
+    "position_m": 1e-10,
+    "velocity_m_s": 1e-07,
+    "nodal_force_N": 1e-08,
+    "history_absolute": 1e-10
+  },
+  "half_step_limits": {
+    "position_m": 0.0001,
+    "velocity_m_s": 0.005,
+    "reaction_relative": 0.05,
+    "moment_relative": 0.05,
+    "sum_force_relative": 0.05,
+    "force_floor_N": 1e-06,
+    "moment_floor_Nm": 1e-08,
+    "damage_absolute": 0.01,
+    "nodal_force_relative": 0.05,
+    "dissipation_relative": 0.05,
+    "dissipation_floor_J": 1e-08,
+    "event_time_s": 0.0005,
+    "failed_group_set_equal": true
+  },
+  "sources": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/fresh_control.py": "2727d23e5bc42a8356d57206fd72b82d339ef4e170a26a684b26fc49791a0658",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/coverage_blade.py": "dacdd646cde1d9e2bee785eea85160a9668cbc02d19fb6519c753cea66e37a76",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/fast_cad_query.py": "d4b1233eb26d9dd312c58624fbf040f82c3124b36f98e34ee1bf132ca23f49d3",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cut_edge_coverage_20261110_v34/complete_edges.py": "77f7539b535b51f364533c778f4af0c08c8651f763cc509c36eec32155dd73bc"
+  }
+}

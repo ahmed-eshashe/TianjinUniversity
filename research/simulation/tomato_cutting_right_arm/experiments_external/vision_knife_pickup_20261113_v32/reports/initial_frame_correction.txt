@@ -1,0 +1,5 @@
+Observed: initial RGB board-region images for train_000 and train_001 were byte-identical despite different audited knife resets. At 0.5 simulated second the observed knife positions differed and aligned with projected landmarks. See initial_image_pose_alignment.png.
+
+Cause: initial rendered scene retained authored object transform until simulation/render synchronization. Student v01 used this stale first image as visual memory and failed both physical validation attempts. Its results remain failed.
+
+Correction: training drops all frames before 0.5 s and uses the settled frame as initial memory. New recording begins after settling and 12 render updates. Deployed student uses the same warm-up. Raw evidence is preserved. No physical model or force limit changed.

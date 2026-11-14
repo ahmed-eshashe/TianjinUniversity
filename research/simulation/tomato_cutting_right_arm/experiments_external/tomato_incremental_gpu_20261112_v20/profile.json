@@ -1,0 +1,32 @@
+{
+  "batch": 8,
+  "regions_per_body": 7338,
+  "reduced_nodes_per_body": 1752,
+  "kernels": [
+    {
+      "kernel": "stress",
+      "ms_per_1600": [
+        22.959903717041016,
+        22.154815673828125,
+        22.0732479095459
+      ]
+    },
+    {
+      "kernel": "gather_force",
+      "ms_per_1600": [
+        49.832672119140625,
+        46.68342590332031,
+        49.013153076171875
+      ]
+    },
+    {
+      "kernel": "inverse_mass_advance",
+      "ms_per_1600": [
+        6.263199806213379,
+        6.705215930938721,
+        6.837855815887451
+      ]
+    }
+  ],
+  "scope": "Static-state repeated kernel graph microtiming; full benchmark measured separately."
+}

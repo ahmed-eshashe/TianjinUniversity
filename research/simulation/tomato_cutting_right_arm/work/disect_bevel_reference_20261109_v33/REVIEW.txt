@@ -1,0 +1,13 @@
+Separate corrected-reference candidate, 9 November 2026
+
+Physical contact: authorized v30 implicit normal stiffness 2e6 N/m and exact CAD adaptive embedded edge quadrature. Original material/fracture laws and 47 energy budgets preserved. Original 2 N force and 0.1 mm whole-volume penetration stops retained. No robot/mount/kitchen changes.
+
+Arithmetic repair: v32 stable Newton potential increments avoid subtracting large nearly equal potentials. Independent 90-digit Decimal controls (143 cases) and one saved step versus two half steps pass. Force and Hessian laws, convergence and Armijo tolerances unchanged. The legacy saved-step replay converged, so the original failure was not exactly reproduced; recorded near-stationary objective increments demonstrated severe cancellation, and stable arithmetic removes that mechanism.
+
+Reference correction: old lowest-corner-to-interface offset was initially overinterpreted as a whole-blade miss. That interpretation is withdrawn: full CAD contact exists. A separate static two-edge diagnostic shows both local cut nodes can be pushed the same way despite opposing bank totals. The finite leading-bevel midpoint convention produces opposite cut-node force directions. Static diagnostic loads are deliberately penetrating fixture results, not admissible coupled tomato forces. v33 uses a frozen initial-interface chart, no online geometry feedback. PCHIP chart fit max error 6.248e-9 m. Fresh settled-target start; no loaded trajectory prefix is reused.
+
+Pilot: midpoint initially 1 mm above settled front; 9 mm world-downward stroke over 180 ms (8 mm material-front advance). Declared first horizon 80 ms, wall cap 3600 s, stop at damage/physical rejection/numerical stop. Horizontal two-stage withdrawal retained in the frozen plan. Independent actual-damage half-step run and controlled withdrawal are required before Gate B passes. No full-slice or separation claim.
+
+Support accounting: intended 0.00773706756 kg cap has no fixed nodes; 0.11393419792 kg remainder has all 25 fixed nodes. Total mass 0.12167126548 kg. A separated cap would still need post-cut board/contact stability proof. Remainder is artificially supported, not stabilized by the left hand.
+
+Speed remains deferred, experimental validation pending. No training or native motor-force qualification.

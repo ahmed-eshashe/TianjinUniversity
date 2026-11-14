@@ -1,0 +1,34 @@
+{
+  "updated": "2026-11-09T10:34:20.758793+00:00",
+  "running": false,
+  "status": "stopped_at_step_motion_intrusion_certificate",
+  "last_accepted_time_s": 0.025215625000000002,
+  "last_accepted_step": 8069,
+  "attempted_time_s": 0.02521875,
+  "requested_step_certificate_limit_m": 9.987612613127924e-05,
+  "rejected_witness_depth_m": 9.987615047300079e-05,
+  "hard_penetration_limit_m": 0.0001,
+  "confirmed_hard_limit_violation": false,
+  "nonzero_damage": false,
+  "maximum_opening_m": 2.703810880906737e-06,
+  "damage_onset_m": 0.001,
+  "blade_sum_force_N": 0.007508257729306968,
+  "gate_b_passed": false,
+  "full_section4_passed": false,
+  "latest_run_wall_s": 284.58392954899864,
+  "latest_run_peak_RSS_KiB": 2162312,
+  "interpretation": "Current step cannot be certified with the unchanged motion reserve near 0.1 mm. Compliant contact transfers little load before guard exhaustion; stronger enforcement is a hypothesis requiring independent validation, not an established solution.",
+  "preserved_component_passes": [
+    "constitutive/history independent controls",
+    "adaptive contact independent controls",
+    "independent 20 ms half-step contact comparison"
+  ],
+  "not_qualified": [
+    "damage-enabled shallow cut and withdrawal",
+    "full stroke and separation",
+    "post-cut stability and damaged reset",
+    "size/path variants",
+    "successive slices"
+  ],
+  "next_scope": "Separate stronger normal-contact enforcement validation; not yet authorized or implemented."
+}

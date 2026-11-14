@@ -1,0 +1,19 @@
+{
+  "scope": "Unvalidated isolated controller candidate. No geometry, mass, friction, physical limits or baseline changes.",
+  "teacher": "hybrid_pickup_v31.py",
+  "actor": "hybrid_pickup_v32.py",
+  "reason": "Abrupt contact-load transients and weak retention despite accurate camera targets. Use measured-load feedback and slower continuous command changes, with lower servo damping.",
+  "force_target_N": 4.0,
+  "control_hz": 20,
+  "filtered_contact_time_constant_s": 0.04,
+  "joint_damping_Nm_s": 0.3,
+  "force_feedback_gain_rad_per_N_s": 0.015,
+  "motor_limits_Nm": {
+    "thumb": 1.0,
+    "finger": 0.3
+  },
+  "force_stop_N": 50.0,
+  "finger_position_rate_limit_rad_s": 0.04,
+  "thumb_position_rate_limit_rad_s": 0.08,
+  "setup_preserved": true
+}

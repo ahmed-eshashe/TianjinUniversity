@@ -1,0 +1,66 @@
+{
+  "updated": "2026-11-10T15:40:30.946877+00:00",
+  "status": "pass_restricted_multicut_unit_scope",
+  "source": "isolated v07 custom CPU mechanics reference",
+  "production_adopted": false,
+  "production_preserved": true,
+  "protected_file_count": 1001,
+  "checks": {
+    "algebra_controls.json": 14,
+    "dynamics_controls.json": 28,
+    "state_controls.json": 35
+  },
+  "total_passed_checks": 77,
+  "supported": [
+    "sequential parallel reference-axis prescribed cuts",
+    "partial/full cross-cut of an already detached fragment",
+    "intact bridges ahead of an active incision",
+    "carried loaded state across completed partitions",
+    "independent moved/rotated pieces in no-contact unit fixtures",
+    "two active partial incisions on distinct connected fragments",
+    "four-cut capacity with explicit overflow rejection",
+    "loaded checkpoint continuation and full-step rollback"
+  ],
+  "gate2_status": "restricted topology component pass; GPU and tool-generated cuts remain unqualified",
+  "gate3_status": "not qualified: CAD contact, physical failure/work and fragment recontact pending",
+  "physical_tomato_slice": false,
+  "rl_ready": false,
+  "experimental_validation": "pending",
+  "scope_limits": [
+    "12 mm tensor block; synthetic homogeneous material",
+    "One active partial incision per connected fragment",
+    "Reference-axis normals only; no arbitrary curved/oblique surface",
+    "Prescribed discontinuities and manufactured separation gaps only",
+    "1 ms free/loaded dynamic windows; no blade, gravity or board",
+    "No contact, paid fracture or damage ledger",
+    "No GPU implementation of current repaired formulation"
+  ],
+  "test_evidence": [
+    "algebra_controls.json",
+    "dynamics_controls.json",
+    "state_controls.json"
+  ],
+  "preservation_evidence": "preservation_check.json",
+  "total_current_validation_wall_s": 675.9181948689984,
+  "baseline_block_mass_kg": 0.001728,
+  "final_five_piece_mass_kg": 0.0017279999999999997,
+  "maximum_checkpoint_continuation_error": 0.0,
+  "runtime_summary": {
+    "primary_partial_wall_s_per_1ms": 58.520541795998724,
+    "primary_full_wall_s_per_1ms": 57.40595778699935,
+    "dynamics_process_peak_RSS_MiB": 410.69921875,
+    "state_validation_peak_RSS_MiB": 827.2578125,
+    "note": "RSS is the process high-water mark, not isolated per-case memory. No tomato/robot/RL throughput measured."
+  },
+  "source_sha256": {
+    "src/basis_volume_guard.py": "6f8f068b85cf242a5a230f72adcedaa201b924510b835e8828e2650801b000de",
+    "src/block_basis.py": "785863aa38b6f2eac095a0d0b78f64296688fb398aca9a156cfca478015af364",
+    "src/continuous_volume.py": "f22f2d2c7b8516866f0eed5622901869ec66b8a54a779dbba6bf442912756017",
+    "src/integrated_cut.py": "c6b69b6aca4de8e0f60363ee53127c5e32d6d8258ac303a52415a1bef8960e93",
+    "src/multicut.py": "d02bf30397d6dd9a5346acbc572393110a66eb4045323714cd9805d22d7e553d",
+    "src/reference.py": "76ee39010c815716e356d2a09f76789ebc3e561b46d70575e7f1b336b326b10d",
+    "tests/algebra.py": "b4246375cfb2587dd105fae7984dbe0b07c1e9e42213bb032e353c14e724bf9f",
+    "tests/dynamics.py": "97c282b62d4ca3314a40c1620a9fa6b53f7549f98a2f8062acb3159c13c41dd2",
+    "tests/state_and_cost.py": "52b99dc7a1c02773dc94db069beb4892cbad6fc121fea9fbf5de2e8a4306a9e8"
+  }
+}

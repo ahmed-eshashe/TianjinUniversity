@@ -1,0 +1,97 @@
+{
+  "scope": "Three fresh clear-start 2 ms / 42 um nonfracturing controls with complete cut-edge sampling. A/B isolates query implementation; B/C is independent half timestep. Not a damage-enabled cut, deep contact, controlled withdrawal, separation, engine adoption or Gate B pass.",
+  "all_three_cases_completed": true,
+  "shared_physical_samples": 641,
+  "implementation_maxima": {
+    "position_m": 5.543010115379329e-17,
+    "velocity_m_s": 1.4427589035906473e-13,
+    "nodal_force_N": 4.6779458134990046e-15,
+    "history_absolute": 4.845028458294598e-19
+  },
+  "implementation_limits": {
+    "position_m": 1e-10,
+    "velocity_m_s": 1e-07,
+    "nodal_force_N": 1e-08,
+    "history_absolute": 1e-10
+  },
+  "implementation_comparison_passed": true,
+  "half_step_maxima": {
+    "position_m": 1.8294640482799875e-07,
+    "velocity_m_s": 0.00032922934711132086,
+    "reaction_relative": 0.005612942084444273,
+    "moment_relative": 0.005614348695595463,
+    "sum_force_relative": 0.00561294803602726,
+    "nodal_force_relative": 0.005692297669763712,
+    "damage_absolute": 0.0
+  },
+  "half_step_worst_times_s": {
+    "position_m": 0.001715625,
+    "velocity_m_s": 0.001125,
+    "reaction_relative": 0.00104375,
+    "moment_relative": 0.00104375,
+    "nodal_force_relative": 0.0010375,
+    "sum_force_relative": 0.00104375
+  },
+  "half_step_limits": {
+    "position_m": 0.0001,
+    "velocity_m_s": 0.005,
+    "reaction_relative": 0.05,
+    "moment_relative": 0.05,
+    "sum_force_relative": 0.05,
+    "force_floor_N": 1e-06,
+    "moment_floor_Nm": 1e-08,
+    "damage_absolute": 0.01,
+    "nodal_force_relative": 0.05,
+    "dissipation_relative": 0.05,
+    "dissipation_floor_J": 1e-08,
+    "event_time_s": 0.0005,
+    "failed_group_set_equal": true
+  },
+  "half_step_comparison_passed": true,
+  "all_histories_undamaged_no_healing": true,
+  "fracture_dissipation_zero_under_original_1mm_onset": true,
+  "actual_damage_event_comparison_still_required": true,
+  "frozen_sources_unchanged": true,
+  "runs": [
+    {
+      "name": "coverage_reference",
+      "dt_s": 3.125e-06,
+      "accepted_steps": 640,
+      "stepping_sampling_and_small_final_state_wall_s_excluding_large_trace_write": 199.74264489000052,
+      "peak_sum_force_N": 0.005323911524865787,
+      "max_adapter_sampled_penetration_m": 5.074981047781149e-06,
+      "min_volume_ratio": 0.7216080878120494,
+      "max_damage": 0.0,
+      "guards_passed": true
+    },
+    {
+      "name": "coverage_fast",
+      "dt_s": 3.125e-06,
+      "accepted_steps": 640,
+      "stepping_sampling_and_small_final_state_wall_s_excluding_large_trace_write": 55.14401592300419,
+      "peak_sum_force_N": 0.005323911524865537,
+      "max_adapter_sampled_penetration_m": 5.074981047787631e-06,
+      "min_volume_ratio": 0.7216080878120494,
+      "max_damage": 0.0,
+      "guards_passed": true
+    },
+    {
+      "name": "coverage_fast_half",
+      "dt_s": 1.5625e-06,
+      "accepted_steps": 1280,
+      "stepping_sampling_and_small_final_state_wall_s_excluding_large_trace_write": 107.1268573510024,
+      "peak_sum_force_N": 0.005342994428046064,
+      "max_adapter_sampled_penetration_m": 5.086927227250244e-06,
+      "min_volume_ratio": 0.7216080891012945,
+      "max_damage": 0.0,
+      "guards_passed": true
+    }
+  ],
+  "fresh_probe_implementation_speedup": 3.622199826158739,
+  "combined_candidate_nonfracturing_component_passed": true,
+  "gate_a_complete": false,
+  "gate_b_passed": false,
+  "full_slice_qualified": false,
+  "speed_gate": "deferred, not passed",
+  "experimental_validation": "pending"
+}

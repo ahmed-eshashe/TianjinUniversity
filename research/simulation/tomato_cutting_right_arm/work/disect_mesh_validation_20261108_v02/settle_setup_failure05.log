@@ -1,0 +1,25 @@
+Using cached kernels
+Using log folder at "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/settle_log".
+Converted Young's modulus 30000.0 and Poisson's ratio 0.25 to Lame parameters mu = 12000.0 and lambda = 12000.0
+Loaded mesh with 5762 vertices and 28727 tets.
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/DiSECt/dflex/model.py:2215: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:254.)
+  m.particle_q = torch.tensor(self.particle_q, dtype=torch.float32, device=adapter)
+self.cut_edge_indices: (0,)
+self.cut_spring_indices: (0,)
+self.cut_virtual_tri_indices: (0,)
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/adjoint.h:316: T df::load(T *, int) [with T = float]: block: [0,0,0], thread: [0,0,0] Assertion `buf` failed.
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/adjoint.h:316: T df::load(T *, int) [with T = float]: block: [0,0,0], thread: [1,0,0] Assertion `buf` failed.
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/adjoint.h:316: T df::load(T *, int) [with T = float]: block: [0,0,0], thread: [2,0,0] Assertion `buf` failed.
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/settle_tomato.py", line 20, in <module>
+    sim.simulation_step()
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/DiSECt/cutting/cutting_sim.py", line 642, in simulation_step
+    self.motion.update_state(self.state, self.sim_time, self.sim_dt)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/DiSECt/cutting/motion.py", line 56, in update_state
+    state.joint_qd[0:3] = self.linear_velocity(time, dt)
+    ~~~~~~~~~~~~~~^^^^^
+RuntimeError: CUDA error: device-side assert triggered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

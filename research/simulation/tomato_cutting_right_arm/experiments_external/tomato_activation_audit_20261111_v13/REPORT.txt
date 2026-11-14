@@ -1,0 +1,22 @@
+v13: offline common-space diagnosis, not an online cutting backend.
+
+All cases begin at the same saved v12 50 us material state. Exact coefficient
+prolongation puts both common-space cases on the same fine tangential knot grid.
+The late case releases the remaining score at 100 us; the early case also
+releases the intermediate score at 75 us. Final approximation spaces are identical.
+The grid comes from the saved fine schedule and must not be advertised as online
+path-independent preparation. No physical cut/contact/fracture law is present.
+
+Changing only activation timing produces a 0.05136 m/s whole-field velocity
+bound. Keeping the late activation time but changing the approximation space
+produces a 0.22305 m/s bound. These two effects are not an additive error budget.
+Both exceed the 0.005 m/s screen. The common-space half-timestep discrepancies
+are about 0.000493 m/s, well below either effect. Native replay reproduces v12.
+Mass, carried fields, full inertia pullback, energy and volume checks pass.
+
+The next bounded correction is a consistent, current-tool-local refinement band
+with material-boundary cut events localized in time. Existing physical laws,
+full mass, energy, stops and accuracy screens remain unchanged. Fine modes will
+be introduced once at initialization of the local interaction fixture, using
+only current tool/material geometry; this is a discrete-space scheduling change
+and must be requalified. No production adoption or new engine is implied.

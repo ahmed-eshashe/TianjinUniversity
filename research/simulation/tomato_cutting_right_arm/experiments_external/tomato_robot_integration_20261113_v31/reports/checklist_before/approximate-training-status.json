@@ -1,0 +1,133 @@
+{
+  "status": "restricted_approximate_RL_pilot_pass",
+  "updated_utc": "2026-11-13T08:06:41.463788+00:00",
+  "approximate_task_ready_for_initial_RL_trial": true,
+  "general_tomato_qualification": false,
+  "robot_RL_qualification": false,
+  "learned_policy_trained": false,
+  "experimental_validation": "pending",
+  "existing_setup_changed": false,
+  "speed_complete_task_transitions_s": 136.75874253659822,
+  "full_batched_successes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "full_batched_failures": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "mechanics_components": true,
+  "reset_and_stops": true,
+  "state_retry": true,
+  "two_intersecting_cuts_four_pieces": true,
+  "larger_tomato_cut": true,
+  "oblique_trial": {
+    "success": false,
+    "stop": "2 N force limit",
+    "peak_N": 2.019221305847168
+  },
+  "numerical_accuracy": "Coarse/fine complete cycles separate the same bonds, but final positions differ up to 1.54 mm and peak forces by about 46%. Not detailed-solver or real-tomato equivalence.",
+  "speed_scope": "Complete approximate kinematic-blade task: from intact body through blade-generated separation, horizontal withdrawal, terminal reward and selective resets. Online scripted controller used instead of a learned policy. Original articulated robot, rendering and policy-network inference excluded. Identical starting cases at different batch offsets, not generalization evidence.",
+  "source_artifacts": [
+    "runs/full_training_benchmark_adaptive/result.json",
+    "reports/mechanics.json",
+    "reports/contact_and_reset.json",
+    "reports/adaptive_controls.json",
+    "runs/second_intersecting_cut_adaptive/result.json",
+    "runs/large_tomato_adaptive/result.json",
+    "runs/small_oblique_adaptive/result.json",
+    "reports/timestep_outcomes.json",
+    "reports/reference_differences.json",
+    "reports/full_cycle_energy.json",
+    "reports/parent_preservation.json"
+  ],
+  "display": {
+    "version": "v29",
+    "verified_utc": "2026-11-13T08:49:36.737906+00:00",
+    "smooth_skin": true,
+    "green_calyx_and_stem": true,
+    "fracture_aware_surface": true,
+    "raw_particles_toggle": true,
+    "live_two_piece_cut_verified": true,
+    "physics_changed": false,
+    "launcher": "/home/omen/Documents/Codex/experiments/tomato_surface_view_20261113_v29/launch_live.sh",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_surface_view_20261113_v29/reports/live_check.json"
+  },
+  "motion_comparison": {
+    "updated_utc": "2026-11-13T09:03:10.794877+00:00",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_motion_comparison_20261113_v30/REPORT.txt",
+    "recommended": {
+      "status": "controller_comparison_complete",
+      "recommended_motion": "smooth_sync_2x",
+      "recommended_dt_s": 0.0001,
+      "motion": {
+        "kind": "smooth_sync",
+        "feed": 0.003,
+        "frequency": 0.8,
+        "amplitude": 0.02
+      },
+      "terminal_success_both_tested_timesteps": true,
+      "reduction_in_simulated_episode_duration_percent": 48.6194858774992,
+      "fine_peak_load_change_percent": 64.14222131913047,
+      "deformation_rms_change_percent": -16.49115741576377,
+      "physics_changed": false,
+      "existing_live_view_changed": false,
+      "decision": "Recommend synchronized smooth stroke for an exploratory demo: half the duration and less pre-separation RMS deformation, but higher calculated peak load than the old baseline. Do not claim lower cutting force or real-tomato validation. Fastest tested motion is close to the force stop; unsynchronized smooth cases rejected.",
+      "numerical_limit": "At 0.2ms versus 0.1ms, the recommended motion has the same failure bonds and terminal success, but peak load differs by 14.3% and maximum matched-time particle position by 1.74mm. This is approximate-model screening, not precise convergence qualification."
+    },
+    "fine_results": [
+      {
+        "case": "baseline",
+        "success": true,
+        "duration_sim_s": 63.02,
+        "peak_sum_load_N": 0.9152090549468994,
+        "peak_penetration_mm": 0.008547562174499035,
+        "max_preseparation_deformation_rms_mm": 1.9581285305321217
+      },
+      {
+        "case": "feed_2x",
+        "success": true,
+        "duration_sim_s": 32.42,
+        "peak_sum_load_N": 1.4545342922210693,
+        "peak_penetration_mm": 0.01045886892825365,
+        "max_preseparation_deformation_rms_mm": 1.8903861055150628
+      },
+      {
+        "case": "feed_4x",
+        "success": true,
+        "duration_sim_s": 17.54,
+        "peak_sum_load_N": 1.901181697845459,
+        "peak_penetration_mm": 0.010633491910994053,
+        "max_preseparation_deformation_rms_mm": 1.8258102936670184
+      },
+      {
+        "case": "smooth_2x",
+        "success": false,
+        "duration_sim_s": 22.740000000000002,
+        "peak_sum_load_N": 2.0478909015655518,
+        "peak_penetration_mm": 0.008861767128109932,
+        "max_preseparation_deformation_rms_mm": 1.4610749203711748
+      },
+      {
+        "case": "smooth_sync_2x",
+        "success": true,
+        "duration_sim_s": 32.38,
+        "peak_sum_load_N": 1.502244472503662,
+        "peak_penetration_mm": 0.008480739779770374,
+        "max_preseparation_deformation_rms_mm": 1.6352104721590877
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/cache/warp/1.17.0
+Module apic_kernels 9ed9f42 load on device 'cuda:0' took 522.23 ms  (compiled)
+{
+  "status": "fail",
+  "checks": {
+    "compression_momentum": true,
+    "compression_angular": true,
+    "compression_mass": true,
+    "compression_energy": true,
+    "compression_half_momentum": true,
+    "compression_half_angular": true,
+    "compression_half_mass": true,
+    "compression_half_energy": true,
+    "compression_refinement": false,
+    "localized_geometry_consistent": true,
+    "localized_energy": true,
+    "localized_half_geometry_consistent": true,
+    "localized_half_energy": true,
+    "localized_refinement": true
+  },
+  "results": {
+    "compression": {
+      "wall_s": 101.3319477519999,
+      "sim_s": 0.02,
+      "momentum_error": 1.0677462162759829e-17,
+      "angular_error": 8.884445022655667e-20,
+      "angular_scale": 0.0,
+      "initial_energy": 0.0023324478817209502,
+      "max_energy_residual": 7.08694916301501e-06,
+      "mass_relative_error": 2.220446049250313e-16,
+      "memory": {
+        "array_bytes": 124403196,
+        "particles": 64000,
+        "spatial_grid_nodes": 79507,
+        "active_states": 1,
+        "allocated_states": 1
+      }
+    },
+    "compression_half": {
+      "wall_s": 203.43817621999915,
+      "sim_s": 0.02,
+      "momentum_error": 1.8671731494790697e-17,
+      "angular_error": 2.2954989474242097e-19,
+      "angular_scale": 0.0,
+      "initial_energy": 0.0023324478817209502,
+      "max_energy_residual": 4.3391350320982555e-06,
+      "mass_relative_error": 2.220446049250313e-16,
+      "memory": {
+        "array_bytes": 124403196,
+        "particles": 64000,
+        "spatial_grid_nodes": 79507,
+        "active_states": 1,
+        "allocated_states": 1
+      }
+    },
+    "compression_refinement": {
+      "x": 3.178189048572471e-05,
+      "v": 0.02312904787257153
+    },
+    "localized": {
+      "max_F_difference": 0.0008216287452131315,
+      "strain_ratio_min": 0.8156030072127578,
+      "strain_ratio_max": 0.9926640347544373,
+      "max_energy_residual": 8.912852307869227e-09,
+      "work_scale": 8.725188853536424e-07,
+      "wall_s": 29.571081641999626,
+      "final_work": 4.0789811685425664e-07,
+      "transfer_support_loss": 3.870586563400849e-07
+    },
+    "localized_half": {
+      "max_F_difference": 0.0005633317951980362,
+      "strain_ratio_min": 0.8682606225813577,
+      "strain_ratio_max": 0.9967121417519278,
+      "max_energy_residual": 5.797664201723023e-09,
+      "work_scale": 7.725725198120129e-07,
+      "wall_s": 59.336525200000324,
+      "final_work": 3.775558748935868e-07,
+      "transfer_support_loss": 3.466936790729682e-07
+    }
+  },
+  "wall_s": 395.5644246520005,
+  "scope": "APIC repaired mechanics, affine momentum included; not cutting qualification"
+}

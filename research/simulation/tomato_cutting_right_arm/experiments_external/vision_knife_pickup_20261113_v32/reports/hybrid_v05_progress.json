@@ -1,0 +1,86 @@
+{
+  "updated": "2026-11-14T01:42:30.781939+08:00",
+  "summary": "Contact-guided closure v05: 2/2 regression cases, 2/3 fresh validation pickups and 0/0 fresh test pickups passed. Learned visual grasp selection, engineered motion, real finger contact and no attachment. Prior v03 gate failed (2/4 original test attempts).",
+  "counts": {
+    "development": {
+      "successes": 1,
+      "attempted": 1
+    },
+    "regression": {
+      "successes": 2,
+      "attempted": 2
+    },
+    "validation": {
+      "successes": 2,
+      "attempted": 3
+    },
+    "test": {
+      "successes": 0,
+      "attempted": 0
+    }
+  },
+  "active": [],
+  "rows": [
+    {
+      "dataset": "hybrid_v05_development",
+      "id": "train_012",
+      "success": true,
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.00016629701847127514,
+      "min_height_m": 0.1189576423005355,
+      "support_N": 0.0,
+      "max_contact_load_N": 27.58794593811035,
+      "wall_s": 202.12828713899944
+    },
+    {
+      "dataset": "hybrid_v05_regression",
+      "id": "test_002",
+      "success": true,
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0010050157757673936,
+      "min_height_m": 0.11915318687347659,
+      "support_N": 0.0,
+      "max_contact_load_N": 35.05021286010742,
+      "wall_s": 204.00514691701392
+    },
+    {
+      "dataset": "hybrid_v05_regression",
+      "id": "test_003",
+      "success": true,
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0005238304528047675,
+      "min_height_m": 0.11835961556251344,
+      "support_N": 0.0,
+      "max_contact_load_N": 27.59337615966797,
+      "wall_s": 207.86038772799657
+    },
+    {
+      "dataset": "hybrid_v05_validation",
+      "id": "recovery_validation_000",
+      "success": true,
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0005214318725686307,
+      "min_height_m": 0.11891652335223885,
+      "support_N": 0.0,
+      "max_contact_load_N": 27.588046073913574,
+      "wall_s": 203.2868876339926
+    },
+    {
+      "dataset": "hybrid_v05_validation",
+      "id": "recovery_validation_001",
+      "success": false,
+      "failure": "ValueError: ('Contact stop', [('/dual_ar5_o6/MountedKnife', '/Indoor/RZ/SM_kitchen_Board', 74.15746688842773)])"
+    },
+    {
+      "dataset": "hybrid_v05_validation",
+      "id": "recovery_validation_002",
+      "success": true,
+      "hold_s": 3.000520833333203,
+      "slip_m": 0.0005513336877145787,
+      "min_height_m": 0.11886842129844163,
+      "support_N": 0.0,
+      "max_contact_load_N": 27.59226131439209,
+      "wall_s": 209.04480929201236
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+Collecting numpy==1.26.4
+  Downloading numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.0/61.0 kB 218.5 kB/s eta 0:00:00
+Collecting pandas<3
+  Downloading pandas-2.3.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.2/91.2 kB 706.1 kB/s eta 0:00:00
+Requirement already satisfied: python-dateutil>=2.8.2 in /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages (from pandas<3) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages (from pandas<3) (2024.1)
+Collecting tzdata>=2022.7 (from pandas<3)
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Requirement already satisfied: six>=1.5 in /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas<3) (1.17.0)
+Downloading numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.3/18.3 MB 4.5 MB/s eta 0:00:00
+Downloading pandas-2.3.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 4.6 MB/s eta 0:00:00
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 348.2/348.2 kB 4.6 MB/s eta 0:00:00
+Installing collected packages: tzdata, numpy, pandas
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.4.6
+    Uninstalling numpy-2.4.6:
+      Successfully uninstalled numpy-2.4.6
+  Attempting uninstall: pandas
+    Found existing installation: pandas 3.1.1
+    Uninstalling pandas-3.1.1:
+      Successfully uninstalled pandas-3.1.1
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+isaacsim-core 5.1.0.0 requires torchaudio==2.7.0, which is not installed.
+rl-games 1.6.1 requires psutil<6.0.0,>=5.9.0, but you have psutil 7.2.2 which is incompatible.
+isaacsim-kernel 5.1.0.0 requires click==8.1.7, but you have click 8.5.0 which is incompatible.
+isaacsim-kernel 5.1.0.0 requires numpy==1.26.0, but you have numpy 1.26.4 which is incompatible.
+isaacsim-kernel 5.1.0.0 requires psutil==5.9.8, but you have psutil 7.2.2 which is incompatible.
+stable-baselines3 2.9.0 requires torch<3.0,>=2.8, but you have torch 2.7.0+cu128 which is incompatible.
+Successfully installed numpy-1.26.4 pandas-2.3.3 tzdata-2026.6
+
+[notice] A new release of pip is available: 24.0 -> 26.3
+[notice] To update, run: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/bin/python -m pip install --upgrade pip

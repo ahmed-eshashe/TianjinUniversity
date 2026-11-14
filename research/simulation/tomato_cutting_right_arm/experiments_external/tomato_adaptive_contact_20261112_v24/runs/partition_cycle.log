@@ -1,0 +1,62 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.57 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.43 ms  (cached)
+Module blade_geometry 7e43415 load on device 'cuda:0' took 0.61 ms  (cached)
+Module partition_gpu 3b83960 load on device 'cuda:0' took 3.59 ms  (cached)
+Module partition_gpu 996db00 load on device 'cuda:0' took 3.45 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.51 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.39 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.54 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 1.31 ms  (cached)
+Module contact_gpu_precise e89188c load on device 'cuda:0' took 0.56 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/partition_contact_cycle.py", line 25, in <module>
+    t=time.perf_counter();g.checked_step(round(.00025/dt));stepcost=time.perf_counter()-t;wall.append(stepcost)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 159, in checked_step
+    result=self.finish();self.last_cost={'GPU_step_host_read_s':t1-t0,'whole_volume_certificate_s':t2-t1,'accepted_state_transfer_s':time.perf_counter()-t2};return result
+           ^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 122, in finish
+    try:return super().finish()
+               ^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/pipeline_gpu.py", line 51, in finish
+    return self._bodies(self.q_view[:self.n].astype(float),self.v_view[:self.n].astype(float))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/pipeline_gpu.py", line 55, in _bodies
+    lo,hi=self.bounds[j:j+2];a.q=q[lo:hi];a.v=v[lo:hi];a.sync();a.body.time=self.base[j][0]+self.steps*self.dt;a.body.steps=self.base[j][1]+self.steps;out.append(a.body)
+    ^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/types.py", line 4168, in __getitem__
+    raise RuntimeError(f"Invalid indexing in slice: {k}")
+RuntimeError: Invalid indexing in slice: 2
+{
+  "status": "stopped",
+  "checks": {
+    "initial_volume_clear": true,
+    "initial_force_zero": true,
+    "complete_cycle": false,
+    "loaded": false,
+    "force_limit": true,
+    "volume_certificates": true,
+    "positive_J": true,
+    "no_cut_created": true,
+    "momentum_balance": true,
+    "energy_balance": true
+  },
+  "dt_s": 1.25e-05,
+  "size_m": 0.006,
+  "h_m": 0.003,
+  "adaptive_relative_tol": 0.002,
+  "quadrature_spacing_m": null,
+  "surface_samples": 144,
+  "max_energy_residual_J": 0.0,
+  "max_energy_relative": 0.0,
+  "max_impulse_balance_Ns": 0.0,
+  "wall_s": 0.059457516006659716,
+  "physical_cut": false
+}

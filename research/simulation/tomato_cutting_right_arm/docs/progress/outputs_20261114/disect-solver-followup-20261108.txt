@@ -1,0 +1,14 @@
+SECTION 3 COUPLED SOLVER FOLLOW-UP — 8 November 2026
+
+No material laws, fracture budgets, geometry, supports or accuracy gates were changed. Prior evidence preserved in v07. No cutting or training ran.
+
+1. Extending L-BFGS to 1250 evaluations reduced first-step force residual to 3.18587e-6 N but failed the unchanged 1e-6 N gate; 29.18 seconds for an unaccepted 0.5 ms step. Iteration increases alone are not a viable speed repair.
+2. Independent closure directional energy-gradient control at 10 micrometres compression agreed to 4.75e-10 relative at the largest tested difference increment; two smaller increments also agreed within 8.22e-7. This is a scoped directional control, not a full Hessian qualification.
+3. Lagged damping operator symmetry agreed to 5.52e-16 relative and tested quadratic form was positive (0.20774). This is not a proof of all configurations.
+4. A Newton correction with exact automatic differentiation of bulk/cohesive energy and explicit damping action passed one isolated first step: residual 1.33988e-8 N, 229 linear operator evaluations, 8.06 seconds total. Closure was inactive during that correction. This does not meet throughput requirements or qualify coupled contact.
+5. Fresh continuation attempt activated closure in its first trial and stopped before accepting any step. The guard correctly rejected using an incomplete Hessian. Results differ between independent optimizer runs; first-step success is not repeatable qualification. No 20 ms accepted trajectory was obtained.
+
+NEXT REQUIRED IMPLEMENTATION
+Implement the active closure force derivative (including embedding, cross-node coupling and mollifier derivatives), validate its Hessian action independently, then include it in the Newton system with a suitable preconditioner. The custom autograd closure backward currently returns a saved gradient; differentiating it again does not provide this Hessian. Do not silently omit active contact stiffness or relax tolerances. Only after a converged short coupled run should time refinement, force comparison and runtime be assessed.
+
+Section 3 remains 4/5; total 15/35. Section 4 remains blocked. No simulation remains running. Experimental validation pending.

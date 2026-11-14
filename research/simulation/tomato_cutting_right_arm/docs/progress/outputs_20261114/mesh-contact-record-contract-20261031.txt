@@ -1,0 +1,25 @@
+Mesh contact-record contract — 31 October 2026
+
+Implemented and checked a separate float64 reference contract for particle, edge and face records. Eleven focused tests passed. No native engine, physics step, solver writer or force-producing route was launched.
+
+Installed solver conventions:
+- Three soft-corner indices, padded with -1; barycentric weights are nonnegative, sum to one, and use zero padding.
+- The rigid witness is the raw, uninflated surface point in BODY-local coordinates, with shape-to-body transformation already applied.
+- The normal is rigid-outward in world coordinates. Reference tests use an explicit rigid-facet normal; they do not claim to resolve normals at sharp edges or intersections.
+- Soft point = weighted current particle positions. Projected gap = n dot (soft point minus world rigid point). Reference penetration = minus projected gap plus maximum participating particle radius plus shape margin. Radius/margin are counted exactly once.
+- Raw surface velocity is body-local. Actual previous/current native history and temporal sampling remain runtime requirements.
+
+Checks reject wrong frame/origin, inconsistent projections, reversed/nonunit/nonfinite normals, invalid barycentrics or particle padding, stale steps, wrong shape/body mapping, double-applied margins, ambiguous intersection-only witnesses and saturated streams. A coincident zero-gap witness with zero radius/margin does not activate the reference force law. No physical load is inferred from a crossing alone.
+
+Duplicate policy is deliberately limited: exact mathematically equivalent reference events may be identified after canonicalizing support/weights. Nearby contacts and different soft-particle supports are retained; their force Jacobians may differ. Raw overflow is rejected before any reduction. No installed native deduplication, contact counts or solver accumulation were changed.
+
+Reaction-observer concern found in source:
+The installed solver builds its per-body soft-contact adjacency only for positive effective inverse mass; static/kinematic bodies are skipped. Our existing reaction observer reads that adjacency. A prescribed blade therefore needs a collector over the complete global contact stream, or another independently validated reaction route. Tests distinguish the full stream from dynamic adjacency, including nondeterministic valid adjacency ordering. This is a source-level risk finding, not runtime proof of a positive-contact failure. Earlier zero-contact checks cannot establish positive blade-reaction completeness.
+
+Numerical scope: 1e-12 absolute consistency checks apply only to float64 synthetic reference arithmetic. Native float32 conversion and its error budget remain unvalidated. No physical contact, material, controller or acceptance threshold was selected or changed.
+
+Preservation: historical production source hashes still match. New reference code/tests and exact installed source excerpts/hashes were saved. Solver launch stays disabled even for valid reference records.
+
+Next: prepare a disabled native-format adapter and a complete-stream prescribed-blade collector. Before any force-producing integration, resolve actual mesh-overlap normal/penetration definitions, native conversion/history/reset behavior, candidate completeness, duplicate manifolds and independent force/work audits. Robot coupling, fracture, cutting and learning remain pending.
+
+Evidence: runs/source_review/mesh_contact_contract_20261031

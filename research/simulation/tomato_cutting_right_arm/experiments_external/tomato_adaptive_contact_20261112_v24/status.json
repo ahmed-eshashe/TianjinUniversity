@@ -1,0 +1,49 @@
+{
+  "status": "contact_component_checks_pass_continuing_cut_surface_integration",
+  "updated_utc": "2026-11-12T16:13:56.763534+00:00",
+  "checks": {
+    "partition": true,
+    "partition_membership": true,
+    "independent_RK4": true,
+    "time_refinement": true,
+    "fine_alternate_integrator": true,
+    "contact_sampling_refinement": true,
+    "edge_cycle": true,
+    "broad_cycle": true,
+    "slide_cycle": true,
+    "miss_cycle": true
+  },
+  "selected": {
+    "module": "src/rk4_contact_gpu.py",
+    "timestep_s": 1.25e-05,
+    "quadrature_subdivision": 4,
+    "kinematics": "affine material maps",
+    "geometry": "exact original CAD; validated interior partition solely for integration",
+    "contact_law": "unchanged K=1e9 N/m3, mu=.2, vs=.001m/s"
+  },
+  "time_force_relative": 0.0011134131520126422,
+  "space_force_relative": 0.005379027017839308,
+  "alternate_integrator_force_relative": 0.008388441791718632,
+  "scope": "6 mm intact supported cube, 48 tetrahedra; no physical cut, no tomato, no complete RL environment.",
+  "rejected_larger_timesteps_s": [
+    2.5e-05,
+    5e-05
+  ],
+  "physical_laws_changed": false,
+  "numerical_integration_changed": true,
+  "physics_limits_changed": false,
+  "physical_cut": false,
+  "rl_ready": false,
+  "current_setup_changed": false,
+  "preservation": {
+    "checked": 2247,
+    "changed": [],
+    "all_unchanged": true
+  },
+  "prior_evidence_correction": "v23 float nearest CAD face routine is unreliable on thin blade triangles; its reported successful contact/clearance fixtures do not qualify other points. Original evidence preserved. v24 queries verify candidates using original double precision triangles.",
+  "performance": {
+    "small_cycle_wall_s": 1.8865011339948978,
+    "simulated_s": 0.013,
+    "note": "Includes checks, host observations and logging; not an RL throughput result. Spatial/time changes prevent treating all historical timings as like-for-like."
+  }
+}

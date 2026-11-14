@@ -1,0 +1,40 @@
+{
+  "scope": "Bounded section 3 prerequisites; no actual cutting, native robot qualification or engine adoption",
+  "checks": {
+    "settling": true,
+    "board_support": true,
+    "live_cutting_interface": false,
+    "fracture_definition_only": true,
+    "intact_CAD_contact": false
+  },
+  "section_verified": 3,
+  "section_total": 5,
+  "section_complete": false,
+  "speed_gate_passed": false,
+  "experimental_validation": "pending by user choice",
+  "settling": {
+    "scope": "Corrected-law intact1s finite-board hold and half-step check only; not new cut assembly",
+    "position_max_error_m": 3.8290984115763165e-07,
+    "velocity_max_error_m_s": 0.00016617910394195836,
+    "material_force_max_relative_or_floor_error": 0.00023129823768712268,
+    "support_reaction_max_relative_or_floor_error": 0.0002231284207497688,
+    "coarse_late_speed_m_s": 9.650840666496036e-05,
+    "refined_late_speed_m_s": 9.651954593802983e-05,
+    "both_complete_and_settled": true,
+    "passed": true
+  },
+  "probe": {
+    "scope": "Exact-original-CAD prescribed nonfracturing contact on intact FEM; node-collocated surface contact, NOT new cut-assembly/native robot/full separation qualification",
+    "both_loaded_and_unloaded": true,
+    "position_max_error_m": 2.337942440062409e-09,
+    "velocity_max_error_m_s": 7.219792722644417e-05,
+    "reaction_max_relative_or_floor_error": 0.10082186405980759,
+    "moment_max_relative_or_floor_error": 0.10229492317434145,
+    "peak_reaction_N": 0.0009527616681512483,
+    "late_reaction_max_N": 0.0,
+    "maximum_CAD_penetration_m": 3.543267984825828e-07,
+    "maximum_discrete_force_balance_error_N": 3.1509998331772184e-12,
+    "passed": false
+  },
+  "remaining_gate": "Blade force/moment refinement failed; live original-cohesive assembly and small-cell qualification pending"
+}

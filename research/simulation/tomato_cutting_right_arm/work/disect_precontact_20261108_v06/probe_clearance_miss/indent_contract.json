@@ -1,0 +1,34 @@
+{
+  "scope": "One short nonfracturing prescribed-translation test on the qualified intact FEM, exact original blade CAD. Not prepared-cut assembly, native Isaac robot/mounted feedback, cutting or separation qualification.",
+  "gate": "Full1s corrected-law finite-board hold AND half-step comparison must pass first. Exact CAD geometry/wrench, legacy force functional form and coupled implicit-normal-dashpot controls must pass.",
+  "shape_and_force": "74 original CAD vertices/144 triangles unchanged; saved CAD orientation retained through checked proper frame transform. Exterior-node collocation is a disclosed new quadrature adapter, not virtual-edge/contact-integral equivalence. Source surface ke2000,kd1,kf2500,mu.5 and mu_static.5. kf is the source Brown-law velocity scale, not the board's viscous coefficient. No parameter fit or friction disabling.",
+  "integration": "Bulk viscosity, board friction and unilateral blade normal dashpot implicit in one mass-scaled Newton solve. Blade elastic penalty and weak Brown friction at old geometry/velocity; no blade angular motion. Select dt<=qualified7.4626866e-6 AND .5sqrt(minimum potentially-contacting nodal mass/2000), then compare one half-step run.",
+  "motion": "Static exact-CAD signed-distance placement with5micrometre initial nodal clearance;15micrometre downward approach over15ms, then horizontal withdrawal along existing bodyward direction over20ms until static15micrometre clearance;10ms unloaded observation. Quintic ramps with zero endpoint velocities. No upward withdrawal. No damage or interface release.",
+  "stops": {
+    "finite": true,
+    "volume_ratio_min": 0.1,
+    "fixed_error_max_m": 1e-07,
+    "board_penetration_max_m": 0.0001,
+    "board_edge_margin_min_m": 0.001,
+    "blade_penetration_max_m": 0.0001,
+    "blade_net_force_max_N": 2,
+    "blade_sum_magnitudes_max_N": 2,
+    "coupled_true_residual_max": 1e-09,
+    "discrete_force_balance_error_max_N": 1e-06,
+    "wall_cap_s_per_run": 600
+  },
+  "acceptance": {
+    "loaded_force_min_N": 1e-05,
+    "final_5ms_reaction_max_N": 1e-05,
+    "initial_reaction_max_N": 1e-10,
+    "contact_comparison_position_max_m": 0.0001,
+    "contact_comparison_force_relative_max": 0.05,
+    "contact_comparison_force_absolute_floor_N": 1e-06,
+    "velocity_max_error_m_s": 0.005,
+    "classification": "same loaded/unloaded and finite/cell/support outcomes; fracture disabled in both; no separation equivalence inferred",
+    "contact_comparison_moment_relative_max": 0.05,
+    "contact_comparison_moment_absolute_floor_Nm": 1e-08,
+    "measurement": "Contact-law reaction and moment recomputed at common sampled q,v,tool pose. Solver-applied interval forces separately audited against measured discrete momentum; do not call either channel actual native motor effort."
+  },
+  "limits": "No claim of collision completeness between exterior nodes; surface/force resolution dependence remains for later cutting qualification. New conforming cut mesh's sliver cells and cohesive-assembly stability remain separate open prerequisites for a shallow cut."
+}

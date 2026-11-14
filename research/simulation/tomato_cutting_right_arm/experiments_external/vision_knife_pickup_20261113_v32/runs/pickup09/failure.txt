@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/physical_pickup.py", line 62, in <module>
+    sim.reset();r.update(dt);knife.update(dt);get_settings_manager().set_bool('/physics/disableContactProcessing',False)
+    ^^^^^^^^^^^
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sim/simulation_context.py", line 795, in reset
+    self.physics_manager.reset(soft)
+  File "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py", line 492, in reset
+    cls.raise_callback_exception_if_any()
+  File "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py", line 645, in raise_callback_exception_if_any
+    raise exc
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/physics/physics_manager.py", line 604, in safe_callback_invoke
+    fn(*args)
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sensors/sensor_base.py", line 314, in _invoke
+    getattr(obj_ref, callback_name)(event)
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sensors/sensor_base.py", line 353, in _initialize_callback
+    self._initialize_impl()
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sensors/camera/camera.py", line 537, in _initialize_impl
+    super()._initialize_impl()
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sensors/sensor_base.py", line 253, in _initialize_impl
+    self._parent_prims = sim_utils.find_matching_prims(env_prim_path_expr)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sim/utils/queries.py", line 408, in find_matching_prims
+    return list(_iter_matching_prims_in_subtree(prim_path_regex, stage.GetPseudoRoot()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sim/utils/queries.py", line 377, in _iter_matching_prims_in_subtree
+    raise ValueError(f"Prim path '{prim_path_regex}' is not global. It must start with '/'.")
+ValueError: Prim path '' is not global. It must start with '/'.

@@ -1,0 +1,32 @@
+Actual Newton contact on two passive joints — 1 November 2026
+
+PASS for one contact exchange and an explicit outside-particle clearing control in both identity and 90-degree yaw orientations. Full coupling checklist item 15 remains open.
+
+Two locally authored CPU PhysX chains each have a fixed base, two Z revolute joints and two moving 0.02 kg links. Link lengths are 0.02 m, with COM halfway along each link and COM diagonal inertia 0.0001 kg m². The chains start straight, at rest and near the origin. No actuators, stiffness, damping, friction, gravity or PhysX collision shapes are enabled. Newton alone generates particle contact against a kinematic box proxy of the end link (half sizes 0.01,0.005,0.002 m). A 0.01 kg point particle starts at end-link local coordinates (0.004,0.004,0), penetrating the +Y side by 0.001 m. The whole fixture and contact rotate together in the second case.
+
+The actual CUDA Newton collision pipeline generates exactly one unsaturated full-surface soft contact. SolverVBD runs with 16 iterations, fixed penalty, no damping/friction and externally owned rigid state. The actual cached penalty is 1750 N/m. An independent local-plane implicit-particle reference predicts force k*depth/(1+k*dt²/m), contact point, COM torque and particle motion, at dt=1/2400 s. The native cached contact evaluator reconstructs the particle force and opposite link reaction. The worker checks native force within 2e-5 N, point within 1e-7 m and COM torque within 2e-7 N m against the independent reference.
+
+The independent initial planar chain mass matrix is [[0.000220,0.000106],[0.000106,0.000102]] kg m². The end-COM world Jacobian maps the independently predicted reaction to both joint efforts. The full 2x2 solve predicts both joint velocities; positions use the previously established 16-substep TGS factor 17/32. Thus the joint response reference uses the independently predicted contact wrench, rather than simply accepting the measured wrench. Native mass matrix and Jacobian are checked independently too. Gates remain 1e-8 kg m², 1e-6 Jacobian components, 1e-6 rad and 2e-5 rad/s. Whole-chain angular momentum about the fixed base uses the FIRST ROW of the coupled mass matrix times both joint velocities, balanced against particle angular impulse. This avoids treating the fixed-base chain as a free rigid body. Particle linear impulse and position are also checked (2e-7 N s, 1e-7 m); angular balance gate is 2e-8 N m s.
+
+Only the end link receives the world COM reaction wrench via its instantaneous composer. Newton is checked not to move its externally owned rigid proxy. PhysX end-link pose and world COM velocity are copied back exactly into BOTH actual Newton State buffers. Six such state echoes pass. The second interval explicitly moves the particle outside the link and resets its velocity; regenerated contact count is zero and Newton leaves the particle velocity zero. No new link wrench is submitted. Joint velocity drift must stay below 2e-6 rad/s. This is an explicit clearing control, not evidence of natural separation. Near-zero coast drift here is specific to the short, nearly straight fixture.
+
+Exactly two shared PhysX steps and four Newton solver steps ran across the two fixtures. Maximum errors:
+  matrix: 1.76341272883e-10
+  jacobian: 2.38418579102e-07
+  position: 1.17961985733e-11
+  velocity: 4.37587013291e-08
+  force_error_n: 7.31339023119e-07
+  point_error_m: 1.49011691875e-10
+  torque_error_nm: 3.1163935061e-09
+  coast_joint_velocity_change_rad_s: 0
+  particle_impulse_error_ns: 1.03472891085e-08
+  particle_position_error_m: 4.18440197422e-10
+  hinge_axis_angular_momentum_error_nms: 3.5002536717e-10
+
+hinge_contact_identity: predicted joint velocities [-0.12531325315539932, 0.03309685571391458]; measured [-0.12531329691410065, 0.03309687227010727]; native reaction [-0.0, -1.698399543762207, -0.0, 0.0, 0.0, -0.006793596316128969].
+
+hinge_contact_yaw90: predicted joint velocities [-0.12531327135795176, 0.033096847233832306]; measured [-0.12531326711177826, 0.03309682756662369]; native reaction [1.6983991861343384, -2.281949349480783e-07, -0.0, 0.0, 0.0, -0.0067935967817902565].
+
+Eight two-joint reference/contract tests and nine supervisor tests passed, including incorrect reaction sign, rotated wrench, angular balance and count-contract rejection. No gate was relaxed. The protected run exited successfully in 5.77 seconds with at least 23.01 GB available RAM and 7.52 GB free GPU memory. There were no resource warnings, monitor errors or remaining owned live processes. Frozen original production inputs and previously pinned installed dependencies remain unchanged. Source hashes and snapshots are preserved. Run evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/two_joint_contact_20261101_01
+
+Next bounded step: repeated Newton contact on the two-joint chain, updating the end-link proxy every interval and checking natural separation and force clearing. General configurations, longer articulated dynamics, real robot, real blade collision generation and cutting material remain unvalidated.

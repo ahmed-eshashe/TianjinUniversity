@@ -1,0 +1,18 @@
+Outward elbow revision, 2026-11-04
+
+Changed right-arm inverse-kinematics branch to positive elbow flexion. Initial/lift elbow raised to 0.30 m in benchmark coordinates; approach endpoint selected on same positive-flexion branch, with smooth joint interpolation. Original hand poses at pickup and final approach retained; current grip, closer base, kitchen and left arm preserved.
+
+Native 4448-step sequence passed unchanged tracking, speed, working-scene collision and target-distance gates. Ideal fixed knife attachment remains disclosed. Original kitchen background remains presentation-only. No cutting or video. Interactive controller code is unchanged from the previously Play-tested kitchen version; this revision was tested in automatic full-sequence mode.
+
+{
+  "native_passed": true,
+  "steps": 4448,
+  "alternate_positive_elbow_bend": true,
+  "max_tracking_rad": 0.023890972137451172,
+  "minimum_recorded_target_gap_m": 0.03963812901201651,
+  "max_mount_error_m": 1.0558597217146282e-06,
+  "fixed_attachment": true,
+  "friction_grasp_validated": false,
+  "background_collisions": false,
+  "cutting": false
+}

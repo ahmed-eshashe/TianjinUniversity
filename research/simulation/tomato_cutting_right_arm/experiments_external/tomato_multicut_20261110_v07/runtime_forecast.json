@@ -1,0 +1,95 @@
+{
+  "status": "not_rl_qualified",
+  "method": "CPU single-thread OpenBLAS, headless, same tiny tensor block and 3.90625e-7 s step; no contact or robot",
+  "short_samples": [
+    {
+      "cuts": 0,
+      "pieces": 1,
+      "new_topology_setup_s": 7.550006557721645e-07,
+      "wall_s_64_steps": 0.8536161570009426,
+      "sim_s": 2.5e-05,
+      "wall_s_per_sim_s": 34144.646280037705,
+      "scalar_basis_count": 216,
+      "integration_points": 8000,
+      "process_peak_RSS_MiB": 827.2578125
+    },
+    {
+      "cuts": 1,
+      "pieces": 2,
+      "new_topology_setup_s": 0.19660781199854682,
+      "wall_s_64_steps": 1.0870299779999186,
+      "sim_s": 2.5e-05,
+      "wall_s_per_sim_s": 43481.199119996745,
+      "scalar_basis_count": 324,
+      "integration_points": 10000,
+      "process_peak_RSS_MiB": 827.2578125
+    },
+    {
+      "cuts": 2,
+      "pieces": 3,
+      "new_topology_setup_s": 0.16042654899865738,
+      "wall_s_64_steps": 1.317262517000927,
+      "sim_s": 2.5e-05,
+      "wall_s_per_sim_s": 52690.500680037076,
+      "scalar_basis_count": 432,
+      "integration_points": 12000,
+      "process_peak_RSS_MiB": 827.2578125
+    },
+    {
+      "cuts": 4,
+      "pieces": 5,
+      "new_topology_setup_s": 0.19304303800163325,
+      "wall_s_64_steps": 1.5864763829995354,
+      "sim_s": 2.5e-05,
+      "wall_s_per_sim_s": 63459.05531998142,
+      "scalar_basis_count": 576,
+      "integration_points": 14000,
+      "process_peak_RSS_MiB": 827.2578125
+    }
+  ],
+  "primary_dynamic_cases": {
+    "partial": {
+      "wall_s": 58.520541795998724,
+      "sim_s": 0.001,
+      "pieces": 3,
+      "cut_count": 3,
+      "integral_points": 13000,
+      "energy_error_J": 7.999221928672734e-14,
+      "energy_scale_J": 3.6939992036619806e-07,
+      "linear_momentum_error_N_s": 7.178647350404012e-21,
+      "angular_momentum_error_N_m_s": 1.8996261840448673e-13,
+      "idle_speed_m_s": 3.899329946965276e-12,
+      "idle_fraction_of_0_02_probe": 1.949664973482638e-10,
+      "ahead_jump_m": 0.0,
+      "behind_jump_m": 4.3163661058603514e-05,
+      "J_bounds": [
+        0.9848471299153245,
+        1.016896123916251
+      ],
+      "peak_RSS_MiB": 213.28515625,
+      "fixture": "Prescribed reference-axis cuts and manufactured spatial gaps. No blade or physical fracture."
+    },
+    "full": {
+      "wall_s": 57.40595778699935,
+      "sim_s": 0.001,
+      "pieces": 4,
+      "cut_count": 3,
+      "integral_points": 13000,
+      "energy_error_J": 7.263362121284735e-12,
+      "energy_scale_J": 8.29961919497756e-07,
+      "linear_momentum_error_N_s": 1.880019496393749e-20,
+      "angular_momentum_error_N_m_s": 7.447969942563873e-22,
+      "idle_speed_m_s": 2.066338969013609e-12,
+      "idle_fraction_of_0_02_probe": 1.0331694845068046e-10,
+      "ahead_jump_m": 0.0,
+      "behind_jump_m": 0.0,
+      "J_bounds": [
+        0.9695464618767441,
+        1.032134843398963
+      ],
+      "peak_RSS_MiB": 379.16796875,
+      "fixture": "Prescribed reference-axis cuts and manufactured spatial gaps. No blade or physical fracture."
+    }
+  },
+  "interpretation": "The measured 57-59 seconds per 1 ms is roughly 57,000-59,000 wall seconds per simulated second for these fixtures. This ratio is not a tomato episode prediction. No full-size run is justified on this implementation. Use as a short accuracy reference; require measured equivalent-state speed comparisons for a faster backend. No timestep/material/contact limit relaxation authorized by this result."
+}

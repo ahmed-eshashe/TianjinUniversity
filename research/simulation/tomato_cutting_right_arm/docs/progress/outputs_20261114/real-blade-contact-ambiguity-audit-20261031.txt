@@ -1,0 +1,17 @@
+Real-blade candidate ambiguity audit — 31 October 2026
+
+The finite-fixture audit passed. The two saved deepest sampled candidates did not show the slab's normal/location tie within the tested points and reporting bands. This is not a global-minimum or full contact-path qualification.
+
+18 point checks were performed: for each positive fixture, the authored reference point, modeled binary32 point with authored mesh, modeled binary32 point and mesh, plus six coordinate offsets of +/-0.1 micrometre around the rounded point. Every point remained inside the closed authored blade reference. The nearest outward face direction stayed aligned with the original candidate normal.
+
+Closest opposing-surface distance separation, minimum over each fixture's nine checks:
+• Soft-edge crossing: 0.538 micrometres.
+• Blade-edge through soft interior: 14.157 micrometres.
+
+No differently directed nearest face occurred within the reporting bands of 1 picometre, 1 nanometre or 0.1 micrometre. The deepest sample was also unique among each fixture's existing candidates at all three depth bands, so no equal-depth location spread was observed in that finite sample set. The saved clear control supplied no candidates.
+
+These bands and offsets describe sensitivity tests, not physical collision slop, a general error bound or an acceptance threshold. Binary32 conversion/interpolation was modeled on the host; no native blade state was captured. The finite search cannot exclude an unsampled equal or deeper minimum, and the discrete offsets do not certify an entire neighborhood.
+
+Six focused ambiguity tests passed, including an exact slab centre tie, a known off-centre separation, coplanar duplicate facets, equal-depth separated points, irrelevant nonminimal opposite directions and capacity refusal. Existing records were revalidated against the contact contract. Original pinned project files and blade geometry are unchanged. Zero native launches, contact writes, forces or integration steps occurred.
+
+Next: transfer one explicitly selected reference record per positive fixture into an isolated native Contacts buffer and verify float32 fields, active counts, generation and clear/reset refusal controls. Keep its finite-fixture provenance explicit; do not claim a complete manifold or run forces/motion. Checklist item 12 remains open.

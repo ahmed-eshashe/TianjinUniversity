@@ -1,0 +1,13 @@
+V24 CONTACT COMPONENT — VERIFIED, CONTINUING IN V25
+
+The selected exact-domain parallel contact integration and RK4 update pass temporal, spatial, alternate-integrator and independent CPU comparisons for the intact supported coupon. Maximum force difference: 0.111% on timestep halving; 0.538% on quadrature refinement; 0.839% against a much finer alternate integrator. Edge, broad-side, sliding and near-miss cycles complete. Force/penetration stops and transactional rollback pass.
+
+An important prior defect was found: float nearest-face CAD lookup could select the wrong thin blade triangle. Its distance error reached 26.3 micrometres on the independent audit. Candidate verification against original double-precision triangles reduced maximum distance error to 1.2e-17m on those 10,000 points. The same correction is used by the volume guard. Historical claims are limited accordingly, not silently overwritten.
+
+The CAD integration partition has exactly the original 74 vertices and every exterior triangle, positive cell volumes, matching total volume, and independent membership/ownership checks. It does not substitute a convex hull.
+
+The 25 and 50 microsecond RK4 trials fail response comparisons and are rejected. Adaptive per-pair variants hit refinement limits and are retained only as evidence. The selected timestep remains 12.5 microseconds; normal force, friction, bulk constants and all physical limits are unchanged.
+
+This is not a completed tomato or an RL speed pass. A 13ms, 6mm cube cycle takes about 1.9s including checking/output. New cut faces, paid fracture, support/recontact, complete-loop throughput and a visible tomato remain to be qualified in the continuation.
+
+All 2247 protected files match their hashes. Existing Isaac/DiSECt setup is unchanged.

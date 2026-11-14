@@ -1,0 +1,11 @@
+Contact force precision audit — 31 October 2026
+
+All four saved native forces are reproduced exactly by an independent float32 arithmetic replay using fused multiply-add interpolation. Four focused rounding tests passed. No native simulation or new native force evaluation was run.
+
+In the transformed face fixture, separately rounded interpolation gives x = 0.10700002312660217 m, while fused interpolation gives x = 0.10700001567602158 m. This 7.45-nanometre change reproduces the observed native force of 1.749977469444275 N exactly when using its recorded rigid point and 1750 N/m stiffness. The host geometric reference uses higher-precision interpolation and a geometric surface calculation, so it is a different comparison.
+
+The earlier 0.0000122334 N discrepancy is explained by these arithmetic choices. Its original 0.000010 N gate remains failed; no tolerance, material law or native solver was changed. The arithmetic explanation is complete, but physical force acceptance remains separate.
+
+Scope: stationary, frictionless analytic box cases with axis-unit normals and zero particle radius/margin. The native rigid point is an input to the replay. GPU intermediates were not recorded, so this does not prove individual GPU instructions. The transformed state was reused from the earlier collision capture and checked against the force-run record. Original pinned project files are unchanged.
+
+Next: separate geometry accuracy from contact-law arithmetic in the diagnostic, then compare both explicitly before moving on to the real-blade contact problem. Robot motion, two-way coupling and cutting remain unvalidated.

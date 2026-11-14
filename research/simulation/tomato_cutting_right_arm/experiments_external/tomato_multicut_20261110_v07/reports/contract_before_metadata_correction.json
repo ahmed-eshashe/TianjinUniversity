@@ -1,0 +1,100 @@
+{
+  "created": "2026-11-10T23:17:17.371472+08:00",
+  "scope": "User requested continue next steps: bounded multicut state-preservation unit proof",
+  "budget_s": 7200,
+  "per_pilot_wall_s": 600,
+  "material": {
+    "E": 100000.0,
+    "nu": 0.4,
+    "rho": 1000,
+    "Gc": 80
+  },
+  "stops": {
+    "force_N": 2,
+    "whole_material_penetration_m": 0.0001,
+    "J_range": [
+      0.1,
+      10
+    ]
+  },
+  "discretization": {
+    "degree": 2,
+    "grid_h_m": 0.003,
+    "particle_spacing_m": 0.0015,
+    "particles": 512,
+    "dt_s": 3.90625e-07,
+    "reference_dt_s": 1.953125e-07
+  },
+  "candidate": "v06 integrated mechanics on persistent fragments; one active partial incision per connected fragment, exact carried-state partition on full release, up to four reference-axis cuts",
+  "screens": {
+    "mass_relative": 1e-06,
+    "transfer_position_m": 1e-11,
+    "transfer_velocity_m_s": 1e-10,
+    "transfer_F": 1e-10,
+    "transfer_energy_relative": 1e-08,
+    "energy_floor_J": 1e-12,
+    "mass_condition_limit": 100000000.0,
+    "mass_rank_relative": 1e-12,
+    "gradient_consistency": 2e-05,
+    "independent_fragment_velocity_fraction": 0.01,
+    "refinement_position_m": 0.0001,
+    "refinement_velocity_m_s": 0.005,
+    "energy_balance_relative": 0.05,
+    "bridge_jump_ahead_m": 1e-11,
+    "cpu_dynamics_relative_floor_m_s": 1e-08,
+    "integration_force_relative": 1e-05,
+    "integration_energy_relative": 1e-06,
+    "integration_energy_floor_J": 1e-12,
+    "box_moment_relative": 1e-10,
+    "linear_momentum_absolute_N_s": 1e-09,
+    "angular_momentum_absolute_N_m_s": 1e-10
+  },
+  "fixtures": [
+    "uncut v06 equivalence",
+    "loaded partial/full release and exact child state transfer",
+    "two parallel sequential cuts",
+    "partial and full cross-cut of the middle fragment",
+    "four-cut capacity and overflow",
+    "independence of moved and rotated pieces",
+    "half-step and integration-order controls",
+    "loaded checkpoint/history/reset",
+    "unresolved overlapping partial-incision rejection"
+  ],
+  "claims": "Prescribed topology fixtures only. No physical knife cut, arbitrary orientation/shape, simultaneous intersecting partial cuts in one connected fragment, contact, or RL qualification.",
+  "stop": "Stop this representation study on substantive rank/energy/bridge/independence failure. Do not silently add mass, remove particles, soften material or change physical limits. Report unsupported cases explicitly.",
+  "integration": {
+    "primary_order_per_axis": 5,
+    "independent_higher_order": 7,
+    "mass_polynomial_exact_order": 3,
+    "minimum_tested_subcell_m": 0.0001,
+    "plane_positions_m": [
+      0,
+      0.0003,
+      0.00075,
+      0.0015,
+      0.0029,
+      -0.0029,
+      0.0057,
+      -0.0057
+    ],
+    "unsupported_thin_negative_control_m": 0.0059999999000000005,
+    "only_reference_X_normal_plane": true,
+    "observation_side_at_discontinuity": "right trace; observations have no point masses"
+  },
+  "topology": {
+    "maximum_started_cut_events": 4,
+    "one_active_partial_cut_per_connected_fragment": true,
+    "reference_normals": [
+      0,
+      1,
+      2
+    ],
+    "future_cut_path_supplied": false,
+    "parallel_planes_X_m": [
+      -0.0021,
+      0.0021
+    ],
+    "cross_plane_Y_m": 0.0003,
+    "dynamic_window_s": 0.001
+  }
+}

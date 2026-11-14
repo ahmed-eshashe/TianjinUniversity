@@ -1,0 +1,15 @@
+Selected blade-reference stationary force check — 31 October 2026
+
+PASS for two explicitly selected stationary reference records plus the empty control.
+
+The installed Newton contact-material initializer and native full-surface force helper were evaluated on newly transferred blade-reference records. The same disclosed synthetic scalars as the earlier analytic-box checks were used: soft stiffness 1000 N/m, shape stiffness 2500 N/m, mixed stiffness 1750 N/m; mixed damping 55; mixed friction zero; fixed penalty seed -1. Radius, margin and relative velocity were zero. No calibrated tomato/blade parameters were changed.
+
+Both native point forces agreed with independent stationary penalty calculations. Maximum force and reconstructed-reaction error: 3.30e-7 N. Maximum reconstructed-moment error: 5.63e-8 Nm. Maximum contact stiffness-matrix entry error: 5.89e-5 N/m. Independent mesh penetration differed from the represented projected gap by at most 1.48e-10 m. All were within the predeclared diagnostic tolerances. The empty control had zero contacts and no force evaluation.
+
+Reaction and moment are reconstructed bookkeeping from the native point force, about a diagnostic COM at the body origin. They are not independently measured body or robot responses. The stiffness check is the local contact matrix, not validation of the material/cohesive solver.
+
+This used owned particle, pose, material and Contacts arrays with lightweight parameter carriers. No native blade body, Model, Solver or collision pipeline was instantiated. All captured contact fields, particles, body poses and velocities were unchanged after evaluation. No integration steps occurred.
+
+The protected native run completed in 3.36 seconds, retained over 25.10 GB available RAM and 7.69 GB free GPU memory, and left no owned processes. No memory warning or monitoring error occurred. Fifteen focused reference/guard tests passed. Sources and inputs were hashed and snapshotted; original pinned files and installed libraries remain unchanged.
+
+Next: verify the native barycentric force and stiffness distribution to particles, including summed-force/reaction consistency. General collision generation, a full blade contact backend, dynamics, robot coupling and cutting remain unqualified. Checklist item 12 remains open.

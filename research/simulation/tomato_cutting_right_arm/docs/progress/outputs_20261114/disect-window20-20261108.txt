@@ -1,0 +1,11 @@
+20ms EXTENSION TEST v11 — 8 November 2026
+
+Unchanged v10 direct-Newton candidate extended from10 to40 requested steps. No laws, tolerances, geometry or numerical coefficients changed. Stopped on step13: true inner linear residual0.187604 exceeds0.1 direction gate. Rejected step not committed.
+
+Accepted12 steps /6ms of20ms target. Accepted maximum nonlinear residual8.061e-7N (<1e-6N). Last accepted minimum volume ratio0.971137; maximum speed0.058904m/s (not settled). Solver-loop elapsed66.804s including rejected step; last accepted sample44.413s. Result top-level residual includes rejected trial and is not an accepted-state residual.
+
+Matched1ms reference snapshots through6ms: maximum position difference0.014560mm, velocity0.002521m/s, internal force-vector relative L2 <=4.6964%. These scoped comparisons pass but20ms completion fails. No refinement/settling qualification, no speed pass, no cutting or training.
+
+Finding: startup convergence improvement does not persist through developing contact. A contact-aware stiffness/preconditioner treatment remains required; repeating this same long attempt or relaxing limits is not justified. Preserve this failed boundary as a regression case for analytic/local contact-block work, then retry a short saved interval around6ms before another full window.
+
+Section3 remains4/5; total15/35. Section4 blocked. Experimental validation pending. No simulation running.

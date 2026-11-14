@@ -1,0 +1,40 @@
+{
+  "version": "v17",
+  "decision": "mechanical_correction_component_pass_speed_gate_failed",
+  "physical_tomato_model_completed": false,
+  "physical_cut": false,
+  "rl_ready": false,
+  "experimental_validation": "pending",
+  "current_setup_changed": false,
+  "production_adopted": false,
+  "simulation_running": false,
+  "component_checks_passed": 54,
+  "component_check_sets": {
+    "mechanics": "pass_initial_component_controls",
+    "refinement": "pass_dynamic_components",
+    "history_CPU": "pass_history_and_reference_components"
+  },
+  "initial_timestep_rejections_preserved": [
+    "dynamics.json",
+    "refinement.json"
+  ],
+  "selected_small_control_dt_s": {
+    "intact": 1.25e-05,
+    "oblique": 6.25e-06,
+    "diagonal": 3.125e-06,
+    "sliver10um": 3.125e-06,
+    "sliver1um": 1.5625e-06
+  },
+  "best_bulk_rates_equivalent_50Hz": {
+    "1.25e-05": 65.04282537374445,
+    "6.25e-06": 33.06065852691218,
+    "1.5625e-06": 8.271195007262836
+  },
+  "speed_requirement_aggregate_actual_environment_steps_s": 100,
+  "bench_scope": "60mm intact cube, 6000 linear material regions, 1331 nodes, 6mm grid, float32 GPU, 1/4/8 block-diagonal copies; no contact/robot/policy. Rates at converged small-fixture dt are diagnostics, not complete scene qualification.",
+  "mechanics_scope": "12mm linear-tet block, four geometric cuts, affine clipped regions, constant material law, local row-sum mass; no physical contact or paid fracture",
+  "smallest_tested_corner_offset_m": 1e-06,
+  "smallest_tested_linear_stability_dt_s": 4.582575694955839e-06,
+  "memory_backend_8copy_bytes": 8980072,
+  "next_action": "Stop this bounded candidate campaign. Preserve the mechanics correction. Any next speed strategy must address tiny-cut-region timesteps and history work explicitly, with a reviewed scope; do not automatically start another engine or physical tomato rollout."
+}

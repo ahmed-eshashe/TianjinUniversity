@@ -1,0 +1,1 @@
+Initial transfer diagnostic mistakenly used block() default 3mm particle spacing while the test contract is 1.5mm. Its underdetermined full mass matrix was rejected as singular. Corrected fixture call to explicitly use the frozen 1.5mm spacing; no mass stabilization or diagonal regularization added.

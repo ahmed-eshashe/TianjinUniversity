@@ -1,0 +1,13 @@
+Using cached kernels
+Using log folder at "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/settle_log".
+Converted Young's modulus 30000.0 and Poisson's ratio 0.25 to Lame parameters mu = 12000.0 and lambda = 12000.0
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/settle_tomato.py", line 13, in <module>
+    start=time.perf_counter();sim=CuttingSim(s,adapter='cuda',requires_grad=False,log_folder=str(w/'settle_log'));q0=np.array(sim.builder.particle_q);fixed=z['fixed'];assert np.max(abs(q0-x))<1e-12
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/DiSECt/cutting/cutting_sim.py", line 125, in __init__
+    object_rotation = df.quat_from_axis_angle(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/DiSECt/dflex/util.py", line 66, in quat_from_axis_angle
+    v *= sin_theta_over_two
+numpy.core._exceptions._UFuncOutputCastingError: Cannot cast ufunc 'multiply' output from dtype('float64') to dtype('int64') with casting rule 'same_kind'

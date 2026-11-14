@@ -1,0 +1,9 @@
+DIRECT CONTACT DERIVATIVE v13 — 8 November 2026
+
+Implemented differentiable closest-feature contact energy with original embedding, vertex-triangle and edge-edge distances, parallel-edge mollifier and piecewise normal potential. Broad-phase stencils refreshed at Newton iterates; feature-dependent geometry differentiated through PyTorch, including cross-node coupling. No contact/material law changed.
+
+Independent existing-force comparisons: relative force difference2.97e-14 in compressed fixture,2.87e-9 at saved6ms. Compressed Hessian action agrees with numerical force derivative to1.66e-7 relative. Saved6ms comparison at1e-10 perturbation failed3.88%; reducing perturbation to1e-12 gives6.87e-6 relative, then rounding error increases at1e-13. This supports the local derivative; broad-feature transition smoothness is not claimed. Initial controls.json and refinement_controls.json preserve the original failed coarse-perturbation verdict, not silently rewritten as passes.
+
+Saved6–7ms recovery completed both steps, max accepted nonlinear residual5.876e-7N (<1e-6N). Differences from prior finite-difference recovery: max position1.166e-9m, velocity2.382e-6m/s, nodal internal force4.576e-7N. Runtime37.715s versus66.818s previously,1.77x improvement on this interval only. Timing excludes initialization and no repeated performance benchmark claimed. Speed target still fails severely.
+
+Remaining: full20ms convergence/refinement and efficient contact block application/preconditioning. This change removes repeated force perturbations from inner solves, but retained automatic-differentiation graphs and CPU sparse solves still incur cost; profile before claiming the next bottleneck. No cutting/training or production switch. Section3 remains4/5; total15/35; section4 blocked. Experimental validation pending. No simulation running.

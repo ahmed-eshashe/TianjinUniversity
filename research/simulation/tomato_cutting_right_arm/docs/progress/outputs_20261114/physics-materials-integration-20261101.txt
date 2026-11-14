@@ -1,0 +1,54 @@
+Physics/materials integration — 1 November 2026
+
+The numerical component milestones for the current diagnostic setup are complete. Experimental tomato validation is PENDING at the user's request. This is not a validated complete cut, general free-fragment simulation or interactive robot environment.
+
+1. Actual model integration
+The saved 4,032-node tomato now builds as a native spring/barrier/cohesive model: 33,996 bulk springs, 16,291 original volume cells, 5,504 boundary triangles and 47 shared-history interface patches. Saved masses, stiffness assignments, original volume law and geometry are retained. No Neo-Hookean bulk material is substituted for the saved spring model. Input hashes bind the exact mesh/assignment files.
+
+Native tests compare the volume barrier and full assembled nodal forces/diagonal Hessians with independent offline calculations. All actual patches are checked at elastic, softening and failed openings. A four-interval free elastic sequence resets and replays exactly. The existing scalar position, velocity, force and Hessian gates remain unchanged.
+
+The native volume barrier now includes feasible numerical steps. Colored updates use the determinant's affine dependence on one node, with a fraction-to-boundary step. The initial predictor uses a conservative cubic-polynomial bound over its entire proposed path. The original activation J=0.5, floor J=0.1 and modulus 10,000 Pa are unchanged. Unsupported final material states are checked before history is committed; intermediate trial history never accumulates.
+
+2. Full-registry material loading
+A disclosed tensile fixture prescribes the 514 paired-interface nodes while 3,518 bulk nodes retain their actual masses and evolve natively. Eight controlled opening increments advance damage in all 47 patches. Native history matches the independent bilinear law. Driver work, kinetic/stored energy, fracture dissipation and support impulse are recorded. An independent saved-data audit also passes the absolute 1% energy-residual gate; the largest measured residual is about 0.0392%. No excess-energy gate is relaxed. This is a controlled-loading qualification, not an unconstrained fracture/reclosure experiment or an actual knife eligibility test.
+
+3. Actual authored-blade contact generation
+A constrained TetGen decomposition gives 137 positive solid cells with all 74 original vertices and the exact original 144-triangle oriented exterior. A signed boundary-chain check independently verifies the cell boundary. An unconstrained decomposition failed and was rejected. The mesh is not thickened or replaced by its convex hull. The one-time MeshPy/TetGen tool was unpacked into the workspace; the generated cell file is sufficient at runtime.
+
+Soft triangles are clipped against every overlapping solid cell. This finds intersections inside a soft triangle even when all its vertices are outside. Internal coplanar cell ownership avoids duplicate area. Contact normals and distances come from all original exterior facets using native float64 closest points and solid-angle winding signs. Six crossing/clear/reversed-order geometry cases and 128 off-surface field probes pass. Surface zero-distance normals are outside this field comparison.
+
+Contact forces use reference-material area weights and a degree-two Gaussian rule, refined until consecutive assembled nodal forces agree within 1% plus 1e-5 N. The synthetic pressure stiffness is 1.75e9 N/m³. It is not an experimentally fitted tomato constant. Contacts remain frozen within each implicit soft step and regenerate between exchanges; this is not a swept collision certificate.
+
+4. Two-way exchange, reset and clearing
+The full tomato first passes eight exchanges with a synthetic dynamic PhysX probe. A separate authored-blade run uses the complete tomato boundary and original blade geometry. PhysX owns the blade pose and velocity; Newton receives exact state echoes and returns the actual contact wrench. Linear/angular momentum, cumulative impulse and volume admissibility pass.
+
+The final blade run includes eight baseline intervals, a reset and eight replay intervals, then a reset and a clear-space control. All compared particle positions/velocities, blade poses/velocities and contact forces replay exactly. Both instantaneous and permanent dirty wrench queues clear. The clear case has no generated contacts and zero blade velocity. Exactly 17 Newton steps, 17 PhysX steps, 20 state echoes and two resets are counted.
+
+Stable node-owned force accumulation removes GPU summation-order differences. Contact reduction uses fixed 128-row chunks before its final node reduction. This reduced the same final diagnostic from about 204 seconds to about 101 seconds. The result is still a slow diagnostic path; interactive performance is unqualified.
+
+5. Experimental status and remaining scope
+The published tomato curve remains a provisional benchmark. No native parameters were fitted to it, and independent numeric measurements/specimen matching were not obtained. The user explicitly chose to keep experimental validation pending. The separate data-requirements file includes an unsent author-request draft.
+
+The current cohesive law uses a fixed world material frame and predominantly tensile supported loading. Compression-plus-shear fracture and arbitrary material rotation remain unsupported. Freely released preloaded full-mesh attempts reached unsupported compressed/shearing interface states and remain preserved as failed stress tests. Full free-fragment self-contact, whole cuts, fast swept motion, robot drives and long-run behavior are not established by these component milestones. The artificial 0.7-metre-wide soft-triangle dynamic test retains its binary32 precision failure; the actual tested tomato boundary has a largest edge of about 6.19 mm. These limitations remain explicit before later full-cut work.
+
+Verification and provenance
+Fifty focused host tests pass. Six final native runs pass with exit code zero, no owned live processes and no monitor errors. All final launch source hashes match the archived current code. Frozen original production sources and previously pinned installed dependencies are unchanged. The original three-minute bound remains for other diagnostics; the full-blade replay has a five-minute watchdog. Memory reserves, live monitors, locks and cleanup remain active. The earlier timeout is preserved; no mechanical acceptance threshold was increased.
+
+The companion JSON contains metrics, resource summaries, source hashes and absolute raw-measurement paths. The evidence directory contains the runtime source closure, generated blade cells, final launch/results and host-test log.
+
+Final native runs:
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_model_20261101_07
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_damage_20261101_06
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_coupling_20261101_03
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_blade_20261101_08
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/exact_blade_geometry_20261101_02
+  /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/group_material_20261101_03
+
+Maximum actual-blade replay differences:
+  particle_position_error_m: 0
+  particle_velocity_error_m_s: 0
+  force_error_n: 0
+  body_pose_error: 0
+  body_velocity_error: 0
+
+Next roadmap section: Robot & scene. First-cut and experimental claims remain subject to their own later checks.

@@ -1,0 +1,31 @@
+{
+  "scope": "Authorized v18 mesh sampling; explicit nearest-centroid regions replace pointwise region assignment",
+  "triangles": 894,
+  "points": 5904,
+  "patch_groups": 47,
+  "empty_groups": 0,
+  "minimum_points_per_group": 14,
+  "maximum_points_per_group": 258,
+  "covered_interface_nodes": 480,
+  "interface_nodes": 480,
+  "group_assignment": "Exact planar nearest-centroid regions, each triangulated for positive area integration",
+  "weights": "Triangle areas / 3, normalized separately within each original patch; preserves each patch stiffness and fracture budget for uniform opening",
+  "preserved": [
+    "Outside shape, total mass, support locations and cut plane",
+    "47 original bilinear laws, patch stiffnesses and total fracture budget",
+    "Moving-frame force derivatives and irreversible history"
+  ],
+  "changes": [
+    "Local spatial distribution of cohesive stiffness and damage sampling",
+    "Original patch boundaries approximated by nearest-centroid partition"
+  ],
+  "required_checks": [
+    "All cut-face modes covered",
+    "Uniform opening/shear reproduce original patch response and energy budget",
+    "Nonuniform field force/energy/tangent controls",
+    "Quadrature partition/refinement sensitivity before dynamics",
+    "Cut-face closure after failure, assembled settling and blade-contact refinement",
+    "Runtime remains an independent failed gate"
+  ],
+  "source_details": "partition_quadrature.json"
+}

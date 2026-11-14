@@ -1,0 +1,77 @@
+{
+  "version": "v28",
+  "started_utc": "2026-11-13T07:16:21.410621+00:00",
+  "authorization": "Build a separate approximate RL model (Recommended)",
+  "parent": "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27",
+  "pilot_budget_seconds": 7200,
+  "model": "3D central-force 26-neighbour elastic bond network; symplectic Euler; irreversible work-paid bond deletion",
+  "physics_changed": true,
+  "production_setup_changed": false,
+  "material": {
+    "nominal_E_Pa": 100000,
+    "effective_small_strain_nu": 0.25,
+    "reference_nu": 0.4,
+    "density_kg_m3": 1000,
+    "pair_damping_ratio": 0.02
+  },
+  "fracture": {
+    "Gc_J_m2": 80,
+    "bond_area": "h^2/9, exact planar-grid count only for grid-axis cuts; directional error must be measured",
+    "law": "Blade bond-plane intersection plus finite edge/advance process zone. Irreversible work accumulated from resisting force and actual relative blade motion; no geometry-only removal. Elastic bond energy lost on deletion is separately recorded.",
+    "slicing_approximation": "Irreversible work progresses with positive edge-normal motion + 0.25 times edge-tangent slip. Resistance direction follows total relative motion, and its magnitude enforces the same Gc*A work budget. Empirical provisional law; no measured calibration.",
+    "saw_slip_weight": 0.25
+  },
+  "geometry": {
+    "h_m": 0.0035,
+    "particle_radius_over_h": 0.45,
+    "exterior": "occupied lattice centers within convex hull of saved tomato exterior; not an exact reproduction of its continuum surface",
+    "knife": "Tapered triangular prism: 120 mm edge, 30 mm height, 1 mm spine thickness, ideal sharp edge. Replaces failed blunt-box proxy; not original CAD.",
+    "mass": "uniform per-node masses rescaled to saved 121.253418 g at scale 1; effective boundary density differs",
+    "contact": "per-particle sphere/box and sphere/plane unilateral projection; world material represented as spheres plus massless bonds; no inherited whole-continuum penetration qualification",
+    "recontact": "Current-position GPU hash grid every microstep. Reused-grid optimization was not adopted; comparison and rejected guard evidence preserved."
+  },
+  "integration": {
+    "dt_s": 0.0002,
+    "control_s": 0.02,
+    "refinement_dt_s": [
+      0.0001,
+      5e-05
+    ],
+    "method": "Explicit symplectic Euler; complete-state rollback and smaller-step retry for numerical/particle-penetration failure. Force-stop trials are not bypassed. Retain finer step after retry."
+  },
+  "hard_stops": {
+    "tool_total_contact_plus_cut_load_N": 2,
+    "particle_knife_penetration_m": 0.0001,
+    "nonfinite": true,
+    "unbounded_velocity_m_s": 10,
+    "blade_board_crossing": true
+  },
+  "not_yet_implemented": [
+    "articulated robot coupling",
+    "trained policy",
+    "experimental material calibration"
+  ],
+  "acceptance": {
+    "persistent_full_and_partial_cuts": true,
+    "second_intersecting_cut": true,
+    "mass_history_preserved": true,
+    "minimum_complete_task_transitions_s": 100,
+    "model_50Hz_control": true,
+    "robot_throughput_separate": true,
+    "experimental_validation": "pending",
+    "reference_5percent_hard_gate": false
+  },
+  "references": [
+    "https://matthias-research.github.io/pages/publications/XPBD.pdf",
+    "https://www.roboticsproceedings.org/rss17/p067.pdf",
+    "https://goldberg.berkeley.edu/pubs/Multilateral-Surgical-Pattern-Cutting-Tensioning-ICRA-under-review-May-2017.pdf"
+  ],
+  "research_note": "These sources establish relevant families of compliant constraints, cutting springs and task-learning simulators; none supplies or validates this specific network. Current pilot uses explicit springs, not XPBD.",
+  "repair": "First cube pilot stopped at 2N before any failure because normal-only accumulation required penetration while sawing paid no damage work. One declared sawing-assisted damage correction is under bounded validation.",
+  "support": "Lowest lattice layer fixed to a fixture, as in prior reference; not a learned grasp. Knife overlap with fixed particles is checked.",
+  "scope_limits": [
+    "Oblique 30-degree 0.8-size case reaches the unchanged 2N stop; no general arbitrary-path guarantee.",
+    "Fast-step force peaks and final positions differ from finer steps; measured in reports/timestep_outcomes.json.",
+    "Sphere geometry and massless bonds do not represent watertight continuum volume."
+  ]
+}

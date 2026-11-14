@@ -1,0 +1,8 @@
+from pathlib import Path
+import sys,json,numpy as np
+from scipy.interpolate import PchipInterpolator
+W=Path(__file__).resolve().parent;R=W.parents[1];sys.path.insert(0,str(W.parent/'disect_adaptive_contact_20261109_v27'))
+from adaptive_contact import AdaptiveContact
+p=json.loads((W/'correction_plan.json').read_text());g=json.loads((W/'geometry_contract.json').read_text());front=np.array(g['front_m']);d=.002;curve=PchipInterpolator(*np.array(p['front_lateral_path_m']).T);T=np.array(p['selected']['translation_m'])+np.array([float(curve(d)),-d,0]);ref=np.load(R/'runs/offline/padded_cad_packet_20261102_01/cad_pressure_reference.npz');A=np.array([[1,0,0],[0,0,-1],[0,1,0]],float);rotation=A.T@ref['rotation'];raw=json.loads((R/'runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json').read_text());vertices=np.array(raw['vertices'])@rotation.T+T;faces=np.array(raw['triangles']);q=np.tile(front,(4,1));q[0,0]-=.003;q[2,0]+=.003
+c=AdaptiveContact.__new__(AdaptiveContact);c.edges=np.array([[0,1],[2,3]]);c.edge_weights=np.ones(2);c.force_atol=1e-10;c.rtol=1e-6;c.max_depth=40
+ev=c.evaluate(q,np.zeros_like(q),vertices,faces,np.zeros(3),T,ke=2e6,kd=0.);passed=bool(ev['force'][1,0]<0 and ev['force'][3,0]>0);out={'scope':'Intentionally penetrating static two-edge fixture, geometric force-direction component control only; not coupled tomato force qualification','negative_cut_node_force_N':ev['force'][1].tolist(),'positive_cut_node_force_N':ev['force'][3].tolist(),'passed':passed};(W/'reference_control_result.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2));assert passed

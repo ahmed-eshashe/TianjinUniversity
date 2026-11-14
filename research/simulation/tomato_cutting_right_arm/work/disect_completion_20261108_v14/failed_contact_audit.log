@@ -1,0 +1,138 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.99 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.87 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.75 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.51 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.68 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.89 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 5.91 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.24 ms  (cached)
+{
+  "force_relative": 5.430974528387294e-11,
+  "energy_error": 1.2485257370722261e-22,
+  "directions": [
+    [
+      {
+        "eps": 1e-08,
+        "energy_derivative": -0.006494015661365472,
+        "expected": -0.0063042547143218,
+        "relative_error": 0.02922089458031446,
+        "force_jump": 0.0015883722352075284,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-09,
+        "energy_derivative": -0.006305589692098104,
+        "expected": -0.0063042547143218,
+        "relative_error": 0.00021171339105315422,
+        "force_jump": 0.0001761158633470661,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-10,
+        "energy_derivative": -0.006304264564710026,
+        "expected": -0.0063042547143218,
+        "relative_error": 1.5624960095619745e-06,
+        "force_jump": 1.7426400174021916e-05,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-11,
+        "energy_derivative": -0.0063042547362299915,
+        "expected": -0.0063042547143218,
+        "relative_error": 3.475143743945706e-09,
+        "force_jump": 1.73866662094111e-06,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-12,
+        "energy_derivative": -0.006304255613382653,
+        "expected": -0.0063042547143218,
+        "relative_error": 1.4261173845286215e-07,
+        "force_jump": 1.7384970999608014e-07,
+        "counts": [
+          20731,
+          20731
+        ]
+      }
+    ],
+    [
+      {
+        "eps": 1e-08,
+        "energy_derivative": 0.0002854058196421027,
+        "expected": 0.00024590117471861325,
+        "relative_error": 0.1384156951425449,
+        "force_jump": 0.000791344086179141,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-09,
+        "energy_derivative": 0.0002463345380839895,
+        "expected": 0.00024590117471861325,
+        "relative_error": 0.0017592472770849644,
+        "force_jump": 8.874565974956775e-05,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-10,
+        "energy_derivative": 0.0002459067393324557,
+        "expected": 0.00024590117471861325,
+        "relative_error": 2.2628960302480023e-05,
+        "force_jump": 8.922360845050089e-06,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-11,
+        "energy_derivative": 0.0002459017551807487,
+        "expected": 0.00024590117471861325,
+        "relative_error": 2.360544905491033e-06,
+        "force_jump": 8.927099638506783e-07,
+        "counts": [
+          20731,
+          20731
+        ]
+      },
+      {
+        "eps": 1e-12,
+        "energy_derivative": 0.0002459027466045342,
+        "expected": 0.00024590117471861325,
+        "relative_error": 6.3923072949122115e-06,
+        "force_jump": 8.923104372916148e-08,
+        "counts": [
+          20731,
+          20731
+        ]
+      }
+    ]
+  ]
+}

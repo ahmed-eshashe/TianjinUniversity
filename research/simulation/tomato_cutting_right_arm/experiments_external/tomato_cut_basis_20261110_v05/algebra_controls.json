@@ -1,0 +1,70 @@
+{
+  "status": "pass_restricted_unit_scope",
+  "checks": {
+    "preview_pure": true,
+    "partial_commit": true,
+    "repeat": true,
+    "reverse": true,
+    "finite_front": true,
+    "force_gradient": true,
+    "full_release": true,
+    "full_rest": true,
+    "rigid_piece_shift_no_elastic_load": true,
+    "off_grid_rejected": true,
+    "mass": true
+  },
+  "results": {
+    "partial_proposal": {
+      "audit": {
+        "dofs": 240,
+        "mass_rank": 240,
+        "mass_condition": 4785.628107715445,
+        "smallest_mass_eigenvalue": 3.642649604187713e-09,
+        "largest_mass_eigenvalue": 1.7432366332359262e-05
+      },
+      "transfer": {
+        "x": 3.469446951953614e-18,
+        "v": 6.505213034913027e-19,
+        "F": 1.5543122344752192e-15,
+        "energy": -2.0667603913004928e-19,
+        "energy_before": 1.8808571953241072e-05
+      }
+    },
+    "jump_support": {
+      "ahead_max_m": 0.0,
+      "behind_max_m": 2.323667423637542e-06
+    },
+    "force_gradient_relative": 1.6948335052899813e-08,
+    "full_proposal": {
+      "audit": {
+        "dofs": 288,
+        "mass_rank": 288,
+        "mass_condition": 6656.245403469288,
+        "smallest_mass_eigenvalue": 2.71778213710682e-09,
+        "largest_mass_eigenvalue": 1.809022485774821e-05
+      },
+      "transfer": {
+        "x": 0.0,
+        "v": 0.0,
+        "F": 0.0,
+        "energy": 0.0,
+        "energy_before": 1.8744213130776905e-05
+      }
+    },
+    "rigid_piece_shift_energy": 1.3382152529007304e-20,
+    "rigid_piece_shift_max_force": 1.3281133284767246e-15,
+    "off_grid": {
+      "accepted": false,
+      "reason": "cut basis is rank deficient or ill conditioned",
+      "detail": {
+        "dofs": 324,
+        "mass_rank": 288,
+        "mass_condition": null,
+        "smallest_mass_eigenvalue": -3.19010020758889e-22,
+        "largest_mass_eigenvalue": 1.9413014171898063e-05
+      }
+    },
+    "mass_kg": 0.001728
+  },
+  "scope": "Single aligned finite-front topology fixtures, no physical cutting. Off-grid cut is explicitly unsupported."
+}

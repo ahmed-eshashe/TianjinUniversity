@@ -1,0 +1,38 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp/1.17.0
+Module contact_geometry 7a11ea9 load on device 'cuda:0' took 0.51 ms  (cached)
+Module kernels 68444bc load on device 'cuda:0' took 0.81 ms  (cached)
+Module physical_kernels a38ad69 load on device 'cuda:0' took 0.40 ms  (cached)
+{
+  "status": "completed",
+  "dt": 5e-07,
+  "analytic_initial_free_translation_s": 0.0045,
+  "absolute_end_time_s": 0.016500000000001673,
+  "wall_s": 326.7228901899998,
+  "sim_time": 0.012000000000001674,
+  "peak_force_N": 0.11815813316887398,
+  "max_net_force_N": 1.140783585068918e-16,
+  "max_net_moment_Nm": 6.256152467854045e-13,
+  "max_penetration_bound_m": 9.999999101821152e-05,
+  "total_momentum_error_Ns": 6.530608845390094e-12,
+  "initial_energy_J": 3.888e-07,
+  "friction_dissipated_J": 5.516992976695056e-09,
+  "history_identical": true,
+  "last_certificate": {
+    "passed": true,
+    "reason": "certified",
+    "observed_penetration_m": 0.0,
+    "certified_max_penetration_bound_m": 9.880190211974783e-05,
+    "queries": 2856,
+    "depth": 3,
+    "unresolved": 0,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "scope": "Two pre-separated material fragments collide and slide. Contact fixture, not proof that a physical cutting run created the initial split."
+}

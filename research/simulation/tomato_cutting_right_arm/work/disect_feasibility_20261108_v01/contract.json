@@ -1,0 +1,19 @@
+{
+  "created": "2026-11-08T13:53:38.108176",
+  "production": "paused step 6925; no edits or resume",
+  "stage": "compatibility",
+  "budgets": {
+    "compatibility": "One focused memory-lifetime repair, diagnostic mesher log, native backtrace. Stop if substantial rewrite needed.",
+    "each_process_wall_s": 300,
+    "example_repeats_after_repairs": 2
+  },
+  "gates": {
+    "compatibility": "Mesher returns true; finite valid indices, nondegenerate positive oriented tet volume; paired cut topology checked; normal exit; repeatable within declared diagnostics. No tomato dynamics before pass.",
+    "stability": "finite states, no inversion; board penetration <=0.1 mm; settled speed <=1 mm/s over final 0.1 s (engineering targets)",
+    "contact": "finite forces/states, no inversion; compare force definitions explicitly; unexplained spikes require review",
+    "separation": "No active material path across cut; two intended substantial mass components; stable blade-clear hold; no artificial repositioning",
+    "efficiency": "Full-cut wall time and setup separated; provisional practical target <=100 wall seconds/sim second, not accuracy equivalence",
+    "repeatability": "Record position/force differences; binary separation must match; refine once before integration recommendation"
+  },
+  "limitations": "Synthetic model parameters, experimental validation pending; DiSECt FEM not equivalent to original spring/volume model; training and robot coupling out of initial scope"
+}

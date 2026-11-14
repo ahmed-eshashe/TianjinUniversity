@@ -1,0 +1,15 @@
+Dynamic proxy momentum/work check — 31 October 2026
+
+PASS for two fresh one-step native analytic fixtures. Checklist item 14 is complete within this minimal scope.
+
+One 0.01 kg particle initially overlapped the top of a freely moving 0.02 kg analytic box by approximately 1 mm. Gravity, damping, friction, radii and margins were zero. Fixed mixed contact stiffness was 1750 N/m. A second fresh fixture placed the particle clear of the box. Each fixture took exactly one step at dt=1/1200 s with 16 VBD iterations; two simulation steps total. No blade or robot state was loaded.
+
+The contact case produced actual opposite motion in the native particle and rigid-body states. Particle velocity was approximately +0.12334809 m/s; box velocity was -0.06167401 m/s. Dynamic-body contact adjacency included the contact. The independent backward-Euler reference agreed within 5.11e-11 m in position and 6.13e-8 m/s in velocity. Momentum residual was 6.71e-10 kg m/s; end-force impulse residual was 6.87e-10 N s.
+
+Work and energy were checked against the discrete integrator, not exact energy conservation. Total mechanical energy fell by approximately 0.000134912 J. The expected velocity and position numerical-dissipation terms account for this loss, with a discrete work/energy identity residual of 8.22e-11 J. No physical damping was added. The fresh clear control remained exactly at rest with zero contacts and zero energy change.
+
+The protected run completed in 3.39 seconds, retained over 25.06 GB available RAM and 7.62 GB free GPU memory, and left no owned worker processes. No memory warning or monitoring error occurred. Sixteen focused reference/scope/guard tests passed. Run and installed-source hashes were saved; original pinned files and installed libraries remain unchanged.
+
+Scope: one head-on contact and one step per fresh model. This verifies internal Newton particle/rigid proxy response, not angular momentum, long-run stability, warm-history resets, Isaac Sim/PhysX coupling or robot response. The complete real-blade collision path (item 12) remains open.
+
+Next: inspect the Newton–Isaac/PhysX state and wrench interfaces and prepare a minimal proxy transfer/synchronization check before robot integration (item 15).

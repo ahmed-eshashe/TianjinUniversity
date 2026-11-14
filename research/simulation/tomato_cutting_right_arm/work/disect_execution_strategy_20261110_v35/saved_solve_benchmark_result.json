@@ -1,0 +1,123 @@
+{
+  "scope": "Same old physical operator and saved state, changed CPU query implementation only; no accepted physical advance or history commit. Local equivalence and cost result only; new edge-coverage candidate still needs fresh coupled/half-step qualification.",
+  "passed": true,
+  "reference": {
+    "wall_s": 1.57742056799907,
+    "solver": {
+      "iterations": 56,
+      "relative_residual": 2.2680074859359776e-14,
+      "inner_max_residual": 9.677733803356498e-11,
+      "newton_iterations": 2,
+      "wall_s": 1.5709059690052527
+    },
+    "coupling_rounds": 1
+  },
+  "candidate_repetitions": [
+    {
+      "wall_s": 0.21854833500401583,
+      "solver": {
+        "iterations": 56,
+        "relative_residual": 1.734854694413726e-14,
+        "inner_max_residual": 9.677811054465663e-11,
+        "newton_iterations": 2,
+        "wall_s": 0.21201935400313232
+      },
+      "coupling_rounds": 1,
+      "differences": {
+        "position_m": 6.938893903907228e-18,
+        "velocity_m_s": 4.921948265623755e-13,
+        "actual_force_N": 1.3123421620242492e-13,
+        "moment_Nm": 9.412609580650155e-15
+      }
+    },
+    {
+      "wall_s": 0.20480677299929084,
+      "solver": {
+        "iterations": 56,
+        "relative_residual": 1.7356311164763063e-14,
+        "inner_max_residual": 9.677796184257413e-11,
+        "newton_iterations": 2,
+        "wall_s": 0.19826679900143063
+      },
+      "coupling_rounds": 1,
+      "differences": {
+        "position_m": 6.938893903907228e-18,
+        "velocity_m_s": 4.921956939241134e-13,
+        "actual_force_N": 1.312353004045974e-13,
+        "moment_Nm": 9.419548474554063e-15
+      }
+    }
+  ],
+  "saved_solve_speedup": 7.451997333580061,
+  "cold_volume_guards": [
+    {
+      "name": "reference",
+      "wall_s": 5.060463400994195,
+      "passed": true,
+      "attempts": [
+        {
+          "requested_intrusion_bound_m": 8e-05,
+          "passed": false,
+          "actual_violation": true,
+          "original_tet": 35144,
+          "violating_point": [
+            -0.02518718135640753,
+            0.039984073283838094,
+            -0.00973693471759556
+          ],
+          "minimum_sample_SDF_m": -8.015415169967063e-05,
+          "query_count": 23585,
+          "depth": 18,
+          "wall_s": 2.5859045070028515
+        },
+        {
+          "requested_intrusion_bound_m": 9e-05,
+          "passed": true,
+          "unresolved_cells": 0,
+          "depth": 39,
+          "query_count": 22567,
+          "lower_bound_m": -8.999945637701425e-05,
+          "minimum_sample_SDF_m": -8.962442992566883e-05,
+          "wall_s": 2.4744942609977443
+        }
+      ]
+    },
+    {
+      "name": "candidate",
+      "wall_s": 0.13491587300086394,
+      "passed": true,
+      "attempts": [
+        {
+          "requested_intrusion_bound_m": 8e-05,
+          "passed": false,
+          "actual_violation": true,
+          "original_tet": 35144,
+          "violating_point": [
+            -0.02518718135640753,
+            0.039984073283838094,
+            -0.00973693471759556
+          ],
+          "minimum_sample_SDF_m": -8.015415169967057e-05,
+          "query_count": 23585,
+          "depth": 18,
+          "wall_s": 0.0738925229961751
+        },
+        {
+          "requested_intrusion_bound_m": 9e-05,
+          "passed": true,
+          "unresolved_cells": 0,
+          "depth": 39,
+          "query_count": 22567,
+          "lower_bound_m": -8.999945637701444e-05,
+          "minimum_sample_SDF_m": -8.962442992566538e-05,
+          "wall_s": 0.060964216994761955
+        }
+      ]
+    }
+  ],
+  "cold_volume_guard_speedup": 37.508287856995075,
+  "history_and_source_checkpoint_unchanged": true,
+  "wall_s": 9.674081076998846,
+  "backend_candidate_not_yet_adopted": true,
+  "full_trajectory_comparison_pending": true
+}

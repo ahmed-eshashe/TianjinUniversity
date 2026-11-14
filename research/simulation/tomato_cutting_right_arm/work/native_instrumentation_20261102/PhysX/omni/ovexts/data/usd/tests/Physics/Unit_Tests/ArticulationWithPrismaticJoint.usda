@@ -1,0 +1,171 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (377.47433109925777, 331.0929596347937, -118.11260181992445)
+                double3 target = (-474.5824040665962, 250.66650407591123, -21.127126756076464)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./SimpleArticulationLoop.usd"
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:index:regionOfInterestMax" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMin" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_position" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_reflectivity" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_rotation_axis" = (3.4028235e38, 3.4028235e38, 3.4028235e38)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:indexdirect:svoBrickSize" = (32, 32, 32)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "World"
+    doc = """Generated from Composed Stage of root layer data/usd/tests/Physics/Unit_Tests/ArticulationWithPrismaticJoint.usda
+"""
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Xform "GroundPlane"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Mesh "CollisionMesh"
+        {
+            uniform bool doubleSided = 0
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [3, 2, 1, 0]
+            normal3f[] normals = [(0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0)]
+            point3f[] points = [(-2500, 0, -2500), (2500, 0, -2500), (2500, 0, 2500), (-2500, 0, 2500)]
+            color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)]
+        }
+
+        def Plane "CollisionPlane" (
+            apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Y"
+            uniform token purpose = "guide"
+        }
+    }
+
+    def Mesh "Fix" (
+        apiSchemas = ["PhysicsRigidBodyAPI", "PhysxRigidBodyAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxConvexHullCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCookedDataAPI:convexHull", "PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+    )
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        vector3f physics:angularVelocity = (50, 50, 50)
+        uniform token physics:approximation = "convexHull"
+        bool physics:collisionEnabled = 1
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        bool physxArticulation:articulationEnabled = 1
+        uchar[] physxCookedData:convexHull:buffer = [9, 54, 149, 123, 97, 49, 205, 53, 44, 57, 255, 210, 13, 89, 182, 94, 142, 78, 88, 83, 1, 67, 86, 88, 77, 14, 0, 0, 0, 0, 0, 0, 0, 73, 67, 69, 1, 67, 76, 72, 76, 9, 0, 0, 0, 8, 0, 0, 0, 12, 128, 0, 0, 6, 0, 0, 0, 24, 0, 0, 0, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 194, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 72, 194, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 72, 194, 4, 0, 4, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 194, 8, 0, 4, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 72, 194, 12, 0, 4, 2, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 194, 16, 0, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 72, 194, 20, 0, 4, 0, 0, 1, 2, 3, 4, 5, 3, 2, 4, 2, 1, 6, 7, 6, 1, 0, 7, 0, 3, 5, 7, 5, 4, 6, 0, 3, 0, 2, 0, 1, 0, 4, 1, 5, 1, 4, 1, 2, 2, 3, 2, 5, 3, 5, 3, 4, 4, 5, 0, 3, 4, 0, 2, 3, 0, 1, 2, 0, 1, 4, 1, 2, 5, 1, 4, 5, 2, 3, 5, 3, 4, 5, 0, 0, 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 0, 0, 0, 4, 0, 5, 0, 5, 0, 3, 0, 2, 0, 4, 0, 1, 0, 6, 0, 6, 0, 4, 0, 7, 0, 6, 0, 0, 0, 7, 0, 5, 0, 7, 0, 0, 0, 0, 0, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 194, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 66, 0, 36, 116, 73, 161, 174, 198, 78, 0, 0, 0, 128, 0, 0, 0, 128, 0, 0, 0, 128, 161, 174, 198, 78, 0, 0, 0, 128, 0, 0, 0, 128, 0, 0, 0, 128, 161, 174, 198, 78, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 66, 0, 0, 72, 66]
+        float physxRigidBody:sleepThreshold = 0
+        point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (0.5, 0.2, 1)
+        double3 xformOp:translate = (0, 286.33201894445585, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def PhysicsPrismaticJoint "PrismaticJoint"
+        {
+            uniform token physics:axis = "Z"
+            rel physics:body1 = </World/Fix>
+            float physics:breakForce = inf
+            float physics:breakTorque = inf
+            uniform bool physics:excludeFromArticulation = 0
+            point3f physics:localPos0 = (0, 286.33203, 0)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+}
+
+def Xform "Environment"
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+    def DistantLight "defaultLight" (
+        apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 1
+        float inputs:intensity = 3000
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        double3 xformOp:rotateXYZ = (315, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

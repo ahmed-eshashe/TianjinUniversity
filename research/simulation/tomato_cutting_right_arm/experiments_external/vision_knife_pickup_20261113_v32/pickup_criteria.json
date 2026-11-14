@@ -1,0 +1,29 @@
+{
+  "version": "v32-secure-pickup-v2-fixed-observer-interval",
+  "scope": "New secure pickup task; earlier full-wrap criteria and failures remain unchanged.",
+  "handle_lift_m": 0.05,
+  "continuous_hold_s": 3.0,
+  "minimum_whole_tool_support_clearance_m": 0.003,
+  "maximum_relative_translation_drift_m": 0.01,
+  "maximum_relative_rotation_drift_rad": 0.261799,
+  "contact_threshold_N": 0.05,
+  "required_contacts": [
+    "thumb",
+    "at_least_one_other_finger"
+  ],
+  "maximum_opposition_cosine": -0.5,
+  "maximum_support_force_N": 0.05,
+  "no_blade_contact": true,
+  "no_attachment": true,
+  "no_object_commands_after_reset": true,
+  "maximum_hand_support_surface_load_N": 10.0,
+  "maximum_other_robot_support_surface_load_N": 5.0,
+  "maximum_contact_load_N": 50.0,
+  "finger_effort_limit_Nm": 0.3,
+  "thumb_effort_limit_Nm": 1.0,
+  "arm_effort_limit_Nm": 80.0,
+  "friction_calibrated": false,
+  "load_observation_window_s": 0.0010416666666666667,
+  "load_metric": "Trailing mean of per-pair contact-force magnitudes over 1/960 simulated second; equivalent to an unchanged per-pair impulse budget of 50/960 N s. Raw per-step forces are also logged. At 960 Hz this is exactly the original load metric.",
+  "calibrated_instantaneous_peak_force": false
+}

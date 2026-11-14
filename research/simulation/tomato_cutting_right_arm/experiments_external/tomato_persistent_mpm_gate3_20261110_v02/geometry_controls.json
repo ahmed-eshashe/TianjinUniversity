@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "checks": {
+    "cad_distance": true,
+    "cad_sign": true,
+    "affine_geometry": true,
+    "force_pullback": true,
+    "moment_pullback": true,
+    "power_pullback": true,
+    "clear_certified": true,
+    "shallow_certified": true,
+    "deep_rejected": true,
+    "uncertified_large_sweep_rejected": true,
+    "new_faces_and_gap": true
+  },
+  "results": {
+    "cad_max_distance_error_m": 5.192038485496257e-08,
+    "clear": {
+      "passed": true,
+      "reason": "certified",
+      "observed_penetration_m": 0.0,
+      "certified_max_penetration_bound_m": 0.0,
+      "queries": 640,
+      "depth": 1,
+      "unresolved": 0,
+      "geometry": "entire declared trilinear-cell union, not only sampled centers"
+    },
+    "shallow_50um": {
+      "passed": true,
+      "reason": "certified",
+      "observed_penetration_m": 3.1250526717485627e-06,
+      "certified_max_penetration_bound_m": 8.631493427654029e-05,
+      "queries": 4992,
+      "depth": 4,
+      "unresolved": 0,
+      "geometry": "entire declared trilinear-cell union, not only sampled centers"
+    },
+    "deep_250um": {
+      "passed": false,
+      "reason": "resolved_material_penetration",
+      "observed_penetration_m": 0.00015624999650754035,
+      "queries": 1920,
+      "depth": 3
+    },
+    "large_sweep": {
+      "passed": false,
+      "reason": "certificate_capacity",
+      "unresolved": 2097152,
+      "queries": 299520,
+      "depth": 3
+    },
+    "reconstructed_gap_m": 0.003999999999999983
+  },
+  "wall_s": 2.521064340000521,
+  "scope": "CAD query, conservative whole declared-cell geometry and surface force pullback; no dynamic contact pass"
+}

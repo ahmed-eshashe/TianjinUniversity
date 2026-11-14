@@ -1,0 +1,773 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/build.ninja...
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Building extension module kernels...
+Using envvar MAX_JOBS (2) as the number of workers...
+Rebuilding kernels
+[1/3] /home/omen/.cache/packman/chk/cuda/12.8.0-5-manylinux_2_35_x86_64-release/bin/nvcc --generate-dependencies-with-compile --dependency-output cuda.cuda.o.d -DTORCH_EXTENSION_NAME=kernels -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -I/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex -isystem /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/include -isystem /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/include/torch/csrc/api/include -isystem /home/omen/.cache/packman/chk/cuda/12.8.0-5-manylinux_2_35_x86_64-release/include -isystem /home/omen/miniconda3/envs/env_isaaclab/include/python3.11 -D_GLIBCXX_USE_CXX11_ABI=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_120,code=compute_120 -gencode=arch=compute_120,code=sm_120 --compiler-options '-fPIC' -gencode=arch=compute_120,code=sm_120 -std=c++17 -c /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu -o cuda.cuda.o 
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18570): warning #549-D: variable "var_7" is used before its value is set
+           var_8 = compute_muscle_force_cuda_func(var_7, var_body_X_s, var_body_v_s, var_muscle_links, var_muscle_points, var_6, var_body_f_s);
+                                                  ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18745): warning #549-D: variable "var_5" is used before its value is set
+           var_6 = compute_link_transform_cuda_func(var_5, var_joint_type, var_joint_parent, var_joint_q_start, var_joint_qd_start, var_joint_q, var_joint_X_pj, var_joint_X_cm, var_joint_axis, var_body_X_sc, var_body_X_sm);
+                                                    ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18968): warning #549-D: variable "var_6" is used before its value is set
+           var_7 = compute_link_velocity_cuda_func(var_6, var_joint_type, var_joint_parent, var_joint_qd_start, var_joint_qd, var_joint_axis, var_body_I_m, var_body_X_sc, var_body_X_sm, var_joint_X_pj, var_gravity, var_joint_S_s, var_body_I_s, var_body_v_s, var_body_f_s, var_body_a_s);
+                                                   ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(19249): warning #549-D: variable "var_7" is used before its value is set
+           var_8 = compute_link_tau_cuda_func(var_7, var_4, var_joint_type, var_joint_parent, var_joint_q_start, var_joint_qd_start, var_joint_q, var_joint_qd, var_joint_act, var_joint_target, var_joint_target_ke, var_joint_target_kd, var_joint_limit_lower, var_joint_limit_upper, var_joint_limit_ke, var_joint_limit_kd, var_joint_S_s, var_body_fb_s, var_body_ft_s, var_tau);
+                                              ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(65): warning #550-D: variable "var_9" was set but never used
+      float var_9;
+            ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(387): warning #177-D: variable "adj_6" was declared but never referenced
+      bool adj_6 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(388): warning #177-D: variable "adj_7" was declared but never referenced
+      bool adj_7 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(389): warning #177-D: variable "adj_8" was declared but never referenced
+      bool adj_8 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(395): warning #177-D: variable "adj_14" was declared but never referenced
+      bool adj_14 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(396): warning #177-D: variable "adj_15" was declared but never referenced
+      bool adj_15 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(405): warning #177-D: variable "adj_24" was declared but never referenced
+      bool adj_24 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(406): warning #177-D: variable "adj_25" was declared but never referenced
+      bool adj_25 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(407): warning #177-D: variable "adj_26" was declared but never referenced
+      bool adj_26 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(415): warning #177-D: variable "adj_34" was declared but never referenced
+      bool adj_34 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(416): warning #177-D: variable "adj_35" was declared but never referenced
+      bool adj_35 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(425): warning #177-D: variable "adj_44" was declared but never referenced
+      bool adj_44 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(426): warning #177-D: variable "adj_45" was declared but never referenced
+      bool adj_45 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(427): warning #177-D: variable "adj_46" was declared but never referenced
+      bool adj_46 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(440): warning #177-D: variable "adj_59" was declared but never referenced
+      bool adj_59 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(442): warning #177-D: variable "adj_61" was declared but never referenced
+      bool adj_61 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(444): warning #177-D: variable "adj_63" was declared but never referenced
+      bool adj_63 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(671): warning #550-D: variable "var_2" was set but never used
+      float var_2;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(838): warning #550-D: variable "var_24" was set but never used
+      float var_24;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1056): warning #940-D: missing return statement at end of non-void function "box_sdf_grad_cuda_func"
+  }
+  ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1144): warning #177-D: variable "adj_16" was declared but never referenced
+      bool adj_16 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1145): warning #177-D: variable "adj_17" was declared but never referenced
+      bool adj_17 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1146): warning #177-D: variable "adj_18" was declared but never referenced
+      bool adj_18 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1147): warning #177-D: variable "adj_19" was declared but never referenced
+      bool adj_19 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1172): warning #177-D: variable "adj_44" was declared but never referenced
+      bool adj_44 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1173): warning #177-D: variable "adj_45" was declared but never referenced
+      bool adj_45 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1177): warning #177-D: variable "adj_49" was declared but never referenced
+      bool adj_49 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1178): warning #177-D: variable "adj_50" was declared but never referenced
+      bool adj_50 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1182): warning #177-D: variable "adj_54" was declared but never referenced
+      bool adj_54 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1183): warning #177-D: variable "adj_55" was declared but never referenced
+      bool adj_55 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1351): warning #550-D: variable "var_23" was set but never used
+      float var_23;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1429): warning #550-D: variable "var_23" was set but never used
+      float var_23;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1434): warning #550-D: variable "var_28" was set but never used
+      float var_28;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1439): warning #177-D: variable "adj_2" was declared but never referenced
+      bool adj_2 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1649): warning #177-D: variable "adj_2" was declared but never referenced
+      bool adj_2 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(1783): warning #550-D: variable "var_1" was set but never used
+      float var_1;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2193): warning #550-D: variable "var_5" was set but never used
+      float var_5;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2291): warning #550-D: variable "var_8" was set but never used
+      float var_8;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2349): warning #177-D: variable "var_3" was declared but never referenced
+      const int var_3 = 0;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2363): warning #177-D: variable "var_17" was declared but never referenced
+      const int var_17 = 1;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2375): warning #177-D: variable "var_29" was declared but never referenced
+      const int var_29 = 2;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2387): warning #177-D: variable "var_41" was declared but never referenced
+      const int var_41 = 3;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2399): warning #177-D: variable "var_53" was declared but never referenced
+      const int var_53 = 4;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2411): warning #177-D: variable "var_65" was declared but never referenced
+      const int var_65 = 5;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2423): warning #177-D: variable "var_77" was declared but never referenced
+      const int var_77 = 6;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2435): warning #177-D: variable "var_89" was declared but never referenced
+      const int var_89 = 7;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2447): warning #177-D: variable "var_101" was declared but never referenced
+      const int var_101 = 8;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2459): warning #177-D: variable "var_113" was declared but never referenced
+      const int var_113 = 9;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2471): warning #177-D: variable "var_125" was declared but never referenced
+      const int var_125 = 10;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2483): warning #177-D: variable "var_137" was declared but never referenced
+      const int var_137 = 11;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2495): warning #177-D: variable "var_149" was declared but never referenced
+      const int var_149 = 12;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2507): warning #177-D: variable "var_161" was declared but never referenced
+      const int var_161 = 13;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2519): warning #177-D: variable "var_173" was declared but never referenced
+      const int var_173 = 14;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2531): warning #177-D: variable "var_185" was declared but never referenced
+      const int var_185 = 15;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2543): warning #177-D: variable "var_197" was declared but never referenced
+      const int var_197 = 16;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2555): warning #177-D: variable "var_209" was declared but never referenced
+      const int var_209 = 17;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2567): warning #177-D: variable "var_221" was declared but never referenced
+      const int var_221 = 18;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2579): warning #177-D: variable "var_233" was declared but never referenced
+      const int var_233 = 19;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2590): warning #550-D: variable "var_244" was set but never used
+      float var_244;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2872): warning #177-D: variable "var_3" was declared but never referenced
+      const int var_3 = 0;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2886): warning #177-D: variable "var_17" was declared but never referenced
+      const int var_17 = 1;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2898): warning #177-D: variable "var_29" was declared but never referenced
+      const int var_29 = 2;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2910): warning #177-D: variable "var_41" was declared but never referenced
+      const int var_41 = 3;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2922): warning #177-D: variable "var_53" was declared but never referenced
+      const int var_53 = 4;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2934): warning #177-D: variable "var_65" was declared but never referenced
+      const int var_65 = 5;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2946): warning #177-D: variable "var_77" was declared but never referenced
+      const int var_77 = 6;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2958): warning #177-D: variable "var_89" was declared but never referenced
+      const int var_89 = 7;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2970): warning #177-D: variable "var_101" was declared but never referenced
+      const int var_101 = 8;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2982): warning #177-D: variable "var_113" was declared but never referenced
+      const int var_113 = 9;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(2994): warning #177-D: variable "var_125" was declared but never referenced
+      const int var_125 = 10;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3006): warning #177-D: variable "var_137" was declared but never referenced
+      const int var_137 = 11;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3018): warning #177-D: variable "var_149" was declared but never referenced
+      const int var_149 = 12;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3030): warning #177-D: variable "var_161" was declared but never referenced
+      const int var_161 = 13;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3042): warning #177-D: variable "var_173" was declared but never referenced
+      const int var_173 = 14;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3054): warning #177-D: variable "var_185" was declared but never referenced
+      const int var_185 = 15;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3066): warning #177-D: variable "var_197" was declared but never referenced
+      const int var_197 = 16;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3078): warning #177-D: variable "var_209" was declared but never referenced
+      const int var_209 = 17;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3090): warning #177-D: variable "var_221" was declared but never referenced
+      const int var_221 = 18;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3102): warning #177-D: variable "var_233" was declared but never referenced
+      const int var_233 = 19;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3113): warning #550-D: variable "var_244" was set but never used
+      float var_244;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3127): warning #177-D: variable "adj_3" was declared but never referenced
+      int adj_3 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3141): warning #177-D: variable "adj_17" was declared but never referenced
+      int adj_17 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3153): warning #177-D: variable "adj_29" was declared but never referenced
+      int adj_29 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3165): warning #177-D: variable "adj_41" was declared but never referenced
+      int adj_41 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3177): warning #177-D: variable "adj_53" was declared but never referenced
+      int adj_53 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3189): warning #177-D: variable "adj_65" was declared but never referenced
+      int adj_65 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3201): warning #177-D: variable "adj_77" was declared but never referenced
+      int adj_77 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3213): warning #177-D: variable "adj_89" was declared but never referenced
+      int adj_89 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3225): warning #177-D: variable "adj_101" was declared but never referenced
+      int adj_101 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3237): warning #177-D: variable "adj_113" was declared but never referenced
+      int adj_113 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3249): warning #177-D: variable "adj_125" was declared but never referenced
+      int adj_125 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3261): warning #177-D: variable "adj_137" was declared but never referenced
+      int adj_137 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3273): warning #177-D: variable "adj_149" was declared but never referenced
+      int adj_149 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3285): warning #177-D: variable "adj_161" was declared but never referenced
+      int adj_161 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3297): warning #177-D: variable "adj_173" was declared but never referenced
+      int adj_173 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3309): warning #177-D: variable "adj_185" was declared but never referenced
+      int adj_185 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3321): warning #177-D: variable "adj_197" was declared but never referenced
+      int adj_197 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3333): warning #177-D: variable "adj_209" was declared but never referenced
+      int adj_209 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3345): warning #177-D: variable "adj_221" was declared but never referenced
+      int adj_221 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3357): warning #177-D: variable "adj_233" was declared but never referenced
+      int adj_233 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(3906): warning #550-D: variable "var_38" was set but never used
+      float var_38;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4071): warning #550-D: variable "var_38" was set but never used
+      float var_38;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4102): warning #177-D: variable "adj_1" was declared but never referenced
+      bool adj_1 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4498): warning #550-D: variable "var_42" was set but never used
+      float var_42;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4511): warning #177-D: variable "adj_10" was declared but never referenced
+      bool adj_10 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4512): warning #177-D: variable "adj_11" was declared but never referenced
+      bool adj_11 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4513): warning #177-D: variable "adj_12" was declared but never referenced
+      bool adj_12 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4519): warning #177-D: variable "adj_18" was declared but never referenced
+      bool adj_18 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4520): warning #177-D: variable "adj_19" was declared but never referenced
+      bool adj_19 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4521): warning #177-D: variable "adj_20" was declared but never referenced
+      bool adj_20 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4525): warning #177-D: variable "adj_24" was declared but never referenced
+      bool adj_24 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4527): warning #177-D: variable "adj_26" was declared but never referenced
+      bool adj_26 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4528): warning #177-D: variable "adj_27" was declared but never referenced
+      bool adj_27 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4531): warning #177-D: variable "adj_30" was declared but never referenced
+      bool adj_30 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4532): warning #177-D: variable "adj_31" was declared but never referenced
+      bool adj_31 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4533): warning #177-D: variable "adj_32" was declared but never referenced
+      bool adj_32 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4539): warning #177-D: variable "adj_38" was declared but never referenced
+      bool adj_38 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4540): warning #177-D: variable "adj_39" was declared but never referenced
+      bool adj_39 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4541): warning #177-D: variable "adj_40" was declared but never referenced
+      bool adj_40 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(4542): warning #177-D: variable "adj_41" was declared but never referenced
+      bool adj_41 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5142): warning #177-D: variable "var_5" was declared but never referenced
+      const int var_5 = 0;
+                ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5163): warning #177-D: variable "adj_4" was declared but never referenced
+      bool adj_4 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5258): warning #550-D: variable "var_13" was set but never used
+      float var_13;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5304): warning #550-D: variable "var_59" was set but never used
+      float var_59;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5305): warning #550-D: variable "var_60" was set but never used
+      float var_60;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5306): warning #550-D: variable "var_61" was set but never used
+      float var_61;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5307): warning #550-D: variable "var_62" was set but never used
+      float var_62;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5413): warning #550-D: variable "var_13" was set but never used
+      float var_13;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5459): warning #550-D: variable "var_59" was set but never used
+      float var_59;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5460): warning #550-D: variable "var_60" was set but never used
+      float var_60;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5461): warning #550-D: variable "var_61" was set but never used
+      float var_61;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5462): warning #550-D: variable "var_62" was set but never used
+      float var_62;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5467): warning #177-D: variable "adj_1" was declared but never referenced
+      bool adj_1 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(5979): warning #177-D: variable "adj_1" was declared but never referenced
+      bool adj_1 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(6415): warning #550-D: variable "var_128" was set but never used
+      int var_128;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(6723): warning #550-D: variable "var_128" was set but never used
+      int var_128;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(6727): warning #177-D: variable "adj_1" was declared but never referenced
+      bool adj_1 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(6729): warning #177-D: variable "adj_3" was declared but never referenced
+      bool adj_3 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(6730): warning #177-D: variable "adj_4" was declared but never referenced
+      bool adj_4 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(6815): warning #177-D: variable "adj_89" was declared but never referenced
+      int adj_89 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(7645): warning #177-D: variable "adj_1" was declared but never referenced
+      bool adj_1 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(7647): warning #177-D: variable "adj_3" was declared but never referenced
+      bool adj_3 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(7648): warning #177-D: variable "adj_4" was declared but never referenced
+      bool adj_4 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(7657): warning #177-D: variable "adj_13" was declared but never referenced
+      bool adj_13 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(7707): warning #177-D: variable "adj_63" was declared but never referenced
+      bool adj_63 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(8163): warning #550-D: variable "var_9" was set but never used
+      int var_9;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(8232): warning #550-D: variable "var_9" was set but never used
+      int var_9;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(8678): warning #550-D: variable "var_14" was set but never used
+      int var_14;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(8765): warning #550-D: variable "var_14" was set but never used
+      int var_14;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(8786): warning #177-D: variable "adj_16" was declared but never referenced
+      bool adj_16 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(10727): warning #177-D: variable "adj_17" was declared but never referenced
+      bool adj_17 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(10728): warning #177-D: variable "adj_18" was declared but never referenced
+      bool adj_18 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(10729): warning #177-D: variable "adj_19" was declared but never referenced
+      bool adj_19 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(10730): warning #177-D: variable "adj_20" was declared but never referenced
+      bool adj_20 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(14085): warning #550-D: variable "var_41" was set but never used
+      float var_41;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(14120): warning #550-D: variable "var_76" was set but never used
+      float var_76;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(14326): warning #550-D: variable "var_41" was set but never used
+      float var_41;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(14361): warning #550-D: variable "var_76" was set but never used
+      float var_76;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(14869): warning #550-D: variable "var_38" was set but never used
+      float var_38;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(14881): warning #550-D: variable "var_50" was set but never used
+      float var_50;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(15005): warning #550-D: variable "var_38" was set but never used
+      float var_38;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(15017): warning #550-D: variable "var_50" was set but never used
+      float var_50;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(15353): warning #550-D: variable "var_58" was set but never used
+      float var_58;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(15558): warning #550-D: variable "var_58" was set but never used
+      float var_58;
+            ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(16382): warning #177-D: variable "adj_57" was declared but never referenced
+      bool adj_57 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(17138): warning #177-D: variable "adj_41" was declared but never referenced
+      int adj_41 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(17183): warning #177-D: variable "adj_86" was declared but never referenced
+      bool adj_86 = 0;
+           ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18500): warning #550-D: variable "var_8" was set but never used
+      int var_8;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18570): warning #549-D: variable "var_7" is used before its value is set
+           var_8 = compute_muscle_force_cuda_func(var_7, var_body_X_s, var_body_v_s, var_muscle_links, var_muscle_points, var_6, var_body_f_s);
+                                                  ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18547): warning #550-D: variable "var_8" was set but never used
+      int var_8;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18677): warning #550-D: variable "var_6" was set but never used
+      int var_6;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18745): warning #549-D: variable "var_5" is used before its value is set
+           var_6 = compute_link_transform_cuda_func(var_5, var_joint_type, var_joint_parent, var_joint_q_start, var_joint_qd_start, var_joint_q, var_joint_X_pj, var_joint_X_cm, var_joint_axis, var_body_X_sc, var_body_X_sm);
+                                                    ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18726): warning #550-D: variable "var_6" was set but never used
+      int var_6;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18876): warning #550-D: variable "var_5" was set but never used
+      int var_5;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18878): warning #550-D: variable "var_7" was set but never used
+      int var_7;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18968): warning #549-D: variable "var_6" is used before its value is set
+           var_7 = compute_link_velocity_cuda_func(var_6, var_joint_type, var_joint_parent, var_joint_qd_start, var_joint_qd, var_joint_axis, var_body_I_m, var_body_X_sc, var_body_X_sm, var_joint_X_pj, var_gravity, var_joint_S_s, var_body_I_s, var_body_v_s, var_body_f_s, var_body_a_s);
+                                                   ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18945): warning #550-D: variable "var_5" was set but never used
+      int var_5;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(18947): warning #550-D: variable "var_7" was set but never used
+      int var_7;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(19157): warning #550-D: variable "var_8" was set but never used
+      int var_8;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(19249): warning #549-D: variable "var_7" is used before its value is set
+           var_8 = compute_link_tau_cuda_func(var_7, var_4, var_joint_type, var_joint_parent, var_joint_q_start, var_joint_qd_start, var_joint_q, var_joint_qd, var_joint_act, var_joint_target, var_joint_target_ke, var_joint_target_kd, var_joint_limit_lower, var_joint_limit_upper, var_joint_limit_ke, var_joint_limit_kd, var_joint_S_s, var_body_fb_s, var_body_ft_s, var_tau);
+                                              ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(19227): warning #550-D: variable "var_8" was set but never used
+      int var_8;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(19236): warning #177-D: variable "adj_6" was declared but never referenced
+      int adj_6 = 0;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(20471): warning #550-D: variable "var_4" was set but never used
+      int var_4;
+          ^
+
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/cuda.cu(20512): warning #550-D: variable "var_4" was set but never used
+      int var_4;
+          ^
+
+[2/3] c++ -MMD -MF main.o.d -DTORCH_EXTENSION_NAME=kernels -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -I/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex -isystem /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/include -isystem /home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/include/torch/csrc/api/include -isystem /home/omen/.cache/packman/chk/cuda/12.8.0-5-manylinux_2_35_x86_64-release/include -isystem /home/omen/miniconda3/envs/env_isaaclab/include/python3.11 -D_GLIBCXX_USE_CXX11_ABI=1 -fPIC -std=c++17 -O2 -DNDEBUG -c /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/main.cpp -o main.o 
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/main.cpp: In function ‘df::float3 box_sdf_grad_cpu_func(df::float3, df::float3)’:
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/DiSECt/dflex/kernels/main.cpp:1051:24: warning: control reaches end of non-void function [-Wreturn-type]
+ 1051 |     var_58 = df::select(var_56, var_53, var_57);
+      |              ~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+[3/3] c++ main.o cuda.cuda.o -shared -DNDEBUG -L/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/omen/.cache/packman/chk/cuda/12.8.0-5-manylinux_2_35_x86_64-release/lib64 -lcudart -o kernels.so
+Loading extension module kernels...
+IMPORT_OK

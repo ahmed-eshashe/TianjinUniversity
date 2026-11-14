@@ -1,0 +1,31 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.00 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 1.20 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.79 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.73 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.72 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1.08 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.05 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.23 ms  (cached)
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_iterative.py:192: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  ret = numpy.linalg.lstsq(cupy.asnumpy(H), e)
+NEWTON [{"iteration": 0, "residual": 0.03707268526500726, "cg_info": 0, "matvecs": 42, "true_linear_relative_residual": 6.002565417779116e-11, "friction_event_step": 0.041439627940205774}, {"iteration": 1, "residual": 0.0355364050035479, "cg_info": 0, "matvecs": 42, "true_linear_relative_residual": 2.290856552355724e-10, "friction_event_step": 0.32055084508661635}, {"iteration": 2, "residual": 0.02414523846347417, "cg_info": 0, "matvecs": 42, "true_linear_relative_residual": 1.797393477281245e-10, "friction_event_step": 0.15190653751572167}, {"iteration": 3, "residual": 0.020477423072821604, "cg_info": 0, "matvecs": 42, "true_linear_relative_residual": 9.612219721677899e-11, "friction_event_step": 1.0}, {"iteration": 4, "residual": 6.914994235378019e-07}]
+{
+  "scope": "Bounded coupled implicit numerical candidate; unchanged material laws, lagged viscous geometry and friction normal",
+  "bulk_energy_force_max_error_N": 8.680022018955436e-17,
+  "stop": "completed",
+  "dt_s": 0.0005,
+  "wall_s": 20.107341401992016,
+  "max_force_residual_N": 6.914994235378019e-07,
+  "component_passed": true
+}

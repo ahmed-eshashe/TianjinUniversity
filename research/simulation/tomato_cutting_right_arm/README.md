@@ -1,5 +1,3 @@
-> **7 November update:** See [snapshot status and limitations](REPOSITORY_SNAPSHOT.md) and [learning checklist](docs/progress/learning-roadmap.html). The scripted cut remains incomplete; the material and robot tests below are historical unless explicitly dated.
-
 # Tomato cutting — clean simulation workspace
 
 ## Vision based RL development

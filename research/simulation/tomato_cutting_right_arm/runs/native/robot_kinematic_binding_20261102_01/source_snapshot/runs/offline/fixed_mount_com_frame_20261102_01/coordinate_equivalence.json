@@ -1,0 +1,173 @@
+{
+  "proposal_only": true,
+  "original_plan": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json",
+  "original_scene": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda",
+  "joint_path": "/dual_ar5_o6/Physics/cutting_tool_mount",
+  "original_parent_joint_matrix": [
+    [
+      -0.15269136453886328,
+      -0.9882722149583689,
+      0.001837481031143673,
+      0.14266233146190643
+    ],
+    [
+      -0.7208957487698069,
+      0.11010860622227098,
+      -0.6842407575125942,
+      -0.07827216386795044
+    ],
+    [
+      0.6760138065164644,
+      -0.10580228720150014,
+      -0.7292538717223597,
+      0.14097583293914795
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "original_child_joint_matrix": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "original_relative_body_transform": [
+    [
+      -0.15269136453886328,
+      -0.9882722149583689,
+      0.001837481031143673,
+      0.14266233146190643
+    ],
+    [
+      -0.7208957487698069,
+      0.11010860622227098,
+      -0.6842407575125942,
+      -0.07827216386795044
+    ],
+    [
+      0.6760138065164644,
+      -0.10580228720150014,
+      -0.7292538717223597,
+      0.14097583293914795
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "new_parent_joint_matrix": [
+    [
+      -0.15269136453886328,
+      -0.9882722149583689,
+      0.001837481031143673,
+      0.1668516844511032
+    ],
+    [
+      -0.7208957487698069,
+      0.11010860622227098,
+      -0.6842407575125942,
+      0.058981068432331085
+    ],
+    [
+      0.6760138065164644,
+      -0.10580228720150014,
+      -0.7292538717223597,
+      0.010359587147831917
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "new_child_joint_matrix": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      -0.19093716144561768
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.005026591941714287
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0013825955102220178
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "new_relative_body_transform": [
+    [
+      -0.15269136453886328,
+      -0.9882722149583689,
+      0.001837481031143673,
+      0.1426623293877007
+    ],
+    [
+      -0.7208957487698069,
+      0.11010860622227098,
+      -0.6842407575125942,
+      -0.07827216236949139
+    ],
+    [
+      0.6760138065164644,
+      -0.10580228720150014,
+      -0.7292538717223597,
+      0.14097583251524998
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "maximum_typed_float32_coordinate_transform_difference_m": 2.0742057238454237e-09,
+  "algebra": "P_new = (P_old * inverse(C_old)) * C_new; body-relative transform P_new * inverse(C_new) is identical before float32 coordinate storage. Both frames shift to the same physical point; no DOF or compliance added.",
+  "physical_parameters": "All robot/knife geometries, masses, inertias, motor parameters, original fixture and target data unchanged. Existing ideal fixed-mount transform retained.",
+  "purpose": "Reduce roundoff from shifting a large knife-weight moment at the distant handle-frame anchor to the COM; preserve original moment precision criteria.",
+  "native_validation": "PENDING: all body/knife poses, M/J/gravity and exact mass/inertia/armature/DOF checks required before contact use.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda": "df906ab8b04a289b8e393df203646515475180a33e5ef3abf0238cdc7edd7d92",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/load_down_20261102_01/robot_kinematic_snapshot.json": "d9f4c6d7206ee19cef73fbd9aa7ad3801ca0c6888eea0ed2b967e76ac97c3e87",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/robot_energy_operator_v03_20261102_01/robot_energy_measurements.json": "a500529a19c5607b03bc795405c08c136e89c517d7a44119655ae9b153ca789b"
+  }
+}

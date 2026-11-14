@@ -1,0 +1,46 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.00 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.97 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.82 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 7.10 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.84 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.95 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.13 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.28 ms  (cached)
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_iterative.py:192: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  ret = numpy.linalg.lstsq(cupy.asnumpy(H), e)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/recovery.py", line 99, in <module>
+    stepvec,info=gmres(LinearOperator((rhs.size,rhs.size),matvec=counted,dtype=np.float64),rhs,M=pre,tol=1e-3,atol=1e-14,restart=40,maxiter=320)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_iterative.py", line 182, in gmres
+    z = psolve(v)
+        ^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_interface.py", line 89, in matvec
+    y = self._matvec(x)
+        ^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_interface.py", line 282, in _matvec
+    return self.__matvec_impl(x)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/recovery.py", line 96, in precondition
+    for axis in range(3):ans[fgpu,axis]=h*h*gpu_factors[axis].solve(rhs0[fgpu,axis])
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_solve.py", line 605, in solve
+    x = sm(self.U, x, lower=False, transa=trans)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/scipy/sparse/linalg/_solve.py", line 587, in spsm
+    return cusparse.spsm(A, B, lower=lower, transa=transa)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps13/cupyx/cusparse.py", line 1985, in spsm
+    _cusparse.spSM_analysis(
+KeyboardInterrupt

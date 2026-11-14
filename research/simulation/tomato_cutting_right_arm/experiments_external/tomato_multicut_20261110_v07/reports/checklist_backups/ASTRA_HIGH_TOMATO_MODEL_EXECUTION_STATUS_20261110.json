@@ -1,0 +1,127 @@
+{
+  "plan_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/ASTRA_HIGH_TOMATO_MODEL_EXECUTION_PLAN_20261110.md",
+  "plan_sha256": "5d7151e636ff84d0fdd446cefb4a509f658c49f39fb5237604737433566de94b",
+  "status": "cut_aware_integration_pass_restricted_unit_scope",
+  "model": "Astra",
+  "reasoning": "high",
+  "new_candidate_adopted": false,
+  "experimental_validation": "pending",
+  "existing_solver_modified": false,
+  "initial_decision_budget_focused_hours": 8,
+  "gates": [
+    {
+      "id": 0,
+      "title": "Gate 0 Freeze the experiment and remove stale assumptions",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate0.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 1,
+      "title": "Gate 1 Establish trustworthy intact mechanics",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/intact_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json"
+      ],
+      "scope_note": "Historical evidence preserved. v06 fresh integrated small-block mechanics passes in its restricted envelope, not arbitrary tomato geometry."
+    },
+    {
+      "id": 2,
+      "title": "Gate 2 Prove persistent cuts on a small block",
+      "status": "historical_component_pass_active_candidate_incomplete",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/persistent_cut_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate2_supplement.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json"
+      ],
+      "scope_note": "Historical v01 unit evidence preserved. v06 resolves v05 off-grid integration failure and passes single-plane partial/full unit controls. Multiple/oriented/tool-generated cuts and complete Gate 2 remain unqualified."
+    },
+    {
+      "id": 3,
+      "title": "Gate 3 Establish cutting resistance and reliable contact",
+      "status": "pending_after_cut_integration_repair",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/contact_fracture_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/RECOVERY_PROPOSAL.md",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/mechanics_refined_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/conditioning_diagnosis.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/REPORT.txt"
+      ],
+      "scope_note": "v06 integration repair passes its restricted unit scope. CAD contact, physical fracture and full persistent-cut topology remain to be requalified; no new physical cut."
+    },
+    {
+      "id": 4,
+      "title": "Gate 4 Build the reusable tomato and complete one slice",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 5,
+      "title": "Gate 5 Verify freedom to change the cutting technique",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 6,
+      "title": "Gate 6 Measure interactive and RL performance",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 7,
+      "title": "Gate 7 Connect the existing robot and verify resets",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 8,
+      "title": "Gate 8 Prepare a small learning demonstration",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "updated": "2026-11-10T22:57:34.475126+08:00",
+  "candidate_directory": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06",
+  "execution_status_path": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/status.json",
+  "simulation_running": false,
+  "runtime_qualification": "Not RL qualified; accurate CPU block/contact-free verification is still far too slow for training",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/NEXT_STEPS.txt",
+  "repair_authorization": {
+    "decision": "Repair the isolated backend and revalidate",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/reports/approved_recovery_proposal.md",
+    "result": "implemented; revalidation failed; stopped"
+  },
+  "active_candidate_qualification": {
+    "version": "v06",
+    "gate0": "freeze_pass",
+    "gate1": "fresh_integrated_block_mechanics_component_pass",
+    "gate2": "single_plane_aligned_and_offset_unit_controls_pass_multiple_oriented_tool_cuts_pending",
+    "gate3": "contact_and_paid_fracture_not_requalified",
+    "arbitrary_tomato_shape_supported": false,
+    "physical_cut": false,
+    "evidence": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json"
+  },
+  "repair_authorization_v04": {
+    "decision": "User said ok do it after the proposed damping/timestep repair",
+    "result": "Intact mechanics reference/candidate passes; no production adoption"
+  },
+  "cut_basis_v05": {
+    "decision": "User requested pursue work after v04 next-step proposal",
+    "result": "Restricted unit proof completed; off-grid sampling is a demonstrated blocker; proposed integration revision not adopted"
+  },
+  "integration_v06_authorization": {
+    "decision": "Validate cut-aware integration",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/reports/approved_scope.txt",
+    "time_budget_s": 7200,
+    "result": "Approved bounded integration repair completed; restricted component pass; no production adoption"
+  }
+}

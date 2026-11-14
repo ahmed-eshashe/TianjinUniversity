@@ -1,0 +1,18 @@
+EXTERNAL ACTUATION OBSERVER AND COUPLED CONTROL — 2026-11-04
+
+Result: observation channel implemented and compiled; standalone coupled-joint impulse control PASSED. Full robot motor-work remains OPEN.
+
+Implementation
+Added bounded external-stage recording inside applyTgsSubstepForces. Captures event/articulation/link/DOF, actual jointForce*stepDt actuation impulse, deferred impulse before/after, and combined articulated increment. No solver arithmetic replaced, no extra solver flush and no controller changes. Separate TOMATO_NATIVE_EXTERNAL_TRACE output uses exclusive creation, bounded capacity and a completion/drop footer. Deferred values are explicitly NOT physical velocities. Source predecessor and new patch/header preserved. compile04_external succeeded. Built override_v03 is preserved with hashes but has not been loaded in Isaac Sim; prior tested override_v02 remains intact.
+
+Independent coupled control
+Two collinear prismatic joints, fixed base, masses2and3kg, M=[[5,3],[3,3]]kg. No gravity/contact/body damping or implicit drives. Generalized forces[0,0]and[1,2]N.32position/8velocity iterations,dt1/240s,two steps. Zero stays at rest. Driven trace has64application events/128records with no drops. Actual accumulated impulses agree with force*dt within4.35e-10Ns. Momentum closure max2.445e-8Ns; constant-mass kinetic-energy closure max7.470e-11J. These satisfy fixture-specific1e-7Ns/1e-8J tolerances, not a replacement for the original robot budget. Analytic velocity maxdifference5.94e-9m/s. Driven recording off/on states are byte-identical; all3processes exit0 without diagnostic errors.
+
+Important finding
+For the proximal joint, positive actuation impulse0.00013020834Ns produces negative combined deferred increment-0.00013020834Ns because descendant response is included. They must not be treated as the same measurement. The new channel separates them.
+
+Remaining work
+This verifies applied impulse, not general coupled physical work. The energy identity is valid for this constant-M force-only fixture. It does not establish the robot's varying-inertia, gravity, implicit-drive, rotor and damping ledger. Next observation requirement is read-only matched generalized/link velocity and configuration at existing substep/flush boundaries, without forcing extra solver execution; extend controls to relevant mechanisms, then verify the new override's robot equivalence. No full-robot recapture was justified or run in this step. No contact, cutting, training or video. All9production pins unchanged; experimental validation pending.
+
+Evidence
+verification.json, contract.json, coupled_control.cpp, zero/,driven_off/,driven_on/,external_observer.patch,TomatoExternalTrace.h,source_pins.json; native build compile04_external and override_manifest_v03.json in prior work directory. This turn ran6standalone fixture steps total; no IsaacSim robot steps.

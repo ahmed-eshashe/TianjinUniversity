@@ -1,0 +1,44 @@
+WITHDRAWN AS A DECISION REQUEST — REFERENCE INTERPRETATION UNDER REVIEW
+The 0.729 mm number below measures the lowest CAD corner, not the full finite-width cutting edge or the nearest knife surface. It does not prove a whole-blade path miss. No controller/fixture change is adopted or requested on this basis. Preserve this draft only as diagnostic history; consult full_CAD_front_contact_review.json and the corrected reference review.
+
+SECTION 4 — CONTROL / STABILIZATION RECOVERY PROPOSAL
+
+STATUS: proposal only. Neither option is adopted. Preserve the fixed-world pilot and all earlier physics evidence. No force, penetration, material or fracture threshold is relaxed.
+
+VERIFIED ISSUE
+The independent normal-contact controls and 38 ms timestep comparison pass. However, the target is deformable and the fixed world trajectory does not follow its prepared cutting interface under load.
+At the saved 55 ms state, the original interface-front material point has moved +0.958 mm in X and -1.043 mm in Y. An independent projection onto the actual 894 conforming interface facets at the CAD apex's current Y/Z puts the interface at X=-24.896804 mm; the knife apex is at X=-25.625514 mm, a lateral miss of 0.728709 mm. Both current cut faces are near that interface position. This uses actual deformed faces, not an undeformed/rest plane or a rendering.
+At 35 ms, the apex has not yet reached the deformed interface at that Y/Z. The original 0.605 mm initial apex clearance also contributes a 0.0741 mm nominal lateral phase offset because the old lateral curve advances during approach. The much larger loaded target motion is the primary new concern; the initial-phase offset alone does not explain the observed miss.
+No damage or separation is established. Geometrically admissible contact is not evidence that the edge is following the intended cut. The world-path pilot should not be extended into a full stroke without resolving this control/setup issue.
+
+RECOMMENDED CANDIDATE: SCRIPTED GEOMETRY FEEDBACK
+Keep the exact mesh, 47 material/fracture laws and energy budgets, mass, existing 25 supports, knife CAD, orientation and fixed grip. Change only the prescribed tool-reference generator in a separate version.
+1. Define a frozen material-coordinate reference on the existing prepared interface. Locate reference points in the settled interface's Y/Z chart using its actual face triangles; transport their barycentric coordinates with the current paired cut-face midpoint geometry.
+2. Use the exact CAD cutting-edge cross-section to command the knife apex to that current interface, rather than using an unchanged world-space path. Keep the blade orientation and Z translation fixed. Correct the approach/cutting phase so lateral cutting progression does not accumulate while the edge is still above the interface.
+3. Freeze an initial candidate before physical testing: 0.5 ms control period; 1 mm nominal edge approach clearance with independently certified whole-material initial clearance; 8 mm reference advance through material over a 0.24 s reference schedule; lateral speed <=0.05 m/s; absolute vertical speed <=0.09375 m/s (the existing peak); acceleration <=1.0 m/s^2 per commanded component. Initial feedback gain 100/s, with material-point velocity feedforward and bounded continuous position/velocity commands. Select or correct control settings on independent kinematic fixtures, not by tuning until fracture appears.
+4. Monitor actual apex/interface tracking error separately from the numerical convergence limits. Predeclare a 0.1 mm tracking-stop threshold for the intended advancing reference point; if it is exceeded, stop and report rather than resetting the target, teleporting the knife or prescribing damage.
+5. The controller observes mesh position/velocity only. It cannot modify target positions, forces, material coefficients, eligibility, damage or connectivity. All fracture still has to result from the unchanged contact-driven law.
+6. Keep 2 N blade-force and 0.1 mm whole-volume penetration stops, all volume/support/board/residual limits and the horizontal two-stage withdrawal. Stop/withdrawal must hold the attained world height; no upward withdrawal through the tomato.
+
+INFORMATION / CLAIM LIMIT
+This is privileged simulation geometry (an oracle-guided scripted baseline), not learned control, vision-based perception or demonstrated native robot force control. It remains a prepared-interface experiment, not arbitrary-path cutting. Its use must be disclosed. Later real-robot use would need a separately validated estimator/controller; section 5/learning gates remain open.
+
+BOUNDED VALIDATION IF SELECTED
+- Independent chart/barycentric transport, exact CAD edge alignment, rigid/affine deformation, command speed/acceleration, no-target-actuation, trial purity and controller checkpoint/reset fixtures.
+- Controller state must include command segment, pose/velocity, control clock and any progress/filter state. Update only at committed control ticks; rejected physics trials may not change the controller. Pose queries inside implicit trials and guards must be pure.
+- Fresh settled starts, positive whole-material initial clearance and zero initial blade force. Then one bounded nonfracturing tracking/contact test and independent 6.25/3.125 us comparison at common physical/control times. Compare tool commands as well as material state, forces and moments under the existing limits.
+- Only after those controls pass: actual-damage shallow-cut qualification, controlled stop, horizontal withdrawal and independent damage/energy/event comparison. Gates C-F remain gated. One diagnosed correction and bounded retest, then reassess rather than expanding controller branches.
+
+ALTERNATIVE: EXPLICIT STABILIZATION FIXTURE
+Keep a fixed prescribed trajectory, but introduce a separately declared physical specimen holder/cradle that restrains the major body while leaving the cut and intended slice clear. This changes the support/contact setup and requires its own contact, reaction, clearance and loaded-stability validation. Do not quietly pin additional vertices or describe a fixture as a left-hand grasp. A fixture may be preferable if avoiding privileged geometry feedback is a research priority. Its geometry and force model need a concrete design before adoption.
+
+DECISION REQUESTED
+Choose which benchmark to validate next: the scripted geometry-feedback candidate (recommended to preserve the existing target/support setup), or an explicit stabilization fixture. The former changes the controller's information assumptions; the latter changes physical boundary conditions. Neither is a routine timestep adjustment, and neither is already qualified by the current component passes.
+
+EVIDENCE
+alignment_checkpoint_005500.npz
+alignment_evidence_manifest.json
+loaded_interface_alignment_review.json
+saved_front_motion_review.json
+initial_entry_geometry_audit.json
+loaded_prefix_review.json

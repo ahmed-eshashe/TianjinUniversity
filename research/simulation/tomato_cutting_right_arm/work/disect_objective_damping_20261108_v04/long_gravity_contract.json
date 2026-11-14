@@ -1,0 +1,15 @@
+{
+  "scope": "Original plan stage4 sustained bulk settling after short stability passes; cut assembly not yet inserted",
+  "dt_s": 1.5e-07,
+  "duration_s": 1.0,
+  "steps": 6666667,
+  "process_cap_s": 1200,
+  "forecast_wall_s": 613,
+  "budget_reason": "Measured 12.26 s per 20ms, doubled for resource variance",
+  "parameters": "All same as passing v04 short test, including corrected relative hydrostatic damping",
+  "acceptance": [
+    "sampled finite, min volume ratio>.1, board penetration<=.1mm, fixed error<=.1micrometre",
+    "max nodal speed<=1mm/s for final0.1second"
+  ],
+  "failure": "Stop first sampled geometry/finite violation. No parameter retries in this run. No contact or fracture before settling gate passes."
+}

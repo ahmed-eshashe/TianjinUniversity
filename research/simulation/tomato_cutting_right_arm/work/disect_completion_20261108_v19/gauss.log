@@ -1,0 +1,28 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.08 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.87 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.78 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.75 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.71 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.93 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.97 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.35 ms  (cached)
+NEWTON [{"iteration": 0, "residual": 0.03707268526500726, "cg_info": 0, "matvecs": 17, "true_linear_relative_residual": 0.0002418711142683833, "friction_event_step": 0.0414201529164352}, {"iteration": 1, "residual": 0.03553715590581572, "cg_info": 0, "matvecs": 19, "true_linear_relative_residual": 0.00024030265312572548, "friction_event_step": 0.3204547364191582}, {"iteration": 2, "residual": 0.024149376966045185, "cg_info": 0, "matvecs": 21, "true_linear_relative_residual": 0.00023837058178385957, "friction_event_step": 0.1520195085696404}, {"iteration": 3, "residual": 0.020478263899567306, "cg_info": 0, "matvecs": 23, "true_linear_relative_residual": 0.0002383271387255894, "friction_event_step": 1.0}, {"iteration": 4, "residual": 5.406579924073557e-06, "cg_info": 0, "matvecs": 16, "true_linear_relative_residual": 0.000433800042058048, "friction_event_step": 1.0}, {"iteration": 5, "residual": 2.68040094752095e-09}]
+{
+  "scope": "Bounded coupled implicit numerical candidate; unchanged material laws, lagged viscous geometry and friction normal",
+  "bulk_energy_force_max_error_N": 8.680022018955436e-17,
+  "stop": "completed",
+  "dt_s": 0.0005,
+  "wall_s": 4.472172142995987,
+  "max_force_residual_N": 2.68040094752095e-09,
+  "component_passed": true
+}

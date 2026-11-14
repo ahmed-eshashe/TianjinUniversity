@@ -1,0 +1,81 @@
+{
+  "checks": {
+    "energy_2.5e-05": true,
+    "energy_1.25e-05": true,
+    "intact_position": true,
+    "intact_velocity": true
+  },
+  "half_dt_difference": {
+    "x": 1.5476766211236452e-06,
+    "v": 0.001992168420339663,
+    "F": 0.0001975798876149322
+  },
+  "rows": [
+    {
+      "kind": "12mm intact release",
+      "dt_s": 2.5e-05,
+      "sim_s": 0.02,
+      "energy_residual_relative": 0.0033027259981699797
+    },
+    {
+      "kind": "12mm intact release",
+      "dt_s": 1.25e-05,
+      "sim_s": 0.02,
+      "energy_residual_relative": 0.0008661675578968594
+    },
+    {
+      "kind": "intact bulk only, failed angled-cut model",
+      "dt_s": 2.5e-05,
+      "batch": 1,
+      "sim_s_per_body": 0.02,
+      "points_per_body": 8000,
+      "nodes_per_body": 1331,
+      "wall_s": [
+        0.07386727400012205,
+        0.07450395299997581,
+        0.07397124199997052
+      ],
+      "median_s": 0.07397124199997052,
+      "equivalent_aggregate_50Hz_transitions_s": 13.518767198750004,
+      "backend_array_bytes": 2490516,
+      "cut_history_contact_robot_policy_included": false
+    },
+    {
+      "kind": "intact bulk only, failed angled-cut model",
+      "dt_s": 2.5e-05,
+      "batch": 4,
+      "sim_s_per_body": 0.02,
+      "points_per_body": 8000,
+      "nodes_per_body": 1331,
+      "wall_s": [
+        0.08674806499993792,
+        0.09005177999983971,
+        0.08787388699988696
+      ],
+      "median_s": 0.08787388699988696,
+      "equivalent_aggregate_50Hz_transitions_s": 45.51977995471107,
+      "backend_array_bytes": 9962040,
+      "cut_history_contact_robot_policy_included": false
+    },
+    {
+      "kind": "intact bulk only, failed angled-cut model",
+      "dt_s": 2.5e-05,
+      "batch": 8,
+      "sim_s_per_body": 0.02,
+      "points_per_body": 8000,
+      "nodes_per_body": 1331,
+      "wall_s": [
+        0.17650321700011773,
+        0.17164647999993576,
+        0.1688438959999985
+      ],
+      "median_s": 0.17164647999993576,
+      "equivalent_aggregate_50Hz_transitions_s": 46.60742241846727,
+      "backend_array_bytes": 19924072,
+      "cut_history_contact_robot_policy_included": false
+    }
+  ],
+  "wall_s": 1.2599896849999368,
+  "full_RL_qualification": false,
+  "angled_cut_qualification": false
+}

@@ -1,0 +1,33 @@
+{
+  "status": "prepared_not_launched",
+  "source_initial_state": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_physical_20261109_v22/settle_contact_final.npz",
+  "no_loaded_checkpoint_reuse": true,
+  "first_horizon_s": 0.045,
+  "wall_cap_s": 900,
+  "step_s": 3.125e-06,
+  "independent_reference_step_s": 1.5625e-06,
+  "unchanged_input_geometry_plan": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bevel_reference_20261109_v33/correction_plan.json",
+  "unchanged_limits": {
+    "min_volume_ratio": 0.1,
+    "board_penetration_m": 0.0001,
+    "support_error_m": 1e-07,
+    "board_edge_margin_m": 0.001,
+    "blade_force_N": 2.0,
+    "blade_sum_force_N": 2.0,
+    "CAD_penetration_m": 0.0001,
+    "discrete_force_balance_N": 1e-06,
+    "solver_residual": 1e-09
+  },
+  "stop_at_first_damage_or_physical_numerical_stop": true,
+  "recent_contact_loaded_cost_required_before_longer_case": true,
+  "command": "bash /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_numerics_20261108_v05/run.sh /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py --until 0.045 --name initial0045 --wall-cap 900 --stop-at-damage",
+  "actual_damage_and_horizontal_withdrawal_comparison_required_before_Gate_B": true,
+  "sources": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py": "c3f7071aa1f4340adad4d381f61fe2c4b805c69a0e00a5b9b8d61c59102239e2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/correction_plan.json": "3486e54966dadf522e8937f9c1f25850ef6ebdd1ab4950463279bba869c0631e",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/coverage_blade.py": "dacdd646cde1d9e2bee785eea85160a9668cbc02d19fb6519c753cea66e37a76",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/fast_cad_query.py": "d4b1233eb26d9dd312c58624fbf040f82c3124b36f98e34ee1bf132ca23f49d3",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cut_edge_coverage_20261110_v34/complete_edges.py": "77f7539b535b51f364533c778f4af0c08c8651f763cc509c36eec32155dd73bc"
+  },
+  "component_pass_is_not_full_stroke_qualification": true
+}

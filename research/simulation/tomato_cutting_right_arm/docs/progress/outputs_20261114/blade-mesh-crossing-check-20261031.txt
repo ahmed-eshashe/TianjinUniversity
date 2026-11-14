@@ -1,0 +1,21 @@
+Native double-precision crossing checks — 31 October 2026
+
+Result: all 11 finite-feature geometry cases passed. The native kernel evaluated 726 facet pairs using float64 closest-point, segment/segment and segment/triangle calculations, including a Moller-Trumbore intersection test. The separate Python reference uses projected/finite-feature distances and plane-crossing witnesses. No solver, SDF, contact force or physical step was run.
+
+Coverage:
+- Preserved authored-blade crossing and translated clear fixtures.
+- A new soft triangle spanning the blade, with all three soft vertices independently confirmed outside the closed blade.
+- A blade edge crossing a soft triangle interior, also with all soft vertices outside.
+- Coplanar containment, coplanar edge crossing, coplanar clear separation, a parallel 1-micrometre gap, vertex touch, and a noncoplanar crossing.
+
+Both new blade-crossing cases were detected despite all soft vertices being outside. This is finite-fixture evidence of the edge/interior cases particle-only tests can miss. It does not prove global candidate completeness or continuous collision detection. The new wide probe uses 10 mm halfspan; the reverse-crossing probe has a 0.4 m circumradius to keep all vertices outside the entire blade. These are disclosed geometry-only fixtures, not simulated soft material or physical trajectories.
+
+Historical correction: the old 0.1 mm fixture's unsigned vertex distances did not prove that every vertex was outside. Its signed references show one inside vertex. The old evidence was retained and no longer used as proof of a vertex-only miss. The new tests assert positive signed distance for every soft vertex in both new crossing cases.
+
+Maximum native/reference distance disagreement: 2.77556e-17 m. All positive/clear classifications agreed. The numerical comparison uses 1e-9 m for floating-point fixture results only. This is not a physical penetration or contact-force threshold; no existing solver/material threshold was changed. The 1-micrometre clear control is 1000 times that numerical comparison allowance and was correctly clear.
+
+The native run completed in 2.453 s, exited 0, and left no live owned processes. No memory warning or monitor error occurred. Minimum available RAM 26.06 GB; minimum free VRAM 7.28 GiB. Same 180-second watchdog and locks. Nine guard tests and two fixture-reference tests passed. Source snapshots, original blade/fixture hashes and historical production source hashes were verified.
+
+Next step: define and independently check solver contact records—surface locations, barycentric weights, normal conventions, duplicate reduction and capacity handling—before producing forces. An intersection witness alone does not give a unique penetration depth or contact normal. No positive force/work, damage/fracture, release, robot coupling, cutting or training validation is claimed.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_mesh_crossings_20261031_01

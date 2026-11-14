@@ -1,0 +1,106 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.94 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.84 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.92 ms  (cached)
+Module tomato_cad_pressure 27ceab5 load on device 'cuda:0' took 0.37 ms  (cached)
+Module tomato_fast_exact_cad d8995f8 load on device 'cuda:0' took 0.41 ms  (cached)
+Module tomato_cached_cad_pressure d7e1c7e load on device 'cuda:0' took 11.72 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.73 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.38 ms  (cached)
+Module tomato_local_plane_partition 8d8f378 load on device 'cuda:0' took 0.41 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.67 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.35 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.68 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.43 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.96 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.68 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.29 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.58 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_master_frame_objective fdfc663 load on device 'cuda:0' took 8.26 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.61 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.90 ms  (cached)
+Module tomato_master_frame_coupled 082f480 load on device 'cuda:0' took 0.59 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.76 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.34 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 1.94 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.37 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.46 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 6.23 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.52 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.43 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.44 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.54 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.55 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.60 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.53 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.43 ms  (cached)
+baseline 1 16.745469093000793
+baseline 2 32.4885110260002
+baseline_repeat 1 16.37620626500029
+baseline_repeat 2 32.27067634699961
+Module tomato_cached_local_plane_partition 8d8f378 load on device 'cuda:0' took 0.41 ms  (cached)
+optimized 1 12.21313654900041
+optimized 2 23.94328152900016
+[
+  {
+    "engine": "baseline",
+    "wall_s": 32.48853997900005,
+    "comparisons": []
+  },
+  {
+    "engine": "baseline_repeat",
+    "wall_s": 32.27070797700071,
+    "comparisons": [
+      {
+        "x": 1.8658685707606537e-14,
+        "v": 4.478084569825569e-11,
+        "history": 6.396792817664476e-18,
+        "wrench": 1.0093259561472223e-11,
+        "interval": 1,
+        "eligibility_identical": true,
+        "interval_substeps": 1
+      },
+      {
+        "x": 7.929773093717785e-08,
+        "v": 0.0001903145542487064,
+        "history": 6.396792817664476e-18,
+        "wrench": 0.0001455278468853738,
+        "interval": 2,
+        "eligibility_identical": true,
+        "interval_substeps": 1
+      }
+    ]
+  },
+  {
+    "engine": "optimized",
+    "wall_s": 23.943309042000692,
+    "comparisons": [
+      {
+        "x": 1.420738526825005e-14,
+        "v": 3.409772464380012e-11,
+        "history": 1.7564075194265172e-17,
+        "wrench": 4.640288153723304e-12,
+        "interval": 1,
+        "eligibility_identical": true,
+        "interval_substeps": 1
+      },
+      {
+        "x": 7.929713811277717e-08,
+        "v": 0.0001903131314612977,
+        "history": 1.7564075194265172e-17,
+        "wrench": 0.00011436029853029162,
+        "interval": 2,
+        "eligibility_identical": true,
+        "interval_substeps": 1
+      }
+    ]
+  }
+]

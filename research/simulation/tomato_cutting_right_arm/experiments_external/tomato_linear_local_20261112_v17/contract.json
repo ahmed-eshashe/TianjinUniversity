@@ -1,0 +1,65 @@
+{
+  "version": "v17",
+  "budget_s": 7200,
+  "start_utc": "2026-11-12T04:48:09.457840+00:00",
+  "material": {
+    "E_Pa": 100000.0,
+    "nu": 0.4,
+    "rho_kg_m3": 1000,
+    "law": "compressible neo-Hookean"
+  },
+  "basis": "linear tetrahedral virtual nodes; exact clipped volume and first moment; positive row-sum mass, no mass scaling or removal",
+  "arithmetic": {
+    "CPU": "float64",
+    "GPU": "float32, independently compared"
+  },
+  "numerical_dt_candidates_s": [
+    2.5e-05,
+    1.25e-05,
+    6.25e-06,
+    3.125e-06
+  ],
+  "scope": "mechanics/cut-transfer/independence/speed pilot, geometry fixtures not physical fracture",
+  "limits": {
+    "mass_relative": 1e-06,
+    "energy_relative": 0.05,
+    "force_impulse_work_relative": 0.05,
+    "position_m": 0.0001,
+    "velocity_m_s": 0.005,
+    "CPU_GPU_position_m": 1e-06,
+    "CPU_GPU_velocity_m_s": 0.0001,
+    "CPU_GPU_F": 0.0001,
+    "angular_relative": 0.01,
+    "untouched_fragment_response_ratio": 0.01,
+    "J_range": [
+      0.1,
+      10
+    ],
+    "force_stop_N": 2,
+    "whole_material_penetration_m": 0.0001
+  },
+  "cost": {
+    "control_Hz": 50,
+    "required_aggregate_steps_s": 100,
+    "preferred_aggregate_steps_s": 500,
+    "include_evolving_history": true,
+    "bulk_only_not_RL_pass": true
+  },
+  "cases": {
+    "small_block_m": 0.012,
+    "bulk_block_m": 0.06,
+    "baseline_h_m": 0.006,
+    "refinement_h_m": 0.003,
+    "max_cuts": 4,
+    "sliver_offsets_m": [
+      0.001,
+      0.00013,
+      1e-05,
+      1e-06
+    ],
+    "minimum_slice_cells": 4
+  },
+  "stop": "first substantive failed decision gate or two hours; no new physical tomato or robot rollout until gates support it",
+  "dt_policy_addendum": "Before dynamic controls: halve 25us until dt <= 0.4 of measured small-state linear stability bound; compare against half dt. Smaller values than the initial candidate list tighten numerical accuracy, not material/physical limits. Cap accepted candidate at 0.1953125us in this bounded pilot; unresolved smaller slivers remain out of qualification. No chosen dt is based on desired throughput.",
+  "force_comparison": "RMS nodal internal force over shared samples, 5% relative or 1e-5 N absolute floor; energy residual <5%; point velocity difference <=5mm/s; no meaningful external impulse/work qualification without contact."
+}

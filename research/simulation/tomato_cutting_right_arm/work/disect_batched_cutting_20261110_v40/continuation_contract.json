@@ -1,0 +1,20 @@
+{
+  "phase": "Progressive loading only, stop at first damage, physical/numerical stop or finite cap. No full stroke or training qualification.",
+  "user_authority": "Latest user instruction: continue working until whole Section4 completed. Longer runtime accepted by renewed instruction; retain individual gates and evidence.",
+  "from_s": 0.0505,
+  "until_s": 0.18,
+  "window_s": 0.005,
+  "max_total_wall_s": 14400,
+  "per_window_wall_cap_s": 1800,
+  "stop_on_any_wall_cap": true,
+  "no_automatic_failed_step_or_cap_resumption": true,
+  "new_timesteps_or_model_changes": false,
+  "guard": "original2N,0.1mm and all other physical limits unchanged",
+  "on_first_damage": "Stop loading and require independent half-step damage case, controlled stop and horizontal withdrawal before GateB",
+  "on_no_damage_at_loading_end": "One saved-state geometry/loading diagnosis; no material weakening",
+  "before_launch_requires": [
+    "v39 fresh_control_review passed",
+    "v40 paired_loaded_review passed"
+  ],
+  "created_utc": "2026-11-09T19:21:32.947610+00:00"
+}

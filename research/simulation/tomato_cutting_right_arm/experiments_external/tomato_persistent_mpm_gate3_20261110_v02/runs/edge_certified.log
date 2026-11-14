@@ -1,0 +1,54 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp/1.17.0
+Module contact_geometry 7a11ea9 load on device 'cuda:0' took 0.53 ms  (cached)
+Module kernels 68444bc load on device 'cuda:0' took 0.68 ms  (cached)
+Module physical_kernels ff037cb load on device 'cuda:0' took 0.33 ms  (cached)
+{
+  "status": "completed",
+  "dt": 1.25e-05,
+  "sim_time": 0.013000000000000244,
+  "wall_s": 11.24456586999986,
+  "max_force_N": 0.026704862133522588,
+  "max_penetration_bound_m": 9.999806592443736e-05,
+  "max_impulse_balance_error_Ns": 2.3514077019297597e-13,
+  "reaction_impulse_Ns": [
+    1.0373104357552069e-08,
+    1.403199167268145e-05,
+    4.344777604859545e-08
+  ],
+  "support_impulse_Ns": [
+    1.1445691044644695e-07,
+    1.8063565152057385e-05,
+    8.655898047263084e-09
+  ],
+  "work_J": 2.4827155976547593e-07,
+  "friction_J": 4.857396765509242e-09,
+  "max_certificate_queries": 1920,
+  "initial_certificate": {
+    "passed": true,
+    "reason": "certified",
+    "observed_penetration_m": 0.0,
+    "certified_max_penetration_bound_m": 8.925946502475357e-05,
+    "queries": 896,
+    "depth": 2,
+    "unresolved": 0,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "last_certificate": {
+    "passed": true,
+    "reason": "certified",
+    "observed_penetration_m": 0.0,
+    "certified_max_penetration_bound_m": 0.0,
+    "queries": 896,
+    "depth": 2,
+    "unresolved": 0,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "scope": "Finite CAD contact on supported 12mm coupon; no fracture; reconstructed entire-cell volume certificate each accepted step"
+}

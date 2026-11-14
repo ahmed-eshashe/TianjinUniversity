@@ -1,0 +1,48 @@
+{
+  "checks": {
+    "intact_constrained_inverse": true,
+    "intact_position": true,
+    "intact_velocity": true,
+    "intact_F": true,
+    "intact_support": true,
+    "intact_impulse": true,
+    "intact_work": true,
+    "intact_friction": true,
+    "intact_fixed": true,
+    "coupled_constrained_inverse": true,
+    "coupled_position": true,
+    "coupled_velocity": true,
+    "coupled_F": true,
+    "coupled_support": true,
+    "coupled_impulse": true,
+    "coupled_work": true,
+    "coupled_friction": true,
+    "coupled_fixed": true
+  },
+  "passed": true,
+  "cases": [
+    {
+      "case": "intact",
+      "errors": [
+        1.5867700089736646e-11,
+        8.255158153724906e-07,
+        5.335401480430907e-09
+      ],
+      "aggregated_nodes": 0,
+      "mass_block": 1,
+      "support_error_Ns": 1.819837536455389e-12
+    },
+    {
+      "case": "coupled",
+      "errors": [
+        1.872600533880272e-11,
+        9.148539450165583e-07,
+        6.3333458046131025e-09
+      ],
+      "aggregated_nodes": 9,
+      "mass_block": 13,
+      "support_error_Ns": 9.892825663497091e-13
+    }
+  ],
+  "scope": "Independent CPU/GPU supported dynamics with actual CAD on intact and aggregated material. No fracture or RL qualification."
+}

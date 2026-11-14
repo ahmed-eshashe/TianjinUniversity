@@ -1,0 +1,89 @@
+DiSECt to reliable robot slicing and learning — execution checklist
+2026-11-08T15:13:14.207066+08:00
+11/35 verified component checks. Section2:3/4; speed gate failed/open. Counts are not engineering effort.
+
+Completed components
+[x] Preserve the original simulation and checkpoint 6,925. [done]
+    Original robot, kitchen, grip and motion interface remain unchanged.
+[x] Profile the original solver and compare candidate engines. [done]
+    Recorded component timings and differences in models/resolution; no equal-accuracy speedup claim.
+[x] Get DiSECt examples running with clean exits. [done]
+    Two corrected-candidate prism repeats complete normally; forward-only qualification.
+[x] Repair and independently validate prism cut surfaces. [done]
+    No duplicate/degenerate cut faces, full section coverage, physical spring arrays preserved.
+[x] Build and validate the separate tomato FEM mesh. [done]
+    Original exterior, total mass, cut location and 25 support coordinates retained; internal resolution changed.
+[x] Identify the explicit timestep limit and correct hydrostatic damping. [done]
+    Relative-velocity correction is isolated and versioned; coefficients were not reduced to pass.
+[x] Verify translation and resolved-signal damping controls. [done]
+    Low-signal affine precision remains failed and must not be inferred from these scoped passes.
+[x] Complete a one-second finite tomato gravity hold. [done]
+    No NaNs or collapsed sampled cells; complete settling FAILED, so contact is still gated.
+
+Numerical consistency and speed
+[x] Fix tiny movements being lost during position updates. [done]
+    PASS in isolated float64 numerical adapter. 100,000 observed tiny updates match analytic translation within 5.2e-13m; original geometry, masses, material and supports preserved.
+[x] Verify the fix against independent motion references and resets. [done]
+    PASS: independent translation/free-fall/analytic oscillator references; four-node dense implicit solve; full-mesh execution equivalence and reset/allocation controls. Added state clears on reset. Forward-only, not autograd qualification.
+[x] Establish trustworthy small-force precision. [done]
+    PASS in tested computational range: independent float64 force checks from ~1.1e-8N to .011N, with declared 1e-10N absolute floor. Old float32 low-signal failure is preserved; no experimental calibration claim.
+[ ] Establish a stable, sufficiently fast integration method. [Cost failed · open]
+    COST FAILED / OPEN: accurate 20ms IMEX result meets 0.1mm/5% limits (0.00518mm, 0.677% material force) but costs ~272 wall s/s; optimistic output-free lower bound ~251 exceeds the prospective120 budget. Final execution optimization is slower. Bounded study stopped; do not mark this check or the full section complete.
+
+Before blade contact
+[ ] Pass the complete unloaded settling check. [planned]
+    Retain sampled finite/volume/support/contact limits and speed <=1mm/s for the final 0.1s; current run has not passed.
+[ ] Validate board contact and sustained target support. [planned]
+    Distinguish the infinite-plane proxy from the original finite board; document load paths and any remaining limitations.
+[ ] Prepare and validate the tomato cutting interface. [planned]
+    Check paired geometry, mass accounting and every material connection across the proposed slice; an intact bulk hold is not a prepared cutting-assembly pass.
+[ ] Define the fracture law and its timestep dependence. [planned]
+    Document differences from original skin/pulp/cohesion and normalize/validate per-step damage interpretation before refinement; no calibration claim.
+[ ] Verify knife representation, nonfracturing contact and force reporting. [planned]
+    Use the original blade through a checked adapter, or explicitly disclose an approved proxy. Disable fracture for indentation/unloading; distinguish net reaction from summed contact-force magnitudes.
+
+First genuine slice and reliability
+[ ] Pass a shallow scripted cut and controlled stop. [planned]
+    Use progressive contact-driven material failure, saved force/deformation/geometry traces and declared stops.
+[ ] Execute the full stroke and withdraw horizontally toward the robot. [planned]
+    No upward withdrawal through the target; preserve intended blade orientation and clearance.
+[ ] Prove actual material separation. [planned]
+    No surviving load-bearing material ties; two intended substantial pieces, not a visible gap or isolated fragments.
+[ ] Verify post-withdrawal stability, mass and slice shape. [planned]
+    Observe at least one simulated second after blade clearance; stable board/cut-face contact and no healing.
+[ ] Repeat and test resolution, size and path changes. [planned]
+    Repeat from fresh/reset state; refine once, change size once and path once. Distinguish precomputed new interfaces from deviations after preparation; use negative controls for the success evaluator.
+[ ] Demonstrate multiple successive slices. [planned]
+    Separate extension requiring supported interface/topology updates and valid remaining-fruit state; one detached cap does not establish repeated slicing.
+
+Connect the candidate to the robot
+[ ] Connect through the existing motion and reaction interface. [planned]
+    Preserve robot, kitchen and disclosed fixed attachment; no engine adoption before evidence review.
+[ ] Recheck actual robot tracking, grip, posture and clearance. [planned]
+    Correct arm motion, natural handle grip and backward/outward elbow; no per-frame teleportation to manufacture tracking.
+[ ] Validate mounted-blade feedback and loaded support. [planned]
+    Verify reaction signs, origins, clocks and native articulation response; strict force/work qualification remains a separate open research gate.
+[ ] Pass clean loaded, failed-episode and post-cut resets. [planned]
+    Clear both engine states, numerical compensation, material history, contact/wrench queues, clocks and observations; compare to fresh launch.
+
+Learning, after the baseline qualifies
+[ ] Freeze observations, actions, rewards, stops and success evaluation. [planned]
+    Same API/evaluator for scripted and learned methods; evaluator-only fracture/connectivity truth must not leak into actor inputs.
+[ ] Collect successful scripted demonstrations and split the data. [planned]
+    Record action labels and provenance; keep independent development/held-out cases separate.
+[ ] Train and evaluate imitation of the verified baseline. [planned]
+    Start with the narrow supported task; measure closed-loop success and runtime before expansion.
+[ ] Train bounded learned corrections and compare fairly. [planned]
+    Constrain supported path deviations; pair with scripted baselines on held-out cases, report uncertainty, forces, geometry, failures and compute cost.
+
+Experimental validation — intentionally pending
+[ ] Compare against independent measured tomato experiments. [pending]
+    Remains pending by user decision; synthetic simulation development must not be described as experimental validation.
+
+Later dual-arm extension
+[ ] Qualify contact-based left-hand support. [deferred]
+    Test load retention/slip first; remove hidden rigid-fixture support before claiming hand stabilization.
+[ ] Coordinate both arms with verified clearance and failure handling. [deferred]
+    Support -> cut -> horizontal withdrawal -> release; stop safely on support loss and verify reset.
+[ ] Compare dual-arm and fixed-fixture cutting. [deferred]
+    Use matched cases and report force, slip, drift, clearance, cut quality, reliability and cost.

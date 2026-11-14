@@ -1,0 +1,44 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793526101.698707   14678 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793526101.698738   14678 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T09:41:41Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-11-01T09:41:44Z [2,163ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x59b7366368e0. Client: carb.scripting-python.plugin
+[INFO]: Registered backend 'physx' for factory Articulation.
+2026-11-01T09:41:45Z [3,715ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+2026-11-01T09:41:45Z [3,792ms] [Warning] [isaaclab.actuators.actuator_collection] Actuator groups cover 0 joints; expected 1 after accounting for fixed tendons.
+[INFO]: Simulation parameters for joints in /World/Hinge0:
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                    Simulation Joint Information (Prim path: /World/Hinge0)                                                     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name  | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | hinge |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+2026-11-01T09:41:45Z [3,807ms] [Warning] [isaaclab.actuators.actuator_collection] Actuator groups cover 0 joints; expected 1 after accounting for fixed tendons.
+[INFO]: Simulation parameters for joints in /World/Hinge1:
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                    Simulation Joint Information (Prim path: /World/Hinge1)                                                     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name  | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | hinge |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_hinge_interface_worker.py", line 82, in main
+    asset.write_joint_friction_coefficient_to_sim_index(joint_friction_coeff=0.,joint_dynamic_friction_coeff=0.,joint_viscous_friction_coeff=0.)
+  File "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation.py", line 2104, in write_joint_friction_coefficient_to_sim_index
+    wp.launch(
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11333, in launch
+    pack_args(fwd_args, params, adjoint=False)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11328, in pack_args
+    params.append(pack_arg(kernel, arg_type, arg_name, a, device, adjoint))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 10327, in pack_arg
+    raise RuntimeError(
+RuntimeError: Error launching kernel 'write_joint_friction_data_to_buffer', argument 'in_friction' expects an array of type array(ndim=2, dtype=float32), but passed value has type float.
+[INFO]: SimulationContext cleared

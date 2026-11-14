@@ -1,0 +1,42 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.55 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.47 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.60 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.60 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.42 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.39 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.45 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.83 ms  (cached)
+Module rk4_contact_gpu 447f651 load on device 'cuda:0' took 346.24 ms  (compiled)
+{
+  "status": "completed",
+  "checks": {
+    "initial_volume_clear": true,
+    "initial_force_zero": true,
+    "complete_cycle": true,
+    "loaded": true,
+    "force_limit": true,
+    "volume_certificates": true,
+    "positive_J": true,
+    "no_cut_created": true,
+    "momentum_balance": true,
+    "energy_balance": true
+  },
+  "dt_s": 1.25e-05,
+  "size_m": 0.006,
+  "h_m": 0.003,
+  "adaptive_relative_tol": 0.002,
+  "quadrature_spacing_m": null,
+  "surface_samples": 144,
+  "max_energy_residual_J": 7.779491163259288e-11,
+  "max_energy_relative": 0.00031631839643847737,
+  "max_impulse_balance_Ns": 7.765465646301047e-11,
+  "wall_s": 1.8865011339948978,
+  "physical_cut": false
+}

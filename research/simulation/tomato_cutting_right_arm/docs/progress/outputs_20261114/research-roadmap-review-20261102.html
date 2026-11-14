@@ -1,0 +1,308 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cutting research · Review & roadmap</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f5f7;color:#172535;font:16px/1.7 system-ui,sans-serif}a{color:#155b78;text-underline-offset:3px}header{background:#123b39;color:#f3faf8;padding:44px max(24px,calc((100vw - 1200px)/2)) 32px}header p{max-width:820px;color:#d2e5df}header h1{font-size:36px;line-height:1.15;max-width:830px;margin:12px 0}.eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:12px}.metrics{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.metrics div{background:#ffffff13;border:1px solid #ffffff25;border-radius:10px;padding:12px 22px}.metrics b{font-size:28px;margin-right:8px}.layout{display:grid;grid-template-columns:235px minmax(0,900px);gap:36px;max-width:1200px;margin:32px auto;padding:0 20px}nav{position:sticky;top:20px;align-self:start;font-size:13px}nav a{display:block;padding:7px 0;text-decoration:none}article{background:white;padding:34px 42px;border-radius:14px;min-width:0;box-shadow:0 4px 18px #17253508}article>h1{font-size:26px;margin-top:0}h2{font-size:25px;line-height:1.3;margin-top:50px;padding-top:15px;border-top:1px solid #dce4e8;scroll-margin-top:20px}h3{font-size:19px;line-height:1.4;margin-top:30px;color:#155b56}p{margin:12px 0}li{margin:7px 0}code{font-size:12px;overflow-wrap:anywhere;background:#f2f5f7;padding:2px 4px;border-radius:4px}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.55}th,td{border:1px solid #dce4e8;padding:10px;text-align:left;vertical-align:top}th{background:#eef5f3}strong{font-weight:650}.note{padding:14px;border-left:3px solid #bb893c;background:#faf3e7;border-radius:5px;margin-bottom:18px}footer{padding:30px;text-align:center;font-size:13px;color:#5c6d78}@media(max-width:850px){.layout{display:block}nav{position:static;margin-bottom:20px}article{padding:22px 18px}header h1{font-size:28px}table{display:block;overflow:auto}}@media print{nav,header,.back{display:none}.layout{display:block;margin:0;padding:0}article{padding:0;box-shadow:none}h2,h3{break-after:avoid}body{font-size:11px}a{color:inherit}}</style></head><body><header><div class="eyebrow">Dual-arm robotic cutting · 2 November 2026</div><h1>From verified components to a defensible cutting experiment</h1><p>Evidence review, eight research references, and a detailed plan for the first cut, dual-arm support and learning.</p><div class="metrics"><div><b>18</b> scoped passes</div><div><b>3</b> partial milestones</div><div><b>1</b> experimental hold</div><div><b>10</b> upcoming</div></div></header><div class="layout"><nav aria-label="Report sections"><a href="isaac-sim-progress.html">← Project checklist</a><a href="#section-1">1. Decision and status</a><a href="#section-2">2. Research basis: a focused literature review</a><a href="#section-3">3. Before milestone 23: complete the integration prerequisites</a><a href="#section-4">4. First controlled cut — milestones 23–26</a><a href="#section-5">5. Dual-arm extension — milestones 27–29</a><a href="#section-6">6. Learning and experiments — milestones 30–32</a><a href="#section-7">7. Acceptance register and execution order</a><a href="#section-8">8. Reproduction and evidence locations</a><a href="research-roadmap-review-20261102.md" download>Download full plan</a><a href="milestone-evidence-audit-20261102.json" download>Download audit evidence</a></nav><article><div class="note">Review only: no new cutting simulation or training was run. Existing passing diagnostics are preserved. Experimental tomato validation remains pending.</div><h1>Cutting research: milestone review and next-stage plan</h1>
+<p>Reviewed 2 November 2026. Scope: local simulation research using the existing robot, the user-selected fixed knife mount, and the saved Newton tomato model. Experimental validation remains pending at the user's request. This is an evidence review and proposed execution plan, not a report of new cutting experiments.</p>
+<h2 id="section-1">1. Decision and status</h2>
+<p>Continue the project, but complete the integration prerequisites before attempting to count a first cut as successful. Sol produced substantial, reproducible numerical and scene diagnostics. Those results establish components; they do not yet establish a complete robot–tomato cutting environment.</p>
+<p>The previous roadmap existed and was more detailed than the short checklist suggested:</p>
+<ul>
+<li><code>TOMATO_SLICING_IMPLEMENTATION_PLAN.md</code>, especially sections 5–8, already specified staged cutting, a conventional controller, residual learning, observations, curriculum and evaluation.</li>
+<li><code>NEWTON_TOMATO_PROTOTYPE_PLAN.md</code> specified local blade eligibility, fracture energy, connectivity, cut-face contact and release tests. It already identified the end-cap/thickness issue.</li>
+<li><code>BLADE_CONTACT_AND_CUT_FACE_TEST_PLAN.md</code> supplied contact classes and proposed numerical gates.</li>
+<li>The dual-arm work was mainly a curriculum item, not a sufficiently detailed implementation or experiment plan.</li>
+<li>The bibliography was too narrow to constitute a literature review. The research synthesis below supplies direct cutting research and clearly labelled evidence from other manipulation tasks.</li>
+</ul>
+<p>This document supplements those plans and takes precedence for the upcoming simulation sequence. It does not change frozen acceptance files or claim that old unpassed tests passed. Old 60-second and quota-checking clauses are obsolete relative to the user's subsequent instructions. Runs still need resource monitoring, cleanup and budgets sized to the experiment; there is no need to request permission after each small subtask. This review does not start a training run or physical robot experiment.</p>
+<h3>Audit method and limits</h3>
+<p>Reviewed the original plans, saved reports, native worker/supervisor records, current implementation paths and input hashes. Nine selected native run records were inspected, covering startup, analytic collision, full-model/material/coupling/blade checks and the mounted robot. Earlier milestones were reviewed through their scoped diagnostic reports; this was not a fresh rerun of every historical experiment. No simulator was launched for this review.</p>
+<p>Independent hash recomputation found all 20 final fixed-mount inputs, 45 frozen production files and 13 pinned installed dependencies unchanged. Twenty-four existing learning-contract/history tests pass on the host. An initial test invocation lacked the project's import path; the corrected invocation passed without code changes. These tests verify offline interfaces, not native learning readiness.</p>
+<p>Evidence and the pre-review checklist are preserved in <code>milestone-evidence-audit-20261102.json</code> in the handoff outputs folder. Historical failures remain evidence; later passing fixtures do not erase them.</p>
+<h3>Milestone verdicts</h3>
+<table>
+<thead>
+<tr>
+<th>Items</th>
+<th>What the evidence supports</th>
+<th>Review verdict / remaining limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–3: computer, guard, startup</td>
+<td>Saved RAM/VRAM monitoring and an empty CPU PhysX step with successful cleanup</td>
+<td>Retain done for startup scope. This is not a forecast of long-run capacity.</td>
+</tr>
+<tr>
+<td>4: initial coupon</td>
+<td>Isolated construction/rest diagnostics</td>
+<td>Retain done for those fixtures; no cutting inference.</td>
+</tr>
+<tr>
+<td>5–6: geometry and contact conventions</td>
+<td>Reference distances/normals and explicit frame/sign/weight contracts</td>
+<td>Retain done as diagnostics. Failed earlier SDF/mesh routes are not production qualifications.</td>
+</tr>
+<tr>
+<td>7–8: snapshot and native buffers</td>
+<td>Full-prefix validation, storage/capture, overflow refusal and generation clearing</td>
+<td>Retain done for owned diagnostic captures, not arbitrary concurrent live capture.</td>
+</tr>
+<tr>
+<td>9–10: analytic collision</td>
+<td>Six box fixtures, including interior edge/face contact and transformed coordinates</td>
+<td>Retain done for box geometry; not general swept collision completeness.</td>
+</tr>
+<tr>
+<td>11: force precision</td>
+<td>Separate geometric tolerances and binary32 arithmetic replay pass</td>
+<td>Retain done under disclosed reference version 2. The older combined absolute-force comparison remains failed.</td>
+</tr>
+<tr>
+<td>12: authored blade</td>
+<td>Original surface, full tomato contact generation, short force transfer and replay</td>
+<td>Retain scoped component pass. No full cut, high-speed sweep or physical force calibration.</td>
+</tr>
+<tr>
+<td>13–14: scatter and dynamics</td>
+<td>Stationary distribution and minimal one-step momentum/discrete-energy checks</td>
+<td>Retain done for component verification.</td>
+</tr>
+<tr>
+<td>15: Newton–PhysX exchange</td>
+<td>Free rigid probe/blade and earlier articulated proxy diagnostics</td>
+<td>Retain scoped component pass. Actual mounted robot feedback is a new integration gate under 23B.</td>
+</tr>
+<tr>
+<td>16: material solver for cutting</td>
+<td>All 47 patches under prescribed tensile loading; bulk volume protection</td>
+<td><strong>Partial/open against the original cutting goal.</strong> Rotating material frames, supported mixed loading and whole-fruit reclosure remain unresolved.</td>
+</tr>
+<tr>
+<td>17: measurements</td>
+<td>Published curve is a provisional comparison only</td>
+<td><strong>Pending by user decision.</strong> Do not block numerical development or mark it validated.</td>
+</tr>
+<tr>
+<td>18: small coupon separation</td>
+<td>Small interface/solid coupon failure, reclosure and replay</td>
+<td>Retain done precisely as a small-coupon milestone.</td>
+</tr>
+<tr>
+<td>19: placement and frames</td>
+<td>Actual robot and original knife, one active knife, ideal fixed mount</td>
+<td>Retain done for the derived scene. No manufactured bracket or finger-grasp qualification.</td>
+</tr>
+<tr>
+<td>20: target support/collisions</td>
+<td>Authored support nodes, short gravity probe, working rigid contact monitor</td>
+<td><strong>Partial/open for sustained support and deformable contact under cutting loads.</strong></td>
+</tr>
+<tr>
+<td>21: dry motion</td>
+<td>Two offset approach/stroke/retreat cycles under robot gravity</td>
+<td>Retain done for the tested route only. Actual cutting route still needs clearance and reach checks.</td>
+</tr>
+<tr>
+<td>22: reset</td>
+<td>Rigid reset, separate material reset and generated-contact clearing</td>
+<td><strong>Partial/open for the assembled loaded/post-cut episode.</strong></td>
+</tr>
+<tr>
+<td>23–32</td>
+<td>No completed first cut, dual-arm cutting baseline or learning pilot</td>
+<td>Remain upcoming.</td>
+</tr>
+</tbody>
+</table>
+<p>The reviewed checklist therefore has <strong>18 completed scoped milestones, 3 partial integration milestones, 1 experimentally pending milestone and 10 upcoming milestones</strong>. The interface combines the partial and pending items as four open checks. This is a scope correction from the earlier 21/1/10 count, not lost work or three newly failing runs. Milestone counts are not percentages of engineering effort.</p>
+<h3>Most important evidence</h3>
+<ul>
+<li>The full model has 4,032 nodes, 33,996 springs, 16,291 volume cells and 47 cohesive patches. Its material-loading pass prescribes 514 interface nodes; it is not a free knife-driven fracture experiment.</li>
+<li>The final authored-blade exchange has 17 Newton and 17 PhysX steps at 1/2400 s, about 7.08 ms in total across baseline, replay and clear control. The 16 contact intervals are two 3.33 ms sequences. Damage eligibility is disabled during this contact qualification. Its 101.19 s process runtime includes setup and diagnostics; it cannot be treated as steady-state simulator throughput.</li>
+<li>The actual robot test has 3,851 PhysX steps and two approximately 8.02 s dry cycles. Its target gravity test is separate: only 5 ms per repetition, with 25 fixed support nodes. These clocks do not establish an eight-second deformable scene.</li>
+<li>Minimum dry-route target gap is 34.4 mm. Minimum board clearance is 6.01 mm despite a planned 12 mm height. That difference matters when designing the contact route; it is not a ready-made cutting tolerance.</li>
+<li>The 11,439-contact reset challenge generates contacts from an artificially shifted target but does not integrate those contact forces. It cannot establish reset after loaded coupled cutting.</li>
+<li><code>tomato_native_full_model.py</code> rejects the combination of full-model volume stepping and mesh self-contact. <code>tomato_native_volume_steps.py</code> rejects eligible, unfailed patches in compression with nonzero shear. The fixed world-X material frame is explicitly disclosed. These are implementation boundaries, not hypothetical concerns.</li>
+</ul>
+<h2 id="section-2">2. Research basis: a focused literature review</h2>
+<p>Selection: primary papers directly addressing food cutting, forceful stabilization, residual control, transfer and evaluation. This is a targeted engineering review, not a systematic review or proof of an exhaustive novelty search. The recommendations below are our project-specific synthesis. A paper's successful experiment does not validate this implementation or supply its safety limits.</p>
+<h3>R1. Jamdagni and Jia, IROS 2019</h3>
+<p><strong>Robotic Cutting of Solids Based on Fracture Mechanics and FEM.</strong> DOI: 10.1109/IROS40897.2019.8967988. <a href="https://robolab-iastate.github.io/papers/IROS19.pdf">Author-hosted paper</a>.</p>
+<p>Direct food-cutting evidence: force, torque and work comparisons include a tomato. The setup uses scanned geometry, food with a pre-cut flat base and downward motion at 6.25 mm/s. The model makes restrictive material and fracture-plane assumptions. Use it to define comparison quantities and document differences in support, geometry and motion. Do not copy its curve as independent specimen data or treat its speed as our validated control setting. Its printed modulus-unit issue is clarified by the later paper below.</p>
+<h3>R2. Jamdagni and Jia, IEEE Transactions on Robotics 40, 2024, pp. 4526–4543</h3>
+<p><strong>Robotic Cutting of Fruits and Vegetables: Modeling the Effects of Deformation, Fracture Toughness, Knife Edge Geometry, and Motion.</strong> DOI: 10.1109/TRO.2024.3462943. <a href="https://faculty.sites.iastate.edu/jia/files/inline-files/TRO24.pdf">Author-hosted manuscript</a>; <a href="https://robolab-iastate.github.io/ResearchModelingOfCutting/">laboratory publication page</a>.</p>
+<p>Extends the analysis to slicing and curved knife motions, connecting fracture, deformation and blade geometry. Table II labels modulus in MPa and gives tomato E = 0.4 MPa; thus the old unit ambiguity need not remain unresolved in our bibliography. This does <strong>not</strong> identify our tomato's modulus or justify replacing the current synthetic law. The table lists tomato for chopping; slicing/rock-chop demonstrations involve other foods. The discussion retains quasi-static, planar-fracture and material assumptions and describes coordinated holding-hand work as future work. Two arms used in different experiments are not a demonstrated simultaneous dual-arm tomato cut. This is an extension of earlier work, not an independent replication of the older tomato dataset.</p>
+<h3>R3. Heiden et al., Robotics: Science and Systems, 2021</h3>
+<p><strong>DiSECt: A Differentiable Simulation Engine for Autonomous Robotic Cutting.</strong> DOI: 10.15607/RSS.2021.XVII.067. <a href="https://diff-cutting-sim.github.io/">Project and paper links</a>; <a href="https://arxiv.org/abs/2105.12244">paper</a>.</p>
+<p>Uses FEM, continuous contact and weakening springs across a planned cutting interface. It demonstrates calibration against both commercial simulation and real cutting measurements, and constrained trajectory optimization. This supports investigating a reduced predefined-plane model and optimizing motion only after its force response is checked. It does not validate our spring/barrier implementation, arbitrary cuts or tomato parameters. Public simulated comparison data must not be relabelled tomato experiments. Real apple/potato force fits in the paper also do not establish independent tomato validation. Keep calibration and held-out prediction separate.</p>
+<h3>R4. Mitsioni, Karayiannidis, Stork and Kragic, Humanoids 2019</h3>
+<p><strong>Data-Driven Model Predictive Control for the Contact-Rich Task of Food Cutting.</strong> DOI: 10.1109/Humanoids43949.2019.9035011. <a href="https://arxiv.org/abs/1903.03831">Author manuscript</a>.</p>
+<p>Uses learned recurrent dynamics with model predictive control, a velocity-controlled robot and force/torque measurements; evaluates cutting on familiar and unfamiliar objects and force-critical cases. It is directly relevant to the alternative to expensive RL. It does not establish that our wrist has those sensing channels or that this model transfers to our robot. Adopt MPC as a justified comparator/fallback when data and sensing support it, not as an obligatory extra system before a basic cut works.</p>
+<h3>R5. Holladay, Lozano-Pérez and Rodriguez, IJRR, extended manuscript 2023 / publication 2024</h3>
+<p><strong>Robust Planning for Multi-stage Forceful Manipulation.</strong> DOI: 10.1177/02783649231198560. <a href="https://arxiv.org/abs/2208.00319">Author manuscript</a>.</p>
+<p>Plans forceful tasks using joint torque and friction constraints along the chain transmitting a wrench. The extended work includes vegetable cutting and different stabilization strategies. This motivates testing whether the supporting arm can actually resist the cutting wrench, rather than merely reaching a plausible pose. Its simplified cutting formulation assumes negligible deformation, quasi-static behavior and specified forces. It is not a tomato deformation model or a complete dual-arm compliant-cutting controller. We adopt the load-path reasoning, not its rigid approximation as our validation standard.</p>
+<h3>R6. Johannink et al., 2018 manuscript / ICRA 2019</h3>
+<p><strong>Residual Reinforcement Learning for Robot Control.</strong> <a href="https://arxiv.org/abs/1812.03201">Author manuscript</a>.</p>
+<p>Combines a conventional controller with a learned residual and demonstrates contact-rich block assembly. This supports our architectural choice to learn small corrections around a competent baseline. The evidence is not food cutting, and a residual alone supplies no safety guarantee. In our plan, a separate constraint layer bounds commands and the policy cannot modify mechanics or success criteria.</p>
+<h3>R7. Peng et al., ICRA 2018</h3>
+<p><strong>Sim-to-Real Transfer of Robotic Control with Dynamics Randomization.</strong> DOI: 10.1109/ICRA.2018.8460528. <a href="https://xbpeng.github.io/projects/SimToReal/">Author project and paper</a>.</p>
+<p>Demonstrates transfer for robotic object pushing with dynamics variation in training. This motivates testing sensitivity to uncertain properties. It neither proves cutting transfer nor supplies reasonable tomato parameter distributions. Our ranges must come from measurements or clearly labelled sensitivity studies, stay within solver validity and be held separate from test cases. Randomization cannot repair a missing force path or incorrect fracture mechanism.</p>
+<h3>R8. Agarwal et al., NeurIPS 2021</h3>
+<p><strong>Deep Reinforcement Learning at the Edge of the Statistical Precipice.</strong> <a href="https://papers.nips.cc/paper/2021/file/f514cec81cb148559cf475e7426eed5e-Paper.pdf">Proceedings paper</a>.</p>
+<p>Shows why few-run point estimates can give unreliable RL comparisons and advocates uncertainty-aware reporting. Apply the principle through multiple training seeds, paired held-out cases and interval estimates. Its benchmark recommendations do not prescribe a sufficient sample size for robot safety. Three seeds and 30 cases are an initial project design, not a literature-certified proof of superiority or reliability.</p>
+<h3>Synthesis and research questions</h3>
+<p>The most defensible contribution is controlled robot-cutting research built on explicitly qualified simulation. Detailed fruit anatomy and a new general fracture simulator are not prerequisites unless the measured task behavior demands them.</p>
+<ol>
+<li><strong>RQ1:</strong> Within the supported model and matched cases, how does draw-and-down motion change peak cutting load, work and release quality relative to downward-only motion? First establish that both motions produce genuine separation. R1–R4 motivate this question; no improvement percentage is assumed.</li>
+<li><strong>RQ2:</strong> Can a contact-based left-hand support replace the disclosed rigid fixture while maintaining cut quality and resisting the measured wrench? R5 motivates the load-path tests; a successful pose alone is insufficient.</li>
+<li><strong>RQ3:</strong> Does a bounded residual controller improve success or reduce load/work over the best tuned scripted controller on held-out conditions at acceptable compute cost? Compare against a data-driven MPC approach only if sufficient identification data and sensing exist. R4, R6–R8 motivate the method and evaluation, not an expected positive result.</li>
+</ol>
+<p>Simulation-only conclusions remain useful if labelled as such. Real tomato force accuracy and hardware transfer require reopening item 17 with independent measurements. None of these papers demonstrates the exact current robot, mount, tomato model and two-way solver combination.</p>
+<h2 id="section-3">3. Before milestone 23: complete the integration prerequisites</h2>
+<h3>P0 — Freeze the benchmark contract and measurement definitions</h3>
+<p>Create a versioned simulation contract without overwriting <code>slicing_criteria.json</code> (currently draft/inactive). Record mesh, material registry, knife geometry/mass/inertia, fixture nodes, coordinates, controller, clocks, collision classes and all tolerances with provenance. Distinguish existing fixture-specific thresholds, proposed engineering targets and missing hardware limits.</p>
+<p>The saved cut plane is 10 mm from the ellipsoid's extreme left end. Call this <strong>a nominal 10 mm end cap</strong>, report its expected curved thickness profile, and compare the released shape against that profile. Do not demand uniform 10 mm thickness at five points on this geometry. A uniform slice is a separate pre-trimmed specimen or two-plane/two-cut benchmark requiring new topology/contact qualification. Keep the existing one-plane model for the first cut.</p>
+<p>Declare allowable board interaction: initially stop above the board or cut a supported specimen with a documented clearance arrangement. If full separation requires blade–board contact, qualify that contact and its force budget before using it. Do not extend the dry route downward and presume its 6 mm clearance proves this.</p>
+<p><strong>Exit:</strong> an unambiguous case and evaluator specification, including numerical stop criteria and a register of unresolved hardware limits. Every metric can be computed from saved traces. No new material constants claimed from appearance or a plotted curve.</p>
+<h3>P1 — Finish material and full-fruit contact support (reopens 16)</h3>
+<p>Implement and independently verify a material frame that follows the intended deformation; common rigid rotation must rotate forces and preserve scalar energy/damage. A fixed-world restriction may support limited diagnostics but cannot justify freely rotating separated fragments. Define the admissible normal/shear law, energy budget, unloading and compression behavior before enabling it. Pure compression must not create opening damage; irreversible history must not accumulate from rejected solver trials.</p>
+<p>Combine volume admissibility with cut-face/self-contact. Test intact, partially damaged and fully failed interfaces, including reclosure; do not disable all self-contact to obtain a successful video. Audit cross-interface bulk, skin, volume, damping and fixture connections so failure genuinely removes material ties while contact can still transmit compression.</p>
+<p>Implement current-deformation blade-edge eligibility with a swept check or a documented substep bound verified against a finer reference. Time, depth, proximity alone and a permanently activated row are not eligibility evidence. Preserve prequalified force arithmetic and fracture budgets when extending the operator.</p>
+<p><strong>Exit:</strong> small independent mixed-loading/rotation tests, followed by actual full-mesh nonfracturing and partial-fracture cases, with no unsupported state, unintended damage, invalid volume or spurious reclosure force. If the existing law cannot meet this, revise a versioned model or narrow the experiment explicitly; do not weaken pass criteria after seeing a failure. This is the main technical risk.</p>
+<h3>P2 — Sustained support and environment contact (reopens 20)</h3>
+<p>Keep the disclosed 25-node remainder fixture initially; no slice node may be pinned. Advance the actual deformable target under gravity on the same simulation clock as the robot. Establish a settling criterion using velocity/energy drift, then hold for at least the planned full episode duration, including withdrawal and one-second release. The existing 5 ms result is the starting check only.</p>
+<p>Add and verify deformable–board and fixture contact where applicable, with positive-contact and clear controls. Measure reaction forces, deformation and support work. Challenge the support with bounded forces and moments representative of progressively measured cutting loads. Resolve whether the board carries weight or the fixture suspends the target; log the actual load path.</p>
+<p><strong>Exit:</strong> target remains in the declared admissible pose/deformation envelope for the full duration; no creeping through the board, hidden support of the slice or fictitious fixture energy. The load envelope is documented as synthetic until experimentally measured.</p>
+<h3>P3 — Performance profiling and budget sizing</h3>
+<p>Measure setup/compilation separately from warmed-up contact generation, solver steps, cross-engine synchronization, logging and rendering. Report seconds per simulated second, peak RAM/VRAM and cost per complete episode. Profile the existing full-surface coverage path before planning thousands of rollouts; the 101 s short diagnostic is an obvious concern, but not a steady-state speed measurement.</p>
+<p>Use one environment initially, then consider batching only after demonstrated memory and correctness headroom. Set watchdogs from measured episode costs plus a documented allowance, retain cleanup and reserve checks, and checkpoint long studies. A watchdog expiry is incomplete evidence, not a physical failure or a passed cut. Larger wall-time budgets do not fix numerical instability.</p>
+<p><strong>Exit:</strong> credible cost estimates for one baseline matrix and a small learning pilot. If too expensive, optimize contact bookkeeping while retaining equivalence tests, use fewer well-chosen experiments, or investigate a separately validated surrogate/coarser model. Never substitute a faster model silently.</p>
+<h2 id="section-4">4. First controlled cut — milestones 23–26</h2>
+<h3>23A — Contact-capable robot route</h3>
+<p>Starting from the proven offset dry route, compute an actual reachable approach and draw/down stroke for the saved plane. Recheck joint limits, tracking, mount transform and swept distances to both hands, robot links, board and fixture. Include observed tracking error and geometric uncertainty in the envelope. Retain the ideal right-hand fixed mount. The initial blade orientation stays within the supported plane.</p>
+<p><strong>Exit:</strong> actual intended path passes dry checks and an explicit contact/forbidden-contact classification. AABB separation is a useful coarse screen, not the final near-contact distance test.</p>
+<h3>23B — Actual mounted-blade force feedback, before fracture</h3>
+<p>PhysX must own the articulated robot/tool motion; Newton owns deformable motion. At explicit timestamps, exchange blade pose/velocity, integrate deformable contact and return its opposite wrench to the correct robot link and origin. Do not duplicate the same force in both engines or teleport the blade to a prescribed path while calling it dynamically coupled. Document subcycling, when the wrench is held and any exchange delay.</p>
+<p>Begin with a nonfracturing coupon and low-amplitude contact. Include free-space, reversed direction, off-center contact moment and controller-enabled/disabled comparisons. Verify reaction signs, wrench-origin shifts, articulation response and queue clearing. Account for gravity, actuator work and fixed-base/fixture reactions in momentum and energy ledgers; a driven robot is not an isolated free body. Check integrated exchanged impulse/work, not just equal reported force arrays. Reduce coupling time step to detect lag-induced energy injection.</p>
+<p><strong>Exit:</strong> independently reconciled state, wrench and work traces for actual robot contact, within a preregistered fixture-specific error budget that tightens under refinement. Unsupported compression/shear or material invalidity is a stop. Do not reuse free-blade tolerances without scaling/justification.</p>
+<h3>23C — Progressive short cuts</h3>
+<p>Use a conventional bounded draw/down controller with phases: settled rest → nonfracturing indentation → shallow cut → stop → withdrawal. Extend depth only after each preceding trace is interpretable. First compare pure downward and drawing motion at matched specimen, cut plane and comparable completion conditions. Force/admittance control is conditional on a verified signal, delay and bandwidth; simulated ground-truth force may be used for a clearly labelled simulation controller.</p>
+<p>Log at synchronized physics timestamps: actual and commanded tool pose/velocity; contact force and moment; maximum penetration and contact count; eligibility, damage and patch energy; volume ratios; fixture reactions; robot effort/tracking; stored/kinetic/fracture/friction/numerical work terms; resource use; termination cause. Log state around first contact, fracture onset, stop and withdrawal, not just the final frame.</p>
+<p><strong>Exit:</strong> a slow short cut with current-contact-driven damage, bounded numerical behavior and complete provenance. This completes 23, not 24. A visually open groove or a high damage average is not separation.</p>
+<h3>24 — Genuine separation and post-cut behavior</h3>
+<p>Extend the qualified stroke to the intended interface and withdraw the blade. Check the complete mechanical connectivity graph: zero remaining material connections between the two intended pieces, including residual stiffness/damping and support bridges. Separate material bonds from temporary compressive contact. The model must contain two physical pieces, not two visual groups still sharing a constraint.</p>
+<p>Observe at least one continuous simulated second after withdrawal. Confirm independent motion, no healing, admissible volume and stable board/cut-face contact. If a probe is needed to demonstrate independence, first prove disconnection and bound the probe so it cannot finish tearing an attached piece. Measure mass and the end-cap profile; report deformation and taper explicitly.</p>
+<p>Negative controls: no contact, off-plane blade, partial-depth stop, withdrawal before release and a deliberately surviving connection. They must not receive full-success labels. Blade penetration depth, elapsed time, reward or forced bond deletion cannot substitute for this evaluator.</p>
+<p><strong>Exit:</strong> all release conditions pass with valid traces. A partial attached cut, detached-but-unverified piece, numerical failure and timeout remain distinct outcomes.</p>
+<h3>25 — Repeatability and numerical sensitivity</h3>
+<p>Run the same saved case from fresh state and from reset. Refine the coupling/mechanics time step through at least three levels (for example h, h/2, h/4), contact quadrature independently, and solver iterations. Refine the material mesh separately while preserving physical mass, modulus and fracture energy per area; changing mesh-dependent raw spring constants without consistent reconstruction is not a convergence study.</p>
+<p>Compare peak/resultant force, cutting work, fracture timing/path, release status, minimum volume, penetration, end-cap profile and remainder motion. Use a relative error with an explicit absolute floor near zero. Existing proposed targets of under 10% change in peak force/work and under 1 mm profile change are starting engineering gates, not experimentally validated truth. Require the two finest levels to agree and investigate nonmonotone results. Exact replay on one GPU is useful but does not prove numerical accuracy or cross-platform determinism.</p>
+<p>Then run a small documented matrix of geometry, speed and supported material variations. Separate repeatability from robustness; synthetic parameter changes test sensitivity, not biological validity.</p>
+<p><strong>Exit:</strong> a reproducible region of supported operating conditions and a numerical error/cost table. Failed conditions remain in the report.</p>
+<h3>26 — Freeze the single-arm baseline and complete loaded reset (22)</h3>
+<p>After an actual partial and complete cut, reset both engines, robot/controller state, contact caches/counters, queued wrenches, integrator buffers, material history, eligibility, clocks and observation history. Compare the following episode against a clean launch. Include failure/abort reset, not only successful completion.</p>
+<p>Archive a versioned scene, mesh, parameters, source hashes, seeds, hardware/software versions, command, evaluator, raw synchronized traces, compact video and known limits. Provide one-command reproduction with a declared cost. Record which old milestones are now closed and which remain pending.</p>
+<p><strong>Exit:</strong> independently reproducible scripted single-arm cuts and clean loaded resets. This is a numerical baseline, not experimental tomato validation or a hardware-ready controller.</p>
+<h2 id="section-5">5. Dual-arm extension — milestones 27–29</h2>
+<h3>27 — Introduce the left arm as physical support</h3>
+<p>Keep the right fixed knife mount and single-arm controller unchanged to isolate the support change. Verify left-arm frames, joint/effort limits, reachable support patches and collision geometry. First rehearse with a rigid surrogate, then use the actual deformable tomato. Build two-way hand–tomato contact with correct normals, friction and opposite hand reaction; a static visual hand or teleported object is not stabilization.</p>
+<p>Use a broad, reachable support on the remainder away from the cut plane. Test the support alone under gravity and incrementally applied forces/moments before allowing the knife near it. Measure slip, object rotation, contact forces, local deformation and joint load margin. A fixed attachment may be a labelled intermediate kinematic test, but not the final grasp/support result.</p>
+<p>Transfer support from the 25-node fixture gradually, checking that it no longer supplies load once left-hand stabilization is claimed. No hidden pins or direct left-hand force on the released cap. Qualify the actual grasp/contact arrangement under the measured cutting wrench envelope, including uncertainty. Without measured bruise/crush limits, report deformation and compression as synthetic metrics, not food-damage safety.</p>
+<p><strong>Exit:</strong> sustainable contact-based support without the rigid fixture, with an explicit operating envelope and a demonstrated clear retreat route.</p>
+<h3>28 — Coordinate motion and force transfer</h3>
+<p>Use a simple state machine before a learned bimanual policy: approach support → establish and verify support → remove fixture load → verify cut corridor → cut → withdraw knife → release/reposition support. The left arm stabilizes the remainder while the right cuts. Do not command incompatible rigid poses that create an artificial closed-chain squeeze.</p>
+<p>At each stage, verify force/moment transmission through hand contact and both articulations, relative motion and delay. Evaluate loss of support, low friction, pose error, stale sensing, effort saturation and attempted knife–hand approach. A support failure stops cutting and triggers a prechecked retreat/hold strategy; an arbitrary retreat through the hand is not an acceptable fallback.</p>
+<p>Use exact relevant surface distances plus uncertainty, not just link origins. The old 20 mm blade-to-left-hand margin is a proposed simulation starting point; verify feasible geometry and stopping distance before freezing it. Deliberate hand–food and right-mount contact are allowed; blade–hand contact is forbidden. Establish positive controls for the detectors.</p>
+<p><strong>Exit:</strong> synchronized support and cutting motions under bounded disturbance, correct load paths, no forbidden contact and clean bimanual reset. If support cannot resist the load, revise support/controller geometry; do not make friction arbitrarily large to force a pass.</p>
+<h3>29 — Matched dual-arm cutting comparison</h3>
+<p>Repeat milestones 23–25 with the left support replacing the fixture. Use paired cases and the same right controller. Compare success, end-cap profile, force/work, remainder drift, hand–food slip, maximum compression, minimum knife–hand clearance and compute cost. Include support failure cases rather than reporting only successful videos.</p>
+<p><strong>Exit:</strong> reproducible dual-arm baseline with all support loads genuinely carried through contact. Keep a separate fixed-fixture baseline for diagnosis. Knife finger grasp, knife pickup, fruit reorientation and repeated slicing are later experiments with their own retention/topology gates; they are not silently included in this milestone.</p>
+<h2 id="section-6">6. Learning and experiments — milestones 30–32</h2>
+<h3>30 — Freeze the environment and learning question</h3>
+<p>Build on the existing offline <code>tomato_learning_contract.py</code>, <code>tomato_learning_episode.py</code> and staged evaluator; do not rewrite them as if no preparation exists. Their current flags explicitly do not authorize native commands/training or claim native reset validation. Complete the runtime bindings and independent provenance checks before changing those flags in a versioned implementation.</p>
+<p>Initial policy: bounded residual draw and downward velocity around the best scripted baseline. Lock the orientation residual initially because the first benchmark has a predefined cutting plane; enable additional axes only after their mechanics are qualified. The existing three-axis reference can represent this with zero orientation residual. Keep left support scripted during the first dual-arm learning experiment.</p>
+<p>Actor observations: verified joint position/velocity, tool kinematics, previous action and timestamped target/plane estimates with validity masks. Known simulator pose is permissible for a labelled known-state development task, not a claim of camera deployment. Damage, exact material parameters, connectivity and contact IDs stay evaluator/privileged-critic information, never hidden actor inputs. Add wrist channels only after confirming what the hardware measures, axes, origin, units, rate, bias and delay; joint torque is not automatically a calibrated six-axis wrist wrench.</p>
+<p>Reward: terminal bonus only for the independent release/quality evaluator; bounded progress shaping plus normalized penalties for force/work, tracking, slip and time. Normalize using frozen baseline scales, not per-episode future data. Do not reward damage fraction or knife depth as successful cutting, and do not let a large task reward cancel a hard violation. Record all component rewards and ablate shaping that can encourage hacking.</p>
+<p>Termination: success only after release observation; separate task failure, numerical invalidity, sensor/state staleness, constraint violation and time/resource truncation. A policy cannot change material parameters, detach bonds, reset the scene or alter termination criteria. Controller clipping alone does not establish joint-load feasibility.</p>
+<p><strong>Exit:</strong> reviewed observation/action/reward/termination schemas, units and masks; conventional baseline runs through the identical API and evaluator. The suggested 20 Hz policy rate remains provisional until timing and closed-loop tests support it.</p>
+<h3>31 — Repeated episodes and held-out registry</h3>
+<p>Challenge successful, partial, failed and interrupted resets. Verify no episode-to-episode history in either engine, the controller, sensor filters or actor observation stack. Repeated rollout records must agree with fresh-launch references within declared tolerances. Randomized cases need stable IDs and hashes of their physical configuration.</p>
+<p>Split cases by specimen/geometry/material condition before tuning; changing only a seed is not independent physical generalization. Use training, development/validation and final held-out roles, with the final set unopened during method selection. The existing offline registry supports baseline/train/heldout labels: extend its schema deliberately if a validation split is added, retaining physical-configuration leakage checks. Baseline and policy evaluation must still be paired on the same held-out cases; “baseline” is a method, not a reason to exclude a test case from paired evaluation.</p>
+<p>Start variation only over supported mechanics: size/pose, documented stiffness/toughness/friction ranges, sensor noise/delay and initial conditions. Preserve correlations and physical constraints where known. Randomize mesh/cut plane only when the geometry builder and evaluator support them. Label unmeasured ranges sensitivity ranges, not identified tomato distributions.</p>
+<p><strong>Exit:</strong> reliable repeated native episodes, a frozen case registry and measured rollout cost. Dataset preprocessing and normalization use training/development information only.</p>
+<h3>32 — Small pilot and research comparison</h3>
+<p>First measure baseline performance and train nothing until the environment passes. Choose PPO only as a provisional convenient baseline, not a proven best algorithm. A residual pilot uses one nominal condition, then supported variability. Retain the best tuned deterministic scripted baseline; compare on identical cases and equal declared evaluation conditions.</p>
+<p>Use measured warm throughput to set an explicit transition and wall-time budget, then estimate the full study cost including evaluation. Record time-to-first-usable-controller and failed rollouts. If sample generation is impractical, prioritize low-dimensional trajectory search or data-driven MPC/system identification. A differentiable optimizer requires actual reliable gradients; citing DiSECt does not make our implementation differentiable. A surrogate requires held-out error and policy-behavior checks against the reference model.</p>
+<p>Proposed initial study: at least three independent training seeds where feasible and at least 30 fixed held-out cases per trained policy, with paired scripted-baseline evaluation. Report each seed and case, success counts, confidence intervals, peak/typical loads, work, quality, constraint violations and wall time. Account for shared cases and training-seed dependence; do not treat correlated episodes as independent specimens. If intervals are too broad, report inconclusive or enlarge the study rather than declare a winner from the best seed.</p>
+<p>The earlier 90% success target is a proposed advancement criterion, not proof of 90% population reliability. For illustration, even 30/30 independent successes have a two-sided exact 95% lower confidence bound of about 88.4%. Zero observed hard violations is required for advancement but does not certify hardware safety.</p>
+<p>Minimum comparisons: scripted downward vs scripted draw/down; fixed fixture vs left support; scripted vs residual; residual with vs without supported parameter variation. Keep comparisons staged to avoid an unaffordable full factorial. Add MPC only when its sensing/data requirements are met. Report negative results and ablations using the same evaluator.</p>
+<p><strong>Exit:</strong> a small reproducible pilot with an honest conclusion (better, equivalent, worse or inconclusive), a compute ledger and a justified proposal for the larger study. Real-world transfer remains a separate later gate.</p>
+<h2 id="section-7">7. Acceptance register and execution order</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Existing/proposed status</th>
+<th>How to use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Independent release ≥1 simulated second</td>
+<td>Carried from prior plan</td>
+<td>Mandatory release observation after blade withdrawal; not total episode length.</td>
+</tr>
+<tr>
+<td>Mass discrepancy &lt;1%</td>
+<td>Prior proposed physical check</td>
+<td>Explain numerical accounting and any removed mass; no disappearing material shortcut.</td>
+</tr>
+<tr>
+<td>10 mm ±2 mm thickness</td>
+<td>Prior uniform-slice proposal</td>
+<td>Not directly applicable to the current curved end cap; use profile-relative error first.</td>
+</tr>
+<tr>
+<td>Remainder drift ≤5 mm / 5°</td>
+<td>Prior proposed benchmark target</td>
+<td>Validate feasible support/measurement definitions before freezing.</td>
+</tr>
+<tr>
+<td>Contact penetration ≤min(0.1 mm, 10% local blade thickness)</td>
+<td>Prior proposed contact target</td>
+<td>Confirm local thickness and reference accuracy; failure requires refinement/model review, not hidden tolerance changes.</td>
+</tr>
+<tr>
+<td>&lt;10% peak-force/work and &lt;1 mm profile change on refinement</td>
+<td>Prior proposed convergence targets</td>
+<td>Compare finest levels, include absolute floors and investigate nonmonotone results.</td>
+</tr>
+<tr>
+<td>Whole-system energy residual</td>
+<td>Not yet frozen</td>
+<td>Derive a discrete ledger including actuators, supports, friction and numerical dissipation. The tensile fixture's 1% gate is not automatically transferable.</td>
+</tr>
+<tr>
+<td>Force/torque, sensor and crushing limits</td>
+<td>Hardware/measurement inputs missing</td>
+<td>Version explicit synthetic simulation bounds; do not assert hardware-safe values.</td>
+</tr>
+<tr>
+<td>Knife–left-hand clearance 20 mm</td>
+<td>Prior simulation proposal</td>
+<td>Include uncertainty and stopping distance; verify reachability before freezing.</td>
+</tr>
+<tr>
+<td>3 seeds, 30 cases, 90% success</td>
+<td>Initial study proposals</td>
+<td>Report uncertainty; increase sample size for the intended claim.</td>
+</tr>
+</tbody>
+</table>
+<p>Execution dependency: <strong>P0 contract → P1 mechanics and P2 sustained scene → 23A/B mounted contact → 23C short cut → 24 release → 25 convergence → 26 archive plus loaded reset → 27 support → 28 coordination → 29 dual-arm baseline → 30/31 environment → 32 pilot.</strong> P3 profiling runs early and is revisited after integration. Offline design for later stages can proceed before earlier experiments pass; later claims cannot.</p>
+<p>The next implementation work should start with P0 and a minimal nonfracturing mounted-contact case while resolving P1/P2, not a deep cut or a training launch. No clarification is needed to begin that work under the current simulation scope. Hardware sensor details, experimental specimens and uniform-slice requirements become necessary only when those specific branches are taken.</p>
+<h2 id="section-8">8. Reproduction and evidence locations</h2>
+<p>Engineering root: <code>/home/omen/teamwork_projects/tomato_cutting_right_arm</code>.</p>
+<p>Handoff outputs: <code>/home/omen/Documents/Codex/2026-10-31/tomato-project-handoff/outputs</code>.</p>
+<p>Key reviewed reports: <code>physics-materials-integration-20261101.txt/.json</code>, <code>fixed-mount-robot-scene-20261101.txt/.json</code>, <code>analytic-force-reference-recheck-20261031.txt</code>, <code>dynamic-proxy-momentum-work-check-20261031.txt</code>, <code>native-contact-buffer-roundtrip-20261031.txt</code>, and <code>isaac-startup-verification-20261031.txt</code> in the outputs folder.</p>
+<p>Key raw runs beneath the engineering root: <code>runs/native/full_model_20261101_07</code>, <code>full_damage_20261101_06</code>, <code>full_blade_20261101_08</code>, and <code>fixed_mount_20261101_06</code>. Source boundaries: <code>rl/tomato_native_full_model.py:93</code>, <code>rl/tomato_native_volume_steps.py:34</code>, <code>rl/tomato_fixed_mount_target.py:30</code>, and <code>rl/tomato_fixed_mount_worker.py:153</code>.</p>
+<p>New review evidence: <code>milestone-evidence-audit-20261102.json</code>. Primary TRO24 and DiSECt manuscripts were retrieved from the authors/arXiv and text-inspected locally because the browser text service rejected their file sizes; source PDFs and extracted text are in <code>work/review_20261102</code>. No synced files under the ChatGPT project's <code>sources/</code> directory were edited.</p>
+</article></div><footer>Prepared from saved project evidence and primary research. Proposed gates are distinguished from completed tests.</footer></body></html>

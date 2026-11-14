@@ -1,0 +1,10 @@
+from pathlib import Path
+import sys,json,numpy as np
+W=Path(__file__).resolve().parents[1];sys.path.insert(0,str(W/'src'))
+from reference import block,stencil,Reference
+from contact_geometry import Cells
+from scipy.sparse import coo_matrix
+X=block(8,.0015);ids,w,g,grid=stencil(X,.003);A=coo_matrix((w.ravel(),(np.repeat(np.arange(len(X)),27),ids.ravel())),shape=(len(X),len(grid))).toarray();U,s,Vt=np.linalg.svd(A,full_matrices=False);rank=int((s>s[0]*1e-12).sum());basis=U[:,:rank];loaded=np.exp(-((X[:,0]/.0008)**2+((X[:,1]-.006)/.0015)**2));null=loaded-basis@(basis.T@loaded);null*=.02/max(abs(null));velocity=np.zeros_like(X);velocity[:,1]=-null
+ref=Reference(X,spacing=.0015,h=.003);ref.v=velocity.copy();dt=1.25e-5;ref.step(dt);cells=Cells(X,np.zeros(len(X),int));grad=(2*cells.bits-1)/(4*cells.spacing);Fg=np.einsum('nki,kj->nij',cells.corners(ref.x),grad)
+out={'scope':'Independent double-precision null-mode diagnostic, one physical-size 12.5us step; no topology or parameter changes','particles':len(X),'grid_nodes':len(grid),'transfer_rank':rank,'particle_null_dimensions':len(X)-rank,'contact_like_load_unrepresented_fraction':float(np.linalg.norm(loaded-basis@(basis.T@loaded))/np.linalg.norm(loaded)),'max_null_speed_m_s':float(np.linalg.norm(velocity,axis=1).max()),'mapped_grid_momentum_norm_before_mass':float(np.linalg.norm(A.T@velocity)),'max_particle_motion_m':float(np.linalg.norm(ref.x-X,axis=1).max()),'max_stored_F_change':float(np.linalg.norm(ref.F-np.eye(3),axis=(1,2)).max()),'max_reconstructed_F_change':float(np.linalg.norm(Fg-np.eye(3),axis=(1,2)).max()),'relative_velocity_change':float(np.linalg.norm(ref.v-velocity)/np.linalg.norm(velocity)),'conclusion':'A nonrigid particle-velocity mode can move the declared material geometry while remaining invisible to the stored constitutive strain. Contact may excite this mode. Smaller timesteps or finer contact quadrature do not remove the transfer nullspace.'}
+np.savez_compressed(W/'reports/null_mode_state.npz',X=X,v=velocity,x=ref.x,F_stored=ref.F,F_geometry=Fg);(W/'reports/null_mode_diagnosis.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))

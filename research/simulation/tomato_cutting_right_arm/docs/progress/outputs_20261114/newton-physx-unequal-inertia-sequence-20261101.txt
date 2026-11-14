@@ -1,0 +1,38 @@
+Newton–CPU PhysX repeated unequal-inertia contact — 1 November 2026
+
+PASS for 32 consecutive near-origin half-step contact exchanges in each of two isolated analytic particle/box fixtures. Checklist item 15 remains open for broader coupling qualification. Earlier far-origin precision failures remain preserved.
+
+The identity and obliquely rotated/offset-COM fixtures both began at actor origin (0,0,0) with zero initial velocities. Their PhysX collisions were disabled, so overlap did not couple the two fixtures. The second body used a 60-degree rotation about normalized (1,2,3) and local COM (0.002,-0.001,0.0005) m. Each had a 0.01 kg Newton particle initially at body-local (0.004,0.003,0.001) m and a 0.02 kg PhysX box whose top was local z=0.002 m. Synthetic principal moments were explicitly specified/read back as (0.0001,0.0002,0.00025) kg m². They are diagnostic mass properties, not a claim about the inertia of the displayed geometry. Gyroscopic forces were enabled and read back.
+
+Exactly 64 Newton steps and 32 shared CPU PhysX steps ran at dt=1/2400 s, for 0.0133333 seconds per fixture. The same models, solvers, pair of states, collision pipelines and contact buffers were reused. Every interval copied PhysX link pose/world COM twist into both Newton body states exactly, regenerated contacts, solved the particle against a frozen proxy for 16 iterations, collected the native contact reaction from actual solver caches, applied the world force/COM torque once with positions=None, stepped PhysX, copied state back exactly and swapped soft states. The isolated reaction collector uses the same 1/2400 s step as the solve. Contact stiffness was the native fixed cache 1750 N/m; damping, friction, radius/margin and gravity were zero. TGS used 16 force substeps and zero velocity iterations.
+
+Each fixture generated eight active contacts, then separated naturally and coasted for 24 intervals. No new wrench was queued after contact cleared. Both instantaneous and permanent composers remained inactive, linear velocity stayed constant, and spin/angular momentum followed the unequal-inertia reference within the declared short-step limits. Fresh normals matched the evolving body orientation; projected points, force directions and torque lever arms were checked every active interval. Contact did not reappear.
+
+The independent soft reference uses the current frozen top-plane pose and incoming particle velocity. Rigid reference acceleration transforms torque and the gyroscopic term with the initial world inertia tensor for each short interval, then uses the declared TGS force schedule and sequential quaternion increments. This is a small-spin, short-interval approximation, not a claim to reproduce PhysX's complete anisotropic integrator. Both per-step response and a full reference trajectory from the initial state were checked. Body spin angular momentum was computed with the updated world inertia tensor, not scalar inertia times angular velocity. Linear and angular impulses were accumulated from actual force/torque samples; the total orbital-plus-spin increment includes the known TGS translation splitting correction. General contact work/energy was not qualified by this step.
+
+Maximum errors across both fixtures:
+  force_error_n: 1.52313797e-06
+  torque_error_nm: 7.76480923e-09
+  point_error_m: 1.71021401e-09
+  linear_velocity_error_m_s: 1.1196401e-07
+  angular_velocity_error_rad_s: 1.93135045e-07
+  position_error_m: 2.0086856e-09
+  particle_velocity_error_m_s: 7.77747198e-07
+  rotation_error_rad: 6.76445195e-08
+  trajectory_position_error_m: 2.55595126e-08
+  trajectory_particle_velocity_error_m_s: 1.82634108e-06
+  trajectory_angular_velocity_error_rad_s: 1.47945199e-06
+  trajectory_rotation_error_rad: 5.94932291e-07
+  cumulative_linear_impulse_error_ns: 1.90109616e-08
+  cumulative_angular_impulse_error_nms: 2.50904224e-10
+  angular_balance_error_kg_m2_s: 4.68199285e-11
+
+Fixture coverage:
+  identity_turning: 8 contact steps, 24 coast steps; active-contact normal change 0.000209930268.
+  rotated_offset_com_turning: 8 contact steps, 24 coast steps; active-contact normal change 0.000240088755.
+
+Retained gates: force 2e-5 N, COM torque 2e-7 N m, contact point and particle/COM/trajectory position 1e-7 m, particle/COM velocity 2e-5 m/s, angular velocity 2e-6 rad/s, orientation 1e-6 rad, accumulated linear impulse 2e-7 N s, angular impulse/balance 2e-8 N m s. No tolerances were relaxed. Three focused independent-reference/guard-contract tests and nine existing supervisor tests pass, including the isotropic limit and exact bounded step counts.
+
+The protected worker completed in 10.64 seconds, retaining at least 24.89 GB available RAM and 7.41 GB free GPU memory. There were no resource warnings or monitor errors and no owned live processes remained. Source snapshots/hashes were saved. Original frozen project inputs and pinned installed dependencies remain unchanged.
+
+Next bounded step: inspect and validate the force-transfer interface for a simple one-joint articulated proxy before applying it to a robot. Constraint reactions and joint dynamics require different balance checks from a free body. Full articulated robot coupling, general contact energy, broader coordinate accuracy, reset of material history, long-run stability, cutting material and the real blade's collision-generated contact backend remain unvalidated. No robot or real blade was loaded.

@@ -1,0 +1,48 @@
+ASTRA REVIEW: LARGE EFFORT DISCREPANCY IDENTIFIED — 2 November 2026
+
+Result
+The approximately11.2Nm discrepancy is explained by a missing descendant-feedforward contribution in the CPU TGS joint-force readout path used by this project. An additive OFFLINE observation reconstruction reproduces that contribution from physical parameters and commanded joint efforts, without fitting a coefficient or altering simulation physics. The original full moving force/work qualification remains open because residual precision still matters at the project's very small contact-work scale.
+
+Why Sol's earlier investigation stalled
+The measured projected effort and projected incoming wrench are two views of the same backend result. Their agreement verifies mapping, but cannot establish that the backend result contains every contribution. The discrepancy is not explained by local rotor inertia or a change of joint moment origin. Looking only at one joint misses a contribution propagated from its descendants.
+
+Source-backed mechanism
+The installed tensor extension is110.3.2. The public matching release-family source110.3-omni-and-physx-5.9.1 explicitly passes a null joint-force pointer when external forces are applied on every TGS iteration. Consequently the cached articulated internal bias omits the descendant feedforward torque contribution. Feedforward still acts in the TGS substep force path. The incoming-joint-force query subsequently combines the cached articulated inertia/bias with the solver's accelerations and impulses. The omitted bias is not restored by that query.
+
+Relevant immutable release sources:
+https://github.com/NVIDIA-Omniverse/PhysX/blob/110.3-omni-and-physx-5.9.1/physx/source/lowleveldynamics/src/DyFeatherstoneForwardDynamic.cpp#L1452
+https://github.com/NVIDIA-Omniverse/PhysX/blob/110.3-omni-and-physx-5.9.1/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp#L433
+The downloaded source hashes are recorded in source_provenance.json. A matching release family is not a proof of installed binary identity; independent reproduction of the predicted missing term in the installed recordings supplies the behavioral evidence.
+
+Reconstruction
+Use a backward articulated-body recursion in physical body order. At each revolute joint, U=IA*S and d=S^T*IA*S+A, where A is its measured armature. Propagate the reduced inertia IA-U*U^T/d and the incremental feedforward bias b+U*(tau_ff-S^T*b)/d into the parent, with the correct spatial-force transform. Starting from zero local bias isolates only the contribution of explicit joint efforts. At a given link, the accumulated bias is the contribution of its descendants; leaf correction is zero. Transport this spatial bias into the reported child-joint frame and ADD it to the raw incoming wrench. The operation changes observation data only.
+
+Projection gives the reconstructed active-axis joint load. Local A*delta_qdot/dt is accounted separately when comparing against total known generalized input in the zero-drive controls. This comparison still requires the actual passive-constraint/limit/friction conditions; it is not a universal motor-torque sensor formula. Current runtime joint friction values captured in the diagnostic are zero. The reconstruction is limited to this evidenced fixed-base, revolute/fixed tree with CPU TGS and external forces every iteration. It must not be applied blindly to PGS, GPU backends, changed actuator paths or other articulation types.
+
+Evidence and checks
+1. Independent subtree gravity moments from saved masses/poses agree with the gravity compensation command. The raw incoming force on the almost stationary left-arm joint2 carried about60.19N vertically where its subtree weight is79.94N. This exposed a readout inconsistency before choosing an energy quadrature.
+2. On the first stationary-left-arm record, the independently predicted missing descendant moment is-11.20458723Nm, compared with the observed gravity-minus-readout gap-11.20458984Nm. No fit or threshold adjustment was used.
+3. Across all120recorded corrected-controller intervals, the maximum stationary-left-arm mismatch drops from11.20458984Nm to4.84251e-6Nm. This comparison is a static consistency check, not proof of the complete moving ledger.
+4. Separate pre-existing zero-implicit-drive moving records supply22held-out intervals with known commanded efforts, including feedback, no-feedback and a partial replay. Maximum arm torque mismatch drops from11.20461653Nm to0.000360404Nm. These older runs retain their historical failure/partial status; usable raw intervals do not make their full runs pass.
+5. Against the SAME midpoint-velocity known-input work estimator, the no-feedback accumulated error drops from30.5082microjoules to-38.2546picojoules; feedback from30.5080microjoules to154.9174picojoules; partial replay from22.8811microjoules to131.6918picojoules. These comparisons validate removal of the large systematic offset. They do not prove the estimator equals continuous physical motor work or satisfy the original stricter coupled-work budgets.
+6. Operator checks pass: exact zero-feedforward identity, linearity, zero descendant correction at leaves and rigid-world-frame covariance (maximum discrepancy2.13e-14 in respective wrench units). Data/source hashes and full results are saved.
+
+Native diagnostic failure preserved
+One new protected invocation attempted three equivalent-equilibrium torque-source splits. It stopped after the FIRST case:24executed steps plus3monitor steps,5.366seconds wall, no remaining owned processes. The zero-feedforward drive-offset control exceeded its predeclared static bounds: arm drift0.000100252rad versus0.0001rad and speed0.00153969rad/s versus0.001rad/s. The remaining two controls were NOT run, and the diagnostic is FAILED. Its valid physical-parameter capture and raw records were preserved; it is not described as a successful three-way comparison. No retry, relaxed bound or production controller change followed. The source derivation and offline held-out checks above provide the actual resolution evidence.
+
+Current controller trace
+Reconstructed generalized-effort times midpoint velocity sums to0.006817095J over the saved0.5s trace, compared with raw0.009524432J and feedforward-only0.006837032J. The reconstructed value is a DESCRIPTIVE candidate with stated measurement limits, not a newly qualified motor-work result. The difference from feedforward can include drive/constraint effects; do not assign all of it to a single dissipative mechanism.
+
+What is resolved and what remains
+RESOLVED: a concrete source-backed explanation and tested offline reconstruction for the large torque/readout discrepancy. There is no reason to keep repeating captures simply to explain the11Nm offset.
+OPEN: whether reconstructed work has sufficient independently demonstrated precision for the original full moving-contact gate, as well as the remaining whole-system energy terms and near-contact motion bounds. A residual up to155picojoules in the held-out known-input estimator prevents declaring the old strict gate closed. Historical force/work failures are unchanged.
+
+Next action under Astra's original plan
+Use this versioned reconstruction in the OFFLINE motor-work evaluator, retaining raw and reconstructed channels side by side. First compare the residual and temporal-discretization uncertainty with the prospective contact-work signal and unchanged existing limits. A new native experiment is justified only if its frozen protocol can distinguish the remaining precision/ledger terms and has a credible chance of meeting those limits. Do not repeat the successful dry motion or restart the broad damping/solver search. Do not replace full work qualification with a reduced-scope touch demonstration: the user rejected that option. No contact, fracture, training or video is authorized by this result.
+
+Files
+rl/tomato_tgs_feedforward_readback.py — additive offline reconstruction; no frozen worker edited
+work/astra_effort_resolution_20261102/verification01/measurements.json — operator/current/held-out results
+work/astra_effort_resolution_20261102/verify_resolution.py — reproducible offline evaluator
+work/astra_effort_resolution_20261102/source_provenance.json — matching release sources and hashes
+runs/native/effort_split_20261102_01 — failed bounded diagnostic and physical-parameter capture

@@ -1,0 +1,99 @@
+REVIEWED CHECKLIST — 2 November 2026
+18 scoped passes; 3 partial milestones; 1 experimental hold; 10 upcoming.
+Full plan: research-roadmap-review-20261102.html
+
+01. [done] Confirm upgraded RAM and available GPU memory.
+
+
+02. [done] Add memory monitoring, bounded runtime and clean shutdown.
+
+
+03. [done] Launch Isaac Sim and complete the empty-scene startup check.
+
+
+04. [done] Run isolated blade/coupon initial and stationary checks.
+
+
+05. [done] Check blade distances/normals using precise reference queries.
+
+
+06. [done] Define contact coordinates, signs, weights and margin rules.
+
+
+07. [done] Build and check the contact snapshot adapter.
+
+
+08. [done] Verify actual native contact-buffer capture and overflow guards.
+
+
+09. [done] Generate and verify particle/edge/face contacts on an analytic box.
+
+
+10. [done] Check translated/rotated contact-record coordinates on that box.
+
+
+11. [done] Resolve force precision with separate geometry and arithmetic checks.
+Six native analytic fixtures pass under reference version 2. Historical combined gate remains failed and preserved.
+
+12. [done] Qualify the real blade's full-surface contact path.
+Authored-blade contact passes on the full tomato mesh, including force transfer, exact replay and clearing. Longer cuts remain unqualified.
+
+13. [done] Verify particle/edge/face force distribution in stationary fixtures.
+Six native fixtures pass force and diagonal-stiffness scatter, color gating, spectator and algebraic reaction/moment checks. No integration.
+
+14. [done] Check dynamic momentum and work on minimal analytic fixtures.
+Two fresh one-step native fixtures pass: free particle/box recoil, momentum, impulse, discrete work/energy and clear control. Newton-internal coupling only.
+
+15. [done] Implement and validate Newton–Isaac/PhysX two-way coupling.
+Component pass: full-mesh exchange with a free probe/authored blade and articulated proxy checks. Actual mounted-robot feedback is still required under 23B.
+
+16. [open] Resolve the cohesive material solver/operator needed for cutting.
+Partial after review: prescribed tensile tests pass. Cutting still needs a moving material frame, supported mixed loading and full-fruit reclosure/contact.
+
+17. [open] Validate material response against chosen reference measurements.
+Pending at your request. The published curve is a provisional reference; independent measurements are still needed.
+
+18. [done] Verify damage, separation and post-cut contact on a small coupon.
+Small interface and solid coupons pass damage, separation, reclosure and replay. Whole-fruit post-cut behavior remains unqualified.
+
+19. [done] Verify robot, blade and target placement, units and coordinate frames.
+The original knife is mounted in a separate robot scene using SI units. The ideal fixed joint preserves the checked frames and adds no actuator joint.
+
+20. [open] Verify target restraint/grasp and collision settings.
+Partial after review: support and collision diagnostics pass. The target gravity probe covers 5 ms; full-duration settling, board contact and cutting-load support remain.
+
+21. [done] Check approach, cutting and retreat motions without target contact.
+Two 8-second offset dry cycles pass approach, stroke and retreat under robot gravity. Minimum blade/target gap is 34.4 mm; blade/board clearance is 6.01 mm.
+
+22. [open] Verify reset restores poses, velocities, contacts and material history.
+Partial after review: separate robot/material resets and 11,439-contact clearing pass. Reset after integrated, loaded cutting remains untested.
+
+23. [todo] Run a slow, short cut with force, penetration and work logging.
+After mechanics/support prerequisites: qualify the actual contact route and mounted robot feedback, then progressive short cuts with synchronized force/work logging.
+
+24. [todo] Verify meaningful separation without unstable or spurious forces.
+Verify complete mechanical disconnection, withdraw the blade and observe at least one second of independent motion with stable reclosure/board contact.
+
+25. [todo] Check repeatability and sensitivity to time step/contact resolution.
+Check fresh/reset repeatability; refine time step, quadrature, solver and mesh separately. Report force, work, release and end-cap profile sensitivity.
+
+26. [todo] Save a reproducible baseline scene, settings and results.
+Freeze the reproducible single-arm scene, controller, evaluator and traces; close the loaded post-cut reset gate.
+
+27. [todo] Integrate the second arm and its grasp/support role.
+Keep the right fixed mount; qualify contact-based left-hand support under measured cutting loads and remove hidden fixture support.
+
+28. [todo] Verify coordinated motion, mutual collisions and force transfer.
+Verify support handoff, synchronized force transfer, knife–hand clearance, disturbances and prechecked failure responses.
+
+29. [todo] Repeat the controlled cutting baseline with both arms.
+Repeat paired fixture-versus-left-support cuts with unchanged right controller, quality/load/slip metrics and reproducible reset.
+
+30. [todo] Finalize observations, actions, rewards and termination conditions.
+Bind the existing offline contracts to the qualified environment. Start with bounded draw/down residuals and verified observations; keep orientation locked.
+
+31. [todo] Validate repeated resets and scripted baseline episodes.
+Verify success/failure/abort resets, no history leakage, frozen train/development/test cases and measured rollout cost.
+
+32. [todo] Run a small training/evaluation pilot before longer experiments.
+Run a budgeted baseline-versus-residual pilot, multiple seeds and paired held-out cases; use uncertainty and compute cost to decide further experiments.

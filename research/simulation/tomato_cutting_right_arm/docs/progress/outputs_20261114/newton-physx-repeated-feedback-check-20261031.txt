@@ -1,0 +1,31 @@
+Newton–CPU PhysX repeated contact feedback — 31 October 2026
+
+PASS for 16 consecutive partitioned intervals in two persistent synthetic fixtures. Full checklist item 15 remains unfinished.
+
+The same particle/body states, Newton solver, contact pipeline and contact buffers were reused throughout each fixture. Contacts were regenerated before every Newton step. The contact fixture began with 1 mm penetration and separated naturally; the second fixture began clear and stayed still. No reset, teleport, impulse kick or forced separation was used. Each interval copied actual CPU PhysX pose and COM velocity exactly into both CUDA Newton body states, solved the soft particle with its proxy frozen, collected the actual native contact reaction, applied it once to PhysX, advanced PhysX, and copied the resulting rigid state back before swapping the Newton states.
+
+Exactly 32 Newton steps (two fixtures x 16 intervals) and 16 shared PhysX steps ran. dt=1/1200 s, total simulated duration=0.0133333 s per fixture. Particle/box masses were 0.01/0.02 kg; native contact stiffness was 1750 N/m, with zero radius/margin, gravity, damping and friction. Each Newton step used 16 iterations. CPU PhysX used TGS, explicitly specified/read-back 16 position substeps and zero velocity iterations, with force applied per substep. Local COM offsets and contact torque were zero.
+
+Four active contacts were generated in the contact fixture. Measured forces (N) were 1.56037152, 1.17729855, 0.63464999, 0.03386551. Contact count then changed from one to zero for all remaining 12 intervals. No new wrench was submitted on those clear intervals: the instantaneous and permanent composers were inactive and write_data_to_sim had to clear the previous backend force. Measured coast velocities and positions matched zero force. The simultaneous clear control had zero contact, zero force and zero motion throughout. No unexpected contact reappearance or transverse motion occurred.
+
+The independent reference includes nonzero incoming particle and rigid velocities, a unilateral soft contact solve against the frozen pose, and 16 constant-force PhysX substeps. It checks each measured increment and separately advances a full reference trajectory from the initial state. Momentum/impulse are checked per interval and against the accumulated delivered contact impulse. Work is compared against measured kinetic-energy change with the particle and TGS numerical losses accounted separately. The unilateral-potential correction also covers the interval that exits penetration; frozen-proxy splitting work is explicitly reported. Energy conservation is not expected from this stepping scheme.
+
+Maximum errors over both fixtures:
+  position_error_m: 2.48352687e-10
+  velocity_error_m_s: 2.68220901e-07
+  force_error_n: 1.2423816e-07
+  momentum_increment_error_kg_m_s: 2.68220895e-09
+  impulse_error_kg_m_s: 2.68220895e-09
+  work_identity_error_j: 7.61341453e-10
+  energy_identity_error_j: 7.61341453e-10
+  trajectory_position_error_m: 2.9340307e-09
+  trajectory_velocity_error_m_s: 3.32289253e-07
+  cumulative_impulse_error_kg_m_s: 3.9843131e-09
+
+Gates were unchanged from the one-interval test: position and accumulated trajectory 1e-7 m; velocity and accumulated velocity 2e-5 m/s; force 2e-5 N; per-interval/accumulated impulse and momentum 2e-7 kg m/s; work/energy identities 2e-8 J. Five sequence reference/guard-contract tests plus nine existing supervisor tests passed. Host controls reject a stale force on a clear interval and invalid inputs.
+
+Protected run duration was 6.61 s, retaining at least 22.56 GB available RAM and 7.48 GB free GPU memory. It exited normally with no live owned processes, no memory warning and no monitor errors. Source snapshots/hashes were saved; original frozen production inputs and the previously pinned installed dependencies remain unchanged.
+
+Scope: only a short head-on particle/analytic-box sequence. This does not validate long-run stability, rotated/nonzero-COM contact torque, articulated robot feedback, reset/history restoration, time-step sensitivity or the real blade's collision-generated full-surface path.
+
+Next bounded step: validate an off-centre contact reaction, including world torque about the COM and rotated/offset rigid frames. Keep item 15 in progress and item 12 open.

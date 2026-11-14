@@ -1,0 +1,25 @@
+{
+  "scope": "User-directed section 3 prerequisite study; keep section 2 speed gate failed/open. No tomato cutting, separation, robot motion, training or experimental-validation claims.",
+  "versions": "v05 and original production checkpoint6925 stay unchanged. Any material/contact correction is a separately identified model candidate, never a retroactive pass.",
+  "preflight": "Before a long hold, test material force under rigid rotations and superposed rotations using an independent double constitutive calculation. Require zero rest-force norm <=1e-9N and relative force-covariance error <=1e-8 with 1e-9N floor. A failure blocks dynamics with that constitutive candidate pending an explicit correction decision.",
+  "settling_if_preflight_passes": {
+    "method": "Accurate slower v05 IMEX route; not the rejected fast graph prototype",
+    "duration_s": 1.0,
+    "dt_max_s": 1.4925373134328359e-05,
+    "wall_cap_s": 900,
+    "sample_s": 0.001,
+    "minimum_sampled_volume_ratio": 0.1,
+    "maximum_board_penetration_m": 0.0001,
+    "maximum_fixed_error_m": 1e-07,
+    "final_point_1s_speed_max_m_s": 0.001,
+    "linear_true_residual_max": 1e-09,
+    "conditional_refinement": "Only if stable and settled, refine dt once for the full hold; position <=0.1mm, material force and support reaction <=5% with declared1e-6N floor. Neither hold qualifies fracture or blade contact."
+  },
+  "independent_preparation": "Offline audit of finite-board placement, exact original blade geometry, cut topology and per-step fracture-law time dependence may proceed while a prerequisite blocks dynamics. Such work is not a dynamic contact or prepared-assembly pass.",
+  "contact_gate": "No indentation unless settled supported target and checked original-blade contact adapter exist. Do not silently substitute analytic SDF, delete ties, retune viscosity or change original skin/cohesion calibration claims.",
+  "stopping": "Report each of five checks as verified, failed, untested or decision-blocked. Ask only for a genuine material-law/representation decision. Preserve all failures.",
+  "approved_material_correction": {
+    "formula": "Ic=sum(F_ij^2) over all9 entries, per Smith/deGoes/Kim. Preserve diagonal-only failure separately.",
+    "requalification": "Independent energy-force directional derivatives, static rigid rotation, force covariance, prior translation/freefall/oscillator/reset and small-signal controls, new corrected-law20ms explicit/refined/IMEX comparison under the original0.1mm/5% limits before a long hold. Do not reuse old-law dynamics as the accuracy reference."
+  }
+}

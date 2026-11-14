@@ -1,0 +1,86 @@
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+{
+  "scope": "forward intact-bulk numerical controls only",
+  "setup_and_compile_wall_s": 0.2675598200003151,
+  "rest_force": {
+    "cuda_norm_N": 1.7726731886673377e-15,
+    "numpy_norm_N": 7.62283311051405e-15,
+    "difference_N": 7.545270467090748e-15
+  },
+  "independent_constitutive": {
+    "reference_norm_N": 0.0318515030969029,
+    "error_N": 7.648923239053585e-15,
+    "relative_error": 2.401432427155167e-13,
+    "passed": true
+  },
+  "small_force_controls": [
+    {
+      "strain_rate_s_inv": 1e-06,
+      "reference_norm_N": 1.1020590027067551e-08,
+      "error_N": 7.554673786420781e-16,
+      "relative_error": 6.855053829119702e-08,
+      "power_W": -1.45504102107593e-14,
+      "passed": true
+    },
+    {
+      "strain_rate_s_inv": 0.0001,
+      "reference_norm_N": 1.1020590024579784e-06,
+      "error_N": 7.508777024965637e-16,
+      "relative_error": 6.8134074566048e-10,
+      "power_W": -1.4550410210759305e-10,
+      "passed": true
+    },
+    {
+      "strain_rate_s_inv": 0.01,
+      "reference_norm_N": 0.00011020590024537638,
+      "error_N": 7.497347728056716e-16,
+      "relative_error": 6.803036599096483e-12,
+      "power_W": -1.4550410210759305e-06,
+      "passed": true
+    },
+    {
+      "strain_rate_s_inv": 1.0,
+      "reference_norm_N": 0.011020590024537482,
+      "error_N": 7.547465934266477e-16,
+      "relative_error": 6.848513480187494e-14,
+      "power_W": -0.014550410210759302,
+      "passed": true
+    }
+  ],
+  "common_translation_nullspace": {
+    "norm_N": 0.0,
+    "passed": true
+  },
+  "translation_integration": {
+    "steps": 100000,
+    "dt_s": 1.5e-07,
+    "sim_s": 0.015,
+    "position_error_m": 5.189737528610294e-13,
+    "velocity_error_m_s": 0.0,
+    "fixed_error_m": 0.0,
+    "passed": true
+  },
+  "freefall_integration": {
+    "position_error_m": 1.103248231659748e-08,
+    "velocity_error_m_s": 1.9884094371036554e-13,
+    "expected_euler_position_error_m": 1.1032481249999998e-08,
+    "passed": true
+  },
+  "analytic_oscillator": {
+    "position_error_m": 4.1138267851590325e-08,
+    "velocity_error_m_s": 8.825425498824174e-08,
+    "passed": true
+  },
+  "reset": {
+    "repeat_max_error": 6.776263578034403e-21,
+    "fresh_max_error": 0.0,
+    "cleared_guess": true,
+    "passed": true
+  },
+  "peak_rss_kib": 1046888,
+  "peak_torch_allocated_bytes": 35621888,
+  "elapsed_wall_s": 1.1040906050038757,
+  "passed": true
+}

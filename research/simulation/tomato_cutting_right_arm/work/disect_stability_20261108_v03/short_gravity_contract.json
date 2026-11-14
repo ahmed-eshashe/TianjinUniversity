@@ -1,0 +1,25 @@
+{
+  "condition": "Run only if damping_kernel_check passes <0.1% norm difference",
+  "prediction": "Old step violates estimated explicit damping stability limit; same model at 2e-7 s should remain finite over short run",
+  "dt_s": 2e-07,
+  "sim_duration_s": 0.02,
+  "steps": 100000,
+  "process_cap_s": 300,
+  "expected_stepping_wall_s": 32,
+  "constants_unchanged": [
+    "E/nu",
+    "density/mass",
+    "mesh",
+    "bulk damping10",
+    "ground/support",
+    "force kernels"
+  ],
+  "gates": [
+    "all samples finite",
+    "volume ratios >0.1",
+    "penetration <=0.1mm",
+    "fixed error <=0.1micrometre"
+  ],
+  "not_tested": "1-second settling, cut assembly, contact, fracture or numerical convergence",
+  "decision_after_run": "Report whether stability hypothesis supported and measured cost; no further physical runs in this diagnostic"
+}

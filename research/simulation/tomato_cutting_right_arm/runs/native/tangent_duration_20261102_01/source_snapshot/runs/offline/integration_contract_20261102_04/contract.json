@@ -1,0 +1,329 @@
+{
+  "version": "integration-0.4",
+  "date": "2026-11-02",
+  "status": "active_for_bounded_GN_preconditioned_LBFGS_nonfracturing_diagnostics_only",
+  "scope": "Numerical simulation; no hardware safety or experimental tomato accuracy claim",
+  "geometry": {
+    "benchmark": "curved nominal 10 mm end cap",
+    "cut_x_m": -0.0225,
+    "target_world_shift_m": [
+      0,
+      0,
+      0.002
+    ],
+    "uniform_slice": false,
+    "quality_metric": "released cap versus reference curved thickness profile, not uniform thickness",
+    "reference_profile_m": [
+      0.010000000000000002,
+      0.007783362981000002,
+      0.007783362981000002,
+      0.007783362981000002,
+      0.007783362981000002
+    ],
+    "sample_yz_reference_m": [
+      [
+        0.0,
+        0.027500000000000004
+      ],
+      [
+        0.011726039399558574,
+        0.027500000000000004
+      ],
+      [
+        -0.011726039399558574,
+        0.027500000000000004
+      ],
+      [
+        0.0,
+        0.03742203333808802
+      ],
+      [
+        0.0,
+        0.01757796666191198
+      ]
+    ],
+    "shape_evaluator": "Area-weighted proper rigid registration of corresponding cap surface nodes, no scaling or deformable fit; compare five X-ray cut-to-exterior thicknesses in registered reference coordinates. Missing/multiple surface intersections invalidate the metric.",
+    "pose_metric": "Report the rigid registration separately; cap shape registration must not conceal remainder drift or blade-relative displacement."
+  },
+  "mount": "existing ideal fixed right mount",
+  "experimental_validation": "pending at user request",
+  "mechanics": {
+    "production_law": "preserve existing tensile-qualified model; extensions versioned separately",
+    "fracture_enabled_in_mounted_test": false,
+    "self_contact_status": "whole-fruit combined volume/self-contact not yet qualified",
+    "candidate": "Versioned moving-frame mixed-mode cohesive law, explicit unilateral full-surface contact, unchanged bulk spring/barrier parameters, checked actual-stored volume updates. Component verification does not qualify sustained dynamics.",
+    "production_original_preserved": true
+  },
+  "mounted_coupon": {
+    "dt_s": 0.0004166666666666667,
+    "intervals_per_case": 4,
+    "cases": [
+      "passive_no_feedback",
+      "passive_feedback",
+      "passive_replay",
+      "driven_no_feedback",
+      "driven_feedback",
+      "clear"
+    ],
+    "particle_mass_kg": 0.001,
+    "spring_stiffness_n_m": 1000.0,
+    "contact_pressure_n_m3": 1750000000.0,
+    "initial_penetration_m": 5e-05,
+    "gravity_m_s2": [
+      0,
+      0,
+      0
+    ],
+    "friction": 0.0,
+    "damping": 0.0,
+    "gates": {
+      "force_ceiling_n": 10.0,
+      "particle_impulse_error_ns": 2e-07,
+      "wrench_balance_n": 1e-05,
+      "moment_balance_nm": 2e-06,
+      "frame_echo_m": 1e-07,
+      "reset_joint_rad": 1e-07,
+      "replay_position_m": 1e-07,
+      "replay_velocity_m_s": 2e-05,
+      "robot_response_min_rad_s": 1e-07,
+      "virtual_response_min": 0.0,
+      "maximum_penetration_m": 0.0001
+    },
+    "gate_provenance": "Synthetic diagnostic engineering bounds fixed before execution; impulse/replay bounds carried from qualified short exchange. Not physical safe loads."
+  },
+  "sustained_support": {
+    "dt_s": 0.0004166666666666667,
+    "minimum_duration_s": 10.0,
+    "fixture": "saved 25-node remainder fixture",
+    "slice_pinned": false,
+    "gravity_m_s2": [
+      0,
+      0,
+      -9.81
+    ],
+    "settling_speed_m_s": 0.001,
+    "settling_window_s": 1.0,
+    "board_max_penetration_m": 0.0001,
+    "gate_provenance": "proposed engineering criteria; feasibility must be tested, no retuning after observing a failure"
+  },
+  "release_later": {
+    "minimum_blade_absent_observation_s": 1.0,
+    "all_material_links_removed": true,
+    "material_components": 2
+  },
+  "missing_physical_inputs": [
+    "measured material and friction",
+    "wrist channels and latency",
+    "hardware force/torque limits",
+    "bruise/crush limits"
+  ],
+  "source_sha256": {
+    "runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+    "runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "docs/rl/slicing_criteria.json": "d42ffb898ddca047000df612e6f4e7c273b77cc7cf11d8c1d0502a843ee79100",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_01/contract.json": "822f9ccd133382b8b8ac7763974a2d730f6b2d84841e5a4a8ed705433d4f6fee",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_plan.json": "4e563bb1b49b9e53573891b9718a22b33f9a4b0b0424626b945995d979cef036",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/benchmark_geometry_20261102_01/measurements.json": "47e77784c70ce6bf2fa1e5361e6a5bcc1395dafb32c43497a5b730766eb74f52",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json": "2af92da3d2ea59c14e3b1cdd918283937d037ba55cb89a9da44b928fe7493b23",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_benchmark_metrics.py": "e57a5bb079dbaf12f45f3cb20769f5557d84fd44c8c431c031ffcdf67a8b964c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/integration_20261102/freeze_benchmark_contract_v02.py": "26409fe0d203f5651e756d9a9a282760586856921bd6a40b6355e16fea0724c7",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_02/contract.json": "6af58f8c7dbb3302a04e06535be4b8efc650c3a74ce439314cb6f71739569251",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_frame.py": "8ce4ba6b143897bb86b82ea115f74467037a2f45b7c0791a4c571670347b1e7a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_frame_ledger.py": "3d8f68fe1848e20cae74d8676bc7fcea8ccd542c1f6041fc91aafcf332736ee0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/local_frame_20261102_01/local_frame_measurements.json": "bbfcd89152e0bf12418d3fb1502f534ef3bc477dc7b1ed166cc84419d7e7b3c1",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_03/contract.json": "9d018779b10820e4e9f0b1f681bb3fdf4fa45e7a7552301ab81752a7b3ad400c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_global_lbfgs.py": "cf142f8178c3a98109aa8e353e03456e7f96b32ad3b5ec3e7ae5da18b9afc2a4",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_lbfgs_preflight_worker.py": "eb97128a83839446af5fd8ecd6d4379b708395e1825444ae0776c7d86616c8b6"
+  },
+  "parent_contract": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/integration_contract_20261102_03/contract.json",
+  "registered_inputs": {
+    "mesh_nodes": 4032,
+    "cut_patches": 47,
+    "cut_surface_triangles_per_side": 448,
+    "fixture_node_ids": [
+      916,
+      917,
+      921,
+      922,
+      923,
+      928,
+      929,
+      930,
+      935,
+      936,
+      937,
+      942,
+      943,
+      944,
+      949,
+      950,
+      951,
+      956,
+      957,
+      962,
+      965,
+      968,
+      969,
+      973,
+      976
+    ],
+    "knife_mass_kg": 0.25,
+    "knife_scene": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01/fixed_mount_scene.usda",
+    "mount_hand_from_knife": [
+      [
+        -0.1526914100434704,
+        -0.9882722079936777,
+        0.001837445574597624,
+        0.1426623324480551
+      ],
+      [
+        -0.7208957422779673,
+        0.11010866374180443,
+        -0.6842407550961093,
+        -0.07827216414755789
+      ],
+      [
+        0.6760138031611754,
+        -0.10580229239622842,
+        -0.7292538740790259,
+        0.1409758321793664
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "bracket_mass_kg": 0.0,
+    "robot_home_rad": {
+      "left_AR5_5_07L_W4C4A2_joint_1": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_2": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_3": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_4": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_5": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_6": 0.0,
+      "left_AR5_5_07L_W4C4A2_joint_7": 0.0,
+      "left_lh_thumb_cmc_yaw": 0.0,
+      "left_lh_thumb_cmc_pitch": 0.0,
+      "left_lh_thumb_ip": 0.0,
+      "left_lh_index_mcp_pitch": 0.0,
+      "left_lh_index_dip": 0.0,
+      "left_lh_middle_mcp_pitch": 0.0,
+      "left_lh_middle_dip": 0.0,
+      "left_lh_ring_mcp_pitch": 0.0,
+      "left_lh_ring_dip": 0.0,
+      "left_lh_pinky_mcp_pitch": 0.0,
+      "left_lh_pinky_dip": 0.0,
+      "right_AR5_5_07R_W4C4A2_joint_1": -0.7384778199264214,
+      "right_AR5_5_07R_W4C4A2_joint_2": -1.4951815551823568,
+      "right_AR5_5_07R_W4C4A2_joint_3": 1.044223841023167,
+      "right_AR5_5_07R_W4C4A2_joint_4": 1.3985230173815075,
+      "right_AR5_5_07R_W4C4A2_joint_5": -0.9978099453104773,
+      "right_AR5_5_07R_W4C4A2_joint_6": 0.19669422833290084,
+      "right_AR5_5_07R_W4C4A2_joint_7": 0.4273492454266195,
+      "right_rh_thumb_cmc_yaw": 0.0,
+      "right_rh_thumb_cmc_pitch": 0.0,
+      "right_rh_thumb_ip": 0.0,
+      "right_rh_index_mcp_pitch": 0.0,
+      "right_rh_index_dip": 0.0,
+      "right_rh_middle_mcp_pitch": 0.0,
+      "right_rh_middle_dip": 0.0,
+      "right_rh_ring_mcp_pitch": 0.0,
+      "right_rh_ring_dip": 0.0,
+      "right_rh_pinky_mcp_pitch": 0.0,
+      "right_rh_pinky_dip": 0.0
+    },
+    "right_joint_names": [
+      "right_AR5_5_07R_W4C4A2_joint_1",
+      "right_AR5_5_07R_W4C4A2_joint_2",
+      "right_AR5_5_07R_W4C4A2_joint_3",
+      "right_AR5_5_07R_W4C4A2_joint_4",
+      "right_AR5_5_07R_W4C4A2_joint_5",
+      "right_AR5_5_07R_W4C4A2_joint_6",
+      "right_AR5_5_07R_W4C4A2_joint_7"
+    ],
+    "knife_rotation": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "coordinates": "Saved metre-scale blade-local CAD, actual PhysX link world pose xyzw; tool wrench expressed in world coordinates about actual tool COM. Newton deformation uses rest-relative storage, physical geometry reconstructed in float64.",
+    "inertia_source": "Read actual mounted-body COM/inertia from the fixed scene at runtime and archive; no guessed uniform-solid inertia substitution."
+  },
+  "board_interaction": {
+    "mode": "initially above-board only",
+    "blade_board_contact_qualified": false,
+    "stop": "Any blade-board contact stops the experiment. Actual full CAD minimum world Z must remain positive with declared route-specific tracking margin.",
+    "route_status": "Existing dry route is laterally offset by 90 mm and is not a contact-capable cutting route. A fresh 23A qualification is required; minimum clearance cannot be inferred from old dry motion."
+  },
+  "clocks": {
+    "initial_coupling_dt_s": 0.0004166666666666667,
+    "status": "Diagnostic starting value, not qualified for full-target cutting. Time-step refinement must pass before adopting a cutting clock.",
+    "ownership": "PhysX owns actual robot; Newton owns deformable. Exchange measured accepted pose/wrench at synchronized timestamps. Never teleport the blade to the commanded path."
+  },
+  "fracture_eligibility": {
+    "status": "not dynamically qualified",
+    "definition_required": "Swept actual finite CAD cutting-front band against current-deformation material footprints, plus a documented local overlap/state rule; no time, depth or proximity-only activation and no permanently active row.",
+    "material_areas": "Keep existing traction and fracture-energy areas; geometric Voronoi footprints are eligibility geometry only.",
+    "registered_front_report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/cut_front_registration_20261102_02/registration.json"
+  },
+  "future_cut_gates": {
+    "shallow_cut": "Requires P1/P2 and 23A/B, actual mounted whole-target force/work traces and a new bounded preregistered case.",
+    "release": "All 47 cohesive histories fully failed, no cross-piece material graph ties, exactly two bulk components, blade absent at least one second, free cap motion under the qualified support/contact model. Damage fraction or tool depth alone cannot pass.",
+    "shape_error_proposed_m": 0.001,
+    "refinement_relative_error_max": 0.1,
+    "peak_force_absolute_floor_n": 0.001,
+    "cutting_work_absolute_floor_j": 1e-06,
+    "refinement_formula": "abs(a-b)/max(abs(a),abs(b),floor); compare two finest independent levels and investigate nonmonotone results.",
+    "floor_provenance": "Synthetic engineering resolution floors chosen before cutting, not measured sensor resolution or hardware limits.",
+    "remainder_pose_proposed_translation_m": 0.005,
+    "remainder_pose_proposed_rotation_rad": 0.08726646259971647,
+    "whole_system_work_budget": "OPEN: derive fixture-specific independent budget including robot kinetic energy, actuator work, gravity, fixture/base reactions, contact, bulk, cohesion/fracture and numerical loss before cut execution. Equal force arrays alone cannot close it.",
+    "loaded_reset": "Milestone 22 post-cut checks require an actual coupled cut first; seed/history/contact queues, velocities, articulation state, controller targets, cloth/bulk state and randomization state must reset and replay."
+  },
+  "evidence_scope": "Coordinate covariance, underlying matrix, energy and original analytic integration components pass. L-BFGS recursion and integration require separate controls. No long support, cutting or training gate is closed.",
+  "numerical_backend": {
+    "name": "Float64 GN-preconditioned L-BFGS/PCG implicit-Euler candidate",
+    "native_vbd_steps": 0,
+    "world_from_sim_translation_m": [
+      -0.0225,
+      0,
+      0.0295
+    ],
+    "rotation": "identity; force/velocity axes remain world-aligned",
+    "world_board_height_m": 0.0,
+    "simulation_board_height_m": -0.0295,
+    "canonical_source_values": "Original mass, stiffness, cell volume, spring rest length, objective anchor choices, frame sign, material stiffness and fracture values retained. Simulation coordinates alone are translated.",
+    "accepted_source_registry": "unchanged 4032 nodes,33996 springs,16291 cells,5504 collision triangles,47 cohesive patches,25 remainder fixture nodes; cap unpinned",
+    "nonlinear_stops": "Original noncancelling impulse audit plus stricter per-node velocity-defect target, unchanged during the new frame test.",
+    "per_declared_01s_velocity_defect_budget_m_s": 1e-06,
+    "maximum_outer_iterations": 256,
+    "maximum_cg_iterations": 1000,
+    "cg_relative_tolerance": 1e-09,
+    "cg_absolute_tolerance_n": 1e-13,
+    "line_search": "Full unchanged incremental potential, Armijo1e-4,40halvings; conservative contact coverage and positive-volume paths; no rejected history commit.",
+    "lbfgs_memory_pairs": 8,
+    "curvature_filter": "sTy > max(1e-280 J,1e-10*norm(s)*norm(y)); otherwise skip; memory resets each physical step",
+    "fallback": "If the corrected direction fails its linear solve or descent test, clear memory and use the qualified plain global GN direction with the same true-residual gate.",
+    "physics_change": "None: exact forces, incremental potential and material/contact/fixture/board parameters unchanged; numerical search direction only."
+  },
+  "method_reference": {
+    "primary": "https://users.iems.northwestern.edu/~nocedal/lbfgs.html",
+    "paper": "https://people.sc.fsu.edu/~inavon/5420a/liu89limited.pdf",
+    "scope": "Two-loop limited-memory BFGS method; this custom geometry-constrained preconditioned integrator is not validated by citation alone."
+  }
+}

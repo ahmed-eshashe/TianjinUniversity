@@ -1,0 +1,104 @@
+GPU blade-motion topology test — v10 — 11 November 2026 (China time)
+
+RESULT
+The isolated GPU block now acquires persistent partial and complete geometric
+cuts from successive poses of the saved knife's finite straight cutting edge.
+The selector receives no future route or preselected cut plane. The 36 geometry,
+87 GPU/coupling and 14 legacy algebra checks passed (137 named assertions).
+This is a motion-to-topology component pass, NOT physically validated fracture
+or a new tomato slice. No existing Isaac/DiSECt setup was adopted or changed.
+
+WHAT WAS TESTED
+The 12 mm block retains v09's synthetic E=100 kPa, nu=0.4, rho=1000 kg/m^3,
+1.728 g total mass, quadratic basis with 3 mm spacing, full consistent mass,
+order-5 knot-cell quadrature and float64 GPU mechanics. There are 512 material
+observations; these are not independent point masses. Primary dt=3.90625e-7 s;
+comparison dt is half that value. Mechanical source files were copied unchanged.
+The inherited Gc=80 J/m^2 is unused by this geometric cutting experiment.
+
+The unmodified saved CAD asset has 74 vertices and 144 triangles. Its straight
+lower perimeter segment is represented by the midpoints of vertex pairs (14,15)
+and (16,17), approximately 104.5 mm apart. This finite centreline is a geometric
+cut marker, not a replacement for full-thickness blade contact. The entire CAD
+mesh is retained for a sufficient final clearance test.
+
+The material field must currently pass a continuous coefficient-level affine
+check. Old/new material maps pull the moving edge into reference coordinates;
+only supported reference-axis rectangular sweeps can add coverage. Coverage is
+the union of actual swept patches, never their bounding rectangle. A basis
+support releases only when fully covered. Untouched gaps and partial bridges
+remain connected. Reverse/held/along-edge motions cannot create new coverage.
+Topology construction remains on CPU; the GPU advances material and is rebuilt
+when connectivity changes. Failed proposals restore material, clocks and history.
+
+The main trial translated the block on the GPU while an imposed blade marker
+traversed it in fourteen 1 ms actions (1 mm each). The 1 m/s marker speed serves
+this short geometry diagnostic only; it is not an accepted robot cutting speed.
+Four topology updates occurred; the thirteenth action completed one geometric
+interface and yielded two independent pieces. The initial and intermediate
+interfaces were coincident: topology insertion did not inject a position gap.
+
+RESULTS AND TIMING
+Primary traversal: 21.245 s wall time for 0.014 s simulated material time.
+Half-step traversal: 40.051 s for the same 0.014 s simulated time.
+The primary run spent 20.418 s in checked GPU advance/export, 0.522 s in CPU
+motion/topology work and 0.206 s rebuilding GPU state. These are single short
+diagnostic timings, not repeated throughput measurements or a tomato benchmark.
+The end-to-end ratio is approximately 1517 wall seconds per simulated second;
+the prototype has not established practical RL speed.
+
+Both timesteps agreed on the split, with maximum observation-position difference
+1.82e-15 m in this translating-block trial. Restarting from the partially cut
+seventh frame reproduced the remaining trajectory exactly in all checked fields.
+A short matched CPU/GPU activation test agreed to floating-point precision.
+Near misses, held poses, finite edge limits, disjoint strokes, reverse/re-entry,
+alternate blade offsets and preserved affine-loaded fields passed their controls.
+Rotated-history testing establishes coordinate-frame covariance, not a physically
+torque-driven rotating-piece cutting trial. Stale, too-large, unsupported and
+non-affine actions were rejected without leaving a partial state change.
+
+AFTER THE GEOMETRIC CUT
+A fixed-state, horizontal along-edge blade relocation put the full original CAD
+mesh at least 33.37 mm clear of the material coefficient hulls. This was a pose
+and clearance query, NOT a dynamically integrated contact withdrawal trajectory.
+Subsequent balanced auxiliary opening forces of +/-0.4 N on the two pieces over
+1 ms produced a conservative 0.4505415 mm gap. No positions or velocities were
+edited to create that gap. Half-step result: 0.4505414 mm. Applied material work
+was 0.0001858702 J; primary energy residual was -2.12e-13 J. These are material
+opening loads and work, not knife reaction or fracture-energy expenditure.
+After opening, a 0.02 N probe on one piece for 0.5 ms produced zero difference in
+the other piece's velocity against a matched no-probe control.
+
+LIMITS THAT PREVENT PHYSICAL CUTTING QUALIFICATION
+1. No blade contact reaction, irreversible material-failure decision or paid
+   fracture work is present. Geometric passage alone selects separation here.
+   Near-miss/spine controls are geometric queries, not loaded blunt-contact tests.
+2. The current inverse map deliberately rejects non-affine (uneven) deformation.
+   An actual loaded example demonstrated that rejection and full rollback.
+   Simply loosening the affine tolerance would risk cutting the wrong material.
+3. Full-support release with h=3 mm caused first activation only after 3 mm of
+   edge coverage inside the block. This does not demonstrate crack-front or
+   contact resolution compatible with the retained 0.1 mm penetration limit.
+4. Oblique/curved sweeps, rotating blades during an action and multiple unfinished
+   incisions in one connected fragment remain unsupported. At most four cuts
+   may start. The straight edge marker does not cover every knife perimeter part.
+5. There was no tomato geometry, skin/flesh calibration, board, gravity, robot,
+   fragment re-contact or real pickup in this test. Experimental validation and
+   full Gates 2/3 remain pending. The 2 N and 0.1 mm contact limits were preserved
+   for future tests, not exercised or passed by this no-contact experiment.
+
+NEXT DECISION
+See NEXT_STEPS.txt. Before attempting physical knife contact, address continuous
+deformed-material intersection and crack-front representation in a new isolated,
+bounded candidate. Do not proceed to full tomato episodes or learning, silently
+relax mapping tolerances, or mistake this geometric split for physical failure.
+
+EVIDENCE AND PRESERVATION
+geometry_controls.json; gpu_motion_controls.json; algebra_controls.json;
+contract.json; qualification.json; preservation_check.json; runs/ checkpoints.
+The initial geometry harness boundary-rounding failure was retained under
+reports/geometry_first_attempt; its stale-token test moved inside the unchanged
+step limit. No acceptance tolerance was relaxed to pass it.
+All 1153 protected files from earlier evidence and production dependencies were
+hash-verified unchanged. Only isolated v10 files and backed-up checklist/status
+summaries were written. No dependency installation or production launch occurred.

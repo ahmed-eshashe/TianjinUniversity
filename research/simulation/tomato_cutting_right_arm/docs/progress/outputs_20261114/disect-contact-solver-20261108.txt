@@ -1,0 +1,13 @@
+COUPLED CONTACT FOLLOW-UP v09 — 8 November 2026
+
+Implemented a numerical Hessian action from central differences of the complete existing closure force. This includes geometry, embedding and mollifier changes. It is an approximate derivative, not an analytic Hessian. Material laws and final acceptance gates unchanged.
+
+Compressed-fixture checks passed: coarse perturbation refinement error <=0.0141%; fine perturbation refinement <=3.56e-7 relative; fine bilinear symmetry error 7.86e-9. These scoped checks do not qualify every active-set transition.
+
+Conjugate-gradient trial failed. GMRES with an inexact inner solve and unchanged final nonlinear residual gate completed a separate 1ms trial. A bounded 5ms continuation accepted six 0.5ms steps (3ms total) then failed the seventh linear solve, before committing that step. Accepted-step residuals <=8.52e-7 N against 1e-6 N gate. The result-level max residual also includes a rejected trial; inspect accepted rows for accepted residuals.
+
+At matched 1, 2 and 3ms snapshots: maximum position difference <=0.00725mm, maximum velocity difference <=0.001823m/s; internal-force relative L2 differences 4.6964%, 3.1416%, 2.9008%. This is a short snapshot comparison, not full trajectory, settling, separation or cutting qualification. No damage enabled.
+
+Elapsed solver-loop time 48.25s including the rejected step for 0.003s accepted simulation. Speed requirement not passed; this numerical derivative is a diagnostic bridge, not a production acceleration. Stable v07 reference remains intact.
+
+Next: robust contact-aware preconditioning/linear solve, preferably assembled local analytic or automatic-differentiation contact blocks, validated against this complete-force derivative. Do not extend long runs or loosen force tolerance to mask linear-solve failure. Section3 remains4/5, section4 blocked, total15/35. No simulation running.

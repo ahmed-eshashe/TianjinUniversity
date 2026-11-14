@@ -1,0 +1,89 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.95 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.91 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 4.28 ms  (cached)
+Module tomato_cad_pressure 27ceab5 load on device 'cuda:0' took 0.54 ms  (cached)
+Module tomato_fast_exact_cad d8995f8 load on device 'cuda:0' took 0.42 ms  (cached)
+Module tomato_cached_cad_pressure d7e1c7e load on device 'cuda:0' took 9.04 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.43 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.51 ms  (cached)
+Module tomato_local_plane_partition 8d8f378 load on device 'cuda:0' took 0.98 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.78 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.43 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.81 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.50 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1.02 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 5.36 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.43 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.67 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.54 ms  (cached)
+Module tomato_master_frame_objective fdfc663 load on device 'cuda:0' took 7.79 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.72 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.94 ms  (cached)
+Module tomato_master_frame_coupled 082f480 load on device 'cuda:0' took 0.61 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.52 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 1.95 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.45 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.51 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 3.82 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.55 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.47 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.49 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.61 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.56 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.67 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.83 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.46 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.76 ms  (cached)
+{"scope": "One disposable material-only timing probe; never used as production evidence.", "wall_s": 23.00407368499873, "interval_substeps": 1, "solver_iterations": 66, "source_checkpoint": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/robot_cut13/checkpoints/step_005375.npz", "production_state_changed": false}
+         17308989 function calls (17004618 primitive calls) in 23.003 seconds
+
+   Ordered by: cumulative time
+   List reduced from 4204 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000   23.004   23.004 {method 'send' of 'generator' objects}
+        1    0.000    0.000   23.004   23.004 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_master_remap_slice_engine.py:13(subcycled_engine)
+        1    0.004    0.004   22.827   22.827 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_master_remap_slice_engine.py:57(advance_one)
+        2    0.013    0.006   14.915    7.458 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_packet_refresh.py:32(refresh_packet)
+        1    0.000    0.000   13.332   13.332 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_master_frame_fracture.py:22(audited_step)
+        2    0.449    0.225    8.194    4.097 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_vectorized_material_coverage.py:44(padded_coverage)
+        1    0.005    0.005    7.280    7.280 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_boundary.py:22(step)
+     5981    0.022    0.000    6.348    0.001 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/types.py:4492(numpy)
+     5981    0.007    0.000    6.197    0.001 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/types.py:4611(to)
+     5983    0.008    0.000    6.171    0.001 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py:9810(clone)
+7383/7342    6.076    0.001    6.123    0.001 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py:13904(copy)
+        1    0.003    0.003    6.044    6.044 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_master_remap_slice_engine.py:66(audit)
+    16759    0.339    0.000    5.367    0.000 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_vectorized_material_coverage.py:28(subtract_convex)
+        3    0.083    0.028    4.893    1.631 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_plane_partition.py:29(partition)
+     2436    3.112    0.001    4.743    0.002 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_compiled_plane_partition.py:54(partition)
+   137799    0.630    0.000    4.170    0.000 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_vectorized_material_coverage.py:13(signed_uv_area)
+      226    0.003    0.000    3.611    0.016 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cached_cad_pressure.py:34(evaluate)
+      147    0.001    0.000    3.225    0.022 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_master_frame_live.py:56(energy)
+551196/275598    2.077    0.000    2.934    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/numeric.py:1219(roll)
+       65    0.004    0.000    2.503    0.039 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_tight_block.py:14(_linear_direction)
+       65    0.000    0.000    2.398    0.037 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/optim/linear.py:1035(cg)
+       65    0.001    0.000    2.364    0.036 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/optim/linear.py:825(__call__)
+       65    0.001    0.000    2.364    0.036 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/optim/linear.py:934(_run)
+       65    0.000    0.000    2.260    0.035 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/optim/linear.py:2118(_run_capturable_loop)
+       65    0.017    0.000    2.258    0.035 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/optim/linear.py:2182(_run_solver_loop)
+        9    0.000    0.000    1.419    0.158 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_local_packet_refresh.py:25(evaluate_cells)
+   111655    1.143    0.000    1.179    0.000 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_coverage.py:21(clip_polygon)
+   105728    1.106    0.000    1.163    0.000 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_vectorized_material_coverage.py:18(clip_uv)
+    31575    0.386    0.000    1.162    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/numeric.py:1556(cross)
+       11    0.000    0.000    1.021    0.093 /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_gpu_packet_refresh.py:16(__call__)
+   465064    0.551    0.000    0.897    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/numeric.py:1420(normalize_axis_tuple)
+   210039    0.443    0.000    0.847    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/linalg/_linalg.py:2622(norm)
+     6374    0.140    0.000    0.826    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py:11188(launch)
+   184409    0.713    0.000    0.713    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+    94733    0.192    0.000    0.694    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/numeric.py:1482(moveaxis)
+
+
+

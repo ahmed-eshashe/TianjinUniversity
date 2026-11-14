@@ -1,0 +1,41 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.49 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.40 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.55 ms  (cached)
+Module sparse_contact_gpu efec94e load on device 'cuda:0' took 499.93 ms  (compiled)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.32 ms  (cached)
+Module compact_contact_gpu ed5099e load on device 'cuda:0' took 1.57 ms  (cached)
+Module paid_contact_gpu 5334c27 load on device 'cuda:0' took 0.44 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.42 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.42 ms  (cached)
+Module convex_guard_gpu 8ae904c load on device 'cuda:0' took 1.13 ms  (cached)
+{
+  "status": "completed",
+  "passed": true,
+  "checks": {
+    "complete": true,
+    "energy": true,
+    "force": true,
+    "volume": true
+  },
+  "dt": 6.25e-06,
+  "resolution": 4,
+  "simulated_s": 0.013000000000000001,
+  "wall_s": 32.695794376995764,
+  "wall_per_simulated_s": 2515.061105922751,
+  "energy_relative": 4.446002085152862e-05,
+  "initial_surface_build_s": 0.06063758199161384,
+  "runtime_setup_s": 0.9278822519991081,
+  "bulk_regions": 4448,
+  "mechanical_nodes": 989,
+  "boundary_triangles": 21806,
+  "physical_cut": false,
+  "rl_ready": false,
+  "scope": "Original-shape homogeneous tomato, intact supported CAD-contact pilot only. No fracture, robot, board, actions or policy; this is a material/contact cost measurement, not complete RL throughput."
+}

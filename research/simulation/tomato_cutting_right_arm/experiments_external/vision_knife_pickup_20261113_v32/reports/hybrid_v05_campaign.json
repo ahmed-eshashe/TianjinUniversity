@@ -1,0 +1,109 @@
+{
+  "updated": "2026-11-14T01:36:41.692019+08:00",
+  "frozen_sources_unchanged": {
+    "hybrid_pickup_v05.py": true,
+    "visual_grasp.py": true,
+    "hybrid_calibration_v01.json": true,
+    "handle_vision.py": true,
+    "policies/handle_vision_v01/best.pt": true,
+    "pickup_criteria.json": true,
+    "curriculum_recovery_v02.json": true,
+    "knife_short_blade_v02.usda": true
+  },
+  "validation_successes": 1,
+  "validation_attempts": 1,
+  "test_successes": 0,
+  "test_attempts": 0,
+  "wilson_95_interval": null,
+  "forbidden_test_violations": [],
+  "limited_curriculum_physical_gate_passed": false,
+  "scope": "Head RGB-D learns handle location/yaw; calibrated flat-rest target and engineered contact-guided motion. Short knife, bounded placement/yaw only. Real contact and no attachment. No full-motion/RL, any-knife/any-rest, or physical-transfer claim.",
+  "rows": [
+    {
+      "dataset": "hybrid_v05_development",
+      "id": "train_012",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00016629701847127514,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.1189576423005355,
+      "max_load_N": 27.58794593811035,
+      "wall_s": 202.12828713899944
+    },
+    {
+      "dataset": "hybrid_v05_regression",
+      "id": "test_002",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.0010050157757673936,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11915318687347659,
+      "max_load_N": 35.05021286010742,
+      "wall_s": 204.00514691701392
+    },
+    {
+      "dataset": "hybrid_v05_regression",
+      "id": "test_003",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.0005238304528047675,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11835961556251344,
+      "max_load_N": 27.59337615966797,
+      "wall_s": 207.86038772799657
+    },
+    {
+      "dataset": "hybrid_v05_validation",
+      "id": "recovery_validation_000",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.0005214318725686307,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11891652335223885,
+      "max_load_N": 27.588046073913574,
+      "wall_s": 203.2868876339926
+    },
+    {
+      "dataset": "hybrid_v05_validation",
+      "id": "recovery_validation_001",
+      "complete": false,
+      "success": false
+    }
+  ]
+}

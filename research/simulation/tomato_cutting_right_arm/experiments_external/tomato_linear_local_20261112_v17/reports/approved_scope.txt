@@ -1,0 +1,26 @@
+ONE PROPOSED REPRESENTATION CHANGE — NOT ADOPTED OR QUALIFIED
+
+Observed blocker
+The mass-lumped trilinear local-state candidate preserves affine strain and energy/force consistency in intact controls, but exact tangent-rank tests find extra zero-strain modes after oblique cuts. More uniform quadrature does not remove every failure. This is a discretization defect, not a tomato material calibration issue. Do not add arbitrary damping or call it physical cutting.
+
+Concrete proposed correction
+Use linear tetrahedral local fields with virtual child nodes and explicitly clipped material domains, in a new isolated directory. This remains a local explicit continuum model, but it is a different spatial approximation: lumped virtual-node tetrahedral FEM, not official CRESSim, BladeMaster or the old DiSECt setup. Keep E=100 kPa, nu=0.4, rho=1000 kg/m^3 and the same compressible neo-Hookean law initially. No material softening or physical stop changes.
+
+For each parent tetrahedron, retain its four linear barycentric basis functions N and constant gradients G. A child material region has exact clipped volume V and first moment V*Xc. Its displacement/velocity are interpolated from its four logical nodes; F=I+sum u outer G is constant within that region. Thus U=V*W(F) and force=-V*P*G are exact for that declared field, without a sampling nullspace. Row-sum mass is rho*V*N(Xc), positive inside the parent tetrahedron. This is still approximate inertia relative to a consistent mass model, and a lower-order spatial approximation relative to the rejected trilinear field.
+
+During a geometric unit split, clip only the affected material domain. Partition volume and first moment; clone parent nodal u/v into child histories. With unchanged linear parent field, U, each field value, lumped T and momentum should remain invariant to numerical tolerance. Persistent compatible node groups retain an intact bridge; incompatible old groups never merge. Do not discard small pieces, introduce mass floors, or make precomputed whole-plane cuts pass as blade-generated fracture.
+
+Why this is worth one bounded check
+The static algebra diagnostic proposal_rank.json examines six aligned/oblique full/partial fixtures. All six have the expected tangent rank and component counts; volume errors are below 5e-14 relative. This is NOT a dynamics, cutting, speed or tomato pass. The smallest predicted linear stability limit among those fixtures is approximately 52 microseconds, and arbitrary near-vertex cuts may be worse. Small-region conditioning remains a specific stop risk.
+
+Bounded validation if adopted
+1. Freeze the new formulation and transfer, retain v16 failures. Implement CPU reference and GPU candidate in isolation. First hour: exact energy/force gradient, rigid invariance, rank, mass/momentum, partial bridge, fragment independence, and short measured speed. Use the same 0.1 mm position, 5% energy/work and force-comparison criteria where applicable; no inherited pass.
+2. Choose dt from half-step field/force/energy comparison, not from desired speed. Check sliver translations/angles; do not fix them with unreviewed mass scaling or removing material.
+3. Only if mechanics passes, measure 60 mm simple bodies with changing cut history at one/four/eight copies. Entry remains 100 aggregate 50 Hz transitions/s. Bulk-only throughput is a necessary ceiling diagnostic, not an RL pass.
+4. Limit this correction to two focused hours or the first substantive failed decision gate. Preserve one diagnosis; do not automatically branch into another numerical method.
+5. Full tomato/contact/physical fracture remains blocked until local mechanics, fragment independence and speed support it. Real blade work, whole-material penetration, 2 N stop, 0.1 mm penetration limit, resets and eventual full environment throughput remain mandatory. Experimental calibration remains pending.
+
+Scope decision
+Adopt this one separate lower-order representation for bounded validation, or stop backend development and retain the current reference for offline demonstrations. A promise to finish an RL-ready tomato is not supported yet. The existing robot, kitchen, grip, controllers, DiSECt code and previous evidence remain unchanged in either case.
+
+This proposal follows the stop/review requirement of docs/rl/ASTRA_HIGH_TOMATO_MODEL_EXECUTION_PLAN_20261110.md ("At the first failed decision gate, preserve the evidence and report the concrete blocker and next scope decision") and the approved v15 pilot's failed-mechanics stop. It does not request permission for routine implementation steps.

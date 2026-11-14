@@ -1,0 +1,29 @@
+{
+  "start_unix": 1794118944.8654573,
+  "scope": "Separate candidate fixing hydrostatic damping frame error, not a parameter fit",
+  "prior_result": "v03 dt correction remained finite but failed cell-volume gate at 16.2ms; preserve failed verdict",
+  "change": "Use relative vertex velocities for volumetric deformation rate; all coefficients and other forces unchanged",
+  "pre_dynamics_controls": [
+    "uniform translation: damping force difference below float32 roundoff, same rest geometry",
+    "random and affine velocity: independent corrected dissipative operator agrees with kernel within 0.1% global force norm",
+    "translation-added field: same damping forces within 0.1%"
+  ],
+  "compile_cap_s": 900,
+  "gravity_if_controls_pass": {
+    "dt_s": 1.5e-07,
+    "duration_s": 0.02,
+    "process_cap_s": 300,
+    "volume_floor": 0.1,
+    "board_penetration_max_m": 0.0001,
+    "fixed_error_max_m": 1e-07,
+    "steps": 133334,
+    "selection": "Rounded down from 75% of independent combined row-scale bound 2.3697456e-7 s, before dynamics",
+    "affine_control": "Added to same invocation before gravity; <0.1% global force norm error and nonpositive damping power required"
+  },
+  "production": "unchanged; experimental validation pending; no cutting or training",
+  "affine_control_addendum": {
+    "preserved_failure": "0.01/s affine field failed 0.1% relative-force comparison (0.312%); no gravity advanced",
+    "justification": "Full single-precision force subtraction includes small elastic rest-force and atomic-sum rounding. Damping is linear in velocity, so one independently specified 1/s affine field increases the damping signal 100x without changing physical parameters or the 0.1% threshold. Low-signal precision remains unqualified even if this passes.",
+    "not_authorized": "Do not claim low-force accuracy or research qualification from this diagnostic"
+  }
+}

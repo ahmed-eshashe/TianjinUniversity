@@ -1,0 +1,94 @@
+{
+  "updated": "2026-11-11T02:59:04.985152+08:00",
+  "version": "v12",
+  "status": "restricted_deformed_motion_components_pass_coupling_refinement_failed",
+  "prior_candidate": "/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11",
+  "physical_cut": false,
+  "physical_fracture": false,
+  "actual_blade_contact": false,
+  "new_tomato_slice": false,
+  "rl_ready": false,
+  "production_adopted": false,
+  "production_changed": false,
+  "experimental_validation": "pending",
+  "suites": {
+    "geometry_controls.json": {
+      "status": "pass_finite_face_geometry",
+      "passed": 16,
+      "failed": [],
+      "sha256": "7491b299d55142a385c2cecabf84baaf3794ae277089dab16a370540d254d12d"
+    },
+    "time_controls.json": {
+      "status": "pass_finer_time_reference",
+      "passed": 9,
+      "failed": [],
+      "sha256": "dbff7bdb01018f6ababb73c639c3f530d0e9dc2f2c839ac0fb4fdb11dfca9c1c"
+    },
+    "coupled_controls.json": {
+      "status": "coupled_accuracy_or_coverage_failed",
+      "passed": 36,
+      "failed": [
+        "half_action_continuous_velocity"
+      ],
+      "sha256": "3cea23d09d092a01f6807acc03eecf3e09d11fd52c711e84f1689eb1cc0c933e"
+    }
+  },
+  "passed_component_checks": 61,
+  "failed_component_checks": [
+    "half_action_continuous_velocity"
+  ],
+  "mechanics_unchanged_source_files": [
+    "gpu_backend.py",
+    "integrated_cut.py",
+    "gpu_kernels.py",
+    "reference.py"
+  ],
+  "numerical_changes": [
+    "Front-aligned exact knot insertion creates additional discrete modes",
+    "Primary mechanical step 16 times finer than v10 for this accuracy reference",
+    "Conservative reference patch inside original finite CAD edge-face sweep; endpoint-field interpolation"
+  ],
+  "same_loaded_front_time_refinement": {
+    "whole_field_position_bound_m": 8.790049628646439e-10,
+    "whole_field_velocity_bound_m_s": 0.0027158239132538337,
+    "work_relative": 2.5387648742462312e-08
+  },
+  "freely_deforming_partial_cut": {
+    "all_actions_accepted": true,
+    "material_time_s": 0.0001,
+    "depth_after_first_action_m": 4.415220888177602e-05,
+    "depth_after_second_action_m": 8.223543253099534e-05,
+    "mass_kg": 0.0017279999999999995,
+    "energy_residual_J": -1.8334182371078367e-12,
+    "geometry_only": true
+  },
+  "combined_mechanical_halfstep": {
+    "position_convex_hull_bound_m": 1.39925837621054e-10,
+    "velocity_convex_hull_bound_m_s": 0.0010986963873587988,
+    "plane_difference_m": 5.185359520237798e-15
+  },
+  "combined_half_action": {
+    "position_convex_hull_bound_m": 9.432645981156362e-07,
+    "velocity_convex_hull_bound_m_s": 0.36821920693590965,
+    "plane_difference_m": 5.185359520237798e-15
+  },
+  "dense_failure_witness": {
+    "sampled_velocity_difference_m_s": 0.36617221495337177,
+    "sampled_position_difference_m": 6.458522762252212e-07,
+    "points": 2050
+  },
+  "restart": {
+    "q": 0.0,
+    "vg": 0.0
+  },
+  "runtime": {
+    "wall_s": 2.856319208003697,
+    "sim_s": 0.0001,
+    "wall_s_per_sim_s": 28563.19208003697,
+    "scope": "one tiny block accuracy-reference diagnostic, not episode performance"
+  },
+  "next_action": "Offline common-space diagnostic to separate activation timing from spatial refinement; propose one correction before contact. No further run launched.",
+  "report": "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/REPORT.txt",
+  "next_proposal": "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/NEXT_STEPS.txt",
+  "preservation": "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/preservation_check.json"
+}

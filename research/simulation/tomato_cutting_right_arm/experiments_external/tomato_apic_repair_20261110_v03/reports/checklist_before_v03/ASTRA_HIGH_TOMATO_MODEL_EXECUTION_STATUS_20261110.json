@@ -1,0 +1,87 @@
+{
+  "plan_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/ASTRA_HIGH_TOMATO_MODEL_EXECUTION_PLAN_20261110.md",
+  "plan_sha256": "5d7151e636ff84d0fdd446cefb4a509f658c49f39fb5237604737433566de94b",
+  "status": "gate3_failed_scope_review_needed",
+  "model": "Astra",
+  "reasoning": "high",
+  "new_candidate_adopted": false,
+  "experimental_validation": "pending",
+  "existing_solver_modified": false,
+  "initial_decision_budget_focused_hours": 8,
+  "gates": [
+    {
+      "id": 0,
+      "title": "Gate 0 Freeze the experiment and remove stale assumptions",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate0.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 1,
+      "title": "Gate 1 Establish trustworthy intact mechanics",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/intact_controls.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 2,
+      "title": "Gate 2 Prove persistent cuts on a small block",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/persistent_cut_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate2_supplement.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 3,
+      "title": "Gate 3 Establish cutting resistance and reliable contact",
+      "status": "failed_physical_qualification",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/contact_fracture_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/RECOVERY_PROPOSAL.md"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Gate 4 Build the reusable tomato and complete one slice",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 5,
+      "title": "Gate 5 Verify freedom to change the cutting technique",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 6,
+      "title": "Gate 6 Measure interactive and RL performance",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 7,
+      "title": "Gate 7 Connect the existing robot and verify resets",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 8,
+      "title": "Gate 8 Prepare a small learning demonstration",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "updated": "2026-11-10T19:54:18.961759+08:00",
+  "candidate_directory": "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02",
+  "execution_status_path": "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/status.json",
+  "simulation_running": false,
+  "runtime_qualification": "Not qualified for RL; full-contact coupon timings saved in isolated runtime_forecast.json",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/RECOVERY_PROPOSAL.md"
+}

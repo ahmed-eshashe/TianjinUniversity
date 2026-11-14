@@ -1,0 +1,11 @@
+running build_ext
+building 'meshcutter' extension
+g++ -pthread -B /home/omen/miniconda3/envs/env_isaaclab/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/omen/miniconda3/envs/env_isaaclab/include -fPIC -O2 -isystem /home/omen/miniconda3/envs/env_isaaclab/include -fPIC -DVERSION_INFO=0.0.1 -I/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/lib/python3.11/site-packages/pybind11/include -I/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/include -I/home/omen/miniconda3/envs/env_isaaclab/include/python3.11 -c meshing.cpp -o build/temp.linux-x86_64-cpython-311/meshing.o -fvisibility=hidden -g0 -std=c++17
+meshing.cpp:66:13: warning: ‘Vec3 std::operator/(const Vec3&, Scalar)’ defined but not used [-Wunused-function]
+   66 | static Vec3 operator/(const Vec3 &b, Scalar a) {
+      |             ^~~~~~~~
+meshing.cpp:63:13: warning: ‘Vec3 std::operator*(const Vec3&, Scalar)’ defined but not used [-Wunused-function]
+   63 | static Vec3 operator*(const Vec3 &b, Scalar a) {
+      |             ^~~~~~~~
+g++ -pthread -B /home/omen/miniconda3/envs/env_isaaclab/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /home/omen/miniconda3/envs/env_isaaclab/include -fPIC -O2 -isystem /home/omen/miniconda3/envs/env_isaaclab/include -shared build/temp.linux-x86_64-cpython-311/meshing.o -o build/lib.linux-x86_64-cpython-311/meshcutter.cpython-311-x86_64-linux-gnu.so
+copying build/lib.linux-x86_64-cpython-311/meshcutter.cpython-311-x86_64-linux-gnu.so -> 

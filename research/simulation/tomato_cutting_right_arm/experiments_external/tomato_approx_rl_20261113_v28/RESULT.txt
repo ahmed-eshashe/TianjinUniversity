@@ -1,0 +1,56 @@
+V28 RESULT — separate approximate model for initial RL experiments
+2026-11-13T08:06:41.463788+00:00
+
+The restricted approximate blade-control pilot PASSES.
+Final measured rate: 136.8 complete task
+transitions per wall second, eight environments, 50 Hz control; minimum target100.
+25536 transitions in 186.7 s, including live
+physics, actions, observations, connectivity, rewards, termination and selective
+resets. All eight bodies complete an actual work-paid cut and horizontal withdrawal.
+No policy was trained. Robot dynamics, rendering and policy inference are excluded.
+This qualifies an initial approximate-task RL trial, not the full robot project.
+
+Mechanics and functionality
+- 2,803 massive particles, 31,950 initial elastic bonds, 3.5 mm spacing, 121.253 g.
+- No supplied future fracture plane; blade motion spends irreversible work to
+  break existing connections. Partial cuts retain bridges; completed cuts produce
+  disconnected components. Particle contact remains active after separation.
+- A second perpendicular cut from an already cut state produces FOUR components
+  of 817, 697, 697 and 592 particles. It required one time-step refinement.
+- A 20% larger tomato also completes a cut and horizontal withdrawal.
+- Exact selective resets, untouched parallel states, timeout/invalid-action,
+  blade-board and penetration stops pass. Full-state retry matches a fresh small-
+  step control. A force stop is not bypassed by retrying at another time step.
+- Independent blade distance tests: maximum error about4 nanometres in165cases.
+- Intact energy residual below1% at the finer steps; fast-step intact residual
+  about4.3%. Nominal complete cutting-cycle energy residual about2.1% of tool work.
+  This is a numerical ledger audit, not motor-work or experimental validation.
+
+Important limits / failed trials retained
+- 30-degree oblique cut at80%size stops at 2.019 N; NOT qualified.
+- Coarse/fine completed cycles have the same broken bonds but up to1.54mm final
+  position difference and about46% peak-force difference. They finish at different
+  times. High-fidelity numerical convergence is not established.
+- Imposed-strain stress differences versus the old neo-Hookean reference are
+  about4–66%. Sampled fracture-area directionality errors are about5–13%.
+- Collidable spheres fill only38%of the former continuum volume. The voids and
+  massless bonds are an explicit approximation; no whole-continuum penetration
+  claim. The skin/pulp/seed structure and measured tomato calibration are absent.
+- Blade geometry is a tapered proxy, not original CAD. Numerical settings refine
+  automatically for harder states, so speed is case-dependent.
+- Reused broad-phase grid optimization was NOT adopted. Earlier failed blunt-
+  blade, fast-step, oblique and second-cut attempts remain in runs/reports.
+
+Preservation
+All 450 frozen v27 files match their saved hashes. Original
+Isaac/DiSECt, kitchen, robot and grip are unchanged. Only new isolated experiment
+files and authorized progress pages/status are updated.
+
+Next useful step
+Use this qualified restricted task for an initial imitation/residual-RL trial,
+then evaluate held-out motions and explicit reference comparisons. Do not promise
+arbitrary-path success, realistic force transfer or a full-robot RL speedup.
+
+To see the live approximate model, run launch_live.sh in this directory.
+It creates a separate Isaac Sim view. The physics runs live, not a saved playback.
+The optional post-cut pull-apart button discloses its extra opening impulse.

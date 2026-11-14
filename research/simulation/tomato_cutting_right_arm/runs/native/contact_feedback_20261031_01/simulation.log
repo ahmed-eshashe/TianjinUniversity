@@ -1,0 +1,20 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793453971.543718   40235 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793453971.543750   40235 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-10-31T13:39:31Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-10-31T13:39:35Z [3,418ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x56dd99158440. Client: carb.scripting-python.plugin
+[INFO]: Registered backend 'physx' for factory RigidObject.
+2026-10-31T13:39:35Z [3,893ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_feedback_worker.py", line 170, in main
+    r['assessment']=assess(r['initial_particle'][2],r['initial_physx']['pose'][2],r['particle_mass_kg'],r['body_mass_kg'],
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_partitioned_reference.py", line 35, in assess
+    raise ValueError(f'Partitioned reference mismatch: {pe=}, {ve=}, {fe=}, {momentum=}, {impulse=}, {energy_error=}')
+ValueError: Partitioned reference mismatch: pe=2.5396671336334335e-05, ve=6.225807647197712e-09, fe=6.922721884627947e-08, momentum=0.0, impulse=1.1994742417191506e-10, energy_error=3.962826520768213e-05
+[INFO]: SimulationContext cleared

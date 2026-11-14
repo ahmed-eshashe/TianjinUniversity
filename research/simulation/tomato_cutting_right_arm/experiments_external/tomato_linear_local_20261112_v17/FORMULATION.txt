@@ -1,0 +1,15 @@
+Approved v17 correction: lumped virtual-node linear tetrahedral reference FEM.
+
+Each original tetrahedron has fixed four-node barycentric N_a(X), constant G_a and reference logical grid locations. Convex material regions are clipped only on accepted geometric test events. Each region stores its actual reference polyhedron, volume V and centroid Xc, its parent basis and current logical node IDs. No tiny material is removed or mass-scaled.
+
+Persistent state: u_a, v_a. At every material location X in a region, x=X+sum N_a(X)u_a; v=sum N_a(X)v_a; F=I+sum u_a outer G_a. The same field determines deformation, positions and mechanical energy. Strain is constant throughout each linear region, so U=V W(F) is exact for this approximation. Force=-V P(F)G_a. No separate accumulated F or recurring velocity transfer/filter exists.
+
+Nodal inertia is the declared row-sum approximation: m_a=sum_regions rho*V*N_a(Xc), positive because the centroid lies inside its original tetrahedron. T=sum_a m_a |v_a|^2/2. It differs from consistent continuum inertia. Whole-region elastic integration is exact for the declared constant F, not an assertion of spatial convergence. Initial material: compressible neo-Hookean E=100 kPa, nu=.4, rho=1000 kg/m^3. No damping or softening.
+
+Integrator: velocity Verlet, force at u_n, half velocity step, displacement step, force at u_(n+1), final half velocity step. CPU float64, GPU float32 independently compared. The four-launch initial GPU implementation reuses the reviewed v16 mechanics pattern with four rather than eight basis nodes; it is not an official external implementation.
+
+Geometric test event: partition each affected old region by the current cut/front planes, retaining exact convex volume and first moments. Both children initially retain the parent basis/field. At each old logical node, partition incident histories into compatibility-connected children; never merge old incompatible nodes. Child nodal u/v copy the parent. Mass and first moment partition, so position/F/U and the declared lumped T/momenta should be unchanged within numerical tolerance. History supports four immutable ternary slots. A partial cut has unvisited zero-label regions that preserve an intact bridge. No future trajectory is supplied, but prescribed geometric fixtures are NOT blade/contact/material-work fracture.
+
+For a plane specified in current coordinates, a region's affine map is x=F X+t; pullback uses n_ref=F^T n_world, d_ref=d_world-n_world.t. The polyhedron is retained and checked in reference coordinates; this does not remove the need for later swept CAD contact and newly exposed face checks.
+
+Relevant limitations: near-vertex cuts can make tiny virtual masses and reduce stable dt, lower-order tetrahedra may lock or be too stiff, local compatibility may retain an over-wide bridge, geometrically disconnected regions require explicit contact after separation. Whole-material contact, fracture work, spatial refinement, tomato geometry, full coupled throughput and training remain unqualified by this pilot.

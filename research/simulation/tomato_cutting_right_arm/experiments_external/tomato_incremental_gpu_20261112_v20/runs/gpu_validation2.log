@@ -1,0 +1,76 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/cache/warp'. These will be ignored. You can safely delete them.
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/tests/gpu_validate.py", line 14, in <module>
+    c=Aggregate(b,1e-8);g=GPU(Aggregate(b,1e-8),dt);cpu=[];gpu=[];maxF=0.;e0=b.metrics()['U']
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/selective_gpu.py", line 107, in __init__
+    self.stress();self.advance(self.vh,-.5*self.dt,0.0);self.check()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/selective_gpu.py", line 118, in advance
+    wp.launch_tiled(gather_parallel,dim=self.batch*self.n,inputs=[self.iptr,self.iidx,self.ig,self.P,self.external,self.force],block_dim=32,device='cuda:0')
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11664, in launch_tiled
+    return launch(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4736, in load
+    raise e
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4733, in load
+    compiled = self._compile(device, module_dir, output_name, output_arch, options=options)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4495, in _compile
+    source_str, source_code_ext, meta, ltoir_values, fatbin_values = self._run_codegen(options, is_cpu)
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4365, in _run_codegen
+    builder = ModuleBuilder(
+              ^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3121, in __init__
+    self.build_kernel(kernel)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3240, in build_kernel
+    kernel.adj.build(self)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2200, in build
+    raise type(original_exc)(*new_args).with_traceback(original_exc.__traceback__) from None
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2181, in build
+    adj.eval(adj.tree.body[0])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3354, in emit_FunctionDef
+    adj.eval(f)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 5123, in emit_Assign
+    rhs = adj.eval(node.value)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 4480, in emit_Call
+    out = adj.add_call(
+          ^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2797, in add_call
+    return_type = func.value_func(
+                  ^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/builtins.py", line 7060, in tile_n_map_value_func
+    raise TypeError(
+TypeError: Error while parsing function "gather_parallel" at /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/parallel_force.py:14:
+ values=wp.tile_map(lane_force,lanes,i,ptr,idx,grad,P)
+;tile_map() argument 2 must be a tile, scalar, vector, matrix, or Warp struct, got array(ndim=1, dtype=int32)
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/cache/warp/1.17.0
+Module selective_gpu 0f46f62 load on device 'cuda:0' took 0.88 ms  (cached)
+Module gather_parallel_2d40b183 495ee8e load on device 'cuda:0' took 0.56 ms  (error)
+exception

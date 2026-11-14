@@ -1,0 +1,49 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.54 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.41 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.52 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.31 ms  (cached)
+Module compact_contact_gpu ed5099e load on device 'cuda:0' took 1.58 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.44 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.39 ms  (cached)
+Module paid_contact_gpu 5334c27 load on device 'cuda:0' took 0.41 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.45 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.68 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.40 ms  (cached)
+{"t": 0.009325, "energy_relative": 0.00451779263550795, "gap_m": 1.021942563847557e-06, "opening_rank": 1, "available_J": 5.814990029908058e-09, "blade_reached_area_m2": 2.4537682452829386e-09, "contact_N": 0.011014220768814215, "cutting_N": 0.01641858337836884, "Jmin": 0.9665646283338714, "nodes": 29}
+{"t": 0.00935, "energy_relative": 0.004487787201587819, "gap_m": 1.023827750761146e-06, "opening_rank": 1, "available_J": 1.179064421550817e-08, "blade_reached_area_m2": 2.553952791035181e-09, "contact_N": 0.011120350642109266, "cutting_N": 0.01651572670912111, "Jmin": 0.9646232720039398, "nodes": 29}
+{"t": 0.009375, "energy_relative": 0.004454085230151979, "gap_m": 1.0235183984792875e-06, "opening_rank": 1, "available_J": 1.794075041786096e-08, "blade_reached_area_m2": 2.656583083697241e-09, "contact_N": 0.011230081035545073, "cutting_N": 0.016614862910346712, "Jmin": 0.9624307987001642, "nodes": 29}
+{"t": 0.0094, "energy_relative": 0.004426368169601165, "gap_m": 1.0233179940012022e-06, "opening_rank": 1, "available_J": 2.4237627043585876e-08, "blade_reached_area_m2": 2.761293608167324e-09, "contact_N": 0.011346846323378137, "cutting_N": 0.01671575925533921, "Jmin": 0.9612890445664607, "nodes": 29}
+{"t": 0.009425000000000001, "energy_relative": 0.004347215915026879, "gap_m": 1.0284722018656408e-06, "opening_rank": 1, "available_J": 3.064031358131671e-08, "blade_reached_area_m2": 2.8675529695496062e-09, "contact_N": 0.011481456893838388, "cutting_N": 0.016818051871885554, "Jmin": 0.9617908229642587, "nodes": 29}
+{"t": 0.00945, "energy_relative": 0.0043135970878173235, "gap_m": 1.039246972127206e-06, "opening_rank": 1, "available_J": 3.708843588056874e-08, "blade_reached_area_m2": 2.974575289136778e-09, "contact_N": 0.011630842737088582, "cutting_N": 0.016921237076874263, "Jmin": 0.9634083200074505, "nodes": 29}
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.68 ms  (cached)
+{"t": 0.009475, "energy_relative": 0.004292453573145316, "gap_m": 1.0541184354980607e-06, "opening_rank": 1, "available_J": 4.350761166273593e-08, "blade_reached_area_m2": 3.081431537684562e-09, "contact_N": 0.01176085581051876, "cutting_N": 0.017024596644698242, "Jmin": 0.9648447525702444, "nodes": 29}
+{"t": 0.0095, "energy_relative": 0.004257959307930393, "gap_m": 1.07440003165811e-06, "opening_rank": 1, "available_J": 4.9835024080453324e-08, "blade_reached_area_m2": 3.1873626664789404e-09, "contact_N": 0.011890061913522432, "cutting_N": 0.017127300996443277, "Jmin": 0.9649560051915453, "nodes": 29}
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/tests/continue_paid.py", line 44, in <module>
+    g.checked_step(round(chunk/dt));g.state();a=g.aggregates[0];t=g.steps*dt;obs=g.observe();m=a.metrics();T,tv=g.pose(t);edge=blade_edge(cad,T,R);normal,offset,sections=current_sections(a,edge,direction);front_offset=float(direction@edge[0]);available=pending+obs['earned_fracture_J'];all_area=novel_area(a,sections,direction,front_offset);balance=m['U']+m['T']+obs['contact_energy']-birth-(accum['tool_work_J']+obs['tool_work_J'])-(accum['cutting_tool_work_J']+obs['cutting_tool_work_J'])+accum['friction_J']+obs['friction_J']+accum['cutting_numerical_loss_J']+obs['cutting_numerical_loss_J']+paid+available;scale=max(abs(accum['tool_work_J']+obs['tool_work_J'])+abs(accum['cutting_tool_work_J']+obs['cutting_tool_work_J']),1e-8);gap,rank=opening(a);row=dict(t=t,energy_relative=abs(balance)/scale,gap_m=gap,opening_rank=rank,available_J=available,blade_reached_area_m2=all_area,contact_N=obs['sum_force_N'],cutting_N=float(np.linalg.norm(obs['cutting_force'])),Jmin=float(np.linalg.det(a.body.fields()[2]).min()),nodes=len(a.q));rows.append(row);(out/'progress.json').write_text(json.dumps(row,indent=2));print(json.dumps(row),flush=True)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/src/contact_gpu.py", line 161, in checked_step
+    result=self.finish();self.last_cost={'GPU_step_host_read_s':t1-t0,'whole_volume_certificate_s':t2-t1,'accepted_state_transfer_s':time.perf_counter()-t2};return result
+           ^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/src/contact_gpu.py", line 123, in finish
+    try:return super().finish()
+               ^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/src/pipeline_gpu.py", line 49, in finish
+    raise ValueError(('pipeline mechanics rejected; state rolled back',int(self.bad_view[0])))
+ValueError: ('pipeline mechanics rejected; state rolled back', 4)
+{
+  "status": "stopped",
+  "wall_s": 7.877483716991264,
+  "simulation_advanced_s": 0.0001999999999999988,
+  "event_period_s": 0.00025,
+  "paid_fracture_work_J": 5.403721135843493e-07,
+  "physical_slice": false,
+  "rl_ready": false
+}

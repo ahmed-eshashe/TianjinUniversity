@@ -1,0 +1,43 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793541057.264616   59403 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793541057.264646   59403 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T13:50:57Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module tomato_exact_blade_queries d169611 load on device 'cuda:0' took 0.79 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_worker.py", line 49, in main
+    write(out,'exact_blade_geometry_measurements.json' if args.geometry_only else 'exact_blade_measurements.json',dict(geometry_only=args.geometry_only,solid_cell_certificate=certificate,cases=cases,query_count=queries,distance_error_m=distance_error,normal_error=normal_error,cell_file_sha256=hashlib.sha256((ROOT/'work/exact_blade_cells.json').read_bytes()).hexdigest(),newton_steps=steps,quadrature_reference_area_m2=1e-6,contact_stiffness_density_n_m3=1750./1e-6,scope='Six generated soft-triangle/blade intersection cases, 128 native field queries; no solver steps or force qualification.' if args.geometry_only else 'Generated full soft-triangle/actual blade solid intersections; synthetic area-weighted penalty, six native one-step cases. No long cut or calibrated tomato force claim.'))
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_worker.py", line 11, in write
+    temporary.write_text(json.dumps(data, indent=2) + '\n')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable

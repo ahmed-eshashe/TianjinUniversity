@@ -1,0 +1,15 @@
+SECTION 3 PHYSICAL QUALIFICATION — 9 November 2026
+
+Decision: physical prerequisites pass for the approved split assembly. Section 4 shallow-cut development may proceed under the user's explicit speed deferral. This is not a live fracture, separation, robot integration or training pass.
+
+Both fresh one-second settling runs completed (12.5 and 6.25 microseconds). Final-window speed remained below 1 mm/s. Refinement differences: position 0.000641 mm; velocity 0.249083 mm/s; internal force 0.038806%; support reaction 0.037644%.
+
+The original CAD blade loaded and withdrew horizontally toward the robot on the settled split assembly. Both 45 ms tests completed (3.125 and 1.5625 microseconds), with unchanged physical thresholds. Maximum force and moment refinement differences were 0.56344%, below 5%. Peak reactions were 0.77835 and 0.77957 mN. All sampled states were admissible; board penetration and support drift were zero. Maximum blade penetration was 0.253 micrometres. Final blade reaction was zero. No damage was enabled and no topology changed.
+
+Speed is FAILED/DEFERRED, not passed: settling took 1053 and 1759 wall seconds per simulated second; the blade tests took 5541 and 11598 wall seconds per simulated second, versus the original 120 limit. These timings are different workloads, not an equal-accuracy speedup comparison. User authorized physical qualification first without relaxing accuracy. Rejected v21 acceleration experiments remain separate.
+
+Scope: prescribed blade translation, exterior-node contact sampling, original 47 cohesive groups, approved split mesh, fixed supports and uncalibrated board contact offset. This does not verify native mounted force feedback, motor work, experimental tomato accuracy, arbitrary paths, or training suitability. Robot, kitchen, grip and original research evidence were not changed.
+
+NEXT — SECTION 4: implement and independently verify progressive fracture-history updates against the original CPU law before a bounded shallow cut. Check irreversible damage, unchanged energy budgets, contact eligibility, rejected-step history and reset. Then run shallow loading with declared stops and a smaller-step repeat, followed by horizontal withdrawal. Only after that passes attempt full stroke and separation. No fracture simulation has run in this qualification.
+
+Evidence: work/disect_physical_20261109_v22/settling_qualification.json, contact_comparison_result.json, both settling and blade result/trajectory files, settled_interface_audit.json.

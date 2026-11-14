@@ -1,0 +1,26 @@
+V18: ISOLATED SAME-FRAGMENT AGGREGATION TRIAL
+
+Authorization: the user approved the bounded working-day aggregation/local GPU history trial. This candidate does not modify or replace the Isaac/DiSECt project. The material constants and all acceptance limits remain those in contract.json.
+
+Reference
+The preserved v17 virtual-node linear tetrahedral approximation provides the material regions, neo-Hookean energy, geometry-only cut history and original row-sum nodal mass. E=100 kPa, nu=.4, rho=1000 kg/m^3. Every clipped convex region and its volume/first moment is retained. This trial is not official AgMPM, CRESSim, DiSECt or BladeMaster software, and its block fixtures are not an experimentally validated tomato.
+
+Aggregation
+An original logical node with support from at least one wholly occupied original tetrahedron remains a master. A node without such support can be expressed by affine extension from the nearest fully occupied tetrahedron whose history is compatible with every region incident on that node and whose mechanical component matches. Root nodes must already be masters: no recursively chained extension. Maximum root-centroid to original logical-node distance is 3.5 reference cell widths. Roots reproduce constants and all three reference coordinates. If a root cannot be found, the original node remains an unresolved independent master. No small mass/volume is removed, floored or reassigned to another fragment.
+
+The initial implementation used 2.5 cell widths. Diagnosis showed that the Kuhn tetrahedral parents span a cell diagonal; legitimate same-fragment roots were 2.62 to 2.81 widths from some virtual nodes. The original failed source and results are preserved in reports/aggregation_initial.py, early_gate.json and reports/fixture_diagnosis.json. The bounded correction increases the search to 3.5 widths, followed by fresh checks. The 12 mm n=2 diagonal fixture remains unsupported on an entire fragment because that fragment contains no full original tetrahedron. It is not silently declared a speed pass. The n=4 corner sweep is a separate, explicitly larger 24 mm fixture.
+
+Let A denote the scalar sparse extension matrix (called E in the source). Full displacement and velocity are u=A q and v=A qdot. Elastic energy is still evaluated from all original retained material regions; reduced force is A^T f. Exact reduced inertia of the declared v17 lumped model is M=A^T diag(m) A. M is not row-sum lumped again. Its connected blocks are factored by Cholesky in this CPU reference, with singleton division as the exactly equivalent special case. Original positive masses and an independent master identity make M positive definite mathematically. A numerical SPD failure is rejected.
+
+State transfer
+q=M^-1 A^T diag(m) u_old and the analogous expression for velocity are mass-orthogonal projections. They reproduce affine fields exactly, but nonaffine states incur explicitly measured position, velocity, strain and energy changes. No energy correction impulse is added; no projection loss is called fracture work. Tests check actual vertices of every retained polyhedron, not just virtual grid points or centroids. Since fields are affine within a region, this bounds field-difference norms throughout that region at the sampled times.
+
+Dynamics
+CPU float64 velocity Verlet uses the reduced energy gradient and the full coupled reduced inertia. Comparison trajectories use a copied, isolated v17 float32 GPU implementation, with independent timestep-halving controls. Neither artificial damping nor a force filter is used. GPU optimization of the aggregate solver is gated on this mechanical comparison. A large linearized stability step alone is not an accepted accuracy step or a throughput result.
+
+Limitations requiring explicit interpretation
+The rule forbids coupling between already disconnected components. It is not a proof that all root choices around arbitrary partially opened/curved crack fronts are geometrically local: current compatibility and distance screens do not explicitly establish a positive-area material-face path. Thus finite partial-bridge tests do not qualify unrestricted paths. Reduced spaces suppress some displacement modes; energy conservation by itself cannot establish equivalence to the original response. Fully occupied root support may be unavailable in small/thin fragments. Geometric splits do not implement blade contact, work-driven fracture, surface recontact or a cut-force measurement.
+
+Research principle
+Coombs, Bird and Pretti, "The Aggregated Material Point Method", Computer Methods in Applied Mechanics and Engineering 442 (2025), 118012, DOI 10.1016/j.cma.2025.118012. https://doi.org/10.1016/j.cma.2025.118012
+The relevant principle is extending well-supported bases into cut regions and retaining the aggregated inertia, with lumping before rather than after aggregation. This local virtual-node FEM trial is an adaptation of that principle, not a reproduction of their implementation or evidence of RL cutting performance. No external paper's reported speed is used as a laptop benchmark.

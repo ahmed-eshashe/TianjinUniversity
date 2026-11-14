@@ -1,0 +1,85 @@
+{
+  "status": "pass_restricted_nonaffine_front_geometry",
+  "checks": {
+    "analytic_nonaffine_field_reproduction": true,
+    "field_is_outside_old_affine_scope": true,
+    "full_inertia_pullback": true,
+    "virtual_work_pullback": true,
+    "carried_fields_0.0001": true,
+    "carried_energy_0.0001": true,
+    "volume_0.0001": true,
+    "bridge_0.0001": true,
+    "resolved_front_0.0001": true,
+    "carried_fields_0.0002": true,
+    "carried_energy_0.0002": true,
+    "volume_0.0002": true,
+    "bridge_0.0002": true,
+    "resolved_front_0.0002": true,
+    "carried_fields_0.0003": true,
+    "carried_energy_0.0003": true,
+    "volume_0.0003": true,
+    "bridge_0.0003": true,
+    "resolved_front_0.0003": true,
+    "partial_remains_one_piece": true,
+    "loaded_restart": true,
+    "restart_continuation": true,
+    "reverse_reentry_no_new_area": true,
+    "subdivision_same_area": true,
+    "subdivision_same_carried_fields": true,
+    "subdivision_same_front": true,
+    "rotated_nonaffine_history": true,
+    "changing_nonuniform_compression_chart": true,
+    "near_miss": true,
+    "held_tool": true,
+    "finite_edge_partial_area": true,
+    "finite_edge_intact_gap": true,
+    "disjoint_prescribed_gap_stays_connected": true,
+    "too_large_rejected": true,
+    "changing_plane_rejected": true,
+    "curved_preimage_rejected": true,
+    "curved_edge_footprint_rejected": true,
+    "stale_commit_rejected": true,
+    "prescribed_completion_partition": true,
+    "completion_fields_preserved": true,
+    "completion_mass": true
+  },
+  "results": {
+    "pullback": {
+      "mass_relative": 4.1331615923274245e-15,
+      "internal_force_relative": 1.8394140952221823e-13,
+      "old_dofs": 216,
+      "new_dofs": 324
+    },
+    "advancing_front_conditions": [
+      {
+        "dofs": 432,
+        "mass_rank": 432,
+        "mass_condition": 512173.64937027957,
+        "min_eigenvalue": 3.358438300274067e-11,
+        "max_eigenvalue": 1.7201036004362876e-05
+      },
+      {
+        "dofs": 540,
+        "mass_rank": 540,
+        "mass_condition": 528935.8722511905,
+        "min_eigenvalue": 3.235049732096571e-11,
+        "max_eigenvalue": 1.7111338518224797e-05
+      },
+      {
+        "dofs": 648,
+        "mass_rank": 648,
+        "mass_condition": 528812.6275507669,
+        "min_eigenvalue": 3.219332382152172e-11,
+        "max_eigenvalue": 1.70242361596516e-05
+      }
+    ],
+    "temporal_note": "Analytic endpoint-field fixture, not freely evolved GPU or contact trajectory.",
+    "disjoint_note": "Direct prescribed union isolates refinement/bridge algebra; not a blade trajectory.",
+    "too_large_reason": "reference advance exceeds action envelope",
+    "sideways_reason": "changing material cut surface during action",
+    "curved_preimage_reason": "blade plane has a curved or ambiguous material preimage",
+    "curved_edge_reason": "curved/nonseparable in-plane edge footprint unsupported"
+  },
+  "wall_s": 6.392864774999907,
+  "physical_fracture": false
+}

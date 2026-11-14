@@ -1,0 +1,28 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793551247.489708   75295 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793551247.489742   75295 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T16:40:47Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.03 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.75 ms  (cached)
+Module tomato_board_support d920b72 load on device 'cuda:0' took 355.01 ms  (compiled)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.20 ms  (cached)
+Module tomato_native_volume_steps e599ed7 load on device 'cuda:0' took 0.76 ms  (cached)
+Module tomato_native_full_gather 1896973 load on device 'cuda:0' took 0.69 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels fa8d30f load on device 'cuda:0' took 2.26 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_sustained_support_worker.py", line 51, in main
+    if int(solver.volume_invalid.numpy()[0]) or ratios.min()<=.1 or not np.isfinite(x).all() or fixture_error!=0 or penetration>config['board_max_penetration_m']:raise ValueError('Sustained target exceeded predeclared support/volume/board gate: '+str(row))
+                                                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Sustained target exceeded predeclared support/volume/board gate: {'time_s': 0.04166666666666667, 'minimum_volume_ratio': 0.15007032202405018, 'maximum_speed_m_s': 0.4848382789973249, 'maximum_board_penetration_m': 5.725021765101701e-06, 'fixture_error_m': 0.0, 'board_reaction_n': 1.480387408457482, 'kinetic_energy_j': 0.00257384170458353, 'maximum_displacement_m': 0.01016827243422455}

@@ -1,0 +1,213 @@
+{
+  "status": "component_tests_complete",
+  "checks": {
+    "new_basis_GPU_force": true,
+    "new_basis_GPU_acceleration": true,
+    "new_basis_GPU_energy": true,
+    "new_basis_GPU_mass_residual": true,
+    "new_mode_force_energy_gradient": true,
+    "primary_energy_balance": true,
+    "primary_momentum": true,
+    "primary_volume": true,
+    "primary_mass": true,
+    "half_energy_balance": true,
+    "half_momentum": true,
+    "half_volume": true,
+    "half_mass": true,
+    "halfstep_position": true,
+    "halfstep_velocity": true,
+    "halfstep_work": true,
+    "matched_CPU_GPU_trajectory": true,
+    "loaded_GPU_restart": true,
+    "integration_force": true,
+    "integration_energy": true,
+    "integration_trajectory": true,
+    "primary_fine_advance_1": true,
+    "primary_fine_advance_2": true,
+    "primary_fine_advance_3": true,
+    "primary_fine_advance_4": true,
+    "half_fine_advance_1": true,
+    "half_fine_advance_2": true,
+    "half_fine_advance_3": true,
+    "half_fine_advance_4": true,
+    "coupled_halfstep": true,
+    "coupled_history_restart": true,
+    "unsupported_free_deformation_rolls_back": true
+  },
+  "results": {
+    "same_field": {
+      "force_relative": 7.88173538382962e-14,
+      "acceleration_relative": 2.0868930372475402e-12,
+      "energy_relative": 5.500573202058944e-14,
+      "mass_residual": 1.8844957781588915e-15
+    },
+    "gradient": {
+      "finite_difference": 0.0008894505147867288,
+      "force_contraction": 0.0008894505015812106
+    },
+    "dynamics": {
+      "primary": {
+        "wall_s": 0.18012913799611852,
+        "sim_s": 0.0001,
+        "work_J": 4.4812982119681e-08,
+        "energy_residual_J": -1.0772873895697348e-09,
+        "energy_initial_J": 5.839298593073951e-05,
+        "GPU_allocated_bytes": 24980344,
+        "basis_dofs": 324,
+        "quadrature_points": 12500,
+        "inverse_residuals": [
+          1.1360129480326376e-13
+        ]
+      },
+      "half": {
+        "wall_s": 0.32864008000615286,
+        "sim_s": 0.0001,
+        "work_J": 4.4812731369756374e-08,
+        "energy_residual_J": -6.387904094257257e-10,
+        "energy_initial_J": 5.839298593073951e-05,
+        "GPU_allocated_bytes": 24980344,
+        "basis_dofs": 324,
+        "quadrature_points": 12500,
+        "inverse_residuals": [
+          1.1360129480326376e-13
+        ]
+      }
+    },
+    "halfstep": {
+      "q": 2.954206844351867e-07,
+      "vg": 0.31070585474390205,
+      "x": 4.687936896313749e-10,
+      "v": 0.0010783557917369013,
+      "F": 7.970809763335751e-07
+    },
+    "CPU": {
+      "wall_s": 6.051530274999095,
+      "sim_s": 0.0001,
+      "difference": {
+        "q": 1.5612511283791264e-17,
+        "vg": 1.5726878133115463e-11,
+        "x": 3.469446951953614e-18,
+        "v": 4.1897041391791845e-14,
+        "F": 1.5265566588595902e-15
+      }
+    },
+    "restart": {
+      "q": 0.0,
+      "vg": 0.0,
+      "x": 0.0,
+      "v": 0.0,
+      "F": 0.0
+    },
+    "integration": {
+      "force_relative": 2.8634876928845407e-13,
+      "difference": {
+        "q": 6.938893903907228e-18,
+        "vg": 5.125233570879573e-12,
+        "x": 1.734723475976807e-18,
+        "v": 2.8449465006019636e-14,
+        "F": 9.087782609773498e-16
+      }
+    },
+    "primary_coupled": [
+      {
+        "time": 5e-05,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.07350944100471679,
+        "CPU_motion_topology_s": 0.1401167779986281,
+        "GPU_rebuild_s": 0.05987604200345231,
+        "total_wall_s": 0.27359991800040007,
+        "new_area_m2": 6.00000000000496e-07
+      },
+      {
+        "time": 0.0001,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.09353328800352756,
+        "CPU_motion_topology_s": 0.18814100199961103,
+        "GPU_rebuild_s": 0.09732092500053113,
+        "total_wall_s": 0.37912005300313467,
+        "new_area_m2": 5.999999999999859e-07
+      },
+      {
+        "time": 0.00015000000000000001,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.1443577739992179,
+        "CPU_motion_topology_s": 0.2646470350009622,
+        "GPU_rebuild_s": 0.137222577999637,
+        "total_wall_s": 0.5463760730053764,
+        "new_area_m2": 6.00000000000007e-07
+      },
+      {
+        "time": 0.0002,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.17632993099687155,
+        "CPU_motion_topology_s": 0.3218095780030126,
+        "GPU_rebuild_s": 0.1719230999951833,
+        "total_wall_s": 0.6702456359998905,
+        "new_area_m2": 6.000000000000379e-07
+      }
+    ],
+    "half_coupled": [
+      {
+        "time": 5e-05,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.12753332700231113,
+        "CPU_motion_topology_s": 0.14423963200533763,
+        "GPU_rebuild_s": 0.0621379669973976,
+        "total_wall_s": 0.33400402999541257,
+        "new_area_m2": 5.999999999991429e-07
+      },
+      {
+        "time": 0.0001,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.17245224799989955,
+        "CPU_motion_topology_s": 0.1976793270005146,
+        "GPU_rebuild_s": 0.09309771600237582,
+        "total_wall_s": 0.4633520069983206,
+        "new_area_m2": 5.999999999994552e-07
+      },
+      {
+        "time": 0.00015000000000000001,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.26557856999716023,
+        "CPU_motion_topology_s": 0.25647879600001033,
+        "GPU_rebuild_s": 0.13441882299957797,
+        "total_wall_s": 0.656625935996999,
+        "new_area_m2": 5.999999999996216e-07
+      },
+      {
+        "time": 0.0002,
+        "pieces": 1,
+        "topology_changed": true,
+        "GPU_checked_and_export_s": 0.3339532980025979,
+        "CPU_motion_topology_s": 0.32286254400241887,
+        "GPU_rebuild_s": 0.16812580099940533,
+        "total_wall_s": 0.8251196340061142,
+        "new_area_m2": 5.999999999995801e-07
+      }
+    ],
+    "coupled_halfstep": {
+      "q": 5.048045315092509e-16,
+      "vg": 7.969339179184336e-11,
+      "x": 4.0419056990259605e-16,
+      "v": 1.2078255062775156e-12,
+      "F": 9.348077867343818e-14
+    },
+    "free_nonaffine_coupled_cut": {
+      "accepted": false,
+      "reason": "blade plane has a curved or ambiguous material preimage",
+      "duration_s": 5e-05,
+      "scope": "freely relaxing nonuniform block, no contact"
+    }
+  },
+  "wall_s": 15.624914397994871,
+  "physical_fracture": false,
+  "actual_blade_contact": false,
+  "production_changed": false
+}

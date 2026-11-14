@@ -1,0 +1,220 @@
+{
+  "scope": "One saved-state arithmetic-repair retest: one step versus two half steps, uncommitted history; no trajectory/model/tolerance change and no cutting qualification",
+  "source_time_s": 0.055393750000000005,
+  "comparison": {
+    "position_m": 4.568632778654819e-09,
+    "velocity_m_s": 0.000762879680693861,
+    "force_relative": 0.00018609040488143456,
+    "moment_relative": 0.000187012879591991,
+    "nodal_force_relative": 0.0006697291503411463
+  },
+  "runs": [
+    {
+      "name": "coarse",
+      "dt_s": 6.25e-06,
+      "steps": [
+        {
+          "sim_s": 0.055400000000000005,
+          "solver": {
+            "iterations": 104,
+            "relative_residual": 7.545228847465222e-17,
+            "inner_max_residual": 6.432114781147757e-11,
+            "newton_iterations": 3,
+            "wall_s": 1.3997399239997321
+          },
+          "checks": {
+            "finite": true,
+            "minimum_volume_ratio": 0.7000505977546341,
+            "board_penetration_m": 0.0,
+            "fixed_error_m": 0.0,
+            "board_margin_m": 0.05722214580581181,
+            "force_balance_N": 1.7541359185143075e-16,
+            "sum_actual_force_N": 0.19300116349091878,
+            "whole_volume_passed": true
+          },
+          "newton": [
+            {
+              "iteration": 0,
+              "relative_residual": 0.019444323619779647,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 1,
+              "relative_residual": 0.0012746218656473384,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 1.76175436628707e-09,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 7.545228847465222e-17
+            }
+          ],
+          "line_search": [
+            {
+              "newton": 0,
+              "line_search": 0,
+              "relative_residual": 0.019444323619779647,
+              "step": 1.0,
+              "stable_change": -5.773381082857131e-11,
+              "legacy_change": -5.7733810828629917e-11,
+              "descent": -1.1550074524982741e-10,
+              "remainder": 7.649731455683559e-07
+            },
+            {
+              "newton": 1,
+              "line_search": 0,
+              "relative_residual": 0.0012746218656473384,
+              "step": 1.0,
+              "stable_change": -5.937271582570698e-12,
+              "legacy_change": -5.937271582642083e-12,
+              "descent": -1.1874543144965165e-11,
+              "remainder": 2.81559689427659e-12
+            },
+            {
+              "newton": 2,
+              "line_search": 0,
+              "relative_residual": 1.76175436628707e-09,
+              "step": 1.0,
+              "stable_change": -9.138646630338121e-24,
+              "legacy_change": 1.623934268346002e-25,
+              "descent": -1.8277293260676252e-23,
+              "remainder": 2.753013427200621e-19
+            }
+          ]
+        }
+      ],
+      "wall_s": 3.7973854700030643,
+      "fracture_history_unmodified": true
+    },
+    {
+      "name": "fine",
+      "dt_s": 3.125e-06,
+      "steps": [
+        {
+          "sim_s": 0.055396875000000005,
+          "solver": {
+            "iterations": 48,
+            "relative_residual": 7.847731193506249e-16,
+            "inner_max_residual": 9.317839448977859e-11,
+            "newton_iterations": 2,
+            "wall_s": 1.0920942289994855
+          },
+          "checks": {
+            "finite": true,
+            "minimum_volume_ratio": 0.700054803064165,
+            "board_penetration_m": 0.0,
+            "fixed_error_m": 0.0,
+            "board_margin_m": 0.05722215655514218,
+            "force_balance_N": 8.770447993522017e-16,
+            "sum_actual_force_N": 0.19263846559292297,
+            "whole_volume_passed": true
+          },
+          "newton": [
+            {
+              "iteration": 0,
+              "relative_residual": 0.009713756445221072,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 1,
+              "relative_residual": 0.0011028907640344978,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 7.847731193506249e-16
+            }
+          ],
+          "line_search": [
+            {
+              "newton": 0,
+              "line_search": 0,
+              "relative_residual": 0.009713756445221072,
+              "step": 1.0,
+              "stable_change": -1.631217519540998e-11,
+              "legacy_change": -1.6312175195519145e-11,
+              "descent": -3.259635129976199e-11,
+              "remainder": 4.454026617990714e-07
+            },
+            {
+              "newton": 1,
+              "line_search": 0,
+              "relative_residual": 0.0011028907640344978,
+              "step": 1.0,
+              "stable_change": -4.617344315149662e-12,
+              "legacy_change": -4.617344315176161e-12,
+              "descent": -9.234688630299323e-12,
+              "remainder": 4.723029089112014e-13
+            }
+          ]
+        },
+        {
+          "sim_s": 0.055400000000000005,
+          "solver": {
+            "iterations": 48,
+            "relative_residual": 3.841343573446975e-15,
+            "inner_max_residual": 9.364481881595878e-11,
+            "newton_iterations": 2,
+            "wall_s": 1.2438386180001544
+          },
+          "checks": {
+            "finite": true,
+            "minimum_volume_ratio": 0.7000505979642949,
+            "board_penetration_m": 0.0,
+            "fixed_error_m": 0.0,
+            "board_margin_m": 0.05722214580606971,
+            "force_balance_N": 5.159153142679904e-15,
+            "sum_actual_force_N": 0.19300640850810047,
+            "whole_volume_passed": true
+          },
+          "newton": [
+            {
+              "iteration": 0,
+              "relative_residual": 0.009707114274632722,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 1,
+              "relative_residual": 0.001103489218859606,
+              "line_search_step": 1.0
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 3.841343573446975e-15
+            }
+          ],
+          "line_search": [
+            {
+              "newton": 0,
+              "line_search": 0,
+              "relative_residual": 0.009707114274632722,
+              "step": 1.0,
+              "stable_change": -1.5803458139661222e-11,
+              "legacy_change": -1.5803458139559592e-11,
+              "descent": -3.157941703337511e-11,
+              "remainder": 4.3504094544226856e-07
+            },
+            {
+              "newton": 1,
+              "line_search": 0,
+              "relative_residual": 0.001103489218859606,
+              "step": 1.0,
+              "stable_change": -4.621813458258303e-12,
+              "legacy_change": -4.621813458330918e-12,
+              "descent": -9.243626916516605e-12,
+              "remainder": 5.113776200566818e-13
+            }
+          ]
+        }
+      ],
+      "wall_s": 4.738615029000357,
+      "fracture_history_unmodified": true
+    }
+  ],
+  "passed": true,
+  "gate_b_passed": false
+}

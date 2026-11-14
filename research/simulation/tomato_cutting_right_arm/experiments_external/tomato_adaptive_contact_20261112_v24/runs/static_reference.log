@@ -1,0 +1,55 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_reference.py", line 15, in <module>
+    try:r=integral(a,cad,T,cad.R,vt,relative_tol=tol);record={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in r.items()};record.update(t=t,relative_tol=tol,status='completed');print(t,tol,r['force'].sum(0),r['energy'],r['wall_s'],sum(x['leaves'] for x in r['diagnostics']),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_reference.py", line 42, in integral
+    if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('unresolved adaptive contact', 13, 24, np.float64(5.453248358267706e-09))
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_reference.py", line 15, in <module>
+    try:r=integral(a,cad,T,cad.R,vt,relative_tol=tol);record={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in r.items()};record.update(t=t,relative_tol=tol,status='completed');print(t,tol,r['force'].sum(0),r['energy'],r['wall_s'],sum(x['leaves'] for x in r['diagnostics']),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_reference.py", line 42, in integral
+    if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('unresolved adaptive contact', 13, 24, np.float64(5.453248358267706e-09))
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_reference.py", line 15, in <module>
+    try:r=integral(a,cad,T,cad.R,vt,relative_tol=tol);record={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in r.items()};record.update(t=t,relative_tol=tol,status='completed');print(t,tol,r['force'].sum(0),r['energy'],r['wall_s'],sum(x['leaves'] for x in r['diagnostics']),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_reference.py", line 42, in integral
+    if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('unresolved adaptive contact', 13, 24, np.float64(1.8306544544287262e-08))
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_reference.py", line 15, in <module>
+    try:r=integral(a,cad,T,cad.R,vt,relative_tol=tol);record={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in r.items()};record.update(t=t,relative_tol=tol,status='completed');print(t,tol,r['force'].sum(0),r['energy'],r['wall_s'],sum(x['leaves'] for x in r['diagnostics']),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_reference.py", line 42, in integral
+    if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('unresolved adaptive contact', 13, 24, np.float64(1.8306544544287262e-08))
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_reference.py", line 15, in <module>
+    try:r=integral(a,cad,T,cad.R,vt,relative_tol=tol);record={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in r.items()};record.update(t=t,relative_tol=tol,status='completed');print(t,tol,r['force'].sum(0),r['energy'],r['wall_s'],sum(x['leaves'] for x in r['diagnostics']),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_reference.py", line 42, in integral
+    if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('unresolved adaptive contact', 13, 24, np.float64(1.179720713903187e-08))
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_reference.py", line 15, in <module>
+    try:r=integral(a,cad,T,cad.R,vt,relative_tol=tol);record={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in r.items()};record.update(t=t,relative_tol=tol,status='completed');print(t,tol,r['force'].sum(0),r['energy'],r['wall_s'],sum(x['leaves'] for x in r['diagnostics']),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_reference.py", line 42, in integral
+    if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('unresolved adaptive contact', 13, 24, np.float64(1.179720713903187e-08))

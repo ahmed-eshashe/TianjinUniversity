@@ -1,0 +1,9 @@
+COUPLED SOLVER v10 — 8 November 2026
+
+Added a sparse factored deviatoric FEM preconditioner in Newton coordinates; evaluated material/contact laws unchanged. Strict inner-solve trial reached 4ms then failed step9. Inexact-Newton variant independently checks true linear residual <=0.1 and descent before line search; final accepted nonlinear force balance remains <=1e-6 N. This is an inner iteration strategy, not a relaxed physical acceptance criterion.
+
+The inexact candidate completed 10 steps / 5ms in42.053s. Removing the preliminary L-BFGS optimization completed the same 5ms in9.312s (4.52x faster than that candidate, not a claim against production solver). Direct variant maximum accepted force residual6.8544e-7 N. Both completed finite geometry/support/board checks coded in the probe.
+
+Direct candidate vs small-step v07 reference at1ms-spaced snapshots: maximum position error0.012107mm, velocity0.0023245m/s, force-vector relative L2 <=4.6964%. These satisfy the short sampled comparison limits; not a full settling/refinement or cutting qualification. Damage disabled, no separation claim. Run timing excludes environment startup and preconditioner assembly. Effective solver-loop cost~1862wall seconds per simulated second remains above120 requirement. No production engine switched.
+
+Next gate: extend this candidate to the existing20ms reference window, check all matched samples and time refinement. If that passes, profile and improve dominant contact/Hessian work before long settling. Section3 stays4/5 and total15/35; section4 blocked. Experimental validation pending. No simulation running.

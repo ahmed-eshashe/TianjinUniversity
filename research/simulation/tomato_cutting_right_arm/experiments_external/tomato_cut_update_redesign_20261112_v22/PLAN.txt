@@ -1,0 +1,8 @@
+V22 — SAME-PHYSICS CUT UPDATE REDESIGN
+Authorized by user on 12 November 2026. Isolated from current Isaac/DiSECt setup.
+
+1. Profile complete changing-geometry reference. Replace repeated hull reconstruction with reusable convex boundary faces. Preserve every positive-volume region and all four history digits; reject ambiguous geometry.
+2. Compile connectivity and field/accounting operations. Bypass general sparse factorization only where the exact original extension is the identity; retain coupled inertia otherwise. Preserve all transfer/conservation checks.
+3. Fuse GPU force gather and inverse-mass advancement without altering stress law, inverse mass, timestep or staggered phase. Compare independently against v21, including coupled-mass cases.
+4. Validate geometry/history, operators, dynamics, independent environments, restore and failed-operation rollback; inspect component and complete-loop profiles. Include reset/event/upload/observation/check costs and disclose compilation/template costs separately.
+5. Benchmark matched n=10, 60 mm synthetic blocks and independent batches. The 100 actual RL transition/s target stays unchanged. A bulk/geometric speed pass is not a physical tomato, contact/fracture or RL pass. No solver, material, tolerance or production setup changes are authorized.

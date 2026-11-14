@@ -1,0 +1,53 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp/1.17.0
+Module contact_geometry 7a11ea9 load on device 'cuda:0' took 234.42 ms  (compiled)
+Module kernels 68444bc load on device 'cuda:0' took 327.60 ms  (compiled)
+Module physical_kernels ff037cb load on device 'cuda:0' took 107.79 ms  (compiled)
+{
+  "status": "completed",
+  "dt": 1.25e-05,
+  "sim_time": 0.013000000000000244,
+  "wall_s": 12.085142297000857,
+  "max_force_N": 0.026704862133548724,
+  "max_penetration_bound_m": 9.999624944398275e-05,
+  "max_impulse_balance_error_Ns": 2.2452426861580123e-13,
+  "reaction_impulse_Ns": [
+    1.0393309808126865e-08,
+    1.4032202171732323e-05,
+    4.351815413798453e-08
+  ],
+  "support_impulse_Ns": [
+    1.1459016562936225e-07,
+    1.8064068839889398e-05,
+    8.557114032717261e-09
+  ],
+  "work_J": 2.482728054718484e-07,
+  "friction_J": 4.855199872674584e-09,
+  "max_certificate_queries": 1920,
+  "initial_certificate": {
+    "passed": true,
+    "reason": "certified",
+    "observed_penetration_m": 0.0,
+    "certified_max_penetration_bound_m": 8.925946502475357e-05,
+    "queries": 896,
+    "depth": 2,
+    "unresolved": 0,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "last_certificate": {
+    "passed": true,
+    "reason": "certified",
+    "observed_penetration_m": 0.0,
+    "certified_max_penetration_bound_m": 0.0,
+    "queries": 896,
+    "depth": 2,
+    "unresolved": 0,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "scope": "Finite CAD contact on supported 12mm coupon; no fracture; reconstructed entire-cell volume certificate each accepted step"
+}

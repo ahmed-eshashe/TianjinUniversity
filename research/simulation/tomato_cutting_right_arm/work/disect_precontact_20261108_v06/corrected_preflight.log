@@ -1,0 +1,41 @@
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+{
+  "scope": "static constitutive preflight, no dynamics, contact or topology changes",
+  "rows": [
+    {
+      "rotation_deg": 15,
+      "rest_force_norm_N": 2.9576610821806655e-14,
+      "cuda_rest_force_norm_N": 2.873692886396436e-14,
+      "independent_cuda_error_N": 7.619623956665673e-15,
+      "covariance_reference_force_norm_N": 0.031206511294241936,
+      "covariance_force_error_N": 2.878213101660524e-14,
+      "covariance_relative_error": 9.223117171036023e-13,
+      "passed": true
+    },
+    {
+      "rotation_deg": 45,
+      "rest_force_norm_N": 3.047747127653957e-14,
+      "cuda_rest_force_norm_N": 2.958680882263896e-14,
+      "independent_cuda_error_N": 7.64437488092396e-15,
+      "covariance_reference_force_norm_N": 0.031206511294241936,
+      "covariance_force_error_N": 3.020625823757477e-14,
+      "covariance_relative_error": 9.679472964076016e-13,
+      "passed": true
+    },
+    {
+      "rotation_deg": 90,
+      "rest_force_norm_N": 1.874166114878316e-14,
+      "cuda_rest_force_norm_N": 1.7243099240590132e-14,
+      "independent_cuda_error_N": 7.60666031603663e-15,
+      "covariance_reference_force_norm_N": 0.031206511294241936,
+      "covariance_force_error_N": 1.7178218387090586e-14,
+      "covariance_relative_error": 5.504690423456666e-13,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "preserved_failure_cause": "Source Ic sums only squared diagonal entries of F; the intended first invariant is tr(F.T F), the sum of all nine squared entries. This changes under rigid rotations in the current code.",
+  "primary_reference": "https://graphics.pixar.com/library/StableElasticity/paper.pdf"
+}

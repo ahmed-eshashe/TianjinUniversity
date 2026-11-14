@@ -1,0 +1,29 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.93 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.84 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.76 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+{
+  "passed": true,
+  "scope": "Constitutive and rest bulk timestep controls only; no settling/contact/fracture pass",
+  "kernel_mu_Pa": 205128.20512820513,
+  "kernel_lambda_Pa": 358974.35897435894,
+  "effective_Young_Pa": 400000.0,
+  "effective_Poisson": 0.3,
+  "rest_stiffness_mass_normalized_upper_bound_s2": 1038451249813.5492,
+  "rest_undamped_bulk_dt_limit_s": 1.9626232483049582e-06,
+  "old_to_new_tangent_ratio": 23.931623931623932,
+  "selected_hold_dt_s": 9.80392156862745e-07,
+  "hold_steps_per_ms": 1020,
+  "half_step_s": 4.901960784313725e-07,
+  "stability_limitations": "Rest bulk bound only; nonlinear material/cohesive/contact stability and accuracy require fresh hold/contact and half-step qualification. No bound claimed for compressed cutting states.",
+  "wall_s": 0.8642814589984482
+}

@@ -1,0 +1,35 @@
+Bent-chain reset and replay — 1 November 2026
+
+PASS after natural separation and during active contact in both identity and 90-degree world-yaw orientations. Every compared replay value matches exactly at recorded precision. Deliberately queued instantaneous and permanent forces clear on reset. This qualifies only the translated, joint-rest-rebased synthetic bent fixture. Earlier coordinate failures remain preserved; full coupling item 15 and eventual real-robot reset item 22 remain open.
+
+The physical bend remains (30,-60) degrees, authored into the local joint frames so the simulated joint displacement coordinates start at zero. Contact stays near the numerical origin by translating the entire chain, fixed anchor and particle together. Each moving link has mass 0.02 kg, length 0.02 m, halfway COM and diagonal COM inertia 0.0001 kg m². The fixed-base passive chain has no actuators, stiffness, damping, friction or gravity. One 0.01 kg zero-radius particle contacts the CUDA Newton kinematic end-link box. Actual contact penalty is fixed at 1750 N/m, SolverVBD uses 16 iterations, and dt=1/2400 s. CPU PhysX owns joint/link motion; actual Newton reaction drives only the end link. The independent reference converts displacement coordinates to physical angles before evaluating geometry, the coupled mass matrix and Coriolis terms.
+
+Three episodes run on the same models, solvers, collision pipelines, links and state buffers: 32-interval baseline; reset after coast followed by two replay intervals; reset while the contact prefix is active followed by 32 replay intervals. Each complete episode has nine contact and 23 natural coast intervals per orientation. No within-episode particle repositioning or reset occurs. Resets explicitly restore the authored particle and joint defaults between episodes.
+
+Before each reset both instantaneous and permanent wrench composers are deliberately populated with force (99,-55,33) N and COM torque (1,2,3) N m on the end link. These dirty controls are never advanced into physics. Articulation reset must deactivate both queues. Joint positions and velocities are explicitly restored. Newton resets particle position and velocity in both persistent State buffers while preserving externally owned rigid state, clears forces and contact matching, and invalidates the old contact prefix. The restored PhysX link packet then refreshes both Newton State buffers. All four reset link-packet errors are zero. Source contact counts are checked as (0,0) after coast and (1,1) during active contact.
+
+The two-interval prefix and complete 32-interval replay are compared in both orientations. Comparisons cover before/after positions and velocities of both joints and the particle, contact counts, force, COM torque, end-link pose/quaternion and linear/angular COM velocity. Existing per-field limits are retained; every observed replay difference is zero. The original mechanical reference, native contact, generalized impulse, cumulative particle impulse, angular balance, natural separation, force clearing and exact state-feedback gates continue to run within every episode. No gate is relaxed.
+
+Maximum replay differences:
+  particle_position_m: 0
+  particle_velocity_m_s: 0
+  joint_position_rad: 0
+  joint_velocity_rad_s: 0
+  force_n: 0
+  torque_nm: 0
+  link_position_m: 0
+  link_quaternion: 0
+  link_linear_velocity_m_s: 0
+  link_angular_velocity_rad_s: 0
+
+Episode 1, bent_rebased_identity: 2 intervals compared.
+
+Episode 1, bent_rebased_yaw90: 2 intervals compared.
+
+Episode 2, bent_rebased_identity: 32 intervals compared.
+
+Episode 2, bent_rebased_yaw90: 32 intervals compared.
+
+Exactly 66 shared PhysX steps, 132 Newton steps, 138 exact actual-state feedback echoes, two reset cycles, four dirty-queue resets and four replay comparisons passed. Seventeen bent-reference/contract tests and nine supervisor tests passed, including stale joint velocity, incorrect force/contact count, stale link angular velocity, coordinate-conversion equivalence and strict count contracts. The protected run exited successfully after 10.82 seconds, retaining at least 22.61 GB available RAM and 7.46 GB free GPU memory. There were no resource warnings, monitor errors or owned live processes. Original frozen production inputs and previously pinned installed dependencies remain unchanged. Source snapshots and hashes are preserved at /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/bent_replay_20261101_01.
+
+Next bounded step: audit contact work and energy accounting in the saved minimal coupled fixture before extending coupling further. This reset/replay result does not validate general coordinate offsets, arbitrary configurations, real robot drives/reset, full coupling, real blade collision generation or cutting material.

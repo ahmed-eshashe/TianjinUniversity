@@ -1,0 +1,66 @@
+{
+  "scope": "Proof-method controls: 80 um cache target must not replace 100 um physical limit",
+  "passed": true,
+  "rows": [
+    {
+      "depth_m": 6e-05,
+      "expected_pass": true,
+      "proof": {
+        "passed": true,
+        "lower_bound_m": -6.0057915619758965e-05,
+        "recertified": true,
+        "certificate": {
+          "passed": true,
+          "unresolved_cells": 0,
+          "depth": 0,
+          "query_count": 1,
+          "lower_bound_m": -6.0057915619758965e-05,
+          "minimum_sample_SDF_m": -5.997500000000009e-05,
+          "wall_s": 0.1284113649999199
+        }
+      }
+    },
+    {
+      "depth_m": 9e-05,
+      "expected_pass": true,
+      "proof": {
+        "passed": true,
+        "lower_bound_m": -9.005791561975885e-05,
+        "recertified": true,
+        "certificate": {
+          "passed": true,
+          "unresolved_cells": 0,
+          "depth": 0,
+          "query_count": 1,
+          "lower_bound_m": -9.005791561975885e-05,
+          "minimum_sample_SDF_m": -8.997499999999995e-05,
+          "wall_s": 7.871399975556415e-05
+        }
+      }
+    },
+    {
+      "depth_m": 0.000102,
+      "expected_pass": false,
+      "proof": {
+        "passed": false,
+        "reason": "Whole-volume intrusion bound failed or remained unresolved",
+        "lower_bound_m": null,
+        "recertified": true,
+        "certificate": {
+          "passed": false,
+          "actual_violation": true,
+          "original_tet": 0,
+          "violating_point": [
+            0.000898025,
+            2.5e-08,
+            2.5e-08
+          ],
+          "minimum_sample_SDF_m": -0.00010197500000000003,
+          "query_count": 1,
+          "depth": 0,
+          "wall_s": 5.243600026005879e-05
+        }
+      }
+    }
+  ]
+}

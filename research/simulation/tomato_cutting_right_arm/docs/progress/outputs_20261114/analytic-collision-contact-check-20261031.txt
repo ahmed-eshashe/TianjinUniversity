@@ -1,0 +1,25 @@
+Collision-generated analytic contact records — 31 October 2026
+
+PASS on six disclosed analytic fixtures. The actual Newton collision pipeline populated real native contact buffers; records were not manually inserted. No solver integration, force evaluation or robot motion occurred.
+
+The synthetic kinematic box has half-extents (10,10,2) mm. Particle radius, shape margin and detection gap were all zero. Fixtures returned:
+- Particle inside: one particle record.
+- Particle clear: zero records.
+- Edge interior inside, both vertices outside: one edge record.
+- Triangle interior inside, all vertices outside: one face record.
+- Triangle clear: zero records.
+- Translated shape and translated/rotated body: one face record with correct world/body/shape mappings.
+
+Each emitted record was compared with an independently calculated Euclidean box signed distance and candidate outward normals. Raw rigid points lay on the uninflated box; weighted soft points, projected gaps, particle padding, record kinds, shape/body mapping, barycentric sums and normal lengths were checked. State particle/body positions were identical before and after each collision-only query.
+
+Maximum raw-surface error: 2.32831e-10 m. Maximum signed/projected-gap disagreement: 2.32831e-10 m. Outward-normal vector disagreement: 0. Largest barycentric weight-sum deviation: 1.93715e-07; no silent renormalization occurred.
+
+Numerical comparisons for this float32 fixture used 1e-7 m coordinate consistency and 1e-6 normal/weight consistency. These are scoped arithmetic checks, not a selected physical contact/penetration/force tolerance. The transformed scene includes coordinates around 0.3 m; float32 pose/weight rounding was retained and measured. The provided time interval is diagnostic metadata; no simulated interval was advanced.
+
+The single protected process completed all six collision queries in 11.070 s, exited 0 and left no live owned processes. Minimum available RAM 25.66 GB, minimum free VRAM 7.27 GiB. No memory warning or monitor failure. Same three-minute watchdog and locks. Four reference, five capture and nine guard tests passed. Native snapshots, source/content hashes and original historical production hashes were verified.
+
+Scope: real collision-generation/capture evidence for this analytic box only. It does not validate the blade mesh/SDF route, solve the custom cohesive-law integration, demonstrate candidate completeness for arbitrary scenes, or establish force/work/damage behavior. No tomato cutting, robot coupling or learning qualification follows.
+
+Next: a small bounded analytic force-and-reaction check using the existing contact law and independently checked parameter/sign/frame conventions. Actual blade-force and cutting integration remain later gates.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/analytic_collision_contacts_20261031_01

@@ -1,0 +1,33 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.93 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.82 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.87 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.64 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.61 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.62 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.86 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.10 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.24 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.57 ms  (cached)
+{
+  "scope": "One saved-state arithmetic-repair retest: one step versus two half steps, uncommitted history; no trajectory/model/tolerance change and no cutting qualification",
+  "source_time_s": 0.055393750000000005,
+  "comparison": {
+    "position_m": 4.568632778654819e-09,
+    "velocity_m_s": 0.000762879680693861,
+    "force_relative": 0.00018609040488143456,
+    "moment_relative": 0.000187012879591991,
+    "nodal_force_relative": 0.0006697291503411463
+  },
+  "passed": true,
+  "gate_b_passed": false
+}

@@ -1,0 +1,34 @@
+Bent-chain contact transfer — 1 November 2026
+
+PASS for one actual Newton contact exchange and explicit clearing control with two passive joints starting at (30,-60) degrees, in identity and 90-degree world-yaw orientations. Full coupling item 15 remains open.
+
+The isolated near-origin chain has a fixed base and two 0.02 kg links, each 0.02 m long with COM halfway along the link and diagonal COM inertia 0.0001 kg m². Both joints start at rest. Gravity, actuators, stiffness, damping and friction are absent. The requested joint angles and independently derived end-link forward kinematics are checked before contact. PhysX owns the articulated motion. CUDA Newton represents the end link as an externally owned kinematic box with half sizes (0.01,0.005,0.002) m. A 0.01 kg zero-radius particle starts at end-link local (0.004,0.004,0), penetrating the +Y face by 0.001 m. SolverVBD runs with 16 iterations, fixed actual penalty 1750 N/m, zero damping/friction, and dt=1/2400 s. Both the chain and contact rotate together for the second fixture.
+
+The analytic mass matrix at this bend is [[0.000216,0.000104],[0.000104,0.000102]] kg m², rather than the straight-chain matrix. The analytic world end-COM Jacobian uses the two different link angles. Both quantities are compared independently with native PhysX values. The independent implicit-particle reference predicts contact force, point and COM torque, then J-transpose maps that predicted reaction into generalized joint effort. Solving the full coupled system predicts both joint velocity increments. Joint position is referenced to the nonzero initial angles with the established 16-substep TGS factor 17/32. This is an initial-rest short-step fixture, not a general trajectory qualification.
+
+Actual native contact reaction is submitted only to the end link through the world-wrench interface. Newton must not move its externally owned proxy. The measured PhysX link pose and world COM velocity are copied exactly into both actual Newton State buffers. Particle linear impulse and position are checked independently. Whole-chain angular momentum about the fixed base uses the first row of the analytic mass matrix evaluated at the measured post-pulse joint angles, multiplied by both joint velocities, balanced against particle angular momentum.
+
+The clearing interval explicitly moves the particle outside the link and resets its velocity. Regenerated contact count must be zero and no new wrench is submitted; both composers remain inactive. Coast joint velocity is compared with the analytic unforced bent-chain dynamics, including Coriolis terms, rather than assumed constant. This explicit control does not test natural separation in a bent configuration.
+
+Unchanged gates: mass matrix 1e-8 kg m²; Jacobian components 1e-6; joint position 1e-6 rad; joint velocity 2e-5 rad/s; native contact force 2e-5 N; contact point and particle position 1e-7 m; contact torque 2e-7 N m; particle impulse 2e-7 N s; total angular balance 2e-8 N m s; coast joint velocity reference error 2e-6 rad/s. Forward kinematics gate 1e-6 over the pose packet. Exactly two shared PhysX steps, four Newton steps, six exact actual-state echoes and two clearing controls passed. No gate was relaxed.
+
+Maximum errors:
+  matrix: 2.01877672226e-10
+  jacobian: 4.76837158203e-07
+  position: 7.32472362763e-08
+  velocity: 3.88789580266e-07
+  force_error_n: 7.87002657187e-06
+  point_error_m: 4.6385698629e-09
+  torque_error_nm: 3.95716458351e-08
+  coast_joint_velocity_reference_error_rad_s: 2.52930215661e-09
+  particle_impulse_error_ns: 5.22228042414e-08
+  particle_position_error_m: 2.09413810201e-09
+  hinge_axis_angular_momentum_error_nms: 4.04322561603e-10
+
+bent_contact_identity: initial joints [0.5235987901687622, -1.0471975803375244]; predicted joint velocities [-0.06258962167461117, -0.03331382885904602]; measured [-0.06259001046419144, -0.03331393748521805]; predicted coast [-0.06259013220278314, -0.03331375792372712]; measured coast [-0.06259012967348099, -0.03331375867128372].
+
+bent_contact_yaw90: initial joints [0.5235987901687622, -1.0471975803375244]; predicted joint velocities [-0.06258956881683883, -0.03331380997896473]; measured [-0.06258951872587204, -0.033313725143671036]; predicted coast [-0.06258964046267523, -0.03331354558487477]; measured coast [-0.06258963793516159, -0.03331354632973671].
+
+Four focused reference/guard-contract tests and nine supervisor tests passed, including rotated response, rejection of a straight-chain mass matrix and nonconstant unforced bent-chain speed. The protected run exited successfully in 5.79 seconds with at least 22.63 GB available RAM and 7.49 GB free GPU memory. There were no resource warnings, monitor errors or remaining owned live processes. Frozen original production inputs and previously pinned installed dependencies remain unchanged. Source hashes and snapshots are preserved. Run evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/bent_contact_20261101_01
+
+Next bounded step: repeated contact from this bent initial configuration, checking evolving dynamics and natural separation. Broader configurations, large motion, robot drives, real robot reset, contact work/energy, real blade collision generation and cutting material remain unvalidated.

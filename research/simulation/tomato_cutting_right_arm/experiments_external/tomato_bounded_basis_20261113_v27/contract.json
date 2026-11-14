@@ -1,0 +1,102 @@
+{
+  "version": "v27",
+  "start_utc": "2026-11-12T11:29:56.539230+00:00",
+  "campaign_budget_s": 14400,
+  "individual_run_cap_s": 600,
+  "material": {
+    "E_Pa": 100000.0,
+    "nu": 0.4,
+    "rho_kg_m3": 1000,
+    "law": "compressible neo-Hookean unchanged"
+  },
+  "aggregation": "Extend stable same-fragment linear bases into poorly supported cut regions. Keep all material volumes. Exact reduced inertia E.T diag(m) E; never relump after aggregation. No cross-fragment source or erasure of history.",
+  "transfer": "Mass-orthogonal state projection, with explicit measured projection errors/energy; no hidden resets, energy correction impulses or loss labelled fracture.",
+  "limits": {
+    "mass_relative": 1e-06,
+    "projection_or_numerical_energy_relative": 0.05,
+    "force_impulse_work_relative": 0.05,
+    "position_m": 0.0001,
+    "velocity_m_s": 0.005,
+    "CPU_GPU_position_m": 1e-06,
+    "CPU_GPU_velocity_m_s": 0.0001,
+    "CPU_GPU_F": 0.0001,
+    "angular_relative": 0.01,
+    "untouched_fragment_response_ratio": 0.01,
+    "J_range": [
+      0.1,
+      10
+    ],
+    "force_stop_N": 2,
+    "whole_material_penetration_m": 0.0001,
+    "velocity_metric": "mass-weighted RMS upper bound over actual material polyhedra; maximum local error remains reported"
+  },
+  "stage_A": "Partial-crack opening, continuity, affine response and exact inertia controls",
+  "stage_B": "Actual reached/paid crack and contact refinement",
+  "stage_C": "Only after physical pass: tomato, complete performance and visible example",
+  "speed": {
+    "control_Hz": 50,
+    "minimum_complete_environment_steps_s": 100,
+    "preferred_steps_s": 500,
+    "material_headroom_target_s": 200
+  },
+  "cases": {
+    "h_m": [
+      0.006,
+      0.003
+    ],
+    "max_cuts": 4,
+    "small_block_m": 0.012,
+    "bulk_block_m": 0.06,
+    "corner_offsets_m": [
+      0.00013,
+      1e-05,
+      1e-06,
+      1e-07
+    ],
+    "minimum_slice_cells": 4
+  },
+  "stop": "Do not change physical or numerical model to obtain a speed pass. Diagnose and correct implementation errors. Report complete-loop evidence; no physical tomato/RL qualification from geometric component performance alone.",
+  "change": "Implementation redesign only: preserve equations, material, geometry semantics, inertia, projection, timestep and validation criteria. Profile and eliminate repeated topology, operator and state reconstruction; measured matched combined-loop qualification only.",
+  "support_fraction_definition": "Original row-sum nodal mass / (rho*h^3). This is a declared numerical support selector, not mass scaling or material deletion.",
+  "primary_support_threshold": 1e-08,
+  "secondary_support_threshold": 1e-12,
+  "selection": "Predeclared primary 1e-8; if primary fails response equivalence, compare the more conservative 1e-12 retaining additional modes. Both must undergo the same temporal and response screens. No unbounded threshold tuning. Secondary chosen before any dynamic accuracy runs.",
+  "final_diagnosed_selector": 1e-16,
+  "refinement_addendum": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/reports/selection_refinement.txt",
+  "velocity_criterion_approval": {
+    "answer": "Use the material-weighted velocity check (Recommended)",
+    "recorded_at": "2026-11-12T17:54:37.279176+08:00",
+    "proposal": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/VELOCITY_CRITERION_PROPOSAL.txt",
+    "proposal_sha256": "88a01f3ae36682430f789e5bb4cc6dd5cc6eceb12119c067cfdf931cb7d44099",
+    "scope": "Only cross-representation, projection and temporal-refinement deformable-material velocity criterion changes to conservative mass-weighted RMS upper bound <=0.005 m/s. Preserve maximum pointwise velocity diagnostics. All other limits unchanged, including strict same-operator CPU/GPU tolerances."
+  },
+  "start": "2026-11-12T16:13:56.804110+00:00",
+  "scope": "Isolated implementation redesign under unchanged physical laws; no full-slice or RL qualification.",
+  "contact": {
+    "K_N_m3": 1000000000.0,
+    "friction_mu": 0.2,
+    "friction_vs_m_s": 0.001,
+    "source": "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/src/contact_law.py"
+  },
+  "cutting": {
+    "Gc_J_m2": 80.0,
+    "law": "existing v02 ideal rate-independent cutting work; not old cohesive law",
+    "source": "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/src/cutting_work.py"
+  },
+  "geometry": "Affine-exact material polyhedra and actual saved CAD. Shallow coupon and analytic controls first; no tomato/robot qualification inherited.",
+  "authorization": "User requests continuous completion through a visible physically checked tomato meeting complete RL throughput, preserving existing setup and agreed physics/accuracy.",
+  "adaptive": {
+    "relative_tolerance": 0.002,
+    "global_absolute_force_budget_N": 1e-06,
+    "max_bisection_depth": 32,
+    "failure": "capacity/unresolved integral rejects; never silently use coarse or drop volume",
+    "internal_budget_note": "Quadrature estimate target is <=1% of the frozen 0.1 mN denominator floor; acceptance stays 5%. Internal allocation/capacity correction after conservative zero-contact bounds exhausted initial depth."
+  },
+  "numerical_scope": {
+    "dt_25us": "Only 13 ms intact tomato contact comparison passed; not adopted for cutting. Larger tested timesteps rejected.",
+    "event_1ms": "Matched 3 ms shallow-crack comparison passed only after preserving complete prior admissible space. Longer continuation clearance unresolved.",
+    "resident_clearance": "Exact CAD conservative proof executed on GPU every 250us in intact tests; unresolved proof stops and rolls back. No production change."
+  },
+  "required_invariant": "No coalescence may remove previously admissible material fields; low sampled displacement/energy errors cannot substitute for this invariant.",
+  "current_decision": "Whether to authorize a separate approximate RL training model; no answer yet."
+}

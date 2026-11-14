@@ -1,0 +1,15 @@
+Selected blade-reference native buffer roundtrip — 31 October 2026
+
+PASS within the isolated transfer scope.
+
+Two explicitly selected reference records from the real-blade geometry fixtures were copied into separate owned Newton Contacts buffers, one per fixture. An empty clear-control fixture was also checked. Native active counts were 1, 1 and 0. All seven fields matched the float32 preview exactly. No native blade body, collision pipeline or solver was connected: these are manually transferred geometry-reference records, not collision-generated contacts.
+
+Maximum post-conversion raw surface error: 1.68e-10 m. Maximum projected-gap error: 1.48e-10 m. Maximum normal conversion error: 2.54e-8. The existing scoped geometry checks were 1e-7 m and 1e-6 for the normal vector. These do not qualify a global contact/force model.
+
+All 16 refusal controls passed across the three fixtures: unsupported particle-only consumer, partial-transfer invalidation, saturated target collector, saturated native count, stale generation and stale episode identity. Deliberate partial failures left count zero and invalidated the generation. Count was published only after field transfer and synchronization. Poisoned inactive tail storage was ignored. Clearing invalidated the generation while retaining stale storage, which was correctly excluded from the active prefix. This is exclusive owned-buffer behavior, not an atomic concurrent-live-solver transaction or complete physics reset.
+
+The full-surface capability flag was set only on each new private Contacts object and its unsupported-consumer refusal was verified. Differentiable replay is not enabled. No installed library was edited.
+
+The protected native run completed in 2.31 seconds with over 25.27 GB available RAM and 7.69 GB free GPU memory. No memory warning, monitoring error or owned process remained. Eighteen focused fixture/capture/guard tests passed. Sources and input hashes were verified and snapshotted; original pinned project sources and blade geometry remain unchanged.
+
+Zero forces were evaluated and zero simulation steps occurred. Next: a stationary force-arithmetic diagnostic on these explicit records using the existing native contact helper and an independent reference. This still does not qualify general real-blade candidate discovery, a contact manifold, robot coupling or cutting. Checklist item 12 remains open.

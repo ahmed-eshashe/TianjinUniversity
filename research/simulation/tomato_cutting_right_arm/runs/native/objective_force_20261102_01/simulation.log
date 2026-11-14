@@ -1,0 +1,22 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793554671.471086  106759 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793554671.471123  106759 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T17:37:51Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module tomato_native_objective_reference d9d009c load on device 'cuda:0' took 2628.92 ms  (compiled)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_objective_force_worker.py", line 41, in main
+    if fe>1e-8 or pe>1e-12 or ge>1e-8 or row['net_moment_nm']>1e-9:raise ValueError('Objective explicit force/potential mismatch '+str(row))
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Objective explicit force/potential mismatch {'id': 'mixed_open', 'force_error_n': 4.440892098500626e-16, 'potential_error_j': 4.336808689942018e-19, 'incremental_gradient_error_n': 1.2127405159935811, 'net_force_n': 2.1350014727272284e-14, 'net_moment_nm': 1.9462029979126007e-16}

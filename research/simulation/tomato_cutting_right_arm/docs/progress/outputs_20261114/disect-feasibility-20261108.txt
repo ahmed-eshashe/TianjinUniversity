@@ -1,0 +1,41 @@
+DiSECt bounded feasibility study — 8 November 2026
+
+DECISION
+Retain DiSECt as a promising isolated candidate. Do not adopt it or connect it to the robot yet. The software now completes two forward runs with normal exits, but the full cut-mesh validation gate remains open. The study stops at this gate, as required by USER_CONTRACT.txt. Tomato settling, contact, cutting, resolution/size/path variants and robot integration have NOT been run or passed.
+
+PRESERVED WORK
+Original robot/kitchen/grip/motion sources were not edited. Production was not resumed; checkpoint step 6925 is intact and hashed in preserved_inputs.json. All changes are under this versioned study directory, separate from the previous benchmark vendor copy. Experimental validation and motor-work qualification remain pending. No training. Previous failures remain in their original evidence locations.
+
+BOUNDED REPAIRS AND DIAGNOSIS
+1. The native mesh cutter held const references to edge endpoints in a vector, then appended copied vertices to that vector before using the endpoints again. Reallocation can invalidate those references. The isolated patch copies the two endpoint values instead. With otherwise unchanged physics, the native mesher now reports success, rather than the old failure flag. This is an observed effect plus a source-level memory-lifetime explanation, not proof that all mesh issues are resolved.
+2. The fixed-mesher example still crashed after all 50,000 steps. GDB located the crash in libc free during Torch autograd node destruction, including CopySlices and SliceBackward0. DiSECt's requires_grad=False switches off dFlex recording, but its motion tensors can still require gradients and PyTorch records repeated slice assignments. Explicitly disabling Torch gradient recording for this FORWARD-ONLY study produced two normal exit-0 runs. No forced exit or suppressed cleanup was used. This establishes a forward-only workaround; it does not establish that backpropagation works or rule out every possible native defect.
+3. Two earlier copied-install import attempts failed before physics because the copied generated-kernel cache lacked its shared library. The unchanged existing kernel binary was copied and both copies hashed. No kernel/source/physics modification was made for that import repair. Compatibility patches already present in the earlier benchmark remain inherited. focused_repairs.patch records only this study's additions.
+
+ESTABLISHED EXAMPLE RESULTS
+Official basic-cutting prism settings and slicing motion, headless forward-only, 5 simulated seconds, dt=0.0001 s; 50,000 steps per run. 1187 prepared nodes, 4950 tets, 304 cutting springs. This is not our tomato.
+Run 1: setup 14.970 s; stepping 11.416 s; 2.283 wall seconds per simulated second; exit 0.
+Run 2: setup 8.680 s; stepping 8.536 s; 1.707 wall seconds per simulated second; exit 0.
+Peak RSS 1.245–1.246 GiB. Peak Torch allocation 9.14 MiB and reserved 22 MiB are allocator-only measures, not total GPU process memory. Total GPU process memory was not resampled in this stage; the earlier study's 224 MiB must not be presented as a measurement of these new runs.
+All sampled states/forces finite. Final minimum signed tet volume ratio ~0.99417; no final inversion. This does not prove no transient inversion between samples.
+Repeated final node positions differed by up to 0.2943 mm; both retained two nonzero-stiffness cutting springs. Largest spring-stiffness difference 2.377 model units. No exact replay or complete separation claim.
+Peak net knife-force resultant ~1.525 model N, versus ~63.28 for the sum of individual contact-force magnitudes. These quantities are different; neither has tomato experimental calibration.
+Runtime includes sampled GPU synchronization and output; no rendering. These example timings are not an equal-model speedup over the original solver and do not predict a tomato full-cut duration.
+
+INDEPENDENT MESH FINDINGS
+Native success is now true. All prepared tet indices are in range; coordinates finite; no zero/negative initial tet volumes; edge interpolation coordinates finite and in [0,1]. Cutting surfaces above/below have equal face counts. Tet-only graph has two components (599 and 588 nodes), with cutting springs supplying inter-piece ties.
+However, geometric cut-triangle audit found 52 near-zero-area triangles and 63 duplicate unoriented triangles in the combined cut-triangle array. The virtual-only arrays have 14 near-zero-area triangles on each side. Threshold for this audit: area <1e-15 m2. These entries were preserved, not silently removed.
+Each side's summed interface area is 0.005 m2, matching the prism section. A diagnostic merge of coincident coordinates and omission of zero-area faces yields edge incidence only 1 or 2, but this is an offline audit only, not a corrected simulation mesh or full coverage/closed-topology proof.
+Source search finds the cut-triangle arrays in model construction and visualization, not the force kernels in dflex/sim.py. Therefore these surface artifacts alone do NOT demonstrate incorrect force dynamics. Conversely, summed area and the native success flag alone are not enough to close the requested complete mesh validation. Do not promote this partial result into qualified cutting.
+
+TOMATO PREPARATION (OFFLINE ONLY)
+Exported original geometry/cells/masses/fixture to source_tomato.npz, with original input hashes and metadata in tomato_source_audit.json. Dimensions 65 x 65 x 55 mm; mass 121.671 g; 4032 nodes and 16291 volume cells; cut x=-22.5 mm; original 25-node fixture. No production asset edited.
+The original assignment explicitly labels its cells "volume quadrature and inversion diagnostics only; no FEM forces." Their validity as a conforming FEM mesh and their constitutive mapping must be established separately. We have not claimed an equivalent Young modulus for the original central-spring/skin/cohesion model. No synthetic replacement parameter was tuned to produce a successful slice.
+
+NEXT ACTION AND EXIT CRITERION
+One focused mesh-preparation task is justified, not a new long simulation campaign: explain/correct zero-area and duplicate cut-face construction, independently verify interface coverage and material connectivity, then validate the tomato's FEM input representation. Preserve all cutting springs and their failure law; do not remove surviving material ties to obtain separation. If correction requires a substantial mesher rewrite or remeshing that changes geometry/resolution, present the concrete options and limitations before proceeding.
+A practical bounded follow-up would allow up to two focused source patches and a 60-minute investigation budget, with each native test capped at 5 minutes. Exit with either an independently validated prism/tomato mesh and two clean example repeats, or an explicit unsupported-geometry finding and mesh options. This is a proposed follow-up budget, not an experiment launched by this report. No tomato dynamics before that gate passes.
+Only afterwards: settle -> nonfracturing contact -> one cut plus horizontal withdrawal and post-clear hold -> topology/mass-based separation -> repeat/refinement/size/path tests -> integration recommendation. Runtime and separation on the actual tomato remain unmeasured.
+
+EVIDENCE
+contract.json; USER_CONTRACT.txt; result.json; mesh_audit.json; mesh_audit_input.npz; focused_repairs.patch; preserved_inputs.json; debug01.log; attempt03.log; forward01/02.log; forward01/02_result.json; forward01/02_final.npz; tomato_source_audit.json; source_tomato.npz.
+Primary upstream reference: https://github.com/NVlabs/DiSECt . All numerical results here are local measurements, not paper performance claims.

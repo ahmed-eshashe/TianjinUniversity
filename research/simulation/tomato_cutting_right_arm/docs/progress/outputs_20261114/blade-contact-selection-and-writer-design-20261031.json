@@ -1,0 +1,100 @@
+{
+  "result": "Selection refusal behavior passed; actual blade manifold remains unresolved. No native writer or forces run.",
+  "cases": [
+    {
+      "id": "authored_blade_edge_through_soft_interior",
+      "selection": {
+        "raw_count": 886,
+        "unique_count": 688,
+        "exact_duplicate_count": 198,
+        "selected_records": [],
+        "native_write_allowed": false,
+        "production_manifold_validated": false,
+        "minimum_normal_dot": -0.9999917153778946,
+        "maximum_normal_spread_deg": 179.7667754403677,
+        "status": "blocked",
+        "reason": "Conflicting outward-normal branches; one deepest sample would discard distinct contact directions."
+      }
+    },
+    {
+      "id": "wide:edge_through_authored_blade_face",
+      "selection": {
+        "raw_count": 5,
+        "unique_count": 5,
+        "exact_duplicate_count": 0,
+        "selected_records": [],
+        "native_write_allowed": false,
+        "production_manifold_validated": false,
+        "minimum_normal_dot": -0.9997071679654238,
+        "maximum_normal_spread_deg": 178.6133798044452,
+        "status": "blocked",
+        "reason": "Conflicting outward-normal branches; one deepest sample would discard distinct contact directions."
+      }
+    },
+    {
+      "id": "wide:translated_clear_negative_control",
+      "selection": {
+        "raw_count": 0,
+        "unique_count": 0,
+        "exact_duplicate_count": 0,
+        "selected_records": [],
+        "native_write_allowed": false,
+        "production_manifold_validated": false,
+        "status": "empty",
+        "reason": "No admissible records supplied; this alone does not prove collision clearance."
+      }
+    }
+  ],
+  "elapsed_wall_s": 0.28721685299933597,
+  "unit_tests_passed": 7,
+  "selection_policy": "Revalidate every raw record; refuse raw saturation before exact duplicate reduction. Only one support with aligned normals may produce a diagnostic-only deepest representative. Conflicting normal branches and mixed supports are blocked. Native writes always disabled.",
+  "alignment_scope": "Pairwise normal dot >= 1-1e-6 is a restricted diagnostic grouping rule, not a physical threshold or manifold qualification.",
+  "source_findings": [
+    "Contacts has a unified seven-field soft stream and single active count; face/edge records must be marked full-surface-capable so particle-only consumers refuse them.",
+    "Contacts.clear bumps contact_generation and zeros counters but can leave stale arrays. It is not a reset of solver contact/material/history state.",
+    "SolverVBD accepts full-surface contacts, but an attached collision pipeline may overwrite records at scheduled detection phases.",
+    "VBD material cache refresh mixes soft/shape properties across the whole stream; kinematic bodies are omitted from dynamic-body adjacency, so reaction observation must scan the global stream."
+  ],
+  "writer_design": {
+    "scope": "Future exclusive, detached Contacts diagnostic only; no production pipeline patch.",
+    "preflight": [
+      "Verify installed/source pins, run/episode/state generation, valid mappings and supported reference records.",
+      "Validate raw count/capacity before reduction; independently validate represented geometry after float32 conversion.",
+      "Require a validated manifold/selection policy for the requested fixture. Both current blade crossing fixtures are refused.",
+      "Use non-differentiable execution only; replay tids and gradient backpropagation are not supported."
+    ],
+    "publish_order": [
+      "Allocate a fresh owned Contacts with headroom; declare full-surface capability using pinned private API only in the isolated worker.",
+      "Confirm no concurrent producer or solver; clear/bump generation and synchronize.",
+      "Write all seven fields for the exact active prefix while counts remain zero.",
+      "Synchronize; publish the count last; synchronize; capture and compare all fields and generation before consumption.",
+      "Use a separate owned contact object; do not attach a collision pipeline that can overwrite the stream."
+    ],
+    "failure_behavior": "Keep count zero, invalidate generation and stop the isolated worker on validation/transfer failure; never let a solver consume partially filled fields.",
+    "observation": "Read all active global contacts, not only dynamic-body adjacency; reconstruct reaction only until independent dynamic verification exists.",
+    "reset": "Discard/rebuild isolated objects for initial diagnostics. Clearing counts alone is not proof of complete physics reset.",
+    "initial_native_test": "One explicit single-normal reference fixture, no integration or forces; verify exact float32 buffer roundtrip, stale generation and capacity refusal. Real-blade multi-normal cases remain blocked."
+  },
+  "source_sha256": {
+    "runs/offline/blade_contact_candidate_probe_20261031_01/authored_blade_edge_through_soft_interior.json": "471519ebe71049ef9174b422d2d91ee3fe8b6b54d6ad4a663df0664a8a226298",
+    "runs/offline/blade_contact_candidate_probe_20261031_01/wide_edge_through_authored_blade_face.json": "b30a71bd57e7cb8e10e25e7519c2bde2810183b59038a0383f01a148d98a99d1",
+    "runs/offline/blade_contact_candidate_probe_20261031_01/wide_translated_clear_negative_control.json": "f862bfb02b770329ff8b1bfd826cc214ca2f6278d64403228a8ea507dda368fa",
+    "rl/tomato_contact_selection_preview.py": "948705b43f25048682a37fbdbb5fda9ec0a94d8bbe2b7adb589914a902edd94e",
+    "rl/tests/test_tomato_contact_selection_preview.py": "84251b9710d571a0c24936128ee6c73f0d4b0dbe1628592415a8e4bd92470be0",
+    "rl/tomato_mesh_contact_contract.py": "6b07677a41f42cdba3994e5fa9e96c9e94bfd38f08a43cccb96dbdee41096c74",
+    "work/run_contact_selection_preview.py": "852022f5359351372313238cc731bc34777679503aaa4c69dcb4f7a9f5a56049"
+  },
+  "installed_source_sha256": {
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/contacts.py": "84d3ccff76e8c2c10706dff557459aab57474e73aad1a1ef8a429c36fe51fea1",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/rigid_vbd_kernels.py": "c88eb7b4357e0f36d563ffd0ffe29b780543acfacbb2c17a2dc33f0f5026bdf3",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/particle_vbd_kernels.py": "7bd167d0b81e6bbb51c73a65dbfea7a86652788fed5388ed85266281450d838d",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/geometry/soft_contacts_sdf.py": "903ecc39f352418cee2423615b9d472330965283d8681b486937634393bdc68f"
+  },
+  "original_pinned_sources_unchanged": true,
+  "native_contact_writes": 0,
+  "mechanical_steps": 0,
+  "force_evaluations": 0,
+  "item_12_complete": false,
+  "next_step": "Specify and test two-sided contact behavior on a simple thin slab, including opposite-normal balance and sampling-density independence, before choosing a real-blade manifold."
+}

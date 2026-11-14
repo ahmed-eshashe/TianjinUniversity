@@ -1,0 +1,52 @@
+{
+  "setup_samples": [
+    {
+      "cuts": 0,
+      "CPU_intact_assembly_s": 0.040727178999077296,
+      "CPU_each_topology_event_s": [],
+      "CPU_mass_inverse_and_operator_preparation_s": 0.011379587998817442,
+      "CPU_sparse_packing_and_GPU_upload_s": 0.019815175997791812,
+      "cached_module_and_graph_s": 0.009078235998458695,
+      "device_owned_array_MiB": 13.634014129638672
+    },
+    {
+      "cuts": 1,
+      "CPU_intact_assembly_s": 0.04263176700260374,
+      "CPU_each_topology_event_s": [
+        0.2182573379977839
+      ],
+      "CPU_mass_inverse_and_operator_preparation_s": 0.013970381998660741,
+      "CPU_sparse_packing_and_GPU_upload_s": 0.022056881000025896,
+      "cached_module_and_graph_s": 0.009302283000579337,
+      "device_owned_array_MiB": 16.939773559570312
+    },
+    {
+      "cuts": 2,
+      "CPU_intact_assembly_s": 0.0478869440012204,
+      "CPU_each_topology_event_s": [
+        0.20618877699962468,
+        0.16673053400154458
+      ],
+      "CPU_mass_inverse_and_operator_preparation_s": 0.0145483910018811,
+      "CPU_sparse_packing_and_GPU_upload_s": 0.0253666249991511,
+      "cached_module_and_graph_s": 0.00921920700056944,
+      "device_owned_array_MiB": 20.275196075439453
+    },
+    {
+      "cuts": 4,
+      "CPU_intact_assembly_s": 0.03880002499863622,
+      "CPU_each_topology_event_s": [
+        0.2119084969999676,
+        0.16157153500171262,
+        0.09537526699932641,
+        0.10635270700004185
+      ],
+      "CPU_mass_inverse_and_operator_preparation_s": 0.017143746998044662,
+      "CPU_sparse_packing_and_GPU_upload_s": 0.03097563999835984,
+      "cached_module_and_graph_s": 0.00933382299990626,
+      "device_owned_array_MiB": 23.620235443115234
+    }
+  ],
+  "timing_label_correction": "comparison.json CPU_topology_and_gpu_operator_preparation_s measures only mass inverse and operator preparation from ALREADY BUILT CPU topology. This supplement separately measures actual CPU assembly and cut-event construction.",
+  "scope": "Small prescribed-block setup; not online physical crack processing, tomato reset, or a distribution of latencies."
+}

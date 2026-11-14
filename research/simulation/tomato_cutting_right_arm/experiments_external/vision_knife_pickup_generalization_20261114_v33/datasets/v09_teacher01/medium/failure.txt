@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v09.py", line 276, in <module>
+    route(contact_T,end,args.lift_seconds,not args.freeze_lift)
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v09.py", line 213, in route
+    tick(q,pressure)
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v09.py", line 183, in tick
+    last=observe()
+         ^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v09.py", line 129, in observe
+    (out/'stop_state.json').write_text(json.dumps(dict(sim_s=step*dt,bad=bad,knife_pose=tp.tolist(),q=r.data.joint_pos.torch[0].tolist(),qd=r.data.joint_vel.torch[0].tolist(),contacts=contacts,hand_pose=hp.tolist(),target_q=target[0].tolist()),indent=2));raise ValueError(('Contact stop',bad[:5]))
+                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('Contact stop', [('/dual_ar5_o6/MountedKnife', '/Indoor/RZ/SM_kitchen_Board', 52.310482025146484)])

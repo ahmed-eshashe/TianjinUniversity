@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/tests/tomato_generation.py", line 8, in <module>
+    b,exterior=generate(scale=scale);a=Aggregate(b);out=W/'states'/('tomato_'+name);b.save(str(out)+'.npz');np.savez_compressed(str(out)+'_exterior.npz',**exterior);meta=b.tomato_metadata;meta['aggregation']=a.report;checks[name+'_mass']=meta['volume_relative_error']<1e-6;checks[name+'_one_component']=len(np.unique(b.components()[0]))==1;checks[name+'_no_cuts']=not b.history and np.all(b.codes==0);checks[name+'_affine']=a.report['affine_error']<1e-10;checks[name+'_no_unresolved']=len(a.report['unresolved_nodes'])==0
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/tomato_generator.py", line 45, in generate
+    raise ValueError(('reset volume mismatch',error,'independent',float(independent.sum()/source_volume-1),'largest local',float(np.max(abs(independent-V)))))
+ValueError: ('reset volume mismatch', np.float64(1.1393193315524791e-05), 'independent', 2.220446049250313e-16, 'largest local', 4.4898268356631247e-10)

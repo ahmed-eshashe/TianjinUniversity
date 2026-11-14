@@ -1,0 +1,532 @@
+{
+  "title": "From scripted cutting to learned control",
+  "updated": "2026-11-13",
+  "scope": "Evidence-based progress: completed preparation is counted separately from unverified cutting and learning gates.",
+  "stages": [
+    {
+      "id": 1,
+      "title": "Complete the scripted baseline",
+      "phase": "First priority",
+      "description": "A repeatable, physically separated slice is our reference.",
+      "items": [
+        {
+          "id": "1.1",
+          "text": "Correct the follow-up cutting path and thumb\u2013board clearance.",
+          "status": "in_progress"
+        },
+        {
+          "id": "1.2",
+          "text": "Achieve full separation through the existing material model.",
+          "status": "in_progress"
+        },
+        {
+          "id": "1.3",
+          "text": "Withdraw the knife and verify the slice remains supported.",
+          "status": "in_progress",
+          "evidence": "Original run deliberately paused at checkpoint 6925. Blade has not completed withdrawal; 47 material connections remain. No supported separated slice qualified. DiSECt is a separate gated feasibility study."
+        },
+        {
+          "id": "1.4",
+          "text": "Repeat the successful cut to check reliability.",
+          "status": "planned"
+        },
+        {
+          "id": "1.5",
+          "text": "Preserve the approved grip, elbow posture, and kitchen scene.",
+          "status": "complete",
+          "evidence": "Approved grip, backward elbow and kitchen preserved in the mounted-robot continuation; fixed attachment remains disclosed."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Make simulation practical for learning",
+      "phase": "In parallel",
+      "description": "Faster runs must still meet the approved accuracy checks.",
+      "items": [
+        {
+          "id": "2.1",
+          "text": "Measure where simulation time is spent.",
+          "status": "complete",
+          "evidence": "Three saved current-solver profiles separate material solving, contact refresh, robot stepping and file output; material work dominates. Independent DiSECt/MPM timings and model differences recorded in solver comparison and follow-up reports."
+        },
+        {
+          "id": "2.2",
+          "text": "Test faster settings against the approved accuracy limits.",
+          "status": "complete",
+          "evidence": "Local material and coupled comparisons passed: maximum tomato difference 0.054 mm, knife 0.014 mm, force 0.86%. Full-cut convergence remains item 2.3."
+        },
+        {
+          "id": "2.3",
+          "text": "Check accuracy over a complete cut\u2014not only short windows.",
+          "status": "planned"
+        },
+        {
+          "id": "2.4",
+          "text": "Measure the resulting time per training episode.",
+          "status": "planned"
+        },
+        {
+          "id": "2.5",
+          "text": "Decide whether repeated simulation training is feasible.",
+          "status": "in_progress",
+          "evidence": "Current solver measured ~9200\u20139600 wall seconds/sim-second in a loaded sample. Fine-mesh DiSECt candidate needs ~593 wall seconds/sim-second for bulk hold and fails settling/precision consistency. Full training episodes and a practical qualified backend remain unestablished."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Build the learning interface",
+      "phase": "Can prepare now",
+      "description": "Give the policy a small, clearly bounded job.",
+      "items": [
+        {
+          "id": "3.1",
+          "text": "Define observations: relative knife pose, velocity, force, and task phase.",
+          "status": "in_progress"
+        },
+        {
+          "id": "3.2",
+          "text": "Define actions: small changes to downward speed and sideways motion.",
+          "status": "in_progress"
+        },
+        {
+          "id": "3.3",
+          "text": "Specify control frequency, units, scaling, and action limits.",
+          "status": "in_progress"
+        },
+        {
+          "id": "3.4",
+          "text": "Keep collision stops and force limits outside the learned policy.",
+          "status": "in_progress"
+        },
+        {
+          "id": "3.5",
+          "text": "Keep hidden damage information separate from policy inputs.",
+          "status": "complete",
+          "evidence": "Observation allowlist and checkpoint adapter reject hidden damage/connectivity inputs. All 28 interface and episode component tests passed again."
+        },
+        {
+          "id": "3.6",
+          "text": "Verify that zero learned adjustment reproduces the scripted baseline.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Build repeatable episodes",
+      "phase": "Can prepare now",
+      "description": "Every trial needs a clean start and an honest outcome.",
+      "items": [
+        {
+          "id": "4.1",
+          "text": "Reset robot, knife, tomato deformation, and damage correctly.",
+          "status": "planned"
+        },
+        {
+          "id": "4.2",
+          "text": "Verify repeated resets produce consistent starting states.",
+          "status": "planned"
+        },
+        {
+          "id": "4.3",
+          "text": "Detect full separation, withdrawal, and supported-slice success.",
+          "status": "in_progress"
+        },
+        {
+          "id": "4.4",
+          "text": "Detect collision, excessive force, numerical failure, and timeout.",
+          "status": "in_progress"
+        },
+        {
+          "id": "4.5",
+          "text": "Record observations, commands, outcomes, and configuration for every trial.",
+          "status": "in_progress"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Collect demonstration data",
+      "phase": "After baseline",
+      "description": "Successful and unsuccessful trials must stay distinguishable.",
+      "items": [
+        {
+          "id": "5.1",
+          "text": "Record successful scripted cuts.",
+          "status": "planned"
+        },
+        {
+          "id": "5.2",
+          "text": "Label partial cuts and failures accurately.",
+          "status": "in_progress"
+        },
+        {
+          "id": "5.3",
+          "text": "Collect controlled variations in tomato position and material settings.",
+          "status": "planned"
+        },
+        {
+          "id": "5.4",
+          "text": "Split complete trials into training, validation, and held-out test sets.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Train through imitation",
+      "phase": "After demonstrations",
+      "description": "Learn from saved decisions before trying repeated simulation trials.",
+      "items": [
+        {
+          "id": "6.1",
+          "text": "Train an initial policy on recorded demonstrations.",
+          "status": "planned"
+        },
+        {
+          "id": "6.2",
+          "text": "Check its predictions on held-out recordings.",
+          "status": "planned"
+        },
+        {
+          "id": "6.3",
+          "text": "Test it in simulation with action limits enforced.",
+          "status": "planned"
+        },
+        {
+          "id": "6.4",
+          "text": "Compare its cutting success and forces with the scripted baseline.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Learn small corrections",
+      "phase": "After imitation + speed gate",
+      "description": "Scripted motion plus a bounded learned adjustment.",
+      "items": [
+        {
+          "id": "7.1",
+          "text": "Combine scripted motion with bounded policy adjustments.",
+          "status": "planned"
+        },
+        {
+          "id": "7.2",
+          "text": "Define rewards that favor verified separation and controlled forces.",
+          "status": "planned"
+        },
+        {
+          "id": "7.3",
+          "text": "Check that rewards cannot be satisfied by pushing the tomato away or exploiting simulation errors.",
+          "status": "planned"
+        },
+        {
+          "id": "7.4",
+          "text": "Train only after simulation speed and reset reliability are sufficient.",
+          "status": "planned"
+        },
+        {
+          "id": "7.5",
+          "text": "Preserve a reproducible baseline for comparison.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Evaluate and report",
+      "phase": "Final evaluation",
+      "description": "Show whether learning improves the result on unseen cases.",
+      "items": [
+        {
+          "id": "8.1",
+          "text": "Test unseen tomato positions and material settings.",
+          "status": "planned"
+        },
+        {
+          "id": "8.2",
+          "text": "Compare scripted, imitation, and corrected-policy performance.",
+          "status": "planned"
+        },
+        {
+          "id": "8.3",
+          "text": "Report success rate, peak force, collisions, and completion time.",
+          "status": "planned"
+        },
+        {
+          "id": "8.4",
+          "text": "Save reproducible configurations and representative failures.",
+          "status": "planned"
+        },
+        {
+          "id": "8.5",
+          "text": "Keep experimental validation and motor-work qualification pending until independently resolved.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Separate approximate training model",
+      "phase": "Restricted pilot passed",
+      "description": "Authorized approximate blade-and-tomato task. These results do not complete the detailed reference-model or robot-learning gates above.",
+      "items": [
+        {
+          "id": "9.1",
+          "text": "Keep the original setup and reference evidence unchanged.",
+          "status": "complete",
+          "evidence": "450 frozen v27 files verified unchanged; new model isolated in v28."
+        },
+        {
+          "id": "9.2",
+          "text": "Cut through the full-size tomato and withdraw horizontally.",
+          "status": "complete",
+          "evidence": "All eight tested bodies reached two components, withdrawal and successful terminal state."
+        },
+        {
+          "id": "9.3",
+          "text": "Retain the first cut and make an intersecting second cut.",
+          "status": "complete",
+          "evidence": "Four components: 817, 697, 697 and 592 particles; no physical stop."
+        },
+        {
+          "id": "9.4",
+          "text": "Regenerate and test a larger tomato.",
+          "status": "complete",
+          "evidence": "20% larger shape completed a cut; time-step refinement was required."
+        },
+        {
+          "id": "9.5",
+          "text": "Provide bounded actions, observations, rewards and reliable resets.",
+          "status": "complete",
+          "evidence": "25 actor observations; hidden damage kept separately for critic/diagnostics. Reset, board, force, penetration, timeout and invalid-action checks pass."
+        },
+        {
+          "id": "9.6",
+          "text": "Exceed 100 complete task transitions per second.",
+          "status": "complete",
+          "evidence": "136.8 transitions/s, 25,536 transitions in186.7s, eight environments. Robot/rendering/policy inference excluded."
+        },
+        {
+          "id": "9.7",
+          "text": "Show the model running live in a separate Isaac Sim view.",
+          "status": "complete",
+          "evidence": "Live run observed at62.96 simulated seconds: two pieces, no stop, horizontal withdrawal complete. This is not a recorded animation."
+        },
+        {
+          "id": "9.8",
+          "text": "Expand qualification to additional cutting directions.",
+          "status": "in_progress",
+          "evidence": "30-degree cut at80%size reached2.019N and stopped. This case has not passed; no unrestricted path/size guarantee."
+        },
+        {
+          "id": "9.9",
+          "text": "Integrate the approximate tomato with the original robot, kitchen and fixed grip in a separate version.",
+          "status": "complete",
+          "evidence": "Separate approximate native robot cycle passed: two pieces, horizontal withdrawal, settled support, 1.35 N peak simulated load. Fixed mount and original handle retained with the tested straight blade. Full-robot RL speed, force convergence and real-tomato validation remain pending."
+        }
+      ]
+    }
+  ],
+  "latest_progress": {
+    "date": "2026-11-08",
+    "cutting": "Separate v05 float64 numerical adapter fixes lost updates and passes independent motion/reset and small-force controls. A 20ms IMEX comparison meets 0.1mm/5% accuracy limits, but the fastest valid implementation costs ~272 wall s/s versus the prospective120 budget. Numerical section3/4 verified; speed gate open/cost failed. Original checkpoint6925 and v04 failed settling preserved. No tomato contact, separation, robot integration or training.",
+    "learning": "218 recorded states exported as one incomplete episode; 28 component tests pass. No action labels or successful demonstrations; training disabled."
+  },
+  "solver_comparison": {
+    "report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/REPORT.txt",
+    "data": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/comparison.json",
+    "complete": true,
+    "replacement_adopted": false
+  },
+  "disect_feasibility": {
+    "status": "precision_controls_passed_in_v05_but_integration_cost_gate_failed",
+    "example_forward_execution_passed": true,
+    "complete_mesh_validation_passed": true,
+    "tomato_cut_passed": false,
+    "robot_integrated_cut_passed": false,
+    "report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_numerics_20261108_v05/REPORT.txt",
+    "result": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_numerics_20261108_v05/comparison_result.json",
+    "mesh_validation_scope": "established prism cut surfaces and new intact FEM tomato input, not prepared tomato fracture assembly",
+    "new_tomato_fem_mesh_passed": true,
+    "tomato_unloaded_stability_passed": false,
+    "short_gravity_passed": true,
+    "work_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_numerics_20261108_v05",
+    "next_task": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_numerics_20261108_v05/NEXT_ACTION.txt",
+    "one_second_finite_hold_passed": true,
+    "complete_settling_passed": false,
+    "one_second_wall_s": 593.1861396469903,
+    "numerical_precision_controls_passed": true,
+    "numerical_section_checks_verified": 3,
+    "numerical_section_total": 4,
+    "practical_integration_cost_passed": false,
+    "best_accurate_wall_s_per_sim_s": 271.9031985499896,
+    "prior_v04_report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_objective_damping_20261108_v04/REPORT.txt"
+  },
+  "disect_precontact_update": {
+    "updated": "2026-11-08T16:28:35.416631+08:00",
+    "report": "disect-precontact-20261108.txt",
+    "checklist": "disect-checklist.html#section-3",
+    "verified": 3,
+    "total": 5,
+    "complete": false,
+    "cutting_qualified": false
+  },
+  "approximate_training": {
+    "status": "restricted_approximate_RL_pilot_pass",
+    "updated_utc": "2026-11-13T08:06:41.463788+00:00",
+    "approximate_task_ready_for_initial_RL_trial": true,
+    "general_tomato_qualification": false,
+    "robot_RL_qualification": false,
+    "learned_policy_trained": false,
+    "experimental_validation": "pending",
+    "existing_setup_changed": false,
+    "speed_complete_task_transitions_s": 136.75874253659822,
+    "full_batched_successes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "full_batched_failures": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "mechanics_components": true,
+    "reset_and_stops": true,
+    "state_retry": true,
+    "two_intersecting_cuts_four_pieces": true,
+    "larger_tomato_cut": true,
+    "oblique_trial": {
+      "success": false,
+      "stop": "2 N force limit",
+      "peak_N": 2.019221305847168
+    },
+    "numerical_accuracy": "Coarse/fine complete cycles separate the same bonds, but final positions differ up to 1.54 mm and peak forces by about 46%. Not detailed-solver or real-tomato equivalence.",
+    "speed_scope": "Complete approximate kinematic-blade task: from intact body through blade-generated separation, horizontal withdrawal, terminal reward and selective resets. Online scripted controller used instead of a learned policy. Original articulated robot, rendering and policy-network inference excluded. Identical starting cases at different batch offsets, not generalization evidence.",
+    "source_artifacts": [
+      "runs/full_training_benchmark_adaptive/result.json",
+      "reports/mechanics.json",
+      "reports/contact_and_reset.json",
+      "reports/adaptive_controls.json",
+      "runs/second_intersecting_cut_adaptive/result.json",
+      "runs/large_tomato_adaptive/result.json",
+      "runs/small_oblique_adaptive/result.json",
+      "reports/timestep_outcomes.json",
+      "reports/reference_differences.json",
+      "reports/full_cycle_energy.json",
+      "reports/parent_preservation.json"
+    ],
+    "display": {
+      "version": "v29",
+      "verified_utc": "2026-11-13T08:49:36.737906+00:00",
+      "smooth_skin": true,
+      "green_calyx_and_stem": true,
+      "fracture_aware_surface": true,
+      "raw_particles_toggle": true,
+      "live_two_piece_cut_verified": true,
+      "physics_changed": false,
+      "launcher": "/home/omen/Documents/Codex/experiments/tomato_surface_view_20261113_v29/launch_live.sh",
+      "report": "/home/omen/Documents/Codex/experiments/tomato_surface_view_20261113_v29/reports/live_check.json"
+    },
+    "motion_comparison": {
+      "updated_utc": "2026-11-13T09:03:10.794877+00:00",
+      "report": "/home/omen/Documents/Codex/experiments/tomato_motion_comparison_20261113_v30/REPORT.txt",
+      "recommended": {
+        "status": "controller_comparison_complete",
+        "recommended_motion": "smooth_sync_2x",
+        "recommended_dt_s": 0.0001,
+        "motion": {
+          "kind": "smooth_sync",
+          "feed": 0.003,
+          "frequency": 0.8,
+          "amplitude": 0.02
+        },
+        "terminal_success_both_tested_timesteps": true,
+        "reduction_in_simulated_episode_duration_percent": 48.6194858774992,
+        "fine_peak_load_change_percent": 64.14222131913047,
+        "deformation_rms_change_percent": -16.49115741576377,
+        "physics_changed": false,
+        "existing_live_view_changed": false,
+        "decision": "Recommend synchronized smooth stroke for an exploratory demo: half the duration and less pre-separation RMS deformation, but higher calculated peak load than the old baseline. Do not claim lower cutting force or real-tomato validation. Fastest tested motion is close to the force stop; unsynchronized smooth cases rejected.",
+        "numerical_limit": "At 0.2ms versus 0.1ms, the recommended motion has the same failure bonds and terminal success, but peak load differs by 14.3% and maximum matched-time particle position by 1.74mm. This is approximate-model screening, not precise convergence qualification."
+      },
+      "fine_results": [
+        {
+          "case": "baseline",
+          "success": true,
+          "duration_sim_s": 63.02,
+          "peak_sum_load_N": 0.9152090549468994,
+          "peak_penetration_mm": 0.008547562174499035,
+          "max_preseparation_deformation_rms_mm": 1.9581285305321217
+        },
+        {
+          "case": "feed_2x",
+          "success": true,
+          "duration_sim_s": 32.42,
+          "peak_sum_load_N": 1.4545342922210693,
+          "peak_penetration_mm": 0.01045886892825365,
+          "max_preseparation_deformation_rms_mm": 1.8903861055150628
+        },
+        {
+          "case": "feed_4x",
+          "success": true,
+          "duration_sim_s": 17.54,
+          "peak_sum_load_N": 1.901181697845459,
+          "peak_penetration_mm": 0.010633491910994053,
+          "max_preseparation_deformation_rms_mm": 1.8258102936670184
+        },
+        {
+          "case": "smooth_2x",
+          "success": false,
+          "duration_sim_s": 22.740000000000002,
+          "peak_sum_load_N": 2.0478909015655518,
+          "peak_penetration_mm": 0.008861767128109932,
+          "max_preseparation_deformation_rms_mm": 1.4610749203711748
+        },
+        {
+          "case": "smooth_sync_2x",
+          "success": true,
+          "duration_sim_s": 32.38,
+          "peak_sum_load_N": 1.502244472503662,
+          "peak_penetration_mm": 0.008480739779770374,
+          "max_preseparation_deformation_rms_mm": 1.6352104721590877
+        }
+      ]
+    },
+    "robot_integration": {
+      "status": "approximate_native_cycle_passed",
+      "dry_route_passed": true,
+      "mounted_cut_passed": true,
+      "parts": 2,
+      "peak_force_N": 1.350480318069458,
+      "horizontal_withdrawal_passed": true,
+      "settling_passed": true,
+      "existing_sources_unchanged": true,
+      "original_handle_and_grip": true,
+      "visible_tested_straight_blade": true,
+      "fixed_mount": true,
+      "retracting_pickup_cradle": true,
+      "scripted": true,
+      "policy_trained": false,
+      "real_tomato_validation": "pending",
+      "full_robot_rl_speed": "not_qualified",
+      "force_convergence": "not_established",
+      "renderer_check": "complete_live_native_cycle_and_final_display_verified",
+      "report": "/home/omen/Documents/Codex/experiments/tomato_robot_integration_20261113_v31/RESULT.txt"
+    }
+  }
+}

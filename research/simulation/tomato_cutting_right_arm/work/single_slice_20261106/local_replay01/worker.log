@@ -1,0 +1,53 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.96 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.84 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.75 ms  (cached)
+Module tomato_cad_pressure 27ceab5 load on device 'cuda:0' took 0.38 ms  (cached)
+Module tomato_fast_exact_cad d8995f8 load on device 'cuda:0' took 0.43 ms  (cached)
+Module tomato_cached_cad_pressure d7e1c7e load on device 'cuda:0' took 16.86 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.58 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.42 ms  (cached)
+Module tomato_local_plane_partition 8d8f378 load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 1.01 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.61 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 3.87 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.72 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1.31 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.23 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.80 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.85 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.68 ms  (cached)
+Module tomato_element_frame_objective faf222a load on device 'cuda:0' took 11.23 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.97 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 1.00 ms  (cached)
+Module tomato_element_frame_coupled a1a6d69 load on device 'cuda:0' took 0.81 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.69 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 2.40 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.49 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.44 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 1.77 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.61 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.41 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.55 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.42 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.58 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.59 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.64 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.56 ms  (cached)
+{'step': 3251, 'elapsed': 1.355000000000016, 'wall_s': 16.429217334007262, 'maximum_damage': 0.6157630608465393}
+{'step': 3252, 'elapsed': 1.3554166666666827, 'wall_s': 23.377387254004134, 'maximum_damage': 0.6160845699188915}
+{'step': 3253, 'elapsed': 1.3558333333333494, 'wall_s': 30.439144760006457, 'maximum_damage': 0.6164103813312288}
+{'step': 3254, 'elapsed': 1.3562500000000162, 'wall_s': 37.65297096500581, 'maximum_damage': 0.6167252223300118}
+{'step': 3255, 'elapsed': 1.356666666666683, 'wall_s': 44.64902068101219, 'maximum_damage': 0.6170441366319834}
+{'step': 3256, 'elapsed': 1.3570833333333496, 'wall_s': 51.827134956009104, 'maximum_damage': 0.6173672151083931}
+{'step': 3257, 'elapsed': 1.3575000000000164, 'wall_s': 58.93474245700054, 'maximum_damage': 0.6176744498192953}
+{'step': 3258, 'elapsed': 1.357916666666683, 'wall_s': 66.27358688801178, 'maximum_damage': 0.6179818684512878}
+{'passed': True, 'accepted_reference_intervals': 8, 'original_failed_interval_passed': True, 'errors': {'position_m': 7.596114132516533e-08, 'velocity_m_s': 5.057909395083495e-05, 'damage': 1.3645749125101858e-07, 'opening_m': 4.790891299834028e-09, 'force_N': 3.0850220290239815e-06}, 'criteria': {'scope': 'Prospective local partition numerical sensitivity diagnostic; same force/energy budgets and material law', 'intervals': 8, 'source_checkpoint': 'robot_cut08/checkpoints/step_003250.npz', 'position_difference_max_m': 1e-05, 'velocity_difference_max_m_s': 0.001, 'damage_difference_max': 0.01, 'opening_difference_max_m': 1e-05, 'force_relative_plus_absolute_limit': [0.01, 1e-05], 'original_quadrature_error_budgets_unchanged': True, 'original_nonlinear_convergence_unchanged': True, 'additional_originally_failed_interval': 3259}, 'wall_s': 74.1807232350111, 'scope': 'Measured-pose numerical diagnostic only; physical law unchanged; not a coupled cut or experimental qualification'}

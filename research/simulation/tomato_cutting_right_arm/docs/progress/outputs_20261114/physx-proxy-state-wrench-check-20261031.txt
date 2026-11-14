@@ -1,0 +1,15 @@
+CPU PhysX proxy state/wrench check — 31 October 2026
+
+PASS for the isolated interface test. The two-engine Newton–PhysX feedback loop is not yet validated.
+
+Two synthetic 0.02 kg rigid bodies were created in a separate headless CPU PhysX scene. One had identity orientation and zero local COM offset; the second had a 90-degree rotation and a 10 mm local COM offset. Each used an explicitly chosen isotropic inertia of 0.001 kg m². Gravity, damping and collisions were disabled. No robot or blade was loaded.
+
+Pose and world COM linear/angular velocity were written/read through the current xyzw APIs. Both pose/twist packets copied bit-exactly into CUDA Warp buffers and back. This is a data-format/transfer check; no Newton State or contact solver was connected.
+
+Each body received one world force of +3 N along X, with a -0.0012 N m COM torque calculated from the disclosed offset contact point. The world COM torque was delivered with positions=None, avoiding double positional torque. Measured mass and inertia predicted velocity changes of +0.125 m/s and -0.001 rad/s at dt=1/1200 s. Maximum pulse errors were 2.26e-8 m/s and 9.10e-10 rad/s, including the rotated/nonzero-COM body.
+
+The instantaneous composer cleared after delivery. No new wrench was submitted for the second step. Linear velocity did not change; maximum angular change was 1.05e-9 rad/s. This rejects stale-force persistence in the tested path. The simulation step counter went from 0 to 2 after reset; exactly two controlled steps were taken.
+
+The protected worker completed in 3.58 seconds, retained over 23.75 GB available RAM and 7.61 GB free GPU memory, and left no owned processes. No memory warning or monitor error occurred. Fourteen focused reference/guard tests passed. Run and installed-interface hashes were saved; original pinned project files and installed libraries remain unchanged.
+
+Next: connect one CUDA Newton particle contact reaction to one CPU PhysX proxy, with explicit state/force ownership, one declared time schedule, and impulse/work checks for that partitioned scheme. This interface result does not validate that feedback loop, robot links, long-run stability or the complete blade collision path. Checklist items 15 and 12 remain unfinished.

@@ -1,0 +1,24 @@
+DRAFT — CONTACT ENFORCEMENT REVIEW FOR SECTION 4
+
+Status: proposal only, not implemented or adopted. Wait for the active limit-resolution result before deciding whether a physical-model change is necessary.
+
+Current evidence
+The independent 20 ms component comparison passed. The continued 24 and 25 ms accepted states remain finite with valid supports/volumes and small solver residuals, but all 47 damage histories remain zero. At 25 ms: sampled intrusion 0.098160649 mm, blade load 0.007196470 N, maximum recorded equivalent opening 0.002608214 mm versus the unchanged 1 mm onset. Three groups are eligible for contact-driven history. A read-only force-bank audit reproduces the saved 24 ms reaction exactly: contact loads the positive material bank in an opening direction; it is not a claim of full force/work or experimental qualification.
+
+Interpretation
+The data suggests compliant contact cannot transfer the required load before exhausting the 0.1 mm intrusion allowance. This is a hypothesis until the active test resolves its physical stop and the saved failure state is reviewed. The present normal stiffness is 2000 N/m per normalized material sample budget; weighted material-edge integration preserves that declared scale. No material threshold was changed. No claim is made that these parameters are measured tomato properties.
+
+Concrete proposed change if that physical gate fails
+Build ONE separately versioned stronger normal-contact enforcement candidate. Prefer implicit normal contact, with stiffness selected by convergence toward an independently solved nonpenetration benchmark, rather than selecting a stiffness merely because a tomato cut appears successful. The resulting normal force law/enforcement changes; the old ke=2000 force-versus-overlap curve is not claimed equivalent.
+
+Preserve exact CAD geometry and fixed grip/orientation; original mesh, supports and mass; all 47 material/fracture laws and the 0.11696391110288158 J total budget; current Brown friction parameters and force origin conventions; original 2 N blade stop and 0.1 mm whole-volume intrusion stop. No weakening, scheduled deletion, manual damage, pre-separated visuals or training. Experimental validation remains pending.
+
+Bounded validation before any new cutting
+1. Derive and test normal force/energy and the implicit residual/Jacobian on small independently solved contact fixtures. Include rigid transforms, reaction/moment, energy gradient, rejected-step purity and reset.
+2. Select at most three declared stiffness/constraint-accuracy levels using that benchmark and require force/geometry convergence; record the coefficient or constraint change explicitly. Reaching the study cap without convergence is a failed candidate, not permission to extend parameter sweeps.
+3. Fresh nonfracturing tomato contact from the settled model and a clear blade, followed by the existing half-step limits and whole-volume guards. A stronger model must restart from valid initial states; old penetrated checkpoints remain diagnostic/reference evidence, not a disguised initialization for a nonpenetration constraint.
+4. Only after independent controls pass, attempt actual-damage Gate B under the unchanged 2 N/0.1 mm stops. If those physical stops still preclude damage, stop and report that separate limitation; do not silently raise them.
+5. Gate B controlled stopping, horizontal withdrawal and comparison precede any full stroke/separation. Gates C–F cannot be completed by this contact study.
+
+Scope decision
+This goes beyond the previously approved contact-sampling correction because normal contact enforcement/force-versus-overlap changes. Gate A item 5 of docs/rl/DISECT_SECTION4_EXECUTION_PLAN_20261109.md requires presenting a materially different contact law or physical sampling before adoption. Ask for one decision on this specific candidate if the current physical gate confirms the limitation.

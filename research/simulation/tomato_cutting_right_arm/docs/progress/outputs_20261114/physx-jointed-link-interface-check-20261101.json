@@ -1,0 +1,286 @@
+{
+  "passed": true,
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 4.867923083999926,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 22,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 23866572800,
+    "min_free_vram_bytes": 7518289920,
+    "mode": "hinge_interface",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "shutdown_completion": "supervisor_must_observe_exit",
+      "hinge_checks_passed": true,
+      "hinge_cases_completed": 2,
+      "controlled_steps": 2,
+      "cuda_state_echoes": 4,
+      "newton_steps": 0,
+      "robot_validated": false,
+      "training": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "hinge_identity",
+        "link_index": 1,
+        "body_names": [
+          "base",
+          "link"
+        ],
+        "before": {
+          "joint_position": [
+            0.0
+          ],
+          "joint_velocity": [
+            0.0
+          ],
+          "link_pose": [
+            0.009999999776482582,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "link_com_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "force_world_n": [
+          0.0,
+          3.0,
+          0.0
+        ],
+        "torque_com_world_nm": [
+          0.0,
+          0.0,
+          0.0012
+        ],
+        "expected": {
+          "effective_inertia_kg_m2": 0.00010199999733967707,
+          "generalized_effort_nm": 0.031199999329447746,
+          "joint_velocity_rad_s": 0.127450980977098,
+          "joint_position_rad": 2.8211805685034715e-05
+        },
+        "mass_matrix_kg_m2": 0.00010199999815085903,
+        "after_pulse": {
+          "joint_position": [
+            2.821180532919243e-05
+          ],
+          "joint_velocity": [
+            0.12745097279548645
+          ],
+          "link_pose": [
+            0.009999999776482582,
+            2.82118037375767e-07,
+            4.743968700931697e-19,
+            1.6815544182785525e-12,
+            0.0,
+            1.4105902664596215e-05,
+            1.0
+          ],
+          "link_com_velocity": [
+            0.0,
+            0.0012745095882564783,
+            0.0,
+            1.519333814314905e-08,
+            0.0,
+            0.12745097279548645
+          ]
+        },
+        "pulse_check": {
+          "mass_matrix_error_kg_m2": 8.111819592773739e-13,
+          "joint_position_error_rad": 3.5584228502715844e-13,
+          "joint_velocity_error_rad_s": 8.181611554913815e-09
+        },
+        "after_coast": {
+          "joint_position": [
+            8.131640061037615e-05
+          ],
+          "joint_velocity": [
+            0.12745097279548645
+          ],
+          "link_pose": [
+            0.009999999776482582,
+            8.131639788189204e-07,
+            3.941271600534474e-18,
+            4.846834739113959e-12,
+            0.0,
+            4.0658200305188075e-05,
+            1.0
+          ],
+          "link_com_velocity": [
+            -1.0363851288275328e-07,
+            0.0012745097046718001,
+            1.2354671796786613e-14,
+            1.519333814314905e-08,
+            0.0,
+            0.12745097279548645
+          ]
+        },
+        "coast_joint_velocity_change_rad_s": 0.0
+      },
+      {
+        "id": "hinge_yaw90",
+        "link_index": 1,
+        "body_names": [
+          "base",
+          "link"
+        ],
+        "before": {
+          "joint_position": [
+            0.0
+          ],
+          "joint_velocity": [
+            0.0
+          ],
+          "link_pose": [
+            1.19209286886246e-09,
+            0.010000000707805157,
+            0.0,
+            0.0,
+            0.0,
+            0.7071068286895752,
+            0.7071068286895752
+          ],
+          "link_com_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "force_world_n": [
+          -3.0,
+          0.0,
+          0.0
+        ],
+        "torque_com_world_nm": [
+          0.0,
+          0.0,
+          0.0012
+        ],
+        "expected": {
+          "effective_inertia_kg_m2": 0.00010199999771220613,
+          "generalized_effort_nm": 0.03120000212341547,
+          "joint_velocity_rad_s": 0.1274509919248828,
+          "joint_position_rad": 2.82118081083725e-05
+        },
+        "mass_matrix_kg_m2": 0.0001020000854623504,
+        "after_pulse": {
+          "joint_position": [
+            2.8211792596266605e-05
+          ],
+          "joint_velocity": [
+            0.12745092809200287
+          ],
+          "link_pose": [
+            -2.8014181907565217e-07,
+            0.010000000707805157,
+            4.743384504624082e-19,
+            1.189038125772035e-12,
+            1.189038125772035e-12,
+            0.7071167826652527,
+            0.7070968747138977
+          ],
+          "link_com_velocity": [
+            -0.0012745092390105128,
+            1.519333409083501e-10,
+            0.0,
+            1.8111864106748737e-15,
+            1.519333459043537e-08,
+            0.12745094299316406
+          ]
+        },
+        "pulse_check": {
+          "mass_matrix_error_kg_m2": 8.775014426838559e-11,
+          "joint_position_error_rad": 1.551210589557754e-11,
+          "joint_velocity_error_rad_s": 6.383287992628439e-08
+        },
+        "after_coast": {
+          "joint_position": [
+            8.131635695463046e-05
+          ],
+          "joint_velocity": [
+            0.12745092809200287
+          ],
+          "link_pose": [
+            -8.112191949294356e-07,
+            0.010000000707805157,
+            3.940397270627005e-18,
+            3.4272281193570286e-12,
+            3.4272281193570286e-12,
+            0.7071355581283569,
+            0.7070780992507935
+          ],
+          "link_com_velocity": [
+            -0.0012745093554258347,
+            -1.033866112720716e-07,
+            1.2354665867555983e-14,
+            3.0024171252765897e-15,
+            1.519333636679221e-08,
+            0.12745095789432526
+          ]
+        },
+        "coast_joint_velocity_change_rad_s": 0.0
+      }
+    ],
+    "controlled_steps": 2,
+    "cuda_state_echoes": 4,
+    "dt_s": 0.0004166666666666667,
+    "baseline_physx_steps": 0,
+    "final_physx_steps": 2,
+    "newton_contact_connected": false,
+    "scope": "Prescribed force/torque interface on passive fixed-base hinges only."
+  },
+  "max_errors": {
+    "mass_matrix_error_kg_m2": 8.775014426838559e-11,
+    "joint_position_error_rad": 1.551210589557754e-11,
+    "joint_velocity_error_rad_s": 6.383287992628439e-08,
+    "coast_joint_velocity_change_rad_s": 0.0
+  },
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_hinge_interface_worker.py": "8f197b46be7261159a729dce468b0b1bf9a06b37948c616df0825c4e4811fd7a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_hinge_reference.py": "bd38213088e0233aa7209644b0806c04c01b4568d0d7397cecd0ef1dbc8499a0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_wrench_contract.py": "c7aed519065021006a98397ca01efa98206c9a8cf5f2be4eeca2c88f41ca6118",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_guard.py": "5b6a70b471037bebbcf1a13e2fffcd5286a08a8bfc5aa9cf9db03bf41bd9b3c1",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_hinge_reference.py": "b98705413761b13b911167b6f0e7621fe26b2417b4855c1c827d404c25a43d8f",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/rigid_vbd_kernels.py": "c88eb7b4357e0f36d563ffd0ffe29b780543acfacbb2c17a2dc33f0f5026bdf3",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/coupled/interface.py": "c8d1f160d4ffcac22841e870f3cd0375c7aad30f799549052692097ab4a1fdb9",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py": "44418a13b42bb424f02a605d7df6f047c5ddc9e7ab104ed743684845d8f9a951",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager_cfg.py": "b28ec403c4d534101eab541aff92952b96eb63f0526b0dc0a53277638ca732b2",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/sim/schemas/schemas_cfg.py": "8edeec841a59745b92528a9c12cf1abacea0b63b9a5dbfc0ccad7a64bea61779",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object.py": "0fd17152d133805412776d8cc90eebe85159a383a2e052dafc2eafdd14e54390",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/collide.py": "dcc29f631d22dbf4c689e7424e1be67a22b5cc147e4b728a0845c92db760a44b",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/contacts.py": "84d3ccff76e8c2c10706dff557459aab57474e73aad1a1ef8a429c36fe51fea1",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object_data.py": "6e03c85172da8712bdebc6e19c89cea7868afb02f9e96259c82a281cca4270b4",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation.py": "c4f6a86bc0b42ba4fe35beb92e9e001620c82931447c0ac185d585b7b8d2659c",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation_data.py": "9f25446dff165278af62147c50d5153cc1a1236ccc308cb83a316892cdeb54bf",
+    "/home/omen/IsaacLab/source/isaaclab/isaaclab/utils/wrench_composer.py": "16914d155c28e0d02ab7135b2627112042bd420b023bfabd9eae1dc3c69960ce"
+  },
+  "focused_tests_passed": 13,
+  "preflight_runs_preserved": [
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/hinge_interface_20261101_01",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/hinge_interface_20261101_02"
+  ],
+  "original_frozen_sources_unchanged": true,
+  "previously_pinned_dependencies_unchanged": true
+}

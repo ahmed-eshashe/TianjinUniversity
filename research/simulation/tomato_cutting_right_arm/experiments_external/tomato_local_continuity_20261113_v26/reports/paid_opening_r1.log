@@ -1,0 +1,73 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.69 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.45 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.50 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.57 ms  (cached)
+Module compact_contact_gpu a96a1e9 load on device 'cuda:0' took 1.52 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.42 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.38 ms  (cached)
+Module paid_contact_gpu 5334c27 load on device 'cuda:0' took 330.24 ms  (compiled)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.48 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.69 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.41 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 279.84 ms  (compiled)
+{
+  "status": "first_event_accepted",
+  "physical_topology_event": true,
+  "physical_cut_qualified": false,
+  "full_separation": false,
+  "rl_ready": false,
+  "dt": 6.25e-06,
+  "chunk_s": 5e-05,
+  "wall_s": 2.1164876540133264,
+  "maximum_energy_relative": 1.3498500239619275e-06,
+  "event": {
+    "time": 0.0037500000000000003,
+    "checks": {
+      "area_paid": true,
+      "area_geometry_match": true,
+      "positive_fracture": true,
+      "whole_material": true,
+      "not_full_separation": true,
+      "transfer_position": true,
+      "transfer_energy": true,
+      "lag_below_penetration_limit": true,
+      "contact_birth_energy": true,
+      "combined_force": true,
+      "energy_before_event": true
+    },
+    "accepted": true,
+    "reference_area_m2": 1.7091103800769523e-11,
+    "fracture_work_J": 1.3672883040615619e-09,
+    "measured_reserved_work_J": 1.3672884467498207e-09,
+    "work_remaining_J": 1.426882588254984e-16,
+    "front_lag_m": 4.6517518067362706e-07,
+    "contact_birth_energy_J": 6.837350669620239e-14,
+    "certificate": {
+      "passed": true,
+      "reason": "certified_affine_material_volume",
+      "bound_m": 9.987724300771056e-05,
+      "observed_m": 4.216358747451053e-06,
+      "queries": 7510,
+      "max_pending": 516,
+      "depth": 13,
+      "motion_bound_m": 0.0
+    },
+    "transfer": {
+      "position_m": 1.203415572532223e-17,
+      "velocity_m_s": 4.2080545722797275e-13,
+      "elastic_change_J": 7.133432411716557e-20,
+      "kinetic_change_J": -2.5849394142282115e-25,
+      "linear_momentum_abs": 2.4251526321581647e-23,
+      "angular_momentum_abs": 8.350022649104865e-26
+    },
+    "whole_slice": false
+  },
+  "scope": "One small actual-CAD-reached and work-paid patch with original bulk, resistance, inertia and limits. Temporal refinement, continued cutting and complete-loop speed remain separate gates."
+}

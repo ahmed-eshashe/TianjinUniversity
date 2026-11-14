@@ -1,0 +1,36 @@
+{
+  "updated": "2026-11-10T18:46:24.485023+00:00",
+  "status": "restricted_component_progress_not_physical_qualification",
+  "suites": [
+    {
+      "file": "preflight.json",
+      "passed": 9,
+      "failed": []
+    },
+    {
+      "file": "geometry_controls.json",
+      "passed": 41,
+      "failed": []
+    },
+    {
+      "file": "gpu_controls.json",
+      "passed": 32,
+      "failed": []
+    },
+    {
+      "file": "spatial_mapping_assessment.json",
+      "passed": 6,
+      "failed": [
+        "halfstep_local_velocity_refinement"
+      ]
+    }
+  ],
+  "physical_cut": false,
+  "production_changed": false,
+  "remaining": [
+    "Freely evolved nonaffine field rejected by exact planar mapping",
+    "0.3564 m/s near-front half-step velocity disagreement exceeds 0.005 m/s"
+  ],
+  "report": "REPORT.txt",
+  "scope": "v11 baseline preserved before one bounded mapping/time-resolution correction in v12"
+}

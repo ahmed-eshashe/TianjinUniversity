@@ -1,0 +1,55 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 9.46 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.87 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.89 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 27866.06 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.79 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1.04 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.69 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.40 ms  (cached)
+{
+  "scope": "Existing research closure algorithm on new split geometry, prescribed piece translations only",
+  "stop": "completed",
+  "wall_s": 39.713078840999515,
+  "rows": [
+    {
+      "name": "rest",
+      "gap_m": 0.0,
+      "net_force_N": 0.0,
+      "left_force_x_N": 0.0,
+      "force_norm_N": 0.0,
+      "invalid": 0
+    },
+    {
+      "name": "closure",
+      "gap_m": -1e-05,
+      "net_force_N": 2.600847941445841e-15,
+      "left_force_x_N": -70.30558200046336,
+      "force_norm_N": 6.025787340603642,
+      "invalid": 0
+    },
+    {
+      "name": "open",
+      "gap_m": 0.001,
+      "net_force_N": 0.0,
+      "left_force_x_N": 0.0,
+      "force_norm_N": 0.0,
+      "invalid": 0
+    },
+    {
+      "name": "reclosure",
+      "gap_m": -1e-05,
+      "net_force_N": 2.398304227923135e-14,
+      "left_force_x_N": -70.30558200046336,
+      "force_norm_N": 6.025787340603642,
+      "invalid": 0
+    }
+  ],
+  "passed": true
+}

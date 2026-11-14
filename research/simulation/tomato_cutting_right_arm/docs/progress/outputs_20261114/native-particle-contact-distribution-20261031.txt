@@ -1,0 +1,17 @@
+Native particle force/stiffness distribution — 31 October 2026
+
+PASS for the disclosed stationary particle, edge and face fixtures. Checklist item 13 is complete within this scope.
+
+The installed Newton accumulation kernel was run on six fixtures: the two selected blade-reference faces, an empty control, an equivalent padded edge, a particle at the represented blade-reference point, and a synthetic planar face with three positive weights. Each fixture included a spectator particle. Three color passes per fixture checked that only active-color corners received contributions.
+
+Native force contributions matched weight times point force. Particle diagonal stiffness blocks matched squared weight times point stiffness. Maximum force scatter error was 9.10e-8 N; maximum diagonal stiffness error was 4.44e-5 N/m, below the predeclared 1e-5 N and 1e-4 N/m tolerances. Nonactive colors and spectator particles stayed untouched, and the empty control stayed zero. Raw float32 weights were not normalized.
+
+The maximum summed-particle-force residual against the contact force/reconstructed reaction was 1.19e-7 N. Maximum algebraic moment residual was 4.42e-8 Nm. These are stationary bookkeeping checks, not measured dynamic momentum/energy conservation or independently observed body reactions.
+
+Five point-force reference evaluations and 18 colored scatter launches were made. The fixture paths imply 18 total contact-law evaluations, including reevaluation inside the assembly kernel. No Solver, Model, collision pipeline or native blade body was instantiated. All input particles, poses, velocities and contact records were unchanged; output arrays were private diagnostic accumulators. Zero integration steps occurred.
+
+The protected run completed in 2.88 seconds with over 25.11 GB available RAM and 7.69 GB free GPU memory. There were no warnings, monitoring errors or remaining owned worker processes. Sixteen focused fixture/reference/guard tests passed. Source/input snapshots were saved; original pinned sources and installed libraries remain unchanged.
+
+Limits: diagonal contact blocks only, no global off-diagonal Hessian or cohesive/material validation. Synthetic contact parameters and explicitly selected reference records do not qualify general blade collision generation, a full manifold, dynamic robot coupling or cutting. Checklist item 12 remains open.
+
+Next: a small dynamic momentum/work audit on an analytic proxy fixture (item 14), before real-blade motion.

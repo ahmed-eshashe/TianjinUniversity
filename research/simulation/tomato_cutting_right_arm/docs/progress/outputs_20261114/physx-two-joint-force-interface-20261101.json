@@ -1,0 +1,471 @@
+{
+  "passed": true,
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 4.675120206999964,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 21,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 23435120640,
+    "min_free_vram_bytes": 7595884544,
+    "mode": "two_joint_interface",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "shutdown_completion": "supervisor_must_observe_exit",
+      "two_joint_checks_passed": true,
+      "two_joint_cases_completed": 2,
+      "controlled_steps": 2,
+      "cuda_state_echoes": 4,
+      "newton_steps": 0,
+      "robot_validated": false,
+      "training": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "hinge_identity",
+        "link_index": 2,
+        "body_names": [
+          "base",
+          "link1",
+          "link2"
+        ],
+        "before": {
+          "joint_position": [
+            0.0,
+            0.0
+          ],
+          "joint_velocity": [
+            0.0,
+            0.0
+          ],
+          "link_pose": [
+            0.029999999329447746,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "link_com_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "force_world_n": [
+          -0.0,
+          3.0,
+          0.0
+        ],
+        "torque_com_world_nm": [
+          0.0,
+          0.0,
+          0.0012
+        ],
+        "expected": {
+          "matrix": [
+            [
+              0.00022,
+              0.000106
+            ],
+            [
+              0.000106,
+              0.000102
+            ]
+          ],
+          "jacobian": [
+            [
+              -0.0,
+              -0.0
+            ],
+            [
+              0.03,
+              0.01
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "wrench": [
+            -0.0,
+            3.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0012
+          ],
+          "effort": [
+            0.0912,
+            0.0312
+          ],
+          "velocity": [
+            0.22295608711174586,
+            -0.10424848268475549
+          ],
+          "position": [
+            4.935225886588125e-05,
+            -2.3075836010948482e-05
+          ]
+        },
+        "mass_matrix_kg_m2": [
+          [
+            0.00022000000171829015,
+            0.00010599999950500205
+          ],
+          [
+            0.00010599999950500205,
+            0.00010199999815085903
+          ]
+        ],
+        "jacobian": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.029999999329447746,
+            0.009999999776482582
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.1920927533992653e-07,
+            1.1920927533992653e-07
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ],
+        "after_pulse": {
+          "joint_position": [
+            4.9352260248269886e-05,
+            -2.3075837816577405e-05
+          ],
+          "joint_velocity": [
+            0.222956120967865,
+            -0.10424849390983582
+          ],
+          "link_pose": [
+            0.029999999329447746,
+            1.2498094292823225e-06,
+            3.315055758572123e-18,
+            1.5661966081687018e-12,
+            0.0,
+            1.313821121584624e-05,
+            1.0
+          ],
+          "link_com_velocity": [
+            0.0,
+            0.005646198056638241,
+            0.0,
+            1.4151044780419397e-08,
+            0.0,
+            0.11870762705802917
+          ]
+        },
+        "pulse_check": {
+          "matrix": 1.8491409710949883e-12,
+          "jacobian": 1.1920927533992653e-07,
+          "position": 1.8056289224758527e-12,
+          "velocity": 3.385611913042652e-08
+        },
+        "after_coast": {
+          "joint_position": [
+            0.00014225066115614027,
+            -6.651272269664332e-05
+          ],
+          "joint_velocity": [
+            0.222956120967865,
+            -0.10424849390983582
+          ],
+          "link_pose": [
+            0.029999999329447746,
+            3.6023925531480927e-06,
+            2.754135568931238e-17,
+            4.514332484217842e-12,
+            0.0,
+            3.786896922974847e-05,
+            1.0
+          ],
+          "link_com_velocity": [
+            -7.242197170853615e-07,
+            0.005646198522299528,
+            8.633370439988658e-14,
+            1.4151050109489915e-08,
+            0.0,
+            0.11870762705802917
+          ]
+        },
+        "coast_joint_velocity_change_rad_s": 0.0
+      },
+      {
+        "id": "hinge_yaw90",
+        "link_index": 2,
+        "body_names": [
+          "base",
+          "link1",
+          "link2"
+        ],
+        "before": {
+          "joint_position": [
+            0.0,
+            0.0
+          ],
+          "joint_velocity": [
+            0.0,
+            0.0
+          ],
+          "link_pose": [
+            3.5762786065873797e-09,
+            0.030000001192092896,
+            0.0,
+            0.0,
+            0.0,
+            0.7071068286895752,
+            0.7071068286895752
+          ],
+          "link_com_velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "force_world_n": [
+          -3.0,
+          1.8369701987210297e-16,
+          0.0
+        ],
+        "torque_com_world_nm": [
+          0.0,
+          0.0,
+          0.0012
+        ],
+        "expected": {
+          "matrix": [
+            [
+              0.00022,
+              0.000106
+            ],
+            [
+              0.000106,
+              0.000102
+            ]
+          ],
+          "jacobian": [
+            [
+              -0.03,
+              -0.01
+            ],
+            [
+              1.8369701987210296e-18,
+              6.123233995736766e-19
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "wrench": [
+            -3.0,
+            1.8369701987210297e-16,
+            0.0,
+            0.0,
+            0.0,
+            0.0012
+          ],
+          "effort": [
+            0.0912,
+            0.0312
+          ],
+          "velocity": [
+            0.22295608711174586,
+            -0.10424848268475549
+          ],
+          "position": [
+            4.935225886588125e-05,
+            -2.3075836010948482e-05
+          ]
+        },
+        "mass_matrix_kg_m2": [
+          [
+            0.0002200001763412729,
+            0.00010600008681649342
+          ],
+          [
+            0.00010600008681649342,
+            0.0001020000854623504
+          ]
+        ],
+        "jacobian": [
+          [
+            -0.030000004917383194,
+            -0.010000000707805157
+          ],
+          [
+            3.5762792727211945e-09,
+            1.19209286886246e-09
+          ],
+          [
+            -2.6469779601696886e-23,
+            0.0
+          ],
+          [
+            1.4210853021136109e-14,
+            1.4210853021136109e-14
+          ],
+          [
+            1.1920928955078125e-07,
+            1.1920928955078125e-07
+          ],
+          [
+            1.000000238418579,
+            1.000000238418579
+          ]
+        ],
+        "after_pulse": {
+          "joint_position": [
+            4.935223114443943e-05,
+            -2.3075828721630387e-05
+          ],
+          "joint_velocity": [
+            0.22295595705509186,
+            -0.10424843430519104
+          ],
+          "link_pose": [
+            -1.2464214478313806e-06,
+            0.030000004917383194,
+            3.3237572850258745e-18,
+            1.1074675248037846e-12,
+            1.1074673079633501e-12,
+            0.7071161270141602,
+            0.7070975303649902
+          ],
+          "link_com_velocity": [
+            -0.005646196659654379,
+            6.730790924613927e-10,
+            -1.3234889800848443e-23,
+            1.6869354652794956e-15,
+            1.4151042115884138e-08,
+            0.1187075674533844
+          ]
+        },
+        "pulse_check": {
+          "matrix": 1.763412728827355e-10,
+          "jacobian": 2.384185791015625e-07,
+          "position": 2.7721441820934088e-11,
+          "velocity": 1.300566540018977e-07
+        },
+        "after_coast": {
+          "joint_position": [
+            0.00014225050108507276,
+            -6.651267176494002e-05
+          ],
+          "joint_velocity": [
+            0.22295595705509186,
+            -0.10424843430519104
+          ],
+          "link_pose": [
+            -3.5982711779070087e-06,
+            0.030000003054738045,
+            2.7531958917553778e-17,
+            3.1921104214766016e-12,
+            3.192110638317036e-12,
+            0.7071335911750793,
+            0.707080066204071
+          ],
+          "link_com_velocity": [
+            -0.005646196193993092,
+            -7.235785233206116e-07,
+            8.633831225911964e-14,
+            1.790970487080992e-15,
+            1.4151039451348879e-08,
+            0.1187075600028038
+          ]
+        },
+        "coast_joint_velocity_change_rad_s": 0.0
+      }
+    ],
+    "controlled_steps": 2,
+    "cuda_state_echoes": 4,
+    "dt_s": 0.0004166666666666667,
+    "baseline_physx_steps": 0,
+    "final_physx_steps": 2,
+    "newton_contact_connected": false,
+    "scope": "Prescribed force/torque interface on passive fixed-base two-joint chains only."
+  },
+  "max_errors": {
+    "matrix": 1.763412728827355e-10,
+    "jacobian": 2.384185791015625e-07,
+    "position": 2.7721441820934088e-11,
+    "velocity": 1.300566540018977e-07
+  },
+  "focused_tests_passed": 13,
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_two_joint_interface_worker.py": "ad1801e002ee45a80d394a06e204b40aa62983b357b78cd9374bb8f64c7ef3df",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_two_joint_reference.py": "50472a8421b7d6db537e72fe467585667c596f63d67e4348e4142d0960112544",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_guard.py": "e2457b11ae5d228bc180667542f9e51132345d32f95f5b2849c76409e1569800",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_two_joint_reference.py": "be26fc4f36a886359c06466294ba0a3f097aa0a5e0b19f312ff556c184d53674",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/rigid_vbd_kernels.py": "c88eb7b4357e0f36d563ffd0ffe29b780543acfacbb2c17a2dc33f0f5026bdf3",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/coupled/interface.py": "c8d1f160d4ffcac22841e870f3cd0375c7aad30f799549052692097ab4a1fdb9",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py": "44418a13b42bb424f02a605d7df6f047c5ddc9e7ab104ed743684845d8f9a951",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager_cfg.py": "b28ec403c4d534101eab541aff92952b96eb63f0526b0dc0a53277638ca732b2",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/sim/schemas/schemas_cfg.py": "8edeec841a59745b92528a9c12cf1abacea0b63b9a5dbfc0ccad7a64bea61779",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object.py": "0fd17152d133805412776d8cc90eebe85159a383a2e052dafc2eafdd14e54390",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/collide.py": "dcc29f631d22dbf4c689e7424e1be67a22b5cc147e4b728a0845c92db760a44b",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/contacts.py": "84d3ccff76e8c2c10706dff557459aab57474e73aad1a1ef8a429c36fe51fea1",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object_data.py": "6e03c85172da8712bdebc6e19c89cea7868afb02f9e96259c82a281cca4270b4",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation.py": "c4f6a86bc0b42ba4fe35beb92e9e001620c82931447c0ac185d585b7b8d2659c",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation_data.py": "9f25446dff165278af62147c50d5153cc1a1236ccc308cb83a316892cdeb54bf",
+    "/home/omen/IsaacLab/source/isaaclab/isaaclab/utils/wrench_composer.py": "16914d155c28e0d02ab7135b2627112042bd420b023bfabd9eae1dc3c69960ce"
+  },
+  "original_frozen_sources_unchanged": true,
+  "previously_pinned_dependencies_unchanged": true
+}

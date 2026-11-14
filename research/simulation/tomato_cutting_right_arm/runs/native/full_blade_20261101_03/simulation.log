@@ -1,0 +1,20 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793538152.805065   46686 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793538152.805096   46686 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T13:02:33Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-11-01T13:02:37Z [4,442ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x5ab93a82b6d0. Client: carb.scripting-python.plugin
+[INFO]: Registered backend 'physx' for factory RigidObject.
+2026-11-01T13:02:37Z [4,705ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_blade_worker.py", line 64, in main
+    before=packet();rotation=Rotation.from_quat(before['pose'][3:]).as_matrix();translation=np.array(before['pose'][:3]);world=local_vertices@rotation.T+translation;pos=sin.particle_q.numpy();c,query,quadrature=converged(world,tet,pos,triangles,data['x'],local_vertices,faces,rotation,translation);samples=c['samples']
+                                                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_blade_quadrature.py", line 23, in converged
+    raise ValueError('Authored blade quadrature did not converge within fixed 1-percent/1e-5 N gate: '+str(records))
+ValueError: Authored blade quadrature did not converge within fixed 1-percent/1e-5 N gate: [{'level': 1, 'points': 288, 'force_difference_n': 0.0011686080483290571, 'relative_difference': 0.18014544520229656}, {'level': 2, 'points': 1152, 'force_difference_n': 0.00041879658762359196, 'relative_difference': 0.06438897127593972}, {'level': 3, 'points': 4608, 'force_difference_n': 0.00043577417877299575, 'relative_difference': 0.06699923521112759}]
+[INFO]: SimulationContext cleared

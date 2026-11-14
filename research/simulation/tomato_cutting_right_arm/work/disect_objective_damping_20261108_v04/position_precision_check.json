@@ -1,0 +1,16 @@
+{
+  "scope": "Offline one-position-update calculation at final velocity; no subsequent forces/integration or long-run causal attribution",
+  "dt_s": 1.500000053056283e-07,
+  "coordinate_dtype": "float32",
+  "free_velocity_components_over_1mm_s": 12104,
+  "such_components_rounded_to_zero_position_increment": 12104,
+  "fraction": 1.0,
+  "max_reported_node_speed_m_s": 0.017583303153514862,
+  "max_effective_minus_reported_speed_norm_m_s": 0.01758330256701985,
+  "toy_float32_example": {
+    "position_m": 0.05,
+    "velocity_m_s": 0.01,
+    "computed_next_equals_current": true
+  },
+  "interpretation": "Very small steps can round nonzero velocities to zero stored position increments. This is an identified precision limit, not permission to discard or relax the velocity settling gate."
+}

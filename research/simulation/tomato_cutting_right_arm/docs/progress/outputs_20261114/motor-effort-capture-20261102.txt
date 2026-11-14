@@ -1,0 +1,28 @@
+BOUNDED ROBOT EFFORT CAPTURE — 2 November 2026
+
+Decision: measured-effort interface capture PASS; actual isolated motor-work qualification UNRESOLVED. Stop this protocol here. No contact experiment follows automatically, and no further diagnostic branch was launched.
+
+Executed exactly one protected invocation. Wall time6.317seconds against180second cap. Three separately recorded rigid-monitor setup steps followed by120robot-only steps at1/240s (0.5simulated seconds). No deformable steps or loaded blade feedback. The initial robot state was explicitly assigned to the already verified standoff configuration; actual simulated commands then followed existing near-route waypoints240–255, moving away from the target. This is a short withdrawal, not a fresh approach/contact demonstration. Existing fixed knife mount, implicit gains, effort limits, gravity and physical damping remained unchanged. Owned process cleanup is empty.
+
+Verified result
+The measured projected-joint-force getter is available in this installed PhysX backend. All120raw records are finite, separately cloned and synchronized with actual before/after states and commands. Same-step repeated reads agree exactly. User/backend joint orders and all child-joint axes are checked against the original saved kinematic snapshot. Incoming six-axis wrenches projected independently onto each declared joint axis agree with measured efforts: maximum component discrepancy1.90735e-6Nm within the prospective1e-6Nm+1e-6*abs(projected effort) interface-comparison allowance. This allowance only checks redundant numerical representations of the SAME backend data; it is not a relaxation or pass of the old independent knife force/moment precision requirement.
+
+Maximum measured joint load17.0176Nm; the measured signal changes by up to0.03419Nm during execution. Actual maximum joint motion0.002704rad; knife origin movement0.3158mm. Minimum blade/target bound gap24.1501mm; forbidden rigid contact0N. The separate collision positive control measured0.23948N and its two clear controls0N. All inherited per-step clear-space/mount/tracking checks passed. Independent readback verifies every interval, exact command interpolation/velocity, continuity of actual states, explicit feedforward identity, clocks, counts and10captured source/input hashes. Four installed source files from the prior review remain unchanged.
+
+What this does NOT establish
+The measured channel projects transmitted incoming joint wrench. It is not independently demonstrated to isolate actuator torque or provide the interval-averaged generalized drive impulse needed for an exact work calculation. It can contain contributions whose relationship to feedforward, implicit drives, joint constraints and other physical/numerical terms must be established. Identical projected channels do not independently verify physical force accuracy.
+
+Measured effort differs from approximate actuator effort/feedforward by up to11.2046Nm, at left-arm joint2; right-arm joint1 differs by up to10.4579Nm. These differences are observations, not identified missing motor torque and not proof of a controller fault. Do not substitute one channel for the other, add feedforward blindly, fit an omitted term, or treat the difference as an energy correction.
+
+For transparency only, summing post-step measured effort times midpoint qdot gives0.009524432J over all joints; approximate actuator telemetry gives0.007078568J; feedforward alone gives0.006837032J. Multiplying post-step measured effort by measured joint displacement gives0.009417352J. These are competing descriptive constructions, NOT validated motor-work results, energy residuals or alternatives from which to select a passing channel. No complete body/target energy balance was asserted; interval semantics, isolated drive contributions, independent precision and remaining damping terms remain unresolved. Old force/work failures remain failed.
+
+Recommended next action — decision, not another experiment
+Do not spend another session on small exploratory robot tests. The finite source-review + runtime-capture sequence has now established what the available channel can and cannot support. Review the prospective measurement requirement before more simulation, using this evidence. A defensible alternative is a separately labelled functional nonfracturing force-transfer demonstration whose claims are bounded to measured motion, signed reaction transfer and numerical stability, with actuator work explicitly unvalidated. That would be a change from the current complete-work prerequisite and REQUIRES the user's explicit scope decision before implementation. It would not qualify cutting, energy fidelity, experimental tomato validation or separation. Keeping the current strict gate instead means loaded touch remains blocked until the motor-work measurement is independently justified; no automatic diagnostic campaign is authorized.
+
+No scope change is implemented by this recommendation. No contact, fracture, training or video was attempted. Experimental validation17 and loaded/post-cut reset22 remain pending. Dry motion, supported-target and force-handoff component passes remain useful and unchanged.
+
+Evidence
+Native run: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/motor_effort_capture_20261102_01
+Independent audit: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/motor_work_review_20261102/independent_capture01/measurements.json
+Pre-run contract: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/motor_work_review_20261102/capture_contract.json
+Previous source/trace review: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/motor_work_review_20261102/MOTOR_WORK_REVIEW_20261102.txt

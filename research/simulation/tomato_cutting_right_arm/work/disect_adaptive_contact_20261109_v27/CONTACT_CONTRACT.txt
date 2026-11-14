@@ -1,0 +1,17 @@
+ADAPTIVE MATERIAL-EDGE CONTACT — SEPARATE CANDIDATE
+
+Authorization: the user approved correcting material-edge/CAD contact, preserving mesh, mass, supports, original material/fracture laws and budgets, knife/grip and physical stops. This is an experimental adapter, not native DiSECt contact equivalence or production engine adoption.
+
+For each original interface vertex, divide one unit contact budget across its unique incident interior-to-interface FEM edges. Integrate the unchanged scalar CAD law along the dimensionless material-edge coordinate s in [0,1]. Exact triangle entry/exit intervals select portions inside the closed CAD solid; signed distance and normal retain the existing exact closest-distance/solid-angle definition. No selected normal is flipped to create a crack.
+
+Normal energy E = (ke/2) sum_edges w_edge integral_inside phi(x(s))^2 ds; ke=2000 N/m. Material endpoint forces are the pullback with (1-s) and s. The same positive weights pull back kd=1 Ns/m one-sided normal damping, with its full off-diagonal embedding in the implicit solve, and the preserved kf=2500, mu=0.5 Brown friction. Ordinary exterior node contact remains for exterior vertices outside the replaced interface set. Incident edges do not each receive a full nodal stiffness.
+
+Integration boundary work is zero at exact entry/exit because phi=0. The squared distance is continuous at nearest-feature changes. Adaptive Gauss 8/16 integration checks energy, both endpoint forces and embedded normal matrices; force absolute tolerance 1e-10 N and relative tolerance 1e-6, recursion cap 40 and work cap 4096 subinterval evaluations per edge. Reaching a cap is an error, never an accepted force. Independent plane/least-squares intersections and SciPy Gauss-Kronrod integration provide a separate force reference. Actual material coordinates also undergo a numerical energy-gradient check.
+
+This changes physical sampling relative to nodal collocation. Unit-budget normalization preserves declared coefficient scale, not an experimentally calibrated area traction. No measured tomato force validation or contact-model equivalence is claimed. The original mass, 47 fracture laws and total 0.11696391110288158 J fracture budget remain unchanged.
+
+Trials are stateless in contact; quadrature is reconstructed from q and blade pose. No contact or fracture history is committed during probes/Newton iterations. Existing irreversible material history commits only after accepted coupled steps. Reset/checkpoint recomputes contact and clearance; no cached force survives reset.
+
+Independent geometric guard: certify the entire current tetrahedral volume via longest-edge subdivision and the 1-Lipschitz signed-distance bound phi(centroid)-max_vertex_radius. A cached certificate loses margin by maximum material-node movement plus tool translation. Recertify against 80 micrometres to enforce the original 100 micrometre intrusion limit; unresolved certificates reject. This is read-only geometry, not remeshing or added forces. Initial whole-material clearance is separately certified with a positive 1 micrometre margin.
+
+Short fixed/moving component passes do not qualify progressive cutting. Gate B requires actual blade-driven irreversible damage and independent time-step comparison. All later separation, stability, reset, variants and successive-slice gates remain in force. Speed is deferred and experimental validation pending.

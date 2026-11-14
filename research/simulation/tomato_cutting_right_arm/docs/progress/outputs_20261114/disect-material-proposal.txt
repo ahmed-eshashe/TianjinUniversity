@@ -1,0 +1,16 @@
+PROPOSED BULK-MATERIAL CANDIDATE — NOT ADOPTED
+
+Decision requested: permit one separately versioned, literature-inspired bulk-material candidate. No new simulator/engine, synthetic visual split, weaker fracture law, additional fixture or increased safety limit.
+
+The current trial accepted155.971875ms without damage. The next step would reduce one tetrahedron below the unchanged0.1 volume ratio, so it was rejected before history commit. This is a genuine physical-gate stop, not a timeout or performance problem. Blade load1.113N remained below2N; whole-volume and solver/force-balance checks passed. Maximum committed equivalent opening0.063316mm remained below1mm onset. No slice is qualified.
+
+Existing stabilized-law coefficients are mu_kernel=lambda_kernel=12,000Pa. Their independently derived and finite-difference-checked small-strain response is E=21,000Pa, nu=1/6. My earlier30kPa/0.25 report incorrectly used ordinary Lame conversion; it is superseded by parameter_audit.json. This interpretation correction does not alter old simulation forces or passes.
+
+Proposed physical prior: E=400,000Pa, nu=0.3, from Jamdagni and Jia, IEEE T-RO40(2024), TableII, tomato chopping. For the existing stabilized bulk formula this requires mu_kernel=205,128.205128Pa and lambda_kernel=358,974.358974Pa. Numerical derivatives confirm this produces the intended linear tangent. The current published cutting model has different specimen, constitutive assumptions, geometry/support and calibration context; it does not validate these values for our tomato. A whole-fruit compression study also reports different E values; this variability is one reason not to call the candidate calibrated. Experimental validation stays pending.
+
+The original47 fracture laws,1mm/4mm thresholds,0.11696391110288158J budget, knife geometry/orientation/grip, mesh/mass/supports and all stops stay unchanged. The candidate must pass independent constitutive controls, stable-step assessment, fresh settling and contact qualification, then a bounded actual-damage/half-step/withdrawal test. It starts fresh; old loaded checkpoints are preserved. Approval would not authorize another material sweep, a larger force stop, or claiming experimental accuracy.
+
+The stiffness change is a physical-model decision; Astra's plan freezes material parameters and requires review before adopting such a change. Neither candidate simulation nor constitutive coefficient replacement has occurred. Parameter arithmetic alone is checked.
+
+Primary paper: https://faculty.sites.iastate.edu/jia/files/inline-files/TRO24.pdf
+Local copy: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/review_20261102/TRO24.pdf

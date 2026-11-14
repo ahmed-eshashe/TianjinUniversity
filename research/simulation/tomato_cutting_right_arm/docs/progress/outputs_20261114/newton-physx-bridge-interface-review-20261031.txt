@@ -1,0 +1,27 @@
+Newton–Isaac/PhysX bridge interface review — 31 October 2026
+
+Source inspection and host reference arithmetic complete. Five frame/wrench tests passed. No native engines were launched, no physics steps occurred, and no installed library, robot/controller or frozen production file was changed. The runtime bridge remains unimplemented/unvalidated.
+
+Selected installed interfaces
+• PhysX rigid-object data: root_link_pose_w and root_com_vel_w; articulated robot link mapping must be checked separately later.
+• Pose index APIs use xyz + quaternion xyzw. Newton transforms also use xyzw. Do not apply an old wxyz conversion to these APIs.
+• Velocities are world-frame COM linear xyz followed by world angular xyz. Link-origin linear velocity is a different quantity.
+• World COM is link position plus rotated local COM offset. Contact velocity is COM velocity plus omega cross (contact - COM).
+• Reaction force is minus soft contact force. Torque is about the COM: (contact - COM) cross reaction.
+• Deliver an instantaneous world-frame force/COM torque with positions=None when the contact moment is already included. Supplying the contact position again would count its moment twice. The composer converts world inputs into the body frame before the PhysX call.
+• write_data_to_sim sends the wrench before stepping and clears the instantaneous composer. The deprecated external-force setter targets the persistent composer and is unsuitable as an assumed one-step contact-force API. Actual backend force clearing still needs a runtime test.
+
+Important coupling limits
+Newton's external-rigid flag supplies one-way rigid-to-soft motion by itself. In that mode the default feedback harvest is based on proxy momentum change, so an unchanged proxy velocity can report zero reaction despite soft contact. The internal-rigid explicit harvest instead uses dynamic-body adjacency; kinematic prescribed proxies can have no entries there. Neither route is automatically a validated CPU PhysX bridge.
+
+The inspected IsaacLab coupler works through Newton models/solver views. The reviewed shadow Newton state used for PhysX visualization is not two-way physical coupling. No ready CPU PhysX adapter was established by this inspection.
+
+Proposed ownership and timing
+PhysX owns rigid motion. Newton receives proxy state and advances soft state; it must not also advance and write back an independent rigid trajectory. Record body mapping, episode, step, time and dt. Explicitly synchronize CPU/CUDA transfers. Collect contact-only world reactions and deliver them exactly once through the instantaneous composer before the corresponding PhysX step. Refresh state and invalidate stale contact/snapshot identities afterward.
+
+The precise proxy trajectory and substep schedule must be declared and tested. This partitioned scheme is not the monolithic Newton free-pair step tested earlier; its impulse/work reference must account for lag and the selected time integration.
+
+Next bounded test
+Create one isolated CPU PhysX proxy and verify pose/COM-velocity echo, a known one-step wrench impulse, and no stale force on the following zero-input step. Include rotation and nonzero COM to check frame/moment handling. No robot, blade, Newton contact feedback or backend migration is needed for that interface test.
+
+Checklist item 15 remains open. The full real-blade collision path (item 12) is also still open.

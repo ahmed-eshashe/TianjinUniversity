@@ -1,0 +1,50 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.95 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.84 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 3.08 ms  (cached)
+Module tomato_extended_cad_pressure 27ceab5 load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_exact_blade_queries df80afb load on device 'cuda:0' took 0.60 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.67 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.33 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.71 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.45 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.87 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.45 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.21 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.53 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.43 ms  (cached)
+Module tomato_failed_safe_objective 3d40415 load on device 'cuda:0' took 3.72 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.58 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.89 ms  (cached)
+Module tomato_failed_safe_coupled e37263d load on device 'cuda:0' took 0.51 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.48 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.34 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 2.02 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.39 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.46 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 7.65 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.48 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.50 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.49 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.58 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.65 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.36 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.47 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/run_live_slice.py", line 58, in <module>
+    packet,value,report=refresh_packet(blade,np.asarray(solid['cells']),a.particle_q.numpy()+origin,triangles,world['x'],R,t+origin,ref['com_local'],packet,padding_m=4e-5,lookahead=(a.particle_q.numpy()+origin+a.particle_qd.numpy()*args.dt,t+origin+np.array([R[2,2]/R[0,2],0,-1])*.02*args.dt))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_adaptive_packet_refresh.py", line 59, in refresh_packet
+    if old_f>fbudget or abs(old_e)>ebudget:raise ValueError(('Converged adaptive remap differs from old packet',history))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('Converged adaptive remap differs from old packet', [{'iteration': 0, 'leaves': 41, 'samples': 492, 'maximum_depth': 0, 'summed_force_error_n': 0.006683939688428533, 'summed_energy_error_j': 7.024636493543976e-08, 'force_budget_n': 8.678488499138271e-05, 'energy_budget_j': 2.177930332332763e-09, 'force_difference_from_old_n': 0.0003585616342349993, 'energy_jump_from_old_j': 1.6710068498846267e-09}, {'iteration': 1, 'leaves': 107, 'samples': 1284, 'maximum_depth': 1, 'summed_force_error_n': 0.0038458124794866736, 'summed_energy_error_j': 4.385932828337424e-08, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.161220263833917e-09, 'force_difference_from_old_n': 0.00021456202711986734, 'energy_jump_from_old_j': -6.724527669073291e-10}, {'iteration': 2, 'leaves': 293, 'samples': 3516, 'maximum_depth': 2, 'summed_force_error_n': 0.002193976037162818, 'summed_energy_error_j': 9.620871821677758e-09, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.161220263833917e-09, 'force_difference_from_old_n': 0.00013641941477434387, 'energy_jump_from_old_j': -9.989025965554677e-13}, {'iteration': 3, 'leaves': 725, 'samples': 8700, 'maximum_depth': 3, 'summed_force_error_n': 0.0009548751577576231, 'summed_energy_error_j': 2.5100293034184215e-09, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.162437826701637e-09, 'force_difference_from_old_n': 4.750265728350776e-05, 'energy_jump_from_old_j': 1.2175628677205134e-10}, {'iteration': 4, 'leaves': 1595, 'samples': 19140, 'maximum_depth': 4, 'summed_force_error_n': 0.0004977923578156356, 'summed_energy_error_j': 6.579310440108912e-10, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.1624486454745657e-09, 'force_difference_from_old_n': 8.648285202527334e-05, 'energy_jump_from_old_j': 1.2283816406488385e-10}, {'iteration': 5, 'leaves': 3533, 'samples': 42396, 'maximum_depth': 5, 'summed_force_error_n': 0.00025668379898654225, 'summed_energy_error_j': 1.713400346603519e-10, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.1625164159768233e-09, 'force_difference_from_old_n': 9.019530914659438e-05, 'energy_jump_from_old_j': 1.2961521429067494e-10}, {'iteration': 6, 'leaves': 7613, 'samples': 91356, 'maximum_depth': 6, 'summed_force_error_n': 0.0001629723337734832, 'summed_energy_error_j': 5.455335550354436e-11, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.162514138823391e-09, 'force_difference_from_old_n': 9.21602695895725e-05, 'energy_jump_from_old_j': 1.2938749894741943e-10}, {'iteration': 7, 'leaves': 15092, 'samples': 181104, 'maximum_depth': 7, 'summed_force_error_n': 8.410466622509742e-05, 'summed_energy_error_j': 1.5596009632361784e-11, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.1625148203899294e-09, 'force_difference_from_old_n': 9.159139898436963e-05, 'energy_jump_from_old_j': 1.2945565560124808e-10}, {'iteration': 8, 'leaves': 25775, 'samples': 309300, 'maximum_depth': 8, 'summed_force_error_n': 3.962429833664807e-05, 'summed_energy_error_j': 4.45639919017624e-12, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.162514781038511e-09, 'force_difference_from_old_n': 9.172587228190788e-05, 'energy_jump_from_old_j': 1.2945172045944632e-10}, {'iteration': 9, 'leaves': 41654, 'samples': 499848, 'maximum_depth': 9, 'summed_force_error_n': 1.895582789112273e-05, 'summed_energy_error_j': 1.9315772015266387e-12, 'force_budget_n': 8.431940323860672e-05, 'energy_budget_j': 2.1625153545615465e-09, 'force_difference_from_old_n': 9.166564934254203e-05, 'energy_jump_from_old_j': 1.2950907276299634e-10}])

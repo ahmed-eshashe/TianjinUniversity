@@ -1,0 +1,84 @@
+VISION-GUIDED CONTACT PICKUP — current staged approach
+14 November 2026, Asia/Shanghai
+
+User decision
+Learn the visual grasp position and orientation first; use the tested motion
+controller; learn the entire movement afterward. Keep real finger contact and
+friction, with no fixed attachment. Preserve the original cutting simulation.
+
+What is learned
+A convolutional model predicts two handle landmarks from actual 320x240 RGB-D
+images from the robot's head. A frozen camera calibration and known flat resting
+height convert those image landmarks into a grasp position and yaw. The predictor
+accepts images only: sampled knife position, orientation and episode identity do
+not enter it. A fixed neutral start is independent of knife placement.
+
+What is engineered
+Inverse kinematics and a smooth joint-space approach, a short downward approach,
+compliant finger closure, lifting, and outcome/safety checks. The controller
+receives joint feedback; simulated contacts are used for guarded pickup checks.
+This is not an end-to-end learned joint controller or an RL-trained motion policy.
+
+Physical changes and rejected trials
+- v01: learned targeting with the previous grip controller. At 960 Hz, two of
+  three validation placements passed; one hit the closing-load stop.
+- A 1920 Hz check avoided that closing spike but later slipped and dropped.
+- v02: uniformly stronger holding effort was rejected because it slipped sooner.
+- v03: unchanged initial closure; the holding effort is redistributed toward
+  thumb/index and away from rear fingers to reduce twisting. A one-second ramp
+  uses thumb .65, index .16, middle .07, ring .025, pinky .01 Nm. Actuator limits,
+  friction, mass, geometry, blade-contact rule and all success/load limits remain
+  unchanged. Physics 1920 Hz; command rate 20 Hz; load window 1/960 second.
+
+Accepted test scope
+Shortened 305 mm, 175 g knife; original handle; bounded shifted/rotated flat
+placements. A three-second continuous unsupported hold is required, with <=10 mm
+relative slip, <=15 degrees relative rotation, opposed thumb/finger contact,
+whole-knife clearance, and no contact-load or blade-contact violation. The hold
+can include the last part of lifting; it is not a separate three-second stationary
+hold. Provisional friction/mass parameters are not physically calibrated.
+
+Status and evidence
+Read CURRENT_CANDIDATE.json and the matching reports/hybrid_v07_campaign.json
+for the current completed results and uncertainty. Read STATUS.json for progress.
+The current frozen contract is hybrid_evaluation_contract_v07.json; the previous
+v03 report/contract are historical and include a failed independent gate.
+Failed runs remain in their original folders. The fresh recovery test placements
+were reserved before controller selection and never used to tune its settings.
+
+Open scope
+Other knife geometries, wider board/yaw coverage, different stable resting poses,
+clutter/occlusion, missing or noisy sensing, and physical transfer need independent
+qualification. These are not established by success on the initial curriculum.
+The full-motion students and their failed outcomes remain preserved separately.
+
+Later recovery work (preserved separately)
+v03 did not pass its independent gate: two of four attempted test placements
+passed; two closing-load stops ended the batch. Those inspected failures became
+regression evidence, not independent tests for subsequent controller versions.
+v05 introduced contact-guided finger-before-thumb closure; both old failures
+passed, but one new validation slipped when lifting began.
+v06 balances thumb/index loading while the board still supports the knife; one
+validation stopped at a fixed closing deadline despite developing contact.
+v07 waits for .35 s of loaded opposed contact (8 s maximum), balances the pinch
+for 1.5 s while supported, then lifts. Frozen new tests are in
+curriculum_recovery_v02.json. See CURRENT_CANDIDATE.json and the matching report.
+
+Controller sensing disclosure
+The learned network receives RGB-D only, plus fixed geometric calibration in its
+target conversion. The engineered gripper uses simulated contact feedback for
+closure readiness. Handle/blade classifications and full object state also serve
+simulation safety/outcome checks. This is a simulation hybrid, not a hardware-ready
+camera-only control stack; physical transfer needs an appropriate tactile or
+proprioceptive contact observer and independent calibration.
+
+Data convention
+Native root_pose_w is the actor/link-frame pose; root_vel_w is COM-frame velocity
+expressed in world coordinates. Pose-based clearance/slip calculations use the
+link pose. Velocity logs must be interpreted using that COM convention.
+
+Frozen-contract wording correction
+The v07 contract retains an older 'transition' string saying that holding pressure
+begins at lift. Its detailed 'closing_sequence' and actual frozen source correctly
+start the ramp during the 1.5-second supported balancing phase BEFORE lift. This
+documentation clarification does not alter the frozen source or evaluation.

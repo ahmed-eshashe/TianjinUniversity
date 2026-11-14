@@ -1,0 +1,59 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793535064.148509   38134 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793535064.148539   38134 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T12:11:04Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module warp._src.coloring 811e0ea load on device 'cpu' took 1.01 ms  (cached)
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.23 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.87 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 3.45 ms  (cached)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 1: invalid argument (in function wp_memset_device, /builds/omniverse/warp/warp/native/warp.cu:1295)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 1: invalid argument (in function wp_memset_device, /builds/omniverse/warp/warp/native/warp.cu:1295)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 101: invalid device ordinal (in function radix_sort_temp_size, /builds/omniverse/warp/warp/native/sort.cu:215)
+Warp CUDA error 1: invalid argument (in function wp_memset_device, /builds/omniverse/warp/warp/native/warp.cu:1295)
+Module tomato_native_group_cohesion 6aac9ea load on device 'cuda:0' took 0.81 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 3.49 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.24 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels fa8d30f load on device 'cuda:0' took 2.36 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_volumetric_coupon_worker.py", line 74, in main
+    write(out,'volumetric_coupon_measurements.json',dict(cases=records,newton_steps=steps,opening_probes=probes,volume_m3=volumes,scope='Two single-tetrahedron pieces, controlled opening, fixed material frame and native mesh self-contact. Synthetic and coarse; no real blade.'))
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_worker.py", line 11, in write
+    temporary.write_text(json.dumps(data, indent=2) + '\n')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type float32 is not JSON serializable

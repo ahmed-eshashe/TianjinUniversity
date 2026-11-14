@@ -1,0 +1,56 @@
+{
+  "result": "direct point-query diagnostic completed; full-surface contact remains unvalidated",
+  "query_count": 562,
+  "surface_query_count": 434,
+  "off_surface_query_count": 128,
+  "mechanical_steps": 0,
+  "metrics": {
+    "query_count": 562,
+    "query_batches": 2,
+    "missing_queries": 0,
+    "max_surface_error_m": 5.1606708439067006e-05,
+    "max_signed_distance_error_m": 2.8833432595937425e-08,
+    "sign_mismatches": 0,
+    "thin_sign_mismatches": 0,
+    "max_normal_angle_error_deg": 0.1919483203825125,
+    "max_thin_normal_angle_error_deg": 0.04779834121662586,
+    "cold_build_compile_query_wall_s": 0.3910072929998023,
+    "warm_562_query_wall_s": 0.00012768700025844737,
+    "accuracy_thresholds_selected": false,
+    "point_query_accuracy_qualified": false,
+    "full_surface_contact_validated": false,
+    "limitations": [
+      "Point queries do not establish edge/face contact completeness.",
+      "Surface-point normals are not compared because sharp edges and zero distance are ambiguous.",
+      "Mesh float32 rounding and parity/nearest-triangle robustness remain scoped to these samples."
+    ]
+  },
+  "surface_queries_above_1um": 5,
+  "numerical_lead": "All five above-1um surface discrepancies occur at face-interior probes on long narrow triangles (edge/minimum-altitude ratios 123\u2013966). This is a diagnostic correlation, not a demonstrated cause.",
+  "integrity": "saved source snapshots, historical source hashes and exact previous probe registry verified",
+  "runtime_resources": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 1.568246808999902,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 7,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 25253158912,
+    "min_free_vram_bytes": 7776239616,
+    "mode": "direct_mesh",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "direct_queries_completed": 562,
+      "mechanical_steps": 0,
+      "training": false,
+      "cutting_validated": false,
+      "full_surface_contact_validated": false
+    }
+  },
+  "next_step": "Investigate closest-point numerical behavior on the five discrepant surface facets before implementing any conservative full-surface mesh contact route."
+}

@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/tests/persistent_validate.py", line 28, in <module>
+    r.step(80);g.step(80);err,ok=compare(r.export(),g.export());checks[f'{name}_trajectory_{frame}']=ok;trace.append(err)
+               ^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/src/cached_gpu.py", line 111, in step
+    full,rem=divmod(n,block);graphs=[self.graph(block)]*full
+                                     ^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/src/active_gpu.py", line 36, in graph
+    if n not in self.dispatch:self.dispatch[n]=Dispatch(g);self.dispatch[n].update(self.n,self.p)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/src/active_gpu.py", line 20, in update
+    if L.dispatch_update(self.h,n,p):raise ValueError(L.dispatch_error().decode())
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid argument
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/cache/warp/1.17.0
+Module selective_gpu 0f46f62 load on device 'cuda:0' took 0.99 ms  (cached)
+Module gather_packed_ef0e8642 c6cd530 load on device 'cuda:0' took 0.60 ms  (cached)
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.56 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.46 ms  (cached)
+{'status': 'exception', 'exception': "ValueError('invalid argument')", 'checks': {'intact_data': True}, 'rows': [{'case': 'intact_data', 'errors': {'ptr': 0.0, 'idx': 0.0, 'grad': 0.0, 'iptr': 0.0, 'iidx': 0.0, 'ig': 0.0, 'mptr': 0.0, 'midx': 0.0, 'mi': 0.0}, 'compile_or_prepare_s': 0.006694943003822118}], 'wall_s': 1.7657553589961026}

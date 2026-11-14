@@ -1,0 +1,18 @@
+Blade SDF resolution comparison — 31 October 2026
+
+Controlled comparison: identical authored blade, 482 geometry/reference samples, 0.05 m cooking padding, unchanged physics/contact parameters. The existing 128 result was compared with two new protected native runs at 256 and 512. Each new run took about 3.4 seconds, completed 12 stationary steps, reported zero contact and zero final particle drift, and exited cleanly without memory warnings or leftover processes.
+
+Resolution | Max surface error (mm) | Max offset distance error (mm) | Sign mismatches | Max normal disagreement (deg)
+128 | 1.0086 | 0.6256 | 1 | 48.90
+256 | 0.4980 | 0.1874 | 0 | 21.57
+512 | 0.3040 | 0.0678 | 0 | 30.01
+
+Distance accuracy improved with refinement; sampled sign mismatches disappeared at 256 and 512. Normal error did not improve monotonically. The worst normal sample remained the same inward 1 mm point: face 41 is 1.000 mm away, while a near-orthogonal face is 1.302 mm away. Interpolation near competing surfaces is a possible cause requiring targeted checks, not a proven explanation.
+
+At +/-0.25 mm face-normal offsets, maximum normal disagreement was 0.221/0.110 degrees at 256 and 0.707/0.153 degrees at 512 respectively. These sampled results do not remove the interior normal issue or establish global accuracy.
+
+No acceptance threshold was selected or relaxed. No positive-contact response, force/work accuracy, fracture, robot coupling or cutting was qualified. Higher resolution was used only for comparison; no production default was promoted.
+
+Source snapshot hashes, the exact 482-point/reference registry and the two new 12-step journal chains were verified. Nine guard tests passed after mode changes. All earlier evidence remains unchanged.
+
+Next: targeted normal and thin-edge convergence checks before moving-contact experiments.

@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/tests/previous_space_controls.py", line 12, in <module>
+    report=dict(passed=all(all(x['checks'].values()) for x in rows),cases=rows,scope='Preserve all previously admissible affine material fields, not only the currently sampled displacement. No crack-opening or full-slice qualification is inferred from low trajectory error alone.');(W/'reports/previous_space_controls.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));assert report['passed']
+                                                                                                                                                                                                                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

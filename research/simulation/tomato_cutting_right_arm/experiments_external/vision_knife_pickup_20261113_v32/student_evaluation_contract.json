@@ -1,0 +1,23 @@
+{
+  "status": "Prepared before first student training",
+  "initial_scope": "Shorter knife, flat rest, bounded reachable placement/yaw region from curriculum_split_v01.json; no full-board/any-knife claim",
+  "inputs": [
+    "head RGB-D",
+    "initial head-image memory",
+    "13 controlled q and qd",
+    "command memory",
+    "previous action"
+  ],
+  "forbidden": [
+    "object pose",
+    "segmentation IDs",
+    "knife identity or physical parameters",
+    "teacher trajectory phase/time"
+  ],
+  "validation_gate": "Physical success on the three frozen validation placements, with original contact/speed/load and three-second unsupported-hold checks. Offline loss alone is insufficient.",
+  "test_gate": "Only after validation: evaluate all eight untouched test placements. Report numerator/denominator and interval; require at least 7/8 successes and no blade-contact/load-stop violation for this limited curriculum.",
+  "vision_check": "Repeat validation with blank images and compare actual pickup and action dependence; if vision has no demonstrated effect, do not claim camera-driven placement generalization.",
+  "geometry": "Two prepared held-out assets are excluded from first-student training. Fresh physical teacher and student tests needed before any geometry-generalization claim.",
+  "rest_pose": "Current flat-rest-only curriculum does not qualify other resting poses.",
+  "original_setup": "All mutations confined to v32 and checklist status; preserve earlier models and evidence."
+}

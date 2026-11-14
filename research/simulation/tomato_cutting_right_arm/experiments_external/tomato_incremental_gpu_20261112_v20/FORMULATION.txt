@@ -1,0 +1,24 @@
+V20 IMPLEMENTATION-ONLY LOCAL GEOMETRY / GPU FORCE ASSEMBLY
+
+Authorization: user requested lower cut-update cost and improved RL speed, continuous work, current setup unchanged. Work is isolated from the kitchen, robot, Isaac/DiSECt and the frozen v19 prototype. No new physical/numerical representation or tolerance is introduced.
+
+The model, support threshold 1e-8, exact reduced inertia A^T diag(m) A, mass-orthogonal projection, material constants and staggered Verlet update remain those of v19. The approved mass-weighted velocity comparison is preserved; same-operator CPU/GPU tolerances remain position 1 micrometre, velocity 0.1 mm/s, deformation-gradient error 1e-4. The 12.5 microsecond timestep is tested only in the stated fixtures, not asserted valid for arbitrary cuts or unresolved tiny fragments.
+
+One profile identified two implementation costs. On the host, split recomputed convex moments for every region, and built thousands of tiny connected-component and singleton-mass solves. On the GPU, sequential nodal force gathering dominated (about 49 ms of the 78 ms isolated kernel diagnostic at batch eight).
+
+GEOMETRIC UPDATE
+Vectorized signed-distance bounds reject regions that cannot intersect the current plane/front. A conservative floating-point margin sends borderline cases through the original exact clipping predicate; it is not a material removal tolerance. Unchanged convex regions retain their exact reference moments. Only changed children invoke the original clipping and moment operations. Labels are still updated for all applicable regions; a cached connected-component lookup over identical history-code sets replaces repeated identical graph construction. Node ordering and connectivity match the reference.
+
+An initial implementation reused initialization centroids directly. This changed tied root choices through roundoff and failed the exact aggregation-matrix comparison. That failed test is retained. The correction computes the same ConvexHull moments as the reference once, caches them, and then reuses them. This initial preparation cost is INCLUDED in the changing-cut episode benchmark; the isolated warm-event timing lists it separately. No distance tie-breaking or aggregation rule was changed to make the comparison pass.
+
+SETUP
+Full-region recognition, compatible-root masks and physical vertex-field evaluation are vectorized. Connected mass blocks with one degree of freedom use their exact scalar Cholesky factor directly; genuinely coupled blocks use the unchanged Cholesky solve. There is no relumping, mass floor, material deletion, damping, state reset or new stiffness.
+
+GPU FORCE ASSEMBLY
+The same incidence sum -sum(P_region * gradient) is distributed across a warp. Four node groups are packed into each 128-thread block; force contributions are reduced within each node group, then the unchanged inverse mass kernel advances state. The one-warp-per-block layout was valid but delivered smaller gains; both layouts and results are retained. The packed layout passes strict GPU/CPU checks. This is one profile-directed force-assembly optimization with a layout refinement, not a new material model. Initial Warp API call/argument compilation errors are retained in logs; they produced no physical results.
+
+CHANGING-GEOMETRY LOOP
+Ten 50 Hz controls, with four partial-to-complete front advances on a fixed oblique plane. Future events are supplied only when they occur; reset has no future-cut data. Full reset, geometry/cache work, aggregate rebuilding, GPU uploads/graph capture, state export and conservation checks are timed. A geometric cut does not consume fracture energy, so resulting two-component topology is NOT claimed as a physical slice. No blade, contact, board, robot, policy or rendering is included.
+
+LIMITS
+v19 restrictions remain: four cut slots, synthetic effective material, planar geometric events, unqualified arbitrary curved crack fronts and root locality, potentially restrictive unresolved small fragments, no full spatial or long-horizon cutting qualification. The force stop 2 N and whole-material penetration limit 0.1 mm are unchanged but NOT exercised by this bulk-only implementation. Speed does not establish physical validity, and a component benchmark does not establish RL readiness.

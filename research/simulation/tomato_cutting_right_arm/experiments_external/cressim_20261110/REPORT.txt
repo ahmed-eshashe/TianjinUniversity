@@ -1,0 +1,167 @@
+CRESSim-MPM bounded feasibility result — 10 November 2026
+
+DECISION
+The public CRESSim-MPM release builds and runs on this laptop, and its small
+examples are fast. Do not adopt it unchanged as our arbitrary-cut tomato
+environment. It failed the essential independent-fragment requirement after
+knife withdrawal. No tomato, robot, kitchen, grip, trajectory or existing solver
+file was edited. Nobody was contacted. No packages were installed.
+
+WHAT RAN
+Source: https://github.com/yafei-ou/CRESSim-MPM
+Commit: 09aa5009b8580351f516b6df7660e87821fc5eb6 (public v2.2.0).
+All 130 extracted upstream files were checked against the downloaded archive;
+none changed. See source_manifest.json and verification_manifest.json.
+The harness and build directory are separate from the upstream source and our
+research project. The stock example's settings and trajectory were retained,
+with its graphics window replaced by a finite headless loop and measurements.
+
+Hardware: NVIDIA RTX 5060 Laptop GPU, 8151 MiB, driver 595.99.02.
+Build: existing CUDA 12.8 compiler, native sm_120 target, Release, GCC 13.
+The Isaac viewer was closed during measurement. No concurrent simulation ran.
+There were 21 completed short runs: the stock example, six initial controls,
+six controls translated away from a grid-aligned cut, four two-pass baseline/
+pulse runs and four timing repeats. None needed the 600-second per-run cap.
+
+MEASURED THROUGHPUT
+Case                         Particles   Sim time    Synchronized step wall time
+Stock MLS cutting example       1331       6.0 s              0.104 s
+60 mm block, MLS                 8000       1.7 s              about 1.20–1.31 s
+60 mm block, PB                  8000       1.7 s              about 2.47–2.50 s
+
+For the block, three baseline measurements gave:
+MLS: 0.705–0.770 wall seconds / simulated second; median 0.762.
+PB:  1.452–1.469 wall seconds / simulated second; median 1.455.
+
+Timings include advance/fetch, GPU synchronization and the engine's normal
+readback, but exclude initialization, diagnostic calculation, rendering and
+CSV/snapshot writing. Total application times and monitored process times are
+also in results/. The external monitor can add up to a polling interval to
+reported process duration. This is a microbenchmark, not an RL rollout-rate
+claim. No robot, kitchen, observation rendering or policy inference is included.
+No measured speedup versus our DiSECt candidate at equal accuracy is claimed.
+
+Memory: around 196 MiB peak resident host memory and 138 MiB sampled process
+GPU memory in the longer block runs. CUDA free-memory difference after scene
+warm-up was 36 MiB, excluding the already-created context. Short probes ended
+too quickly for the external 0.5-second sampler: their reported zero GPU usage
+is a missed sample, not zero actual memory. Version 2 records host peak RSS
+inside the executable. Memory remains small for this particular configuration.
+
+MODEL DIFFERENCES — THESE ARE NOT TOMATO QUALIFICATION TESTS
+Stock: approximately 1 m cube; 0.1 m particle spacing, 0.2 m grid, 1331 particles
+at 1 kg each, gravity, 0.002 s integration step. Its cutter has 0.1 m fattening.
+This unusually large/coarse example is useful for compatibility only.
+
+Small block: 60 mm cube, 20 x 20 x 20 particles, 3 mm particle spacing, 6 mm
+grid, 27 mg per particle, 216 g total, zero gravity, free outer surfaces.
+No skin, gel, seeds, board, tomato geometry, measured cutting toughness or
+damage/fracture law was added. The tool is the supplied analytical quad slicer,
+80 x 80 mm with 0.5 mm fattening, not our CAD knife.
+MLS: co-rotational elastic material, E = 100 kPa, nu = 0.4, dt = 0.0001 s.
+PB: relaxation = 100, elasticity ratio = 0.9, 20 iterations, dt = 0.001 s.
+PB's parameters are not Young's modulus and Poisson's ratio; they were not
+calibrated to MLS. The speed comparison is not a material/accuracy comparison.
+A 6 mm grid does not establish our project's 0.1 mm contact tolerance.
+
+SEPARATION TEST AND CONTROLS
+1. Sweep the slicer completely through x = 0, then clear the block.
+2. Reorient outside the block and sweep through z = 0, then clear the block.
+3. With the cutter clear, add 0.01 m/s tangential velocity to just one intended
+   quarter. Compare against a separate otherwise identical unforced baseline.
+   Labels only analyze the particles; they are not supplied to the solver.
+
+Both sweeps completed with finite positions and velocities, but the intended
+quarters were not mechanically independent. Untouched quarters reached up to
+13.7% of the imposed pulse in MLS and 25.0% in PB. In PB, all four quarters
+settled near one quarter of the originally imposed velocity within 0.1 s.
+That is velocity sharing across the supposed cuts, not four independent pieces.
+
+Independent control: initialize two halves with a nominal 1 mm gap. Give one
+half a 0.01 m/s tangential pulse, with no gravity, friction or moving tool.
+The screening threshold was an untouched-half velocity below 1% of the pulse.
+
+Condition                    MLS peak transfer       PB peak transfer
+Blade held in gap                    0%                      0%
+Blade absent                       11.46%                   50.02%
+Halves 24 mm apart                    0%                      0%
+
+These reported controls are translated 1 mm relative to the grid so the blade
+plane is not exactly on grid nodes. An earlier grid-aligned control also leaked
+motion while the blade was held; all earlier data are preserved, not discarded.
+This alignment sensitivity is another limitation. Translating the control did
+not change engine code, material parameters or the predeclared 1% screen.
+
+The close-gap test alone is not proof of a successful preceding fracture; it
+isolates unwanted coupling between separate material groups. Together with the
+two real sweeps and source inspection, it rules out claiming reliable persistent
+slicing/dicing from this configuration. Wide separation can prevent sharing;
+the result does not say that no visually separated example is possible.
+
+SOURCE EXPLANATION
+The slicer checks particle/grid-point sides using the CURRENT shape pose.
+It temporarily changes transfers across that shape. There is no persistent
+fracture identifier, cut history, bond failure or fracture-energy budget in
+this tested path. Once the knife has left, the shared grid can couple nearby
+particles again. This matches the measured controls.
+Relevant pinned source locations:
+src/solver/mpm_rigid_contact.h:402, checkOnDifferentSides()
+src/solver/mls_mpm_algorithm.h:209, particle-to-grid filtering
+src/solver/mls_mpm_algorithm.h:342, grid-to-particle filtering
+src/solver/pb_mpm_algorithm.h:199 and 333, corresponding PB filtering
+src/solver/constitutive_models.h:123, PB constraint parameters
+
+FORCE AND STABILITY LIMITATIONS
+The stock kinematic tool does not record reaction force, so its zero output
+must not be interpreted as zero physical cutting resistance. In the small
+tests, the dynamic flag enables impulse recording while the old kinematic
+contact model and prescribed motion remain. The newer effective-mass contact
+model was not used. Source inspection shows getShapeForce() contains accumulated
+momentum exchange; the harness stores it and divides by actual integrated frame
+duration for an unvalidated mean reaction estimate.
+
+Baseline blade-pass reactions were essentially zero (maximum about 3.04e-7 N
+MLS and 3.46e-6 N PB). In this coarse setup, the thin plane can pass between
+particle layers and has no fracture toughness law to overcome. This is not a
+validated tomato cutting-force curve and is not a physical cutting pass.
+The blade path can change online without a premeshed seam, but that freedom
+does not itself establish realistic fracture or contact forces.
+
+All logged runs retained finite particle states and unchanged particle masses;
+the block retained its 8000 particles. That only passes a basic numerical screen.
+MLS also lost nearly all imposed rigid translation in the far-gap control,
+despite no external load. A possible contributor is the hard-coded 1e-4 kg
+grid-mass cutoff in mlsMpmUpdateGrid(), which skips conversion of low-mass nodes
+from momentum to velocity. No causal patch or material qualification was
+attempted. PB largely preserved translation in the far-gap control, but still
+failed close-fragment independence and has uncalibrated material response.
+
+RECOMMENDATION
+Stop this adoption attempt at the failed separation gate. Do not integrate
+CRESSim into the kitchen or start tomato RL on it. Its speed is promising,
+but accepting coupled fragments would reward incorrect cutting behavior.
+MPM remains a possible architecture; this public implementation would need
+persistent fracture/separation and validated contact/material behavior before
+it can replace the research model. That is additional method development,
+not a configuration switch, and was deliberately not started in this study.
+Keep the current project and its evidence unchanged while deciding that next
+scope. The decisive acceptance test for any next candidate is two intersecting
+cuts, full withdrawal, and independent fragment motion without hidden barriers.
+
+REPRODUCTION AND ARTIFACTS
+Work directory: /home/omen/Documents/Codex/experiments/cressim_20261110
+build_harness.sh: build the isolated C++ harness against the pinned engine.
+run_tests.py stock / probe / cuts / repeat: bounded sequential test groups.
+The scripts use fixed output names; copy the experiment directory or change
+the output prefix before rerunning if preserving these exact files.
+harness_v1/: exact earlier harness and contract.
+test_contract.json: original screening criteria; below-grid alignment correction
+is documented in this report and the v2 harness.
+results/: all logs, summaries, traces, snapshots and resource records.
+evaluation.json: machine-readable conclusions and measured values.
+independence_check.png: held/absent/far control comparison.
+two_pass_check.png: coupling after two intersecting sweeps and withdrawal.
+analyze.py: reproducible analysis, using existing numpy/matplotlib only.
+
+This concludes the bounded feasibility study. Existing experimental validation
+and research qualification remain pending.

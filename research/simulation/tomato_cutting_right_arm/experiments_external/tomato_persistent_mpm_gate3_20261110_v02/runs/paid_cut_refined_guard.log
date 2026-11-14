@@ -1,0 +1,52 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp/1.17.0
+Module contact_geometry 7a11ea9 load on device 'cuda:0' took 0.74 ms  (cached)
+Module kernels 68444bc load on device 'cuda:0' took 0.78 ms  (cached)
+Module physical_kernels a38ad69 load on device 'cuda:0' took 0.43 ms  (cached)
+{
+  "status": "reconstructed_volume_stop",
+  "physical_topology_event": false,
+  "events": [],
+  "dt": 1.25e-05,
+  "loaded_face_quadrature_spacing_m": 6.25e-05,
+  "sim_time": 0.029174999999998827,
+  "wall_s": 63.38684537100016,
+  "peak_total_force_N": 0.10557748780346335,
+  "max_impulse_balance_Ns": 5.123372579320937e-13,
+  "initial_bulk_kinetic_J": 0.0,
+  "cut_ledger": {
+    "covered_wkb": "010300000000000000",
+    "Gc": 80.0,
+    "work_J": 0.0,
+    "area_m2": 0.0,
+    "epoch": 1881,
+    "last_step": 2333,
+    "domain_wkb": "01030000000100000005000000fa7e6abc7493783f0000000000000000fa7e6abc7493783ffa7e6abc7493583ffa7e6abc749378bffa7e6abc7493583ffa7e6abc749378bf0000000000000000fa7e6abc7493783f0000000000000000"
+  },
+  "last_volume_certificate": {
+    "passed": false,
+    "reason": "resolved_inadmissible_material_volume",
+    "observed_minJ": 0.09942793250163737,
+    "observed_maxJ": 1.389468943564393,
+    "subcells": 512,
+    "depth": 0
+  },
+  "last_certificate": {
+    "passed": true,
+    "reason": "certified",
+    "observed_penetration_m": 2.5407265638932586e-05,
+    "certified_max_penetration_bound_m": 9.966102182415871e-05,
+    "queries": 3448,
+    "depth": 5,
+    "unresolved": 0,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "law_geometry_limit": "Small-strain straight-front projected area measured along a frozen material marker; not finite-deformation free-path fracture. Full row area must be paid before a code change.",
+  "scope": "Bounded first paid crack-front patch on actual CAD-loaded MPM coupon; no tomato or full-slice claim"
+}

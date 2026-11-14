@@ -1,0 +1,56 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.96 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.85 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.79 ms  (cached)
+Module tomato_extended_cad_pressure 27ceab5 load on device 'cuda:0' took 0.39 ms  (cached)
+Module tomato_exact_blade_queries df80afb load on device 'cuda:0' took 0.60 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.50 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 1.06 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.67 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.70 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.97 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.48 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.21 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.52 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_failed_safe_objective 3d40415 load on device 'cuda:0' took 3.61 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.59 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.87 ms  (cached)
+Module tomato_failed_safe_coupled e37263d load on device 'cuda:0' took 0.55 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.51 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.34 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 1.95 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.38 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 29.72 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.61 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.44 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.67 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.93 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.73 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.45 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.46 ms  (cached)
+{'step': 0, 'sim_time_s': 0.0004166666666666667, 'wall_s': 3.2650850840000203, 'stroke_m': 8.333333333333334e-06, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.0011536700003313234, 5.02619195525953e-05, 0.00115309097704615, -0.000129517688688441, 2.894937253039222e-05, -0.00013084450184544099]}
+{'step': 10, 'sim_time_s': 0.004583333333333333, 'wall_s': 24.223038198000722, 'stroke_m': 9.166666666666667e-05, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.0037288592405007232, 0.00016206445116714375, 0.0036132814790373912, -0.0004050767093262994, 9.412990630143306e-05, -0.0004222882667648061]}
+{'step': 20, 'sim_time_s': 0.008749999999999999, 'wall_s': 54.1928067580011, 'stroke_m': 0.000175, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.007107307134086503, 0.0003206705436361646, 0.006825434412032937, -0.0007642102402458302, 0.0001797228047862513, -0.0008042624069399167]}
+{'step': 30, 'sim_time_s': 0.012916666666666658, 'wall_s': 77.19128077200003, 'stroke_m': 0.0002583333333333332, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.011312595701691136, 0.0005198811289319302, 0.010513927878883193, -0.0011741111139415453, 0.00028773131136882704, -0.0012779783637575206]}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/tangent_wide.py", line 41, in <module>
+    packet,value,report=refresh_packet(blade,np.asarray(solid['cells']),a.particle_q.numpy()+origin,triangles,world['x'],R,t+origin,ref['com_local'],packet,padding_m=4e-5)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_gpu_packet_refresh.py", line 24, in refresh_packet
+    domain=padded_coverage(vertices,cells,x,triangles,reference,padding_m=padding_m,level=level,capacity=524288);packet=packet_from_samples(domain['samples']);value=evaluate(packet);scale=max(np.linalg.norm(value['force_n']),np.linalg.norm(old['force_n']),1e-12);energy_scale=max(abs(old['energy_j']),abs(value['energy_j']));force_old=float(np.linalg.norm(value['force_n']-old['force_n']));energy_old=float(value['energy_j']-old['energy_j']);force_step=None if last is None else float(np.linalg.norm(value['force_n']-last['force_n']));energy_step=None if last is None else float(abs(value['energy_j']-last['energy_j']));force_budget=.01*scale+1e-5;energy_budget=.01*energy_scale+1e-11;row=dict(level=level,samples=len(packet['areas']),force_difference_from_old_n=force_old,energy_jump_from_old_j=energy_old,successive_force_difference_n=force_step,successive_energy_difference_j=energy_step,force_budget_n=float(force_budget),energy_budget_j=float(energy_budget));history.append(row)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_vectorized_material_coverage.py", line 94, in padded_coverage
+    if len(samples)>=capacity:raise ValueError('Padded pressure sample capacity saturated')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Padded pressure sample capacity saturated

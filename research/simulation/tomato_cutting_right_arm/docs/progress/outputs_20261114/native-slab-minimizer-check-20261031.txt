@@ -1,0 +1,17 @@
+Native slab minimizer check — 31 October 2026
+
+The bounded geometry measurement check passed. Contact normal and contact-location stability are not qualified.
+
+19 queries were run: 16 edge optimizations (crossings with five coordinate shifts and three unique-normal/clear controls, each forward and reversed) plus direct SDF queries at -1 nanometre, zero and +1 nanometre. No Contacts buffer, solver integration or forces were created. Installed optimizer iterations remained 24.
+
+Minimum distances matched the independent analytic reference within 1.91e-8 m (about 19 nanometres). Reversing each of the eight edge pairs kept the same normal. All unique-normal controls matched their expected directions.
+
+Two tie behaviours matter:
+1. The exact medial-plane query returns +Z by the native box convention, while the negative-side query returns -Z. Shifting a crossing edge by +/-0.1 micrometre made the approximate minimizer land on opposite sides and return opposite normals, even though its true minimum is still on the medial plane.
+2. Flat constant-distance controls selected positions about 20 mm apart when edge order was reversed. Both points are valid minimizers, with the same distance and normal, but their barycentric weights and possible moments differ. No forces or moments were evaluated.
+
+These observations preserve the existing one-minimum-per-feature model. They demonstrate why distance accuracy alone cannot validate contact normals or locations; they do not establish that a new distributed force model is needed.
+
+The native run completed in 3.54 seconds, with over 25.25 GB available RAM and 7.69 GB free GPU memory. No memory warning, monitor error or owned process remained. Thirteen focused fixture/guard tests passed. Source snapshots and installed-source hashes were saved; original pinned files and installed libraries are unchanged.
+
+Next: check competing closest surfaces and minimum-location ambiguity in the actual blade records before enabling an isolated blade contact writer. Face optimization, real-blade solver integration and motion remain unqualified. Checklist item 12 stays open.

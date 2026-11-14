@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v27.py", line 260, in <module>
+    phase='descend';route(pre,contact_T,2.)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v27.py", line 210, in route
+    tick(q,pressure)
+  File "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/hybrid_pickup_v27.py", line 179, in tick
+    effort=torch.zeros_like(target);effort[:,arms]=r.data.gravity_compensation_forces.torch[:,arms];r.set_joint_position_target_index(target=target);r.set_joint_velocity_target_index(target=torch.zeros_like(target));r.set_joint_effort_target_index(target=effort);r.write_data_to_sim();knife.write_data_to_sim();sim.step(render=False);r.update(dt);knife.update(dt);step+=1
+                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/IsaacLab/source/isaaclab/isaaclab/sim/simulation_context.py", line 819, in step
+    self.physics_manager.step()
+  File "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py", line 527, in step
+    physx_sim.fetch_results()
+KeyboardInterrupt

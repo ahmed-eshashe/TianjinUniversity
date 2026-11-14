@@ -1,0 +1,18 @@
+{
+  "status": "partial_crack_mechanics_failed",
+  "experimental_validation": "pending",
+  "production_setup_changed": false,
+  "passes": [
+    "Original tomato exterior at four reset shapes; exact volume and mass",
+    "Independent constrained-inertia CPU/GPU checks",
+    "Actual intact tomato contact cycle with force, energy and penetration guards",
+    "Exposed face time and space refinement",
+    "Work-conjugate resistance controls",
+    "Original-CAD interior query controls (not yet adopted into dynamics)"
+  ],
+  "failure": "The reached and work-paid first interface has zero mechanical opening rank. Finite partial geometric cuts up to 3 mm also have zero opening rank; full-plane separation control opens. No physical slice is qualified.",
+  "physical_tomato_slice": false,
+  "rl_ready": false,
+  "throughput_note": "7.75 wall seconds for 13 ms intact tomato contact; excludes cutting, robot, policies and resets. Not an RL measurement.",
+  "next_action": "Isolated local continuity correction, same constitutive/contact/fracture laws and limits. Verify partial-crack opening before more performance work."
+}

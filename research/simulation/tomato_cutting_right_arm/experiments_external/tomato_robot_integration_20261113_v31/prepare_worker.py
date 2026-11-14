@@ -1,0 +1,23 @@
+from pathlib import Path
+import ast
+W=Path(__file__).resolve().parent;R=Path('/home/omen/teamwork_projects/tomato_cutting_right_arm')
+s=(R/'rl/tomato_research_cut_robot_worker_v16.py').read_text()
+s=s.replace('import argparse,json,time,traceback,signal,os','import argparse,json,time,traceback,signal,os,sys')
+s=s.replace('from tomato_isaac_startup_worker import write\nR=Path(__file__).resolve().parents[1]',"R=Path('/home/omen/teamwork_projects/tomato_cutting_right_arm')\nW=Path(__file__).resolve().parent\nsys.path.insert(0,str(R/'rl'));sys.path.insert(0,str(W/'src'))\nsys.path.insert(0,str(W.parent/'tomato_approx_rl_20261113_v28/src'))\nfrom tomato_isaac_startup_worker import write")
+s=s.replace("args=parser.parse_args()","parser.add_argument('--mode',choices=['dry','contact','cut'],default='dry');parser.add_argument('--exchange',type=float,default=.002);args=parser.parse_args()")
+s=s.replace("p=json.loads((R/'work/backward_elbow_20261105/plan.json').read_text());", "cfg=json.loads((W/'scene_plan.json').read_text());p=json.loads(Path(cfg['source_plan']).read_text());p['scene']=cfg['scene'];")
+a=s.index("  cut_plan=json.loads(");b=s.index('  # Session-only physics cleanup:',a)
+s=s[:a]+"  from model import lattice\n  model=lattice(shape='tomato');cut_points=model['x']@np.array(cfg['material_to_world_rotation']).T+np.array(cfg['material_origin_world_m'])\n"+s[b:]
+s=s.replace("blade=np.array(json.loads((R/'runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json').read_text())['vertices']);tomato=cut_points","blade=np.array(cfg['blade_vertices_knife']);tomato=cut_points")
+s=s.replace("center=np.array(p['knife_origin_route_m'][0])+np.array(p['knife_rotation'])@np.array([-.086,.0076,.0016])","center=np.array(cfg['material_origin_world_m'])+np.array([0,0,.025])")
+s=s.replace('substeps=max(1,int(np.ceil(dt*960)))',"substeps=1 if phase.startswith('research_') else max(1,int(np.ceil(dt*960)))")
+s=s.replace("float(bv[:,2].min())<.0005","float(bv[:,2].min())<.001")
+s=s.replace("   if steps%8==0:rows.append(row)","   if steps%8==0:rows.append(row)\n   if steps%240==0:write(out,'progress.json',dict(step=steps,phase=phase,tracking_rad=tracking,mount_error_m=mount_error,board_gap_m=float(bv[:,2].min()),pid=os.getpid()))")
+s=s.replace('from tomato_robot_slice_extension_v16 import run as run_cut','from robot_cut import run as run_cut')
+s=s.replace("cut_result=run_cut(sim,r,tool,p,advance,set_dt,target,closed,right,out,maximum_steps=args.cut_steps,resume_checkpoint=args.resume_checkpoint)","cut_result=run_cut(sim,r,tool,p,cfg,advance,set_dt,target,closed,right,out,args,capture,app)")
+s=s.replace("passed=bool(cut_result['full_slice_success'])","passed=bool(cut_result['pass'])")
+s=s.replace("dict(full_slice_success=passed,controlled_steps=steps,shutdown_requested=app is not None,training=False)","dict(pass_completed=passed,mode=args.mode,controlled_steps=steps,shutdown_requested=app is not None,training=False)")
+ast.parse(s);(W/'robot_worker.py').write_text(s)
+s=(W.parent/'tomato_approx_rl_20261113_v28/src/environment.py').read_text().replace('from solver import Solver,knife_normal','from instrumented_solver import Solver,knife_normal')
+(W/'src/coupled_environment.py').write_text(s)
+p=W/'PLAN.txt';s=p.read_text().replace('Blade representation decision pending user reply:','User authorized preserving the handle/grip and visibly using the tested straight blade. Reason:');p.write_text(s)

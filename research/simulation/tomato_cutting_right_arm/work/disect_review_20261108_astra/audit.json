@@ -1,0 +1,44 @@
+{
+  "scope": "Read-only independent recomputation from saved arrays and source; no simulation or production edits",
+  "checkpoint_preserved": true,
+  "settling_recomputed": {
+    "same_sample_times": true,
+    "position_error_m": 3.8290984115763165e-07,
+    "material_force_relative_error": 0.00023129823768712268
+  },
+  "probe_recomputed": {
+    "worst_force_time_s": 0.008,
+    "force_relative_error": 0.10082186405980759,
+    "absolute_error_at_worst_N": 7.939957606044067e-05,
+    "peak_coarse_N": 0.0009527616681512483,
+    "peak_refined_N": 0.0009556634328604901,
+    "maximum_active_surface_nodes": 2,
+    "coarse_wall_s_per_sim_s": 1840.540355044262,
+    "refined_wall_s_per_sim_s": 3345.1725015555794
+  },
+  "split_recomputed": {
+    "positive_volumes": true,
+    "mass_kg": 0.1216712654796547,
+    "max_mass_array_error_kg": 0.0,
+    "smallest_nodal_mass_kg": 4.597808519510026e-13,
+    "original_smallest_nodal_mass_kg": 6.527516907741599e-08,
+    "mass_ratio_old_min_to_new_min": 141970.1773147616
+  },
+  "rigid_spin_damping_algebraic": {
+    "angular_speed_rad_s": 1.0,
+    "nodal_force_norm_N": 0.0020297689740440055,
+    "power_W": -0.0024250683684598835,
+    "net_torque_Nm": [
+      -5.718429188729493e-19,
+      -0.0024250683684598757,
+      -2.755991463740616e-19
+    ],
+    "interpretation": "The retained Fdot damping resists rigid spin. This is a material-model limitation, not evidence that the new elasticity rotation fix failed."
+  },
+  "cohesive_mapping_input": {
+    "interface_nodes_per_side": 604,
+    "used_source_points": 231,
+    "directly_touched_interface_nodes": 301,
+    "interpretation": "Mapping input only; a uniform opening coupon is insufficient to prove all nonuniform interface modes are restrained. No claim these counts alone prove a crack or instability."
+  }
+}

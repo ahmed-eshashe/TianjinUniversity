@@ -1,0 +1,674 @@
+{
+  "updated": "2026-11-08T02:11:16.314277+08:00",
+  "scope": "Proposed roadmap from completed startup diagnostics through dual-arm cutting and later learning. Counts are not time estimates.",
+  "counts": {
+    "done": 18,
+    "open": 4,
+    "todo": 10
+  },
+  "items": [
+    {
+      "id": 1,
+      "status": "done",
+      "title": "Confirm upgraded RAM and available GPU memory."
+    },
+    {
+      "id": 2,
+      "status": "done",
+      "title": "Add memory monitoring, bounded runtime and clean shutdown."
+    },
+    {
+      "id": 3,
+      "status": "done",
+      "title": "Launch Isaac Sim and complete the empty-scene startup check."
+    },
+    {
+      "id": 4,
+      "status": "done",
+      "title": "Run isolated blade/coupon initial and stationary checks."
+    },
+    {
+      "id": 5,
+      "status": "done",
+      "title": "Check blade distances/normals using precise reference queries."
+    },
+    {
+      "id": 6,
+      "status": "done",
+      "title": "Define contact coordinates, signs, weights and margin rules."
+    },
+    {
+      "id": 7,
+      "status": "done",
+      "title": "Build and check the contact snapshot adapter."
+    },
+    {
+      "id": 8,
+      "status": "done",
+      "title": "Verify actual native contact-buffer capture and overflow guards."
+    },
+    {
+      "id": 9,
+      "status": "done",
+      "title": "Generate and verify particle/edge/face contacts on an analytic box."
+    },
+    {
+      "id": 10,
+      "status": "done",
+      "title": "Check translated/rotated contact-record coordinates on that box."
+    },
+    {
+      "id": 11,
+      "status": "done",
+      "title": "Resolve force precision with separate geometry and arithmetic checks.",
+      "progress": "Six native analytic fixtures pass under reference version 2. Historical combined gate remains failed and preserved.",
+      "evidence": "analytic-force-reference-recheck-20261031.txt"
+    },
+    {
+      "id": 12,
+      "status": "done",
+      "title": "Qualify the real blade's full-surface contact path.",
+      "progress": "Authored-blade contact passes on the full tomato mesh, including force transfer, exact replay and clearing. Longer cuts remain unqualified.",
+      "evidence": "physics-materials-integration-20261101.txt",
+      "checks": [
+        "PASS \u2014 original blade geometry and finite-surface coverage",
+        "PASS \u2014 generated contact forces and exact replay"
+      ]
+    },
+    {
+      "id": 13,
+      "status": "done",
+      "title": "Verify particle/edge/face force distribution in stationary fixtures.",
+      "progress": "Six native fixtures pass force and diagonal-stiffness scatter, color gating, spectator and algebraic reaction/moment checks. No integration.",
+      "evidence": "native-particle-contact-distribution-20261031.txt"
+    },
+    {
+      "id": 14,
+      "status": "done",
+      "title": "Check dynamic momentum and work on minimal analytic fixtures.",
+      "progress": "Two fresh one-step native fixtures pass: free particle/box recoil, momentum, impulse, discrete work/energy and clear control. Newton-internal coupling only.",
+      "evidence": "dynamic-proxy-momentum-work-check-20261031.txt"
+    },
+    {
+      "id": 15,
+      "status": "done",
+      "title": "Implement and validate Newton\u2013Isaac/PhysX two-way coupling.",
+      "progress": "Actual mounted elastic-coupon exchange and a short whole-target feedback component pass, including paired response/replay/clear. Signed six-axis/CAD off-centre load calibration passes unchanged reaction precision limits after an equivalent fixed-joint reporting-frame change. Corrected-frame coupled knife-force/moment, independent body-work reconstruction, preload time-step accuracy and preload energy gates now pass. Actual moving-blade work remains open.",
+      "evidence": "physics-materials-integration-20261101.txt",
+      "checks": [
+        "PASS \u2014 earlier full-target/free-blade exchange components",
+        "PASS \u2014 actual mounted-robot elastic-coupon response and exact replay",
+        "PASS \u2014 short nonfracturing whole-target feedback component: 32 matched intervals, 1.38 mN first contact, paired response/replay/clear",
+        "BLOCKED \u2014 moving mounted-robot force/work qualification; stationary preload is a separate pass"
+      ],
+      "integration_evidence": "integration-progress-20261102.txt"
+    },
+    {
+      "id": 16,
+      "status": "open",
+      "title": "Resolve the cohesive material solver/operator needed for cutting.",
+      "progress": "Partial: material/frame/contact/history operators and prepared damaged-state mechanics pass. Stationary preload work/refinement and supported dynamics pass within their recorded scopes. Accepted live coupled fracture and moving whole-target work remain unqualified. Original model constants and historical failures preserved.",
+      "checks": [
+        "PASS \u2014 independent mixed-loading/frame force and tangent operators",
+        "PASS \u2014 history/reclosure and prepared partial/fully failed global mechanics, energy ledger and reset",
+        "PASS \u2014 full collision surface and physical pressure force/moment operators",
+        "PASS \u2014 edge geometry, inward motion, current overlap, rejection and reset controls",
+        "PASS \u2014 precision operators; original parameters preserved",
+        "PASS within scope \u2014 stationary preload contact refinement/work; moving loaded-contact qualification blocked",
+        "OPEN \u2014 coupled eligibility/fracture and robot work"
+      ],
+      "evidence": "physics-materials-integration-20261101.txt",
+      "review_status": "partial",
+      "review_evidence": "research-roadmap-review-20261102.html",
+      "integration_evidence": "integration-progress-20261102.txt"
+    },
+    {
+      "id": 17,
+      "status": "open",
+      "title": "Validate material response against chosen reference measurements.",
+      "progress": "Pending at your request. The published curve is a provisional reference; independent measurements are still needed.",
+      "checks": [
+        "PENDING \u2014 independent experimental measurements"
+      ],
+      "evidence": "tomato-experiment-data-needed-20261101.txt"
+    },
+    {
+      "id": 18,
+      "status": "done",
+      "title": "Verify damage, separation and post-cut contact on a small coupon.",
+      "progress": "Small interface and solid coupons pass damage, separation, reclosure and replay. Whole-fruit post-cut behavior remains unqualified.",
+      "checks": [
+        "PASS \u2014 fracture budget and irreversible failure",
+        "PASS \u2014 small-coupon reclosure and reset/replay"
+      ],
+      "evidence": "physics-materials-integration-20261101.txt"
+    },
+    {
+      "id": 19,
+      "status": "done",
+      "title": "Verify robot, blade and target placement, units and coordinate frames.",
+      "progress": "The original knife is mounted in a separate robot scene using SI units. The ideal fixed joint preserves the checked frames and adds no actuator joint.",
+      "checks": [
+        "PASS \u2014 actual 36-joint robot; one active original knife",
+        "SCOPE \u2014 ideal massless mount; no finger-grasp claim"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt"
+    },
+    {
+      "id": 20,
+      "status": "open",
+      "title": "Verify target restraint/grasp and collision settings.",
+      "progress": "Existing sustained support and synthetic-load evidence preserved. Added0.1s live target + corrected robot clear hold: matching clocks, actual node-driven display, original fixture/free cap and24.15mm actual blade gap verified. Populated contact and full cutting-load envelope remain open.",
+      "checks": [
+        "PASS \u2014 original fixture; cap remains free; original constitutive rest data retained",
+        "PASS \u2014 full-gravity force balance: board 0.92 N + fixture 0.27 N support 1.19 N",
+        "PASS \u2014 two synchronized ten-second unloaded episodes, all 48,000 matched steps read back",
+        "PASS \u2014 target and full per-step robot reset/replay",
+        "FAILED \u2014 old floating-target settling test retained",
+        "PASS \u2014 two downward and two lateral/twist synthetic load episodes with independent raw work/replay checks",
+        "OPEN \u2014 complete actual mounted contact/work and cutting-load envelope"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt",
+      "review_status": "partial",
+      "review_evidence": "research-roadmap-review-20261102.html",
+      "integration_evidence": "integration-progress-20261102.txt"
+    },
+    {
+      "id": 21,
+      "status": "done",
+      "title": "Check approach, cutting and retreat motions without target contact.",
+      "progress": "Original offset dry-route and corrected-controller evidence preserved. A new reachable approach aligned with the prepared-plane host orientation passes:20mm nominal standoff, measured19.98mm vertical gap, maximum tool error0.066mm and settled0.005mm. All measured commands, mount, joint and sampled clearance checks pass. This is a dry approach only; actual contact/deeper stroke remains unqualified.",
+      "checks": [
+        "PASS \u2014 corrected controller and right-arm approach/withdraw/return; no joint-state overwrites during motion",
+        "PASS \u2014 measured19.98mm blade/target-envelope gap; board height76.98mm",
+        "PASS \u2014 peak tool error0.066mm and settled0.005mm; independent raw command/geometry readback",
+        "PASS \u2014 fixed knife, arm limits, separate collision-monitor positive/clear controls",
+        "SCOPE \u2014 static tomato display; sampled authored bounds; no contact/deeper stroke qualification"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt"
+    },
+    {
+      "id": 22,
+      "status": "open",
+      "title": "Verify reset restores poses, velocities, contacts and material history.",
+      "progress": "Partial: mounted elastic-coupon reset, material-history/prepared failure mechanics and two synchronized ten-second unloaded robot/target reset episodes pass. Synthetic force/work/impulse/queue reset operators pass. Short nonfracturing whole-target feedback replay/clear also passes as a component. Coupled loaded/post-cut reset remains pending until actual cutting is available.",
+      "checks": [
+        "PASS \u2014 poses, velocities and both wrench queues",
+        "PASS \u2014 both target buffers, history and generated contact clearing"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt",
+      "review_status": "partial",
+      "review_evidence": "research-roadmap-review-20261102.html",
+      "integration_evidence": "integration-progress-20261102.txt"
+    },
+    {
+      "id": 23,
+      "status": "todo",
+      "title": "Run a slow, short cut with force, penetration and work logging.",
+      "progress": "Prefracture integration: actual fixed-mount robot contact passes with a small elastic coupon. Short tomato cuts await the remaining material, support and coupled-work gates.",
+      "plan": "research-roadmap-review-20261102.html",
+      "integration_evidence": "integration-progress-20261102.txt"
+    },
+    {
+      "id": 24,
+      "status": "todo",
+      "title": "Verify meaningful separation without unstable or spurious forces.",
+      "progress": "Verify complete mechanical disconnection, withdraw the blade and observe at least one second of independent motion with stable reclosure/board contact.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 25,
+      "status": "todo",
+      "title": "Check repeatability and sensitivity to time step/contact resolution.",
+      "progress": "Check fresh/reset repeatability; refine time step, quadrature, solver and mesh separately. Report force, work, release and end-cap profile sensitivity.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 26,
+      "status": "todo",
+      "title": "Save a reproducible baseline scene, settings and results.",
+      "progress": "Freeze the reproducible single-arm scene, controller, evaluator and traces; close the loaded post-cut reset gate.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 27,
+      "status": "todo",
+      "title": "Integrate the second arm and its grasp/support role.",
+      "progress": "Keep the right fixed mount; qualify contact-based left-hand support under measured cutting loads and remove hidden fixture support.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 28,
+      "status": "todo",
+      "title": "Verify coordinated motion, mutual collisions and force transfer.",
+      "progress": "Verify support handoff, synchronized force transfer, knife\u2013hand clearance, disturbances and prechecked failure responses.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 29,
+      "status": "todo",
+      "title": "Repeat the controlled cutting baseline with both arms.",
+      "progress": "Repeat paired fixture-versus-left-support cuts with unchanged right controller, quality/load/slip metrics and reproducible reset.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 30,
+      "status": "todo",
+      "title": "Finalize observations, actions, rewards and termination conditions.",
+      "progress": "Bind the existing offline contracts to the qualified environment. Start with bounded draw/down residuals and verified observations; keep orientation locked.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 31,
+      "status": "todo",
+      "title": "Validate repeated resets and scripted baseline episodes.",
+      "progress": "Verify success/failure/abort resets, no history leakage, frozen train/development/test cases and measured rollout cost.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 32,
+      "status": "todo",
+      "title": "Run a small training/evaluation pilot before longer experiments.",
+      "progress": "Run a budgeted baseline-versus-residual pilot, multiple seeds and paired held-out cases; use uncertainty and compute cost to decide further experiments.",
+      "plan": "research-roadmap-review-20261102.html"
+    }
+  ],
+  "current_next_step": 16,
+  "experimental_validation_user_decision": "Keep experimental validation pending \u2014 2026-11-01",
+  "robot_knife_connection_user_choice": "Fixed mount \u2014 user selected 1 November 2026",
+  "review": {
+    "date": "2026-11-02",
+    "partial_ids": [
+      16,
+      20,
+      22
+    ],
+    "experimental_pending_ids": [
+      17
+    ],
+    "report": "research-roadmap-review-20261102.html",
+    "scope": "Evidence/source review; no new native run. Historical component passes retained; broader integration gates reopened."
+  },
+  "integration": {
+    "date": "2026-11-02",
+    "benchmark_contract": "integration_contract_20261102_02",
+    "mounted_contact_run": "mounted_contact_20261102_03",
+    "objective_operator_run": "objective_operator_20261102_01",
+    "volume_regression_run": "checked_volume_20261102_02",
+    "scope": "Prefracture integration only; no completed tomato cut or training",
+    "objective_force_run": "objective_force_20261102_05",
+    "objective_model_run": "objective_model_20261102_01",
+    "embedding_contact_run": "embedding_contact_20261102_04",
+    "short_contact_dynamics_run": "contact_dynamics_20261102_01",
+    "failed_support_run": "sustained_support_20261102_08",
+    "material_history_run": "material_history_20261102_02",
+    "contact_operator_run": "embedding_contact_20261102_07",
+    "world_storage_short_replay_run": "contact_dynamics_20261102_06",
+    "precision_fixture_run": "position_precision_20261102_01",
+    "precision_operator_run": "relative_operator_20261102_03",
+    "accuracy_study": "relative_finest_20261102_01",
+    "geometry_evaluator": "benchmark_geometry_20261102_01",
+    "registered_front": "cut_front_registration_20261102_02",
+    "dynamic_assembly_equivalence": "relative_fast_equivalence_20261102_01",
+    "failed_preflight": "relative_preflight_20261102_01",
+    "active_preflight": "rebased_local_preflight_20261102_01",
+    "precision_operator": "rebased_operator_20261102_01",
+    "physical_pressure_operator": "physical_pressure_20261102_01",
+    "edge_geometry": "cut_eligibility_20261102_02",
+    "edge_independent_reference": "front_ccd_reference_20261102_02",
+    "local_force_ledger_operator": "local_ledger_20261102_01",
+    "global_matrix_operator": "global_gn_operator_20261102_01",
+    "global_energy_operator": "global_energy_20261102_02",
+    "global_integrator_component": "global_integrator_20261102_01",
+    "global_replay_attempt": "global_short_20261102_03",
+    "lbfgs_short_component": "lbfgs_short_20261102_01",
+    "block_preconditioner": "block_preconditioner_20261102_01",
+    "block_integrator": "block_integrator_20261102_01",
+    "block_short_component": "block_short_20261102_01",
+    "active_duration": "fraction_duration_20261102_01",
+    "failed_frame_operator": "failed_frame_20261102_01",
+    "failed_longer_duration": "tangent_duration_20261102_01",
+    "time_screen": "fraction_time_screen_20261102_01",
+    "support_preview": "global_hold_preview_20261102_01",
+    "prepared_material_operator": "failed_safe_global_operator_20261102_01",
+    "prepared_material_integrator": "failed_safe_integrator_20261102_01",
+    "active_static_operator": "static_operator_20261102_01",
+    "loaded_force_reference": "loaded_force_20261102_01",
+    "cached_search_operator": "cached_static_operator_20261102_01",
+    "active_static_attempt": "static_preparation_cached_20261102_01",
+    "qualified_gravity_preparation": "static_preparation_cached_20261102_01",
+    "qualified_scene_screen": "prepared_scene_device_screen_20261102_02",
+    "active_scene_hold": "prepared_scene_device_hold_20261102_01",
+    "global_pressure_operator": "global_pressure_operator_20261102_01",
+    "moving_contact_status": "blocked",
+    "recovery_report": "integration-recovery-decision-20261102.txt",
+    "experimental_validation": "pending",
+    "loaded_postcut_reset": "pending",
+    "simulation_running": false
+  },
+  "integration_focus": {
+    "title": "Horizontal withdrawal \u00b7 withdrawal endpoint review required",
+    "text": "The withdrawal run has stopped and its saved endpoint was assessed. Route finished: False. Remaining material connections: 47. Full slice is not yet qualified. Review blade clearance and remaining-interface geometry before the finishing stroke. Local timestep comparisons passed; full-trajectory convergence remains unqualified. Contact-report initialization is now corrected; prior runs do not establish collision-free qualification."
+  },
+  "integration_checkpoints": [
+    {
+      "status": "done",
+      "title": "Benchmark & shape evaluator",
+      "detail": "Curved cap: centre 10 mm, surrounding samples 7.78 mm. Reference and shape controls pass."
+    },
+    {
+      "status": "done",
+      "title": "Slow scripted dry motion",
+      "detail": "Original16-second cycle preserved. Corrected controller passes independent readback: peak simulated tool error0.029mm, settled0.006mm; rigid mount, target gap32.4mm and board height12.0mm. Actual cutting approach still needs its own dry check."
+    },
+    {
+      "status": "done",
+      "title": "Near-target dry approach",
+      "detail": "New16-second approach/withdraw/return passes independent measured-state/geometry checks. Stopped19.98mm above conservative tomato envelope, peak tracking error0.066mm. No target dynamics/contact or cutting."
+    },
+    {
+      "status": "done",
+      "title": "Live robot + target clear hold",
+      "detail": "0.1s:24robot/240target steps, matching clocks; independent node/display/geometry readback passes. Stable supported equilibrium,24.15mm blade gap, original fixture/free cap. No populated contact forces or cutting."
+    },
+    {
+      "status": "done",
+      "title": "Mounted robot contact",
+      "detail": "PASS within scope \u2014 elastic coupon and stationary whole-target preload, feedback/replay/clear. Preload refinement/work also pass. Moving-blade qualification remains blocked."
+    },
+    {
+      "status": "done",
+      "title": "Material & history operators",
+      "detail": "Moving frame, mixed loading, reclosure and reset pass. Fully failed rotation preserves zero traction and normal contact in prescribed checks."
+    },
+    {
+      "status": "done",
+      "title": "Full-surface contact operators",
+      "detail": "Complete collision surface and independent force mapping verified."
+    },
+    {
+      "status": "done",
+      "title": "Cutting-edge geometry",
+      "detail": "Current overlap, inward sweep, broad-face negative control, withdrawal and reset pass. No mechanical cut."
+    },
+    {
+      "status": "done",
+      "title": "Pressure force & moment",
+      "detail": "Physical reaction and full-registry planar controls pass. Host actual-CAD geometry, positive material quadrature and force/energy derivatives pass. Six native actual-CAD force/energy/wrench/matrix controls pass. Actual robot work remains open."
+    },
+    {
+      "status": "done",
+      "title": "Coupled solver: component checks",
+      "detail": "Independent matrix, energy and loaded-force references pass; analytic freefall and basic reset pass. Static-search controls and the separately checked gravity-preload state pass. Full cutting remains unqualified."
+    },
+    {
+      "status": "done",
+      "title": "100 ms dynamics & replay",
+      "detail": "Two full-target episodes pass force/energy, volume and board impact. Strict replay velocity difference: 1.4e\u221212 m/s."
+    },
+    {
+      "status": "done",
+      "title": "Short time-step screen",
+      "detail": "Three identical-source settings: finest-pair difference 0.77 \u00b5m and 0.925 mm/s per component. 10 ms scope only."
+    },
+    {
+      "status": "done",
+      "title": "Contact-preload time-step check",
+      "detail": "Protected equivalent-frame factors 64/128 pass at all 512 common clocks per case: 0.018 \u00b5m position and 0.650 mm/s velocity differences. Force and impulse pass. Only the assigned 0.833 ms preload; earlier failed studies remain evidence."
+    },
+    {
+      "status": "done",
+      "title": "Synchronized unloaded support",
+      "detail": "Two ten-second episodes pass with matching robot/target clocks, original fixture/free cap and exact replay. Board penetration: 4.9 \u00b5m."
+    },
+    {
+      "status": "done",
+      "title": "Small forces and twists",
+      "detail": "PASS within scope \u2014 two down and two lateral/twist synthetic 0.01 N pulses with observation, work and replay. This is not the full cutting-load envelope."
+    },
+    {
+      "status": "done",
+      "title": "Signed robot-load calibration",
+      "detail": "All 17 signed force/moment, actual-CAD off-centre, replay and clear cases pass original reaction precision limits. Equivalent COM joint-reporting frame; exact unchanged masses/inertias; 136 robot-only steps."
+    },
+    {
+      "status": "done",
+      "title": "Stationary mounted-knife feedback",
+      "detail": "4,096 actual coupled intervals independently checked. Knife force error 0.57 \u00b5N; moment error 0.0032 \u00b5Nm, both below unchanged limits. Full robot body-work channels reconstruct. Actual moving-blade work remains separate."
+    },
+    {
+      "status": "done",
+      "title": "Contact-preload work",
+      "detail": "Protected fine run and independent raw pressure/body-work readback pass. Whole contact-energy error including absolute remap jumps: 0.77%, below the registered 1% limit. Clear and loaded replay pass. Actual tool poses do not move at this tiny preload scale."
+    },
+    {
+      "status": "open",
+      "title": "Actual moving-blade work",
+      "detail": "BLOCKED \u2014 robot-only recorded-wrench audit: force residual 15 \u00b5N vs 1 \u00b5N; moment 0.165 \u00b5Nm vs 0.1 \u00b5Nm. Some work checks also fail. Effective link damping unknown. No moving-target or cutting qualification."
+    },
+    {
+      "status": "open",
+      "title": "Whole-target work & loaded reset",
+      "detail": "Stationary preload component passes retained. Moving force/work is unresolved. Loaded/post-cut reset is dependent future validation, not a separate current failure."
+    },
+    {
+      "status": "open",
+      "title": "Live contact test specification",
+      "detail": "Clear assembly and handoff implementation checks pass. Nonzero loaded dynamics, actual drive/work accounting and near-contact motion limits remain gates before touch."
+    },
+    {
+      "status": "done",
+      "title": "Corrected-controller force handoff",
+      "detail": "100host cases/206negative controls; frozen actual-CAD1.49mN reaction queued once at Native COM;0loaded physics steps. New adapter consumes24zero-contact blocks in live scene, exact baseline match. Component only."
+    },
+    {
+      "status": "done",
+      "title": "Motor-work measurement review",
+      "detail": "Source review and runtime interface capture complete; scoped offline TGS bias reconstruction verified. Complete motor work remains unqualified: endpoint/mean-load readings need a justified within-step work identity or additional instrumentation."
+    },
+    {
+      "status": "done",
+      "title": "Measured joint-effort capture",
+      "detail": "120robot steps/0target; independent ordering, raw projection, clocks and clear-motion readback pass. Actual isolated motor work remains unqualified. Component only; no loaded contact."
+    },
+    {
+      "status": "done",
+      "title": "Effort readout bias identified",
+      "detail": "Physical-parameter recursion and matching PhysX source explain the11.2Nm offset without fitting. Offline identity/frame tests and120current/22held-out intervals checked. Bounded native control failed its static limit and remains failed. No full motor-work pass."
+    }
+  ],
+  "integration_recovery": {
+    "status": "decision_required",
+    "report": "integration-recovery-decision-20261102.txt",
+    "native_runs": 0,
+    "damping": "unresolved; runtime properties unknown for 45 links",
+    "scope_change_implemented": false
+  },
+  "dry_motion_review": {
+    "report": "dry-tracking-correction-20261102.txt",
+    "native_run": "dry_tracking_corrected_20261102_01",
+    "dry_scope_passed": true,
+    "contact_ready": false,
+    "maximum_tool_tracking_error_mm": 0.02865373566253116,
+    "settled_tool_tracking_error_mm": 0.006094212283938403,
+    "tracking_correction_passed": true
+  },
+  "near_approach_review": {
+    "report": "near-target-dry-approach-20261102.txt",
+    "native_run": "near_approach_20261102_01",
+    "passed": true,
+    "contact_qualified": false,
+    "near_stop_vertical_gap_mm": 19.98263353950651
+  },
+  "nonfracturing_contact_design": {
+    "report": "nonfracturing-contact-test-20261102.txt",
+    "status": "original_full_qualification_retained_work_unresolved",
+    "new_native_runs": 3,
+    "next_stage": "0.1s live clear assembly",
+    "touch_launch_ready": false,
+    "clear_entry_run": "live_clear_assembly_20261102_01"
+  },
+  "live_clear_review": {
+    "report": "live-clear-assembly-20261102.txt",
+    "passed": true,
+    "duration_s": 0.1,
+    "target_steps": 240,
+    "robot_steps": 24,
+    "touch_qualified": false
+  },
+  "corrected_exchange_review": {
+    "report": "corrected-contact-exchange-20261102.txt",
+    "operator_passed": true,
+    "clear_integration_passed": true,
+    "positive_loaded_physics_steps": 0,
+    "touch_qualified": false
+  },
+  "motor_work_review": {
+    "report": "external-observer-controls-20261104.txt",
+    "status": "external_impulse_channel_coupled_control_passed_velocity_state_pending",
+    "native_runs": 1,
+    "measured_effort_candidate_found": true,
+    "runtime_readback_tested": true,
+    "motor_work_qualified": false,
+    "touch_launch_ready": false,
+    "interface_passed": true,
+    "scope_decision_needed_before_contact": false,
+    "user_scope_decision": "retain_Astra_full_qualification_gates",
+    "reduced_scope_demo_authorized": false,
+    "saved_data_semantics_review_complete": true,
+    "armature_alone_explains_discrepancy": false,
+    "next_native_protocol_justified": false,
+    "large_effort_discrepancy_explained": true,
+    "offline_readout_reconstruction_verified": true
+  },
+  "astra_effort_resolution": {
+    "report": "astra-effort-resolution-20261102.txt",
+    "source_backed_bias_identified": true,
+    "native_diagnostic_passed": false,
+    "new_native_invocations": 1,
+    "native_executed_steps": 24,
+    "native_setup_steps": 3,
+    "current_intervals_checked": 120,
+    "heldout_intervals_checked": 22,
+    "maximum_heldout_work_estimator_error_pj": 154.9174226513932,
+    "full_motor_work_gate_closed": false,
+    "physics_changed": false
+  },
+  "blocker_audit": {
+    "report": "astra-blocker-audit-20261102.txt",
+    "immediate_prerequisites": [
+      "complete_force_work_measurement",
+      "bounded_final_approach"
+    ],
+    "later_implementation_gap": "accepted_live_fracture_transaction",
+    "experimental_validation": "pending_by_user_choice",
+    "new_native_runs": 0,
+    "preserved_evidence_hashes_checked": 146,
+    "full_motor_work_gate_closed": false
+  },
+  "motor_work_feasibility": {
+    "report": "motor-work-feasibility-20261102.txt",
+    "review_complete": true,
+    "inspected_source_files": 5,
+    "qualified_work_method_available": false,
+    "new_native_runs": 0,
+    "architecture_changed": false,
+    "next_decision": "native_observation_instrumentation_or_separately_authorized_explicit_controller"
+  },
+  "native_instrumentation": {
+    "status": "clock_order_and_scalar_controls_passed",
+    "report": "native-clock-controls-20261104.txt",
+    "source_extension_version": "110.3.2",
+    "native_build_passed": true,
+    "zero_step_load_passed": true,
+    "capture_supervisor_passed": true,
+    "capture_steps": 123,
+    "saved_intervals_identical_to_original": 120,
+    "production_installation_unchanged": true,
+    "recording_on_run_executed": true,
+    "motor_work_qualified": false,
+    "recording_rows": 181440,
+    "recording_dropped": 0,
+    "observer_equivalence_fixture_passed": true,
+    "clock_mapping_qualified": true,
+    "clock_mapping_scope": "This clear capture; initialization separately marked",
+    "analytic_scalar_controls_passed": true
+  },
+  "coupled_work_audit": {
+    "intervals": 120,
+    "new_simulation_runs": 0,
+    "feedforward_estimator_difference_j": 0.00041912737908660243,
+    "descriptive_unclosed_balance_j": -2.8707233358824304e-06,
+    "qualified": false,
+    "next": "Observe external actuation stage, then independent coupled control"
+  },
+  "external_observer": {
+    "built": true,
+    "coupled_control_passed": true,
+    "standalone_steps": 6,
+    "isaac_robot_steps": 0,
+    "override_v03_loaded": false,
+    "motor_work_qualified": false
+  },
+  "exploratory_demo": {
+    "status": "backward_elbow_pickup_approach_passed",
+    "report": "backward-elbow-20261105.txt",
+    "video": "robot-hand-knife-demo.mp4",
+    "closeup": "backward-elbow-20261105.png",
+    "fixed_attachment_disclosed": true,
+    "friction_grasp_validated": false,
+    "contact_demonstrated": false,
+    "cutting_demonstrated": false,
+    "current_pose_video_recorded": false,
+    "current_pose_motion_qualified": true,
+    "motion_scope": "Pickup and noncontact approach only; no cutting",
+    "ideal_fixture_clamp": true,
+    "background_physics_validated": false
+  },
+  "research_slicing_extension": {
+    "report": "research-slicing-continuation-20261106.txt",
+    "history_transaction_component_passed": true,
+    "loaded_control_passed": true,
+    "cutting_demonstrated": false,
+    "simplified_model_used": false,
+    "loaded_scope": "two fine prepared-opening steps only",
+    "moving_contact_component_passed": true,
+    "full_slice_success": false,
+    "experimental_validation": "pending",
+    "current_evidence": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106",
+    "corrected_route_geometry_passed": true,
+    "corrected_route_ik_passed": true,
+    "robot_cutting_verified": false,
+    "current_run": "work/single_slice_20261106/live16",
+    "compiled_contact_parity_passed": true,
+    "original_material_parameters_preserved": true,
+    "robot_contact_observed": true,
+    "current_robot_run": "work/single_slice_20261106/robot_cut13",
+    "motor_work_qualified": false,
+    "blade_driven_damage_observed": true,
+    "current_robot_run_status": "fresh_remainder_side_frame",
+    "mesh_face_frame_operator_checks_passed": true,
+    "mesh_face_frame_loaded_intervals": 20,
+    "original_material_law_preserved": true,
+    "finite_deformation_frame_revised": true,
+    "balanced_subdivision_check_passed": true,
+    "balanced_replay_intervals_passed": 43,
+    "checkpoint_restore_passed": true,
+    "native_constraint_warm_start_restored": false,
+    "contact_sample_capacity": 4194304,
+    "prior_native_collision_free_claims_valid": false,
+    "contact_reporting_initialization_repaired": true,
+    "refined_wrist_collider_route_passed": true,
+    "board_shift_world_m": [
+      -0.05,
+      0.0,
+      0.0
+    ],
+    "loaded_route_max_error_m": 0.0003199982229653813,
+    "frame_support_translation_invariant": true,
+    "last_accepted_step": 6924,
+    "last_blade_travel_mm": 39.20666617323508,
+    "fully_failed_patches": 0,
+    "simulation_running": false
+  }
+}

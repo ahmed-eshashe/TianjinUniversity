@@ -1,0 +1,12 @@
+Gate A fracture contract — 9 November 2026
+
+Source: v18 FullSurface.evaluate, inherited original 47 patch constitutive laws.
+For each patch g: undamaged U_g is the weighted sum of positive normal-opening and two shear components in the evolving material frame. Weights sum to one per group. Equivalent separation q_g = sqrt(2 U_g / kn_g).
+Committed history is (maximum eligible equivalent separation m_g [m], damage d_g [unitless]). With actual blade nodal force >1e-9 N on an incident interface face, eligibility allows m_trial=max(m_old,q_g); otherwise m remains old. Damage is zero below onset, one above failure, and failure*(m-onset)/(m*(failure-onset)) between. Original onset=1mm and failure=4mm; verify arrays in controls.
+Force is minus the spatial derivative of (1-d_trial)*U, holding damage fixed during that derivative and retaining frame derivatives. This is the CPU reference convention, not a differentiated softening potential. Stored energy is (1-d)*U; cumulative dissipated energy per group is 0.5*kn*onset*failure/(failure-onset)*(clamp(m,onset,failure)-onset). Total full-failure budget is 0.11696391110288158 J.
+
+Trial evaluation is pure. Commit only after an accepted physical step and its finite/physical checks; no commit from Newton iterations, rejected steps, sampling or reports. Generation rejects duplicate/stale commits. Reset clears all history; checkpoint restores canonical state and invalidates outstanding trials. Already fully released groups transmit zero cohesive force without evaluating their collapsed frames. Compression closure remains independent and unchanged.
+
+User authorized expanded contact candidates on 9 November 2026 after geometry audit found 832/960 cut nodes excluded. InterfaceSampling unions existing exterior and cut-face physical nodes, keeping one evaluation per physical node and both distinct bank DOFs. It preserves exact CAD normals, force law and coefficients. No scheduled damage or forced opening. Static contact controls do not establish dynamic adequacy; timestep refinement is still required.
+
+Constitutive tests use unchanged CPU autograd as independent force reference plus a numerical fixed-damage energy derivative and analytic group budget. Force absolute allowance 1e-10 N plus 1e-9 relative; history <=1e-10; energy <=1e-12 J. Independent controls are not a trajectory, experimental or separation pass.

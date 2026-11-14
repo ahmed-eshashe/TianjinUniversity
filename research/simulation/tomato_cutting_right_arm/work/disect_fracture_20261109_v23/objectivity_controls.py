@@ -1,0 +1,7 @@
+from pathlib import Path
+import sys,json,numpy as np
+W=Path(__file__).resolve().parent;sys.path.insert(0,str(W.parent/'disect_completion_20261108_v18'))
+from full_surface import FullSurface
+from progressive_gpu import ProgressiveGPU,torch
+s=FullSurface();g=ProgressiveGPU(s);q=s.mesh['x'].copy();q[np.unique(s.ri.numpy())]+=[.002,.0003,.0007];eligible=np.arange(47)%3==0
+f=g.evaluate(torch.as_tensor(q,device='cuda'),eligible);a=.73;R=np.array([[np.cos(a),-np.sin(a),0],[np.sin(a),np.cos(a),0],[0,0,1.]]);rot=q@R.T+[.1,.3,-.2];h=g.evaluate(torch.as_tensor(rot,device='cuda'),eligible);force=f['force'].cpu().numpy();other=h['force'].cpu().numpy();er=float(np.linalg.norm(other-force@R.T)/np.linalg.norm(force));hist=float(np.max(abs(h['trial_history'].cpu().numpy()-f['trial_history'].cpu().numpy())));net=float(np.linalg.norm(force.sum(0)));moment=float(np.linalg.norm(np.cross(q,force).sum(0)));ref=s.evaluate(q,eligible=eligible);referr=float(np.max(abs(force-ref['force'])));out=dict(scope='Independent rigid-motion conservation and subset-contact eligibility controls',force_rotation_relative_error=er,history_objectivity_error=hist,net_cohesive_force_N=net,net_cohesive_moment_Nm=moment,subset_eligibility_CPU_force_max_error_N=referr,passed=bool(er<1e-9 and hist<1e-10 and net<1e-10 and moment<1e-10 and referr<1e-10));(W/'objectivity_controls_result.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))

@@ -1,0 +1,33 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/cache/warp/1.17.0
+Module solver ec9eace load on device 'cuda:0' took 0.72 ms  (cached)
+Module environment 9e98f36 load on device 'cuda:0' took 0.40 ms  (cached)
+{"step": 0, "envs": 8, "resets": 0, "steps_s": 65.8664464313758}
+{"step": 100, "envs": 8, "resets": 8, "steps_s": 71.05436311654051}
+{"step": 200, "envs": 8, "resets": 16, "steps_s": 70.94114655225081}
+{
+  "envs": 8,
+  "steps_per_env": 300,
+  "completed_transitions": 2400,
+  "wall_s": 33.83905491998303,
+  "complete_task_transitions_s": 70.92396657279942,
+  "sim_s_per_env": 6.0,
+  "aggregate_wall_s_per_sim_s": 0.7049803108329797,
+  "p50_vector_step_s": 0.11211218949756585,
+  "p95_vector_step_s": 0.12180886902788189,
+  "resets": 24,
+  "failures": 0,
+  "success": 0,
+  "broken_min_max": [
+    510,
+    616
+  ],
+  "setup_graph_compile_s": 0.6434338380058762,
+  "gpu_compute_process_memory_MiB": "176",
+  "scope": "Complete approximate kinematic-blade task. Includes live physics, online actions, observation, connectivity, reward, terminal/timeout and reset. Excludes articulated robot, rendering and policy inference. Loaded state from blade-generated partial cut."
+}

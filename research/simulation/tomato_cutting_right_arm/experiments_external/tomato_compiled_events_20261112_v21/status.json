@@ -1,0 +1,49 @@
+{
+  "version": "v21",
+  "updated": "2026-11-12T19:49:29.906146+08:00",
+  "decision": "compiled_geometry_and_persistent_GPU_verified_combined_speed_below_RL_target",
+  "simulation_running": false,
+  "current_setup_changed": false,
+  "production_adopted": false,
+  "physical_tomato_model_completed": false,
+  "physical_cut": false,
+  "rl_ready": false,
+  "experimental_validation": "pending",
+  "passed_check_sets": {
+    "native_geometry": 27,
+    "heldout_geometry": 24,
+    "persistent_GPU": 46,
+    "combined_loop": 32
+  },
+  "strict_model_or_accuracy_change": false,
+  "one_body_cold_episode": {
+    "reference_wall_s": 2.6659129159961594,
+    "optimized_wall_s": 1.2578111460024957,
+    "speedup": 2.119485842106594,
+    "simulated_s": 0.2,
+    "controls": 10,
+    "geometric_events": 4,
+    "GPU_replacement_speedup": 16.348341441180537
+  },
+  "independent_batch": {
+    "environments": 8,
+    "host_workers": 4,
+    "wall_s": 4.690336316009052,
+    "aggregate_diagnostic_transitions_s": 17.056346199939664,
+    "template_preparation_excluded_s": 0.34440093900775537,
+    "transitions_s_if_template_counted_once": 15.889607728841241,
+    "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy.",
+    "no_shared_future_cut_path": true,
+    "graphs_and_storage_reused": true
+  },
+  "minimum_actual_RL_transitions_s": 100,
+  "preferred_actual_RL_transitions_s": 500,
+  "preservation": {
+    "protected_files": 1951,
+    "changed_or_missing": [],
+    "passed": true,
+    "checked_at": "2026-11-12T19:46:46.573523+08:00"
+  },
+  "report": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/REPORT.txt",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/NEXT_DECISION.txt"
+}

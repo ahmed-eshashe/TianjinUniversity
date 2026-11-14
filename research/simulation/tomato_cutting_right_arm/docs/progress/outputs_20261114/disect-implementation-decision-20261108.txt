@@ -1,0 +1,39 @@
+IMPLEMENTATION AND RUNTIME DECISION — 8 November 2026
+
+Decision: RETAIN FOR RESTRICTED RESEARCH USE; DO NOT ADOPT THE CURRENT v06 CANDIDATE FOR ROBOT CUTTING OR LEARNING.
+Close the present feasibility branch with an unmet runtime requirement and incomplete cutting functionality. Preserve all component passes and failures. This is a decision about this laptop implementation and model combination, not a rejection of FEM or the DiSECt paper.
+
+Evidence driving the decision
+- Accepted v05 short bulk method: about272 wall seconds/simulated second, exceeding the prospective120 development limit.
+- Corrected intact settling:769/1291 wall seconds/simulated second.
+- Exact-CAD microscopic contact probe:1840.5/3345.2 wall seconds/simulated second, with a failed5% force comparison and at most two contacting surface nodes.
+- New split mesh: static geometry/mass pass, but minimum nodal mass is about142,000 times smaller than the intact mesh minimum. Live cohesion and cut-face dynamics are absent.
+- No complete tomato slice or full-cut runtime measured. No qualified replacement or training backend exists.
+Different intervals and physical models must not be treated as matched speedups. Contact averages must not be extrapolated into a predicted full-slice duration.
+
+Architecture to retain
+1. Isaac Sim robot, kitchen, natural handle grip, disclosed fixed attachment and motion interface remain the presentation/robot layer.
+2. Original research solver/checkpoint6925 remains the preserved reference, with its existing limitations.
+3. v06 is an offline numerical/material/contact reference only. Keep its saved states, controls and mass-conserving geometry. Do not automatically port the47-patch law into it or add another integrator.
+4. The learning interface may remain engine-independent. No training, success labels or demonstration of separation may be generated from an unqualified cutting engine.
+
+Alternatives assessed from existing evidence
+A. Continue building v06: not selected. Requires live cohesive/history/closure implementation, tiny-cell handling, contact coverage/force checks and major acceleration. Existing timings do not justify this investment as a bounded feasibility task.
+B. Adopt patched native DiSECt: not selected yet. Its prism runs around1.7wall s/s but differs in mesh, material and contact; two springs remain intact. Native tomato preparation fails. Fast prism results cannot qualify our tomato.
+C. Adopt the tested RoboNinja MPM configuration: not selected. Earlier block tests cost18–24wall s/s, use different resolution/material/contact, show board-clearance failure and do not demonstrate separation. GPU/training memory is also unresolved.
+D. Build a deliberately simpler learning model: a possible future proposal, not authorized here. It would change the agreed representation/accuracy contract. The user's request to extend the research model only remains in force. No proxy, mesh coarsening, artificial slice release or hidden material tuning is implemented.
+
+Execution directive for Sol or a later continuation
+- Do not start section4, rerun intact settling, continue a timestep/material sweep, or expand v06 into a full custom cutting engine under the previous generic continuation request.
+- Treat section1 as historical component evidence, section2 as3/4 with speed failed, and section3 as3/5 narrowly scoped with two open gates. Do not erase those passes or mark full readiness.
+- Keep experimental validation pending. Keep original production paused and preserve source/evidence.
+- The next engineering commitment must specify one representation, one implemented fracture/contact mechanism, one measurable runtime target and one bounded exit criterion. A change to the model or accuracy contract must be presented concretely to the user before implementation.
+- If the user elects to keep developing v06 despite the cost, first propose a narrowly bounded saved-event contact-convergence test and offline split-conditioning assessment. Do not automatically launch them. Passing those alone would not reverse this runtime decision.
+
+Runtime budgeting for the next proposal
+The old120wall-s/s limit was a development ceiling, not a practical RL throughput target. Derive a learning budget from total rollout count and episode duration: affordable wall-s/s = available wall seconds / (rollout count * simulated episode seconds). For illustration only,1000episodes of5s within24hours require <=17.28wall s/s before resets, policy work and failed episodes. This arithmetic is not a benchmark or a promise. Agree the intended workload before choosing a training engine.
+
+Current outcome
+The implementation decision is complete. The project has useful validated components but no adopted fast tomato-cutting backend. Section4 remains gated. Do not substitute endless repair work for a new, explicit feasibility decision.
+
+Evidence: REVIEW.txt and audit.json in this directory; v01–v06 reports and original solver_comparison_20261108/REPORT.txt. No new simulation ran for this decision.

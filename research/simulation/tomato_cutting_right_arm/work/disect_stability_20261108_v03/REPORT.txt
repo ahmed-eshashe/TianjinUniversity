@@ -1,0 +1,13 @@
+Initial-state and timestep diagnosis — 8 November 2026
+
+No production changes. All initial field arrays finite. Total mass 121.671 g; minimum free mass 6.53e-8 kg; maximum initial deformation-gradient error 4.13e-5. Zero-velocity GPU FEM rest forces finite (max 1.13e-6 N, max free acceleration 2.70 m/s2). Rest rounding exists but is not a nonfinite initial state.
+
+Independent rest-linearized damping largest eigenvalue ~5.31e6 /s implies a damping-only explicit limit ~3.77e-7 s. The failed 1e-5 step was ~26.6x that limit. Conservative combined row-scale estimate ~2.70e-7 s. A seeded velocity-field force check agreed with the installed kernel to 0.0144% in global force norm, below the predeclared 0.1% diagnostic target.
+
+One unchanged-law gravity rerun at 2e-7 s was finite, but hit the original volume-ratio gate at 0.0162s: minimum ratio 0.04374. Supports remained exact and sampled board penetration zero; this is FAIL, not settling. Runtime 7.224s is a failed-short-segment observation, not stable throughput.
+
+Further OFFLINE source/operator checks found the hydrostatic damping term uses v1,v2,v3 rather than relative velocities v1-v0,v2-v0,v3-v0. At common translation velocity [0,-0.1,0] m/s, the rest-linearized operator predicts self-equilibrated spurious forces of norm 0.1787N, despite zero strain rate. The maximum free-node acceleration from this operator is 65861 m/s2. This identifies a formulation defect independently; its full causal share in the nonlinear collapse is not separately isolated.
+
+A separate float32 versus float64 free-fall control on the failed tetrahedron showed up to 2.38% transient volume drift in float32 while the exact rigid translation should preserve volume. The final float32 control ratio returned near 1, versus actual FEM ratio .04374. Precision effects alone do not explain the observed collapse.
+
+This diagnostic protocol ended with a failed gravity test. A separate versioned candidate v04 corrects only relative hydrostatic damping velocities; v03 physics and failed verdict remain preserved. See that directory for independent controls and subsequent results.

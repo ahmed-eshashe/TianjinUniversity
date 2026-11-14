@@ -1,0 +1,11 @@
+NEXT SCOPE DECISION — AFTER V21
+
+Verified combined throughput is about 17 diagnostic transitions/s at eight independent environments and four host workers, already excluding blade/contact/fracture/robot/policy. The required actual RL entry rate is 100/s. The compiled geometry and persistent-buffer changes are complete; they do not establish RL readiness.
+
+Two different scopes are now possible:
+
+1. Preserve the current numerical model and accuracy contract. A substantial fully GPU-resident topology/history/mass/observation implementation would be required for the next performance attempt. Its speed and physical qualification are unproven; no completion date or successful outcome is promised. Until then use this as a numerical reference or for slow offline data collection, not efficient online RL.
+
+2. Design and validate a lower-cost training approximation against the retained reference. This changes the modeling/accuracy scope and requires the user's decision before implementation. Define the required slice dimensions, permitted force/deformation discrepancies, cut-path freedom and evaluation cases first. A coarse mesh or learned approximation must not silently sacrifice small slices, remaining bridges, contact stops or truthful separation. No specific approximation is claimed suitable yet, and no material, mesh or fracture law has been changed by v21.
+
+Avoid another chain of small speed patches without a measured route to the complete-loop target. Neither option authorizes production replacement, altered blade-force/penetration limits, fake separation, large training runs or edits to the current Isaac/DiSECt setup.

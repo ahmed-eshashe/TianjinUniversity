@@ -1,0 +1,17 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/cache/warp/1.17.0
+Module selective_gpu 0f46f62 load on device 'cuda:0' took 0.79 ms  (cached)
+Module gather_parallel_a8a8758d 419f2d8 load on device 'cuda:0' took 466.17 ms  (compiled)
+{'case': 'intact', 'duration_s': 0.02, 'dt_s': 1.25e-05, 'difference': {'position_m': 1.0870723785814559e-09, 'velocity_m_s': 8.089388589931795e-06, 'force_rms_error_N': 6.415130422284708e-07, 'force_rms_reference_N': 0.042884340209704164, 'force_relative': 1.495914450569779e-05, 'velocity_mass_weighted_RMS_upper_bound_m_s': 1.973727367944288e-06}, 'F_max': 2.1855673850313534e-07, 'energy_drift_relative': 0.0002908112080019592, 'accepted': True}
+{'case': 'oblique', 'duration_s': 0.02, 'dt_s': 1.25e-05, 'difference': {'position_m': 1.632987520474994e-09, 'velocity_m_s': 9.37390392842008e-06, 'force_rms_error_N': 4.125663432104941e-07, 'force_rms_reference_N': 0.03011806657977617, 'force_relative': 1.369830105520539e-05, 'velocity_mass_weighted_RMS_upper_bound_m_s': 1.9376270861527244e-06}, 'F_max': 1.6247842775565097e-06, 'energy_drift_relative': 0.00037389253769867954, 'accepted': True}
+{'case': 'partial', 'duration_s': 0.02, 'dt_s': 1.25e-05, 'difference': {'position_m': 1.3001303412792075e-09, 'velocity_m_s': 7.496894042592987e-06, 'force_rms_error_N': 4.809891340767348e-07, 'force_rms_reference_N': 0.03684162342463213, 'force_relative': 1.3055590100710595e-05, 'velocity_mass_weighted_RMS_upper_bound_m_s': 1.7557794107744787e-06}, 'F_max': 1.2570265389907909e-06, 'energy_drift_relative': 0.0002917639012964447, 'accepted': True}
+{'case': 'corner', 'duration_s': 0.02, 'dt_s': 1.25e-05, 'difference': {'position_m': 1.3958186396554735e-09, 'velocity_m_s': 8.42354578486101e-06, 'force_rms_error_N': 3.967907944625341e-07, 'force_rms_reference_N': 0.028848845734697082, 'force_relative': 1.3754130689024619e-05, 'velocity_mass_weighted_RMS_upper_bound_m_s': 2.1129352127099e-06}, 'F_max': 7.00174312501245e-07, 'energy_drift_relative': 0.00040947816175351126, 'accepted': True}
+{'case': 'heldout', 'duration_s': 0.02, 'dt_s': 1.25e-05, 'difference': {'position_m': 1.1761070297663672e-09, 'velocity_m_s': 7.458396528302062e-06, 'force_rms_error_N': 4.359575394774463e-07, 'force_rms_reference_N': 0.03336985249122374, 'force_relative': 1.306441314333358e-05, 'velocity_mass_weighted_RMS_upper_bound_m_s': 2.0426747349817103e-06}, 'F_max': 5.239907431286994e-07, 'energy_drift_relative': 0.0004332090396573402, 'accepted': True}
+{'case': 'force_direction_change', 'difference': {'position_m': 2.890679484597816e-10, 'velocity_m_s': 1.3743781524757107e-06, 'force_rms_error_N': 1.190641549658384e-07, 'force_rms_reference_N': 0.0026341745197889467, 'force_relative': 4.51997975348186e-05, 'velocity_mass_weighted_RMS_upper_bound_m_s': 3.822085202428086e-07}}
+pass

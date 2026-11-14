@@ -1,0 +1,45 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.58 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.48 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.50 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.62 ms  (cached)
+Module compact_contact_gpu b420b9d load on device 'cuda:0' took 1.31 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.43 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.38 ms  (cached)
+Module paid_contact_gpu 5334c27 load on device 'cuda:0' took 0.46 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.61 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.96 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.46 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.74 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/tests/first_paid_surface.py", line 20, in <module>
+    g.checked_step(round(chunk/dt));q,v=g.state();a=g.aggregates[0];obs=g.observe();m=a.metrics();T,tv=g.pose(g.steps*dt);edge=blade_edge(cad,T,R);normal,offset,sections=current_sections(a,edge,direction);front_offset=float(direction@edge[0]);available=obs['earned_fracture_J'];all_area=novel_area(a,sections,direction,front_offset);energy=m['U']+m['T']+obs['contact_energy']-E0-obs['tool_work_J']-obs['cutting_tool_work_J']+obs['friction_J']+obs['cutting_numerical_loss_J']+available;scale=max(abs(obs['tool_work_J'])+abs(obs['cutting_tool_work_J']),1e-8);worstenergy=max(worstenergy,abs(energy)/scale);row={k:z.tolist() if isinstance(z,np.ndarray) else z for k,z in obs.items()};row.update(time=g.steps*dt,available_area_m2=available/80,blade_reached_area_m2=all_area,energy_relative=abs(energy)/scale,line_present=front is not None);rows.append(row);(out/'progress.json').write_text(json.dumps(row,indent=2))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/contact_gpu.py", line 160, in checked_step
+    result=self.finish();self.last_cost={'GPU_step_host_read_s':t1-t0,'whole_volume_certificate_s':t2-t1,'accepted_state_transfer_s':time.perf_counter()-t2};return result
+           ^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/contact_gpu.py", line 123, in finish
+    try:return super().finish()
+               ^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/pipeline_gpu.py", line 49, in finish
+    raise ValueError(('pipeline mechanics rejected; state rolled back',int(self.bad_view[0])))
+ValueError: ('pipeline mechanics rejected; state rolled back', 4)
+{
+  "status": "stopped",
+  "physical_topology_event": false,
+  "physical_cut_qualified": false,
+  "full_separation": false,
+  "rl_ready": false,
+  "dt": 3.125e-06,
+  "chunk_s": 5e-05,
+  "wall_s": 16.882363532000454,
+  "maximum_energy_relative": 0.0006906796818935413,
+  "event": null,
+  "scope": "One small actual-CAD-reached and work-paid patch with original bulk, resistance, inertia and limits. Temporal refinement, continued cutting and complete-loop speed remain separate gates."
+}

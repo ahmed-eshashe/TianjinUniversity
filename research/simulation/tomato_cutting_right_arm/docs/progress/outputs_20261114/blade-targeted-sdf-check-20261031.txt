@@ -1,0 +1,21 @@
+Targeted thin-feature and normal checks — 31 October 2026
+
+Result: the tested SDF representations do not preserve signed distance at the sampled thin features. Moving-contact tests remain on hold.
+
+Two protected native runs at resolutions 256 and 512 each completed 12 stationary steps and 562 SDF queries in about 3.8 seconds. Both had zero contacts, zero final particle displacement, no memory warnings or monitoring errors, and no leftover processes. Source snapshots and all journal links were verified.
+
+The exact same 562-point registry was used for both runs: 482 previous probes plus 80 targeted points. Targeted points covered 32 near-edge samples, 24 interior scan points, and 24 central-difference stencil points. The two shortest sharp manifold edges (about 0.366 and 0.368 mm long) were selected geometrically. These are thin-feature diagnostics, not a certified semantic cutting-edge inventory.
+
+Thin-feature results:
+- The independent authored-mesh references classified 16 samples as inside and 16 as outside. Both SDF resolutions classified all 16 inside samples as outside.
+- Maximum signed-distance error: 0.4234 mm at 256 and 0.3643 mm at 512.
+- Maximum sampled normal disagreement: 148.76 degrees at 256 and 117.63 degrees at 512. A sign disagreement also affects interpretation of these normal errors.
+
+Interior normal investigation:
+- At the preceding worst point (face 41, inward 1 mm), native analytic gradient agrees with central differences of its own field at a 25 micrometre stencil to within 0.002 degrees.
+- Central differences of the independent signed mesh-distance reference agree with the reference normal at that stencil. The native/reference normal disagreement remains about 21.57 degrees at 256 and 30.01 degrees at 512.
+- This supports local distance-field approximation as the cause of that discrepancy; it does not prove the global cause of every SDF error. Nearby competing surfaces remain relevant.
+
+All original physical geometry, thickness, contact/material parameters, 0.05 m cooking padding, timestep, runtime/memory protections and inactive robot setup were preserved. No threshold was relaxed. Nine guard tests and four analytic signed-reference tests passed. No positive-contact, force/work, fracture, robot coupling, cutting or learning qualification was attempted.
+
+Next step: investigate finer or local SDF sampling and cooking extent at the identified thin features, using the same mesh references. Do not enlarge physical blade thickness or collision radii to hide the errors.

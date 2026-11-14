@@ -1,0 +1,71 @@
+{
+  "scope": "User approved resolving timestep sensitivity and damping after v03 failure; isolated numerical mechanics revision and revalidation. No production adoption or automatic cutting.",
+  "started": "2026-11-10T20:51:26.512142+08:00",
+  "formulation_budget_s": 7200,
+  "conditional_qualification_budget_s": 14400,
+  "max_pilot_wall_s": 600,
+  "units": "m kg s Pa N J",
+  "material": {
+    "E": 100000.0,
+    "nu": 0.4,
+    "rho": 1000,
+    "Gc": 80,
+    "provenance": "Unchanged synthetic block/cutting parameters; no experimental tomato calibration"
+  },
+  "discretization": {
+    "h": 0.003,
+    "spacing": 0.0015,
+    "dt": 1.25e-05,
+    "half_dt": 6.25e-06,
+    "precision": "float64",
+    "candidate": "Reference B-spline basis with persistent generalized displacement/velocity, consistent mass, energy-derived stress, velocity Verlet; not adopted APIC/CRESSim implementation",
+    "motivation": "Avoid per-step low-pass transfers while excluding particle null modes by construction; independent mechanics reference first",
+    "state": "particle positions and F are derived from the same displacement field, not independently advanced",
+    "scope_limit": "Intact mechanics only until topology/contact are requalified. No existing cut qualification inherited."
+  },
+  "contact": {
+    "K_area": 1000000000.0,
+    "mu": 0.2,
+    "vs": 0.001,
+    "force_stop_N": 2,
+    "penetration_m": 0.0001,
+    "stored_and_reconstructed_J_range": [
+      0.1,
+      10
+    ],
+    "geometry": "Existing CAD and declared trilinear-cell reconstruction with conservative guards; all its approximation limits retained"
+  },
+  "screens": {
+    "mass_relative": 1e-06,
+    "linear_momentum_relative": 0.001,
+    "linear_momentum_floor_Ns": 1e-09,
+    "angular_momentum_relative": 0.01,
+    "angular_momentum_floor_Nms": 1e-10,
+    "position_refinement_m": 0.0001,
+    "velocity_refinement_m_s": 0.005,
+    "force_impulse_work_relative": 0.05,
+    "force_floor_N": 0.0001,
+    "impulse_floor_Ns": 1e-07,
+    "work_floor_J": 1e-08,
+    "energy_error_relative": 0.05,
+    "energy_floor_J": 2e-08,
+    "null_mode_remaining_fraction": 1e-08,
+    "CPU_GPU_relative": 2e-08,
+    "localized_F_geometry_difference_max": 0.02,
+    "localized_geometry_to_stored_strain_rms_ratio": [
+      0.5,
+      2.0
+    ],
+    "localized_ratio_signal_floor": 0.0001,
+    "consistent_projection_idempotence": 1e-10,
+    "force_energy_gradient_relative": 2e-05,
+    "undamped_energy_relative": 0.05
+  },
+  "topology": {
+    "max_cuts": 4,
+    "max_codes": 81,
+    "compatibility": "Inherited ternary no-conflicting-digit relation; momentum exchange at identical current grid coordinates conserves impulse and moment. Still needs partial-bridge qualification."
+  },
+  "stop": "One diagnosed consistent-mass mechanics candidate. If core invariants or shared-time refinement fail after fixing implementation errors, save the failure; no further solver branching or weakened thresholds.",
+  "budget_s": 7200
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/tests/transactions.py", line 6, in <module>
+    X=block(8,.0015);b=CutReference(X);b.commit(b.propose([0,.006,-.006,.006]));b.q[b.base_ng:,0]=1e-6;b.update_state();b.vg[:,1]=np.r_[np.ones(b.base_ng)*.002,np.zeros(len(b.keys))];before=b.fingerprint();checks={};p=b.propose([-.006,.006,-.006,.006]);b.step(3.90625e-7)
+                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/src/cut_reference.py", line 58, in propose
+    if change['x']>1e-11 or change['v']>1e-10 or change['F']>1e-10 or abs(change['energy'])>max(1e-12,abs(oldenergy)*1e-8):raise RejectedEvent('topology insertion changed existing mechanical state',change)
+                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cut_reference.RejectedEvent: topology insertion changed existing mechanical state

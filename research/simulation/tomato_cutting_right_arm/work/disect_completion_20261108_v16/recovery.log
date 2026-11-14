@@ -1,0 +1,29 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.97 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.86 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.77 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.87 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.70 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.93 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.49 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.36 ms  (cached)
+NEWTON [{"iteration": 0, "residual": 0.029808347261979753, "cg_info": 0, "matvecs": 29, "true_linear_relative_residual": 0.0008789186105440552}, {"iteration": 1, "residual": 0.004125933492515549, "cg_info": 0, "matvecs": 23, "true_linear_relative_residual": 0.000660698949342434}, {"iteration": 2, "residual": 0.004125895812176797, "cg_info": 0, "matvecs": 9, "true_linear_relative_residual": 0.0005248423764217903}, {"iteration": 3, "residual": 0.002063029311792265, "cg_info": 0, "matvecs": 11, "true_linear_relative_residual": 0.0008882530015561288}, {"iteration": 4, "residual": 0.002186238504164329, "cg_info": 0, "matvecs": 16, "true_linear_relative_residual": 0.00042192599250097536}, {"iteration": 5, "residual": 0.0019996999493966817, "cg_info": 0, "matvecs": 12, "true_linear_relative_residual": 0.0008441246873937488}, {"iteration": 6, "residual": 0.002132945855732135, "cg_info": 0, "matvecs": 16, "true_linear_relative_residual": 0.00042046969542818566}, {"iteration": 7, "residual": 0.001986081708001491, "cg_info": 0, "matvecs": 12, "true_linear_relative_residual": 0.0008478008946932222}, {"iteration": 8, "residual": 0.0021317960845627488, "cg_info": 0, "matvecs": 16, "true_linear_relative_residual": 0.0004203191360128362}, {"iteration": 9, "residual": 0.00038444000121659697, "cg_info": 0, "matvecs": 25, "true_linear_relative_residual": 0.0009634869451089644}, {"iteration": 10, "residual": 0.00028832929834863945, "cg_info": 0, "matvecs": 25, "true_linear_relative_residual": 0.0009591313282538859}, {"iteration": 11, "residual": 0.00046305751801055747, "cg_info": 0, "matvecs": 22, "true_linear_relative_residual": 0.0008866049135232737}, {"iteration": 12, "residual": 0.0002807536092228799, "cg_info": 0, "matvecs": 25, "true_linear_relative_residual": 0.0009506821115666909}, {"iteration": 13, "residual": 0.0002785602597894521, "cg_info": 0, "matvecs": 25, "true_linear_relative_residual": 0.0009502594112975717}, {"iteration": 14, "residual": 0.00046054671563968303, "cg_info": 0, "matvecs": 22, "true_linear_relative_residual": 0.0008774106607638886}, {"iteration": 15, "residual": 0.0002781077891711138, "cg_info": 0, "matvecs": 25, "true_linear_relative_residual": 0.0008956043970201468}, {"iteration": 16, "residual": 0.00019309300938103865, "cg_info": 0, "matvecs": 29, "true_linear_relative_residual": 0.0008270133048426068}, {"iteration": 17, "residual": 1.7124339205722993e-07}]
+NEWTON [{"iteration": 0, "residual": 0.016469464740597982, "cg_info": 0, "matvecs": 38, "true_linear_relative_residual": 0.0009835642280125786}, {"iteration": 1, "residual": 1.4579069130607769e-05, "cg_info": 0, "matvecs": 73, "true_linear_relative_residual": 0.00033831203466221446}, {"iteration": 2, "residual": 3.2540983673228416e-07}]
+{
+  "scope": "Bounded coupled implicit numerical candidate; unchanged material laws, lagged viscous geometry and friction normal",
+  "bulk_energy_force_max_error_N": 1.7322423115611112e-16,
+  "stop": "completed",
+  "dt_s": 0.00025,
+  "wall_s": 26.31308235299366,
+  "max_force_residual_N": 3.2540983673228416e-07,
+  "component_passed": true
+}

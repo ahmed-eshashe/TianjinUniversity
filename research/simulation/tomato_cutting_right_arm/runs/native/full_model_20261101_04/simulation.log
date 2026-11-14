@@ -1,0 +1,81 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793536736.841096   41290 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793536736.841125   41290 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T12:38:57Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.03 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.73 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.05 ms  (cached)
+Module tomato_native_full_gather 763eb01 load on device 'cuda:0' took 53.77 ms  (error)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_model_worker.py", line 21, in main
+    solver.step(sin,sout,None,None,DT);wp.synchronize();steps+=1
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py", line 2308, in step
+    self._solve_particle_iteration(state_in, state_out, contacts, dt, iter_num)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_full_model.py", line 130, in _solve_particle_iteration
+    self._gather_blocks(color,state_in,dt)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_full_model.py", line 88, in _gather_blocks
+    wp.launch(gather,dim=self.model.particle_count,inputs=[color,self.model.particle_colors,state.particle_q,self.particle_q_prev,dt,self.spring_offsets,self.spring_ids,self.model.spring_indices,self.model.spring_rest_length,self.model.spring_stiffness,self.model.spring_damping,self.patch_offsets,self.patch_ids,self.pairs,self.rest,self.weights,self.counts,self.stiffness,self.law,self.history,self.eligible,self.invalid,self.cell_offsets,self.cell_ids,self.cells,self.volumes,self.volume_invalid],outputs=[self.particle_forces,self.particle_hessians],device=self.device)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4736, in load
+    raise e
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4733, in load
+    compiled = self._compile(device, module_dir, output_name, output_arch, options=options)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4495, in _compile
+    source_str, source_code_ext, meta, ltoir_values, fatbin_values = self._run_codegen(options, is_cpu)
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4365, in _run_codegen
+    builder = ModuleBuilder(
+              ^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3121, in __init__
+    self.build_kernel(kernel)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3240, in build_kernel
+    kernel.adj.build(self)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2200, in build
+    raise type(original_exc)(*new_args).with_traceback(original_exc.__traceback__) from None
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2181, in build
+    adj.eval(adj.tree.body[0])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3354, in emit_FunctionDef
+    adj.eval(f)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3402, in emit_If
+    adj.eval(stmt)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 4041, in emit_For
+    adj.eval(s)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 5265, in emit_Assign
+    raise WarpCodegenTypeError(
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "gather" at /home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_full_gather.py:39:
+   i=cell_ids[index];ids=cells[i];d1=x[ids[1]]-x[ids[0]];d2=x[ids[2]]-x[ids[0]];d3=x[ids[3]]-x[ids[0]];v=volumes[i];j=wp.dot(d1,wp.cross(d2,d3))/(6.*v)
+;Error, assigning to existing symbol j (<class 'warp._src.types.int32'>) with different type (<class 'warp._src.types.float32'>)

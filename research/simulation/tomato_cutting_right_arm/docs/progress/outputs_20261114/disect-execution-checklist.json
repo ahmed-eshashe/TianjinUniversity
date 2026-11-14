@@ -1,0 +1,476 @@
+{
+  "title": "DiSECt to reliable robot slicing and learning \u2014 execution checklist",
+  "updated": "2026-11-10T08:04:51.340012+00:00",
+  "scope": "Component passes are distinct from settled tomato, successful cutting, robot integration and training. Original run remains paused.",
+  "counts": {
+    "done": 16,
+    "deferred": 4,
+    "planned": 14,
+    "pending": 1
+  },
+  "total": 35,
+  "stages": [
+    {
+      "title": "Completed components",
+      "items": [
+        {
+          "status": "done",
+          "task": "Preserve the original simulation and checkpoint 6,925.",
+          "acceptance_or_limit": "Original robot, kitchen, grip and motion interface remain unchanged."
+        },
+        {
+          "status": "done",
+          "task": "Profile the original solver and compare candidate engines.",
+          "acceptance_or_limit": "Recorded component timings and differences in models/resolution; no equal-accuracy speedup claim."
+        },
+        {
+          "status": "done",
+          "task": "Get DiSECt examples running with clean exits.",
+          "acceptance_or_limit": "Two corrected-candidate prism repeats complete normally; forward-only qualification."
+        },
+        {
+          "status": "done",
+          "task": "Repair and independently validate prism cut surfaces.",
+          "acceptance_or_limit": "No duplicate/degenerate cut faces, full section coverage, physical spring arrays preserved."
+        },
+        {
+          "status": "done",
+          "task": "Build and validate the separate tomato FEM mesh.",
+          "acceptance_or_limit": "Original exterior, total mass, cut location and 25 support coordinates retained; internal resolution changed."
+        },
+        {
+          "status": "done",
+          "task": "Identify the explicit timestep limit and correct hydrostatic damping.",
+          "acceptance_or_limit": "Relative-velocity correction is isolated and versioned; coefficients were not reduced to pass."
+        },
+        {
+          "status": "done",
+          "task": "Verify translation and resolved-signal damping controls.",
+          "acceptance_or_limit": "Low-signal affine precision remains failed and must not be inferred from these scoped passes."
+        },
+        {
+          "status": "done",
+          "task": "Complete a one-second finite tomato gravity hold.",
+          "acceptance_or_limit": "Historical finite hold preserved. Later corrected-law intact settling now passes in section3; live cutting assembly still unqualified."
+        }
+      ]
+    },
+    {
+      "title": "Numerical consistency and speed",
+      "items": [
+        {
+          "status": "done",
+          "task": "Fix tiny movements being lost during position updates.",
+          "acceptance_or_limit": "PASS in isolated float64 numerical adapter. 100,000 observed tiny updates match analytic translation within 5.2e-13m; original geometry, masses, material and supports preserved.",
+          "evidence": "disect-numerics-20261108.txt"
+        },
+        {
+          "status": "done",
+          "task": "Verify the fix against independent motion references and resets.",
+          "acceptance_or_limit": "PASS: independent translation/free-fall/analytic oscillator references; four-node dense implicit solve; full-mesh execution equivalence and reset/allocation controls. Added state clears on reset. Forward-only, not autograd qualification.",
+          "evidence": "disect-numerics-20261108.txt"
+        },
+        {
+          "status": "done",
+          "task": "Establish trustworthy small-force precision.",
+          "acceptance_or_limit": "PASS in tested computational range: independent float64 force checks from ~1.1e-8N to .011N, with declared 1e-10N absolute floor. Old float32 low-signal failure is preserved; no experimental calibration claim.",
+          "evidence": "disect-numerics-20261108.txt"
+        },
+        {
+          "status": "deferred",
+          "task": "Establish a stable, sufficiently fast integration method.",
+          "acceptance_or_limit": "Speed remains failed (~1019wallseconds/simsecond vs120). On2026-11-09 the user explicitly deferred speed to finish physical qualification first. No accuracy limits relaxed; not qualified for training.",
+          "evidence": "disect-physical-qualification-20261109.txt",
+          "verdict_label": "Speed deferred by user"
+        }
+      ],
+      "note": "3 verified \u00b7 speed deferred by user"
+    },
+    {
+      "title": "Before blade contact",
+      "items": [
+        {
+          "status": "done",
+          "task": "Pass the complete unloaded settling check.",
+          "acceptance_or_limit": "PASS for the new split assembly: both fresh1s holds settle below1mm/s; half-step comparison passes. Maximum position difference0.000641mm, velocity0.249mm/s, internal force0.0388%, support reaction0.0376%. Damage disabled; no cutting claim.",
+          "verdict_label": "Verified \u00b7 split assembly",
+          "evidence": "disect-physical-qualification-20261109.txt"
+        },
+        {
+          "status": "done",
+          "task": "Validate board contact and sustained target support.",
+          "acceptance_or_limit": "The finite board footprint and 25 fixed support points sustain the target, with no sampled board penetration or support drift. This uses an uncalibrated contact model with a 1 mm contact offset; equivalence to the original board mechanics remains pending.",
+          "verdict_label": "Verified \u00b7 scoped",
+          "evidence": "disect-physical-qualification-20261109.txt"
+        },
+        {
+          "status": "done",
+          "task": "Prepare and validate the tomato cutting interface.",
+          "acceptance_or_limit": "Approved split assembly passes full settling, refinement and nonfracturing original-CAD load/withdrawal. Progressive live damage and separation remain section 4 tasks; speed deferred by user.",
+          "verdict_label": "Verified \u00b7 precontact assembly",
+          "evidence": "disect-physical-qualification-20261109.txt"
+        },
+        {
+          "status": "done",
+          "task": "Define the fracture law and its timestep dependence.",
+          "acceptance_or_limit": "The fracture rule and its dependence on timestep are documented and analytically checked. A separate proposal preserves the original 47 cohesive patch groups. These are definitions and offline input checks; neither is a validated live tomato fracture model.",
+          "verdict_label": "Verified \u00b7 scoped",
+          "evidence": "disect-precontact-20261108.txt"
+        },
+        {
+          "status": "done",
+          "task": "Verify knife representation, nonfracturing contact and force reporting.",
+          "acceptance_or_limit": "Both original-CAD load/horizontal-withdrawal repeats pass. Force and moment refinement differences 0.56344% versus 5%; peak reaction 0.780 mN. Prescribed nonfracturing contact only; not native robot or cutting qualification.",
+          "verdict_label": "Verified \u00b7 split-assembly contact",
+          "evidence": "disect-physical-qualification-20261109.txt"
+        }
+      ],
+      "note": "5 physical prerequisites verified \u00b7 speed deferred \u00b7 live fracture still unqualified"
+    },
+    {
+      "title": "First genuine slice and reliability",
+      "items": [
+        {
+          "status": "planned",
+          "task": "Pass a shallow scripted cut and controlled stop.",
+          "acceptance_or_limit": "Use progressive contact-driven material failure, saved force/deformation/geometry traces and declared stops.",
+          "verdict_label": "Physical stop \u00b7 no fracture"
+        },
+        {
+          "status": "planned",
+          "task": "Execute the full stroke and withdraw horizontally toward the robot.",
+          "acceptance_or_limit": "No upward withdrawal through the target; preserve intended blade orientation and clearance."
+        },
+        {
+          "status": "planned",
+          "task": "Prove actual material separation.",
+          "acceptance_or_limit": "No surviving load-bearing material ties; two intended substantial pieces, not a visible gap or isolated fragments."
+        },
+        {
+          "status": "planned",
+          "task": "Verify post-withdrawal stability, mass and slice shape.",
+          "acceptance_or_limit": "Observe at least one simulated second after blade clearance; stable board/cut-face contact and no healing."
+        },
+        {
+          "status": "planned",
+          "task": "Repeat and test resolution, size and path changes.",
+          "acceptance_or_limit": "Repeat from fresh/reset state; refine once, change size once and path once. Distinguish precomputed new interfaces from deviations after preparation; use negative controls for the success evaluator."
+        },
+        {
+          "status": "planned",
+          "task": "Demonstrate multiple successive slices.",
+          "acceptance_or_limit": "Separate extension requiring supported interface/topology updates and valid remaining-fruit state; one detached cap does not establish repeated slicing."
+        }
+      ],
+      "note": "Loading stopped at155.972ms: excessive local compression would occur before any fracture. All six cutting milestones remain unqualified. Literature-inspired material proposal prepared but not adopted.",
+      "component_checks": [
+        {
+          "status": "done",
+          "task": "Stronger blade contact independently checked.",
+          "acceptance_or_limit": "Force, energy, stiffness, reset and actual knife-geometry controls passed. This is contact-component evidence, not a cutting pass."
+        },
+        {
+          "status": "done",
+          "task": "Numerical cancellation repair checked.",
+          "acceptance_or_limit": "143 high-precision cancellation controls and saved replay passed. A later winding-sign failure was resolved with 40/80-digit arithmetic; the captured CAD case, 60 independent geometry controls and 45-to-50 ms retest passed. No physical law or tolerance changed."
+        },
+        {
+          "status": "done",
+          "task": "Missing cut-interface edges included.",
+          "acceptance_or_limit": "Added 2,746 previously omitted material edges. Independent topology and contact-force checks passed; the original sampling budget is preserved."
+        },
+        {
+          "status": "done",
+          "task": "Faster knife-geometry queries verified.",
+          "acceptance_or_limit": "Same-formula CAD queries and the higher-precision sign repair passed controls. Equivalent contact batching now also passes analytical, saved-geometry, fresh/half-step and loaded-prefix comparisons; measured loaded stepping gain 1.62\u00d7 in one short test. Full-cut speed remains unqualified."
+        },
+        {
+          "status": "done",
+          "task": "Fresh contact and half-step comparisons passed.",
+          "acceptance_or_limit": "All three fresh 2 ms nonfracturing controls passed. Worst half-step force difference: 0.57% against the unchanged 5% limit. Probe stepping and sampling improved from 199.74 s to 55.14 s (3.62\u00d7); full-cut speed remains unqualified."
+        }
+      ]
+    },
+    {
+      "title": "Connect the candidate to the robot",
+      "items": [
+        {
+          "status": "planned",
+          "task": "Connect through the existing motion and reaction interface.",
+          "acceptance_or_limit": "Preserve robot, kitchen and disclosed fixed attachment; no engine adoption before evidence review."
+        },
+        {
+          "status": "planned",
+          "task": "Recheck actual robot tracking, grip, posture and clearance.",
+          "acceptance_or_limit": "Correct arm motion, natural handle grip and backward/outward elbow; no per-frame teleportation to manufacture tracking."
+        },
+        {
+          "status": "planned",
+          "task": "Validate mounted-blade feedback and loaded support.",
+          "acceptance_or_limit": "Verify reaction signs, origins, clocks and native articulation response; strict force/work qualification remains a separate open research gate."
+        },
+        {
+          "status": "planned",
+          "task": "Pass clean loaded, failed-episode and post-cut resets.",
+          "acceptance_or_limit": "Clear both engine states, numerical compensation, material history, contact/wrench queues, clocks and observations; compare to fresh launch."
+        }
+      ]
+    },
+    {
+      "title": "Learning, after the baseline qualifies",
+      "items": [
+        {
+          "status": "planned",
+          "task": "Freeze observations, actions, rewards, stops and success evaluation.",
+          "acceptance_or_limit": "Same API/evaluator for scripted and learned methods; evaluator-only fracture/connectivity truth must not leak into actor inputs."
+        },
+        {
+          "status": "planned",
+          "task": "Collect successful scripted demonstrations and split the data.",
+          "acceptance_or_limit": "Record action labels and provenance; keep independent development/held-out cases separate."
+        },
+        {
+          "status": "planned",
+          "task": "Train and evaluate imitation of the verified baseline.",
+          "acceptance_or_limit": "Start with the narrow supported task; measure closed-loop success and runtime before expansion."
+        },
+        {
+          "status": "planned",
+          "task": "Train bounded learned corrections and compare fairly.",
+          "acceptance_or_limit": "Constrain supported path deviations; pair with scripted baselines on held-out cases, report uncertainty, forces, geometry, failures and compute cost."
+        }
+      ]
+    },
+    {
+      "title": "Experimental validation \u2014 intentionally pending",
+      "items": [
+        {
+          "status": "pending",
+          "task": "Compare against independent measured tomato experiments.",
+          "acceptance_or_limit": "Remains pending by user decision; synthetic simulation development must not be described as experimental validation."
+        }
+      ]
+    },
+    {
+      "title": "Later dual-arm extension",
+      "items": [
+        {
+          "status": "deferred",
+          "task": "Qualify contact-based left-hand support.",
+          "acceptance_or_limit": "Test load retention/slip first; remove hidden rigid-fixture support before claiming hand stabilization."
+        },
+        {
+          "status": "deferred",
+          "task": "Coordinate both arms with verified clearance and failure handling.",
+          "acceptance_or_limit": "Support -> cut -> horizontal withdrawal -> release; stop safely on support loss and verify reset."
+        },
+        {
+          "status": "deferred",
+          "task": "Compare dual-arm and fixed-fixture cutting.",
+          "acceptance_or_limit": "Use matched cases and report force, slip, drift, clearance, cut quality, reliability and cost."
+        }
+      ]
+    }
+  ],
+  "latest_numerics": {
+    "section_verified": 3,
+    "section_total": 4,
+    "cost_gate_passed": false,
+    "report": "disect-numerics-20261108.txt",
+    "next_action": "disect-numerics-next-action-20261108.txt"
+  },
+  "current_stage": 4,
+  "current_work": {
+    "eyebrow": "Section 4 \u00b7 separate approved material candidate",
+    "title": "Fresh half step settling running",
+    "description": "Coarse fresh hold passed its own guards. Independent half-step hold 0.883/1.000 simulated seconds; comparison still pending. No contact/cutting pass.",
+    "href": "disect-section4-current.txt"
+  },
+  "live": {
+    "kind": "settling",
+    "label": "New material \u00b7 half-step fresh hold",
+    "progress": "disect-material-settle_contact_refined_progress.json",
+    "result": "disect-material-settle_contact_refined_result.json",
+    "duration_s": 1.0
+  },
+  "latest_precontact": {
+    "scope": "Bounded section 3 prerequisites; no actual cutting, native robot qualification or engine adoption",
+    "checks": {
+      "settling": true,
+      "board_support": true,
+      "live_cutting_interface": false,
+      "fracture_definition_only": true,
+      "intact_CAD_contact": false,
+      "cut_assembly_precontact": true
+    },
+    "section_verified": 5,
+    "section_total": 5,
+    "section_complete": true,
+    "speed_gate_passed": false,
+    "experimental_validation": "pending by user choice",
+    "settling": {
+      "scope": "Corrected-law intact1s finite-board hold and half-step check only; not new cut assembly",
+      "position_max_error_m": 3.8290984115763165e-07,
+      "velocity_max_error_m_s": 0.00016617910394195836,
+      "material_force_max_relative_or_floor_error": 0.00023129823768712268,
+      "support_reaction_max_relative_or_floor_error": 0.0002231284207497688,
+      "coarse_late_speed_m_s": 9.650840666496036e-05,
+      "refined_late_speed_m_s": 9.651954593802983e-05,
+      "both_complete_and_settled": true,
+      "passed": true
+    },
+    "probe": {
+      "scope": "Exact-original-CAD prescribed nonfracturing contact on intact FEM; node-collocated surface contact, NOT new cut-assembly/native robot/full separation qualification",
+      "both_loaded_and_unloaded": true,
+      "position_max_error_m": 2.337942440062409e-09,
+      "velocity_max_error_m_s": 7.219792722644417e-05,
+      "reaction_max_relative_or_floor_error": 0.10082186405980759,
+      "moment_max_relative_or_floor_error": 0.10229492317434145,
+      "peak_reaction_N": 0.0009527616681512483,
+      "late_reaction_max_N": 0.0,
+      "maximum_CAD_penetration_m": 3.543267984825828e-07,
+      "maximum_discrete_force_balance_error_N": 3.1509998331772184e-12,
+      "passed": false
+    },
+    "remaining_gate": "Section 4: progressive damage validation and shallow cut. Speed deferred, not passed.",
+    "split_assembly_settling": {
+      "scope": "Approved split assembly1s hold and half-step comparison; damage disabled, no blade",
+      "position_max_error_m": 6.410830098319836e-07,
+      "velocity_max_error_m_s": 0.000249082728589805,
+      "material_force_max_relative_or_floor_error": 0.0003880614372840438,
+      "support_reaction_max_relative_or_floor_error": 0.0003764444060583062,
+      "coarse_late_speed_m_s": 0.00011427491696565049,
+      "refined_late_speed_m_s": 0.00011419765907072888,
+      "both_complete_and_settled": true,
+      "passed": true
+    },
+    "split_assembly_contact": {
+      "scope": "Split-assembly original-CAD nonfracturing load and horizontal withdrawal; unchanged physical tolerances; speed deferred by user",
+      "position_max_error_m": 2.3793058399351815e-09,
+      "velocity_max_error_m_s": 4.505733811747219e-06,
+      "force_max_relative_error": 0.005634376826081691,
+      "moment_max_relative_error": 0.005634374242707939,
+      "force_worst_time_s": 0.006,
+      "both_component_pass": true,
+      "quarter_wall_s_per_sim_s": 11597.97529015535,
+      "runtime_budget_wall_s_per_sim_s": 120,
+      "contact_comparison_passed": true,
+      "speed_deferred_by_user": true,
+      "runtime_passed": false
+    }
+  },
+  "implementation_decision": {
+    "classification": "restricted research use only",
+    "current_candidate_adopted": false,
+    "replacement_selected": false,
+    "section4_authorized_by_results": true,
+    "report": "disect-physical-qualification-20261109.txt",
+    "supersedes_default_continuation": "v06/NEXT_ACTION.txt",
+    "no_new_simulation": false,
+    "section4_authorized": true,
+    "continuation": "Section 4 development allowed by passing physical prerequisites plus explicit user speed deferral; no production adoption or training qualification.",
+    "speed_deferred_by_user": true
+  },
+  "latest_completion": {
+    "report": "disect-physical-qualification-20261109.txt",
+    "qualified_for_section4": true,
+    "short_coupled_accuracy_passed": true,
+    "repeat_passed": true,
+    "speed_gate_passed": false
+  },
+  "gate_a": {
+    "phase": "stronger_contact_loading_validation",
+    "running": false,
+    "reason": "Independent normal operator, actual CAD adapter and fresh half-step contact probes pass. Saved 26.5 ms whole-volume diagnostic passes 10 micrometres. Damage-enabled loading continues; general cutting qualification remains open.",
+    "gate_a_constitutive_history_passed": true,
+    "gate_a_contact_coverage_passed": false,
+    "gate_a_complete": false,
+    "gate_b_passed": false,
+    "proposal": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_contact_20261109_v30/CONTACT_CONTRACT.txt",
+    "sampling_candidate_adopted": false,
+    "interrupted_saved_step": 19200,
+    "interrupted_checkpoint_source": "coarse0080_checkpoint.npz"
+  },
+  "section4_execution": {
+    "gate_a_passed": false,
+    "first_shallow_fracture_passed": false,
+    "first_shallow_unloaded": false,
+    "correction_work_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_shallow_20261109_v24",
+    "two_stage_horizontal_withdrawal_user_authorized": true,
+    "qualified_for_full_stroke": false,
+    "constitutive_history_controls_passed": true,
+    "contact_coverage_passed": false,
+    "edge_contact_candidate_user_authorized": true,
+    "edge_contact_candidate_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_edge_contact_20261109_v26",
+    "adaptive_contact_candidate_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27",
+    "contact_component_controls_passed": true,
+    "independent_contact_controls_passed": true,
+    "gate_a_controls_gate_file": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/candidate_controls_gate.json",
+    "twenty_ms_contact_prefix_comparison_passed": true,
+    "twenty_ms_review": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/bounded_pair_endpoint_review.json",
+    "current_job_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_material_validation_20261110_v43",
+    "execution_order": "Coarse loading to damage or physical stop, then independent half-step replay of the damage-producing case",
+    "completion_requested": true,
+    "running": true,
+    "last_accepted_time_s": 0.155971875,
+    "stop": null,
+    "latest_review": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_batched_cutting_20261110_v40/final_campaign_review.json",
+    "contact_enforcement_proposal": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/CONTACT_ENFORCEMENT_PROPOSAL.txt",
+    "normal_contact_change_authorized": true,
+    "normal_contact_candidate_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_contact_20261109_v30",
+    "normal_contact_operator_controls_passed": true,
+    "normal_contact_adapter_controls_passed": true,
+    "normal_contact_coarse_probe_completed": true,
+    "normal_contact_fresh_probe_comparison_passed": true,
+    "normal_contact_fresh_probe_review": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_contact_20261109_v30/fresh_probe_review.json",
+    "normal_contact_timestep_candidate_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_timestep_20261109_v31",
+    "normal_contact_coarser_fresh_probe_passed": true,
+    "normal_contact_loaded_prefix_comparison_passed": true,
+    "selected_loading_dt_s": 6.25e-06,
+    "independent_fine_dt_s": 3.125e-06,
+    "loaded_prefix_review": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_timestep_20261109_v31/loaded_prefix_review.json",
+    "last_stop": null,
+    "work_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bevel_reference_20261109_v33",
+    "arithmetic_controls_passed": true,
+    "arithmetic_local_half_step_retest_passed": true,
+    "corrected_reference_component_control_passed": true,
+    "dynamic_corrected_reference_qualification_pending": true,
+    "runtime_scope_choice_pending": false,
+    "runtime_reassessment": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bevel_reference_20261109_v33/runtime_reassessment.json",
+    "user_chose_execution_strategy_revision": true,
+    "next_prepared_runner": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py",
+    "next_runner_launched": true,
+    "complete_cut_edge_static_controls_passed": true,
+    "faster_query_implementation_controls_passed": true,
+    "fresh_combined_candidate_component_passed": true,
+    "fresh_combined_half_step_passed": true,
+    "current_window_until_s": 0.05,
+    "arithmetic_sign_correction_passed": true,
+    "arithmetic_sign_retest_passed": true,
+    "next_action": "Coarse fresh hold passed its own guards. Independent half-step hold 0.883/1.000 simulated seconds; comparison still pending. No contact/cutting pass.",
+    "next_scope_proposal": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bulk_material_proposal_20261110_v42/scope_proposal.json",
+    "material_candidate_user_approved": true,
+    "material_candidate_qualified": false,
+    "material_qualification_status": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_material_validation_20261110_v43/qualification_status.json"
+  },
+  "current_job_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_material_validation_20261110_v43",
+  "latest_strategy_revision": {
+    "report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/RESULT.txt",
+    "plan": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/EXECUTION_STRATEGY.txt",
+    "fresh_probe_speedup": 3.622199826158739,
+    "half_step_force_relative": 0.005692297669763712,
+    "all_three_fresh_controls_passed": true,
+    "full_cut_qualified": false,
+    "next_prepared_contract": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/execution_contract.json"
+  },
+  "latest_section4_execution": {
+    "report": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_batched_cutting_20261110_v40/RESULT.txt",
+    "review": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_batched_cutting_20261110_v40/final_campaign_review.json",
+    "last_accepted_time_s": 0.155971875,
+    "gate_b_passed": false,
+    "running": true,
+    "material_scope_decision_pending": false,
+    "proposal": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bulk_material_proposal_20261110_v42/scope_proposal.json",
+    "candidate_directory": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_material_validation_20261110_v43"
+  }
+}

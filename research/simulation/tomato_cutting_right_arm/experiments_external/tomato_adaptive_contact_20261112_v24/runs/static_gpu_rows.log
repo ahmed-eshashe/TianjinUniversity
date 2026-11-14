@@ -1,0 +1,170 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.57 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.43 ms  (cached)
+Module adaptive_gpu 2edf26d load on device 'cuda:0' took 234.42 ms  (error)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py", line 142, in contact_force
+    wp.launch(integrate,self.nfaces,[self.cad.mesh.id,self.tri,wp.vec3d(self.cad.vertices.min(0)-2e-6),wp.vec3d(self.cad.vertices.max(0)+2e-6),self.hull,wp.mat33d(self.R),wp.vec3d(self.T0),wp.vec3d(self.travel),wp.float64(self.load),wp.float64(self.hold),self.clock,self.sptr,self.sids,self.sw,self.reference,self.areas,wp.float64(self.area_total),self.q,self.vh,self.polygon,self.Bs,self.vals,self.depths,self.leaves,self.queries,self.cf,self.cu,self.cp,self.power,self.moment,self.bad,self.capacity,wp.float64(self.relative_tol),wp.float64(self.absolute_tol),self.maxdepth])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4736, in load
+    raise e
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4733, in load
+    compiled = self._compile(device, module_dir, output_name, output_arch, options=options)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4495, in _compile
+    source_str, source_code_ext, meta, ltoir_values, fatbin_values = self._run_codegen(options, is_cpu)
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4365, in _run_codegen
+    builder = ModuleBuilder(
+              ^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3121, in __init__
+    self.build_kernel(kernel)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3240, in build_kernel
+    kernel.adj.build(self)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2200, in build
+    raise type(original_exc)(*new_args).with_traceback(original_exc.__traceback__) from None
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2181, in build
+    adj.eval(adj.tree.body[0])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3354, in emit_FunctionDef
+    adj.eval(f)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3402, in emit_If
+    adj.eval(stmt)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3402, in emit_If
+    adj.eval(stmt)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3864, in emit_While
+    adj.eval(s)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 5265, in emit_Assign
+    raise WarpCodegenTypeError(
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "integrate" at /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py:126:
+    B=Bs[face,worst];old=vals[face,worst];L,H=bisect(B,X);a=evaluate_leaf(mesh,tri,L,X,V,areas[face],R,T,tv);b=evaluate_leaf(mesh,tri,H,X,V,areas[face],R,T,tv)
+;Error, assigning to existing symbol b (<class 'warp._src.types.vector.<locals>.vec_t'>) with different type (<warp._src.codegen.Struct object at 0x7a1b6e8c2180>)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py", line 142, in contact_force
+    wp.launch(integrate,self.nfaces,[self.cad.mesh.id,self.tri,wp.vec3d(self.cad.vertices.min(0)-2e-6),wp.vec3d(self.cad.vertices.max(0)+2e-6),self.hull,wp.mat33d(self.R),wp.vec3d(self.T0),wp.vec3d(self.travel),wp.float64(self.load),wp.float64(self.hold),self.clock,self.sptr,self.sids,self.sw,self.reference,self.areas,wp.float64(self.area_total),self.q,self.vh,self.polygon,self.Bs,self.vals,self.depths,self.leaves,self.queries,self.cf,self.cu,self.cp,self.power,self.moment,self.bad,self.capacity,wp.float64(self.relative_tol),wp.float64(self.absolute_tol),self.maxdepth])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4681, in load
+    _raise_recorded_build_error(build_error)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3773, in _raise_recorded_build_error
+    raise replay from None
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "integrate" at /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py:126:
+    B=Bs[face,worst];old=vals[face,worst];L,H=bisect(B,X);a=evaluate_leaf(mesh,tri,L,X,V,areas[face],R,T,tv);b=evaluate_leaf(mesh,tri,H,X,V,areas[face],R,T,tv)
+;Error, assigning to existing symbol b (<class 'warp._src.types.vector.<locals>.vec_t'>) with different type (<warp._src.codegen.Struct object at 0x7a1b6e8c2180>)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py", line 142, in contact_force
+    wp.launch(integrate,self.nfaces,[self.cad.mesh.id,self.tri,wp.vec3d(self.cad.vertices.min(0)-2e-6),wp.vec3d(self.cad.vertices.max(0)+2e-6),self.hull,wp.mat33d(self.R),wp.vec3d(self.T0),wp.vec3d(self.travel),wp.float64(self.load),wp.float64(self.hold),self.clock,self.sptr,self.sids,self.sw,self.reference,self.areas,wp.float64(self.area_total),self.q,self.vh,self.polygon,self.Bs,self.vals,self.depths,self.leaves,self.queries,self.cf,self.cu,self.cp,self.power,self.moment,self.bad,self.capacity,wp.float64(self.relative_tol),wp.float64(self.absolute_tol),self.maxdepth])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4681, in load
+    _raise_recorded_build_error(build_error)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3773, in _raise_recorded_build_error
+    raise replay from None
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "integrate" at /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py:126:
+    B=Bs[face,worst];old=vals[face,worst];L,H=bisect(B,X);a=evaluate_leaf(mesh,tri,L,X,V,areas[face],R,T,tv);b=evaluate_leaf(mesh,tri,H,X,V,areas[face],R,T,tv)
+;Error, assigning to existing symbol b (<class 'warp._src.types.vector.<locals>.vec_t'>) with different type (<warp._src.codegen.Struct object at 0x7a1b6e8c2180>)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py", line 142, in contact_force
+    wp.launch(integrate,self.nfaces,[self.cad.mesh.id,self.tri,wp.vec3d(self.cad.vertices.min(0)-2e-6),wp.vec3d(self.cad.vertices.max(0)+2e-6),self.hull,wp.mat33d(self.R),wp.vec3d(self.T0),wp.vec3d(self.travel),wp.float64(self.load),wp.float64(self.hold),self.clock,self.sptr,self.sids,self.sw,self.reference,self.areas,wp.float64(self.area_total),self.q,self.vh,self.polygon,self.Bs,self.vals,self.depths,self.leaves,self.queries,self.cf,self.cu,self.cp,self.power,self.moment,self.bad,self.capacity,wp.float64(self.relative_tol),wp.float64(self.absolute_tol),self.maxdepth])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4681, in load
+    _raise_recorded_build_error(build_error)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3773, in _raise_recorded_build_error
+    raise replay from None
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "integrate" at /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py:126:
+    B=Bs[face,worst];old=vals[face,worst];L,H=bisect(B,X);a=evaluate_leaf(mesh,tri,L,X,V,areas[face],R,T,tv);b=evaluate_leaf(mesh,tri,H,X,V,areas[face],R,T,tv)
+;Error, assigning to existing symbol b (<class 'warp._src.types.vector.<locals>.vec_t'>) with different type (<warp._src.codegen.Struct object at 0x7a1b6e8c2180>)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py", line 142, in contact_force
+    wp.launch(integrate,self.nfaces,[self.cad.mesh.id,self.tri,wp.vec3d(self.cad.vertices.min(0)-2e-6),wp.vec3d(self.cad.vertices.max(0)+2e-6),self.hull,wp.mat33d(self.R),wp.vec3d(self.T0),wp.vec3d(self.travel),wp.float64(self.load),wp.float64(self.hold),self.clock,self.sptr,self.sids,self.sw,self.reference,self.areas,wp.float64(self.area_total),self.q,self.vh,self.polygon,self.Bs,self.vals,self.depths,self.leaves,self.queries,self.cf,self.cu,self.cp,self.power,self.moment,self.bad,self.capacity,wp.float64(self.relative_tol),wp.float64(self.absolute_tol),self.maxdepth])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4681, in load
+    _raise_recorded_build_error(build_error)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3773, in _raise_recorded_build_error
+    raise replay from None
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "integrate" at /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py:126:
+    B=Bs[face,worst];old=vals[face,worst];L,H=bisect(B,X);a=evaluate_leaf(mesh,tri,L,X,V,areas[face],R,T,tv);b=evaluate_leaf(mesh,tri,H,X,V,areas[face],R,T,tv)
+;Error, assigning to existing symbol b (<class 'warp._src.types.vector.<locals>.vec_t'>) with different type (<warp._src.codegen.Struct object at 0x7a1b6e8c2180>)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/static_gpu.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                      ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py", line 142, in contact_force
+    wp.launch(integrate,self.nfaces,[self.cad.mesh.id,self.tri,wp.vec3d(self.cad.vertices.min(0)-2e-6),wp.vec3d(self.cad.vertices.max(0)+2e-6),self.hull,wp.mat33d(self.R),wp.vec3d(self.T0),wp.vec3d(self.travel),wp.float64(self.load),wp.float64(self.hold),self.clock,self.sptr,self.sids,self.sw,self.reference,self.areas,wp.float64(self.area_total),self.q,self.vh,self.polygon,self.Bs,self.vals,self.depths,self.leaves,self.queries,self.cf,self.cu,self.cp,self.power,self.moment,self.bad,self.capacity,wp.float64(self.relative_tol),wp.float64(self.absolute_tol),self.maxdepth])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11292, in launch
+    module_exec = kernel.module.load(device, block_dim)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4681, in load
+    _raise_recorded_build_error(build_error)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3773, in _raise_recorded_build_error
+    raise replay from None
+warp._src.codegen.WarpCodegenTypeError: Error while parsing function "integrate" at /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/adaptive_gpu.py:126:
+    B=Bs[face,worst];old=vals[face,worst];L,H=bisect(B,X);a=evaluate_leaf(mesh,tri,L,X,V,areas[face],R,T,tv);b=evaluate_leaf(mesh,tri,H,X,V,areas[face],R,T,tv)
+;Error, assigning to existing symbol b (<class 'warp._src.types.vector.<locals>.vec_t'>) with different type (<warp._src.codegen.Struct object at 0x7a1b6e8c2180>)

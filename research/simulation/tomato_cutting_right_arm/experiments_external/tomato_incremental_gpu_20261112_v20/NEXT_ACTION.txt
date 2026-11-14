@@ -1,0 +1,10 @@
+NEXT DECISION — KEEP THE REFERENCE; DO NOT START RL
+
+V20 delivered verified implementation improvements, but the 60 mm changing-cut diagnostic is still about 3.7 single-environment transitions/s. Material-only batched rates are about 124-159/s and do not include the expensive geometry updates. Neither is a complete RL pass.
+
+The concrete remaining implementation work is to remove Python/ConvexHull and full GPU reconstruction from recurring cut events:
+1. Compile the existing convex-region clipping/moment operation and update only affected connectivity/mass neighborhoods, preserving all material and the exact v20 numerical representation. Compare partial bridges, cut history, root choices, all material vertices, volume, energy and momentum against the saved reference; do not infer accuracy from speed.
+2. Keep reusable GPU buffers and execution graphs across events, updating changed data and explicit counts. Handle capacity exhaustion visibly; never drop fragments or erase history. Batch independent event streams, not a shared future cut path.
+3. Measure the same 60 mm episode with reset, cut events, output and all setup costs counted. First meet a material/history cost envelope that leaves credible room for physical contact and robot work. The current 100 actual aggregate RL transitions/s requirement and preferred 500/s remain unchanged.
+
+This is a substantial implementation phase, not a finished feature. If a bounded prototype still misses the cost envelope, stop treating this backend as a near-term online-RL solution. A learned surrogate or a changed discretization would be a separate modeling decision with independent validation, not an automatic next patch. No such model change is implemented here. Keep Isaac/DiSECt unchanged and retain experimental validation as pending.

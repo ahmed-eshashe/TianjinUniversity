@@ -1,0 +1,21 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/cache/warp/1.17.0
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.77 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.60 ms  (cached)
+Module gather_advance_181eeb9d 4602f93 load on device 'cuda:0' took 0.63 ms  (cached)
+Module gather_advance_544b617c 9cbf462 load on device 'cuda:0' took 353.21 ms  (compiled)
+{'batch': 1, 'method': 'reference', 'samples_s': [0.016581544012296945, 0.01714645800529979, 0.01603376200364437], 'aggregate_material_control_steps_s': np.float64(60.308014697448904)}
+{'batch': 1, 'method': 'four', 'samples_s': [0.01697706700360868, 0.017074882998713292, 0.01792171600391157], 'aggregate_material_control_steps_s': np.float64(58.56555503632773)}
+{'batch': 1, 'method': 'one', 'samples_s': [0.0194289640057832, 0.020007943006930873, 0.01997181700426154], 'aggregate_material_control_steps_s': np.float64(50.07055691460734)}
+{'batch': 8, 'method': 'reference', 'samples_s': [0.06724639200547244, 0.06668637700204272, 0.06714199999987613], 'aggregate_material_control_steps_s': np.float64(119.15045724009947)}
+{'batch': 8, 'method': 'four', 'samples_s': [0.09807333399658091, 0.09982974799640942, 0.1010149689973332], 'aggregate_material_control_steps_s': np.float64(80.13643388429405)}
+{'batch': 8, 'method': 'one', 'samples_s': [0.12080867699114606, 0.11897864400816616, 0.12252759700641036], 'aggregate_material_control_steps_s': np.float64(66.22040899087332)}
+{'batch': 32, 'method': 'reference', 'samples_s': [0.3136588350025704, 0.30554852800560184, 0.3056470619922038], 'aggregate_material_control_steps_s': np.float64(104.69591885302084)}
+{'batch': 32, 'method': 'four', 'samples_s': [0.460506281000562, 0.4675926189956954, 0.498168379010167], 'aggregate_material_control_steps_s': np.float64(68.43563970006676)}
+{'batch': 32, 'method': 'one', 'samples_s': [0.6444646589952754, 0.6136592319962801, 0.6108394530019723], 'aggregate_material_control_steps_s': np.float64(52.14620481778066)}
+failed

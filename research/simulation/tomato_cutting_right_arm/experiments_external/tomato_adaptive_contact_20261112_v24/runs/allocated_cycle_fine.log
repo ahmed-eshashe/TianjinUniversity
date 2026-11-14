@@ -1,0 +1,56 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.69 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.42 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.54 ms  (cached)
+Module allocated_gpu 7d5f2a3 load on device 'cuda:0' took 3.94 ms  (cached)
+Module allocated_gpu defc4b8 load on device 'cuda:0' took 3.52 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.42 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.38 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.52 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.69 ms  (cached)
+Module contact_gpu_precise e89188c load on device 'cuda:0' took 0.73 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/allocated_contact_cycle.py", line 25, in <module>
+    t=time.perf_counter();g.checked_step(round(.00025/dt));stepcost=time.perf_counter()-t;wall.append(stepcost)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 153, in checked_step
+    if self.bad_view[0]:return self.finish()
+                               ^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 122, in finish
+    try:return super().finish()
+               ^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/pipeline_gpu.py", line 49, in finish
+    raise ValueError(('pipeline mechanics rejected; state rolled back',int(self.bad_view[0])))
+ValueError: ('pipeline mechanics rejected; state rolled back', 5)
+{
+  "status": "stopped",
+  "checks": {
+    "initial_volume_clear": true,
+    "initial_force_zero": true,
+    "complete_cycle": false,
+    "loaded": true,
+    "force_limit": true,
+    "volume_certificates": true,
+    "positive_J": true,
+    "no_cut_created": true,
+    "momentum_balance": true,
+    "energy_balance": true
+  },
+  "dt_s": 1.25e-05,
+  "size_m": 0.006,
+  "h_m": 0.003,
+  "adaptive_relative_tol": 0.0005,
+  "quadrature_spacing_m": null,
+  "surface_samples": 144,
+  "max_energy_residual_J": 3.4416335001586927e-11,
+  "max_energy_relative": 0.001008842181708255,
+  "max_impulse_balance_Ns": 6.485341609823174e-14,
+  "wall_s": 4.26730088799377,
+  "physical_cut": false
+}

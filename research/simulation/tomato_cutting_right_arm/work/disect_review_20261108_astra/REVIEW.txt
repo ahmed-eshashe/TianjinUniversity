@@ -1,0 +1,66 @@
+ASTRA REVIEW — DISECT CHECKLIST SECTIONS 1, 2 AND 3
+8 November 2026, Asia/Shanghai
+
+VERDICT
+Useful, mostly well-scoped numerical and geometry work; the original feasibility objective remains unmet. The inspected evidence supports the reported intact-settling and mass-preservation results. It does not establish a working, fast tomato-cutting backend. Do not enter section 4 on the strength of the current checklist count. The principal management issue is cumulative scope expansion into a custom forward-only FEM/contact solver, without an end-to-end cutting demonstration or acceptable throughput.
+
+REVIEW METHOD
+Read the original pasted feasibility request, section reports v01–v06, prospective contracts, implementation and saved results. Independently recomputed settling comparison, blade-force comparison, split element volumes/lumped masses and original checkpoint hash from saved arrays. Evaluated the written viscosity formula under a rigid-spin field as a static algebraic diagnostic. No dynamic run, parameter tuning, production change or checklist-status mutation was performed for this review. New files exist only in work/disect_review_20261108_astra/.
+
+SECTION 1 — HISTORICAL COMPONENTS: RETAIN THE SCOPED PASSES
+The mesher endpoint-reference lifetime repair is a credible source-level fix. Moving triangulation outside edge collection and independently checking coverage is appropriate. Two repaired forward examples exit normally; actual material separation was correctly not claimed. The example retains two nonzero-stiffness springs. Disabling PyTorch recording provides a forward-only shutdown workaround, not repaired differentiability.
+The original tomato cells were diagnostic volume cells, so rejecting them as a conforming FEM mesh was correct. The separately authorized tetrahedralization preserves exterior and support locations while changing the interior. These are useful input checks, not material-model equivalence.
+The relative-velocity hydrostatic damping correction addresses a concrete common-translation defect. Later float64 work addresses actual lost position increments. These checks were justified. The original checkpoint hash still matches dc6faaf7a834680a89014c86efe5ab056810e27c546baf9a56beb7706d044737.
+Assessment: section 1's eight historical component checks are defensible within their stated versions and limits. They should not be read as eight parts of a verified cutting assembly.
+
+SECTION 2 — NUMERICAL CONSISTENCY: THREE SCOPED PASSES, SPEED FAILURE IS REAL
+The implementation uses double state/rest geometry, independent numerical references and analytic motion tests. Saved v06 controls also recheck the corrected elasticity. The v05 report explicitly discloses its older diagonal-only invariant; its small-force agreement is implementation agreement, not proof of a correct material law. v06 subsequently corrects the invariant with separate energy and rotation controls.
+The IMEX/PCG route is a substantial custom numerical implementation. Its rejected CUDA-graph ownership bug and slower fused variants are preserved rather than promoted as successes. That is good practice.
+The fastest accepted v05 short comparison costs about272 wall seconds/simulated second versus its prospective120 limit. Later corrected settling costs769 and1291 wall seconds/simulated second. These are different cases, not a fair direct algorithm speedup comparison; all remain impractical for large learning cohorts. The original goal was a faster reliable cutting engine, not merely a finite bulk hold.
+Assessment: keep3/4 scoped numerical checks; do not accept the speed check. Before further solver development, require a concrete feasibility decision and a bounded performance target tied to the actual contact/cutting workload.
+
+SECTION 3 — GOOD INTACT SETTLING; CUTTING REMAINS UNIMPLEMENTED
+Independent recomputation agrees with saved settling results: maximum position discrepancy3.8291e-7m and global material-force relative discrepancy0.0002313. The late maximum speed is about0.0965mm/s against1mm/s. These are genuine intact-target component passes.
+The board implementation is a finite footprint applied to an inherited nodal penalty/friction model with1mm offset and25 fixed supports. Sustained support is verified for that arrangement; it does not show a freely resting tomato is stable or equivalence to native Isaac board contact.
+The new split preserves mass0.1216712654796547kg, has positive element volumes, and its saved lumped mass array matches independent recomputation exactly. Static geometry is sound within tested tolerances. Live cohesion, history evolution, cut-face contact and assembled dynamics are absent. An intact-target hold cannot validate the split assembly.
+The fracture-definition check is mathematical preparation only. There are still two alternatives: a time-normalized DiSECt weakening rule, and an offline transfer of the original47 cohesive groups. No final live fracture law is selected/qualified. Keep the narrow mathematical pass if desired, but the checklist should make this remaining design decision conspicuous.
+
+FINDINGS THAT SHOULD DRIVE THE NEXT DECISION
+1. HIGH — The candidate is now a custom solver whose cutting layer is missing.
+   backend/numerics.py disables gradients; the active blade adapter loads the intact mesh. The conforming split and47-patch mapping are offline files. No full-cut timing or detached-piece result exists. The official DiSECt method couples FEM with cut-plane springs, contact and damage; the current custom bulk implementation has not reproduced that full capability. Label it an experimental DiSECt-derived forward solver, not an adopted DiSECt cutting backend.
+   Lack of autodiff does not itself prevent ordinary RL or imitation. It does prevent claiming the paper's differentiable optimization capability has been retained. This distinction matters to later learning plans.
+
+2. HIGH — Mass conservation has come with potentially severe small-cell costs.
+   The split's minimum nodal mass is4.5978e-13kg versus6.5275e-8kg before splitting: about141,970 times smaller.141 cells have volumes below1e-13m3. This does not prove instability, but invalidates any assumption that intact-mesh timesteps/cost carry over. Evaluate quality and an appropriate timestep bound before a long assembled hold. Do not alter masses or delete cells to manufacture a pass.
+   The original-patch transfer samples231 used source points and directly touches301 of604 interface nodes on each side. That count alone does not prove an unstable mode, since bulk elasticity couples nodes. It does show that constant-gap energy checks cannot establish nonuniform interface restraint; independent nonuniform patch/closure tests are needed if this mapping is adopted.
+
+3. HIGH — The contact evidence is a two-node microscopic probe.
+   The prescribed downward stroke is60micrometres, with at most two active exterior nodes and peak resultant about0.953mN. This is useful as a contact smoke test, not representative cutting-load validation. Fixed per-node penalties and no area quadrature make changes in surface sampling a model concern. Surface-node-only contact also cannot guarantee collision coverage between nodes. Retaining the exact CAD triangles does not remove those limitations.
+   The adapter copies full position/velocity arrays from GPU to host and returns forces to GPU each tiny step. This is a visible performance concern, but no exact share of runtime is assigned without profiling.
+
+4. MEDIUM — Force refinement failure is localized and should be diagnosed precisely.
+   Independently reproduced worst vector discrepancy:10.0822% at8ms; absolute discrepancy7.93996e-5N. Both runs go from one active node at7.5ms to two at8ms. Peaks are0.952762 and0.955663mN, only about0.30% apart. This is evidence consistent with contact-onset/discretization sensitivity, not proof of its cause. The original5% gate still fails. A focused event-resolution/convergence check, if authorized as the next bounded task, is more justified than arbitrary damping/material changes.
+   Actual coarse probe runtime is82.824s for0.045 simulated seconds:1840.5 wall s/s, or30.7minutes per simulated second. Half-step probe:3345.2 wall s/s, or55.8minutes. These are measured averages of the short probe, not predictions of a full cut. The previous13–22minute statement described unloaded holds and understated the contact workload's observed cost.
+
+5. MEDIUM — The viscosity model still resists rigid rotation.
+   The retained Fdot damping produces nonzero resistance under pure rigid-spin velocity. Algebraic audit at1rad/s gives force norm0.00202977N, dissipated power0.00242507W and opposing torque0.00242507Nm. This is not a new failure of the corrected elastic invariant; it is a known class of limitation of the retained viscous model. Do not call the whole constitutive model rotation-objective. Decide whether that damping model is acceptable for the research task before generalizing learned paths; changing it would be a model decision, not a numerical tweak.
+
+SEPARATION-EVALUATOR NOTE
+The inspected upstream cut-spring force retains a kd*dcdt term when ke reaches zero. The actual prism configuration uses kd=0, so this is NOT an additional hidden bridge in those reported example runs. If future settings use nonzero spring damping, the evaluator must account for it. Zero elastic stiffness alone is not universally equivalent to no cross-cut material force. Intended unilateral cut-face collision should be distinguished from tensile/material connections.
+
+WHAT SOL DID WELL
+Preserved original evidence; sought model-changing decisions; retained failed outcomes; used independent geometry and motion references; distinguished net knife force from summed magnitudes; disclosed uncalibrated material/contact parameters and pending experiments. The inspected reports do not falsely claim completed separation. The problem is the cumulative cost and scope of repair, not a reason to discard every result.
+
+RECOMMENDED HANDOFF
+Pause expansion into section4 and avoid another long hold. First consolidate a one-page architecture decision: which actual cutting law is intended, which implementation will run it, and what short measured throughput would justify continuing on this laptop. Treat the current solver as an experimental option with an explicit development cost, not a default commitment.
+If continuing this exact candidate, the next narrowly justified actions are (a) one contact-onset/refinement diagnosis using the saved8ms event and (b) offline cut-mesh conditioning/timestep and cohesive-law design review. Only after their outcomes justify it should live assembly implementation and a short cut be scheduled. Do not stack further custom solver branches under a generic 'finish the section' instruction. No need to repeat already-supported settling tests on the unchanged intact model.
+For section4 planning, require a working assembled interface, checked contact coverage/forces and a credible runtime estimate before a full slicing run. Preserve the robot, kitchen, grip and motion interface. Experimental validation stays pending.
+
+PRIMARY METHOD CONTEXT
+https://diff-cutting-sim.github.io/ — FEM, cutting-plane springs, signed-distance contact, damage and differentiable optimization. Consulted8November2026. Method capability does not automatically transfer to a rewritten forward-only implementation.
+
+KEY LOCAL EVIDENCE
+Original request: /home/omen/.codex/attachments/1a79c016-86b5-4a8d-9b28-ea1b5a82871c/Pasted text.txt
+Reports: work/disect_feasibility_20261108_v01/REPORT.txt; work/disect_mesh_validation_20261108_v02/REPORT.txt; work/disect_objective_damping_20261108_v04/REPORT.txt; work/disect_numerics_20261108_v05/REPORT.txt; work/disect_precontact_20261108_v06/REPORT.txt
+Active implementations: v06/backend/numerics.py; backend/kernels.cu; contact_numerics.py; blade_contact.py; blade_numerics.py; settle.py; indent.py; fracture_rate.py; cohesive_mapping_proposal.py
+Independent review calculations: audit_saved_evidence.py and audit.json in this folder.

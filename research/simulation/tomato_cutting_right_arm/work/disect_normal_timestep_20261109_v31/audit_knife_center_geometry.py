@@ -1,0 +1,10 @@
+from pathlib import Path
+import sys,json,numpy as np
+from scipy.interpolate import PchipInterpolator
+W=Path(__file__).resolve().parent;R=W.parents[1];sys.path.insert(0,str(W.parent/'disect_adaptive_contact_20261109_v27'))
+from adaptive_contact import intersections
+from tomato_compiled_blade_query import query_mesh
+b=json.loads((W/'initial_entry_geometry_audit.json').read_text());f=np.array(b['front_point_m']);p=json.loads((W/'correction_plan.json').read_text());T0=np.array(p['selected']['translation_m']);curve=PchipInterpolator(*np.array(p['front_lateral_path_m']).T);raw=json.loads((R/'runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json').read_text());ref=np.load(R/'runs/offline/padded_cad_packet_20261102_01/cad_pressure_reference.npz');A=np.array([[1,0,0],[0,0,-1],[0,1,0]],float);Rmat=A.T@ref['rotation'];verts=np.array(raw['vertices'])@Rmat.T;faces=np.array(raw['triangles']);rows=[]
+for penetration in [.00025,.0005,.001,.002,.004,.008]:
+ d=b['initial_vertical_apex_clearance_m']+penetration;T=T0+[float(curve(d)),-d,0];v=verts+T;a=np.array([v[:,0].min()-.01,f[1],f[2]]);z=np.array([v[:,0].max()+.01,f[1],f[2]]);t=intersections(a,z,v,faces);t=t[np.r_[True,np.diff(t)>1e-12]];middle=(t[1:]+t[:-1])/2;phi=query_mesh(v,faces,a+middle[:,None]*(z-a))['phi'];inside=[(x,y) for x,y,h in zip(t[:-1],t[1:],phi) if h<0];assert len(inside)==1;x0,x1=[a[0]+u*(z[0]-a[0]) for u in inside[0]];rows.append(dict(apex_past_initial_front_m=penetration,world_downward_displacement_m=d,blade_interval_m=[float(x0),float(x1)],center_offset_from_initial_interface_m=float((x0+x1)/2-f[0])))
+out={'scope':'Pure exact-CAD cross-section/reference calibration. No material/force-law change, no selection based on damage. The last 8 mm row uses the existing linear lateral curve extrapolation only as a geometry diagnostic, not an executed trajectory.','rows':rows,'center_offset_range_m':float(np.ptp([r['center_offset_from_initial_interface_m'] for r in rows]))};(W/'knife_center_reference_geometry.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

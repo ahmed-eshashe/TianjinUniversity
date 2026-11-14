@@ -1,0 +1,38 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793526073.351435   14450 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793526073.351464   14450 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T09:41:13Z [0ms] [Error] [omni.core.ITypeFactory] Circular dependency detected! Interface: omni::platforminfo::ICpuInfo requested. But plugin with an interface: /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/kernel/plugins/libomni.platforminfo.plugin.so is already in resolving state.
+2026-11-01T09:41:13Z [0ms] [Error] [carb] [Plugin: gpu.foundation.plugin] Dependency: [omni::platforminfo::ICpuInfo v1.0] failed to be resolved.
+2026-11-01T09:41:13Z [28ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-11-01T09:41:15Z [2,211ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x5f825e379af0. Client: carb.scripting-python.plugin
+[INFO]: Registered backend 'physx' for factory Articulation.
+2026-11-01T09:41:17Z [3,758ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+2026-11-01T09:41:17Z [3,834ms] [Warning] [isaaclab.actuators.actuator_collection] Actuator groups cover 0 joints; expected 1 after accounting for fixed tendons.
+[INFO]: Simulation parameters for joints in /World/Hinge0:
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                    Simulation Joint Information (Prim path: /World/Hinge0)                                                     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name  | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | hinge |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+2026-11-01T09:41:17Z [3,855ms] [Warning] [isaaclab.actuators.actuator_collection] Actuator groups cover 0 joints; expected 1 after accounting for fixed tendons.
+[INFO]: Simulation parameters for joints in /World/Hinge1:
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                    Simulation Joint Information (Prim path: /World/Hinge1)                                                     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+| Index | Name  | Stiffness | Damping | Armature | Static Friction | Dynamic Friction | Viscous Friction |   Position Limits   | Velocity Limits | Effort Limits |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+|   0   | hinge |   0.000   |  0.000  |  0.000   |      0.000      |      0.000       |      0.000       | [-3.4e+38, 3.4e+38] |     5.9e+36     |     0.000     |
++-------+-------+-----------+---------+----------+-----------------+------------------+------------------+---------------------+-----------------+---------------+
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_hinge_interface_worker.py", line 77, in main
+    if not asset.is_fixed_base or asset.num_joints!=1 or asset.num_bodies!=2:raise ValueError('Expected one passive joint and fixed base')
+                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Expected one passive joint and fixed base
+[INFO]: SimulationContext cleared

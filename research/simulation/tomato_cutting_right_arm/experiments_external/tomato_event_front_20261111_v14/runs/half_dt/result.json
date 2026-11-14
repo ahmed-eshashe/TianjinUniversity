@@ -1,0 +1,125 @@
+{
+  "case": "half_dt",
+  "status": "completed",
+  "production_changed": false,
+  "physical_fracture": false,
+  "initial_energy_J": 5.839298593074185e-05,
+  "dt_s": 1.220703125e-08,
+  "probe_s": 2.5e-05,
+  "event_tolerance_s": 2.5e-10,
+  "initialization_s": 0.20550827399711125,
+  "activations": [
+    {
+      "time_s": 5.5591392517089846e-05,
+      "bracket_s": [
+        5.5591201782226565e-05,
+        5.5591392517089846e-05
+      ],
+      "bracket_width_s": 1.907348632816525e-10,
+      "changes": [
+        {
+          "piece": "root",
+          "complete": false,
+          "transfer": {
+            "x": 3.469446951953614e-18,
+            "v": 1.1102230246251565e-16,
+            "F": 1.5543122344752192e-15,
+            "energy": 0.0,
+            "energy_before": 5.839298323651359e-05,
+            "mass": 0.0
+          },
+          "partition": null,
+          "basis_sizes": {
+            "root": 684
+          }
+        }
+      ],
+      "energy_jump_J": 0.0,
+      "mass_jump_kg": 2.168404344971009e-19
+    }
+  ],
+  "cost": {
+    "trials": 22,
+    "GPU_steps": 17929,
+    "CPU_fractional_steps": 9,
+    "peak_array_bytes": 50055980,
+    "propagation_s": 24.35195997999108,
+    "geometry_s": 0.16085622300306568
+  },
+  "energy": [
+    {
+      "time_s": 5e-05,
+      "mass": 0.0017279999999999995,
+      "energy": 5.83929830981259e-05
+    },
+    {
+      "time_s": 0.0001,
+      "mass": 0.0017279999999999997,
+      "energy": 5.839298321556773e-05
+    }
+  ],
+  "final_dofs": 684,
+  "mass_kg": 0.0017279999999999997,
+  "final_energy_J": 5.839298321556773e-05,
+  "mass_condition": 359907.7010157952,
+  "cut_keys": 36,
+  "simulated_s": 0.0001,
+  "final_history": {
+    "axis": 0,
+    "plane": 0.0002999999999999999,
+    "rectangles": [
+      [
+        0.0059556447145041715,
+        0.006,
+        -0.006,
+        0.006
+      ],
+      [
+        0.005949999884648234,
+        0.006,
+        -0.006,
+        0.006
+      ],
+      [
+        0.005930238139617641,
+        0.006,
+        -0.006,
+        0.006
+      ],
+      [
+        0.005916778484488198,
+        0.006,
+        -0.006,
+        0.006
+      ]
+    ],
+    "stroke": {
+      "move": 1,
+      "sign": 1,
+      "start_bound": 0.006,
+      "edge_interval": [
+        -0.006,
+        0.006
+      ],
+      "segments": 4
+    }
+  },
+  "checks": {
+    "energy_5e-05": true,
+    "volume_5e-05": true,
+    "energy_0.0001": true,
+    "volume_0.0001": true,
+    "mass": true,
+    "clock": true,
+    "real_activation": true,
+    "bounded_events": true,
+    "unchanged_transfer_energy": true,
+    "unchanged_transfer_mass": true,
+    "uncut_bridge": true,
+    "restart_fingerprint": true,
+    "rejected_action": true,
+    "rejected_action_rollback": true
+  },
+  "wall_s": 25.434315546997823,
+  "peak_process_RSS_bytes": 683892736
+}

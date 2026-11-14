@@ -1,0 +1,35 @@
+NEXT PHASE — broader head-vision pickup
+
+Preserve hybrid_pickup_v07.py, its checkpoint and all results as the first limited
+baseline. Its fresh test result is 7/8, not universal pickup qualification. The
+original full image-to-joint student failures remain separate.
+
+1. Fix physical coverage before expanding learned motion.
+Use new development placements to address the observed dropped grip. Establish
+teacher pickups for the wider handle and heavier blade. The wider-handle probe
+retained contact but failed whole-tool clearance; the heavier blade stopped on
+pre-lift grip readiness. Keep the same friction, mass, actuator and contact limits.
+Do not count these inspected variant probes as future independent tests.
+
+2. Expand perception beyond the current flat-height assumption.
+Collect real head RGB-D after stable settling across supported board positions,
+angles, knife geometry and stable resting faces. Include failed estimates as
+rejections, not successful demonstrations. Learn/estimate grasp height, orientation
+and handle dimensions needed by the controller rather than supplying object truth.
+Keep any training labels and reset parameters out of deployed actor inputs.
+
+3. Reserve genuinely new evaluation cases before tuning.
+Keep geometry families, placement bins and resting-face combinations separate
+from development. Include occlusion, lighting and missing/invalid depth probes.
+Measure actual three-second unsupported retention, whole-tool clearance, drift,
+blade contacts, load/joint stops and drops; report each failure explicitly.
+
+4. Only then learn the full movement.
+Record successful contact demonstrations from the broadened task. Learn bounded
+motion corrections or imitation using images/proprioception; re-evaluate physically.
+Do not treat a good landmark score or a replay as a successful learned pickup.
+Large-scale RL throughput and transfer to a physical robot remain separate gates.
+
+The original kitchen/cutting/DiSECt setup remains unchanged. Board centering and
+head camera live in the isolated v32 scene. No attachment, suction, object drives
+or post-reset knife pose commands may be used to conceal a grasp failure.

@@ -1,0 +1,68 @@
+{
+  "status": "pass",
+  "checks": {
+    "identity": true,
+    "rotation": true,
+    "affine_compression": true,
+    "collapsed": true,
+    "inverted": true,
+    "saved_bad_cut_rejected": true
+  },
+  "results": {
+    "identity": {
+      "passed": true,
+      "reason": "certified",
+      "minJ_lower_bound": 0.9999999999998606,
+      "maxJ_upper_bound": 1.0000000000001084,
+      "observed_minJ": 0.9999999999998646,
+      "observed_maxJ": 1.0000000000000835,
+      "subcells": 512,
+      "depth": 0
+    },
+    "rotation": {
+      "passed": true,
+      "reason": "certified",
+      "minJ_lower_bound": 0.9999999999998366,
+      "maxJ_upper_bound": 1.0000000000001539,
+      "observed_minJ": 0.9999999999998823,
+      "observed_maxJ": 1.0000000000000795,
+      "subcells": 512,
+      "depth": 0
+    },
+    "affine_compression": {
+      "passed": true,
+      "reason": "certified",
+      "minJ_lower_bound": 0.4999999999998863,
+      "maxJ_upper_bound": 0.500000000000119,
+      "observed_minJ": 0.49999999999988987,
+      "observed_maxJ": 0.5000000000001048,
+      "subcells": 512,
+      "depth": 0
+    },
+    "collapsed": {
+      "passed": false,
+      "reason": "resolved_inadmissible_material_volume",
+      "observed_minJ": 0.0499999999999183,
+      "observed_maxJ": 0.05000000000009007,
+      "subcells": 512,
+      "depth": 0
+    },
+    "inverted": {
+      "passed": false,
+      "reason": "resolved_inadmissible_material_volume",
+      "observed_minJ": -1.0000000000001084,
+      "observed_maxJ": -0.9999999999998881,
+      "subcells": 512,
+      "depth": 0
+    },
+    "saved_bad_cut": {
+      "passed": false,
+      "reason": "resolved_inadmissible_material_volume",
+      "observed_minJ": -0.45809053203729705,
+      "observed_maxJ": 1.7289467486912118,
+      "subcells": 512,
+      "depth": 0
+    }
+  },
+  "scope": "Conservative Jacobian certificate of the declared trilinear material geometry; not correction of the failed bulk/contact update"
+}

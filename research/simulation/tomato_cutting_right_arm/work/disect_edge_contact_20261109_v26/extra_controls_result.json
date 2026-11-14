@@ -1,0 +1,67 @@
+{
+  "scope": "Component controls; not damage-enabled moving-contact or full-stroke qualification",
+  "whole_volume_negative_control": {
+    "passed": false,
+    "actual_violation": true,
+    "original_tet": 0,
+    "violating_point": [
+      -0.0005,
+      -0.0005,
+      -0.0005
+    ],
+    "minimum_sample_SDF_m": -0.0005,
+    "query_count": 1,
+    "depth": 0,
+    "wall_s": 0.24627729700023338
+  },
+  "whole_volume_positive_control": {
+    "passed": true,
+    "unresolved_cells": 0,
+    "depth": 0,
+    "query_count": 0,
+    "lower_bound_m": 0.0,
+    "minimum_sample_SDF_m": 0.0,
+    "wall_s": 4.8595999942335766e-05
+  },
+  "repeated_trial_history_pure": true,
+  "reset_clears_contact_and_fracture": true,
+  "coupled_final_quadrature": [
+    {
+      "run": "coarse",
+      "orders": [
+        512,
+        1024
+      ],
+      "force_quadrature_relative": 0.26545293152545485,
+      "passed": false
+    },
+    {
+      "run": "coarse",
+      "orders": [
+        1024,
+        2048
+      ],
+      "force_quadrature_relative": 0.1296110720537184,
+      "passed": false
+    },
+    {
+      "run": "fine",
+      "orders": [
+        512,
+        1024
+      ],
+      "force_quadrature_relative": 0.2654512632920108,
+      "passed": false
+    },
+    {
+      "run": "fine",
+      "orders": [
+        1024,
+        2048
+      ],
+      "force_quadrature_relative": 0.12960943760019722,
+      "passed": false
+    }
+  ],
+  "passed": false
+}

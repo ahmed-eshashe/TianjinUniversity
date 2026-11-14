@@ -1,0 +1,32 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/cache/warp/1.17.0
+Module solver 54e3d90 load on device 'cuda:0' took 0.68 ms  (cached)
+Module environment 9e98f36 load on device 'cuda:0' took 0.49 ms  (cached)
+{
+  "no_recontact_component_independence": {
+    "other_max_change_m": 1.645702596420051e-08,
+    "own_mean_change_m": 0.0001587690057931468,
+    "bad": [
+      [
+        0
+      ],
+      [
+        0
+      ]
+    ],
+    "pass": true
+  },
+  "selective_reset_exact": true,
+  "other_environment_preserved": true,
+  "timeout": true,
+  "invalid_action_rejected": true,
+  "penetration_rejected": true,
+  "finite_observations_rewards": true,
+  "note": "Physical recontact can transmit forces between disconnected pieces; that is intentional. The independence fixture disables contact only to isolate cohesive coupling. Production task keeps recontact enabled.",
+  "pass": true
+}

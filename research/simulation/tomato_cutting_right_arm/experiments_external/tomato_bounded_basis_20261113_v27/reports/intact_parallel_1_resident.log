@@ -1,0 +1,79 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.51 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.40 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.58 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.45 ms  (cached)
+Module sparse_contact_gpu efec94e load on device 'cuda:0' took 0.56 ms  (cached)
+Module hierarchical_contact_gpu 804955a load on device 'cuda:0' took 0.55 ms  (cached)
+Module compact_contact_gpu ed5099e load on device 'cuda:0' took 1.52 ms  (cached)
+Module grid_quadrature b98015d load on device 'cuda:0' took 0.60 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.40 ms  (cached)
+Module resident_clearance 08e3934 load on device 'cuda:0' took 167.18 ms  (error)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/tests/intact_resident_budget.py", line 23, in <module>
+    g.resident=ResidentProof(g,g.volume_certificate);g.resident.graph(n)
+                                                     ^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/src/resident_clearance.py", line 107, in graph
+    g=self.g;wp.load_module(device='cuda:0')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 12257, in load_module
+    force_load(device=device, modules=modules, block_dim=block_dim, max_workers=max_workers)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 12095, in force_load
+    m.load(d, block_dim=dim)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4736, in load
+    raise e
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4733, in load
+    compiled = self._compile(device, module_dir, output_name, output_arch, options=options)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4495, in _compile
+    source_str, source_code_ext, meta, ltoir_values, fatbin_values = self._run_codegen(options, is_cpu)
+                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 4365, in _run_codegen
+    builder = ModuleBuilder(
+              ^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3121, in __init__
+    self.build_kernel(kernel)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 3240, in build_kernel
+    kernel.adj.build(self)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 1732, in locked_call
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2200, in build
+    raise type(original_exc)(*new_args).with_traceback(original_exc.__traceback__) from None
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2181, in build
+    adj.eval(adj.tree.body[0])
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3354, in emit_FunctionDef
+    adj.eval(f)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3383, in emit_If
+    cond = adj.eval(node.test)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 6075, in eval
+    return emit_node(adj, node)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 3486, in emit_Compare
+    return adj.add_comp(op_strings, left, comps)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2484, in add_comp
+    comp_var = adj.load(comp)
+               ^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/codegen.py", line 2460, in load
+    if is_reference(var.type):
+                    ^^^^^^^^
+AttributeError: Error while parsing function "record_force" at /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/src/resident_clearance.py:33:
+ if k>=trace.size:wp.atomic_max(bad,0,5);return
+;'int' object has no attribute 'type'

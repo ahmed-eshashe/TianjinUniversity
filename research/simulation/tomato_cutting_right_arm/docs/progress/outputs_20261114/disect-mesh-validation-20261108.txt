@@ -1,0 +1,44 @@
+DiSECt mesh validation and authorized tomato remesh — 8 November 2026
+
+RESULT
+Prism cut-surface repair PASS within the established forward example. Authorized separate tomato FEM mesh INPUT PASS. First intact-tomato gravity test FAIL: nonfinite state at first sampled interval, 100 steps / 0.001 simulated seconds. No contact, fracture, full separation, robot integration or training was attempted. The stability gate remains open; no replacement engine adopted. Original production checkpoint 6925 remains paused and its hash matches v01.
+
+PRISM REPAIRS AND VALIDATION
+The boundary polygon was triangulated repeatedly inside its edge-collection loop. Moving triangulation after the loop removes the duplicate faces. Coincident plane/vertex intersections also generated roundoff-scale zero-measure triangles. A documented relative floating-point area test skips those surface triangles during construction. It does not remove cutting springs or material connections. Both patch variants and failed intermediate mesh audit are retained.
+After the final patch: 1223 combined cut faces, 1058 virtual cut faces, 529 on each side. All audited face arrays have zero degenerate faces (area threshold 1e-15 m2) and zero duplicate unoriented triangles. Minimum combined face area is 4.77e-9 m2, far above that threshold.
+Independent Shapely polygon unions verify each cut side covers the full 0.005 m2 prism section: uncovered area 0, outside area 8.72e-20 m2 and overlap area ~1.73e-18 m2. Sides have the same geometric triangles with opposite normals. Particle positions, tetrahedra, original exterior triangles, edge interpolation indices/coordinates and cutting spring indices are bitwise unchanged against v01. Material/contact laws and compiled force kernel binary were not changed.
+Two complete 50,000-step / 5-second forward runs exit normally. Setup: 8.730 and 9.054 s; stepping: 8.540 and 8.744 s; 1.708 and 1.749 wall seconds per simulated second. All sampled states finite; final minimum signed tet volume ratios ~0.99417, no final inversion. Max repeated node difference 0.264 mm. Two cutting springs retain nonzero stiffness in each run: this example does not demonstrate complete detachment. No gradient/backward qualification. Torch peak allocations are narrower than whole GPU process memory; no new total GPU memory comparison is claimed.
+
+ORIGINAL TOMATO INPUT AUDIT
+Exact coordinate welding for AUDIT ONLY gives 3775 unique points from the original 4032 nodes. Original diagnostic volume cells have positive volumes and correct total volume, but 4688 faces are unpaired internally under the conforming-element test; total area 0.0496 m2. Exposed edge incidences include 4, 6 and 8. These cells were explicitly generated as volume quadrature/inversion diagnostics, not FEM elements. This finding does not invalidate the original spring/volume model.
+The original outer surface is separately sound for this preparation: 4608 nondegenerate, nonduplicate faces, 2306 used surface vertices, every exterior edge incident on two faces, positive enclosed volume 0.000121253418423 m3. It can be retained while constructing a different conforming interior.
+
+AUTHORIZED NEW MESH
+The user selected "Build the separate FEM mesh (Recommended)." TetGen 0.8.4 constrained tetrahedralization used the same exterior facets, no boundary bisection, quality target 1.6 / 5 degrees and max cell volume 1e-8 m3. Original 25 support coordinates were explicitly included. This was one meshing route, not a parameter sweep.
+Output: 5762 nodes, 28727 tetrahedra; all positive volumes; no unpaired interior faces or nonmanifold faces; all 4608 exterior faces retained. Total volume agrees to ~1e-16 relative; total lumped mass is 0.121671265480 kg with uniform density 1003.446064 kg/m3. Support coordinate error is exactly zero. Minimum 6V/maxedge^3 quality is 0.00586 versus ~0.000211 in old cells; this is one quality metric, not a CFL stability proof.
+Shape, mass, cut location and support coordinates are retained. Internal discretization and mass lumping changed. E=30000 Pa, nu=0.25 are the original synthetic affine central-force bulk reference, not proof that DiSECt FEM reproduces the original relaxed bulk, skin or cohesive fracture response. See MODEL_MAPPING.txt.
+
+FIRST UNLOADED COMPONENT TEST
+Contract saved before execution in settle.tomato.contract.json. Intact new mesh BEFORE any cutting interface; original 25 supports fixed; proper coordinate rotation (new x,y,z)=(old x,old z+0.002,-old y); infinite ground-plane proxy. Synthetic E=30000 Pa, nu=0.25; example bulk damping=10, ground ke=1000, kd=0, friction=0.2; timestep 1e-5 s; intended duration 1 s. These contact/damping choices are disclosed example settings, not calibrated original-board equivalence.
+Several setup-only attempts exposed assumptions in the old wrapper: integer rotation-axis conversion, missing articulation/knife state for a no-knife case, and an incorrectly sized temporary joint buffer. They produced no usable physical traces and are preserved separately. Final adapter retains a remote prescribed articulation solely for upstream state-layout compatibility and zero-length knife-force storage with no cut springs. No blade-food contact is enabled. No force kernel source was modified for these adapters.
+The usable test exited normally with an explicit FAIL after its first scheduled sample at 100 steps, t=0.001 s. Positions/velocities and volume ratios were nonfinite. Cause is NOT established. The selected explicit timestep/damping/mesh combination is a hypothesis to assess, not a diagnosis. Runtime ~0.032 s over this failed interval is not a valid stable-throughput benchmark. Board penetration and support error cannot be evaluated from NaN coordinates; zeros printed by the raw scalar aggregation must not be treated as passes. No physical retry, timestep sweep or material tuning followed.
+Saved settled_tomato.npz is a FAILED state artifact, not an accepted equilibrium checkpoint.
+
+NEXT FOCUSED ACTION
+Retain the new mesh and diagnose the initial stability failure with independent rest-force, finite initial-state/pose, mass and explicit-step/damping bounds before another physical test. Derive a defensible timestep from the actual FEM mesh and damping; do not copy the prism's timestep or tune damping until it looks stable. If a bounded correction is justified, preregister a short rest/gravity rerun and its cost, then require stable unloaded behavior before inserting the fracture interface or running contact. Do not resume the original slow production run.
+Before contact/cutting there are additional explicit limits: production uses a five-parameter analytic knife SDF, so importing the original knife triangles alone does not make contact use that shape. The alternate triangle branch is unqualified. The supplied damage update weakens cutting springs per invocation without explicit dt normalization, so naive timestep refinement changes failure rate. These require scoped mapping/validation, not hidden blade substitution or fitted separation parameters. No additional branch was launched here.
+
+STATUS
+Example software compatibility: forward-only pass.
+Prism cut-surface geometry: pass within tested section.
+Original tomato cells as direct conforming FEM input: fail; preserved unchanged.
+Authorized new tomato FEM mesh input: pass.
+Unloaded new tomato stability: fail at first sample.
+Tomato contact/cut/separation: untested.
+Robot-integrated cutting: untested in DiSECt.
+Experimental validation: pending.
+
+EVIDENCE
+result.json; mesh_repairs.patch; prism_coverage_audit.json; mesh_audit.json; repeat02/03_result.json and final states/logs; tomato_fem_audit.json; exterior_input_audit.json; tomato_remesh_result.json; tomato_fem_mesh.npz; user_mesh_authorization.json; settle.tomato.contract.json; settle_tomato.py; settle.log; settle_result.json; MODEL_MAPPING.txt; production_integrity.json.
+Dependency targets audit_deps and mesh_deps are local to this study; production Python environments were not changed. An initial rebuild command targeted unchanged v01 source and refreshed its build log; historical simulation reports, failures and production inputs were not overwritten. Subsequent builds and all new outputs are in v02.
+Source/API reference: https://tetgen.pyvista.org/api.html . Geometry, timing and failure results above are local measurements.

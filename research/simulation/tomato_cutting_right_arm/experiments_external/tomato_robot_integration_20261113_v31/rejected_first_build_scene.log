@@ -1,0 +1,9 @@
+Warning: in _ReportErrors at line 3309 of /builds/omniverse/usd-ci/USD/pxr/usd/usd/stage.cpp -- Could not load sublayer @/home/omen/Aperdata-SimReady-Kitchen-01/0_Kitchen_Indoor/SubUSDs/textures/UnitsAdjust-238947e75d6c04db8e8a7b24e401cb90.metricsAssembler@ of layer @/home/omen/Aperdata-SimReady-Kitchen-01/0_Kitchen_Indoor/Indoor.usd@; skipping. (recomposing stage on stage @/home/omen/Documents/Codex/experiments/tomato_robot_integration_20261113_v31/robot_kitchen_straight_blade.usda@ <0x56075fec79b0>)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_robot_integration_20261113_v31/build_scene.py", line 53, in <module>
+    q,origin,pe,re=solve_tool(proxy,q);entry.append({'time':u*6,'q':q.tolist(),'proxy':proxy.tolist(),'origin':origin.tolist(),'error_m':pe,'error_rad':re})
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_robot_integration_20261113_v31/build_scene.py", line 48, in solve_tool
+    if pe>1e-4 or re>1e-3:raise ValueError(('IK error',proxy,pe,re))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('IK error', array([-0.02272463,  0.10276507, -0.06943768]), 0.000288002913743649, 0.003617397246296752)

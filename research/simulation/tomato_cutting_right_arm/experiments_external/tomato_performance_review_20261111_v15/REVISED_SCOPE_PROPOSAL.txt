@@ -1,0 +1,22 @@
+PROPOSED NEXT SCOPE — NOT IMPLEMENTED OR ADOPTED
+
+Objective: decide whether a different, deliberately approximate local-state formulation is worth further development. Do not try to turn the present exact-integration reference into the production RL engine.
+
+Candidate direction: fixed-reference particle/grid mechanics with compact local logical states and persistent blade-generated side history, informed by BladeMaster. Use millimetre-scale candidate resolution initially, not the current 50 um refinement layer. Avoid a global dense consistent-mass inverse. Retain the existing constitutive law initially where compatible so the numerical changes remain distinguishable; local nodal mass/transfer would still be a new inertia approximation requiring explicit approval and revalidation. Do not simply lump the existing enriched mass matrix or silently reuse failed v01-v03 updates.
+
+A. Before implementation, specify the complete position, velocity and deformation-gradient updates, mass/volume quadrature, cut-state transfer and minimum supported slice thickness. Explain how the earlier missing-strain, rank/sampling and post-withdrawal coupling defects are prevented. State what accuracy differs from v14. The 0.1 mm contact limit and 2 N stop are not waived; leave physical qualification blocked if the candidate cannot prove them.
+
+B. If approved, cap the first pilot at four focused hours, with both mechanics and cost checked in its first hour. Use a 12 mm material block and compare against v14 only at matched physical initial states/loads; geometric release rules/resolution must be reported separately. First tests: affine extension/shear and strain energy, rigid motion, momentum, volume, mass, partial intact bridge, completed-cut independence after withdrawal, and restart. A fast-looking groove is not a pass. No physical tomato/robot run in this pilot.
+
+C. Freeze a stable, converged timestep based on measured field/force/energy comparisons, not on a desired runtime. Report the numerical approximation and error. Start a separate 60 mm simple-body cost sample only after mechanics passes; count actual particles, active logical states and history capacity. Measure one and, if memory permits, four/eight copies. Include actual evolving-history work, not only intact dynamics.
+
+D. Early stop: if the complete simple-body material/history loop cannot sustain the project 100 aggregate 50 Hz transitions/s entry screen, do not call it RL-capable or extend the pilot to kitchen visuals. If only real-time interaction is plausible, label it interactive/offline-imitation only and return that decision. The eventual fully coupled engine must independently meet the same throughput target; a material-only pass is necessary but not sufficient.
+
+E. Stop on failed mechanics, fragment independence or exhausted budget with one concrete diagnosis. No automatic engine shopping, repeated repair chain, lowered physical limits, softened material or invented separation. Preserve all existing evidence and Isaac/DiSECt setup.
+
+This is a new numerical-model scope. The performance review authorizes this proposal, not implementation of changed inertia/accuracy. Experimental tomato validation remains pending. The literature supports testing the direction, not a promise of speed or accuracy on this laptop.
+
+References:
+https://arxiv.org/html/2609.27342v1 (local TLMPM state and persistent cut-label design)
+/home/omen/Documents/Codex/experiments/cressim_20261110/REPORT.txt (fast local example but failed independence)
+/home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/REPORT.txt (current no-go evidence)

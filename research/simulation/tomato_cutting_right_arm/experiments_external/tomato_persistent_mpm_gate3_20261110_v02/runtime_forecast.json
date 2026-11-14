@@ -1,0 +1,91 @@
+{
+  "results": [
+    {
+      "case": "edge_clock",
+      "particles": 512,
+      "dt_s": 1.25e-05,
+      "sim_s": 0.013000000000000244,
+      "wall_s": 11.65357016300004,
+      "wall_s_per_sim_s": 896.4284740769093,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "edge_clock_half",
+      "particles": 512,
+      "dt_s": 6.25e-06,
+      "sim_s": 0.012999999999999588,
+      "wall_s": 22.994122206999236,
+      "wall_s_per_sim_s": 1768.7786313076897,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "broad_clock",
+      "particles": 512,
+      "dt_s": 1.25e-05,
+      "sim_s": 0.013000000000000244,
+      "wall_s": 14.667655946001105,
+      "wall_s_per_sim_s": 1128.2812266154485,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "broad_clock_half",
+      "particles": 512,
+      "dt_s": 6.25e-06,
+      "sim_s": 0.012999999999999588,
+      "wall_s": 28.076912680000532,
+      "wall_s_per_sim_s": 2159.762513846263,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "recontact_rhs_fixed",
+      "particles": 512,
+      "dt_s": 1.25e-05,
+      "sim_s": 0.029999999999998736,
+      "wall_s": 21.301072062999083,
+      "wall_s_per_sim_s": 710.0357354333327,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "recontact_rhs_fixed_half",
+      "particles": 512,
+      "dt_s": 6.25e-06,
+      "sim_s": 0.029999999999997716,
+      "wall_s": 42.95606749199942,
+      "wall_s_per_sim_s": 1431.8689164000896,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "recontact_spectral",
+      "particles": 512,
+      "dt_s": 5e-07,
+      "sim_s": 0.012000000000001674,
+      "wall_s": 326.7228901899998,
+      "wall_s_per_sim_s": 27226.90751582952,
+      "status": "completed",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    },
+    {
+      "case": "paid_cut_refined_guard",
+      "particles": 512,
+      "dt_s": 1.25e-05,
+      "sim_s": 0.029174999999998827,
+      "wall_s": 63.38684537100016,
+      "wall_s_per_sim_s": 2172.642514858705,
+      "status": "reconstructed_volume_stop",
+      "includes": "Bulk, actual contact queries, CPU geometry checks and sparse evidence writing; excludes scene rendering and initial reconstruction setup."
+    }
+  ],
+  "RL_ready": false,
+  "interactive": false,
+  "tomato_scaling_forecast": "Not justified from these 512-particle coupons. No 64k or batched throughput claim.",
+  "control_period_s": 0.02,
+  "optimistic_contact_coupon_wall_s_per_20ms": 14.200714708666654,
+  "finest_recontact_wall_s_per_20ms": 544.5381503165904,
+  "decision": "Correct the discretization first; do not use an unphysical fast run as an RL benchmark."
+}

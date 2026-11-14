@@ -1,0 +1,53 @@
+V19 SELECTIVE AGGREGATION — COMPLETED ISOLATED TRIAL
+Updated: 2026-11-12T18:19:34.366559+08:00
+
+RESULT
+The selective numerical correction passes the tested component accuracy gates under the user's explicitly approved material-weighted velocity norm. Strict CPU/GPU equivalence also passes. A single force-caching optimization improves the difficult corner-cut throughput substantially. The complete RL speed gate is NOT passed: material dynamics alone are approximately 100 equivalent 50 Hz steps/s, excluding every cut update, blade contact, robot and policy. No new physical tomato cut was run. Isaac/DiSECt and all 1800 protected files are unchanged.
+
+WHAT CHANGED
+The v18 rule constrained all cut-only nodes and distorted force response. V19 retains substantially supported cut-region nodes, extending only very weakly supported ones (original row-sum nodal mass / rho h^3 < 1e-8, no full-tetrahedron support). Exact reduced inertia A^T diag(m) A is retained, never relumped. Material law remains compressible neo-Hookean E=100 kPa, nu=0.4, rho=1000 kg/m^3. This is an isolated experimental virtual-node FEM adaptation, not official CRESSim or DiSECt and not a calibrated tomato.
+
+APPROVED ACCURACY CONTRACT
+The strict original local-velocity failures are preserved. The user then approved a mass-weighted velocity check for cross-representation, projection and timestep comparisons. We use a conservative bound: the maximum vertex error in each convex material polyhedron, squared and weighted by actual material mass, followed by a square root. There is no cancellation of opposing velocities. The bound must be <=5 mm/s. Maximum local velocity remains visible; every-point position at sampled times, force and energy criteria are unchanged. Strict same-operator CPU/GPU tolerances remain position 1 micrometre, velocity 0.1 mm/s, deformation-gradient error 1e-4.
+No blade-force or penetration tolerance was relaxed. Those physical checks have NOT yet been exercised by this bulk-material candidate.
+
+VERIFIED COMPONENT RESULTS
+- 62 algebra controls at the final 1e-8 selector pass: positive reduced mass, rank, affine reproduction, force/energy gradients, objectivity, force/torque and selected fragment-independence checks.
+- Eight 24 mm block response cases pass at 12.5 us, with 6.25 us candidate and 0.25/0.125 us original-reference controls: intact, oblique, partial, additional signed-diagonal direction, and four near-corner offsets (130, 10, 1 and 0.1 micrometres). Comparisons cover 20 ms at 1% compression plus 0.5% shear, sampled every 1 ms. The 25 us trials were rejected and remain recorded.
+- Worst accepted cross-representation position error: 0.003439 mm (limit 0.1 mm).
+- Worst material-weighted velocity bound: 2.845 mm/s (limit 5 mm/s).
+- Largest pointwise velocity difference: 83.648 mm/s. This would FAIL the original 5 mm/s pointwise contract. The norm approval is material to the result; this is not an every-point velocity pass.
+- Worst internal nodal-force RMS error: 1.563% (limit 5%, with the existing 1e-5 N absolute floor). These are INTERNAL material forces, not measured knife forces or cutting work.
+- Worst sampled numerical energy residual: 0.0433% (limit 5%). No damping or energy correction is added.
+- Loaded projection through partial/completed cuts and four geometric cut slots, restart, and short 60 mm block comparisons at 6/3 mm grids pass their recorded checks. Larger-block windows are 5/2 ms, not a full episode. After the third/fourth geometric cuts, 10/18 weak nodes lack a suitable root and remain independent; their later dynamic timestep is not qualified.
+- Eight strict CPU/GPU checks pass, including external-force direction change, three-environment independence and loaded restart. Maximum field discrepancies in the five trajectory cases are about 1.83 nm position, 0.0128 mm/s velocity and 1.21e-6 deformation gradient.
+
+GPU COST AND EQUIVALENT OPTIMIZATION
+GPU: RTX 5060 Laptop, 8 GiB, mains power, headless. Fixed-topology timing uses a 60 mm cubic block at 6 mm grid spacing, 12.5 us substeps and 0.1% compression + 0.05% shear. This timing load is lower than the 1% accuracy fixtures. Resolution, shape and physics differ from a full tomato/knife scene; do not claim an apples-to-apples speedup over the research cutting solver.
+One 50 Hz equivalent step means advancing ONE body's material state by 20 ms (1600 substeps). Batch throughput counts all bodies. It is not rendering FPS or full environment transitions.
+
+Case      Batch   Equiv steps/s  Batch wall ms / 20 ms sim
+intact        8       111.37          71.83
+oblique       8        99.00          80.81
+corner        8       106.60          75.05
+
+Intact: 6000 regions / 1331 nodes. Oblique: 6840 regions / 1661 original nodes / 1659 reduced nodes. Corner: 7338 regions / 1837 original / 1752 reduced nodes, 85 extended nodes, largest mass block 24. Three identical-state timing repeats; setup/reset/export excluded, state backup and validity synchronization included.
+The original fused kernel regathered force repeatedly within coupled mass blocks. Caching each force once changes no equation. A matched alternating-order comparison over five repeats at batch eight improved corner throughput from 31.81 to 102.64 equivalents/s, a 3.23x speedup. Exported position, velocity and deformation gradient were identical in this comparison. Single-body speedup was 5.55x. A ten-control-step continuous run at batch eight reached 103.62/s over 0.2 simulated seconds/body, with 0.0117% energy residual; this is an energy screen, not a long-horizon response validation.
+Array memory for the cached corner case is 12.36 MB at batch eight and 98.85 MB at batch 64, including backups and benchmark reset copies. CUDA context/graphs, other applications and robot/policy memory are excluded.
+CPU geometry rebuild alone takes about 0.76 s (oblique) / 0.91 s (corner); aggregation adds 0.34 / 0.61 s. GPU data/graph setup adds roughly 0.77-1.11 s per measured batch. These costs are excluded from the steady material rates and are not amortized into a claimed complete-environment rate.
+
+DECISION AND NEXT STEP
+This trial solves the tested representation mismatch under the approved norm and accelerates the coupled GPU mass solve. It does not establish an RL-ready model. The project entry target is >=100 ACTUAL environment transitions/s; preferred is >=500. Material-only rates around 99-111/s have little headroom and miss the 200-300/s planning allowance for material/history/contact.
+Stop this bounded performance branch after its one equivalent optimization. Preserve this implementation as a component reference. The next scoped performance effort should address local cut-geometry updates and the remaining material-kernel cost before long physical cutting or robot integration; see NEXT_ACTION.txt. Do not spend days on cuts using the global CPU rebuild, or silently coarsen/soften/change timesteps to claim speed.
+
+LIMITS
+Prescribed geometric plane cuts only; no work-driven fracture, physical blade reaction, collision/recontact, board/support or full slice in v19. Current block tests do not prove arbitrary paths, tiny-fragment robustness, spatial convergence or anatomical tomato behavior. Mass-weighted agreement does not guarantee local contact behavior near a rapidly moving tiny region. Source-root selection is history/component compatible but not a general proof of face-adjacent material connectivity around curved or partial cracks. No experimental validation, policy training, current demo changes or production adoption.
+
+EVIDENCE
+contract.json / VELOCITY_CRITERION_PROPOSAL.txt: explicit approval and criteria.
+response.json, final_selector.json, history_and_holdout.json, heldout_reference_audit.json, velocity_metric_audit.json: retained strict-contract failures and diagnosis.
+weighted_response.json, weighted_extra.json, stage_A.json: approved component qualification.
+gpu_validation.json, cache_control.json: final GPU precision, cache equivalence, phase/restart and short continuous energy screen.
+cost.json, cost_cached.json: synchronized timings and preparation costs.
+preservation.json: 1800 protected files unchanged.
+FORMULATION.txt / src / tests: representation, implementation, reproducible controls.

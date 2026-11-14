@@ -1,0 +1,73 @@
+#usda 1.0
+(
+    metersPerUnit = 1
+    subLayers = [
+        @/home/omen/teamwork_projects/tomato_cutting_right_arm/work/backward_elbow_20261105/backward_elbow.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "Indoor"
+{
+    over "RZ"
+    {
+        over "SM_kitchen_Board"
+        {
+            matrix4d xformOp:transform:headVisionBoard = ( (-5.990455782660422e-7, 0.9999999999998208, 0, 0), (-0.9999999999998208, -5.990455782678693e-7, 0, 0), (0, 0, 1, 0), (-2.3843094031304837, -2.41888104499712, 0.8399309246488139, 1) )
+            uniform token[] xformOpOrder = ["xformOp:transform:headVisionBoard"]
+        }
+    }
+}
+
+over "PickupFixture" (
+    active = false
+)
+{
+}
+
+over "dual_ar5_o6"
+{
+    over "Physics"
+    {
+        over "cutting_tool_mount" (
+            active = false
+        )
+        {
+        }
+    }
+
+    over "MountedKnife"
+    {
+        rel physics:filteredPairs = None
+        bool physics:kinematicEnabled = 0
+        bool physics:rigidBodyEnabled = 1
+        matrix4d xformOp:transform:freeKnife = ( (2.220446049250313e-16, 1, 0, 0), (-1, 2.220446049250313e-16, 0, 0), (0, 0, 1, 0), (-0.09999999999999998, -0.574356736117367, 0.010962271735072136, 1) )
+        uniform token[] xformOpOrder = ["!resetXformStack!", "xformOp:transform:freeKnife"]
+    }
+
+    over "Geometry"
+    {
+        over "world"
+        {
+            over "torso_base_link"
+            {
+                def Camera "HeadRGBD"
+                {
+                    float2 clippingRange = (0.03, 3)
+                    float focalLength = 13.5
+                    float horizontalAperture = 20.955
+                    float verticalAperture = 15.71625
+                    matrix4d xformOp:transform = ( (-0.9999999999999435, 3.371747939228385e-7, 0, 0), (-2.2602536790470744e-7, -0.6703507259918747, 0.742044408483829, 0), (2.50198670522483e-7, 0.7420444084837869, 0.6703507259919128, 0), (0.3477365777165344, 0.05873171449741538, 1.3566160089768697, 1) )
+                    uniform token[] xformOpOrder = ["xformOp:transform"]
+                }
+            }
+        }
+    }
+}
+
+over "CuttingTargetVisual" (
+    active = false
+)
+{
+}
+

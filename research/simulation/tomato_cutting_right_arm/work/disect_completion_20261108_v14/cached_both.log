@@ -1,0 +1,29 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.12 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.88 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 3.14 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 9.14 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 3.26 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1.11 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.95 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.39 ms  (cached)
+NEWTON [{"iteration": 0, "residual": 0.016693540034590202, "cg_info": 0, "matvecs": 53, "true_linear_relative_residual": 0.00028118142264722064}, {"iteration": 1, "residual": 5.398756586284831e-05, "cg_info": 0, "matvecs": 88, "true_linear_relative_residual": 0.0008602368873110539}, {"iteration": 2, "residual": 6.068898412218584e-06, "cg_info": 0, "matvecs": 115, "true_linear_relative_residual": 5.114876096831895e-05}, {"iteration": 3, "residual": 2.259566674860146e-06, "cg_info": 0, "matvecs": 94, "true_linear_relative_residual": 9.327522355509373e-05}, {"iteration": 4, "residual": 1.5215491531382375e-06, "cg_info": 0, "matvecs": 81, "true_linear_relative_residual": 0.00012667183656605736}, {"iteration": 5, "residual": 2.861054880487797e-07}]
+NEWTON [{"iteration": 0, "residual": 0.016209692660684095, "cg_info": 0, "matvecs": 52, "true_linear_relative_residual": 0.0003714068720054079}, {"iteration": 1, "residual": 0.00011349812042031278, "cg_info": 0, "matvecs": 96, "true_linear_relative_residual": 0.0007683195421271775}, {"iteration": 2, "residual": 1.489995118992621e-05, "cg_info": 0, "matvecs": 99, "true_linear_relative_residual": 0.00014047227328193456}, {"iteration": 3, "residual": 2.8017687289485923e-06, "cg_info": 0, "matvecs": 97, "true_linear_relative_residual": 8.594252645893352e-05}, {"iteration": 4, "residual": 5.875980248063658e-07}]
+{
+  "scope": "Bounded coupled implicit numerical candidate; unchanged material laws, lagged viscous geometry and friction normal",
+  "bulk_energy_force_max_error_N": 1.7322423115611112e-16,
+  "stop": "completed",
+  "dt_s": 0.0005,
+  "wall_s": 24.351579317008145,
+  "max_force_residual_N": 5.875980248063658e-07,
+  "component_passed": true
+}

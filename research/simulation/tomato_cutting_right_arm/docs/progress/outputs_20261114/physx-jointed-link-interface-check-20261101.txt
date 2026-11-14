@@ -1,0 +1,28 @@
+CPU PhysX jointed-link force interface — 1 November 2026
+
+PASS for a prescribed world-wrench pulse and zero-input coast on two isolated passive hinges. This is an articulation interface check; no Newton contact force was connected and no Newton solver step ran. Checklist item 15 remains open.
+
+The installed articulation writer accepts world wrenches through its instantaneous composer, composes them into each link's body frame, handles body ordering when configured, and calls the backend force/torque API with positions=None and is_global=False. The input side of this test explicitly uses is_global=True and positions=None, so the composer performs the single required frame conversion. Only the selected moving link receives a wrench; the fixed base does not.
+
+The synthetic USD scenes were authored locally without remote assets. Each has a fixed base, one unbounded Z-axis revolute joint and one 0.02 kg moving link with its COM 0.01 m from the hinge. COM inertia about Z was explicitly authored as 0.0001 kg m². Joint stiffness, damping and static/dynamic/viscous friction were zero; actuators were intentionally absent. Gravity and collisions were disabled. Visual scale was put on child geometry so the rigid-body and joint local frames retained unit scale. Fixture 1 used identity orientation; fixture 2 rotated the assembly 90 degrees about Z. Both are near the origin.
+
+A world force of (0,3,0) N was applied at the first link's COM, plus world COM torque (0,0,0.0012) N m. The rotated fixture used world force (-3,0,0) N and the same world COM torque. Both therefore produce the same positive hinge effort: r cross F contributes 0.03 N m and the COM torque adds 0.0012 N m. The effective joint inertia is I_COM + m*r² = 0.000102 kg m². The installed articulation mass matrix independently matched that value. At dt=1/2400 s the expected joint velocity increment is approximately 0.12745098 rad/s. Position is compared against the 16-substep TGS schedule, dt times final velocity times 17/32. This fixture contains fixed-base constraint reactions, so the free-body linear-momentum identity is not an appropriate acceptance check.
+
+Exactly two shared PhysX steps ran: one pulse and one coast. No new wrench was submitted for the coast step. Both joint velocities stayed within the 2e-6 rad/s clearing gate. Four measured moving-link pose/world-COM-velocity packets copied exactly from staged CPU arrays to CUDA Warp buffers. This is a packet/format echo, not an actual Newton State or articulated two-way coupling proof.
+
+hinge_identity: joint velocity after pulse 0.127450972795 rad/s; joint position 2.82118053292e-05 rad; effective inertia 0.000101999998151 kg m²; coast velocity change 0 rad/s.
+hinge_yaw90: joint velocity after pulse 0.127450928092 rad/s; joint position 2.82117925963e-05 rad; effective inertia 0.000102000085462 kg m²; coast velocity change 0 rad/s.
+
+Maximum errors:
+  mass_matrix_error_kg_m2: 8.77501443e-11
+  joint_position_error_rad: 1.55121059e-11
+  joint_velocity_error_rad_s: 6.38328799e-08
+  coast_joint_velocity_change_rad_s: 0
+
+Gates: effective inertia 1e-8 kg m²; pulse joint position 1e-6 rad; pulse joint velocity 2e-5 rad/s; coast velocity change 2e-6 rad/s. No tolerance was relaxed. Four focused reference/guard-contract tests and nine supervisor tests passed, including a negative check that omits the COM force's hinge moment.
+
+Two preliminary launches stopped before any simulation step. The first did not recognise the intended fixed-base topology when articulation-root metadata was on the base body; placing it on the world-anchor fixed joint produced the intended fixed-base/two-body/one-joint topology. The second rejected scalar friction values in the installed kernel despite the Python signature allowing floats; explicit (1,1) float32 tensors were accepted. These fixture/API corrections are confined to the diagnostic worker. The failed launch logs, hashes and authored USD scenes are preserved. Installed libraries were not edited.
+
+The passing protected run finished in 4.87 seconds, retaining at least 23.87 GB available RAM and 7.52 GB free GPU memory. There were no resource warnings or monitor errors and no owned live processes remained. Source snapshots/hashes include articulation state, wrench-composer and writer interfaces. Original frozen production inputs and previously pinned installed dependencies remain unchanged.
+
+Next bounded step: generate one actual Newton particle contact against the moving hinge link, send the collected reaction to that link, and check generalized hinge impulse with fixed-base constraints accounted for. Repeated jointed contact, multi-joint robots, joint reset/history, contact work/energy, cutting material and the real blade collision backend remain unvalidated. No robot or real blade was loaded.

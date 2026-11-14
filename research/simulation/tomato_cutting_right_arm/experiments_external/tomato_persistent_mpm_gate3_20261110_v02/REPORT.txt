@@ -1,0 +1,112 @@
+GATE 3 — PHYSICAL QUALIFICATION FAILED; ISOLATED SETUP PRESERVED
+10 November 2026
+
+Outcome
+The Gate 3 evaluation and bounded retest are complete, but Gate 3 has NOT passed.
+No physical cut was created. The candidate is not adopted and Gate 4 must not start.
+The report separates passing numerical components from the failed coupled model.
+
+Primary blocker
+The reconstructed material can deform without the corresponding constitutive
+strain responding. In the first paid-cut pilot, stored determinant J remained
+above 0.990 while the reconstructed geometry developed a negative corner J of
+-0.458. This is local inversion, not legitimate fracture or a harmless rendering
+issue. A particle-center contact check or stored-F volume check alone missed it.
+
+An independent double-precision reference isolates a transfer null mode. The
+512-particle / 343-node transfer has rank 343 and 169 particle-space null modes.
+A nonrigid mode moves particles 0.25 micrometres in a 12.5-microsecond step while
+stored F changes only 1.25e-17; the reconstructed geometry's F changes 2.56e-5.
+This demonstrates a mechanically unobserved motion in the present formulation.
+It is consistent with the loaded failure and cannot be removed by taking more
+steps or just refining contact samples. It does not prove that one alternative
+transfer will automatically solve every cutting issue.
+
+Bounded correction and retest
+The first test also exposed inadequate surface quadrature: at its saved final
+state, the 250-micrometre samples report zero blade contact, while finer samples
+and the volume certificate detect intrusion. A separate correction preserves
+surface area but uses 62.5-micrometre sampling on the loaded and cut faces. A new
+independent trilinear-volume Jacobian certificate retains the original J range
+(0.1, 10). It rejects unproved states as well as resolved collapse.
+
+The corrected pilot stopped at the last accepted time 0.029175 s (63.39 wall s).
+The rejected next trial had reconstructed J = 0.09943. Peak force was 0.10558 N,
+below 2 N. Accepted blade-penetration bounds stayed below 0.1 mm. Paid fracture
+area and fracture work were both zero. It neither relaxed a stop nor opened an
+unpaid interface. Positions, velocities, stored strain and codes were restored
+to the last accepted state. A smaller-timestep positive-cut comparison is not
+meaningful until a valid positive event exists.
+
+Verified components and precise limits
+1. Original blade CAD signed distance agrees with an independent CPU query to
+   5.2e-8 m over the tested points; force, moment and power pullbacks pass.
+   Conservative bounds cover the entire declared trilinear material geometry,
+   rather than just particle centers. This reconstruction remains an approximation.
+2. Shallow edge and broad-face contact load/unload numerical comparisons pass:
+   maximum force differences 1.17% and 2.07%, positions below 0.24 micrometres,
+   impulse/work differences below 0.22%, numerical energy residual below 1%.
+   Force/support impulse balance is below 2e-13 N s. These are component passes,
+   not physical cutting qualification; the geometry/strain discrepancy is visible
+   even in these shallow tests and becomes destructive under stronger loading.
+3. Area-based cutting-work accounting and transactional controls pass in isolation:
+   area partition, half-step work, unpaid/duplicate rejection, query/retry safety,
+   pause/reversal/re-entry and checkpoint reconstruction. Gc = 80 J/m² is synthetic,
+   not a measured tomato property. This ideal work law differs from old cohesion.
+4. Two pre-separated pieces collide, slide and separate without healing. Their
+   history, pair force/moment and momentum checks pass. The original timestep
+   pair fails instantaneous force and low-work refinement: 131% maximum force
+   discrepancy under the frozen denominator-floor convention and a 1.43e-9 J
+   friction-work discrepancy (14.3% under the 1e-8 J floor).
+   One stiffness-derived 0.5-microsecond run completes. Its matched half-step run
+   was not launched after the structural bulk/contact failure was established.
+   Recontact refinement therefore remains unresolved, not passed.
+5. The new volume-certificate controls pass independent identity, rotation,
+   affine-compression, collapse and inversion tests, including rejection of the
+   saved bad cutting state. The guard detects the defect; it does not repair it.
+
+Still unqualified
+Positive work-gated physical separation; integrated tip/spine negative controls;
+blade contact on physically created new faces; matched refined material recontact;
+and a temporally refined positive cut. A simple geometric opening, an accounting
+unit test or a successful force-balance check is not substituted for these results.
+
+Speed
+All current full-contact tests use only 512 material particles on a 12 mm coupon.
+Observed shallow CAD costs are roughly 900–2,160 wall s per simulated s, depending
+on timestep and contact case. The corrected failed cutting pilot costs about
+2,173 wall s/s. The very fine recontact run costs about 27,227 wall s/s. These
+include contact and conservative geometry checks and evidence writing, without
+rendering. They exclude initial reconstruction setup. They are not suitable for
+interactive operation or RL. A complete 20 ms transition would cost tens to
+hundreds of wall seconds at these rates. Do not extrapolate equivalent tomato
+performance from these coupon tests, or use the old bulk-only speed as full-step
+speed. Speed optimization is premature while the coupled physics is invalid.
+
+Preservation and status
+547 frozen prior source, asset and evidence files were verified byte-for-byte
+unchanged. No package installation, driver change, Isaac/DiSECt change, kitchen,
+robot or grip change was made. No simulation worker remains running. Only the
+separate experimental files and plan/checklist tracking metadata were updated.
+The v01 Gate 1/2 component results remain preserved; a repaired algorithm must
+repeat the relevant checks and cannot inherit complete physical qualification.
+Experimental tomato validation remains pending.
+
+Next decision
+The original Astra plan calls for stopping a failed physical candidate and
+presenting a concrete repair scope. RECOVERY_PROPOSAL.md proposes one isolated
+APIC-style, mechanically consistent transfer/contact repair, followed by repeat
+mechanics, topology and contact tests. The published APIC results motivate this
+direction; they do not qualify our reference-grid persistent-history extension.
+No new engine, robot integration or training is started.
+
+Main evidence
+contact_fracture_controls.json       final per-requirement verdicts
+physical_model.md                   exact laws, units, updates and limits
+force_work_ledger.json               force/work channels, units and trace links
+runtime_forecast.json                measured component cost and limits
+reports/null_mode_diagnosis.json     independent structural diagnostic
+reports/saved_geometry_audit.json    retrospective geometry/strain checks
+runs/paid_cut_refined_guard/         corrected failed pilot and last accepted state
+preservation_check.json             frozen-file verification
+RECOVERY_PROPOSAL.md                 concrete next-scope proposal

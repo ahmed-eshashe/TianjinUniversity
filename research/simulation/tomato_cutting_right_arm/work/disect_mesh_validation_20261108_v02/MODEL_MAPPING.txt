@@ -1,0 +1,13 @@
+DiSECt tomato mapping — prospective limits before contact
+
+Authorized separate FEM mesh: same original exterior, total mass, cut plane and 25 support coordinates. TetGen 0.8.4, 5762 nodes and 28727 tets, compared with original 4032 nodes and 16291 diagnostic volume cells. Resolution is different; do not call runtime an equal-resolution or equal-accuracy speedup. All 4608 exterior triangles retained without boundary bisection; volume preserved to floating-point roundoff; support coordinate error zero; no unpaired interior faces in new mesh.
+
+Bulk elasticity: original synthetic construction's affine E=30000 Pa and nu=0.25 are a starting reference only. The original central-spring model, extra effective skin springs and volume barrier are not identical to DiSECt's finite-strain FEM. Skin and original cohesive fracture energy are not reproduced by setting E/nu. Density 1003.446 kg/m3 reproduces total mass with uniform FEM density; lumped node masses change. Fixed nodes retain physical mass in the accounting but inverse mass is zero for their motion.
+
+The unloaded bulk test uses DiSECt example damping=10 and ground ke=1000, kd=0, friction=0.2 with an infinite ground plane. These are disclosed uncalibrated example settings, not a calibrated mapping of the original finite board/contact. There is no blade or fracture in this component test. World mapping is a proper rotation: new (x,y,z)=(old x,old z+0.002,-old y).
+
+Before blade contact: the supplied dFlex execution path hardcodes sdf_based_contact=True and uses a five-parameter analytic knife SDF. Merely importing the original triangle mesh would not make contact use that mesh. The alternative triangle-contact branch exists but is not validated here. Exact original-blade contact therefore needs a separately checked adapter, or an explicitly disclosed analytic proxy; do not silently show the original knife while computing another contact shape.
+
+Before fracture/refinement: eval_cut_springs subtracts incontact*opening*softness from stiffness per solver invocation, with no explicit dt argument. prepare_cut/model transfer the softness values without time normalization. Consequently retaining the same raw softness while refining dt changes the damage rate. No time-convergent tomato fracture claim or material-law equivalence follows from the example. A versioned damage-rate interpretation and independent timestep test are prerequisites to a meaningful refinement comparison; do not tune softness merely until a slice detaches.
+
+The original robot/kitchen/grip/controller remain separate and unchanged. No new force feedback, motor-work qualification or experimental validation is claimed.

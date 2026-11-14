@@ -1,0 +1,18 @@
+NATIVE CLOCK AND ANALYTIC CONTROLS — 2026-11-04
+
+Result: clock/order verification and isolated analytic drive controls PASS for their declared fixtures. Complete robot motor-work qualification remains OPEN.
+
+Clock and order
+An additive read-only exported pass counter was added to a separately built plugin, copied to override_v02. Boundary markers identify120solver passes during robot initialization,120during the three monitor steps, then40per commanded step for120steps. The full trace has5040passes/181440rows, zero drops and a footer. Each40-pass block contains32position and8velocity iterations, each pass36uniqueDOFs. All nativeDOF/child-link pairs match the saved backend ordering. Initialization is now separated explicitly from the reported123controlled steps; no arbitrary alignment by subtraction is needed.
+
+Behavior preservation
+robot_off02 and robot_on01 both pass their resource supervisors with exit0 and no live owned processes. All20saved fields over120intervals exactly match recording off/on and the original archived capture. All9production installation pins remain unchanged. Worker v05 and guard v06 are the executable versions; original overrides and earlier evidence remain intact. robot_off01 failed before commanded motion due to a marker-variable naming collision; corrected in a separate version and failure preserved. A no-change compile02_clock was accidentally invoked after a failed path lookup; compile03_clock is the actual successful marker build.
+
+Independent analytic control
+Standalone CPU PhysX executable linked against the instrumented SDK: fixed-base, one prismatic joint, mass2kg, zero gravity/contact/body damping, drive stiffness0,damping4,targetvelocity0or1m/s,32/8iterations,dt1/240s,two steps percase. Zero case stays exactly at rest. Driven case agrees with the independently calculated implicit-Euler scalar response; maximum velocity difference9.66e-10m/s. Summed trace impulses match endpoint momentum within1.863e-9kg*m/s, and summed impulse midpoint work matches endpoint kinetic-energy change within1.278e-11J. Both satisfy the declared fixture tolerances1e-7(momentum) and1e-8J(energy). These bounds are deliberately fixture-specific and do not replace the robot's original precision requirements. This test is a standalone SDK control, not a full robot or cutting qualification.
+
+Remaining gate and next action
+The robot has coupled joints, gravity/feedforward, armature and additional constraint/numerical contributions. Scalar closure does not establish their complete work ledger or its uncertainty. The next bounded task is to use the now-aligned robot intervals to assess exactly which work terms are observable and independently reconcile them; preserve failures and the original budgets. No new depth/contact, fracture, training, video or solver sweep. Experimental validation remains pending.
+
+Evidence
+analytic_results.json; robot_clock_verification.json; contract.json; drive_control.cpp/executable; zero/ and driven/; robot_off02/ and robot_on01/; verify_controls.py; verify_robot_clock.py. Native marker build is in ../native_instrumentation_20261102/compile03_clock/. The initial audit robot_clock_audit.json deliberately remains as the pre-marker unresolved result.

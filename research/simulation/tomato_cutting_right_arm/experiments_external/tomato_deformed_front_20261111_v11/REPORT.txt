@@ -1,0 +1,34 @@
+v11 bounded deformed-front baseline: component progress, qualification failed.
+
+A 50-micron geometric score is represented with exact state-preserving tensor
+knot insertion, instead of the earlier 3 mm support delay. Static non-affine
+compression and supported bending map correctly. Full inertia and virtual-work
+pullbacks, CPU/GPU comparisons, bridge/history and geometry controls pass.
+
+The primary dt=3.90625e-7 s is insufficient for the new local velocity modes:
+near-front half-step velocity disagreement is 0.3564 m/s, versus the retained
+0.005 m/s screen. Sparse original observations missed this; continuous fields
+were then checked and the failure recorded. Position and material work converge
+within the declared screens, which does not override the velocity failure.
+
+A freely relaxing non-affine block is rejected by the exact planar chart after
+50 microseconds. The sampled inverse cut surface spans about 0.827 micrometres
+in reference X; a full-surface coefficient bound puts it within 0.417 micrometres
+of the mean plane. No planar tolerance was loosened and the whole action rolls
+back. This is a representation restriction, not evidence of a large physical
+error or an unavoidable defect of every non-affine cutting method.
+
+Read-only linearized mode analysis: intact fastest period about 171 microseconds;
+50-micron front about 3.83 microseconds; extra 25-micron layer about 1.55 microseconds.
+The original timestep gives about 10 / 4 steps per local period respectively.
+Linear stability alone does not establish phase/velocity accuracy.
+
+88 recorded component assertions passed; one continuous-velocity refinement
+screen failed. Separately, the freely evolved non-affine cutting capability
+probe was not accepted. No physical fracture/contact, tomato cut, force law,
+production setup or RL qualification is established.
+
+One bounded correction is prepared separately in v12 within the same two-hour
+study: finer timestep accuracy reference plus conservative finite CAD-edge-face
+swept coverage. Physical materials, full consistent mass and retained stops are
+unchanged. v11 evidence remains immutable. No v12 results are claimed here.

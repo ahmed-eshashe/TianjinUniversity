@@ -1,0 +1,360 @@
+{
+  "status": "fail",
+  "checks": {
+    "stencil": true,
+    "constitutive": true,
+    "affine_cycle": true,
+    "cpu_gpu": true,
+    "rest_mass": true,
+    "rest_momentum": true,
+    "rest_translation": true,
+    "translation_mass": true,
+    "translation_momentum": true,
+    "translation_translation": true,
+    "rotated_rest_mass": true,
+    "rotated_rest_momentum": true,
+    "rotated_rest_translation": true,
+    "spin_mass": true,
+    "spin_momentum": true,
+    "spin_angular": false,
+    "compression_release_mass": true,
+    "compression_release_momentum": true,
+    "compression_release_half_mass": true,
+    "compression_release_half_momentum": true,
+    "compression_energy": true,
+    "half_step": false
+  },
+  "results": {
+    "stencil": {
+      "partition_error": 1.1102230246251565e-16,
+      "gradient_sum": 4.8627768478581856e-14,
+      "linear_reproduction_m": 1.3877787807814457e-17
+    },
+    "constitutive": {
+      "energy_gradient_relative": 1.68179608563906e-10,
+      "objectivity_stress_relative": 8.642664993268083e-16,
+      "objectivity_energy_relative": 1.4497020212478966e-15,
+      "gpu_stress_relative": 3.9867024929531704e-07,
+      "gpu_energy_relative": 5.919960730512263e-07
+    },
+    "affine_compression_unload": {
+      "closed_cycle_work_J": 0.0,
+      "final_energy_J": 0.0,
+      "peak_energy_J": 0.009403761215063327,
+      "force_at_2percent_compression_N": -15.797339117065622,
+      "scope": "prescribed homogeneous constitutive fixture; external fixture force is not knife force"
+    },
+    "cpu_gpu": {
+      "position_m": 1.4236689171304162e-09,
+      "velocity_m_s": 6.2583146344386e-07,
+      "F": 3.651963198514352e-07
+    },
+    "rest": {
+      "duration": 0.1,
+      "wall_s": 0.6372305389995745,
+      "mass_kg": 0.216,
+      "mass_relative_error": 0.0,
+      "peak_momentum_error": 0.0,
+      "momentum_scale": 0.0,
+      "peak_angular_error": 0.0,
+      "angular_scale": 0.0,
+      "initial_energy": 0.0,
+      "peak_energy": 0.0,
+      "max_translation_error_m": 1.5485740982132928e-09,
+      "memory": {
+        "array_bytes": 18357384,
+        "particles": 8000,
+        "reference_nodes": 2197,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      "initial": {
+        "momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "angular": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 0.0,
+        "minJ": 1.0,
+        "maxJ": 1.0
+      },
+      "final": {
+        "momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "angular": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 0.0,
+        "minJ": 1.0,
+        "maxJ": 1.0
+      }
+    },
+    "translation": {
+      "duration": 0.1,
+      "wall_s": 0.6061907319999591,
+      "mass_kg": 0.216,
+      "mass_relative_error": 0.0,
+      "peak_momentum_error": 8.263296528014141e-10,
+      "momentum_scale": 0.004949181639929474,
+      "peak_angular_error": 1.3183296813698996e-09,
+      "angular_scale": 1.288541156821137e-12,
+      "initial_energy": 5.66999974653125e-05,
+      "peak_energy": 5.670000883512109e-05,
+      "max_translation_error_m": 1.8777339885040783e-06,
+      "memory": {
+        "array_bytes": 18357384,
+        "particles": 8000,
+        "reference_nodes": 2197,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      "initial": {
+        "momentum": [
+          0.0021599999517202375,
+          0.004319999903440475,
+          -0.0010799999758601187
+        ],
+        "angular": [
+          -1.508768040191233e-15,
+          -3.118068577231221e-13,
+          -1.2502449839602589e-12
+        ],
+        "energy": 5.66999974653125e-05,
+        "minJ": 1.0,
+        "maxJ": 1.0
+      },
+      "final": {
+        "momentum": [
+          0.002159999595405534,
+          0.004320000278161838,
+          -0.0010799998189383185
+        ],
+        "angular": [
+          -5.0951959861518104e-11,
+          5.924917619189076e-11,
+          1.5096814787852347e-10
+        ],
+        "energy": 5.670000061334871e-05,
+        "minJ": 1.0,
+        "maxJ": 1.0
+      }
+    },
+    "rotated_rest": {
+      "duration": 0.02,
+      "wall_s": 0.1311139120007283,
+      "mass_kg": 0.216,
+      "mass_relative_error": 0.0,
+      "peak_momentum_error": 3.119876024189435e-14,
+      "momentum_scale": 0.0,
+      "peak_angular_error": 8.569556796901526e-09,
+      "angular_scale": 0.0,
+      "initial_energy": 1.0737868708452214e-14,
+      "peak_energy": 3.3258067038387514e-12,
+      "max_translation_error_m": 1.0429656634255706e-07,
+      "memory": {
+        "array_bytes": 18357384,
+        "particles": 8000,
+        "reference_nodes": 2197,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      "initial": {
+        "momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "angular": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 1.0737868708452214e-14,
+        "minJ": 1.0,
+        "maxJ": 1.0
+      },
+      "final": {
+        "momentum": [
+          -1.793784441686888e-14,
+          1.6738660912419057e-14,
+          -1.9272094052449722e-14
+        ],
+        "angular": [
+          -1.7148963923171066e-09,
+          -1.8537803155892438e-10,
+          8.394168752434886e-09
+        ],
+        "energy": 3.3258067038387514e-12,
+        "minJ": 0.9999986886978149,
+        "maxJ": 1.0000026226043701
+      }
+    },
+    "spin": {
+      "duration": 0.01,
+      "wall_s": 0.08702456699938921,
+      "mass_kg": 0.216,
+      "mass_relative_error": 0.0,
+      "peak_momentum_error": 7.682253426909853e-11,
+      "momentum_scale": 0.0,
+      "peak_angular_error": 1.5212182877961291e-06,
+      "angular_scale": 0.00012927600137235164,
+      "initial_energy": 6.463800068617615e-05,
+      "peak_energy": 6.464293749022986e-05,
+      "max_translation_error_m": null,
+      "memory": {
+        "array_bytes": 18357384,
+        "particles": 8000,
+        "reference_nodes": 2197,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      "initial": {
+        "momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "angular": [
+          1.756407519426517e-23,
+          1.756407519426517e-23,
+          0.00012927600137235164
+        ],
+        "energy": 6.463800068617615e-05,
+        "minJ": 1.0,
+        "maxJ": 1.0
+      },
+      "final": {
+        "momentum": [
+          7.06311548128724e-11,
+          -2.927903551608324e-11,
+          6.109410577437302e-14
+        ],
+        "angular": [
+          -1.962165425170299e-12,
+          9.126841126415839e-13,
+          0.00012785767723615633
+        ],
+        "energy": 6.464293749022986e-05,
+        "minJ": 0.9998765587806702,
+        "maxJ": 1.0001182556152344
+      }
+    },
+    "compression_release": {
+      "duration": 0.02,
+      "wall_s": 0.14544179900076415,
+      "mass_kg": 0.216,
+      "mass_relative_error": 0.0,
+      "peak_momentum_error": 8.128592624511929e-10,
+      "momentum_scale": 0.0,
+      "peak_angular_error": 1.2606041047913692e-11,
+      "angular_scale": 0.0,
+      "initial_energy": 0.002332443415454157,
+      "peak_energy": 0.0023563464923568303,
+      "max_translation_error_m": null,
+      "memory": {
+        "array_bytes": 18357384,
+        "particles": 8000,
+        "reference_nodes": 2197,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      "initial": {
+        "momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "angular": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 0.002332443415454157,
+        "minJ": 0.9900000095367432,
+        "maxJ": 0.9900000095367432
+      },
+      "final": {
+        "momentum": [
+          1.2507790233939886e-10,
+          -3.026396152563393e-10,
+          -2.791519509628415e-10
+        ],
+        "angular": [
+          -1.0674835690034981e-11,
+          4.282336416117169e-12,
+          -5.159626799647148e-12
+        ],
+        "energy": 0.002329700096400683,
+        "minJ": 0.9779213666915894,
+        "maxJ": 1.0169034004211426
+      }
+    },
+    "compression_release_half": {
+      "duration": 0.02,
+      "wall_s": 0.2575594949994411,
+      "mass_kg": 0.216,
+      "mass_relative_error": 0.0,
+      "peak_momentum_error": 9.818248162023466e-10,
+      "momentum_scale": 0.0,
+      "peak_angular_error": 1.5150416420175664e-11,
+      "angular_scale": 0.0,
+      "initial_energy": 0.002332443415454157,
+      "peak_energy": 0.002343768763712095,
+      "max_translation_error_m": null,
+      "memory": {
+        "array_bytes": 18357384,
+        "particles": 8000,
+        "reference_nodes": 2197,
+        "active_states": 1,
+        "reserved_states": 81
+      },
+      "initial": {
+        "momentum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "angular": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "energy": 0.002332443415454157,
+        "minJ": 0.9900000095367432,
+        "maxJ": 0.9900000095367432
+      },
+      "final": {
+        "momentum": [
+          2.189405495300889e-10,
+          -5.525628221221267e-10,
+          -5.515538505278527e-10
+        ],
+        "angular": [
+          3.791268801986262e-12,
+          -6.183145788358699e-12,
+          2.2352669041885917e-12
+        ],
+        "energy": 0.0023304670962954813,
+        "minJ": 0.9778134822845459,
+        "maxJ": 1.0172815322875977
+      }
+    },
+    "half_step": {
+      "position_max_m": 5.3527173804468475e-06,
+      "velocity_max_m_s": 0.009229357354342937
+    }
+  },
+  "total_wall_s": 3.0995054009999876,
+  "timestamp": "2026-11-10T18:32:40.733394+08:00",
+  "scope": "Intact TL mechanics only; no fracture/contact qualification"
+}

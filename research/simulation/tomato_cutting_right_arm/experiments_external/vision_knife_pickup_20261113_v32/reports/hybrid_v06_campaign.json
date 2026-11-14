@@ -1,0 +1,70 @@
+{
+  "updated": "2026-11-14T01:59:44.884658+08:00",
+  "frozen_sources_unchanged": {
+    "hybrid_pickup_v06.py": true,
+    "visual_grasp.py": true,
+    "hybrid_calibration_v01.json": true,
+    "handle_vision.py": true,
+    "policies/handle_vision_v01/best.pt": true,
+    "pickup_criteria.json": true,
+    "curriculum_recovery_v02.json": true,
+    "knife_short_blade_v02.usda": true
+  },
+  "validation_successes": 2,
+  "validation_attempts": 3,
+  "test_successes": 0,
+  "test_attempts": 0,
+  "wilson_95_interval": null,
+  "forbidden_test_violations": [],
+  "limited_curriculum_physical_gate_passed": false,
+  "scope": "Head RGB-D learns handle location/yaw; calibrated flat-rest target and engineered contact-guided motion. Short knife, bounded placement/yaw only. Real contact and no attachment. No full-motion/RL, any-knife/any-rest, or physical-transfer claim.",
+  "rows": [
+    {
+      "dataset": "hybrid_v06_validation",
+      "id": "recovery_validation_000",
+      "complete": true,
+      "success": false,
+      "failure": "ValueError: ('Opposed handle support not sustained before lift', 0.1182291666666664)"
+    },
+    {
+      "dataset": "hybrid_v06_validation",
+      "id": "recovery_validation_001",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00010391278329955866,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11787211918305145,
+      "max_load_N": 27.58767032623291,
+      "wall_s": 224.46750519200577
+    },
+    {
+      "dataset": "hybrid_v06_validation",
+      "id": "recovery_validation_002",
+      "complete": true,
+      "success": true,
+      "checks": {
+        "hold": true,
+        "opposed": true,
+        "support": true,
+        "clearance": true,
+        "slip": true,
+        "rotation": true,
+        "max_load": true
+      },
+      "slip_m": 0.00041298219275336,
+      "hold_s": 3.000520833333203,
+      "min_height_m": 0.11790630602565978,
+      "max_load_N": 27.59226131439209,
+      "wall_s": 228.96196420799242
+    }
+  ]
+}

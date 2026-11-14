@@ -1,0 +1,397 @@
+{
+  "scope": "Laptop feasibility benchmarks, NOT accuracy-equivalent engine comparison or adoption. All headless, forward only. Production checkpointed at step 6925; scene/grip/interface unchanged.",
+  "current": {
+    "profile_wall_s": 62.44190366600012,
+    "simulated_s": 0.006666666666666667,
+    "wall_s_per_sim_s": 9366.285549900018,
+    "nonlinear_solve_s": 32.966799352,
+    "contact_packet_refresh_s": 25.817776961,
+    "cut_eligibility_overlap_s": 2.658309441,
+    "numpy_write_s": 0.005319204,
+    "text_write_s": 0.0009131600000000001,
+    "copy_file_s": 0.000309342,
+    "gpu_to_numpy_calls": 30052,
+    "gpu_to_numpy_cumulative_s": 28.315654204,
+    "note": "GPU-to-NumPy time includes synchronization and overlaps nonlinear/contact categories; do not add it to them. cProfile overhead included. Startup excluded.",
+    "explicit_timers_repeat": {
+      "robot_s": 0.07784858800732763,
+      "material_s": 61.093423125996196,
+      "checkpoint_s": 0.006198182993102819,
+      "archive_s": 0.003751074989850167,
+      "total_s": 61.223447410004155,
+      "intervals": 4,
+      "sim_s": 0.006666666666666667
+    }
+  },
+  "disect": [
+    {
+      "example": "examples/basic_cutting.py, same settings and slicing motion, headless forward-only",
+      "setup_wall_s": 8.81939474200044,
+      "wall_s": 9.864577512998949,
+      "simulated_s": 5.000000000001686,
+      "wall_s_per_sim_s": 1.9729155025991245,
+      "nodes": 1187,
+      "tetrahedra": 4950,
+      "peak_gpu_allocated_bytes": 85929984,
+      "peak_gpu_reserved_bytes": 98566144,
+      "peak_rss_kib": 2107548,
+      "full_example_completed": true,
+      "separation_caveat": "Zero-stiffness count is interface damage, not independently verified detached connectivity.",
+      "force_resultant_peak": 1.5252670637653203,
+      "sum_contact_force_magnitudes_peak": 63.262176513671875,
+      "all_sampled_states_finite": true,
+      "final_zero_stiffness_springs": 303,
+      "exit_returncode": -11
+    },
+    {
+      "example": "examples/basic_cutting.py, same settings and slicing motion, headless forward-only",
+      "setup_wall_s": 8.792901908003842,
+      "wall_s": 11.193419146999076,
+      "simulated_s": 5.000000000001686,
+      "wall_s_per_sim_s": 2.2386838293990605,
+      "nodes": 1187,
+      "tetrahedra": 4950,
+      "peak_gpu_allocated_bytes": 85929984,
+      "peak_gpu_reserved_bytes": 98566144,
+      "peak_rss_kib": 2108448,
+      "full_example_completed": true,
+      "separation_caveat": "Zero-stiffness count is interface damage, not independently verified detached connectivity.",
+      "force_resultant_peak": 1.5254471628555124,
+      "sum_contact_force_magnitudes_peak": 63.28655242919922,
+      "all_sampled_states_finite": true,
+      "final_zero_stiffness_springs": 302,
+      "exit_returncode": -11
+    }
+  ],
+  "roboninja": [
+    {
+      "scope": "RoboNinja original MLS-MPM and knife, upstream block size/density, no rigid core or rendering; forward-only grid gradients not allocated",
+      "scale": 1.0,
+      "path": "curved",
+      "n_particles": 42000,
+      "grid": 128,
+      "grid_dx": 0.0078125,
+      "dt": 6.666666666666667e-05,
+      "setup_wall_s": 0.9710000359991682,
+      "total_step_wall_s": 4.782291254021402,
+      "warm_step_wall_s": 2.7824378380173584,
+      "warm_sim_s": 0.11800000000000001,
+      "wall_s_per_sim_s": 23.579981678113207,
+      "impulse_max": 0.049662635212566114,
+      "impulse_mean": 0.029307322171410678,
+      "sum_force_magnitudes_max": 744.9395281884916,
+      "force_semantics": "upstream scalar sum of local impulse magnitudes, NOT force in newtons; divide by dt for sum of force magnitudes, not a six-axis resultant",
+      "peak_rss_kib": 904764,
+      "all_sampled_states_finite": true,
+      "simulated_s": 0.12000000000000001,
+      "largest_sampled_speed": 3.885504743816732
+    },
+    {
+      "scope": "RoboNinja original MLS-MPM and knife, upstream block size/density, no rigid core or rendering; forward-only grid gradients not allocated",
+      "scale": 0.8,
+      "path": "straight",
+      "n_particles": 21504,
+      "grid": 128,
+      "grid_dx": 0.0078125,
+      "dt": 6.666666666666667e-05,
+      "setup_wall_s": 1.0536124879945419,
+      "total_step_wall_s": 8.604197988999658,
+      "warm_step_wall_s": 2.11159908099944,
+      "warm_sim_s": 0.11800000000000001,
+      "wall_s_per_sim_s": 17.89490746609695,
+      "impulse_max": 0.030667606726764714,
+      "impulse_mean": 0.014711780124243266,
+      "sum_force_magnitudes_max": 460.01410090147067,
+      "force_semantics": "upstream scalar sum of local impulse magnitudes, NOT force in newtons; divide by dt for sum of force magnitudes, not a six-axis resultant",
+      "peak_rss_kib": 944796,
+      "all_sampled_states_finite": true,
+      "simulated_s": 0.12000000000000001,
+      "largest_sampled_speed": 3.220301222533076
+    },
+    {
+      "scope": "RoboNinja original MLS-MPM and knife, upstream block size/density, no rigid core or rendering; forward-only grid gradients not allocated",
+      "scale": 1.0,
+      "path": "straight",
+      "n_particles": 42000,
+      "grid": 128,
+      "grid_dx": 0.0078125,
+      "dt": 6.666666666666667e-05,
+      "setup_wall_s": 0.9879896839993307,
+      "total_step_wall_s": 6.585345956002129,
+      "warm_step_wall_s": 2.8161588400034816,
+      "warm_sim_s": 0.11800000000000001,
+      "wall_s_per_sim_s": 23.865752881385436,
+      "impulse_max": 0.03916033782949192,
+      "impulse_mean": 0.02432938925831437,
+      "sum_force_magnitudes_max": 587.4050674423788,
+      "force_semantics": "upstream scalar sum of local impulse magnitudes, NOT force in newtons; divide by dt for sum of force magnitudes, not a six-axis resultant",
+      "peak_rss_kib": 972036,
+      "all_sampled_states_finite": true,
+      "simulated_s": 0.12000000000000001,
+      "largest_sampled_speed": 5.07666702190328
+    }
+  ],
+  "sources": {
+    "DiSECt": "https://github.com/NVlabs/DiSECt",
+    "RoboNinja": "https://github.com/real-stanford/roboninja"
+  },
+  "disect_stability": {
+    "tetrahedra": 4950,
+    "nondegenerate_initial": 4950,
+    "initial_degenerate": 0,
+    "min_final_signed_volume_ratio": 0.9941997528076172,
+    "negative_final_ratios": 0,
+    "nonpositive_final_ratios": 0,
+    "repeat_max_position_difference_m": 0.00033981382148340344,
+    "remaining_nonzero_spring_stiffness": [
+      12.112906455993652,
+      3.6869490146636963
+    ],
+    "repeat_exit": {
+      "returncode": -11
+    },
+    "qualified": false
+  },
+  "roboninja_separation": [
+    {
+      "case": "robo_curved_1_result",
+      "particle_count": 42000,
+      "finite": true,
+      "proximity_connectivity": [
+        {
+          "radius_m": 0.0078125,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 3,
+            "largest_sizes": [
+              41998,
+              1,
+              1
+            ],
+            "components_over_1_percent": 1
+          }
+        },
+        {
+          "radius_m": 0.01171875,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          }
+        },
+        {
+          "radius_m": 0.015625,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          }
+        }
+      ],
+      "meaning": "Geometric proximity diagnostic, NOT cohesive fracture or proof of disconnected continuum; MPM has no fixed bond graph."
+    },
+    {
+      "case": "robo_straight_0.8_result",
+      "particle_count": 21504,
+      "finite": true,
+      "proximity_connectivity": [
+        {
+          "radius_m": 0.0078125,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              21504
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 3,
+            "largest_sizes": [
+              21502,
+              1,
+              1
+            ],
+            "components_over_1_percent": 1
+          }
+        },
+        {
+          "radius_m": 0.01171875,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              21504
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              21504
+            ],
+            "components_over_1_percent": 1
+          }
+        },
+        {
+          "radius_m": 0.015625,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              21504
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              21504
+            ],
+            "components_over_1_percent": 1
+          }
+        }
+      ],
+      "meaning": "Geometric proximity diagnostic, NOT cohesive fracture or proof of disconnected continuum; MPM has no fixed bond graph."
+    },
+    {
+      "case": "robo_straight_1_result",
+      "particle_count": 42000,
+      "finite": true,
+      "proximity_connectivity": [
+        {
+          "radius_m": 0.0078125,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          }
+        },
+        {
+          "radius_m": 0.01171875,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          }
+        },
+        {
+          "radius_m": 0.015625,
+          "initial": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          },
+          "x": {
+            "components": 1,
+            "largest_sizes": [
+              42000
+            ],
+            "components_over_1_percent": 1
+          }
+        }
+      ],
+      "meaning": "Geometric proximity diagnostic, NOT cohesive fracture or proof of disconnected continuum; MPM has no fixed bond graph."
+    }
+  ],
+  "decision": {
+    "current": "Not suitable as the main learning backend at measured throughput; preserve for comparison, not physical ground truth.",
+    "disect": "First candidate for a bounded hardening and same-tomato comparison; not adoption-ready: meshing failure flag, GC segfault and repeat variation.",
+    "roboninja": "Promising path/size flexibility but substantially different material/contact law; dense-grid memory, force adapter and tomato skin/separation need work.",
+    "no_new_engine_adopted": true
+  },
+  "current_repeats": [
+    {
+      "run": "current_profile",
+      "profile_wall_s": 62.44190366600012,
+      "max_position_difference_from_first_m": 0.0,
+      "finite": true,
+      "history_damage_equal": true
+    },
+    {
+      "run": "current_profile2",
+      "profile_wall_s": 63.70106037900007,
+      "max_position_difference_from_first_m": 4.2357255757954015e-05,
+      "finite": true,
+      "history_damage_equal": true
+    },
+    {
+      "run": "current_profile3",
+      "profile_wall_s": 61.135195198,
+      "max_position_difference_from_first_m": 4.8312281168295915e-05,
+      "finite": true,
+      "history_damage_equal": true
+    }
+  ],
+  "memory_peaks": {
+    "profile_worker.py --output /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/current_profile --headless --resume-checkpoint /home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/robot_cut17/checkpoints/step_006400.npz": {
+      "rss": 4346953728,
+      "gpu_mib": 2210
+    },
+    "robo_benchmark.py --path straight --scale 1": {
+      "rss": 1024663552,
+      "gpu_mib": 4850
+    },
+    "robo_benchmark.py --path curved --scale 1": {
+      "rss": 927682560,
+      "gpu_mib": 4850
+    },
+    "robo_benchmark.py --path straight --scale 0.8": {
+      "rss": 969773056,
+      "gpu_mib": 4274
+    },
+    "profile_worker2.py --output /home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/current_profile2 --headless --resume-checkpoint /home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/robot_cut17/checkpoints/step_006400.npz": {
+      "rss": 4471971840,
+      "gpu_mib": 2178
+    },
+    "900 work/solver_comparison_20261108/env311/bin/python work/solver_comparison_20261108/disect_repeat.py": {
+      "rss": 2072576,
+      "gpu_mib": 0
+    },
+    "disect_repeat.py ": {
+      "rss": 2161311744,
+      "gpu_mib": 224
+    }
+  }
+}

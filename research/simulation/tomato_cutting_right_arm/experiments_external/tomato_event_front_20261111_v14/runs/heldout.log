@@ -1,0 +1,66 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_event_front_20261111_v14/cache/warp/1.17.0
+constructing event-localized case
+advancing to 5e-05 s
+Module gpu_kernels 352560d load on device 'cuda:0' took 1.12 ms  (cached)
+advancing to 0.0001 s
+{
+  "case": "heldout",
+  "status": "completed",
+  "production_changed": false,
+  "physical_fracture": false,
+  "initial_energy_J": 5.839298593074185e-05,
+  "dt_s": 2.44140625e-08,
+  "probe_s": 2.5e-05,
+  "event_tolerance_s": 2.5e-10,
+  "initialization_s": 0.20834521600045264,
+  "cost": {
+    "trials": 39,
+    "GPU_steps": 23457,
+    "CPU_fractional_steps": 44,
+    "peak_array_bytes": 54585644,
+    "propagation_s": 39.28801046298031,
+    "geometry_s": 0.28299186898220796
+  },
+  "energy": [
+    {
+      "time_s": 5e-05,
+      "mass": 0.0017279999999999995,
+      "energy": 5.8392974651939186e-05
+    },
+    {
+      "time_s": 9.999999999999999e-05,
+      "mass": 0.0017279999999999997,
+      "energy": 5.839297501555481e-05
+    }
+  ],
+  "final_dofs": 720,
+  "mass_kg": 0.0017279999999999997,
+  "final_energy_J": 5.839297501555481e-05,
+  "mass_condition": 506978.01817409473,
+  "cut_keys": 72,
+  "simulated_s": 9.999999999999999e-05,
+  "checks": {
+    "energy_5e-05": true,
+    "volume_5e-05": true,
+    "energy_0.0001": true,
+    "volume_0.0001": true,
+    "mass": true,
+    "clock": true,
+    "real_activation": true,
+    "bounded_events": true,
+    "unchanged_transfer_energy": true,
+    "unchanged_transfer_mass": true,
+    "uncut_bridge": true,
+    "restart_fingerprint": true,
+    "rejected_action": true,
+    "rejected_action_rollback": true
+  },
+  "wall_s": 40.896398334996775,
+  "peak_process_RSS_bytes": 780689408
+}

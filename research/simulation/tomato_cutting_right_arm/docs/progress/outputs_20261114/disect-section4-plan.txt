@@ -1,0 +1,78 @@
+# Section 4 execution handoff for Sol — 9 November 2026
+
+## Objective and authority
+
+Develop and verify the first genuine slice, then assess reliability and successive slices. Execute sequentially through the gates below without asking for routine implementation approvals. Preserve failed trials and report a concrete blocker if a gate fails; do not substitute a visual split or relax limits. The user explicitly deferred speed qualification to finish physical qualification first. Speed is still failed, and neither training readiness nor experimental validation is established.
+
+Read the latest dated entries of `RESEARCH_ROADMAP_REVIEW_20261102.md` and `work/disect_physical_20261109_v22/RESULT.txt` first. Older statements that section 4 is blocked on speed are historical, superseded only by this explicit deferral. Section 3 numerical/precontact passes are not fracture passes.
+
+## Frozen starting point
+
+Project root: `/home/omen/teamwork_projects/tomato_cutting_right_arm`.
+
+- Evidence: `work/disect_physical_20261109_v22/qualification_review.json`, `settling_qualification.json`, `contact_comparison_result.json`, source manifest and saved final states.
+- Approved mesh: v18; 9,394 vertices, 42,523 tetrahedra, original exterior, mass, cut plane and 25 support coordinates. Preserve 47 original cohesive groups, constitutive parameters and total fracture-energy budget 0.11696391110288158 J; verify these against actual source metadata before implementing.
+- Operator: v20 GPU material/cohesion/closure plus v22 assembly and original-CAD contact. `cohesion_gpu.py` is explicitly damage-disabled: enabling cutting requires new implementation and validation.
+- Settling passed at 12.5/6.25 microseconds; blade contact at 3.125/1.5625 microseconds. Those are starting references, not proof that a damage-enabled step is adequate.
+- Fixed knife attachment, robot, kitchen, grip, elbow posture, motion interface and production checkpoint remain unchanged. Initial section 4 tests use prescribed blade motion; native robot coupling belongs to section 5.
+- Use a new versioned work directory. Do not overwrite v18–v22 evidence. Record source hashes, environment, parameters and commands. Keep one GPU simulation running at a time.
+
+## Gate A — progressive failure implementation and independent controls
+
+1. Trace the original CPU fracture law and its history/commit API, group interpolation, contact eligibility and energy accounting. Document the actual rule, units, onset/failure thresholds and ownership of each history variable. Do not invent a different damage law or inherit DiSECt defaults silently.
+2. Implement equivalent forward GPU evaluation and irreversible history. Trial evaluations must be pure: commit history once per accepted physical step, never during nonlinear iterations, rejected steps, force probes or logging. Checkpoint/reset must include every damage, maximum-opening, eligibility and contact-history variable.
+3. Test original CPU versus GPU on opening, shear, mixed loading, unload/reload, rotated frames, onset/failure boundaries and complete failure. Include zero-opening controls, multiple samples within one group, rejected-step rollback, restart and fresh reset. Use independent analytic/energy checks where defined; an implementation compared to itself is insufficient.
+4. Audit full-surface sampling weights so group force distribution does not multiply fracture energy. Retain the 47 group budgets and account explicitly for elastic stored energy and dissipated fracture energy. Damage must not heal. Failed cohesion must cease transmitting tensile/shear bonds while valid compressive cut-face contact remains possible.
+5. Verify blade contact can reach the appropriate newly exposed surfaces. Exterior-only node collocation passed the tiny nonfracturing probe but does not establish deep cutting contact. Prevent duplicate forces, force transmission through the blade and artificial attachment across the cut. Distinguish supported cut-face contact from fracture preparation. If a materially different contact law or physical sampling is necessary, present the concrete change and evidence before adoption.
+
+Deliver `fracture_contract`, independent control results, source manifest, and reset/rollback evidence. Reuse existing precision limits and reference conventions. Record numerical floors explicitly; do not use the 5% trajectory allowance to excuse incorrect constitutive algebra. Proceed only after all required controls pass.
+
+## Gate B — bounded shallow scripted cut and stop
+
+1. Start from the verified settled assembly. Recompute blade clearance and map the requested bodyward horizontal direction between model/world/robot frames. Keep original CAD orientation and fixed mount semantics.
+2. Freeze a short trajectory and acceptance file before launching: approach, shallow contact-driven loading, controlled stop, horizontal withdrawal at fixed height toward the robot and a brief observation. Derive stroke/depth from geometry and the existing fracture law; do not arbitrarily prescribe damage or schedule deletion. A successful test must show nonzero irreversible damage caused by blade loading, not simply replay the nonfracturing probe.
+3. Log time, actual blade pose, forces/moments and their origin, material deformation, damage/history, fracture dissipation, contact eligibility, support reactions, element volumes, residuals and mass. Separate contact-law reaction from native motor effort. Preserve start/end states and failure checkpoint.
+4. Carry forward physical stops: finite states; minimum volume ratio >0.1; board penetration <=0.1 mm; fixed-support error <=1e-7 m; board-edge margin >=1 mm; discrete force balance <=1e-6 N; solver residual <=1e-9 under the existing normalization. Retain the existing 2 N blade-force stop and 0.1 mm CAD-penetration stop initially. A stop is a failure/review point, not permission to raise the threshold.
+5. Repeat independently from the same initial state at half timestep. Compare on common physical times: position <=0.1 mm, velocity <=5 mm/s, force and moment <=5% with existing floors (1e-6 N and 1e-8 Nm). Also compare damage evolution, dissipated energy, failure events and connectivity; define these additional tolerances before the runs, explain any onset-time alignment, and never hide disagreement by resampling away an event.
+6. Require controlled termination, no healing, no inadmissible state, and a consistent damage result. Log actual wall time and peak memory. Speed is informational/deferred; do not create another open-ended optimization branch.
+
+Deliver trajectory, refinement report, genuine-damage evidence and a clear pass/fail. If no damage occurs, investigate once from saved geometry/loading evidence and design a justified next bounded trajectory. Do not weaken material to create a cut.
+
+## Gate C — full stroke, horizontal withdrawal and separation proof
+
+Only after Gate B passes, extend the same verified approach in checkpointed segments. Forecast runtime from measured segment cost and use a finite declared simulated duration and wall cap; preserve recoverable state if the cap is reached. A cap is not a physical pass or a reason to discard evidence.
+
+- Continue through the intended cut interface without penetrating the board or fixtures; use geometry-derived clearance and the original stops.
+- Withdraw by sliding horizontally toward the robot, not lifting upward through tomato material. Verify actual blade clearance.
+- Evaluate connectivity using the actual load-bearing bulk/cohesive structure, not rendering mesh gaps. All ties connecting the two intended pieces must fail under the original law. Compressive contact does not itself imply bonded connectivity.
+- Predeclare intended piece membership/mass from the cut geometry. Require two intended substantial pieces, conserved total mass within numerical accounting tolerance, and no surviving tissue bridge. Report small fragments separately; do not count a detached vertex as a slice.
+- Validate the evaluator with negative controls: intact target, partial damage/one remaining bridge, visually displaced but bonded geometry, and isolated tiny fragments must not pass. A fully disconnected known fixture must pass.
+
+Deliver full state, surviving-bond report, component masses, damage/energy history, clearance and evaluator controls. Do not claim complete separation until these checks pass.
+
+## Gate D — post-cut stability and restart reliability
+
+Observe at least one simulated second after clearance with cut-face and board contact active. Verify finite stable states, no healing or excessive penetration, mass conservation, supported piece shape and force decay. Document the artificial fixed supports and which piece each supports; do not describe this as free slices or left-hand stabilization.
+
+Repeat from a fresh/reset state; verify a mid-cut checkpoint restart against uninterrupted execution. Include failed-episode reset. Repeat/refine at least one damage-enabled case and compare geometry, force, energy and separation verdict. Record repeatability separately from timestep convergence. No training data accepted before these pass.
+
+## Gate E — one size change and one path change
+
+Use separate versioned cases. Audit mass/density, material coefficients, cut position, supports and fracture-energy scaling. Preserve the law rather than forcing the same total energy onto a different physical cut area. A new physical scaling interpretation requires explicit documentation and review.
+
+Distinguish a newly prepared interface for a new path from a path deviating after preparation. The present precomputed interface does not establish arbitrary-path cutting. Run one supported changed-size and one supported changed-path case with the same success evaluator; keep baseline and variants separate. Report unsupported path freedom plainly.
+
+## Gate F — successive slices
+
+One successful interface is not multiple slicing. Inspect whether the current model can prepare additional interfaces in the remaining body while preserving already accumulated damage, mass, stresses, supports and contact history. Plan and validate that transfer before execution. Do not rebuild the remainder as an undamaged tomato or spawn pre-separated pieces. If this needs new connectivity/sampling beyond approved scope, prepare the concrete proposal and ask once. Demonstrate at least two successive genuine separations only after this capability passes independent controls; otherwise leave this checklist item open with the precise limitation.
+
+## Execution discipline and handoff
+
+- Complete gated work continuously; no approval between routine steps. Ask only for a physical-model/scope decision not covered by existing authorization. Do not launch a simulation merely to fill time while blocked.
+- Limit each failed gate to a diagnosed correction and bounded retest before reassessing. Repeated identical failure requires a written cause and next decision, not many diagnostic branches.
+- No robot scene edits, engine adoption, learning, video work or renewed motor-work investigation in section 4.
+- Save per-run plan/results/manifest, checkpoints and concise status with completed simulated time, total planned time, timestamp, actual process state and last error. Write results atomically. A stale process/status must not appear as running.
+- Update `/home/omen/Documents/Codex/2026-10-31/tomato-project-handoff/outputs/disect-execution-checklist.json` and rebuild with `build_disect_checklist_page.py`. Mark each of section 4's six items complete only for its own verified result. Preserve section 2 speed as deferred and experimental validation as pending. Keep downloadable checklist text synchronized.
+- Final report: passed/failed gates, exact new capability, runtime/memory, limits, evidence paths and next action. Never call a visible groove complete separation or a scripted policy learned.
+
+First action for Sol: inspect the frozen source and implement Gate A in a new directory. The current request is this plan; no section 4 fracture run was launched while preparing it.

@@ -1,0 +1,39 @@
+SECTION 4 CONTACT RECOVERY — VERIFIED COMPONENT RESULTS
+
+The user approved a separately versioned material-edge/CAD contact correction and two-stage horizontal withdrawal. Existing research/production evidence remains unchanged.
+
+Findings and rejected candidates
+- Point contact missed seven independently verified material-edge crossings in both saved 40 ms runs, with actual intrusion up to 0.439351 mm. The broader old Gate A verdict was reopened.
+- Entry-plane endpoint penalties detected the crossings but failed energy continuity at a blade corner. Rejected.
+- Uniform distributed edge quadrature preserved energy but failed final force convergence: 512/1024 differed about 26.5%; 1024/2048 about 13.0%, exceeding 5%. Rejected for physical qualification.
+- The old intended starting pose also overlapped material between vertices. Whole-material starting clearance was corrected independently; the current stroke starts 0.6 mm higher, with a certified positive 1 micrometre margin.
+
+Verified adaptive candidate
+- Integrates the unchanged scalar CAD law over exact inside portions of existing material edges. Unit contact budget per interface node, normalized over incident edges; no multiplied per-edge stiffness. Forces pull back to both physical endpoints. No mass, connectivity, material threshold, fracture-energy or grip change.
+- Detects all recorded missed crossings in both saved runs, and passes grazing/rigid/wrench controls.
+- Independent force reference: separate plane/least-squares intersections and SciPy Gauss-Kronrod integration. Actual-state force errors below 1e-8 N; actual material-coordinate energy-gradient errors below 1e-7 N. Tightened adaptive integration agrees within 0.0002 percent on tested states.
+- Positive normal damping weights retain full off-diagonal material embedding in the implicit solve; dense independent matrix/potential controls pass.
+- Separate 50 microsecond fixed and 2 micrometre moving contact tests pass at 3.125/1.5625 microseconds. Moving final position difference 1.66e-10 m, velocity 3.78e-6 m/s and nodal-force relative difference 2.59e-6. Reaction and moment also pass 5 percent limits.
+- Pure repeated trials, reset and reconstructed nonfracturing checkpoint forces pass. This does not qualify a damaged mid-cut restart.
+- Independent whole-tetrahedron intrusion certificates and cached movement bounds guard the entire material volume; unresolved or inadmissible geometry rejects the trial. The original 0.1 mm limit remains unchanged.
+
+Current bounded physical work
+A new 20 ms moving-stroke prefix is running, with a 300 s wall cap and recoverable checkpoints. No irreversible damage, successful shallow cut or separation has yet been established. See live result/progress for its actual outcome; a wall cap is not a physical pass.
+
+Scope
+Independent implementation controls and tiny contact components are passes. Gate B, full stroke/separation, post-cut stability, damaged reset/repeatability, variants and successive slices remain open. No native robot coupling, engine adoption or training. Speed remains deferred and experimental validation pending.
+
+Evidence directory: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27
+
+
+BOUNDED PREFIX CHECKPOINT AND CONTINUATION
+The initial window stopped at its sample-checked wall cap: 12.5 ms completed, 4000 accepted steps, 337.093 s actual stepping/logging wall time, peak RSS 2166820 KiB. All accepted physical checks passed; damage and fracture dissipation remained zero. This was not a completed 20 ms test or cutting qualification.
+
+The saved checkpoint has now resumed successfully under a finite 1200 s sample-checked wall cap. If the 20 ms prefix completes with all physical stops passed, the supervisor will launch one independent half-step repeat under an 1800 s cap, then write a component comparison. It stops on a failure or cap; it never launches a full cut/training or marks Gate B complete automatically. The checklist updates on completion or stop.
+Supervisor/status: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/pair_status.json
+
+
+20 MS ENDPOINT REVIEW
+Both coarse and fine states reached the requested 20 ms endpoint. The fine run accepted 12800 steps and saved its final requested sample before the wall-cap check labelled the run stopped. Raw results remain unchanged. A separate saved-data review passes the complete common-time component comparison: position difference 6.58e-10 m, velocity 1.04e-6 m/s, force relative difference 2.30e-5 and moment 3.79e-5. Damage/dissipation are zero in both runs. This is a contact-component pass, not Gate B or separation. No simulation is currently running.
+Next: continue from the verified 20 ms checkpoint in bounded deeper-loading segments with whole-volume and force stops, and independently refine actual damage onset before withdrawal or a full stroke.
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/bounded_pair_endpoint_review.json

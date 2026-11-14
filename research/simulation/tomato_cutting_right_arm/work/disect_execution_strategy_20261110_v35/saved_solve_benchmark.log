@@ -1,0 +1,77 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.94 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.88 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.76 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.70 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.68 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.66 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.90 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.01 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.28 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.43 ms  (cached)
+{
+  "scope": "Same old physical operator and saved state, changed CPU query implementation only; no accepted physical advance or history commit. Local equivalence and cost result only; new edge-coverage candidate still needs fresh coupled/half-step qualification.",
+  "passed": true,
+  "reference": {
+    "wall_s": 1.57742056799907,
+    "solver": {
+      "iterations": 56,
+      "relative_residual": 2.2680074859359776e-14,
+      "inner_max_residual": 9.677733803356498e-11,
+      "newton_iterations": 2,
+      "wall_s": 1.5709059690052527
+    },
+    "coupling_rounds": 1
+  },
+  "candidate_repetitions": [
+    {
+      "wall_s": 0.21854833500401583,
+      "solver": {
+        "iterations": 56,
+        "relative_residual": 1.734854694413726e-14,
+        "inner_max_residual": 9.677811054465663e-11,
+        "newton_iterations": 2,
+        "wall_s": 0.21201935400313232
+      },
+      "coupling_rounds": 1,
+      "differences": {
+        "position_m": 6.938893903907228e-18,
+        "velocity_m_s": 4.921948265623755e-13,
+        "actual_force_N": 1.3123421620242492e-13,
+        "moment_Nm": 9.412609580650155e-15
+      }
+    },
+    {
+      "wall_s": 0.20480677299929084,
+      "solver": {
+        "iterations": 56,
+        "relative_residual": 1.7356311164763063e-14,
+        "inner_max_residual": 9.677796184257413e-11,
+        "newton_iterations": 2,
+        "wall_s": 0.19826679900143063
+      },
+      "coupling_rounds": 1,
+      "differences": {
+        "position_m": 6.938893903907228e-18,
+        "velocity_m_s": 4.921956939241134e-13,
+        "actual_force_N": 1.312353004045974e-13,
+        "moment_Nm": 9.419548474554063e-15
+      }
+    }
+  ],
+  "saved_solve_speedup": 7.451997333580061,
+  "cold_volume_guard_speedup": 37.508287856995075,
+  "history_and_source_checkpoint_unchanged": true,
+  "wall_s": 9.674081076998846,
+  "backend_candidate_not_yet_adopted": true,
+  "full_trajectory_comparison_pending": true
+}

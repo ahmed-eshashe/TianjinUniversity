@@ -1,0 +1,22 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/cache/warp/1.17.0
+Module inside_cad_gpu 2a87e61 load on device 'cuda:0' took 361.82 ms  (compiled)
+{
+  "passed": true,
+  "checks": {
+    "independent_interior": true,
+    "distance": true,
+    "normal": true
+  },
+  "errors": {
+    "distance_m": 1.2576745200831851e-17,
+    "normal": 7.954730411853068e-07
+  },
+  "points": 8384,
+  "scope": "Exact original-CAD distances at independently verified interior points, across all 131 solid cells. General signed query remains unchanged."
+}

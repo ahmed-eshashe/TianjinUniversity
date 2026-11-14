@@ -1,0 +1,70 @@
+{
+  "numerical_motion_consistency_stop": true,
+  "completed_negative_control_robot_intervals": 8,
+  "coast_diagnostic": [
+    {
+      "joint_id": 1,
+      "initial_angle_rad": -1.3586338758468628,
+      "initial_velocity_rad_s": -0.0034461715258657932,
+      "actual_angle_increment_rad": 0.0,
+      "host_32_substep_increment_rad": 0.0,
+      "unrounded_velocity_integral_estimate_rad": -2.871809604888161e-06
+    },
+    {
+      "joint_id": 3,
+      "initial_angle_rad": -1.3329921960830688,
+      "initial_velocity_rad_s": 0.00027069164207205176,
+      "actual_angle_increment_rad": 0.0,
+      "host_32_substep_increment_rad": 0.0,
+      "unrounded_velocity_integral_estimate_rad": 2.2557636839337647e-07
+    },
+    {
+      "joint_id": 5,
+      "initial_angle_rad": 1.092159390449524,
+      "initial_velocity_rad_s": 0.0014696791768074036,
+      "actual_angle_increment_rad": 0.0,
+      "host_32_substep_increment_rad": 0.0,
+      "unrounded_velocity_integral_estimate_rad": 1.224732647339503e-06
+    },
+    {
+      "joint_id": 7,
+      "initial_angle_rad": 0.474401593208313,
+      "initial_velocity_rad_s": 0.0001821212936192751,
+      "actual_angle_increment_rad": 0.0,
+      "host_32_substep_increment_rad": 0.0,
+      "unrounded_velocity_integral_estimate_rad": 1.5176774468272924e-07
+    },
+    {
+      "joint_id": 9,
+      "initial_angle_rad": -1.0189085006713867,
+      "initial_velocity_rad_s": 0.0017404062673449516,
+      "actual_angle_increment_rad": 0.0,
+      "host_32_substep_increment_rad": 0.0,
+      "unrounded_velocity_integral_estimate_rad": 1.450338556120793e-06
+    },
+    {
+      "joint_id": 11,
+      "initial_angle_rad": 0.45277827978134155,
+      "initial_velocity_rad_s": -0.0004771225794684142,
+      "actual_angle_increment_rad": 0.0,
+      "host_32_substep_increment_rad": 0.0,
+      "unrounded_velocity_integral_estimate_rad": -3.976021495570118e-07
+    },
+    {
+      "joint_id": 13,
+      "initial_angle_rad": 0.043135568499565125,
+      "initial_velocity_rad_s": 0.003956293687224388,
+      "actual_angle_increment_rad": 2.86102294921875e-06,
+      "host_32_substep_increment_rad": 2.86102294921875e-06,
+      "unrounded_velocity_integral_estimate_rad": 3.2969114060203235e-06
+    }
+  ],
+  "host_32_substep_final_q_max_error_rad": 1.3573844270808877e-09,
+  "observation": "Reported actual COM velocity ~2mm/s DOWN integrates to-1.66666micrometreZ; actual link-derived COM geometry changes+0.24429micrometreZ and rotates about2microradian. Virtual un-applied contact work changes sign. Six of seven moving joint angles remain exactly unchanged. This is a negative-control diagnosis, not a positive work qualification.",
+  "hypothesis": "Authored32 TGS position iterations subdivide each already-small step; binary32 joint-angle updates can round away. Scalar32-substep replay matches measured joint changes. Needs independently tested coordinate/solver fix; no backend patch assumed.",
+  "primary_TGS_reference": "https://nvidia-omniverse.github.io/PhysX/physx/5.4.0/docs/RigidBodyDynamics.html",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/moving_contact_c1_down_20261102_01/no_feedback_robot_audit.json": "11d60f6ef514c640292e5effe46672ce10d0333f6f1fd56fb3ea94b4cc1dc6fd"
+  },
+  "qualification": false
+}

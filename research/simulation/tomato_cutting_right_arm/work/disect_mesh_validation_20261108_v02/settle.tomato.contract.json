@@ -1,0 +1,10 @@
+{
+ "scope":"Isolated unloaded FEM tomato, BEFORE insertion of cutting interface; component stability only",
+ "material":{"young_Pa":30000,"poisson":0.25,"density":"mass/unchanged exterior volume","bulk_damping":10,"provenance":"E/nu from original synthetic affine bulk construction; damping from DiSECt example, not matched or calibrated"},
+ "coordinates":"DiSECt (x,y,z)=(source x, source z+0.002, -source y); proper rotation, 2 mm board offset retained",
+ "support":"Original 25 coordinates fixed, no slice fixation; infinite y=0 ground proxy, not finite original board",
+ "dt_s":0.00001,"duration_s":1.0,"sample_every_steps":100,"process_wall_cap_s":300,
+ "gates":{"finite":"at every sampled state","volume_ratio_min":0.1,"board_penetration_m_max":0.0001,"final_0.1s_speed_m_s_max":0.001,"fixed_node_error_m_max":0.0000001},
+ "stop":"First sampled finite/volume/penetration/fixed-position violation; no parameter tuning to force pass. Speed gate assessed at end.",
+ "limitations":"No blade contact, fracture, material equivalence, post-cut stability or original board qualification. No full cutting gate closed."
+}

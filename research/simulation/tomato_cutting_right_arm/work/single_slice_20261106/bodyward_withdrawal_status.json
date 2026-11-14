@@ -9,7 +9,7 @@
   "distance_m": 0.06,
   "speed_m_s": 0.02,
   "native_check": "bodyward_motion_check01",
-  "status": "coupled_withdrawal_running",
+  "status": "withdrawal_endpoint_review_required",
   "deforming_target_test_passed": false,
   "full_slice": false,
   "native_motion_check_passed": true,
@@ -17,11 +17,12 @@
   "maximum_tracking_error_m": 0.0007359910072674817,
   "maximum_height_deviation_m": 0.0006882995367050171,
   "active_run": "robot_cut18",
-  "endpoint_assessment_queued": true,
+  "endpoint_assessment_queued": false,
   "estimated_retreat_wall_hours_at_current_rate": 7,
   "estimate_is_not_completion_guarantee": true,
   "next_action": "Bounded coupled timestep comparison, then resume accepted withdrawal",
   "material_timestep_comparison": "bodyward_timestep_comparison/report.json",
   "local_coupled_speedup_passed": true,
-  "full_trajectory_accuracy_qualified": false
+  "full_trajectory_accuracy_qualified": false,
+  "progress_note": "The withdrawal run has stopped and its saved endpoint was assessed. Route finished: False. Remaining material connections: 47. Full slice is not yet qualified. Review blade clearance and remaining-interface geometry before the finishing stroke. Local timestep comparisons passed; full-trajectory convergence remains unqualified."
 }

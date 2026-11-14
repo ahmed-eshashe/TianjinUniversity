@@ -1,0 +1,11 @@
+SAVED-STATE CONTACT PRECONDITIONER TEST v12 — 8 November 2026
+
+Resumed exact saved positions/velocities at6ms from v11. Damage remains disabled; history transfer is not qualified by this test. Added nonnegative diagonal entries of the existing positive contact stiffness blocks to the three coordinate-wise sparse preconditioner factors. This is a preconditioner approximation, not the exact coupled contact Hessian. Evaluated forces, numerical Hessian action and acceptance gates unchanged.
+
+Previously failing step13 and following step14 both accepted, reaching7ms. Maximum accepted nonlinear force residual7.643e-7N (<1e-6N). At7ms vs existing reference: maximum position difference0.017053mm, velocity0.002690m/s, internal-force relative L2 difference1.57331%. Scoped recovery/comparison passes; full20ms and time refinement still unqualified.
+
+Solver-loop runtime66.818s for1ms additional simulation, excluding startup. Severe iteration cost remains; speed requirement fails. The diagonal contact approximation improves this specific convergence failure but is not suitable evidence of efficient cutting simulation. No long hold/cutting/training started.
+
+Next technical task: replace repeated finite-difference contact Hessian queries with validated local contact blocks including cross-node coupling; retain this saved6ms recovery as regression. Do not spend hours extending this slow diagnostic implementation.
+
+Initial launcher attempt had an incorrect checkpoint filename and exited before recovery; corrected path and rerun retained separately. Section3 remains4/5; total15/35. Section4 blocked. Experimental validation pending. No simulation running.

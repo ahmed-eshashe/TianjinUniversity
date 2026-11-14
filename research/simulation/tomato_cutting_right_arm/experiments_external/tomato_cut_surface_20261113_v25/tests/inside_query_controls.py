@@ -1,0 +1,9 @@
+from pathlib import Path
+import os,sys,numpy as np,json
+W=Path(__file__).resolve().parents[1];sys.path.insert(0,str(W/'src'));os.environ['NUMBA_CACHE_DIR']=str(W/'cache/numba')
+import warp as wp
+wp.config.kernel_cache_dir=str(W/'cache/warp');wp.config.enable_backward=False
+from blade_geometry import CAD
+from inside_cad_gpu import query_inside
+from independent_cad_query import query_mesh
+cad=CAD();z=np.load(W/'assets/blade_partition.npz');cells=z['x'][z['tets']];rng=np.random.default_rng(1903);weights=rng.dirichlet(np.ones(4),size=64);points=np.einsum('wi,cij->cwj',weights,cells).reshape(-1,3);ids=np.repeat(np.arange(len(cells)),64).astype(np.int32);d=np.load(W/'assets/inside_candidates.npz');ptr=wp.array(d['ptr'],dtype=int,device='cuda:0');faces=wp.array(d['ids'],dtype=int,device='cuda:0');p=wp.array(points,dtype=wp.vec3d,device='cuda:0');ci=wp.array(ids,dtype=int,device='cuda:0');phi=wp.empty(len(points),dtype=wp.float64,device='cuda:0');normal=wp.empty(len(points),dtype=wp.vec3d,device='cuda:0');wp.launch(query_inside,len(points),[cad.tri,ptr,faces,ci,p,phi,normal]);reference=query_mesh(cad.vertices,cad.faces,points);errors=dict(distance_m=float(np.max(abs(phi.numpy()-reference['phi']))),normal=float(np.max(np.linalg.norm(normal.numpy()-reference['normal'],axis=1))));checks=dict(independent_interior=np.all(reference['phi']<=0),distance=errors['distance_m']<1e-12,normal=errors['normal']<1e-5);out=dict(passed=all(checks.values()),checks={k:bool(v) for k,v in checks.items()},errors=errors,points=len(points),scope='Exact original-CAD distances at independently verified interior points, across all 131 solid cells. General signed query remains unchanged.');(W/'reports/inside_query_controls.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2));assert out['passed']

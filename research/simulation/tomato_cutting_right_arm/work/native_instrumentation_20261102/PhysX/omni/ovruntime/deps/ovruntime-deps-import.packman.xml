@@ -1,0 +1,48 @@
+<project toolsVersion="6.11">
+  <!-- carb + usd tracked from ovruntime_deps' own manifests. The rest are pinned
+       by hand (not in those manifests). omni_client_library: see kit-kernel-import. -->
+
+  <import path="../_build/target-deps/ovruntime_deps_release/deps/carbonite.packman.xml">
+    <filter include="carb_sdk_plugins" />
+  </import>
+  <import path="../_build/target-deps/ovruntime_deps_release/deps/usd-deps.packman.xml">
+    <filter include="usd-${config}" />
+  </import>
+  <dependency name="carb_sdk_plugins" linkPath="../_build/target-deps/carb_sdk_plugins" tags="slim-package" />
+  <dependency name="usd-${config}" linkPath="../_build/target-deps/usd/${config}" />
+
+  <!-- Python 3.12 (from Carbonite's dependency chain) -->
+  <dependency name="python" linkPath="../_build/target-deps/python">
+    <package name="python" version="3.12.13+nv1-${platform_target_abi}" />
+  </dependency>
+
+  <!-- pybind11 (from Carbonite's dependency chain) -->
+  <dependency name="pybind11" linkPath="../_build/target-deps/pybind11">
+    <package name="pybind11" version="2.11.1-0" />
+  </dependency>
+
+  <!-- doctest (from Carbonite's dependency chain) -->
+  <dependency name="doctest" linkPath="../_build/target-deps/doctest">
+    <package name="doctest" version="2.4.5+nv7-0" />
+  </dependency>
+
+  <!-- cxxopts (from Carbonite's dependency chain) -->
+  <dependency name="cxxopts" linkPath="../_build/target-deps/cxxopts">
+    <package name="cxxopts" version="2.2.0-1" />
+  </dependency>
+
+  <!-- CUDA toolkit -->
+  <dependency name="cuda" linkPath="../_build/target-deps/cuda">
+    <package name="cuda" version="12.8.0-5-${platform_target_abi}-release" />
+  </dependency>
+
+  <!-- ImGui -->
+  <dependency name="imgui" linkPath="../_build/target-deps/imgui">
+    <package name="imgui" version="1.77_WIP-277297b1" />
+  </dependency>
+
+  <!-- GSL (Guidelines Support Library) -->
+  <dependency name="gsl" linkPath="../_build/target-deps/gsl">
+    <package name="gsl" version="3.1.0.1" />
+  </dependency>
+</project>

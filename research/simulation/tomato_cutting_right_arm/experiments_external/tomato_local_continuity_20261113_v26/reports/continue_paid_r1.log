@@ -1,0 +1,43 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.55 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.43 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.51 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.59 ms  (cached)
+Module compact_contact_gpu a96a1e9 load on device 'cuda:0' took 1.77 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.44 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.38 ms  (cached)
+Module paid_contact_gpu 5334c27 load on device 'cuda:0' took 0.41 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.45 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.86 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.41 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.72 ms  (cached)
+{"t": 0.003775, "energy_relative": 2.442219706109561e-06, "gap_m": 3.2964516655828633e-09, "opening_rank": 1, "available_J": 2.541381556854415e-10, "blade_reached_area_m2": 7.705893227039448e-12, "contact_N": 3.381156524984158e-05, "cutting_N": 0.0007969495896279344, "Jmin": 0.995038407010862, "nodes": 29}
+{"t": 0.0038, "energy_relative": 3.4093889638024928e-06, "gap_m": 8.537624137928477e-09, "opening_rank": 1, "available_J": 5.01271361019056e-10, "blade_reached_area_m2": 1.0927993936590486e-11, "contact_N": 3.834495840651887e-05, "cutting_N": 0.0008564431545405495, "Jmin": 0.9950243129398197, "nodes": 29}
+{"t": 0.0038250000000000003, "energy_relative": 4.1467072351039866e-06, "gap_m": 5.137403644335438e-09, "opening_rank": 1, "available_J": 7.380566133643899e-10, "blade_reached_area_m2": 1.4013221785906323e-11, "contact_N": 4.2753041302693215e-05, "cutting_N": 0.0009104744635505695, "Jmin": 0.9979712373127851, "nodes": 29}
+{"t": 0.00385, "energy_relative": 4.422416571807748e-06, "gap_m": 2.9047359192551702e-09, "opening_rank": 1, "available_J": 9.627986173277158e-10, "blade_reached_area_m2": 1.6944954349211852e-11, "contact_N": 4.6831756255201466e-05, "cutting_N": 0.0009593962072707075, "Jmin": 0.994030874243925, "nodes": 29}
+{"t": 0.003875, "energy_relative": 4.770607531435182e-06, "gap_m": 1.660921447097074e-08, "opening_rank": 1, "available_J": 1.1753676573939548e-09, "blade_reached_area_m2": 1.9725744517696096e-11, "contact_N": 5.0879088740521216e-05, "cutting_N": 0.0010037111468338736, "Jmin": 0.994415279959315, "nodes": 29}
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/tests/continue_paid.py", line 46, in <module>
+    selected=low;candidate=a.body.clone();candidate.split(normal,offset,cut_id=0,front=(direction,selected),world=True);a2=Aggregate(candidate);s2=Surface(a2);area=(s2.tri_area.sum()-s.tri_area.sum())/2;cert=certify(s2.tets(a2.q),cad,T,R);g2=make(a2,s2,t);obs2=g2.observe();dU=obs2['contact_energy']-obs['contact_energy'];checks=dict(positive_area=area>0,paid=80*area<=available+1e-12,area_match=abs(area-target)<max(1e-12,target*1e-5),certificate=cert['passed'],transfer_position=a2.transfer['position_m']<1e-10,transfer_energy=abs(a2.transfer['elastic_change_J']+a2.transfer['kinetic_change_J'])<.05*scale,birth=abs(dU)<.05*scale,lag=front_offset-selected<.0001,force=obs2['sum_force_N']+np.linalg.norm(obs['cutting_force'])<2);entry=dict(time=t,checks={k:bool(v) for k,v in checks.items()},area_m2=area,lag_m=front_offset-selected,transfer=a2.transfer,contact_birth_J=dU);events.append(entry)
+                                                                                                                           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/src/local_continuity.py", line 99, in __init__
+    start=time.perf_counter();before=body.metrics();x0,v0=vertex_fields(body);self.body,clipped=loosen(body);b=self.body;self.E,self.masters,self.report,self.constraints=elimination(b,clipped);b._valid_basis=self.E.copy();self.M=(self.E.T@diags(b.mass)@self.E).tocsr();n=len(self.masters);nc,labels=connected_components(self.M,directed=False);self.order=np.argsort(labels,kind='stable');sizes=np.bincount(labels);self.bounds=np.r_[0,np.cumsum(sizes)];self.singletons=self.order[self.bounds[:-1][sizes==1]];self.single_mass=self.M.diagonal()[self.singletons];self.coupled=[]
+                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/src/local_continuity.py", line 86, in elimination
+    if legacy_error>1e-10:raise ValueError(('constraints remove valid original fields',legacy_error))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('constraints remove valid original fields', 0.5004639602196175)
+{
+  "status": "stopped",
+  "wall_s": 0.35546016300213523,
+  "simulation_advanced_s": 0.00012499999999999968,
+  "paid_fracture_work_J": 1.3672883040615619e-09,
+  "physical_slice": false,
+  "rl_ready": false
+}

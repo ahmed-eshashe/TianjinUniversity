@@ -1,0 +1,40 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 1.05 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 1.35 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.78 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 7.24 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 3.03 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 1.09 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 7.11 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.28 ms  (cached)
+OPTIMIZER {'func_evals': 117, 'n_iter': 100, 't': 1.0, 'prev_loss': 3.0715414043085165e-08}
+NEWTON [{"iteration": 0, "residual": 0.0003425921491073863, "cg_info": 0, "matvecs": 86}, {"iteration": 1, "residual": 1.534531162004106e-05, "cg_info": 0, "matvecs": 57}, {"iteration": 2, "residual": 7.745262355365155e-08}]
+OPTIMIZER {'func_evals': 119, 'n_iter': 100, 't': 1.0, 'prev_loss': 9.793564189879004e-08}
+NEWTON [{"iteration": 0, "residual": 0.00022012743594796843, "cg_info": 0, "matvecs": 92}, {"iteration": 1, "residual": 5.045552911510672e-07}]
+OPTIMIZER {'func_evals': 118, 'n_iter': 100, 't': 1.0, 'prev_loss': 2.3426487124466557e-07}
+NEWTON [{"iteration": 0, "residual": 0.00039268739945867167, "cg_info": 0, "matvecs": 88}, {"iteration": 1, "residual": 1.667050915078755e-05, "cg_info": 0, "matvecs": 60}, {"iteration": 2, "residual": 8.39212854466977e-08}]
+OPTIMIZER {'func_evals': 117, 'n_iter': 100, 't': 1.0, 'prev_loss': 4.769100380044391e-07}
+NEWTON [{"iteration": 0, "residual": 0.00033665087585540065, "cg_info": 0, "matvecs": 89}, {"iteration": 1, "residual": 6.888834605988114e-07}]
+OPTIMIZER {'func_evals': 115, 'n_iter': 100, 't': 1.0, 'prev_loss': 8.717077989938534e-07}
+NEWTON [{"iteration": 0, "residual": 0.0002957654621690143, "cg_info": 0, "matvecs": 88}, {"iteration": 1, "residual": 8.511120598245434e-07}]
+OPTIMIZER {'func_evals': 113, 'n_iter': 100, 't': 1.0, 'prev_loss': 1.4697290759435183e-06}
+NEWTON [{"iteration": 0, "residual": 0.0005330014326173557, "cg_info": 0, "matvecs": 83}, {"iteration": 1, "residual": 1.4882524815578105e-05, "cg_info": 0, "matvecs": 73}, {"iteration": 2, "residual": 1.294666950813396e-07}]
+OPTIMIZER {'func_evals': 121, 'n_iter': 100, 't': 1.0, 'prev_loss': 2.3208935870498773e-06}
+{
+  "scope": "Bounded coupled implicit numerical candidate; unchanged material laws, lagged viscous geometry and friction normal",
+  "bulk_energy_force_max_error_N": 1.7322423115611112e-16,
+  "stop": "RuntimeError('Newton linear solve did not converge')",
+  "dt_s": 0.0005,
+  "wall_s": 48.24580500200682,
+  "max_force_residual_N": 0.00035653999591868634,
+  "component_passed": false
+}

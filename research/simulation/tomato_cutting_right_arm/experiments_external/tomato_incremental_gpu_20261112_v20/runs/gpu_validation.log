@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/tests/gpu_validate.py", line 14, in <module>
+    c=Aggregate(b,1e-8);g=GPU(Aggregate(b,1e-8),dt);cpu=[];gpu=[];maxF=0.;e0=b.metrics()['U']
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/selective_gpu.py", line 107, in __init__
+    self.stress();self.advance(self.vh,-.5*self.dt,0.0);self.check()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/selective_gpu.py", line 118, in advance
+    wp.launch_tiled(gather_parallel,self.batch*self.n,inputs=[self.iptr,self.iidx,self.ig,self.P,self.external,self.force],block_dim=32,device='cuda:0')
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/warp/_src/context.py", line 11636, in launch_tiled
+    raise RuntimeError("Launch dimensions 'dim' argument should be passed via. keyword args for wp.launch_tiled()")
+RuntimeError: Launch dimensions 'dim' argument should be passed via. keyword args for wp.launch_tiled()
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/cache/warp/1.17.0
+Module selective_gpu 0f46f62 load on device 'cuda:0' took 263.68 ms  (compiled)
+exception

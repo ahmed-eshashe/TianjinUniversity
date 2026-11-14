@@ -1,0 +1,22 @@
+[Taichi] version 1.7.4, llvm 15.0.4, commit b4b956fd, linux, python 3.11.16
+[Taichi] Starting on arch=cuda
+===>    42000 particles of     meat     cube added.
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/robo_benchmark.py", line 23, in <module>
+    t=time.perf_counter();env.step(a);ti.sync();stepwall.append(time.perf_counter()-t)
+                          ^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/taichi_env.py", line 156, in step
+    self.simulator.step(action=action)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 720, in step
+    self.step_(action)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 740, in step_
+    self.substep(self.cur_step_local, is_none_action)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 548, in substep
+    self.grid_op(f, self.cur_step_global)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/env311/lib/python3.11/site-packages/taichi/lang/kernel_impl.py", line 1178, in __call__
+    raise type(e)("\n" + str(e)) from None
+taichi.lang.exception.TaichiSyntaxError: 
+File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/solver_comparison_20261108/vendor/roboninja/cut_simulation/engine/simulators/mpm_simulator.py", line 377, in grid_op:
+                if ti.static(self.agent is not None):
+                             ^^^^^^^^^^^^^^^^^^^^^^
+Operator "is not" in Taichi scope is not supported.

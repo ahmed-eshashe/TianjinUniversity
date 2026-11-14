@@ -1,0 +1,55 @@
+TOMATO MOTION COMPARISON — 13 NOVEMBER 2026
+
+Changes: controller only. Original v28 model/solver/environment source hashes preserved: True
+All original force, penetration, board and numerical stops retained.
+Time below is simulated episode time, including approach and withdrawal.
+Load is the sum of local contact and fracture magnitudes; not a calibrated wrist measurement.
+
+Run | timestep ms | success | episode s | load N | penetration mm | pre-separation RMS deformation mm
+baseline | 0.20 | True | 63.40 | 1.064 | 0.0173 | 1.850
+baseline_fine | 0.10 | True | 63.02 | 0.915 | 0.0085 | 1.958
+feed_2x | 0.20 | True | 32.40 | 1.369 | 0.0272 | 2.053
+feed_2x_fine | 0.10 | True | 32.42 | 1.455 | 0.0105 | 1.890
+feed_4x | 0.20 | True | 17.32 | 1.606 | 0.0236 | 2.012
+feed_4x_fine | 0.10 | True | 17.54 | 1.901 | 0.0106 | 1.826
+smooth_2x | 0.20 | True | 32.44 | 1.871 | 0.0129 | 1.765
+smooth_2x_fine | 0.10 | False | 22.74 | 2.048 | 0.0089 | 1.461
+smooth_4x | 0.20 | False | 10.84 | 2.103 | 0.0162 | 1.183
+smooth_sync_2x_fine | 0.10 | True | 32.38 | 1.502 | 0.0085 | 1.635
+smooth_sync_2x_sync | 0.20 | True | 32.38 | 1.287 | 0.0163 | 1.717
+
+Unsuccessful runs are partial episodes; their duration and deformation are not directly comparable to completed cuts.
+RMS deformation removes center-of-mass translation relative to the state after initial settling. It includes cut opening before final separation, not only bulk compression.
+All complete cases must retain the full fracture work budget and show an exact reset.
+
+Timestep sensitivity:
+{"case": "baseline", "same_success": true, "same_broken_bonds": true, "peak_load_relative_difference": 0.16240789441120806, "max_position_difference_at_common_snapshot_times_mm": 2.2818550933152437, "number_common_snapshot_times": 64}
+{"case": "feed_2x", "same_success": true, "same_broken_bonds": true, "peak_load_relative_difference": 0.05893168374623551, "max_position_difference_at_common_snapshot_times_mm": 2.170416060835123, "number_common_snapshot_times": 33}
+{"case": "feed_4x", "same_success": true, "same_broken_bonds": true, "peak_load_relative_difference": 0.15504153805290957, "max_position_difference_at_common_snapshot_times_mm": 0.8294424042105675, "number_common_snapshot_times": 18}
+{"case": "smooth_2x", "same_success": false, "same_broken_bonds": false, "peak_load_relative_difference": 0.0864208612468489, "max_position_difference_at_common_snapshot_times_mm": 2.7373034972697496, "number_common_snapshot_times": 23}
+{"case": "smooth_sync_2x", "same_success": true, "same_broken_bonds": true, "peak_load_relative_difference": 0.14334020540020664, "max_position_difference_at_common_snapshot_times_mm": 1.7428961582481861, "number_common_snapshot_times": 34}
+
+Interpretation: slower motion is prescribed by the baseline controller. Speed can improve without changing material resistance, but faster feeding may increase force. Constant downward feeding during sliding reversals produced force spikes in the smooth trial.
+The separate synchronized smooth trial therefore pauses downward motion smoothly at each reversal, while retaining the same average feed.
+These screens do not establish real-tomato realism or unrestricted learned-policy safety. Larger timestep-dependent force changes must not be called a precise force prediction.
+
+RECOMMENDATION
+{
+  "status": "controller_comparison_complete",
+  "recommended_motion": "smooth_sync_2x",
+  "recommended_dt_s": 0.0001,
+  "motion": {
+    "kind": "smooth_sync",
+    "feed": 0.003,
+    "frequency": 0.8,
+    "amplitude": 0.02
+  },
+  "terminal_success_both_tested_timesteps": true,
+  "reduction_in_simulated_episode_duration_percent": 48.6194858774992,
+  "fine_peak_load_change_percent": 64.14222131913047,
+  "deformation_rms_change_percent": -16.49115741576377,
+  "physics_changed": false,
+  "existing_live_view_changed": false,
+  "decision": "Recommend synchronized smooth stroke for an exploratory demo: half the duration and less pre-separation RMS deformation, but higher calculated peak load than the old baseline. Do not claim lower cutting force or real-tomato validation. Fastest tested motion is close to the force stop; unsynchronized smooth cases rejected.",
+  "numerical_limit": "At 0.2ms versus 0.1ms, the recommended motion has the same failure bonds and terminal success, but peak load differs by 14.3% and maximum matched-time particle position by 1.74mm. This is approximate-model screening, not precise convergence qualification."
+}

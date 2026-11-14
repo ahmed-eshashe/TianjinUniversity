@@ -1,0 +1,28 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_contact_integration_20261112_v23/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 258.75 ms  (compiled)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 249.99 ms  (compiled)
+Module contact_gpu b352c7c load on device 'cuda:0' took 658.83 ms  (compiled)
+Module blade_geometry 7e43415 load on device 'cuda:0' took 272.88 ms  (compiled)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_contact_integration_20261112_v23/tests/preflight.py", line 38, in <module>
+    g.step(80);q,v=g.state();checks['finite_step']=np.isfinite(q).all() and np.isfinite(v).all();checks['correct_elapsed']=abs(g.observe()['time']-.001)<1e-8
+    ^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_contact_integration_20261112_v23/src/pipeline_gpu.py", line 57, in step
+    def step(self,n,block=64):self.step_async(n,block);return self.finish()
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_contact_integration_20261112_v23/src/contact_gpu.py", line 105, in step_async
+    full,rem=divmod(n,block);graphs=[self.graph(block)]*full
+                                     ^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_contact_integration_20261112_v23/src/active_gpu.py", line 38, in graph
+    if n not in self.dispatch:self.dispatch[n]=Dispatch(g);self.dispatch[n].update(self.n,self.p)
+                                               ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_contact_integration_20261112_v23/src/active_gpu.py", line 19, in __init__
+    if not self.h:raise ValueError(L.dispatch_error().decode())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: unrecognized kernel samples_0631dbf4_cuda_kernel_forward

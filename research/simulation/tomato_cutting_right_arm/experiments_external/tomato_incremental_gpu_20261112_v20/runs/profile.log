@@ -1,0 +1,79 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/cache/warp/1.17.0
+Module selective_gpu 0f46f62 load on device 'cuda:0' took 259.59 ms  (compiled)
+{'kernel': 'stress', 'ms_per_1600': [22.959903717041016, 22.154815673828125, 22.0732479095459]}
+{'kernel': 'gather_force', 'ms_per_1600': [49.832672119140625, 46.68342590332031, 49.013153076171875]}
+{'kernel': 'inverse_mass_advance', 'ms_per_1600': [6.263199806213379, 6.705215930938721, 6.837855815887451]}
+geometry          1742715 function calls (1742659 primitive calls) in 1.482 seconds
+
+   Ordered by: cumulative time
+   List reduced from 230 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    1.482    1.482 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/tests/profile_once.py:10(<lambda>)
+        1    0.067    0.067    1.482    1.482 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/reference_v17.py:70(split)
+     7338    0.304    0.000    0.534    0.000 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/reference_v17.py:24(moments)
+    12000    0.198    0.000    0.483    0.000 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/reference_v17.py:8(clip)
+     6656    0.027    0.000    0.274    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:30(__init__)
+     4007    0.021    0.000    0.190    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py:145(unique)
+   126820    0.135    0.000    0.135    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+     1331    0.005    0.000    0.103    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/csgraph/_validation.py:12(validate_graph)
+     1331    0.003    0.000    0.092    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_data.py:69(astype)
+     4007    0.040    0.000    0.084    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py:348(_unique1d)
+     2662    0.004    0.000    0.082    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:1175(_with_data)
+    10652    0.011    0.000    0.081    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_base.py:1525(_get_index_dtype)
+     1332    0.011    0.000    0.076    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_coo.py:32(__init__)
+    10652    0.045    0.000    0.064    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_sputils.py:264(get_index_dtype)
+    10014    0.031    0.000    0.062    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/_methods.py:117(_mean)
+     1331    0.007    0.000    0.061    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_csc.py:44(tocsr)
+     6656    0.015    0.000    0.056    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:166(check_format)
+     5358    0.015    0.000    0.049    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/numeric.py:1482(moveaxis)
+    20038    0.021    0.000    0.049    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:69(_wrapreduction)
+     7338    0.006    0.000    0.047    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:3735(mean)
+     7340    0.025    0.000    0.046    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/linalg/_linalg.py:2379(det)
+     1331    0.001    0.000    0.041    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_base.py:390(T)
+     1331    0.002    0.000    0.040    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_csr.py:22(transpose)
+     1332    0.008    0.000    0.038    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_coo.py:204(_check)
+    10014    0.006    0.000    0.036    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:2962(ptp)
+
+
+
+aggregate          2065247 function calls (2065174 primitive calls) in 1.137 seconds
+
+   Ordered by: cumulative time
+   List reduced from 289 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    1.137    1.137 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/tests/profile_once.py:10(<lambda>)
+        1    0.012    0.012    1.137    1.137 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/aggregation.py:61(__init__)
+        1    0.134    0.134    0.538    0.538 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/aggregation.py:17(extension)
+   216750    0.049    0.000    0.320    0.000 {built-in method builtins.all}
+   433500    0.078    0.000    0.270    0.000 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/aggregation.py:27(<genexpr>)
+     3168    0.010    0.000    0.259    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_index.py:29(__getitem__)
+        2    0.102    0.051    0.253    0.126 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/aggregation.py:54(vertex_fields)
+   216750    0.192    0.000    0.192    0.000 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/reference_v17.py:29(compatible)
+    14762    0.090    0.000    0.127    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_index_tricks_impl.py:344(__getitem__)
+     1584    0.002    0.000    0.097    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_csr.py:283(_get_arrayXslice)
+3185/3182    0.012    0.000    0.092    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:30(__init__)
+     1584    0.017    0.000    0.090    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:576(_major_index_fancy)
+     1584    0.002    0.000    0.088    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_csr.py:274(_get_sliceXarray)
+     1584    0.012    0.000    0.085    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:651(_minor_index_fancy)
+     7338    0.026    0.000    0.074    0.000 /home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/src/aggregation.py:11(full_region)
+     3168    0.025    0.000    0.059    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_index.py:298(_validate_indices)
+     6369    0.008    0.000    0.053    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_base.py:1525(_get_index_dtype)
+     6369    0.028    0.000    0.041    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_sputils.py:264(get_index_dtype)
+     1668    0.008    0.000    0.034    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/_lib/_util.py:1149(wrapper)
+    24702    0.031    0.000    0.031    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+     3185    0.007    0.000    0.027    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/scipy/sparse/_compressed.py:166(check_format)
+     5641    0.012    0.000    0.026    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/linalg/_linalg.py:2622(norm)
+   149850    0.017    0.000    0.020    0.000 {built-in method builtins.isinstance}
+    14680    0.015    0.000    0.019    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/numeric.py:171(ones)
+    11110    0.007    0.000    0.019    0.000 /home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:69(_wrapreduction)
+
+
+

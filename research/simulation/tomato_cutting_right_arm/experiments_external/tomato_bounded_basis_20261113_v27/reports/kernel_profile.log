@@ -1,0 +1,111 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.54 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.64 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.50 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.30 ms  (cached)
+Module compact_contact_gpu ed5099e load on device 'cuda:0' took 1.58 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.47 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.39 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.69 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.39 ms  (cached)
+{
+  "kernels": [
+    {
+      "name": "forward kernel integrate_interior_513fcc7c",
+      "count": 20,
+      "total_ms": 7.34470409154892
+    },
+    {
+      "name": "forward kernel collect_15c6759a",
+      "count": 20,
+      "total_ms": 2.302784025669098
+    },
+    {
+      "name": "forward kernel frame_9ea4241c",
+      "count": 20,
+      "total_ms": 1.181792002171278
+    },
+    {
+      "name": "forward kernel force_parts_6eb50331",
+      "count": 20,
+      "total_ms": 0.8125759921967983
+    },
+    {
+      "name": "forward kernel material_speed_ef9ec04d",
+      "count": 20,
+      "total_ms": 0.6575360037386417
+    },
+    {
+      "name": "memset",
+      "count": 170,
+      "total_ms": 0.43603200284997
+    },
+    {
+      "name": "forward kernel clip_pairs_ebbbcfde",
+      "count": 20,
+      "total_ms": 0.4089919999241829
+    },
+    {
+      "name": "forward kernel force_guard_41cd5126",
+      "count": 20,
+      "total_ms": 0.3613120000809431
+    },
+    {
+      "name": "forward kernel pullback_parallel_bea7c15a",
+      "count": 20,
+      "total_ms": 0.2775359973311424
+    },
+    {
+      "name": "forward kernel ledger_4901a6e5",
+      "count": 20,
+      "total_ms": 0.21398400189355016
+    },
+    {
+      "name": "forward kernel active_faces_b2e2de07",
+      "count": 20,
+      "total_ms": 0.14319999935105443
+    },
+    {
+      "name": "forward kernel acceleration_d4f6c163",
+      "count": 20,
+      "total_ms": 0.13932799873873591
+    },
+    {
+      "name": "forward kernel stress_26af1b90",
+      "count": 20,
+      "total_ms": 0.12729600071907043
+    },
+    {
+      "name": "forward kernel constrained_stage_77be734b",
+      "count": 20,
+      "total_ms": 0.1243200006429106
+    },
+    {
+      "name": "forward kernel gather_0dd95667",
+      "count": 20,
+      "total_ms": 0.1154240001924336
+    },
+    {
+      "name": "forward kernel candidate_pairs_8fe052b6",
+      "count": 20,
+      "total_ms": 0.10188800119794905
+    },
+    {
+      "name": "forward kernel stage_time_d73c079e",
+      "count": 20,
+      "total_ms": 0.07612800050992519
+    },
+    {
+      "name": "memcpy DtoD",
+      "count": 15,
+      "total_ms": 0.06243200018070638
+    }
+  ],
+  "scope": "Instrumented, non-graph GPU activity timings on an intact contact state; not environment throughput."
+}

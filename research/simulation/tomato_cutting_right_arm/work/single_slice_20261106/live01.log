@@ -1,0 +1,52 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.95 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.86 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.81 ms  (cached)
+Module tomato_extended_cad_pressure 27ceab5 load on device 'cuda:0' took 0.38 ms  (cached)
+Module tomato_exact_blade_queries df80afb load on device 'cuda:0' took 0.59 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.38 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.37 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.67 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.33 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.68 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.87 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 5.57 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.45 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.76 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.50 ms  (cached)
+Module tomato_failed_safe_objective 3d40415 load on device 'cuda:0' took 3.81 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.58 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.86 ms  (cached)
+Module tomato_failed_safe_coupled e37263d load on device 'cuda:0' took 0.49 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.46 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.33 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 1.87 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.56 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.41 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 0.42 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.49 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.47 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.67 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.93 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.78 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.42 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.42 ms  (cached)
+{'step': 0, 'sim_time_s': 0.0004166666666666667, 'wall_s': 0.5973624389989709, 'stroke_m': 8.333333333333334e-06, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.0011547758024025641, 5.013450169937758e-05, 0.0011488792505542323, -0.00012904374359488336, 2.9001976495820025e-05, -0.00013097078894978384]}
+{'step': 10, 'sim_time_s': 0.004583333333333333, 'wall_s': 8.412221476999548, 'stroke_m': 9.166666666666667e-05, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.003699305734174684, 0.00016325080635930958, 0.0036461836232794683, -0.00040877074812150564, 9.309686780546706e-05, -0.00041891956818382916]}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/run_live_slice.py", line 56, in <module>
+    packet,value,report=refresh_packet(blade,np.asarray(solid['cells']),a.particle_q.numpy()+origin,triangles,world['x'],R,t+origin,ref['com_local'],packet,padding_m=4e-5)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_adaptive_packet_refresh.py", line 52, in refresh_packet
+    if old_f>fbudget or abs(old_e)>ebudget:raise ValueError(('Converged adaptive remap differs from old packet',history))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('Converged adaptive remap differs from old packet', [{'iteration': 0, 'leaves': 39, 'samples': 468, 'maximum_depth': 0, 'summed_force_error_n': 0.0046647711883461805, 'summed_energy_error_j': 4.095514169989808e-08, 'force_budget_n': 5.911644920158847e-05, 'energy_budget_j': 1.2015355055847171e-09, 'force_difference_from_old_n': 0.0012791770935681032, 'energy_jump_from_old_j': 4.566588950836416e-09}, {'iteration': 1, 'leaves': 102, 'samples': 1224, 'maximum_depth': 1, 'summed_force_error_n': 0.002713444644651979, 'summed_energy_error_j': 1.4712003624548668e-08, 'force_budget_n': 5.6455632937018166e-05, 'energy_budget_j': 1.155869616076353e-09, 'force_difference_from_old_n': 9.053439015756016e-05, 'energy_jump_from_old_j': -2.0291463198568708e-09}, {'iteration': 2, 'leaves': 249, 'samples': 2988, 'maximum_depth': 2, 'summed_force_error_n': 0.0010696191414391123, 'summed_energy_error_j': 4.6500622541810335e-09, 'force_budget_n': 5.6455632937018166e-05, 'energy_budget_j': 1.1583750316449362e-09, 'force_difference_from_old_n': 3.1169888685151034e-05, 'energy_jump_from_old_j': 2.505415568583285e-10}, {'iteration': 3, 'leaves': 519, 'samples': 6228, 'maximum_depth': 3, 'summed_force_error_n': 0.0005158493972421546, 'summed_energy_error_j': 7.588421223018054e-10, 'force_budget_n': 5.648364646020409e-05, 'energy_budget_j': 1.155869616076353e-09, 'force_difference_from_old_n': 0.00010151564276826416, 'energy_jump_from_old_j': -7.635421094219386e-11}, {'iteration': 4, 'leaves': 954, 'samples': 11448, 'maximum_depth': 4, 'summed_force_error_n': 0.00022997194344504513, 'summed_energy_error_j': 2.0720021148123607e-10, 'force_budget_n': 5.6455632937018166e-05, 'energy_budget_j': 1.155869616076353e-09, 'force_difference_from_old_n': 5.6576295989088316e-05, 'energy_jump_from_old_j': -7.536375052611499e-11}, {'iteration': 5, 'leaves': 1611, 'samples': 19332, 'maximum_depth': 5, 'summed_force_error_n': 0.00011079912333962338, 'summed_energy_error_j': 5.955960906199803e-11, 'force_budget_n': 5.6455632937018166e-05, 'energy_budget_j': 1.155869616076353e-09, 'force_difference_from_old_n': 5.973640087533329e-05, 'energy_jump_from_old_j': -7.329395790563672e-11}, {'iteration': 6, 'leaves': 2436, 'samples': 29232, 'maximum_depth': 6, 'summed_force_error_n': 4.852007002747259e-05, 'summed_energy_error_j': 2.3381162213896e-11, 'force_budget_n': 5.6455632937018166e-05, 'energy_budget_j': 1.155869616076353e-09, 'force_difference_from_old_n': 5.915387174038714e-05, 'energy_jump_from_old_j': -7.161317307908737e-11}])

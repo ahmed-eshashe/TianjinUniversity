@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-01",
+  "robot_scene_section": "complete within bounded fixed-mount diagnostic scope",
+  "knife_connection": "User-selected ideal fixed mount",
+  "source_unchanged": true,
+  "pinned_dependency_files_unchanged": 13,
+  "guard_tests": 13,
+  "final_native_run": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/fixed_mount_20261101_06",
+  "physx_steps": 3851,
+  "newton_steps": 30,
+  "elapsed_wall_s": 27.834085688002233,
+  "minimum_target_separation_mm": 34.40483815937706,
+  "minimum_blade_board_clearance_mm": 6.01287390639503,
+  "maximum_mount_position_error_m": 1.644703343058827e-07,
+  "maximum_joint_speed_rad_s": 0.1822100728750229,
+  "maximum_joint_tracking_error_rad": 0.020450294017791748,
+  "replay_joint_error_rad": 0.0,
+  "replay_tool_pose_error": 0.0,
+  "collision_positive_control_n": 0.2394808977842331,
+  "collision_clear_control_n": [
+    0.0,
+    0.0
+  ],
+  "dirty_blade_contacts": 11439,
+  "cleared_blade_contacts": 0,
+  "gravity_fixture_duration_s": 0.005,
+  "gravity_weight_n": 1.1935951143554093,
+  "limitations": [
+    "Ideal massless, rigid bracket with 150 mm palm-to-handle vertical offset; no physical finger grip or hardware mount validation.",
+    "Robot dry motion spans two 8.02 s cycles; the target is visual/rest-state geometry during that dry motion. Newton fixture gravity is checked separately for 5 ms per replay.",
+    "No settled/long-term target support, Newton board contact, cutting loads, post-cut reset, fracture or robot cutting force feedback is qualified by this run.",
+    "Measured 6.01 mm blade/board clearance reflects gravity/tracking deflection; it is lower than the planned 12 mm clearance.",
+    "Blade/robot forbidden contact gate is 0.1 N; actual reported peak during the final dry routes is zero.",
+    "Generated blade contacts are deliberately created by shifting target positions and reset without integrating cutting forces; this qualifies contact-stream reset, not loaded cutting reset.",
+    "Experimental material validation remains pending at user request."
+  ],
+  "next_step": 23
+}

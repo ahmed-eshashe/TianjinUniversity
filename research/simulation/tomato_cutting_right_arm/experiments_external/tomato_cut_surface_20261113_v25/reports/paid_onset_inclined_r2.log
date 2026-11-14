@@ -1,0 +1,40 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.58 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.45 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.61 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.66 ms  (cached)
+Module compact_contact_gpu a96a1e9 load on device 'cuda:0' took 1.60 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.46 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.36 ms  (cached)
+Module paid_contact_gpu 5334c27 load on device 'cuda:0' took 0.60 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.51 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.83 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.42 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.72 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/tests/first_paid_surface.py", line 29, in <module>
+    selected=low;candidate=a.body.clone();candidate.split(normal,offset,cut_id=0,front=(direction,selected),world=True);b2=Aggregate(candidate);s2=Surface(b2);area=(s2.tri_area.sum()-s.tri_area.sum())/2
+                                                                                                                                                   ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/poly_surface.py", line 41, in __init__
+    if area<=0:raise ValueError(('zero surface triangle',float(tri.area),xy.tolist(),p.tolist(),origin.tolist(),normal.tolist()))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('zero surface triangle', 2.0431288380030448e-22, [[0.0, 0.0], [1.8035488260071143e-06, -0.002859181104261342], [-1.429170363367053e-19, -4.3153624911270116e-23]], [[0.00013104097610246057, 0.003, 0.002992304233379958], [0.0029902218909106733, 0.003000000000088884, 0.0029902218909619313], [0.00013104097610246057, 0.003, 0.002992304233379958]], [0.00013104097610246057, 0.003, 0.002992304233379958], [-0.0003640366000079576, -0.8661153163189326, -0.4998441020109262])
+{
+  "status": "stopped",
+  "physical_topology_event": false,
+  "physical_cut_qualified": false,
+  "full_separation": false,
+  "rl_ready": false,
+  "dt": 6.25e-06,
+  "chunk_s": 5e-05,
+  "wall_s": 1.4353440449922346,
+  "maximum_energy_relative": 1.3498500239619275e-06,
+  "event": null,
+  "scope": "One small actual-CAD-reached and work-paid patch with original bulk, resistance, inertia and limits. Temporal refinement, continued cutting and complete-loop speed remain separate gates."
+}

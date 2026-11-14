@@ -1,0 +1,21 @@
+Direct-mesh closest-point precision investigation — 31 October 2026
+
+Finding: common coordinate recentering does not resolve the surface-query discrepancy. The evidence points to numerical sensitivity in the single-precision closest-point formula on the long narrow triangles. This is an investigative result, not a production fix.
+
+Native experiment: all 562 previous probes were rerun after subtracting the same blade AABB-center translation from mesh vertices and query points before float32 conversion. This preserves physical geometry and distances. Maximum surface error was 51.607 micrometres, versus 51.607 micrometres before translation. Six centered surface samples exceeded 1 micrometre (five originally did). The worst sample still selected adjacent face 90 instead of the authored face 92.
+
+Off-surface behavior remains promising: zero sampled sign errors, maximum distance error 0.01162 micrometres, maximum normal disagreement 0.2191 degrees.
+
+Precision controls on the five originally discrepant face-center samples:
+- An independent float64 closest-point calculation on float32-rounded mesh/query coordinates produced distances no larger than 0.000155 micrometres. Coordinate rounding alone therefore does not account for the measured multi-micrometre errors at these points.
+- Reproducing the installed interior-branch formula in host float32 showed strong cancellation and unstable barycentric values, especially on face 92. The host error there was about 695 micrometres; the native global mesh query found a different, closer face and reported about 52 micrometres.
+- Using float64 for that host formula returned distances below 0.000000436 micrometres across those five face centers.
+- Host NumPy evaluation and GPU fused arithmetic can differ. These controls support the numerical-conditioning explanation; they do not reproduce the native GPU instruction stream or prove every error has the same cause.
+
+Inspected source: installed Warp native/intersect.h closest_point_to_triangle uses float dot products and subtracts products to obtain barycentric terms. The mesh query evaluates candidate faces using that routine. Source file hashes and numerical control results were saved.
+
+The guarded native run completed in 1.394 seconds, with no physics steps, no memory warnings or monitor errors, process exit 0 and no live owned processes remaining. Same three-minute watchdog and memory thresholds. Nine guard tests passed; exact reference registry and saved source hashes were verified. No installed library, authored blade, physical thickness, contact law or robot setup was changed.
+
+Next: test a native double-precision closest-point diagnostic on all 562 reference points before deciding on a contact implementation. It must consider all relevant candidate faces: refining only the original returned face would not fix the observed face-92/face-90 selection issue. Edge/face contact completeness, forces/work, fracture, robot coupling and cutting remain unvalidated.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_direct_centered_20261031_01

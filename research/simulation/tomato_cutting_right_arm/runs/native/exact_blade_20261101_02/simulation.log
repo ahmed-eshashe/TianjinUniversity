@@ -1,0 +1,35 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793537530.271608   44228 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793537530.271639   44228 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T12:52:10Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module tomato_exact_blade_queries d169611 load on device 'cuda:0' took 0.77 ms  (cached)
+Module validate_and_correct_inertia_kernel_1ff2ac62 1ff2ac6 load on device 'cuda:0' took 0.47 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.73 ms  (cached)
+Module newton._src.sim.contacts 9fb4206 load on device 'cuda:0' took 0.56 ms  (cached)
+/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_worker.py:36: DeprecationWarning: Omitting rigid_compliant_alm is deprecated as of Newton 1.6 because the default will change from the legacy penalty/AVBD path (False) to unified compliant ALM (True), which is becoming the standard for rigid VBD. The legacy path is deprecated and will be removed in a future release. Pass rigid_compliant_alm=True to adopt compliant ALM now, or rigid_compliant_alm=False to keep the legacy path during the migration window.
+  solver=MeshContactVBD(model,iterations=64,rigid_avbd_beta=0.);solver.contact_weights=wp.array(weights,dtype=float);sin=model.state();sout=model.state();before=sin.particle_q.numpy().copy();expected,velocity=implicit_reference(before,model.particle_mass.numpy(),payload,weights,DT)
+Module newton._src.solvers.vbd.rigid_vbd_kernels aa81cc4 load on device 'cpu' took 1.04 ms  (cached)
+Module newton._src.solvers.vbd.rigid_vbd_kernels f78a99d load on device 'cuda:0' took 5.51 ms  (cached)
+Module newton._src.solvers.solver d7b7ff4 load on device 'cuda:0' took 0.69 ms  (cached)
+Module newton._src.solvers.xpbd.kernels 3a6178a load on device 'cuda:0' took 7.83 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.10 ms  (cached)
+Module tomato_mesh_weighted_contact 917d9ee load on device 'cuda:0' took 294.51 ms  (compiled)
+Module newton._src.solvers.vbd.particle_vbd_kernels fa8d30f load on device 'cuda:0' took 2.10 ms  (cached)
+Module tomato_half_step_reaction 3dfeca3 load on device 'cuda:0' took 0.51 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_worker.py", line 40, in main
+    if pe>1e-7 or ve>2e-5 or ie>2e-7 or np.linalg.norm(force+wrench[:3])>1e-7:raise ValueError(f'Generated blade contact mechanics mismatch {pe=}, {ve=}, {ie=}')
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Generated blade contact mechanics mismatch pe=9.118134025598579e-09, ve=2.188352166143659e-05, ie=8.090201311224354e-07

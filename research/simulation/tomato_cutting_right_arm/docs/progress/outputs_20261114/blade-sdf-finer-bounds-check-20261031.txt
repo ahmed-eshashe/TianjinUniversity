@@ -1,0 +1,19 @@
+Finer SDF sampling and cooking-bounds comparison — 31 October 2026
+
+Three new protected native runs compared with the saved 512/50 mm baseline. All used the exact same authored mesh and 562 probe/reference entries. Each new run completed 12 stationary steps and all queries in 3.7–4.9 seconds, with zero contact, zero final particle drift, no warnings/monitor errors and no leftover live owned processes.
+
+Resolution | Cooking padding | Max surface error | Thin-feature sign errors | Worst thin-feature normal error
+512 | 50 mm | 0.3040 mm | 16/32 | 117.63 deg
+512 | 5 mm | 0.2225 mm | 16/32 | 133.73 deg
+1024 | 50 mm | 0.1192 mm | 10/32 | 150.46 deg
+1024 | 5 mm | 0.0993 mm | 7/32 | 179.40 deg
+
+The 32 thin-feature probes contain 16 interior and 16 exterior reference points. The listed sign disagreements are interior points reported outside. At 1024 with 5 mm padding, the seven remaining errors are at 25–50 micrometres inside the authored mesh. This case has better distance values, but a worst normal disagreement of 179.4 degrees; it is not a contact-ready fix.
+
+The 5/50 mm setting is extra cooking-domain padding, not physical blade thickness or collision radius. Geometry, scale, blade thickness, material/contact constants, timestep and unchanged zero-motion trajectory were preserved. The three-minute watchdog, startup/reserve thresholds, locks and cleanup remained active. No production default was promoted, and no accuracy tolerance was selected or relaxed.
+
+Verified: exact shared probe registry, saved current source hashes, all new 12-step journal chains, and original historical production source hashes. Nine guard tests passed after mode updates. All previous negative results remain preserved.
+
+Conclusion: global refinement helps but does not resolve the sampled thin-feature sign and normal errors. Positive-contact, force/work, fracture, robot coupling, cutting and training remain unvalidated.
+
+Next: review supported local/adaptive SDF or mesh-based contact options and their resource costs before more global refinement or moving-contact work.

@@ -1,0 +1,208 @@
+{
+  "created": "2026-11-10T17:21:53.351853+00:00",
+  "scope": "Current finite CAD-edge motion selects local material cut patches; GPU carries mechanical state",
+  "budget_s": 7200,
+  "per_pilot_wall_s": 600,
+  "material": {
+    "E": 100000.0,
+    "nu": 0.4,
+    "rho": 1000,
+    "Gc": 80
+  },
+  "stops": {
+    "force_N": 2,
+    "whole_material_penetration_m": 0.0001,
+    "J_range": [
+      0.1,
+      10
+    ]
+  },
+  "discretization": {
+    "degree": 2,
+    "grid_h_m": 0.003,
+    "particle_spacing_m": 0.0015,
+    "particles": 512,
+    "dt_s": 3.90625e-07,
+    "reference_dt_s": 1.953125e-07
+  },
+  "candidate": "v11 certified planar charts on non-affine spline fields + front-aligned exact knot insertion",
+  "screens": {
+    "mass_relative": 1e-06,
+    "transfer_position_m": 1e-11,
+    "transfer_velocity_m_s": 1e-10,
+    "transfer_F": 1e-10,
+    "transfer_energy_relative": 1e-08,
+    "energy_floor_J": 1e-12,
+    "mass_condition_limit": 100000000.0,
+    "mass_rank_relative": 1e-12,
+    "gradient_consistency": 2e-05,
+    "independent_fragment_velocity_fraction": 0.01,
+    "refinement_position_m": 0.0001,
+    "refinement_velocity_m_s": 0.005,
+    "energy_balance_relative": 0.05,
+    "bridge_jump_ahead_m": 1e-11,
+    "cpu_dynamics_relative_floor_m_s": 1e-08,
+    "integration_force_relative": 1e-05,
+    "integration_energy_relative": 1e-06,
+    "integration_energy_floor_J": 1e-12,
+    "box_moment_relative": 1e-10,
+    "linear_momentum_absolute_N_s": 1e-09,
+    "angular_momentum_absolute_N_m_s": 1e-10
+  },
+  "fixtures": [
+    "uncut v06 equivalence",
+    "loaded partial/full release and exact child state transfer",
+    "two parallel sequential cuts",
+    "partial and full cross-cut of the middle fragment",
+    "four-cut capacity and overflow",
+    "independence of moved and rotated pieces",
+    "half-step and integration-order controls",
+    "loaded checkpoint/history/reset",
+    "unresolved overlapping partial-incision rejection"
+  ],
+  "claims": "Geometry-driven topology only: no contact/force/failure-work law, physical tomato, or RL qualification",
+  "stop": "Stop this representation study on substantive rank/energy/bridge/independence failure. Do not silently add mass, remove particles, soften material or change physical limits. Report unsupported cases explicitly.",
+  "integration": {
+    "primary_order_per_axis": 5,
+    "independent_higher_order": 7,
+    "mass_polynomial_exact_order": 3,
+    "minimum_tested_subcell_m": 0.0001,
+    "plane_positions_m": [
+      0,
+      0.0003,
+      0.00075,
+      0.0015,
+      0.0029,
+      -0.0029,
+      0.0057,
+      -0.0057
+    ],
+    "unsupported_thin_negative_control_m": 0.0059999999000000005,
+    "only_reference_X_normal_plane": false,
+    "observation_side_at_discontinuity": "right trace; observations have no point masses",
+    "reference_normal_axes": [
+      0,
+      1,
+      2
+    ],
+    "metadata_correction": "Copied v06 X-only descriptor corrected to match pre-existing v07 topology.reference_normals. No material, numerical or acceptance limits changed."
+  },
+  "topology": {
+    "maximum_started_cut_events": 4,
+    "one_active_partial_cut_per_connected_fragment": true,
+    "reference_normals": [
+      0,
+      1,
+      2
+    ],
+    "future_cut_path_supplied": false,
+    "parallel_planes_X_m": [
+      -0.0021,
+      0.0021
+    ],
+    "cross_plane_Y_m": 0.0003,
+    "dynamic_window_s": 0.001
+  },
+  "gpu_comparison": {
+    "precision": "float64 throughout; no mixed precision or TF32",
+    "primary_dt": 3.90625e-07,
+    "integration_order": 5,
+    "cases": [
+      "rest",
+      "loaded intact",
+      "partial cross-cut",
+      "full cross-cut",
+      "loaded supports/checkpoint transfer",
+      "zero/one/two/four-cut cost samples"
+    ],
+    "same_field_force_relative": 1e-07,
+    "same_field_force_absolute_N": 1e-10,
+    "same_field_energy_relative": 1e-08,
+    "same_field_energy_floor_J": 1e-12,
+    "mass_solve_relative": 1e-07,
+    "same_field_acceleration_relative": 1e-07,
+    "same_field_acceleration_absolute_m_s2": 1e-07,
+    "trajectory_position_m": 1e-07,
+    "trajectory_velocity_m_s": 1e-05,
+    "trajectory_F_absolute": 1e-06,
+    "trajectory_energy_relative": 1e-05,
+    "trajectory_energy_floor_J": 1e-12,
+    "support_impulse_difference_N_s": 1e-10,
+    "support_moment_difference_N_m_s": 1e-11,
+    "timing": "GPU synchronized; separate compilation/preparation/transfer/graph warmup, raw rollout, checked rollout, and CPU comparison. CPU baseline and GPU timing runs sequential. Short repeated timings; report medians and ranges.",
+    "guard": "Retain quadrature and observation J checks every substep, finite-state flags and transactional rollback. Full-cell certificate sampled like CPU reference. No damping/mass lumping/timestep relaxation."
+  },
+  "campaign_start_UTC": "2026-11-10T18:29:13.803893+00:00",
+  "budget_note": "New bounded blade-motion topology study; two-hour cap",
+  "optimization": "One bounded software-only change justified by profile.json: distribute each gradient-transpose force sum across 32 lanes, then deterministically reduce the partial sums.",
+  "sweep": {
+    "asset": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/tomato_preupgrade_20261027T171031Z/blade_export.json",
+    "asset_sha256": "2af92da3d2ea59c14e3b1cdd918283937d037ba55cb89a9da44b928fe7493b23",
+    "edge_definition": "Exact centreline of the straight lower CAD perimeter segment: midpoints of vertex pairs (14,15) and (16,17). Full mesh remains unchanged. This marker is not a zero-thickness contact approximation.",
+    "geometry": "Only reference-axis-aligned finite rectangular sweeps in an affine-certified connected fragment; reject unsupported/ambiguous cases rather than infer a plane",
+    "affine_coefficient_residual_m": 1e-11,
+    "affine_gradient_change_per_action": 1e-09,
+    "mapped_plane_and_axis_tolerance_m": 1e-10,
+    "coverage_tolerance_m": 1e-12,
+    "maximum_cuts": 4,
+    "ledger": "Union of actual swept reference rectangles; no bounding-box fill, no future path and no paid fracture area",
+    "full_sweep_fixture_speed_m_s": 1.0,
+    "speed_note": "Geometry-only fast diagnostic marker speed, not a qualified robot/contact action limit",
+    "mechanical_step_s": 3.90625e-07,
+    "reference_step_s": 1.953125e-07,
+    "action_interval_s": 0.001,
+    "maximum_sweep_distance_per_action_m": 0.0011,
+    "physical_force_and_penetration_gates": "Retained for later contact; not evaluated by this zero-resistance geometry unit fixture",
+    "required_controls": [
+      "near miss",
+      "held tool",
+      "finite edge footprint",
+      "partial bridge",
+      "complete traversal",
+      "pause/reverse/reentry",
+      "disjoint sweep gap",
+      "stale/rejected proposals",
+      "loaded state insertion",
+      "saved GPU restart",
+      "CPU/GPU short comparison",
+      "time/pose subdivision agreement",
+      "moved/rotated material frame",
+      "post-withdrawal no-teleport opening probe"
+    ],
+    "unsupported": [
+      "non-affine material inversion",
+      "rotating blade during a single action",
+      "multiple intersecting unfinished incisions in one fragment",
+      "arbitrary cut angle",
+      "physical blade thickness/contact or paid fracture"
+    ],
+    "distance_note": "Applies to potentially cutting normal advance; degenerate along-edge slides and wholly clear repositioning are geometric queries, not qualified timed robot actions.",
+    "eligibility": "Only advance opposite the CAD edge-to-spine direction; withdrawal, held and along-edge slides cannot create new area.",
+    "opening_probe": {
+      "opposed_load_per_piece_N": 0.4,
+      "duration_s": 0.001,
+      "resolved_gap_m": 0.0002,
+      "energy_balance_relative": 0.05,
+      "net_momentum_absolute_N_s": 1e-09,
+      "note": "Auxiliary material opening after geometry-only cut and full-CAD clearance. Not cutting resistance or fracture work. No artificial position gap."
+    }
+  },
+  "new_scope": {
+    "geometry": "Automatically certify unique material-reference plane and separable monotone in-plane chart from continuous spline coefficients. Accept nonuniform compression and supported cross-axis bending. Reject curved material cut surfaces and ambiguous/nonseparable charts.",
+    "front": "Insert quadratic knots of multiplicity two at newly visited patch boundaries. Tensor layers span the cross-section, not a fully local 3D adaptive mesh. Preserve old fields by exact knot insertion and verified coefficient recovery.",
+    "mode_change": "Additional local approximation modes change discrete inertia/stiffness spectra; material law, total mass, energy functional and full consistent integration retained. Candidate must requalify.",
+    "mapping_tol_m": 1e-11,
+    "inverse_residual_m": 1e-11,
+    "positive_chart_derivative_floor": 1e-05,
+    "initial_front_depth_m": 5e-05,
+    "maximum_front_interior_planes_per_axis": 8,
+    "continuous_gap_ahead_m": 1e-11,
+    "position_refinement_m": 0.0001,
+    "force_work_relative": 0.05,
+    "initial_GPU_window_s": 2.5e-05,
+    "preflight_then_GPU": true,
+    "physical_contact": false,
+    "physical_fracture": false,
+    "temporal_scope": "Start with held non-affine fields and moving fields. Endpoint linear geometry interpolation is not a proof of whole-material continuous contact."
+  }
+}

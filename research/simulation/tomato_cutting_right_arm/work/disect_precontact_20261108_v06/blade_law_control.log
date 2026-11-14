@@ -1,0 +1,23 @@
+{
+  "scope": "Vectorized exact-geometry adapter force law versus independent scalar legacy functional form; no live indentation",
+  "random_cases": 200,
+  "maximum_force_error_N": 0.0,
+  "noncontact_force_exact_zero": true,
+  "maximum_tangential_relative_power_W": -2.1202103035799114e-11,
+  "opposed_load_resultant_N": 0.0,
+  "opposed_load_sum_magnitudes_N": 2.0,
+  "parameters": {
+    "normal_ke_N_per_m": 2000.0,
+    "normal_kd_N_s_per_m": 1.0,
+    "friction_velocity_scale_m_per_s": 2500.0,
+    "mu": 0.5,
+    "mu_static": 0.5,
+    "source": "v04 DiSECt/dflex/sim.py knife_contact_force; surface coefficients from ansys_prism config"
+  },
+  "limits": [
+    "kf is used as a velocity scale in the source Brown formula, not ground viscous kf. These inherited values are uncalibrated.",
+    "New adapter collocates at original FEM exterior nodes; it does not claim equivalence to legacy virtual-edge force interpolation.",
+    "No angular blade motion or native robot force feedback is tested."
+  ],
+  "passed": true
+}

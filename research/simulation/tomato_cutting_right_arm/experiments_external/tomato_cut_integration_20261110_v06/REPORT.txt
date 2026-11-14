@@ -1,0 +1,40 @@
+CUT-AWARE INTEGRATION v06 — APPROVED REPAIR PASSES ITS RESTRICTED BLOCK TESTS
+10 November 2026
+
+Outcome
+The demonstrated v05 sampling defect is resolved within the tested single-plane block envelope. The previously failing +0.3 mm cut now has full mechanical mass rank; the old invisible mode carries positive inertia and elastic energy. Eight aligned/off-grid positions preserve loaded state and mass; fresh partial/full motion, energy, momentum, refinement and complete history/restart tests pass. No material softening, added mass, state reset, threshold relaxation or production adoption was used. These are prescribed-topology unit tests, not a physical knife cut or a finished freely cuttable tomato. Full Gate 2 and Gate 3 remain open.
+
+Numerical change
+Mechanical integration now covers every reference cell and its cut-created subcells. It no longer assumes the original observation points resolve all new basis functions. The primary rule has five Gauss points per axis per cell; order seven checks nonlinear strain-energy convergence. Polynomial mass agrees with independent order-three integration. The same continuous displacement gives motion, strain, energy and force. Exact basis insertion copies the loaded field, while any integration-related energy change must remain inside the original 1e-12 J / 1e-8 relative transfer tolerance. Contact/fracture has not been added. See physical_model.txt for the equations and restrictions.
+
+Fixed physical parameters
+E=100 kPa, nu=0.4, rho=1000 kg/m3; 12 mm block and total mass 0.001728 kg. Gc=80 J/m2 is unchanged but unused in these prescribed topology tests. Physical force/penetration/volume limits remain unchanged; untested contact limits are not counted as passed. dt=0.390625 microseconds with a half-step reference. 512 observation points; 8,000 intact and 10,000 off-grid-cut primary integration points. This is a CPU reference implementation with one reference-X-normal plane.
+
+Measured integration and insertion results
+1. Total mass relative error: 2.51e-16. Independent box second-moment relative error: 3.82e-16; center of mass agrees to round-off. Order-three/five/seven polynomial mass integrals agree within the frozen screen.
+2. Rest, affine energy, rigid-frame objectivity, force/torque balance and an independent energy directional derivative pass. Energy-gradient relative error: 9.41e-10. Initial order-five/seven energy and force differences: 2.53e-14 / 6.12e-14 relative.
+3. Planes at X = 0, +0.3, +0.75, +1.5, +2.9, -2.9, +5.7 and -5.7 mm pass mass-rank, loaded partial/full insertion and continuous-volume checks. Full-cut mass conditions range 1590.7–28449.1, below 1e8. The smallest tested integration subcell is 0.1 mm; the thinnest tested end fragment is 0.3 mm. This finite set is not proof of every possible cut position.
+4. Maximum first-insertion energy change in those loaded fixtures: 2.51e-19 J. Subsequent partial-to-full insertion preserves the field without changing quadrature. No numerical energy change was credited to fracture.
+5. An extremely thin 1e-10 m end remnant is explicitly rejected before state mutation. This is a capacity/conditioning negative control, not a claim that all larger remnants are qualified.
+6. The exact old null witness now has integrated inertia measure 3.6e-20 and strain energy 2.86035e-10 J. Original observation values remain blind to that field, which is why mechanical integration must be independent of them. A thin piece can also contain no old observation point; visualization/contact geometry for such a piece is NOT solved by this mechanics repair.
+7. In a deliberately prescribed fresh nonuniform field, integrated mass differs from the old midpoint mass by 10.586% in Frobenius norm and total energy differs by 1.848%. These are different numerical discretizations. No old loaded trajectory was silently reinterpreted under the new energy definition.
+
+Fresh dynamic results at the +0.3 mm plane
+8. Nonuniform supported load/unload passes energy/work and support constraints. Halving dt changes shared-time position by 1.87e-12 m and velocity by 1.55e-08 m/s.
+9. Partial incision: opened-region displacement reaches 0.05026 mm; intact-bridge jump remains 0 m. Maximum energy/work residual is 4.39e-14 J on a 3.3e-07 J work scale. Half-step velocity difference is 8.04513e-06 mm/s. Order-five/seven trajectory velocity difference is 4.19e-14 m/s.
+10. Full prescribed division: the right piece is precompressed 0.5%, translated 8 mm, rotated and assigned 0.02 m/s; the left remains stationary. This manufactured gap isolates independence and is NOT physically achieved separation. Left maximum speed is 1.51e-13 m/s, 7.53e-12 of the probe speed. Agreement with two independently evolved tensor bodies is 2.26e-17 m / 2.45e-13 m/s.
+11. Full-fixture momentum and angular-momentum errors are 8.95e-20 N s / 4.15e-22 N m s. Maximum energy error is 1.26e-11 J on 2.37e-06 J. Half-step maximum position/velocity differences: 1.47e-10 m / 0.00462543 mm/s. Order-five/seven trajectory velocity difference: 1.01e-11 m/s. No forces were filtered to make these pass.
+12. Continuous basis volume bounds pass at the shared output times, including the unequal cut subcells. A deliberately inverted field is rejected by the independent volume certificate. Every material force evaluation additionally guards integration-point J; no formal every-substep continuous geometry proof is claimed.
+13. Cuts introduced during a loaded run preserve state. Intact, partial and full checkpoints restore numerical state, integration order, topology history/epoch, support reactions, constraints and time. Maximum continuation difference: 0. Stale proposals, corrupt history and a second plane are rejected; reverse/repeat requests do not heal the existing cut. Fresh reset returns intact state. There is no damage/contact ledger to qualify yet.
+14. On the saved loaded intact/partial/full states, order-five/seven force differences are at most 6.9e-12 relative. A cheaper order-three saved-field diagnostic reaches 2.8e-05, exceeding the frozen 1e-5 integration-force screen in the partial/full cases. Order three was NOT adopted for energy/force dynamics. Its exact polynomial mass result is a different claim.
+
+Cost and limits
+The complete fresh-dynamics harness took 720.7 wall seconds, with peak process RSS 321.7 MiB. The primary partial-cut run took 45.71 seconds for 1 ms simulated time, about 45,712 wall seconds per simulated second including monitoring. The largest individual pilot took 147.6 seconds, below the 600-second cap. The full coarse fixture also advances two reference bodies, so its wall time is not candidate-only throughput. Higher-order/half-step runs are verification costs, not production speed claims.
+This fixes missing mechanics; it does not fix RL speed. Do not scale this CPU reference into days of full tomato episodes. No GPU cutting or full tomato throughput is established. Passing these unit fixtures does not validate multiple/intersecting/oriented cuts, arbitrary tomato boundaries, blade contact, material recontact, physical fracture, real-tomato force behavior or robot integration. Experimental validation remains pending. No new physical slice was produced.
+
+Preservation and next action
+All 944 protected production/prior-evidence files match their frozen hashes. The existing Isaac/DiSECt scene, grip, motion interface and results are unchanged. No dependency installation was performed. The only shared updates are backed-up reporting metadata/checklist banners. Earlier failures are retained, including the one result-serialization error described in reports/harness_notes.txt.
+Keep v06 as the isolated accuracy reference for this restricted envelope. Read NEXT_STEPS.txt before further work. No full tomato or RL run is justified by this result. No simulation is left running.
+
+Evidence
+qualification.json; algebra_controls.json; dynamics_controls.json; state_controls.json; runtime_forecast.json; preservation_check.json; physical_model.txt; source/tests; raw states and logs under runs/. Both raw and reported precision are retained in JSON; the prose rounds figures.

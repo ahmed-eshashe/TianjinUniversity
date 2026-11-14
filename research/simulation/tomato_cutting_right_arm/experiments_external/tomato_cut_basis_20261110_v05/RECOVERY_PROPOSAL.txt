@@ -1,0 +1,25 @@
+PROPOSED NEXT SCOPE — CUT-AWARE INTEGRATION, FRESH-STATE REVALIDATION
+Prepared 10 November 2026. Not adopted or running.
+
+Decision
+Validate one numerical integration revision in a new isolated v06 directory. The reviewed roadmap requires a revised scope after a failed physical/representation gate; v05 demonstrates that a cut shifted only 0.3 mm is unsupported by the fixed material samples. Do not spend another long tomato run on the present representation. Do not start a different engine.
+
+Evidence justifying this proposal
+The +0.3 mm full split has 324 scalar degrees of freedom but rank 288. A continuous deformation mode exists entirely between the material samples and is invisible to both their position and strain checks. A saved-data Gauss integration diagnostic restores full rank with the same geometry, density and total mass. It changes base numerical inertia by 6.105% and one saved state's energy by 0.2003%, so it needs fresh-state validation and cannot inherit exact old discrete-energy preservation claims.
+
+Proposed change and retained contract
+Integrate mass and elastic energy over the reference material cells and cut-created subcells, rather than assuming the original particle locations resolve every new basis function. Particle locations may remain visualization/observation locations, but mechanical integration must resolve the full displacement space. Use a single explicit definition of displacement/strain, mass and energy throughout the fresh run. Use exact polynomial mass integration where justified; establish energy integration convergence separately because neo-Hookean energy is not polynomial. No added mass floor, deleted material, artificial rest reset or softening.
+Preserve the body exterior, density/total mass, E=100 kPa, nu=0.4, Gc=80 J/m2, physical stops, prior results and existing Isaac/DiSECt setup. This changes numerical integration, not the material law. No contact or physical fracture is implied. The current single-plane/small-block proof remains the first scope; arbitrary oriented and intersecting cuts are still separate work.
+
+Bounded execution
+One focused two-hour integration/conditioning proof; any dynamic pilot <=600 wall seconds. Stop at the first substantive unresolved rank, conservation, state-transfer or refinement failure. No full tomato, video or training. The two-hour budget is an effort limit, not a promise of a working arbitrary-cut tomato.
+
+1. Freeze v05; create v06 with the revised integration contract before running dynamics. Compute mass, center of mass and second moments against independent box integrals, and verify force as the energy gradient.
+2. Compare intact original/candidate quadrature and document the new accuracy reference. Check rest, rigid motion, affine strain, nonuniform load/unload and halved timestep from fresh states. Do not silently carry a loaded old state into a differently integrated energy functional.
+3. Test the aligned plane, the demonstrated +0.3 mm failure, a few representative offsets in the same cell, and near-boundary positions. Report full mass rank and conditioning, true material volume and smallest supported feature. Do not assert cut-anywhere support from a few offsets; define the tested envelope and explicit failure/stop behavior for thinner remnants.
+4. Introduce partial/full prescribed cuts during loaded motion. Preserve x/v/F and mass. Make the integration scheme/refinement precise enough to bound any apparent stored-energy change at basis insertion; no fracture payment may be credited to numerical quadrature error. If exact old discrete-energy preservation is impossible, report it and require a reviewed numerical tolerance rather than modifying the threshold after a result.
+5. Repeat bridge, independent-fragment, rotation/translation, history/checkpoint and volume checks. Compare mass/force/energy convergence at increased integration order and half timestep, with the original mechanical screens unchanged.
+6. Report complete measured CPU cost and memory before proposing GPU or long-run work. This repair addresses missing mechanics, not speed; it does not by itself remove the existing RL-throughput blocker. A reasonable formulation must then support a separate efficient implementation, rather than expanding this slow reference into days of demonstrations.
+
+Exit
+Pass only the new integration component within its measured envelope. A new physical blade cut still requires the contact and paid-fracture gates. If the short proof fails, preserve one concrete diagnosis and stop for a strategy decision; do not keep appending numerical repairs indefinitely.

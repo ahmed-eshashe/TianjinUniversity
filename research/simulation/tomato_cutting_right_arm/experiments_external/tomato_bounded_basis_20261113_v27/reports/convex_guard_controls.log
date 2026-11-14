@@ -1,0 +1,117 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.64 ms  (cached)
+{"case": "advance_6ms_checkpoint", "reference": {"passed": true, "reason": "certified_affine_material_volume", "bound_m": 9.999995238888616e-05, "observed_m": 8.837460406624409e-05, "queries": 875896, "max_pending": 54988, "depth": 23, "motion_bound_m": 0.0}, "candidate": {"passed": true, "reason": "original_CAD_convex_distance_bound", "bound_m": 9.216620007501255e-05, "intersection_pairs": 35344, "triangle_queries": 107870, "fallback_tets": 0, "ill_conditioned_pairs": 0, "fallback": null, "wall_s": 3.8161074920062674, "motion_bound_m": 0.0}, "warm": {"passed": true, "reason": "original_CAD_convex_distance_bound", "bound_m": 9.216620007501255e-05, "intersection_pairs": 35344, "triangle_queries": 107870, "fallback_tets": 0, "ill_conditioned_pairs": 0, "fallback": null, "wall_s": 0.24100109400751535, "motion_bound_m": 0.0}, "reference_wall_s": 0.3791221549909096, "warm_wall_s": 0.241008689001319, "agreement": true}
+{"case": "contact_limit_resolution", "reference": {"passed": true, "reason": "certified_affine_material_volume", "bound_m": 9.999998530301351e-05, "observed_m": 9.030169194207883e-05, "queries": 1038806, "max_pending": 63434, "depth": 24, "motion_bound_m": 0.0}, "candidate": {"passed": true, "reason": "original_CAD_convex_distance_bound", "bound_m": 9.41785164777996e-05, "intersection_pairs": 36716, "triangle_queries": 111938, "fallback_tets": 0, "ill_conditioned_pairs": 0, "fallback": null, "wall_s": 0.2531165830005193, "motion_bound_m": 0.0}, "warm": {"passed": true, "reason": "original_CAD_convex_distance_bound", "bound_m": 9.41785164777996e-05, "intersection_pairs": 36716, "triangle_queries": 111938, "fallback_tets": 0, "ill_conditioned_pairs": 0, "fallback": null, "wall_s": 0.25428563701279927, "motion_bound_m": 0.0}, "reference_wall_s": 0.4390426000027219, "warm_wall_s": 0.2542955760000041, "agreement": true}
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "advance_6ms_checkpoint",
+      "reference": {
+        "passed": true,
+        "reason": "certified_affine_material_volume",
+        "bound_m": 9.999995238888616e-05,
+        "observed_m": 8.837460406624409e-05,
+        "queries": 875896,
+        "max_pending": 54988,
+        "depth": 23,
+        "motion_bound_m": 0.0
+      },
+      "candidate": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.216620007501255e-05,
+        "intersection_pairs": 35344,
+        "triangle_queries": 107870,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 3.8161074920062674,
+        "motion_bound_m": 0.0
+      },
+      "warm": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.216620007501255e-05,
+        "intersection_pairs": 35344,
+        "triangle_queries": 107870,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.24100109400751535,
+        "motion_bound_m": 0.0
+      },
+      "reference_wall_s": 0.3791221549909096,
+      "warm_wall_s": 0.241008689001319,
+      "agreement": true
+    },
+    {
+      "case": "contact_limit_resolution",
+      "reference": {
+        "passed": true,
+        "reason": "certified_affine_material_volume",
+        "bound_m": 9.999998530301351e-05,
+        "observed_m": 9.030169194207883e-05,
+        "queries": 1038806,
+        "max_pending": 63434,
+        "depth": 24,
+        "motion_bound_m": 0.0
+      },
+      "candidate": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.41785164777996e-05,
+        "intersection_pairs": 36716,
+        "triangle_queries": 111938,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.2531165830005193,
+        "motion_bound_m": 0.0
+      },
+      "warm": {
+        "passed": true,
+        "reason": "original_CAD_convex_distance_bound",
+        "bound_m": 9.41785164777996e-05,
+        "intersection_pairs": 36716,
+        "triangle_queries": 111938,
+        "fallback_tets": 0,
+        "ill_conditioned_pairs": 0,
+        "fallback": null,
+        "wall_s": 0.25428563701279927,
+        "motion_bound_m": 0.0
+      },
+      "reference_wall_s": 0.4390426000027219,
+      "warm_wall_s": 0.2542955760000041,
+      "agreement": true
+    },
+    {
+      "case": "deep_penetration_negative_control",
+      "candidate": {
+        "passed": false,
+        "reason": "resolved_penetration",
+        "bound_m": null,
+        "intersection_pairs": 17,
+        "triangle_queries": 234,
+        "fallback_tets": 1,
+        "ill_conditioned_pairs": 0,
+        "fallback": {
+          "passed": false,
+          "reason": "resolved_penetration",
+          "observed_m": 0.0031375792257120013,
+          "queries": 1
+        },
+        "wall_s": 0.0006897940038470551,
+        "motion_bound_m": 0.0
+      },
+      "agreement": true
+    }
+  ],
+  "scope": "Whole-material original-CAD penetration proof, unchanged 0.1 mm limit and 2 micrometre allowance. Convex-distance bound with legacy fallback; no physics or material change."
+}

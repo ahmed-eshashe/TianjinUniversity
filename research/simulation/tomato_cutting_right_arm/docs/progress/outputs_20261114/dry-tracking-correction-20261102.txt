@@ -1,0 +1,49 @@
+DRY ROBOT TRACKING CORRECTION — 2 November 2026
+
+VERDICT: PASS — one corrected 16.033-second scripted dry route, measured in visible Isaac Sim, independently checked from saved raw states and commands. Stop before target contact.
+
+What changed
+A separate worker uses the same 481 route waypoints and half-speed clock. Consecutive joint waypoints are linearly interpolated at each physics step, instead of holding and jumping to each sample. Right-arm velocity targets follow that interpolation. Native gravity-compensation effort is added only on arm joints, bounded by the unchanged existing effort limits. The left arm retains its constant position/zero velocity reference. Drive gains, joint limits, mass/inertia, gravity, body damping, blade geometry, fixed knife constraint, original scene and target/material parameters are unchanged. No effort, gravity or force-measurement precision investigation was performed. This test evaluates the combined focused controller correction; it does not attribute improvement separately to each change.
+
+No joint-state or tool-pose overwrites occur during the executed route or settling. State writes are confined to setup/reset before the route. Motor target commands drive the actual articulation dynamics. The desired Cartesian pose is FK of the commanded joint reference; the actual pose is the Native measured link pose. Actual-state FK cross-check agrees within 0.486 micrometres in sampled readback controls. These are simulated relative tracking measurements, not physical sensor or hardware accuracy claims.
+
+Before -> after, same offset dry route
+Maximum tool-position tracking error: 9.730710 -> 0.028654 mm.
+Settled tool-position tracking error: 6.738830 -> 0.006094 mm.
+Maximum right joint tracking error: 0.0155499578 -> 0.000372648239 rad.
+Maximum tool orientation tracking error: 0.0117805649 -> 5.23467562e-05 rad.
+Maximum left arm joint deviation from hold reference: 0.0111635169 -> 4.66184691e-09 rad.
+Maximum joint speed: 0.143895164 -> 0.089201346 rad/s.
+Minimum blade height above board plane: 5.991714 -> 11.994753 mm.
+
+Prospective engineering targets (written in protocol.json before launch)
+Maximum tool-position error <=1mm: PASS.
+Settled tool-position error <=0.25mm: PASS.
+Maximum tool orientation error <=0.002rad: PASS.
+Maximum left arm joint deviation <=0.002rad: PASS.
+These scoped controller targets were chosen before results. The1mm target is under one sixth of the prior approximately6mm board clearance. They are not cutting, sensor or hardware safety certification. Original geometric/speed/rigid-mount/contact/arm-limit stops were retained.
+
+Motion, mount and clearance
+All seven right-arm joint motions match command directions; each four-phase tool height displacement has the commanded sign. Independent actual/command joint correlations exceed0.9999999. The reference velocity and per-physics-step position command schedules exactly match the declared interpolation, including zero velocity during the initial hold and final settling. Arm gravity feedforward peak 27.611538 Nm, with no clipping required. No feedforward is applied to hand/follower DOFs.
+Minimum blade/target authored AABB axis separation 32.406404 mm (original15mm gate).
+Minimum blade/fixture authored AABB axis separation 34.911692 mm.
+Minimum blade/other robot body AABB separation 74.181302 mm, excluding knife itself and directly constrained hand.
+Minimum blade height above board top plane 11.994753 mm (original4mm gate).
+Maximum hand/knife relative-position error 0.168146 micrometres; relative angle error 3.77730096e-07 rad.
+No monitored forbidden rigid-contact force during route/settling. Separate positive probe/floor control and reset/clear checks pass. Arm joint limits and original3rad/s speed stop pass.
+Final maximum joint speed 0.000387597975 rad/s <0.002rad/s settling criterion; no final velocity overwrite is used to make this pass.
+Clearance numbers are sampled authored-geometry AABB/board-plane checks at every executed physics interval. No arbitrary swept CCD, near-contact mesh-distance or cutting-route qualification is inferred. The ideal knife constraint has no physical bracket; the visible offset below the hand remains disclosed.
+
+Execution and evidence
+4091 PhysX steps =3 independent monitor-control setup steps +3848 route steps +240 settling steps. One route only; no hidden physical settling or time refinement cohort. Zero Newton target/deformable steps. The tomato in the rendered scene is a stationary visual. No tomato contact, fracture, video, training or material change. Rendering stills show the actual moving simulated robot at route endpoints and the lowest stroke sample.
+Protected wall runtime 132.04 seconds; cleanup reports no remaining owned group members. Scene paused for a bounded inspection interval, then the owned app closed. Saved scene remains available.
+Native measurements: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_tracking_corrected_20261102_01/measurements.json
+Raw actual/command states and efforts: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_tracking_corrected_20261102_01/measured_motion.npz
+Independent audit: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/dry_tracking_20261102/independent_readback01/measurements.json
+Predeclared protocol: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/dry_tracking_20261102/protocol.json
+Protected completion: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_tracking_corrected_20261102_01/supervisor_result.json
+Saved scene: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_tracking_corrected_20261102_01/inspection_scene.usda
+Lowest-stroke actual viewport: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/dry_tracking_corrected_20261102_01/240_route_detail.png
+
+Next proposed step
+Plan and check a reachable approach nearer the tomato that ends with a measured positive clearance, using this corrected controller and explicit uncertainty/stop margins. Run it as a new dry route before attempting contact. The current successful motion stays on the original offset path; it does not close the actual cutting-route gate or the older moving mounted-contact force/work gate. Experimental validation17 and coupled loaded/post-cut reset22 remain pending. Do not start a cutting stroke based solely on the new dry tracking result.

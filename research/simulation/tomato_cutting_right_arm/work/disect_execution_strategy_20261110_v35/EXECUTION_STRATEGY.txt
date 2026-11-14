@@ -1,0 +1,60 @@
+SECTION 4 — REVISED EXECUTION STRATEGY, 10 NOVEMBER 2026
+
+Authority
+The user chose: “Finish this pilot, then revise the execution strategy.” The 80 ms v33 pilot is finished. Do not resume the former multi-day sequence automatically. The research gates in DISECT_SECTION4_EXECUTION_PLAN_20261109.md still apply. Speed remains deferred, not passed; experimental validation remains pending. No full cut, native robot coupling, training, video, new engine or physical-model adoption is established here.
+
+Verified starting point
+The prescribed-blade pilot accepted 12,800 steps at 6.25 us through 80 ms. All accepted guards held, with unchanged mass and source hashes, zero damage and zero fracture dissipation. Maximum equivalent opening was 0.125870 mm versus unchanged 1 mm onset. Stepping/logging took 6,974.47 seconds, about 1 h 56 min. This was not the complete 180 ms loading stroke or withdrawal, and it has no independent corrected-path half-step qualification.
+
+The reported contact samples missed a deeper overlap. Fifteen tighter 80 um whole-volume attempts found witnesses; subsequent 90 um proofs passed. The original hard 100 um limit was never relaxed. A read-only final-state query confirms a material-edge overlap near 90 um although the adapter reports about 7 um. That edge joins two cut-face vertices; the old edge builder explicitly excluded every edge with two cut endpoints. Do not treat stronger stiffness alone as a solution to missing contact coverage, or the lowest CAD corner as the complete blade.
+
+1. Correct coverage before another cutting attempt
+Candidate v34 includes every existing physical tetrahedron edge incident to a cut vertex, including the 2,746 previously omitted cut-to-cut edges (3,125 -> 5,871 edges). It adds no cohesive/tie edge or cross-bank attachment. Each of the 960 cut vertices retains one sampling budget; shared-edge ownership is merged and the total remains exactly 960. CAD, normal law/stiffness, quadrature tolerances, mass, mesh, supports and all 47 original fracture laws/energy budgets remain unchanged.
+
+Independent static controls pass: graph coverage, owner budget, no cross-bank edges, analytical force/energy and energy gradient, rigid translation, endpoint reversal, and independent integration on the actual missing edge. These controls are not a coupled qualification. Keep v34 separate. Never apply its forces to the already overlapping v33 loaded checkpoint as an accepted restart: that would change the physical operator mid-episode. Begin every new physical-coverage test from the verified clear settled assembly.
+
+2. Target the measured computational cost
+A bounded profile used three uncommitted solves from one immutable v33 state; it did not commit damage or advance a qualified episode. About 91% of a 1.58 s solve was spent in exact CAD signed-distance/solid-angle queries: 1,197 calls and 13,181 points. Bulk elastic geometry was about 0.00012 s; cohesion and compression closure about 0.0011/0.0015 s. Cold whole-volume checking took 5.06 s, cached checking 0.00017 s; snapshot writing 0.014 s. Optimizing FEM, changing engines or loosening tolerances first would target the wrong measured cost.
+
+One v35 query candidate precomputes constant triangle data, avoids temporary vector allocations and evaluates independent points with four CPU threads. It keeps float64, all original triangles/order, the closest-point and solid-angle formulas, original sign/degeneracy tests and no fastmath. An exact-content geometry cache detects in-place vertex/face edits. No distance truncation, approximate sign, mesh coarsening or timestep change.
+
+Strict geometry/static-force controls pass. Same-chunk CAD queries were about 27.8x faster; static contact about 10.9x faster. With the OLD physical operator fixed, an uncommitted saved solve was 7.45x faster and cold volume checking 37.5x faster. Position/force differences were near roundoff and original residual limits passed. These local measurements do not establish a complete-trajectory speedup or qualify the NEW physical coverage candidate.
+
+3. Separate physical, implementation and timestep checks
+Freeze three fresh clear-start 2 ms / 42 um nonfracturing controls in fresh_control_contract.json:
+A. New coverage, reference query, h=3.125 us.
+B. Identical coverage/laws/motion, faster query, h=3.125 us.
+C. Identical coverage/laws/motion, faster query, h=1.5625 us.
+Each has a 600 s sample-checked wall cap; stop the sequence on a failed case. No coarser-step speed experiment and no automatic timestep sweep. Use only one GPU worker.
+
+A/B isolates the implementation change. On all shared physical times require position <=1e-10 m, velocity <=1e-7 m/s, nodal force <=1e-8 N and history <=1e-10, plus unchanged original physical/residual/force-balance limits.
+B/C isolates timestep refinement. Retain position <=0.1 mm, velocity <=5 mm/s, force/moment/summed and nodal force discrepancies <=5% with original floors, damage <=0.01, fracture energy <=5%, event timing <=0.5 ms and equal failed-group sets. No event shifting or cherry-picked samples. Initial force must be zero and all accepted steps must pass the full-volume guard. These controls deliberately remain nonfracturing; a pass is not Gate B.
+
+Use fresh_control_review.json for the actual result. If any comparison fails, keep both sources and raw results, diagnose once and make a written next decision. Do not change a tolerance after seeing a result. A validated implementation may be used for further bounded development; the 120 s/s speed requirement remains deferred.
+
+4. Resume cutting development only with the corrected validated combination
+If the fresh controls pass, freeze the new source manifest and start again from the settled target using the existing finite-bevel reference, fixed CAD orientation/grip and original scripted interface. Preserve the v33 episode as an older candidate, never splice it into a new physical trajectory. Keep the 2 N force stop, 0.1 mm whole-volume penetration stop, element/support/board/ledger/residual limits and irreversible history rules.
+
+First use short declared contact-loaded prefixes, with saved state and a finite overall wall cap. Forecast cost from the RECENT CONTACT-LOADED segment, not the much cheaper clear approach. No unbounded chain of wall-cap resumptions and no multi-day campaign based only on this local speedup. Record component/profile cost separately from full guarded stepping and evidence-writing cost. If a projection still requires days, return a concrete execution-strategy decision instead of launching the entire section.
+
+Next demonstrate genuine shallow damage, controlled termination and the authorized two-stage horizontal withdrawal, with an independent half-step run of the SAME damage-producing case. Full-surface edge coverage is not a guarantee against every face/interior penetration; retain the independent whole-volume guard. On a stop, preserve the rejected trial and last accepted state; do not increase force/penetration limits, reduce fracture thresholds, add fixtures or introduce oracle feedback to manufacture damage.
+
+5. Preserve the existing research gates
+Only after Gate B actually passes may the full stroke proceed. Prove all load-bearing bridges fail and two intended substantial pieces retain the original total mass; a groove, rendered gap or failed vertex does not count. Then complete at least one second of post-clearance stability, fresh/reset/restart/repeat checks and independent refinement. The cap has no fixed nodes; all 25 supports belong to the remainder, so disclose that support model. Size/path variants and successive genuine slices follow their original gates and require history/connectivity conservation; new physical sampling/laws/scaling decisions receive the review required by the roadmap. No training before qualification.
+
+No video work, robot/kitchen/grip changes, native motor-work investigation or engine adoption is part of this revision.
+
+Evidence
+v33/pilot_review.json, volume_witness_review.json, provenance_manifest.json.
+v34/complete_edges.py, controls_result.json, source_manifest.json.
+v35/profile_result.json, query_benchmark_result.json, fast_geometry_controls_result.json, saved_solve_benchmark_result.json, fresh_control_contract.json and fresh_control_review.json.
+All vNN shorthand denotes the sibling versioned directories under this project's work folder. Fresh-control qualification and real cutting qualification must be reported separately.
+
+
+VALIDATED REVISION OUTCOME
+All three fresh 2 ms controls completed. At 641 shared physical times, reference/faster implementation position error was 5.543010115379329e-17 m and nodal-force error 4.6779458134990046e-15 N. Half-step position difference was 1.8294640482799875e-07 m, velocity 0.00032922934711132086 m/s, maximum nodal-force discrepancy 0.5692297669763712%. All original guards passed; zero damage as required by this nonfracturing control. Stepping/sampling times were 199.74 s reference, 55.14 s faster query at the same timestep, and 107.13 s independent half step. About 3.62x measured short-probe improvement; this does not qualify full-cut speed.
+
+The coverage correction fixes an omitted subset within the user-approved material-edge contact implementation. It does not add a new geometry primitive or relax the total budget. Full face/interior safety still relies on the independent whole-volume guard. No real-damage or deep-contact pass is claimed.
+
+Prepared next runner: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py
+Read /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/execution_contract.json before use. First horizon45 ms, wall cap900 s, h3.125 us/ref1.5625 us, fresh settled state, stop on damage or any physical/numerical stop. Default CLI is bounded to45 ms. It has only been compiled/inspected, not launched. Thereafter use 5 ms contact-loaded checkpoints to update the recent cost forecast; do not automatically chain caps into another multi-day run. Independent actual-damage replay and authorized horizontal withdrawal remain necessary.

@@ -1,0 +1,86 @@
+{
+  "version": "v32-secure-pickup-learning-draft-3",
+  "status": "prepared_not_trained_or_evaluated",
+  "task": "Head-camera knife pickup with actual finger contact; cutting-grip adjustment is a separate future skill.",
+  "actor_observations": {
+    "rgb": {
+      "shape": [
+        240,
+        320,
+        3
+      ],
+      "source": "actual head RGB-D renderer",
+      "dtype": "uint8"
+    },
+    "depth_m": {
+      "shape": [
+        240,
+        320,
+        1
+      ],
+      "source": "actual distance_to_image_plane sensor",
+      "invalid_values": "explicit validity mask; never fill using ground-truth geometry"
+    },
+    "right_arm_and_hand_joint_position": {
+      "shape": [
+        13
+      ],
+      "units": "radian"
+    },
+    "right_arm_and_hand_joint_velocity": {
+      "shape": [
+        13
+      ],
+      "units": "radian/second"
+    },
+    "previous_action": {
+      "shape": [
+        13
+      ]
+    },
+    "memory": "recurrent hidden state or frame history to retain the seen handle when occluded by fingers",
+    "current_joint_targets": {
+      "shape": [
+        13
+      ],
+      "units": "radian",
+      "source": "controller command memory, not privileged object state"
+    }
+  },
+  "actor_excluded_inputs": [
+    "ground-truth knife pose",
+    "knife segmentation IDs",
+    "true knife mass or geometry identifier",
+    "contact labels or exact contact forces",
+    "script phase or time-to-grasp"
+  ],
+  "action": {
+    "type": "bounded changes in right-arm and independent-hand joint targets",
+    "shape": [
+      13
+    ],
+    "control_hz": 20,
+    "maximum_arm_target_increment_rad": 0.04,
+    "maximum_hand_target_increment_rad": 0.02,
+    "low_level": "existing joint drives and native passive finger coupling; true joint limits and effort caps remain enforced",
+    "evaluation_note": "Initial .025 rad arm-action draft was too small for verified varied-position demonstrations (up to .03615 rad / 50 ms). Set .04 rad and enforce it in teacher and student. This is at most .8 rad/s command slew; actual 3 rad/s stop and motor/load limits unchanged. Physical evaluation still required."
+  },
+  "teacher_and_evaluator_only": [
+    "knife pose and velocities",
+    "handle/blade contact classification",
+    "board support force",
+    "minimum whole-knife clearance",
+    "relative slip",
+    "geometry family and placement seed"
+  ],
+  "training_sequence": [
+    "Establish physically valid demonstrations, or a separately measured teacher-discovery curriculum if scripted demonstrations remain unavailable.",
+    "Freeze geometry-family and placement evaluation splits before collecting training episodes.",
+    "Collect actual head images with synchronized joint states and actions; reject unsafe or unsuccessful demonstrations.",
+    "Train an image-and-proprioception imitation policy; evaluate closed-loop contact-based pickups from fresh states.",
+    "Only then assess bounded RL fine-tuning and expansion of knife models/resting poses."
+  ],
+  "success_criteria_source": "pickup_criteria.json",
+  "model_status": "No learned pickup network or training checkpoint exists yet.",
+  "scope_limits": "A reset-pregrasp physical test is not a neutral-start pickup or a vision-driven learned demonstration. Report the actual feasible board region, knife families, stable rest poses and held-out success rate; do not claim all possible knives or placements."
+}

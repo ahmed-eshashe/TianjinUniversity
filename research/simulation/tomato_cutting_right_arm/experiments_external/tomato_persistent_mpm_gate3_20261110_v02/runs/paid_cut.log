@@ -1,0 +1,43 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/cache/warp/1.17.0
+Module contact_geometry 7a11ea9 load on device 'cuda:0' took 0.54 ms  (cached)
+Module kernels 68444bc load on device 'cuda:0' took 0.67 ms  (cached)
+Module physical_kernels a38ad69 load on device 'cuda:0' took 0.40 ms  (cached)
+{
+  "status": "whole_material_contact_stop",
+  "physical_topology_event": false,
+  "events": [],
+  "dt": 1.25e-05,
+  "sim_time": 0.04149999999999747,
+  "wall_s": 41.178426575999765,
+  "peak_total_force_N": 0.1059370457417945,
+  "max_impulse_balance_Ns": 5.98174489527847e-13,
+  "initial_bulk_kinetic_J": 0.0,
+  "cut_ledger": {
+    "covered_wkb": "010300000000000000",
+    "Gc": 80.0,
+    "work_J": 0.0,
+    "area_m2": 0.0,
+    "epoch": 2867,
+    "last_step": 3319,
+    "domain_wkb": "01030000000100000005000000fa7e6abc7493783f0000000000000000fa7e6abc7493783ffa7e6abc7493583ffa7e6abc749378bffa7e6abc7493583ffa7e6abc749378bf0000000000000000fa7e6abc7493783f0000000000000000"
+  },
+  "last_certificate": {
+    "passed": false,
+    "reason": "unresolved_bound",
+    "observed_penetration_m": 9.265694097848609e-05,
+    "certified_max_penetration_bound_m": 9.998342500612157e-05,
+    "queries": 20440,
+    "depth": 8,
+    "unresolved": 4,
+    "geometry": "entire declared trilinear-cell union, not only sampled centers"
+  },
+  "law_geometry_limit": "Small-strain straight-front projected area measured along a frozen material marker; not finite-deformation free-path fracture. Full row area must be paid before a code change.",
+  "scope": "Bounded first paid crack-front patch on actual CAD-loaded MPM coupon; no tomato or full-slice claim"
+}

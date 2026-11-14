@@ -1,0 +1,13 @@
+from pathlib import Path
+import numpy as np,json,difflib,hashlib,shutil
+w=Path(__file__).resolve().parent;old=w.parent/'disect_feasibility_20261108_v01';r=w.parents[1]
+shutil.copy2(w/'forward_result.json',w/'repeat03_result.json');shutil.copy2(w/'forward_final.npz',w/'repeat03_final.npz')
+patch=''.join(difflib.unified_diff((old/'DiSECt/meshing/meshing.cpp').read_text().splitlines(True),(w/'DiSECt/meshing/meshing.cpp').read_text().splitlines(True),fromfile='v01/meshing.cpp',tofile='v02/meshing.cpp'));(w/'mesh_repairs.patch').write_text(patch)
+runs=[]
+for label in ['02','03']:
+ q=json.loads((w/f'repeat{label}_result.json').read_text());z=np.load(w/f'repeat{label}_final.npz');t=z['tet_indices'];a=z['initial_x'];b=z['x'];ratio=np.linalg.det(b[t[:,1:]]-b[t[:,0]][:,None])/np.linalg.det(a[t[:,1:]]-a[t[:,0]][:,None]);runs.append({'run':label,'exit_code':0,'full_example_completed':q['full_example_completed'],'simulated_s':q['simulated_s'],'setup_wall_s':q['setup_wall_s'],'stepping_wall_s':q['wall_s'],'wall_s_per_sim_s':q['wall_s_per_sim_s'],'all_sampled_finite':all(i['finite'] for i in q['rows']),'final_minimum_signed_volume_ratio':float(ratio.min()),'final_inverted_tets':int((ratio<=0).sum()),'remaining_nonzero_stiffness_cut_springs':int((z['stiffness']>0).sum()),'peak_rss_kib':q['peak_rss_kib'],'peak_torch_gpu_allocated_bytes':q['peak_gpu_allocated_bytes']})
+a=np.load(w/'repeat02_final.npz');b=np.load(w/'repeat03_final.npz');result={'scope':'Focused cut-surface repair and FEM mesh input audit; no remeshing or tomato dynamics','prism_surface_qualified':json.loads((w/'prism_coverage_audit.json').read_text())['qualified'],'prism_runs':runs,'repeat_max_node_difference_m':float(np.linalg.norm(a['x']-b['x'],axis=1).max()),'repeat_max_stiffness_difference':float(abs(a['stiffness']-b['stiffness']).max()),'source_tomato_direct_FEM_input_qualified':False,'tomato_original_exterior_closed':True,'tomato_cut_passed':False,'robot_integrated_cut_passed':False,'next_decision':'Separate conforming mesh of same original exterior, or exact-node retriangulation, or example-only scope. Asked user before implementation.','production':'paused checkpoint 6925, unchanged','experimental_validation':'pending'}
+(w/'result.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+# Verify original production checkpoint against v01 hash, not a newly declared baseline.
+prior=json.loads((old/'preserved_inputs.json').read_text());key=next(k for k in prior if 'step_006925.npz' in k);assert hashlib.sha256(Path(key).read_bytes()).hexdigest()==prior[key]
+(w/'production_integrity.json').write_text(json.dumps({'checkpoint':key,'sha256':prior[key],'matches_prior_evidence':True},indent=2))

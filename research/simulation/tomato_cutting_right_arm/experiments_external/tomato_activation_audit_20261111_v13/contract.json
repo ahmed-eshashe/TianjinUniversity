@@ -1,0 +1,33 @@
+{
+  "created": "2026-11-10T19:06:29.982809+00:00",
+  "study_budget_s": 7200,
+  "diagnostic_budget_s": 900,
+  "per_run_cap_s": 300,
+  "scope": "Offline common-space comparison from the saved v12 50 us checkpoint. Prescribed geometry schedules solely to isolate timing and refinement. No online or physical cutting claim.",
+  "physical_law": "unchanged neo-Hookean E=100kPa nu=.4 rho=1000; no contact/fracture law",
+  "mass": "full consistent mass, order5, exact carried-state refinement",
+  "dt_s": 1.220703125e-08,
+  "reference_dt_s": 6.103515625e-09,
+  "window_s": 5e-05,
+  "retained_screens": {
+    "position_m": 0.0001,
+    "whole_field_velocity_m_s": 0.005,
+    "mass_relative": 1e-06,
+    "transfer_x_m": 1e-11,
+    "transfer_v_m_s": 1e-10,
+    "transfer_F": 1e-10,
+    "transfer_energy_relative": 1e-08,
+    "energy_floor_J": 1e-12,
+    "energy_balance_relative": 0.05,
+    "physical_force_stop_N": 2,
+    "physical_penetration_m": 0.0001
+  },
+  "cases": [
+    "native coarse grid, final release at100us",
+    "common fine grid, final release at100us",
+    "same common fine grid, releases75us and100us",
+    "half-dt counterparts for common cases"
+  ],
+  "common_grid": "Use fine saved schedule tangent knots; no 15nm sliver union with nearly identical coarse final front. Coarse coverage includes the fine final front, so both have the same final resolved interface. This is offline path-informed preparation only.",
+  "next": "After this diagnosis choose at most one in-scope correction; do not change material, damping, mass, stops or accuracy screens."
+}

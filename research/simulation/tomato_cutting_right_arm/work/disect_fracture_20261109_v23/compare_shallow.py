@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,numpy as np
+W=Path(__file__).resolve().parent;p=json.loads((W/'shallow_plan.json').read_text());lim=p['refinement_limits'];a=np.load(W/'shallow_trajectory.npz');b=np.load(W/'shallow_refined_trajectory.npz');ra=json.loads((W/'shallow_result.json').read_text());rb=json.loads((W/'shallow_refined_result.json').read_text());matched=len(a['t'])==len(b['t']) and np.allclose(a['t'],b['t'],atol=1e-12,rtol=0)
+if not matched:raise RuntimeError('Different physical clocks or incomplete runs; no interpolation of failure events')
+def rel(key,floor):return float(np.max(np.linalg.norm(a[key]-b[key],axis=1)/np.maximum(np.linalg.norm(b[key],axis=1),floor)))
+def events(h):
+ values=[]
+ for j in range(47):
+  hit=np.flatnonzero(h[:,j,1]>0);values.append(None if not len(hit) else float(a['t'][hit[0]]))
+ return values
+ha=a['history'];hb=b['history'];ea=events(ha);eb=events(hb);event_agreement=all((x is None and y is None) or (x is not None and y is not None and abs(x-y)<=lim['event_time_s']+1e-12) for x,y in zip(ea,eb));fa=set(np.flatnonzero(ha[-1,:,1]>=1));fb=set(np.flatnonzero(hb[-1,:,1]>=1));da=np.array([r['fracture_dissipation_J'] for r in ra['rows']]);db=np.array([r['fracture_dissipation_J'] for r in rb['rows']]);out=dict(scope='Damage-enabled prescribed shallow-cut refinement; no native robot qualification',position_max_m=float(np.linalg.norm(a['x']-b['x'],axis=2).max()),velocity_max_m_s=float(np.linalg.norm(a['v']-b['v'],axis=2).max()),force_max_relative_or_floor=rel('reaction',lim['force_floor_N']),moment_max_relative_or_floor=rel('moment',lim['moment_floor_Nm']),damage_max_absolute=float(abs(ha[:,:,1]-hb[:,:,1]).max()),dissipation_max_relative_or_floor=float(np.max(abs(da-db)/np.maximum(abs(db),lim['dissipation_floor_J']))),damage_onset_events_agree=event_agreement,final_failed_groups_agree=fa==fb,both_complete=ra['physical_run_completed'] and rb['physical_run_completed'],both_genuine_damage=ra['nonzero_damage'] and rb['nonzero_damage'],speed_deferred=True)
+out['passed']=bool(out['both_complete'] and out['both_genuine_damage'] and out['position_max_m']<=lim['position_m'] and out['velocity_max_m_s']<=lim['velocity_m_s'] and out['force_max_relative_or_floor']<=lim['force_relative'] and out['moment_max_relative_or_floor']<=lim['moment_relative'] and out['damage_max_absolute']<=lim['damage_absolute'] and out['dissipation_max_relative_or_floor']<=lim['dissipation_relative'] and event_agreement and fa==fb);(W/'shallow_comparison_result.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))

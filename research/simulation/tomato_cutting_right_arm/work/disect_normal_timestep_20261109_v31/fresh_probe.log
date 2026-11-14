@@ -1,0 +1,36 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.98 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.81 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.74 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.65 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.62 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.66 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.91 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.04 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.23 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.42 ms  (cached)
+{"run": "coarse", "accepted_steps": 1, "sim_s": 6.25e-06, "wall_s": 1.6527764279999246}
+{"run": "coarse", "accepted_steps": 33, "sim_s": 0.00020625, "wall_s": 3.3094106549979188}
+{"run": "coarse", "accepted_steps": 65, "sim_s": 0.00040625000000000004, "wall_s": 5.110254200997588}
+{"run": "coarse", "accepted_steps": 97, "sim_s": 0.00060625, "wall_s": 6.907757125998614}
+{"run": "coarse", "accepted_steps": 129, "sim_s": 0.00080625, "wall_s": 10.4713971079982}
+{"run": "coarse", "accepted_steps": 161, "sim_s": 0.00100625, "wall_s": 18.13494801699926}
+{"run": "coarse", "accepted_steps": 193, "sim_s": 0.00120625, "wall_s": 33.28644516799977}
+{"run": "coarse", "accepted_steps": 225, "sim_s": 0.0014062500000000002, "wall_s": 51.33314827399954}
+{"run": "coarse", "accepted_steps": 257, "sim_s": 0.00160625, "wall_s": 70.15480703699723}
+{"run": "coarse", "accepted_steps": 289, "sim_s": 0.0018062500000000001, "wall_s": 86.69976609199875}
+{
+  "scope": "Fresh clear-start 2 ms / 42 um stronger implicit normal-contact nonfracturing probe; no Gate B pass",
+  "damping_dense_reference_passed": true,
+  "gate_a_complete": false,
+  "gate_b_passed": false
+}

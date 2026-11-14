@@ -1,0 +1,39 @@
+V22 — CUT-UPDATE REDESIGN: VERIFIED COMPONENT SPEED RESULT
+Completed: 2026-11-12T20:58:41.880042+08:00
+
+OUTCOME
+Repeated episodes now achieve 102.80–109.03 aggregate geometric diagnostic transitions/s, median 104.63, across eight timed repeats and two sets of independent cut directions. All eight exceed the preliminary 100/s speed screen. Sixteen environments run in two independent groups of eight, with four CPU workers. Resets, cut events, material advancement, transfers, observations and conservation checks are included. GPU storage/graphs persist between episodes as an environment normally would; each reset clears previous state/history and is checked against a fresh episode.
+Fresh-instance runs are less consistent: 98.30–106.60/s. That screen does NOT pass in every run. One-time pristine-template preparation takes 0.572 s separately; compilation is warmed. The tested bodies have fixed size and resolution and do not share a future cut path. New shape/size preparation is not qualified at this rate.
+
+THIS IS NOT ACTUAL RL QUALIFICATION
+These are synthetic bulk/geometric updates, without physical blade contact, paid fracture, recontact, board support, robot stepping or policy inference. The actual RL environment target remains 100/s, preferred 500/s, and is still untested. At the median measured rate there is little headroom for those missing parts. No anatomical tomato, physical slice or learned controller is claimed. Experimental validation remains pending.
+
+WHAT CHANGED
+1. Reusable convex boundary faces replace repeated hull construction. Packed immutable geometry and compiled compatibility bookkeeping remove per-region Python reconstruction.
+2. Unchanged operators, exact mass blocks and graph storage are reused. Geometry and selector changes invalidate cached data. State and cut history stay independent.
+3. Pinned transfers, retained rollback buffers and CUDA graph grid updates cover active work without recreating execution graphs.
+4. Independent environments overlap CPU preparation with GPU material stepping on separate streams. Each event uses its own latest completed state; unfinished mutation/read requests are rejected.
+5. Scalar compiled accounting retains the same volume, energy, mass and momentum checks, and repeated resets retain the same material model and timestep.
+See FORMULATION.txt for equations, unchanged limits and implementation details. No package was installed or upgraded.
+
+MEASURED COMPARISONS
+- Saved v21 eight-environment/four-worker changing-loop result: 17.06/s.
+- V22 same eight-environment/four-worker layout without overlap: 74.63/s. Same 60 mm size, 6 mm grid, 50 Hz controls and four events in ten controls.
+- V22 sixteen-environment overlapped repeated episodes: median 104.63/s, range 102.80–109.03/s. This changes execution batch/layout, not physical size, resolution or equations; it is not a matched single-variable timing ratio against the eight-environment result.
+- Matched new-instance one-body episode, 0.2 simulated seconds: v21 1.262 s -> v22 0.726 s. Compilation is warmed; geometry/template preparation for that new body is included.
+- Warm large-block geometry updates in native_validation.json: about 11 ms for oblique and 14 ms for near-corner cuts, compared with v21's saved 100–130 ms. Initial geometry preparation is separate from these warm-event timings.
+- Selected sixteen-environment GPU arrays and rollback storage total 88.99 MB. This is not total process/VRAM use; CPU geometry, pinned staging, driver/context, robot and policy are excluded.
+
+REFERENCE AND FAILURE CHECKS
+574 recorded checks pass across the selected suites: {"native_validation": 27, "geometry_holdout": 24, "persistent_validation": 46, "pipeline_validation": 46, "combined_loop": 32, "invariants": 15, "final_performance": 192, "steady_performance": 192}.
+The matched v21/v22 dynamic checkpoints have maximum position and velocity differences of zero and deformation-gradient difference 2.22e-16. Additional tests cover held-out directions, small regions, world/reference cuts, four-slot histories, operators, CPU/GPU precision, continued restart, cache invalidation, independent streams and rollback after a deliberately invalid step.
+A failed asynchronous environment restores its prior state without changing another environment. Fresh and reused episodes agree at sampled checkpoints through prior cut histories. In the selected repeated episodes, maximum mass relative error is 4.44e-16; maximum numerical energy residual is 0.01028%.
+
+REJECTED EXPERIMENTS PRESERVED
+The fused four-row kernel and edge-force cache passed their numerical comparisons but were slower. The one-warp alternative was slower and exceeded the strict velocity comparison: about 0.343 mm/s against 0.1 mm/s. None is used by the selected runtime. Compiler/API-integration errors and their fixes remain in runs/. No failing limit was relaxed to obtain the selected result.
+
+PRESERVATION
+All 2001 protected source/evidence files match their starting hashes. Existing Isaac/DiSECt scenes, robot, kitchen, grip and production scripts remain unchanged. This is an isolated candidate, not a production replacement. No simulation job is left running when this report is delivered.
+
+NEXT
+Keep this candidate as the verified geometry/runtime baseline. Before training, qualify an isolated integration with the intended physical blade/contact/fracture model and measure the actual complete loop. The 103–109/s component result provides a basis for that measurement, not permission to skip it or a promise that the added physics will remain above 100/s. See NEXT_STEPS.txt.

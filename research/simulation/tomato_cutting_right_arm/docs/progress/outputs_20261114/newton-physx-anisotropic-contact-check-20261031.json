@@ -1,0 +1,600 @@
+{
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 6.006049374000213,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 27,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 22169047040,
+    "min_free_vram_bytes": 7529824256,
+    "mode": "anisotropic_contact",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "shutdown_completion": "supervisor_must_observe_exit",
+      "anisotropic_cases_completed": 2,
+      "newton_steps": 2,
+      "physx_steps": 1,
+      "anisotropic_checks_passed": true,
+      "world_tensor_exercised": true,
+      "robot_validated": false,
+      "blade_validated": false,
+      "training": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "identity_anisotropic",
+        "initial_physx": {
+          "pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "com_local": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "particle_before": [
+          0.004000000189989805,
+          0.003000000026077032,
+          0.0010000000474974513
+        ],
+        "particle_after": [
+          0.004000000189989805,
+          0.003000000026077032,
+          0.0011083591962233186
+        ],
+        "particle_velocity_after": [
+          0.0,
+          0.0,
+          0.13003097474575043
+        ],
+        "particle_mass_kg": 0.009999999776482582,
+        "body_mass_kg": 0.019999999552965164,
+        "principal_inertia_kg_m2": [
+          9.999999747378752e-05,
+          0.00019999999494757503,
+          0.0002500000118743628
+        ],
+        "gyroscopic_forces_enabled": true,
+        "expected": {
+          "soft_force": [
+            0.0,
+            0.0,
+            1.5603715873622896
+          ],
+          "rigid_point": [
+            0.004000000189989805,
+            0.003000000026077032,
+            0.0020000000949949026
+          ],
+          "com_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "reaction_force": [
+            -0.0,
+            -0.0,
+            -1.5603715873622896
+          ],
+          "torque": [
+            -0.004681114802776729,
+            0.006241486645903852,
+            0.0
+          ],
+          "particle_after": [
+            0.004000000189989805,
+            0.003000000026077032,
+            0.001108359187930737
+          ]
+        },
+        "native_contact": {
+          "ke": [
+            1750.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "kd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mu": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "force": [
+            [
+              0.0,
+              0.0,
+              1.5603715181350708
+            ]
+          ],
+          "hessian": [
+            [
+              [
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1750.0
+              ]
+            ]
+          ],
+          "rigid_point": [
+            [
+              0.004000000189989805,
+              0.003000000026077032,
+              0.0020000000949949026
+            ]
+          ],
+          "wrench": [
+            [
+              -0.0,
+              -0.0,
+              -1.5603715181350708,
+              -0.004681114573031664,
+              0.00624148640781641,
+              0.0
+            ]
+          ]
+        },
+        "wrench_check": {
+          "soft_force_error_n": 6.922721884627947e-08,
+          "point_error_m": 0.0,
+          "reaction_error_n": 6.922721884627947e-08,
+          "torque_error_nm": 3.308601290304519e-10
+        },
+        "contact_arrays": {
+          "soft_contact_indices": [
+            [
+              0,
+              -1,
+              -1
+            ]
+          ],
+          "soft_contact_barycentric": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "soft_contact_shape": [
+            0
+          ],
+          "soft_contact_body_pos": [
+            [
+              0.004000000189989805,
+              0.003000000026077032,
+              0.0020000000949949026
+            ]
+          ],
+          "soft_contact_normal": [
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "final_physx": {
+          "pose": [
+            0.0,
+            0.0,
+            -2.8782898880308494e-05,
+            -8.634869118395727e-06,
+            5.756579867011169e-06,
+            1.40438062654763e-18,
+            1.0
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            -0.06501548737287521,
+            -0.03900928795337677,
+            0.026006193831562996,
+            0.0
+          ]
+        },
+        "state_echo_exact": true,
+        "pulse_check": {
+          "expected_linear_velocity": [
+            -0.0,
+            -0.0,
+            -0.06501548137550386
+          ],
+          "initial_tensor_expected_angular_velocity": [
+            -0.03900928909405473,
+            0.02600619402287343,
+            0.0
+          ],
+          "linear_velocity_error_m_s": 5.9973713495420355e-09,
+          "angular_velocity_error_rad_s": 1.1566096550882046e-09,
+          "final_world_spin": [
+            -3.900928697050466e-06,
+            5.201238634530446e-06,
+            -4.491201535792744e-11
+          ],
+          "spin_impulse_error_nms": 4.4912176187215807e-11,
+          "angular_reference_scope": "Initially at rest, small one-interval rotation; initial inertia tensor impulse approximation, not a general rotating Euler solution."
+        },
+        "motion_checks": {
+          "particle_velocity_error_m_s": 6.225807647197712e-09,
+          "particle_position_error_m": 8.292581682098343e-12,
+          "linear_momentum_error_kg_m_s": 0.0,
+          "particle_impulse_error_ns": 1.1994742417191506e-10,
+          "com_position_error_m": 3.479694800394761e-12,
+          "world_rotation_increment_rad": [
+            -1.7269738236171477e-05,
+            1.151315973360902e-05,
+            2.8087612529944263e-18
+          ],
+          "expected_rotation_increment_rad": [
+            -1.7269737359347148e-05,
+            1.1513158812209592e-05,
+            0.0
+          ],
+          "rotation_error_rad": 1.271926810124031e-12,
+          "total_angular_momentum_error_kg_m2_s": 4.491734082237475e-11,
+          "body_work_j": 4.506471647551332e-05,
+          "body_kinetic_energy_j": 4.241385347397512e-05,
+          "tgs_numerical_loss_j": 2.650865842123445e-06,
+          "body_work_identity_error_j": 2.840585249505779e-12
+        }
+      },
+      {
+        "id": "oblique_anisotropic_offset_com",
+        "initial_physx": {
+          "pose": [
+            0.0,
+            0.05000000074505806,
+            0.0,
+            0.13363061845302582,
+            0.26726123690605164,
+            0.40089190006256104,
+            0.8660253882408142
+          ],
+          "velocity": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "com_local": [
+          0.0020000000949949026,
+          -0.0010000000474974513,
+          0.0005000000237487257
+        ],
+        "particle_before": [
+          0.000844100140966475,
+          0.05497457832098007,
+          0.0007355821435339749
+        ],
+        "particle_after": [
+          0.0009058705763891339,
+          0.05497271567583084,
+          0.0008245913777500391
+        ],
+        "particle_velocity_after": [
+          0.0741245225071907,
+          -0.0022351741790771484,
+          0.10681107640266418
+        ],
+        "particle_mass_kg": 0.009999999776482582,
+        "body_mass_kg": 0.019999999552965164,
+        "principal_inertia_kg_m2": [
+          9.999999747378752e-05,
+          0.00019999999494757503,
+          0.0002500000118743628
+        ],
+        "gyroscopic_forces_enabled": true,
+        "expected": {
+          "soft_force": [
+            0.8894944063722933,
+            -0.02679046835799813,
+            1.2817339016425038
+          ],
+          "rigid_point": [
+            0.0014141531051611415,
+            0.05495740903268525,
+            0.0015570108166158068
+          ],
+          "com_world": [
+            0.0019793915638810227,
+            0.05088014645108079,
+            -0.0007465608292226676
+          ],
+          "reaction_force": [
+            -0.8894944063722933,
+            0.02679046835799813,
+            -1.2817339016425038
+          ],
+          "torque": [
+            -0.005287679440029085,
+            -0.002773499388704569,
+            0.0036115592566051623
+          ],
+          "particle_after": [
+            0.0009058705872341169,
+            0.05497271787174696,
+            0.0008245914442486617
+          ]
+        },
+        "native_contact": {
+          "ke": [
+            1750.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "kd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mu": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "force": [
+            [
+              0.8894941210746765,
+              -0.026790454983711243,
+              1.281733512878418
+            ]
+          ],
+          "hessian": [
+            [
+              [
+                568.6804809570312,
+                -17.127946853637695,
+                819.4509887695312
+              ],
+              [
+                -17.127946853637695,
+                0.5158724188804626,
+                -24.68084144592285
+              ],
+              [
+                819.4509887695312,
+                -24.68084144592285,
+                1180.803466796875
+              ]
+            ]
+          ],
+          "rigid_point": [
+            [
+              0.0014141519786790013,
+              0.05495741218328476,
+              0.0015570113901048899
+            ]
+          ],
+          "wrench": [
+            [
+              -0.8894941210746765,
+              0.026790454983711243,
+              -1.281733512878418,
+              -0.005287683103233576,
+              -0.0027735005132853985,
+              0.003611561842262745
+            ]
+          ]
+        },
+        "wrench_check": {
+          "soft_force_error_n": 4.824014055664037e-07,
+          "point_error_m": 3.394720756677329e-09,
+          "reaction_error_n": 4.824014055664037e-07,
+          "torque_error_nm": 4.622702057936749e-09
+        },
+        "contact_arrays": {
+          "soft_contact_indices": [
+            [
+              0,
+              -1,
+              -1
+            ]
+          ],
+          "soft_contact_barycentric": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ]
+          ],
+          "soft_contact_shape": [
+            0
+          ],
+          "soft_contact_body_pos": [
+            [
+              0.0040000006556510925,
+              0.0030000023543834686,
+              0.0020000000949949026
+            ]
+          ],
+          "soft_contact_normal": [
+            [
+              0.5700528621673584,
+              -0.017169281840324402,
+              0.8214285373687744
+            ]
+          ]
+        },
+        "final_physx": {
+          "pose": [
+            -1.6408739611506462e-05,
+            0.050000496208667755,
+            -2.3656582925468683e-05,
+            0.1336195021867752,
+            0.2672591209411621,
+            0.400895357131958,
+            0.8660261631011963
+          ],
+          "velocity": [
+            -0.03706225007772446,
+            0.001116270897909999,
+            -0.05340556800365448,
+            -0.03596391901373863,
+            -0.03147166222333908,
+            0.024300331249833107
+          ]
+        },
+        "state_echo_exact": true,
+        "pulse_check": {
+          "expected_linear_velocity": [
+            -0.037062255873184166,
+            0.0011162689826051913,
+            -0.053405564230308136
+          ],
+          "initial_tensor_expected_angular_velocity": [
+            -0.03596391295154321,
+            -0.03147164787788287,
+            0.024300332121413783
+          ],
+          "linear_velocity_error_m_s": 7.175924217704235e-09,
+          "angular_velocity_error_rad_s": 1.5598140276993244e-08,
+          "final_world_spin": [
+            -4.406420206239077e-06,
+            -2.311251736154585e-06,
+            3.0096093975439235e-06
+          ],
+          "spin_impulse_error_nms": 3.09992912920396e-11,
+          "angular_reference_scope": "Initially at rest, small one-interval rotation; initial inertia tensor impulse approximation, not a general rotating Euler solution."
+        },
+        "motion_checks": {
+          "particle_velocity_error_m_s": 2.63648450602846e-06,
+          "particle_position_error_m": 2.1969495368030495e-09,
+          "linear_momentum_error_kg_m_s": 2.6331527902147302e-08,
+          "particle_impulse_error_ns": 2.6367497162610722e-08,
+          "com_position_error_m": 1.0664035441434915e-08,
+          "world_rotation_increment_rad": [
+            -1.5916599990102253e-05,
+            -1.391592168139413e-05,
+            1.074292791404724e-05
+          ],
+          "expected_rotation_increment_rad": [
+            -1.5921523962922778e-05,
+            -1.3932760779271062e-05,
+            1.075795953291756e-05
+          ],
+          "rotation_error_rad": 2.3103036413180174e-08,
+          "total_angular_momentum_error_kg_m2_s": 1.5830175406615005e-11,
+          "body_work_j": 4.5073814042704935e-05,
+          "body_kinetic_energy_j": 4.242228319787408e-05,
+          "tgs_numerical_loss_j": 2.65139269986713e-06,
+          "body_work_identity_error_j": 1.381449637232672e-10
+        },
+        "wrong_world_axes_velocity_difference_rad_s": 0.024750482741431087
+      }
+    ],
+    "newton_steps": 2,
+    "physx_steps": 1,
+    "dt_s": 0.0008333333333333334,
+    "baseline_physx_steps": 0,
+    "final_physx_steps": 1,
+    "scope": "Two initially resting off-centre analytic contacts with unequal body-axis principal inertia. Initial world-tensor small-rotation impulse reference; no general anisotropic spin, long-run, articulation or blade qualification."
+  },
+  "max_errors": {
+    "soft_force_error_n": 4.824014055664037e-07,
+    "point_error_m": 3.394720756677329e-09,
+    "reaction_error_n": 4.824014055664037e-07,
+    "torque_error_nm": 4.622702057936749e-09,
+    "linear_velocity_error_m_s": 7.175924217704235e-09,
+    "angular_velocity_error_rad_s": 1.5598140276993244e-08,
+    "spin_impulse_error_nms": 4.4912176187215807e-11,
+    "particle_velocity_error_m_s": 2.63648450602846e-06,
+    "particle_position_error_m": 2.1969495368030495e-09,
+    "linear_momentum_error_kg_m_s": 2.6331527902147302e-08,
+    "particle_impulse_error_ns": 2.6367497162610722e-08,
+    "com_position_error_m": 1.0664035441434915e-08,
+    "rotation_error_rad": 2.3103036413180174e-08,
+    "total_angular_momentum_error_kg_m2_s": 4.491734082237475e-11,
+    "body_work_identity_error_j": 1.381449637232672e-10
+  },
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_anisotropic_contact_worker.py": "44b8ee1548031a76bdc38294a3055c90dacd72252b6f339aff360076cde093f3",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_anisotropic_reference.py": "7231082f918974d719becf2ae86ceab811f5152cd059a212734ba40cdf5a18d7",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_feedback_worker.py": "2e2bd1dd567db6c4455b344725505dcc7899dcd36bad6e11017751f3efb5823f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_offset_contact_reference.py": "a901e841411948f4414ca66c69cd71894c41b24d16eb7f30044f54c2cf277d9c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_reaction_metadata.py": "fa892e8cf48752ecb2a654d17601f9ef17d2f73e07a54a3ee93dd9cd286e886c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_wrench_contract.py": "c7aed519065021006a98397ca01efa98206c9a8cf5f2be4eeca2c88f41ca6118",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_guard.py": "bd16899d0d2b81db2f4f9e7129a038d4098656e2249eca2aa0fd9db484b9805a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_anisotropic_reference.py": "4aabe3904c2833946c41140f8041e691d590280e1d73783d1660528f4435d9b3",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/rigid_vbd_kernels.py": "c88eb7b4357e0f36d563ffd0ffe29b780543acfacbb2c17a2dc33f0f5026bdf3",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/coupled/interface.py": "c8d1f160d4ffcac22841e870f3cd0375c7aad30f799549052692097ab4a1fdb9",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py": "44418a13b42bb424f02a605d7df6f047c5ddc9e7ab104ed743684845d8f9a951",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager_cfg.py": "b28ec403c4d534101eab541aff92952b96eb63f0526b0dc0a53277638ca732b2",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/sim/schemas/schemas_cfg.py": "8edeec841a59745b92528a9c12cf1abacea0b63b9a5dbfc0ccad7a64bea61779",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object.py": "0fd17152d133805412776d8cc90eebe85159a383a2e052dafc2eafdd14e54390",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/collide.py": "dcc29f631d22dbf4c689e7424e1be67a22b5cc147e4b728a0845c92db760a44b",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/contacts.py": "84d3ccff76e8c2c10706dff557459aab57474e73aad1a1ef8a429c36fe51fea1"
+  },
+  "focused_tests_passed": 14,
+  "original_frozen_sources_unchanged": true,
+  "previously_pinned_dependencies_unchanged": true
+}

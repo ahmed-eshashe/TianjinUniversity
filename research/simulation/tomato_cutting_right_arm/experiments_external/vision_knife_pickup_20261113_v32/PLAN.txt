@@ -1,0 +1,70 @@
+HEAD-VISION KNIFE PICKUP — separate v32 project
+Requested 13 November 2026 (Asia/Shanghai)
+
+Confirmed scope
+- Right arm; actual finger contact and friction; no fixed attachment or suction.
+- RGB-D sensing mounted at the robot's head/eye level, not an overhead camera.
+- Center the board on the abdomen's forward midline, with board/counter support.
+- Vary knife geometry and physically settled resting poses, positions and angles.
+- Simulation first; later physical transfer. Existing cutting/DiSECt/v28-v31 files stay unchanged.
+- Confirmed endpoint: secure pickup first; full cutting-grip adjustment is a separate later skill.
+
+A. Scene and sensing
+Create an isolated layer. Remove the mounted-tool joint and pickup clamp/cradle;
+restore real hand/knife collisions, including reciprocal filtered-pair entries.
+Move the board onto the abdomen midline without placing it over the sink or an
+unsupported counter edge. Mount and calibrate one RGB-D sensor at eye level.
+Check RGB, depth validity, board coverage, hand occlusion and frame conventions.
+Keep raw actor inputs distinct from evaluator-only state and semantic labels.
+
+B. Physical grasp feasibility
+Audit existing handle geometry and contact approximations. Preserve hand joint
+limits, provisional friction/effort parameters and previous evidence. First test
+retention of an initialized supported hand pose; label this a component test,
+not pickup. Then establish a free-body pickup from the board centre. The knife
+must move only through gravity/contact after reset, with no kinematic drive or
+attachment. Permit contact-based staged pickup, such as initial pinch then wrap;
+label board-supported manoeuvres separately from unsupported holding. Stop on
+blade contact, drops, excessive loads or invalid state. Do not train on false
+successes or silently increase friction/force to obtain a pass.
+
+C. Generalized task and evaluation
+Use existing curved knife and tested straight-blade/handle as initial assets;
+add documented geometric variants in separate assets with consistent masses and
+colliders. Sample physically feasible board placements, settle them, and report
+the reachable/visible region per knife. No universal any-knife/any-pose claim.
+Hold out geometry families and placement/rotation bins before collecting data.
+Count unsupported lift/hold, slip, blade contacts, collisions, drops and timeouts
+independently of reward. Keep the stricter previous cutting-wrap rubric separate
+if this new task initially accepts a secure pickup. Never relabel earlier failures.
+
+D. Learning
+Start with successful physical demonstrations or a state-informed training teacher,
+then train a head-image + joint-feedback student. RGB/depth are actual rendered
+sensor outputs. True object pose, segmentation IDs and contact labels are for
+teacher/reward/evaluation only; they are not deployment actor inputs.
+Use robot-relative wrist motion plus bounded finger commands with a low-level
+joint controller; arm IK alone is not a learned pickup policy.
+Randomize appearance, camera noise, placement and geometry in a curriculum.
+Only expand to RL fine tuning after measured reset, throughput and success checks.
+
+E. Evaluation and handover
+Test fresh seeds and withheld knife geometry with the image actor alone; compare
+against scripted/teacher baselines and report confidence intervals. Evaluate camera
+occlusion and missing depth. Verify actual finger retention throughout lift/hold.
+Show a live head-camera-driven pickup in the original kitchen, update the checklist,
+and preserve checkpoints/configuration/data provenance. Simulation success does not
+certify physical transfer or contact/calibration accuracy.
+
+Research basis (primary sources, reviewed 13 November 2026)
+https://dexmimicgen.github.io/
+https://github.com/NVlabs/dexmimicgen
+https://research.nvidia.com/labs/prl/publication/isaaclab2025/
+https://isaac-sim.github.io/IsaacLab/develop/source/isaaclab/tutorial.html
+The use of successful demonstrations and teacher-to-vision-student learning is
+motivated by these workflows; no claim that their published results cover this
+robot, knife, camera placement or laptop.
+
+Current status: see STATUS.json and DECISION_BRIEF.txt. Board/head camera and scripted contact pickup components passed. Full-motion students failed live checks. Learned visual grasp-target component is accurate offline; the user selected learned visual targeting plus engineered motion (14 November). See HYBRID_NOTES.txt and current campaign evidence.
+
+2026-11-14: User selected learned visual grasp target plus engineered motion first. Execute frozen hybrid validation, then independent tests and vision-dependence checks. Full motion learning remains later.

@@ -1,0 +1,88 @@
+DiSECt to reliable robot slicing and learning — execution checklist
+Updated 2026-11-10T08:04:51.340012+00:00
+
+FRESH HALF STEP SETTLING RUNNING
+Coarse fresh hold passed its own guards. Independent half-step hold 0.883/1.000 simulated seconds; comparison still pending. No contact/cutting pass.
+
+Updated 2026-11-10T08:04:51.340012+00:00
+No new cutting milestone, damage or separation pass. Speed deferred; experimental validation pending.
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_material_validation_20261110_v43
+
+1. Completed components
+  [done] Preserve the original simulation and checkpoint 6,925.
+    Original robot, kitchen, grip and motion interface remain unchanged.
+  [done] Profile the original solver and compare candidate engines.
+    Recorded component timings and differences in models/resolution; no equal-accuracy speedup claim.
+  [done] Get DiSECt examples running with clean exits.
+    Two corrected-candidate prism repeats complete normally; forward-only qualification.
+  [done] Repair and independently validate prism cut surfaces.
+    No duplicate/degenerate cut faces, full section coverage, physical spring arrays preserved.
+  [done] Build and validate the separate tomato FEM mesh.
+    Original exterior, total mass, cut location and 25 support coordinates retained; internal resolution changed.
+  [done] Identify the explicit timestep limit and correct hydrostatic damping.
+    Relative-velocity correction is isolated and versioned; coefficients were not reduced to pass.
+  [done] Verify translation and resolved-signal damping controls.
+    Low-signal affine precision remains failed and must not be inferred from these scoped passes.
+  [done] Complete a one-second finite tomato gravity hold.
+    Historical finite hold preserved. Later corrected-law intact settling now passes in section3; live cutting assembly still unqualified.
+2. Numerical consistency and speed
+  [done] Fix tiny movements being lost during position updates.
+    PASS in isolated float64 numerical adapter. 100,000 observed tiny updates match analytic translation within 5.2e-13m; original geometry, masses, material and supports preserved.
+  [done] Verify the fix against independent motion references and resets.
+    PASS: independent translation/free-fall/analytic oscillator references; four-node dense implicit solve; full-mesh execution equivalence and reset/allocation controls. Added state clears on reset. Forward-only, not autograd qualification.
+  [done] Establish trustworthy small-force precision.
+    PASS in tested computational range: independent float64 force checks from ~1.1e-8N to .011N, with declared 1e-10N absolute floor. Old float32 low-signal failure is preserved; no experimental calibration claim.
+  [deferred] Establish a stable, sufficiently fast integration method.
+    Speed remains failed (~1019wallseconds/simsecond vs120). On2026-11-09 the user explicitly deferred speed to finish physical qualification first. No accuracy limits relaxed; not qualified for training.
+3. Before blade contact
+  [done] Pass the complete unloaded settling check.
+    PASS for the new split assembly: both fresh1s holds settle below1mm/s; half-step comparison passes. Maximum position difference0.000641mm, velocity0.249mm/s, internal force0.0388%, support reaction0.0376%. Damage disabled; no cutting claim.
+  [done] Validate board contact and sustained target support.
+    The finite board footprint and 25 fixed support points sustain the target, with no sampled board penetration or support drift. This uses an uncalibrated contact model with a 1 mm contact offset; equivalence to the original board mechanics remains pending.
+  [done] Prepare and validate the tomato cutting interface.
+    Approved split assembly passes full settling, refinement and nonfracturing original-CAD load/withdrawal. Progressive live damage and separation remain section 4 tasks; speed deferred by user.
+  [done] Define the fracture law and its timestep dependence.
+    The fracture rule and its dependence on timestep are documented and analytically checked. A separate proposal preserves the original 47 cohesive patch groups. These are definitions and offline input checks; neither is a validated live tomato fracture model.
+  [done] Verify knife representation, nonfracturing contact and force reporting.
+    Both original-CAD load/horizontal-withdrawal repeats pass. Force and moment refinement differences 0.56344% versus 5%; peak reaction 0.780 mN. Prescribed nonfracturing contact only; not native robot or cutting qualification.
+4. First genuine slice and reliability
+  [planned] Pass a shallow scripted cut and controlled stop.
+    Use progressive contact-driven material failure, saved force/deformation/geometry traces and declared stops.
+  [planned] Execute the full stroke and withdraw horizontally toward the robot.
+    No upward withdrawal through the target; preserve intended blade orientation and clearance.
+  [planned] Prove actual material separation.
+    No surviving load-bearing material ties; two intended substantial pieces, not a visible gap or isolated fragments.
+  [planned] Verify post-withdrawal stability, mass and slice shape.
+    Observe at least one simulated second after blade clearance; stable board/cut-face contact and no healing.
+  [planned] Repeat and test resolution, size and path changes.
+    Repeat from fresh/reset state; refine once, change size once and path once. Distinguish precomputed new interfaces from deviations after preparation; use negative controls for the success evaluator.
+  [planned] Demonstrate multiple successive slices.
+    Separate extension requiring supported interface/topology updates and valid remaining-fruit state; one detached cap does not establish repeated slicing.
+5. Connect the candidate to the robot
+  [planned] Connect through the existing motion and reaction interface.
+    Preserve robot, kitchen and disclosed fixed attachment; no engine adoption before evidence review.
+  [planned] Recheck actual robot tracking, grip, posture and clearance.
+    Correct arm motion, natural handle grip and backward/outward elbow; no per-frame teleportation to manufacture tracking.
+  [planned] Validate mounted-blade feedback and loaded support.
+    Verify reaction signs, origins, clocks and native articulation response; strict force/work qualification remains a separate open research gate.
+  [planned] Pass clean loaded, failed-episode and post-cut resets.
+    Clear both engine states, numerical compensation, material history, contact/wrench queues, clocks and observations; compare to fresh launch.
+6. Learning, after the baseline qualifies
+  [planned] Freeze observations, actions, rewards, stops and success evaluation.
+    Same API/evaluator for scripted and learned methods; evaluator-only fracture/connectivity truth must not leak into actor inputs.
+  [planned] Collect successful scripted demonstrations and split the data.
+    Record action labels and provenance; keep independent development/held-out cases separate.
+  [planned] Train and evaluate imitation of the verified baseline.
+    Start with the narrow supported task; measure closed-loop success and runtime before expansion.
+  [planned] Train bounded learned corrections and compare fairly.
+    Constrain supported path deviations; pair with scripted baselines on held-out cases, report uncertainty, forces, geometry, failures and compute cost.
+7. Experimental validation — intentionally pending
+  [pending] Compare against independent measured tomato experiments.
+    Remains pending by user decision; synthetic simulation development must not be described as experimental validation.
+8. Later dual-arm extension
+  [deferred] Qualify contact-based left-hand support.
+    Test load retention/slip first; remove hidden rigid-fixture support before claiming hand stabilization.
+  [deferred] Coordinate both arms with verified clearance and failure handling.
+    Support -> cut -> horizontal withdrawal -> release; stop safely on support loss and verify reset.
+  [deferred] Compare dual-arm and fixed-fixture cutting.
+    Use matched cases and report force, slip, drift, clearance, cut quality, reliability and cost.

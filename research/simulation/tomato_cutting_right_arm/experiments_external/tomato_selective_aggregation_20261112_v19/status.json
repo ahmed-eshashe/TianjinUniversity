@@ -1,0 +1,60 @@
+{
+  "version": "v19",
+  "updated": "2026-11-12T18:19:34.366559+08:00",
+  "decision": "component_accuracy_pass_material_cost_marginal_full_RL_not_qualified",
+  "stage_A": "pass_component_scope_after_explicit_velocity_norm_approval",
+  "stage_B": "GPU_equivalence_pass_fixed_topology_cost_screen_complete",
+  "stage_C": "report_complete_no_physical_cut_or_engine_expansion",
+  "simulation_running": false,
+  "rl_ready": false,
+  "physical_cut": false,
+  "physical_tomato_model_completed": false,
+  "current_setup_changed": false,
+  "production_adopted": false,
+  "experimental_validation": "pending",
+  "approved_velocity_norm": {
+    "answer": "Use the material-weighted velocity check (Recommended)",
+    "recorded_at": "2026-11-12T17:54:37.279176+08:00",
+    "proposal": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/VELOCITY_CRITERION_PROPOSAL.txt",
+    "proposal_sha256": "88a01f3ae36682430f789e5bb4cc6dd5cc6eceb12119c067cfdf931cb7d44099",
+    "scope": "Only cross-representation, projection and temporal-refinement deformable-material velocity criterion changes to conservative mass-weighted RMS upper bound <=0.005 m/s. Preserve maximum pointwise velocity diagnostics. All other limits unchanged, including strict same-operator CPU/GPU tolerances."
+  },
+  "selected_support_threshold": 1e-08,
+  "selected_test_timestep_s": 1.25e-05,
+  "algebra_checks_passed": 62,
+  "dynamic_block_cases_passed": 8,
+  "history_and_larger_controls_passed": 10,
+  "strict_GPU_checks_passed": 8,
+  "accepted_small_block_metrics": {
+    "max_position_mm": 0.003439384184064218,
+    "max_weighted_velocity_mm_s": 2.8449632811405143,
+    "max_local_velocity_mm_s": 83.6477842557993,
+    "max_internal_force_RMS_error_percent": 1.562944449363183,
+    "max_energy_residual_percent": 0.04325862618616483
+  },
+  "best_fixed_topology_50Hz_equivalents_s": {
+    "intact": 111.37288379212957,
+    "oblique": 98.99958933873948,
+    "corner": 106.60113115116809
+  },
+  "paired_corner_batch8_speedup": 3.226813134804864,
+  "sustained_corner_batch8_50Hz_equivalents_s": 103.61711280072292,
+  "minimum_actual_environment_steps_s": 100,
+  "preferred_actual_environment_steps_s": 500,
+  "throughput_scope": "60 mm cube, 6 mm grid, float32 GPU, 12.5 us substeps, 0.1% compression and 0.05% shear; material only. Best rates use eight independent copies. No changing geometry, blade contact, paid fracture, observations, resets, robot, policy or rendering.",
+  "remaining_obstacles": [
+    "Material-only throughput around 100/s leaves insufficient demonstrated headroom for the complete environment.",
+    "Full CPU cut geometry rebuild plus aggregation costs roughly 1.1-1.5 s per body in measured cases; GPU reconstruction adds setup cost.",
+    "Small fragments without a compatible full root retain independent nodes and potentially small timesteps.",
+    "General crack-front root locality, temporal/spatial convergence under physical cutting, contact/recontact and paid fracture remain unqualified."
+  ],
+  "preservation": {
+    "protected_files": 1800,
+    "changed": [],
+    "missing": [],
+    "passed": true,
+    "checked_at": "2026-11-12T18:16:00.185580+08:00"
+  },
+  "report": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/REPORT.txt",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/NEXT_ACTION.txt"
+}

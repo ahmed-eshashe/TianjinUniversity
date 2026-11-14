@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps/cupy/__init__.py", line 18, in <module>
+    from cupy import _core  # NOQA
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps/cupy/_core/__init__.py", line 5, in <module>
+    from cupy._core import core  # NOQA
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "cupy/_core/core.pyx", line 1, in init cupy._core.core
+ImportError: numpy.core.multiarray failed to import (auto-generated because you didn't call 'numpy.import_array()' after cimporting numpy; use '<void>numpy._import_array' to disable if you are certain you don't need it).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/gpu_control.py", line 4, in <module>
+    import numpy as np,cupy as cp
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v17/deps/cupy/__init__.py", line 20, in <module>
+    raise ImportError(f'''
+ImportError: 
+================================================================
+Failed to import CuPy.
+
+If you installed CuPy via wheels (cupy-cudaXXX or cupy-rocm-X-X), make sure that the package matches with the version of CUDA or ROCm installed.
+
+On Linux, you may need to set LD_LIBRARY_PATH environment variable depending on how you installed CUDA/ROCm.
+On Windows, try setting CUDA_PATH environment variable.
+
+Check the Installation Guide for details:
+  https://docs.cupy.dev/en/latest/install.html
+
+Original error:
+  ImportError: numpy.core.multiarray failed to import (auto-generated because you didn't call 'numpy.import_array()' after cimporting numpy; use '<void>numpy._import_array' to disable if you are certain you don't need it).
+================================================================
+

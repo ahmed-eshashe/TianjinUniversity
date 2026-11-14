@@ -1,0 +1,45 @@
+CURRENT INTEGRATION STATUS — 2 November 2026
+
+Fixed right knife mount retained. Experimental validation remains pending.
+Checklist: 18 scoped milestones complete / four open / ten upcoming.
+No shallow cut, full separation or training has started.
+
+VERIFIED COMPONENTS
+- Versioned curved-cap benchmark and independent shape evaluator. Reference
+  thickness: 10 mm centrally, 7.78336 mm at four surrounding sample rays.
+- Actual mounted-robot elastic contact: reaction, articulation response and
+  replay pass. Whole-target robot contact/work remains open.
+- Moving-frame material force/history/reclosure operators and complete
+  collision surface: scoped operator passes, not whole-cut qualification.
+- Cutting-edge geometry: CCD matches an independent swept-volume reference
+  at two tolerances, including a moving target and a deformed snapshot.
+- Transactional eligibility: inward edge event AND current solid overlap;
+  broad-face entry, retreat, withdrawal, rejected trials and reset controls pass.
+  No fracture or mechanical state was advanced in these geometry tests.
+- Physical pressure: correct current-soft-point reaction moment passes native
+  assembly and independent energy-derivative controls.
+- Coupled float64 solver: full-matrix actions match independent CPU references;
+  energy values and force/work derivatives agree. Analytic freefall, zero-load
+  rest, a two-step gravity fixture and exact basic reset/replay pass (16 steps).
+  This is an explicitly versioned global solver, not a silent native-VBD swap.
+
+OPEN NUMERICAL GATE
+The earlier one-node solver's longer tests fail; near-floor block overflow and
+cancelling unresolved contact forces were captured and independently diagnosed.
+The new coupled candidate completes two 10 ms runs inside force, energy, volume
+and board limits, with cumulative local impulse error about 1.9e-11 Ns. Its
+velocity replay difference is 6.91e-8 m/s, exceeding this candidate's tighter
+1e-8 m/s replay gate. That run remains FAILED. A rerun tightens nonlinear
+convergence; acceptance limits are unchanged. No longer-duration pass is claimed.
+
+STILL REQUIRED
+Accurate duration/replay and time/contact refinement; sustained settling/board
+support plus a load challenge; coupled eligibility/partial-fracture mechanics;
+actual whole-target mounted force/work; and loaded reset once cutting exists.
+Independent-fragment material frames also need a fully-failed-state safeguard
+before free separation. Milestones 16, 20 and 22 remain partial; 17 stays pending.
+
+All 45 frozen production files and 13 installed dependency sources were unchanged
+at the latest preservation audit. Failed/incomplete runs and source snapshots
+remain available. Raw evidence lives beneath:
+/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/

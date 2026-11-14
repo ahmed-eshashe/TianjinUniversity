@@ -1,0 +1,40 @@
+{
+  "checks": {
+    "surface_area": true,
+    "initial_state": true,
+    "initial_no_force": true,
+    "cad_distance": true,
+    "contact_force_cpu_gpu": true,
+    "contact_potential_cpu_gpu": true,
+    "resultant_pullback": true,
+    "moment_pullback": true,
+    "power_pullback": true,
+    "whole_volume_contact_certified": true,
+    "deep_volume_rejected": true,
+    "finite_step": true,
+    "correct_elapsed": true,
+    "fixed_nodes": true
+  },
+  "details": {
+    "cad_max_error_m": 2.297851286769167e-08,
+    "certificate": {
+      "passed": true,
+      "reason": "certified_affine_material_volume",
+      "bound_m": 9.99592959041454e-05,
+      "observed_m": 0.0,
+      "queries": 4862,
+      "max_pending": 397,
+      "depth": 14,
+      "motion_bound_m": 0.0
+    },
+    "deep_certificate": {
+      "passed": false,
+      "reason": "resolved_penetration",
+      "observed_m": 0.0001250000059371814,
+      "queries": 528
+    }
+  },
+  "samples": 1728,
+  "wall_s": 0.554537766991416,
+  "status": "pass"
+}

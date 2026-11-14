@@ -1,0 +1,97 @@
+{
+  "reference": {
+    "experimental_validation_passed": false,
+    "parameter_fit_performed": false,
+    "selected_cutting_reference": {
+      "title": "Robotic Cutting of Solids Based on Fracture Mechanics and FEM",
+      "authors": [
+        "Prajjwal Jamdagni",
+        "Yan-Bin Jia"
+      ],
+      "year": 2019,
+      "url": "https://faculty.sites.iastate.edu/jia/files/inline-files/IROS19.pdf",
+      "table": "I, tomato row",
+      "reported": {
+        "E_numeric": 400000.0,
+        "E_header_as_printed": "N/m",
+        "poisson_ratio": 0.3,
+        "blade_material_friction": 0.18,
+        "interior_fracture_energy_N_per_m": 130.0,
+        "skin_fracture_energy_N_per_m": 400.0,
+        "cutting_speed_m_s": 0.00625
+      },
+      "limitations": [
+        "Printed modulus unit N/m is dimensionally inconsistent with a 3D Young modulus; do not silently import as Pa.",
+        "Modulus was adjusted using initial force-displacement slope, so the published number is not an independent held-out validation target.",
+        "Scanned specimen geometry and raw numeric force/torque histories were not obtained from the paper.",
+        "Quasi-static pressing experiment differs from a general dynamic slicing task."
+      ]
+    },
+    "project_baseline": {
+      "surface_mechanics_young_pa": 30000.0,
+      "central_force_poisson_ratio": 0.25,
+      "synthetic_interface_fracture_energy_j_m2": 80.0,
+      "runtime_operator_is_fixed_frame": true,
+      "native_material_is_calibrated": false
+    },
+    "comparisons": {
+      "conditional_E_ratio_if_paper_means_Pa": 13.333333333333334,
+      "poisson_absolute_difference": 0.05,
+      "interior_Gc_ratio": 1.625,
+      "skin_Gc_ratio": 5.0
+    },
+    "secondary_experiment": {
+      "title": "Mechanical Performances of Isolated Cuticles Along Tomato Fruit Growth and Ripening",
+      "year": 2021,
+      "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2021.787839/full",
+      "doi": "10.3389/fpls.2021.787839",
+      "specimen": "isolated Cascada cuticle, 55 days after anthesis",
+      "reported": {
+        "young_modulus_mpa": 1000.0,
+        "breaking_stress_mpa": 52.0,
+        "rupture_strain_approx": 0.13
+      },
+      "applicability": "Isolated cuticle, not bulk flesh or a whole-fruit cutting law. Raw data are author-provided according to the article; none acquired here."
+    },
+    "conclusion": "Current synthetic coefficients cannot be called experimentally validated. Copying reported parameters or matching a fitted value is not independent validation.",
+    "required_for_item17": [
+      "Resolve units and choose the tissue/model scope explicitly.",
+      "Obtain a reproducible numerical curve plus specimen geometry/protocol, or a published dataset with these supplied.",
+      "Fit on a declared calibration subset and test separate deformation/failure data.",
+      "Check uncertainty and loading-rate applicability; report model discrepancies rather than retuning until a test passes."
+    ]
+  },
+  "figure_assessment": {
+    "source_url": "https://faculty.sites.iastate.edu/jia/files/inline-files/IROS19.pdf",
+    "source_pdf_sha256": "f55b08911f5c7bb2e56091a9830e752ee5f56e1a5764d110263a2e8a977991a3",
+    "source_page": 5,
+    "source_figure": "6, tomato row, dashed measured force",
+    "trace_points": 439,
+    "raw_experimental_data": false,
+    "observed_peak_force_n": 48.8123829515293,
+    "observed_peak_depth_m": 0.015600416943403219,
+    "axis_digitization_resolution_assumption": {
+      "horizontal_page_points": 0.2,
+      "vertical_page_points": 0.2,
+      "depth_uncertainty_m": 7.918070144599799e-05,
+      "force_uncertainty_n": 0.12957443092205678
+    },
+    "descriptive_fit": {
+      "before_peak_power_exponent": 1.1382131997360894,
+      "before_peak_coefficient": 5221.800495420159,
+      "post_peak_linear_slope_n_per_m": -232.95263997106696,
+      "post_peak_intercept_n": 18.623951396868243,
+      "interleaved_pre_rmse_n": 0.8938599221016031,
+      "interleaved_post_rmse_n": 2.375577766237512
+    },
+    "limitations": [
+      "Trace extracted from the vector path in a plotted figure, not instrument samples.",
+      "Axis uncertainty is a declared extraction assumption, not biological variability.",
+      "Alternating points from one curve are correlated; this is interpolation assessment, not independent experimental validation.",
+      "Descriptive fit is not the native cohesive or bulk material model.",
+      "Specimen scan, boundary conditions and independent repeat trials are not supplied by this extraction."
+    ],
+    "native_material_validated": false
+  },
+  "recommended_route": "Use the published tomato figure provisionally; do not substitute simulated DiSECt fruit data for experimental validation. Obtain raw data/specimen details or collect matched trials before closing item 17."
+}

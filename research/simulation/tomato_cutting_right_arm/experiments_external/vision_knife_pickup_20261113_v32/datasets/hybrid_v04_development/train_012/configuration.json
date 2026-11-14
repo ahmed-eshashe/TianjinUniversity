@@ -1,0 +1,105 @@
+{
+  "args": {
+    "output": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/datasets/hybrid_v04_development/train_012",
+    "shift": -0.025,
+    "goal_force": 4.0,
+    "lift": 0.12,
+    "grasp": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/reports/pinch_geometry02.json",
+    "freeze_lift": false,
+    "thumb_force": 10.0,
+    "compliant": true,
+    "thumb_effort": 0.65,
+    "finger_effort": 0.1,
+    "hand_damping": 3.0,
+    "velocity_iterations": 4,
+    "solver": 0,
+    "close_seconds": 4.0,
+    "lift_route": null,
+    "lift_seconds": 5.0,
+    "hold_seconds": 6.0,
+    "render": true,
+    "scene": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/knife_short_blade_v02.usda",
+    "physics_hz": 1920,
+    "neutral_start": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/reports/neutral_start.json",
+    "dx": -0.036719390017584785,
+    "dy": -0.035287013404052894,
+    "yaw_deg": 5.257070721021503,
+    "control_hz": 20,
+    "record_demo": false,
+    "policy": null,
+    "joint_space_approach": true,
+    "finger_extra_flex": 0.1,
+    "vision_ablation": "none",
+    "visual_checkpoint": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/policies/handle_vision_v01/best.pt"
+  },
+  "criteria": {
+    "version": "v32-secure-pickup-v2-fixed-observer-interval",
+    "scope": "New secure pickup task; earlier full-wrap criteria and failures remain unchanged.",
+    "handle_lift_m": 0.05,
+    "continuous_hold_s": 3.0,
+    "minimum_whole_tool_support_clearance_m": 0.003,
+    "maximum_relative_translation_drift_m": 0.01,
+    "maximum_relative_rotation_drift_rad": 0.261799,
+    "contact_threshold_N": 0.05,
+    "required_contacts": [
+      "thumb",
+      "at_least_one_other_finger"
+    ],
+    "maximum_opposition_cosine": -0.5,
+    "maximum_support_force_N": 0.05,
+    "no_blade_contact": true,
+    "no_attachment": true,
+    "no_object_commands_after_reset": true,
+    "maximum_hand_support_surface_load_N": 10.0,
+    "maximum_other_robot_support_surface_load_N": 5.0,
+    "maximum_contact_load_N": 50.0,
+    "finger_effort_limit_Nm": 0.3,
+    "thumb_effort_limit_Nm": 1.0,
+    "arm_effort_limit_Nm": 80.0,
+    "friction_calibrated": false,
+    "load_observation_window_s": 0.0010416666666666667,
+    "load_metric": "Trailing mean of per-pair contact-force magnitudes over 1/960 simulated second; equivalent to an unchanged per-pair impulse budget of 50/960 N s. Raw per-step forces are also logged. At 960 Hz this is exactly the original load metric.",
+    "calibrated_instantaneous_peak_force": false
+  },
+  "pregrasp": [
+    1.5175192602975611,
+    1.405681603970008,
+    0.06563395040166954,
+    0.8872238462433414,
+    3.104696827702938,
+    0.7773575048038316,
+    -0.6174334098953743
+  ],
+  "hand_from_knife": [
+    [
+      -0.006376346625210799,
+      -0.9934839268531567,
+      -0.1137938016244522,
+      -0.10198253671362685
+    ],
+    [
+      -0.6901518932996483,
+      -0.07797653981655406,
+      0.7194511959911856,
+      -0.010354151516058408
+    ],
+    [
+      -0.7236364462757696,
+      0.08312247784244262,
+      -0.6851576076339707,
+      0.12107721103605766
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "refined_collision_shapes": [
+    "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/AR5_5_07R_W4C4A2_link7/AR5_5_07R_W4C4A2_link7",
+    "/dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/AR5_5_07R_W4C4A2_link5/AR5_5_07R_W4C4A2_link5"
+  ],
+  "source_hash": "4319a49f75871664a4fea862781d7a3e9660ba4efe75c859c52d3481a6d27b6e",
+  "scope": "Learned RGB-D grasp selection, engineered motion and compliant contact pickup. Per-episode object truth used only for reset/outcome guards, not grasp targeting."
+}

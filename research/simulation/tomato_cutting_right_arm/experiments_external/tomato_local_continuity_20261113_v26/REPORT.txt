@@ -1,0 +1,9 @@
+V26: partial-crack mechanics repaired; full tomato / RL qualification remains pending.
+
+The two lips now have independent opening motion. Geometric partial depths 10 micrometres to 3 mm, full-plane controls, elastic rank, affine fields, mass, four geometry updates and checkpoint reload pass. These controls are not physical cuts.
+
+Actual CAD contact reaches and pays a shallow patch. Twelve additional updates continue for 0.9 ms with no rest-state reset, unchanged material and fracture law. All newly exposed surface, including connecting facets, is charged. Independent solid-cell coverage accounts for those surfaces. Local CPU/GPU contact and exact supported inertia pass. Halving the timestep yields 0.145% cutting-force and 2.31% fracture-work difference, 0.316 micrometre conservative position bound and 0.171 mm/s weighted velocity bound. This is a tiny corner crack, not a full slice or tomato qualification.
+
+The 19.49-second pilot includes diagnostics, repeated geometry/operator builds, runtime capture, checkpoint writing and GPU steps. Profiling points to repeated continuity/surface construction and graph capture as large costs. The model grows from 29 to 53 mechanical coefficients during the short advance. It is not RL ready.
+
+Exact original-CAD interior queries reduce the separate intact-tomato 13 ms contact test from 7.75 to 5.65 seconds in single runs. Physical material position/velocity and force/work checks pass; raw extrapolated virtual-node velocity is separately reported. No RL claim follows. All previous production and experimental evidence remains unchanged; see preservation_check.json.

@@ -1,0 +1,67 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.79 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.79 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.53 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.42 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.51 ms  (cached)
+Module compact_contact_gpu ed5099e load on device 'cuda:0' took 1.78 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.40 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.39 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.74 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.40 ms  (cached)
+{
+  "checks": {
+    "intact_physical_support": true,
+    "intact_constrained_inverse": true,
+    "intact_position": true,
+    "intact_velocity": true,
+    "intact_F": true,
+    "intact_support": true,
+    "intact_impulse": true,
+    "intact_work": true,
+    "intact_friction": true,
+    "intact_fixed": true,
+    "partial_physical_support": true,
+    "partial_constrained_inverse": true,
+    "partial_position": true,
+    "partial_velocity": true,
+    "partial_F": true,
+    "partial_support": true,
+    "partial_impulse": true,
+    "partial_work": true,
+    "partial_friction": true,
+    "partial_fixed": true
+  },
+  "passed": true,
+  "cases": [
+    {
+      "case": "intact",
+      "errors": [
+        1.5867700089736646e-11,
+        8.255158153724906e-07,
+        5.335401480430907e-09
+      ],
+      "aggregated_nodes": 0,
+      "mass_block": 1,
+      "support_error_Ns": 1.819837536455389e-12
+    },
+    {
+      "case": "partial",
+      "errors": [
+        1.4531648702177668e-11,
+        7.047606372517778e-07,
+        8.179040444922236e-09
+      ],
+      "aggregated_nodes": 0,
+      "mass_block": 20,
+      "support_error_Ns": 1.251420520930717e-12
+    }
+  ],
+  "scope": "Independent CPU/GPU supported dynamics with actual CAD on intact and aggregated material. No fracture or RL qualification."
+}

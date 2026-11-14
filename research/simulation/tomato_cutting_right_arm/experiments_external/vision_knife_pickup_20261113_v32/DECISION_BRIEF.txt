@@ -1,0 +1,28 @@
+HEAD-VISION KNIFE PICKUP — verified progress and decision
+
+Current setup preserved. All development is isolated in vision_knife_pickup_20261113_v32.
+The board is centered on the abdomen midline; head RGB-D is available. The knife is a free rigid body: no attachment, no kinematic drive or object pose commands after reset.
+
+Physical pickup
+- Original 305 mm / 175 g short-knife collector: 13 of 15 shifted/rotated flat-rest placements passed a real lift and three-second unsupported hold.
+- One attempt slipped and one approach produced wrist self-contact. Both stopped under the unchanged limits.
+- Separate recovery trials changed only the approach to joint-space interpolation. Both previously failing placements then passed, with 5.08 and 5.24 mm qualifying-hold slip. Friction, motor effort, joint limits and contact stops were unchanged.
+- This does not qualify every knife, the original longer/heavier knife, all board positions or other resting poses.
+
+Learning and recording
+- Actual head RGB-D, 13 joint positions/velocities and target commands recorded at 20 Hz. Training, validation and test placements were split before collection.
+- A reset bug was corrected and measured. The renderer also retained the old knife pose in the first saved image; initial images were identical despite different resets. Training now excludes frames before 0.5 simulated second. New recordings and inference warm the renderer after settling. Raw files are preserved.
+- Full-motion student v01: 0/2 live validation pickups, stopped on contact loads.
+- Full-motion student v02 with corrected initial image: 0/1 tested live pickup, stopped on thumb/blade contact. It is not a usable or qualified pickup policy.
+- Separate learned handle-landmark model: trained on actual settled RGB-D images, with object poses used only as supervision labels. Across 15 frames from 3 held-out placements, its proposed grasp targets have 0.787 mm mean / 1.244 mm maximum position error and 0.603 / 1.117 degree mean/maximum orientation error. This assumes the calibrated fixed camera, known board and nominal flat resting height. No live vision-driven pickup has been claimed.
+
+Recommended first usable route (awaiting your preference)
+1. Let the learned head-camera model select grasp position and orientation.
+2. Execute the tested joint-space approach and contact-based finger closure/lift. This movement controller is engineered; the visual grasp selection is learned. No attachment is introduced.
+3. Test fresh validation placements with unchanged collision/load/hold limits; only after passes, evaluate untouched test placements and image ablations.
+4. Expand reachable positions, knife models and resting poses; keep held-out geometry separate.
+5. Learn more of the movement and cutting-grip adjustment after this reliable vision-guided baseline exists.
+
+Alternative: continue training the full image-to-joint controller before showing a usable learned pickup. The learned visual component can support either route. The user has been asked to choose because these options differ in how much of the motion is learned in the first version.
+
+All current simulation/training runs finished and are closed. No video work performed.

@@ -1,0 +1,61 @@
+import sys
+sys.path.insert(0,'/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_completion_20261108_v07')
+from full_surface import FullSurface
+from cohesive_transfer import W
+from closure_runtime import Closure
+from pathlib import Path
+import sys,time,json,numpy as np
+sys.path.insert(0,str(W/'backend'))
+from numerics import Bulk,load_arrays,tensor,torch
+from torch.autograd import Function
+torch.set_num_threads(1);s=FullSurface(device='cuda');c=Closure(s);m=s.mesh;x=m['x'];t=m['tets'];old=load_arrays();parent=m['parent_tet'];fixed=m['fixed'];mass=m['mass'];inv=1/mass;inv[fixed]=0
+z=dict(x=x,tet_indices=t,tet_poses=np.linalg.inv((x[t[:,1:]]-x[t[:,0]][:,None]).transpose(0,2,1)),physical_mass=mass,particle_inv_mass=inv,gravity=old['gravity'],contact_mask=np.ones(len(x)),fixed=fixed)
+for key in ['tet_mu','tet_lambda','tet_damping','tet_activations']:z[key]=old[key][parent]
+b=Bulk(z);V=1/(6*torch.linalg.det(b.dm));alpha=1+.75*b.mu/b.la
+# Stable Neo-Hookean energy corresponding exactly to the corrected CUDA force.
+def bulk_energy(q):
+ D=(q[b.t[:,1:]]-q[b.t[:,0]][:,None]).transpose(1,2);F=D@b.dm;I=(F*F).sum((1,2));J=torch.linalg.det(F)
+ return (V*(.5*b.mu*(I-3-torch.log((I+1)/4))+.5*b.la*((J-alpha)**2-(1-alpha)**2))).sum()
+class ContactEnergy(Function):
+ @staticmethod
+ def forward(ctx,q):
+  e,f=c.energy_force_precise(q.detach().cpu().numpy());ctx.save_for_backward(-tensor(f));return q.new_tensor(e)
+ @staticmethod
+ def backward(ctx,g):return g*ctx.saved_tensors[0]
+class ViscousEnergy(Function):
+ @staticmethod
+ def forward(ctx,delta,h):
+  cd=b.damping(delta).clone();ctx.save_for_backward(cd/h);return .5*(delta*cd).sum()/h
+ @staticmethod
+ def backward(ctx,g):return g*ctx.saved_tensors[0],None
+# Independent same-state force comparison before any trial dynamics.
+with torch.enable_grad():
+ q=tensor(x).detach().requires_grad_(True);f=-torch.autograd.grad(bulk_energy(q),q)[0]
+b.geometry();reference=b.f.clone();bulkerr=(f-reference).abs().max().item()
+qtest=x.copy();qtest[:,0]+=.002*(x[:,1]-x[:,1].mean());b.x.copy_(tensor(qtest));b.geometry();reference=b.f.clone()
+with torch.enable_grad():
+ q=tensor(qtest).detach().requires_grad_(True);f=-torch.autograd.grad(bulk_energy(q),q)[0]
+bulkerr=max(bulkerr,(f-reference).abs().max().item());b.x.copy_(tensor(x));assert bulkerr<1e-8,bulkerr
+h=.0005;rows=[];snap=[];start=time.perf_counter();stop='completed';initial=np.linalg.det(x[t[:,1:]]-x[t[:,0]][:,None]);maxres=0.;free=b.free;mapping=dict(np.load(W/'board_mapping.npz'));A=tensor(mapping['rotation']);T=tensor(mapping['translation']);H=tensor(mapping['halfspaces'])
+def sample(k):
+ q,v=b.arrays();b.geometry();f=(b.f-b.damping(b.v)).cpu().numpy().copy()+s.evaluate(q)['force']+c.energy_force_precise(q)[1];ratio=np.linalg.det(q[t[:,1:]]-q[t[:,0]][:,None])/initial;row=dict(sim_s=k*h,volume_ratio_min=float(ratio.min()),speed_max_m_s=float(np.linalg.norm(v,axis=1).max()),force_residual_N=maxres,wall_s=time.perf_counter()-start);rows.append(row);snap.append((q,v,f));return bool(np.isfinite(q).all() and ratio.min()>.1 and q[:,1].min()>=-.0001 and np.max(abs(q[fixed]-x[fixed]))<=1e-7)
+sample(0)
+try:
+ for step in range(1,2):
+  b.geometry();xold=b.x.clone();vold=b.v.clone();world=xold@A.T+T;mask=torch.all(world[:,:2]@H[:,:2].T+H[:,2]<=0,dim=1).to(torch.float64);limit=.2*(.001-xold[:,1]).clamp_min(0)*1000*mask;active=(xold[:,1]<.001).to(torch.float64)*mask;kf=1000*active;scale=free/torch.sqrt(b.mass/h**2+b.diag/h+b.diag*1200+1e-20);inertial=xold+h*vold+h*h*b.gravity
+  def energy(q):
+   delta=q-xold;ground=.5*1000*((.001-q[:,1]).clamp_min(0)**2*mask).sum();d=delta[:,[0,2]].abs();k=kf[:,None];lim=limit[:,None];friction=torch.where(k*d/h<=lim,.5*k*d*d/h,lim*d-.5*h*lim*lim/k.clamp_min(1)).sum()
+   return (.5*b.mass*(q-inertial)**2/h**2).sum()+bulk_energy(q)+s.energies(q).sum()+ContactEnergy.apply(q)+ViscousEnergy.apply(delta,h)+ground+friction
+  with torch.enable_grad():
+   y=((h*vold)/scale.clamp_min(1e-20)).detach().requires_grad_(True);optimizer=torch.optim.LBFGS([y],lr=1.,max_iter=1000,max_eval=1250,tolerance_grad=1e-13,tolerance_change=1e-18,line_search_fn='strong_wolfe')
+   def closure():
+    optimizer.zero_grad();e=energy(xold+scale*y);e.backward();return e
+   optimizer.step(closure);print('OPTIMIZER', {k:v for k,v in optimizer.state[y].items() if k in ['n_iter','func_evals','t','prev_loss']},flush=True);q=(xold+scale*y).detach().requires_grad_(True);g=torch.autograd.grad(energy(q),q)[0]*free;res=g.norm().item();maxres=max(maxres,res)
+  if not np.isfinite(res) or res>1e-6:stop=f'nonlinear_force_residual {res}';break
+  b.x.copy_(q.detach());b.v.copy_((b.x-xold)/h)
+  if step%2==0 and not sample(step):stop='physical_stop';break
+  if time.perf_counter()-start>180:stop='wall_cap';break
+except Exception as e:stop=repr(e)
+np.savez_compressed(Path(__file__).with_name('convergence_probe_trajectory.npz'),t=np.array([r['sim_s'] for r in rows]),x=np.array([a[0] for a in snap]),v=np.array([a[1] for a in snap]),force=np.array([a[2] for a in snap]))
+out=dict(scope='Bounded coupled implicit numerical candidate; unchanged material laws, lagged viscous geometry and friction normal',bulk_energy_force_max_error_N=bulkerr,stop=stop,dt_s=h,wall_s=time.perf_counter()-start,max_force_residual_N=maxres,rows=rows,component_passed=bool(stop=='completed'))
+Path(__file__).with_name('convergence_probe_result.json').write_text(json.dumps(out,indent=2));print(json.dumps({k:v for k,v in out.items() if k!='rows'},indent=2))

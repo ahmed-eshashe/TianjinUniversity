@@ -1,0 +1,8 @@
+{
+  "authorization": "Prepare the mass-conserving split (Recommended), user reply8November2026",
+  "scope": "Conforming subdivision of existing FEM tets at x=-.0225m, followed by duplicated paired interface nodes. Same exterior geometry, material coefficients, total mass and original support coordinates; original files untouched.",
+  "limits": {"relative_volume_and_mass_error_max": 1e-10,"positive_all_tet_volumes": true,"unpaired_internal_faces": 0,"nonmanifold_face_count": 0,"cut_face_pairing": "same coordinates/opposite normals, no holes or overlaps within1e-12m2","minimum_piece_mass_fraction": 0.01,"support_coordinate_error_m": 1e-12,"material_components_without_ties": 2,"components_with_all_ties": 1},
+  "method": "Clip each intersected tet against the plane, deterministically triangulate shared polygon faces, connect to each clipped polyhedron's own volume centroid. Reuse original edge-plane intersections globally. Recompute lumped masses by physical subcell volumes. Do not copy full original element masses onto both sides.",
+  "qualification_limit": "Static mesh input only. New small/sliver cells, actual cohesive forces, assembled settling, contact and dynamics require separate validation; topology alone is not a successful physical cut.",
+  "reference_surface": "Exact piecewise planar original exterior, with subdivision allowed but no smoothing, projection to a sphere or fitted shape."
+}

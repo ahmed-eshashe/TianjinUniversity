@@ -1,0 +1,298 @@
+#usda 1.0
+(
+    subLayers = [
+        @/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/robot_scene_20261101_01/local_cutting_scene.usda@
+    ]
+)
+
+over "Indoor"
+{
+    over "RZ"
+    {
+        over "SM_kitchen_knife_02" (
+            active = false
+        )
+        {
+        }
+    }
+}
+
+over "dual_ar5_o6"
+{
+    def "MountedKnife" (
+        prepend apiSchemas = ["PhysicsFilteredPairsAPI"]
+        prepend references = @/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/scene/phase3.usda@</Indoor/RZ/SM_kitchen_knife_02>
+    )
+    {
+        prepend rel physics:filteredPairs = </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link>
+        matrix4d xformOp:transform:fixedTool = ( (0.14063905399999166, 0.9900609357458698, 0, 0), (0, 0, 1, 0), (0.9900609357458698, -0.14063905399999166, 0, 0), (-0.3417547940877379, 0.2799382709357748, 1.0475916589768692, 1) )
+        uniform token[] xformOpOrder = ["xformOp:transform:fixedTool"]
+    }
+
+    over "Physics"
+    {
+        def PhysicsFixedJoint "cutting_tool_mount"
+        {
+            rel physics:body0 = </dual_ar5_o6/Geometry/world/torso_base_link/right_AR5_5_07R_W4C4A2_base/right_AR5_5_07R_W4C4A2_link1/right_AR5_5_07R_W4C4A2_link2/right_AR5_5_07R_W4C4A2_link3/right_AR5_5_07R_W4C4A2_link4/right_AR5_5_07R_W4C4A2_link5/right_AR5_5_07R_W4C4A2_link6/right_AR5_5_07R_W4C4A2_link7/right_AR5_5_07R_W4C4A2_tcp/right_rh_rk_adapter/right_rh_hand_base_link>
+            rel physics:body1 = </dual_ar5_o6/MountedKnife>
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (0.14266233, -0.078272164, 0.14097583)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (-0.23883225, -0.60548615, 0.7057007, -0.27987894)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_1" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_2" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_3" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_4" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_5" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_6" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_AR5_5_07L_W4C4A2_joint_7" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_thumb_cmc_yaw" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_thumb_cmc_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_thumb_ip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_index_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_index_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_middle_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_middle_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_ring_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_ring_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_pinky_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "left_lh_pinky_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_1" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = -42.31166
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_2" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = -85.667595
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_3" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 59.82962
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_4" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 80.12946
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_5" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = -57.1703
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_6" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 11.269749
+        }
+
+        over "right_AR5_5_07R_W4C4A2_joint_7" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 24.485308
+        }
+
+        over "right_rh_thumb_cmc_yaw" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_thumb_cmc_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_thumb_ip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_index_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_index_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_middle_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_middle_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_ring_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_ring_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_pinky_mcp_pitch" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+
+        over "right_rh_pinky_dip" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
+        {
+            float drive:angular:physics:targetPosition = 0
+        }
+    }
+}
+

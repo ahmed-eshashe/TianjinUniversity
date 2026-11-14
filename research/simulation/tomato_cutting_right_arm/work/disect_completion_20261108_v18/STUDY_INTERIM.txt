@@ -1,0 +1,14 @@
+Improved mesh study v18 — interim record
+
+User authorized a separate mesh with unchanged exterior, mass, cut plane, support coordinates, material laws and fracture budgets. Original research assets and saved checkpoints have not been replaced.
+
+Geometry and material transfer: PASS (component only).
+Exact coplanar face markers prevent TetGen from merging distinct exterior planes. The cut cap uses constrained triangulation. Independent polygon-union audits cover every exterior plane and both cut faces. All 25 support coordinates and total mass are unchanged.
+
+Mesh: 9394 nodes, 42523 tetrahedra, 480 paired interface nodes. Minimum nodal mass 2.86016339e-09 kg; worst element condition 179.421. This is an improved discretization, not a change to the constitutive model.
+
+Cohesive integration: all 47 original laws and 0.11696391110288158 J total fracture budget retained. A coarse point-assignment scheme failed its nonuniform force refinement (7.44%). Exact nearest-centroid region clipping fixes that sampling artifact; refined force difference is 2.28028e-15. Force/energy, rigid rotation, release and reset controls pass.
+
+Closure: rebuilding contact sampling on the new mesh changes the prescribed closure resultant (~58.55 N versus ~70.31 N). That alternative is not adopted. Original collision proxy points, triangles, adjacency filters and normal law are now retained and positively embedded into the new material mesh. Mapping error <7e-18 m; closure/open/reclosure controls pass. This preserves sampled contact geometry; it does not prove arbitrary deformed trajectories are equivalent across meshes.
+
+Dynamics: faster explicit variants failed physical admissibility. The preserved-contact 100 us trial stopped at 13 ms with inverted elements; no cutting or damage enabled. A fresh implicit 500 us, 20 ms trial is running. No section-4 qualification is asserted.

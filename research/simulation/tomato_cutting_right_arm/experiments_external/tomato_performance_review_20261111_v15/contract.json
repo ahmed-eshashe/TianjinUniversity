@@ -1,0 +1,37 @@
+{
+  "created": "2026-11-10T19:34:41.977542+00:00",
+  "campaign_wall_limit_s": 3600,
+  "per_case_limit_s": 600,
+  "purpose": "Early performance/representation decision, not full Gate 6 physical qualification",
+  "baseline": "unchanged v14 code and saved states",
+  "dt_s": 2.44140625e-08,
+  "precision": "float64",
+  "spatial_resolution": "same 50um local band; 12mm block",
+  "no_changes": [
+    "material",
+    "full consistent inertia",
+    "quadrature order",
+    "timestep",
+    "accuracy screens",
+    "damping",
+    "CAD/contact laws",
+    "production setup"
+  ],
+  "targets": {
+    "control_Hz": 50,
+    "interactive_aggregate_sim_s_per_wall_s": 1,
+    "small_learning_transitions_per_s": 100,
+    "preferred_transitions_per_s": 500
+  },
+  "planned_measurements": [
+    "warm captured checked bulk steps, initial/partial geometric cuts",
+    "kernel categories diagnostic separately from captured wall throughput",
+    "GPU preparation/upload/graph capture/export",
+    "one existing activation with accepted versus discarded bisection propagation",
+    "checkpoint read/write and geometry proof",
+    "batch scaling smoke 1/4/8 only if independent, GPU memory permits and needed for decision",
+    "optimistic ceilings deleting overhead or dominant kernel; explicitly not measured optimized throughput"
+  ],
+  "optimization_policy": "At most one equivalent implementation optimization if it could materially affect the feasibility decision; skip if even optimistic ceilings remain orders below target. No new engine or approximation without revised scope.",
+  "stop": "Stop after measured evidence determines feasibility; no contact/tomato/training run."
+}

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/tests/local_opening_controls.py", line 23, in <module>
+    actual=Body.restore(Path('/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/runs/paid_onset_inclined_r3/event_candidate.npz'));measured=audit(actual);reference=Body(n=2,h=.003);reference.split([1,0,0],.00013);full=audit(reference);cases=[]
+                                                                                                                                                                 ^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/tests/local_opening_controls.py", line 11, in audit
+    a=Aggregate(b);b=a.body;s=Surface(a);positive=np.flatnonzero(b.codes%3==1);negative=np.flatnonzero(b.codes%3==2);jumps=[];paired_area=0.;checked=0
+      ^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/src/local_continuity.py", line 71, in __init__
+    start=time.perf_counter();before=body.metrics();x0,v0=vertex_fields(body);self.body,clipped=loosen(body);b=self.body;self.E,self.masters,self.report,self.constraints=elimination(b,clipped);self.M=(self.E.T@diags(b.mass)@self.E).tocsr();n=len(self.masters);nc,labels=connected_components(self.M,directed=False);self.order=np.argsort(labels,kind='stable');sizes=np.bincount(labels);self.bounds=np.r_[0,np.cumsum(sizes)];self.singletons=self.order[self.bounds[:-1][sizes==1]];self.single_mass=self.M.diagonal()[self.singletons];self.coupled=[]
+                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/src/local_continuity.py", line 64, in elimination
+    if residual>1e-9 or affine_error>1e-10:raise ValueError(('continuity elimination residual',residual,affine_error))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('continuity elimination residual', 9.285860934622337e-16, 1.7507840104347139e-06)

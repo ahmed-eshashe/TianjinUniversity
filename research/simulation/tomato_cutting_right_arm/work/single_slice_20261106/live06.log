@@ -1,0 +1,69 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.93 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.86 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.75 ms  (cached)
+Module tomato_cad_pressure 27ceab5 load on device 'cuda:0' took 0.38 ms  (cached)
+Module tomato_fast_exact_cad 445cb08 load on device 'cuda:0' took 397.16 ms  (compiled)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.47 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.41 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.68 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.34 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.81 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.45 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.94 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.45 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.22 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.53 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.42 ms  (cached)
+Module tomato_failed_safe_objective 3d40415 load on device 'cuda:0' took 4.91 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.67 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.92 ms  (cached)
+Module tomato_failed_safe_coupled e37263d load on device 'cuda:0' took 0.55 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.56 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.35 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 1.98 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.46 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 13.00 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.56 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.49 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.55 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.41 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.63 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.59 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.41 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.52 ms  (cached)
+{'step': 0, 'sim_time_s': 0.0004166666666666667, 'dt': 0.0004166666666666667, 'wall_s': 4.648454448997654, 'stroke_m': 8.333333333333334e-06, 'eligible': 0, 'damage_max': 0.0, 'damage_min': 0.0, 'failed_patches': 0, 'pressure_samples': 250128, 'solver_iterations': 8, 'retries': 0, 'wrench': [-0.0011525933237596922, 5.0286436764948196e-05, 0.0011539889911074761, -0.0001296182665750426, 2.89130803851243e-05, -0.0001307226323943073]}
+{'step': 10, 'sim_time_s': 0.004583333333333333, 'dt': 0.0004166666666666667, 'wall_s': 54.4576072259988, 'stroke_m': 9.166666666666667e-05, 'eligible': 0, 'damage_max': 0.0, 'damage_min': 0.0, 'failed_patches': 0, 'pressure_samples': 246204, 'solver_iterations': 10, 'retries': 0, 'wrench': [-0.003706998754642001, 0.00016311630194794298, 0.0036347787344456184, -0.000407491533309472, 9.337908509040548e-05, -0.0004197954488487191]}
+{'step': 20, 'sim_time_s': 0.008749999999999999, 'dt': 0.0004166666666666667, 'wall_s': 110.32522196799982, 'stroke_m': 0.000175, 'eligible': 0, 'damage_max': 0.0, 'damage_min': 0.0, 'failed_patches': 0, 'pressure_samples': 302916, 'solver_iterations': 13, 'retries': 0, 'wrench': [-0.007127502001372001, 0.0003198854913324199, 0.006805871546603629, -0.0007619951522772618, 0.0001804140670508242, -0.0008065765763782822]}
+{'step': 30, 'sim_time_s': 0.012916666666666658, 'dt': 0.0004166666666666667, 'wall_s': 181.20894653099822, 'stroke_m': 0.0002583333333333332, 'eligible': 0, 'damage_max': 0.0, 'damage_min': 0.0, 'failed_patches': 0, 'pressure_samples': 358596, 'solver_iterations': 14, 'retries': 0, 'wrench': [-0.011288841343101218, 0.0005202802371834681, 0.010536340301396734, -0.0011766385768563526, 0.00028691979264426333, -0.0012752825938937386]}
+{'step': 40, 'sim_time_s': 0.01708333333333332, 'dt': 0.0004166666666666667, 'wall_s': 287.92716554599974, 'stroke_m': 0.0003416666666666664, 'eligible': 0, 'damage_max': 0.0, 'damage_min': 0.0, 'failed_patches': 0, 'pressure_samples': 437124, 'solver_iterations': 14, 'retries': 0, 'wrench': [-0.016118959432007397, 0.0007772460443080982, 0.014927106579406256, -0.001663207001129941, 0.0004103086496087454, -0.001818539613344537]}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/run_live_slice.py", line 79, in <module>
+    try:s.audited_step(a,b,step_dt,eligibility=elig.eligible.copy(),acceptance_audit=audit)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_live_fracture_candidate.py", line 37, in audited_step
+    FractionBoundaryCandidate.step(self, state_in, scratch, None, None, dt)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_fraction_boundary.py", line 30, in step
+    update=memory.observe(self.x,self.rhs);counts=self.assembly.assemble(self.x,dt);linear_rhs=memory.transform(self.rhs);linear=self._linear_direction(linear_rhs);fallback=not linear['linear_valid']
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_grouped_pressure_assembly.py", line 28, in assemble
+    self.prepare();self.accumulated.zero_();wp.launch(grouped_blocks,dim=(n,3,3),inputs=[self.group,p.bary,p.sample_hessian],outputs=[self.accumulated],block_dim=64);wp.launch(grouped_indices,dim=(self.groups,3,3),inputs=[self.group_ids,self.free,self.accumulated],outputs=[self.rows,self.columns,self.values],block_dim=64);sparse.bsr_set_from_triplets(self.extra,self.rows,self.columns,self.values);sparse.bsr_axpy(self.extra,self.base.matrix,alpha=1.,beta=1.)
+    ^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_grouped_pressure_assembly.py", line 24, in prepare
+    ids,inverse=np.unique(p.indices.numpy(),axis=0,return_inverse=True);self.group_ids=wp.array(ids,dtype=wp.vec3i);self.group=wp.array(inverse.astype(np.int32),dtype=int);self.groups=len(ids);self.accumulated=wp.zeros(9*self.groups,dtype=wp.mat33d);self.rows=wp.empty(9*self.groups,dtype=int);self.columns=wp.empty(9*self.groups,dtype=int);self.values=wp.empty(9*self.groups,dtype=wp.mat33d);self.packet_key=key
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 340, in unique
+    output = _unique1d(consolidated, return_index,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/numpy/lib/_arraysetops_impl.py", line 379, in _unique1d
+    perm = ar.argsort(kind='mergesort' if return_index else 'quicksort')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

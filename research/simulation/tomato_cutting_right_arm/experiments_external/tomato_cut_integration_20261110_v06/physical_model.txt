@@ -1,0 +1,28 @@
+v06 — REFERENCE-CELL INTEGRATION FOR THE RESTRICTED CUT BASIS
+
+Authorized numerical change
+This version replaces v05's fixed equal-weight material-point quadrature with Gauss integration over the reference knot cells and their current cut subcells. It uses the existing single-plane local enrichment, not a different material or fracture law. Original sample locations remain observation/support/load locations; they are not mechanical mass samples. A cut is supplied only when the topology event is requested. No future plane or full trajectory is prepared at initialization.
+
+State and mechanics
+The original basis and new displacement modes form N=Nfull T. Generalized positions q and velocities vg define x=N q, v=N vg and F=grad_X(x). Physical mass is the reference volume integral of rho, not the number of integration/observation points. M = integral rho N^T N dV. For quadratic tensor basis functions, three Gauss points per axis per actual knot span integrate this mass matrix exactly up to floating-point error. The primary implementation uses five points per axis for both kinetic and strain energy, with order seven as the higher-order check.
+
+U(q) = integral psi(F(q)) dV, where psi is the unchanged compressible neo-Hookean energy, E=100 kPa, nu=0.4. Because the log determinant is not polynomial, energy integration is checked independently at higher order; polynomial mass exactness is not an energy-convergence claim. Internal force is the exact negative derivative of the chosen integrated U. External point forces act at the observation points through the transpose of their interpolation map. Velocity Verlet and the consistent-mass support projection are unchanged. The rigid-translation generator is [ones for original basis, zeros for enrichments]. Momentum, angular momentum and kinetic energy are evaluated using the mechanical integration, not equal weights on observation points.
+
+Mass and cut insertion
+Each current reference cell is split at the supplied plane for quadrature. Every subcell receives positive quadrature weights, including a thin region with no original material observation point. Total volume, density and exterior remain fixed. No material is deleted and no mass regularization or floor is applied. Exact knot insertion preserves the old continuous displacement/velocity/strain field. New enrichment coefficients are zero at birth. Every proposal checks mass rank/condition, loaded x/v/F and energy preservation before commit. The old energy tolerance (max(1e-12 J, 1e-8 relative)) remains unchanged. Numerical quadrature changes cannot pay for fracture.
+
+Observations exactly on a discontinuity use the right-hand trace by the spline convention. Such points do not carry concentrated mass, so they do not make the mechanical integral ambiguous. The two surface traces are evaluated separately for the bridge/opening tests. Explicit surface/contact geometry is still absent.
+
+Volume and acceptance controls
+Every force evaluation checks the determinant of F at all mechanical integration points. The trial also checks observation-point F before accepting a step. A separate Bernstein derivative enclosure is evaluated at shared output times on every current cell on each side of the plane, including unequal-width cut subcells. The inherited 1e-8 derivative rounding allowance is an engineering estimate, not a formal interval-arithmetic proof. No every-substep continuous-volume proof is claimed.
+
+Rank tolerance and condition limit remain 1e-12 relative / 1e8. Extreme thin remnants are rejected, not silently stabilized. A handful of passing offsets is a measured operating envelope, not a universal cut-anywhere claim. The dynamic pilot uses the demonstrated +0.3 mm plane; other positions have algebraic/insertion/volume controls only.
+
+Prescribed topology versus physical cutting
+The only topology here is one X-normal plane with rectangular finite-support activation, initially absent. A partial cut preserves the original basis ahead of its front. Full division is a unit fixture. Manufactured translations/rotations of independent pieces are isolation controls, not physically achieved slice separation. Gc=80 J/m2 is unchanged but unused. There is no blade/contact law, force-feedback qualification, irreversible material failure, fracture payment, friction or fragment recontact. The 2 N/0.1 mm/J guards are not weakened; untested contact guards remain unqualified.
+
+Save/restart
+The checkpoint saves integration order, immutable observation geometry, material constants, generalized state, simulation time/steps, support reactions, fixed-point selection and complete prescribed topology history. It rebuilds the same basis/integration from that history and validates derived fields. It is not a restart of old v04/v05 quadrature and it contains no nonexistent contact/damage state.
+
+Scope
+Fresh 12 mm rectangular block; unchanged density and total mass; one reference-X plane. Multiple/intersecting/rotated cut planes, arbitrary tomato boundaries, contact, physical fracture, GPU execution, robot integration and RL performance remain unqualified. This is an independently named numerical experiment, not official CRESSim or BladeMaster code. The prior fitted-basis CPU/GPU equivalence does not transfer automatically to this integrated cut system.

@@ -1,0 +1,88 @@
+Decision needed: speed for learning versus unchanged detailed simulation
+2026-11-13 — isolated v27 candidate; production setup unchanged
+
+Outcome
+The requested visible, physically checked, RL-speed tomato has NOT been achieved.
+This is a development prototype, not an accepted replacement for Isaac/DiSECt.
+
+Measured progress
+- Original CAD contact search retains the exact triangle geometry and contact law.
+  80 exhaustive-versus-hierarchical search cases pass on intact and cracked states.
+- Whole-material clearance: 120 boundary/sliver/deep-intersection controls pass.
+  Device-resident checks additionally pass 32 coverage cases and two rollback tests.
+- Intact full-shape tomato: 13 ms contact trajectory reduced from 4.91 s to
+  1.30 s in the host-checked loop; the device-resident single-instance pilot
+  takes 0.415 s. These are limited contact tests, not cuts or learning episodes.
+- Eight independent device-resident tomato runs: 8 x 13 ms in 3.098 s.
+  Equivalent 50 Hz material-loop budget: 1.679 transitions/s versus the
+  project minimum of 100 COMPLETE environment transitions/s. This is NOT a
+  measured RL rate. It excludes fracture transactions, robot, policy, reward,
+  reset and rendering, and is not a bound on all possible GPU implementations.
+- A matched 3 ms shallow-crack segment takes 4.681 s instead of 33.583 s.
+  Force, field and work comparisons pass in this limited segment.
+- A longer run stops at global time 9.525 ms because clearance cannot be
+  certified within the unchanged 0.1 mm limit. This is an unresolved bound,
+  not proof of a physical penetration violation. No full slice is qualified.
+
+Correctness issue found and corrected
+Merging affine coefficients with matching material history could remove an
+existing crack-opening mode. In the 1 ms update trial the opening rank became
+zero transiently, although force and energy differences were small. That trial
+is rejected. The new merge rule preserves the COMPLETE previous admissible
+state space, and the mechanics/short continuation checks pass. Coefficient
+count grows when this is physically necessary; constant memory cannot be
+obtained by closing cracks. More cuts and fragment recontact remain untested.
+
+Why this is a scope decision
+The user requested unchanged physics and the existing <=5% response agreement.
+Local speed improvements do not demonstrate that this detailed, changing-
+geometry representation can reach the RL target. Further research on another
+numerical representation is possible, but a completion time or speed pass is
+not established by these measurements. No successful-cut or RL claim should
+be inferred from playback, a visible groove, a geometry-only benchmark, or
+matched force on a short intact trajectory.
+
+Choice A — separate approximate training model (recommended if RL speed is
+now the priority)
+Keep the current Isaac/DiSECt setup and detailed reference completely intact.
+Authorize a separate, explicitly approximate model for policy training. This
+is a change to the training physics/accuracy contract, not another equivalent
+code optimization. The initial candidate would use a compact deformable
+representation with persistent cut connectivity and GPU-resident contact;
+the specific representation must pass a bounded pilot before selection.
+No official CRESSim or BladeMaster capability is assumed or inherited.
+
+Concrete acceptance and stop conditions for that separate attempt:
+1. Freeze its effective material/contact/cutting laws, approximation choices,
+   operating envelope and reference comparisons BEFORE speed measurements.
+2. First demonstrate two independent pieces after actual blade interaction,
+   withdrawal without rebonding, an intact bridge during a partial cut, and a
+   second intersecting cut. Geometry-only tests do not count as physical cuts.
+3. Preserve mass/history, finite-state and capacity stops; keep existing robot
+   force and clearance stops for later robot integration. No animated swaps,
+   hidden piece deletion or claimed experimental calibration.
+4. Measure force, position, work and energy differences against the detailed
+   reference. The existing 5% agreement would no longer automatically be a
+   hard entry gate for the APPROXIMATE training prototype. All discrepancies
+   must be displayed and its policy-use envelope agreed before deployment.
+5. Only after the mechanics pilot: original tomato exterior, multiple sizes,
+   online blade actions, full slice/withdrawal, further cuts, reset and a
+   complete batched environment benchmark including observations/rewards.
+6. Require >=100 complete transitions/s at 50 Hz control on this laptop with
+   GPU memory headroom. Render a live Isaac demonstration only after passing;
+   rendering FPS and recorded playback do not count as physics speed.
+7. Limit the first mechanics/speed feasibility pilot to two focused hours;
+   record a clear pass/fail and stop this route if it cannot preserve the
+   tested fragments or lacks credible throughput headroom. No guaranteed
+   completion time or performance claim is made in advance.
+
+Choice B — continue the unchanged detailed-physics research route
+Keep the existing response criteria as hard gates. The next research task is
+an isolated GPU-resident topology/constraint redesign plus resolving the
+clearance qualification, rather than more superficial contact optimizations.
+A full physically qualified cut comes before any RL claim. Fast, interactive
+training and its completion date remain unproven. This choice preserves the
+current accuracy contract but does not satisfy the user's near-term speed
+objective on the evidence obtained so far.
+
+No scope change has been executed. Experimental validation remains pending.

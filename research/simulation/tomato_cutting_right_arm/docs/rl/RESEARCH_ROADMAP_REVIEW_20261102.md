@@ -462,3 +462,421 @@ Next missing observation is matched generalized/link velocity and configuration 
 The user explicitly chose the exploratory route for a demo video, and approved a natural-looking finger wrap with a disclosed fixed knife attachment. This supersedes the strict pre-contact gate for the separate exploratory demonstration only; it does not close or weaken research qualification results. Prioritize hand/handle placement, actual native motion/clearance and truthful recording. No staged separation or friction-grasp claim. Full force/work and experimental validation remain pending. Current work: `work/exploratory_demo_20261104/`. The prior fixture used a150mm palm-to-handle offset and open fingers; new placement requires fresh motion checks.
 
 Demo checkpoint: `work/exploratory_demo_20261104/DEMO_RESULT.txt`. Separate handle-in-hand scene and shortened dry route passed stationary/motion checks;16.03second actual-render video produced with explicit fixed-attachment/no-contact labels. Current plan_v03/scene_v02/motion worker_v02. Failed thumb collision and initial dry-clearance stop preserved. Exploratory tomato contact remains pending and requires new hand/tool trajectory checks; strict research results remain unchanged.
+
+
+## 21. DiSECt implementation decision — 2026-11-08
+
+Following the user's request for Astra to review sections 1–3 and make the implementation/runtime decision, retain the current v06 candidate for restricted research use only. Do not adopt it as the cutting or learning backend. The current feasibility branch ends with failed runtime/contact-force gates and no live cutting assembly. This directive supersedes v06/NEXT_ACTION.txt's default continuation into live cohesive assembly; historical evidence remains valid within its scope.
+
+Read `work/disect_review_20261108_astra/IMPLEMENTATION_DECISION.txt`, `REVIEW.txt`, and `audit.json`. The contact probe measured 1840.5 wall seconds per simulated second (3345.2 at half step), while the split introduced much smaller cells and has no qualified live cohesive connections. Do not infer a full-cut speed from this probe. The native DiSECt prism and RoboNinja block measurements do not qualify replacement tomato engines.
+
+Do not automatically start section 4, rerun intact settling, expand the solver, change material/mesh fidelity or resume production. Preserve the robot/kitchen/grip/motion interface, original checkpoint 6925, all component evidence and pending experimental validation. Future engine work needs a concrete representation/fracture/contact/runtime contract and bounded exit criterion. A simplified learning model would require a new user decision because the research-model-only constraint remains in force. No replacement was selected or implemented by this review.
+
+## 22. User-authorized section 3 continuation — 8 November 2026
+
+The user requested completion of section 3 and work blocking section 4, superseding section 21's stop directive for this continuation. The user subsequently approved full-surface fracture sampling after an explicit negative control exposed 303 unsampled vertices out of 604 interface vertices. The approved change retains shape, mass, cut plane, the 47 original constitutive laws and their group energy budgets, while changing local force distribution. It does not authorize relaxed tolerances or a simplified surrogate.
+
+Evidence: `work/disect_completion_20261108_v07/REPORT.txt` and the scoped result files alongside it. Intact CAD contact now passes unchanged force/moment limits (4.59%/4.66%). Full-surface force/energy, history/reset, quadrature refinement and prescribed closure controls pass. A fully assembled, damage-disabled 100 ms diagnostic is finite with no sampled inversion, board penetration or support drift. It is not settled: final maximum speed is 81.67 mm/s. No full one-second assembled hold/refinement or new-assembly blade qualification has passed.
+
+The measured assembly cost is 2233.9 wall seconds per simulated second, exceeding the 120 ceiling. Larger-step variants failed. A stronger preconditioner passes a same-step algebraic comparison but does not resolve coupled stability or runtime. A bounded coupled implicit candidate failed its nonlinear force residual (3.382e-4 N against 1e-6 N) and is not adopted. Preserve all these failures; do not label them as cutting or integration qualification.
+
+Section 3 remains 4/5 verified; section 4 is not cleared. The next implementation work must address coupled implicit integration of the interface and closure forces, with independent derivative/force-balance controls and one short unchanged-limit comparison before further long holds. This is a solver-development dependency, not a reason to repeat long cutting attempts. Full settling/refinement, actual applied blade contact and a viable runtime remain required before section 4. Experimental validation stays pending, and the production checkpoint, robot, kitchen, grip and motion interface remain unchanged.
+
+
+### Section 3 numerical follow-up (v08, 8 November 2026)
+
+SECTION 3 COUPLED SOLVER FOLLOW-UP — 8 November 2026
+
+No material laws, fracture budgets, geometry, supports or accuracy gates were changed. Prior evidence preserved in v07. No cutting or training ran.
+
+1. Extending L-BFGS to 1250 evaluations reduced first-step force residual to 3.18587e-6 N but failed the unchanged 1e-6 N gate; 29.18 seconds for an unaccepted 0.5 ms step. Iteration increases alone are not a viable speed repair.
+2. Independent closure directional energy-gradient control at 10 micrometres compression agreed to 4.75e-10 relative at the largest tested difference increment; two smaller increments also agreed within 8.22e-7. This is a scoped directional control, not a full Hessian qualification.
+3. Lagged damping operator symmetry agreed to 5.52e-16 relative and tested quadratic form was positive (0.20774). This is not a proof of all configurations.
+4. A Newton correction with exact automatic differentiation of bulk/cohesive energy and explicit damping action passed one isolated first step: residual 1.33988e-8 N, 229 linear operator evaluations, 8.06 seconds total. Closure was inactive during that correction. This does not meet throughput requirements or qualify coupled contact.
+5. Fresh continuation attempt activated closure in its first trial and stopped before accepting any step. The guard correctly rejected using an incomplete Hessian. Results differ between independent optimizer runs; first-step success is not repeatable qualification. No 20 ms accepted trajectory was obtained.
+
+NEXT REQUIRED IMPLEMENTATION
+Implement the active closure force derivative (including embedding, cross-node coupling and mollifier derivatives), validate its Hessian action independently, then include it in the Newton system with a suitable preconditioner. The custom autograd closure backward currently returns a saved gradient; differentiating it again does not provide this Hessian. Do not silently omit active contact stiffness or relax tolerances. Only after a converged short coupled run should time refinement, force comparison and runtime be assessed.
+
+Section 3 remains 4/5; total 15/35. Section 4 remains blocked. No simulation remains running. Experimental validation pending.
+
+
+### Coupled contact follow-up v09
+
+COUPLED CONTACT FOLLOW-UP v09 — 8 November 2026
+
+Implemented a numerical Hessian action from central differences of the complete existing closure force. This includes geometry, embedding and mollifier changes. It is an approximate derivative, not an analytic Hessian. Material laws and final acceptance gates unchanged.
+
+Compressed-fixture checks passed: coarse perturbation refinement error <=0.0141%; fine perturbation refinement <=3.56e-7 relative; fine bilinear symmetry error 7.86e-9. These scoped checks do not qualify every active-set transition.
+
+Conjugate-gradient trial failed. GMRES with an inexact inner solve and unchanged final nonlinear residual gate completed a separate 1ms trial. A bounded 5ms continuation accepted six 0.5ms steps (3ms total) then failed the seventh linear solve, before committing that step. Accepted-step residuals <=8.52e-7 N against 1e-6 N gate. The result-level max residual also includes a rejected trial; inspect accepted rows for accepted residuals.
+
+At matched 1, 2 and 3ms snapshots: maximum position difference <=0.00725mm, maximum velocity difference <=0.001823m/s; internal-force relative L2 differences 4.6964%, 3.1416%, 2.9008%. This is a short snapshot comparison, not full trajectory, settling, separation or cutting qualification. No damage enabled.
+
+Elapsed solver-loop time 48.25s including the rejected step for 0.003s accepted simulation. Speed requirement not passed; this numerical derivative is a diagnostic bridge, not a production acceleration. Stable v07 reference remains intact.
+
+Next: robust contact-aware preconditioning/linear solve, preferably assembled local analytic or automatic-differentiation contact blocks, validated against this complete-force derivative. Do not extend long runs or loosen force tolerance to mask linear-solve failure. Section3 remains4/5, section4 blocked, total15/35. No simulation running.
+
+
+### Coupled solver v10 follow-up
+
+COUPLED SOLVER v10 — 8 November 2026
+
+Added a sparse factored deviatoric FEM preconditioner in Newton coordinates; evaluated material/contact laws unchanged. Strict inner-solve trial reached 4ms then failed step9. Inexact-Newton variant independently checks true linear residual <=0.1 and descent before line search; final accepted nonlinear force balance remains <=1e-6 N. This is an inner iteration strategy, not a relaxed physical acceptance criterion.
+
+The inexact candidate completed 10 steps / 5ms in42.053s. Removing the preliminary L-BFGS optimization completed the same 5ms in9.312s (4.52x faster than that candidate, not a claim against production solver). Direct variant maximum accepted force residual6.8544e-7 N. Both completed finite geometry/support/board checks coded in the probe.
+
+Direct candidate vs small-step v07 reference at1ms-spaced snapshots: maximum position error0.012107mm, velocity0.0023245m/s, force-vector relative L2 <=4.6964%. These satisfy the short sampled comparison limits; not a full settling/refinement or cutting qualification. Damage disabled, no separation claim. Run timing excludes environment startup and preconditioner assembly. Effective solver-loop cost~1862wall seconds per simulated second remains above120 requirement. No production engine switched.
+
+Next gate: extend this candidate to the existing20ms reference window, check all matched samples and time refinement. If that passes, profile and improve dominant contact/Hessian work before long settling. Section3 stays4/5 and total15/35; section4 blocked. Experimental validation pending. No simulation running.
+
+
+### 20ms extension v11
+
+20ms EXTENSION TEST v11 — 8 November 2026
+
+Unchanged v10 direct-Newton candidate extended from10 to40 requested steps. No laws, tolerances, geometry or numerical coefficients changed. Stopped on step13: true inner linear residual0.187604 exceeds0.1 direction gate. Rejected step not committed.
+
+Accepted12 steps /6ms of20ms target. Accepted maximum nonlinear residual8.061e-7N (<1e-6N). Last accepted minimum volume ratio0.971137; maximum speed0.058904m/s (not settled). Solver-loop elapsed66.804s including rejected step; last accepted sample44.413s. Result top-level residual includes rejected trial and is not an accepted-state residual.
+
+Matched1ms reference snapshots through6ms: maximum position difference0.014560mm, velocity0.002521m/s, internal force-vector relative L2 <=4.6964%. These scoped comparisons pass but20ms completion fails. No refinement/settling qualification, no speed pass, no cutting or training.
+
+Finding: startup convergence improvement does not persist through developing contact. A contact-aware stiffness/preconditioner treatment remains required; repeating this same long attempt or relaxing limits is not justified. Preserve this failed boundary as a regression case for analytic/local contact-block work, then retry a short saved interval around6ms before another full window.
+
+Section3 remains4/5; total15/35. Section4 blocked. Experimental validation pending. No simulation running.
+
+
+### Contact preconditioner recovery v12
+
+SAVED-STATE CONTACT PRECONDITIONER TEST v12 — 8 November 2026
+
+Resumed exact saved positions/velocities at6ms from v11. Damage remains disabled; history transfer is not qualified by this test. Added nonnegative diagonal entries of the existing positive contact stiffness blocks to the three coordinate-wise sparse preconditioner factors. This is a preconditioner approximation, not the exact coupled contact Hessian. Evaluated forces, numerical Hessian action and acceptance gates unchanged.
+
+Previously failing step13 and following step14 both accepted, reaching7ms. Maximum accepted nonlinear force residual7.643e-7N (<1e-6N). At7ms vs existing reference: maximum position difference0.017053mm, velocity0.002690m/s, internal-force relative L2 difference1.57331%. Scoped recovery/comparison passes; full20ms and time refinement still unqualified.
+
+Solver-loop runtime66.818s for1ms additional simulation, excluding startup. Severe iteration cost remains; speed requirement fails. The diagonal contact approximation improves this specific convergence failure but is not suitable evidence of efficient cutting simulation. No long hold/cutting/training started.
+
+Next technical task: replace repeated finite-difference contact Hessian queries with validated local contact blocks including cross-node coupling; retain this saved6ms recovery as regression. Do not spend hours extending this slow diagnostic implementation.
+
+Initial launcher attempt had an incorrect checkpoint filename and exited before recovery; corrected path and rerun retained separately. Section3 remains4/5; total15/35. Section4 blocked. Experimental validation pending. No simulation running.
+
+
+DIRECT CONTACT DERIVATIVE v13 — 8 November 2026
+
+Implemented differentiable closest-feature contact energy with original embedding, vertex-triangle and edge-edge distances, parallel-edge mollifier and piecewise normal potential. Broad-phase stencils refreshed at Newton iterates; feature-dependent geometry differentiated through PyTorch, including cross-node coupling. No contact/material law changed.
+
+Independent existing-force comparisons: relative force difference2.97e-14 in compressed fixture,2.87e-9 at saved6ms. Compressed Hessian action agrees with numerical force derivative to1.66e-7 relative. Saved6ms comparison at1e-10 perturbation failed3.88%; reducing perturbation to1e-12 gives6.87e-6 relative, then rounding error increases at1e-13. This supports the local derivative; broad-feature transition smoothness is not claimed. Initial controls.json and refinement_controls.json preserve the original failed coarse-perturbation verdict, not silently rewritten as passes.
+
+Saved6–7ms recovery completed both steps, max accepted nonlinear residual5.876e-7N (<1e-6N). Differences from prior finite-difference recovery: max position1.166e-9m, velocity2.382e-6m/s, nodal internal force4.576e-7N. Runtime37.715s versus66.818s previously,1.77x improvement on this interval only. Timing excludes initialization and no repeated performance benchmark claimed. Speed target still fails severely.
+
+Remaining: full20ms convergence/refinement and efficient contact block application/preconditioning. This change removes repeated force perturbations from inner solves, but retained automatic-differentiation graphs and CPU sparse solves still incur cost; profile before claiming the next bottleneck. No cutting/training or production switch. Section3 remains4/5; total15/35; section4 blocked. Experimental validation pending. No simulation running.
+
+
+SECTION 3 COMPLETION ATTEMPT — v14–v17, 8 November 2026
+
+OUTCOME: Section4 is NOT cleared. Section3 remains4/5, overall15/35. No simulation is running. User decision requested on a separate quality-controlled cut mesh versus preserving the exact current mesh and continuing solver engineering. No new mesh has been generated. Original production scene/checkpoint, material laws, tolerances and experimental-validation status unchanged.
+
+v14: Cached local12x12 contact Hessians reproduce direct Hessian action; bulk cache algebraic control relative error1.833e-16. Contact-only recovery36.906s (profile enabled); cached contact+bulk recovery24.352s for6–7ms, unchanged final force checks. Profile: CPU transfers/synchronization16.08s cumulative, sparse triangular solves7.08s, autograd5.22s, factorization5.04s; overlapping cumulative categories must not be summed. Source timing includes GPU synchronization effects, not pure transfer bandwidth.
+
+v14 extended continuation: accepted through15.5ms, then failed nonlinear force residual7.7076e-4N (>1e-6N). Runtime136.37s including rejected trial. Halving timestep at this boundary also failed4.6246e-4N. Failed iterate retained. Contact force/energy audit at this iterate agrees5.43e-11 relative with independent differentiable expression; directional energy differences converge with smaller perturbations and observed candidate counts remain20731. No evidence here for a force/energy inconsistency or candidate-count jump.
+
+v15: Full coupled contact/bulk/viscous sparse preconditioner reduced linear iterations to3–9 but recovery56.950s, slower due rebuilding/factorization. Passed force balance, not adopted as a speed improvement.
+
+v16: Positive projection of local contact curvature ONLY in Newton search matrix, original energy/force and final acceptance unchanged. Stabilized halfstep continuation15.5–20ms completes18steps, maximum accepted force residual8.526e-7N. Runtime151.888s for4.5ms. Compared at matched1ms reference samples: max position difference0.056899mm (<0.1mm), internal force-vector relative L2 difference2.6824% (<5%), but velocity difference0.022789m/s FAILS0.005m/s. This is a checkpoint continuation with changed numerical method/timestep, not a fresh fixed-step20ms qualification or timestep convergence proof. Successful completion is not gate passage.
+
+v17: CuPy installed only in task-local folders; no simulator/global package replacement. Version14.2 incompatible with existing NumPy; version13.6 control passes after per-process CUDA library paths. CPU/GPU sparse-factor application control relative error7.584e-17, cached triangular setup controls pass multiple right-hand sides. Uncached GPU recovery interrupted after excessive runtime, no adopted state. Cached GPU recovery completes6–7ms with force residual3.203e-7N but53.652s, slower than best24.352s CPU/GPU candidate. Not adopted. Source basis: https://docs.cupy.dev/en/stable/reference/scipy_sparse_linalg.html and installed CuPy source. Timing includes first-use effects; no overall GPU acceleration claimed.
+
+Mesh audit:39280 tetrahedra,8752 vertices; minimum volume4.582e-16m3 vs median2.722e-9m3; minimum node mass4.598e-13kg vs median5.265e-6kg. Worst edge-matrix condition829.85. These motivate, but do not prove benefit of, quality remeshing. The smallest nodal mass is about11.45million times below median.
+
+REMAINING GATES: viable120wall-seconds/simulated-second runtime; accurate robust coupled integration and timestep refinement; fresh assembled settling/refinement; actual nonfracturing blade contact on new split assembly. Existing intact/component passes do not substitute. No shallow cut, full separation or training started.
+
+PROPOSED MESH STUDY (awaiting decision): preserve exterior, total mass, cut plane,25 support coordinates,47 constitutive laws and group energy budgets. Build a separate conforming mesh with improved element quality; preserve original physical contact/cohesive sampling where feasible and explicitly audit any changed interpolation. Compare geometry/volume/mass/supports and quality before simulations. Recheck derivative/history/reset/closure controls, then the same short6–7ms and20ms accuracy/runtime cases. Reject if geometry/law constraints or unchanged accuracy fail. Do not run long settling until short qualification supports it. Old evidence remains intact. No promise of speed or qualification from remeshing alone.
+
+
+### Authorized mesh study v18 — 2026-11-08
+
+User approved improved connectivity/sampling while preserving exterior, mass, cut plane, support coordinates, laws and fracture budgets. See `work/disect_completion_20261108_v18/STUDY_RESULT.txt`. Geometry and transfer controls pass; original collision proxy sampling retained via positive barycentric remapping. Full coupled qualification fails: fresh 500/250us attempts stop near17ms; velocity difference0.01756m/s exceeds0.005m/s, and runtime exceeds120wall-seconds/simulated-second. Section4 remains gated. No production files replaced and no cutting/training started. The previous awaiting-decision paragraph is historical; mesh authorization was received and this study executed.
+
+
+### 2026-11-09 user-authorized physical qualification with speed deferred
+
+2026-11-09: speed qualification deferred by explicit user decision
+
+The user chose: "Defer speed; finish physical qualification first".
+The120wall-seconds/simulated-second target is still failed, not passed or removed from the research/training requirements. It no longer blocks this authorized physical-qualification continuation. No accuracy, contact, stability, force-balance or fracture threshold was relaxed. Full section4 cutting still requires physical prerequisites.
+
+v21 execution study: batched solve without adequate preconditioning fell back on every step; rejected. A GPU multigrid preconditioner plus full solve graph completed20ms in59.704s;1247 graph accepts and353 original-solver fallbacks. Same-state comparison with v20 passes (position1.41e-15m, velocity3.30e-12m/s, internal force4.03e-11relative), but runtime2985s/s is worse than1019s/s. Not adopted. Task-local pyamg5.4.1 installed in v21/deps only. Original simulation environments and production assets unchanged.
+
+Proceed using the verified v20 GPU IMEX operator at12.5us and6.25us. First: fresh full1s split-assembly hold, sampled support/volume/force-balance checks, final0.1s speed<=1mm/s; then independent half-step hold and same unchanged comparison. Next: original-CAD nonfracturing load and horizontal withdrawal on the settled split assembly, with reaction/moment refinement. No engine adoption or training suitability claim. Section4 remains pending physical evidence.
+
+
+
+### 2026-11-09 — physical qualification completed under speed deferral
+
+SECTION 3 PHYSICAL QUALIFICATION — 9 November 2026
+
+Decision: physical prerequisites pass for the approved split assembly. Section 4 shallow-cut development may proceed under the user's explicit speed deferral. This is not a live fracture, separation, robot integration or training pass.
+
+Both fresh one-second settling runs completed (12.5 and 6.25 microseconds). Final-window speed remained below 1 mm/s. Refinement differences: position 0.000641 mm; velocity 0.249083 mm/s; internal force 0.038806%; support reaction 0.037644%.
+
+The original CAD blade loaded and withdrew horizontally toward the robot on the settled split assembly. Both 45 ms tests completed (3.125 and 1.5625 microseconds), with unchanged physical thresholds. Maximum force and moment refinement differences were 0.56344%, below 5%. Peak reactions were 0.77835 and 0.77957 mN. All sampled states were admissible; board penetration and support drift were zero. Maximum blade penetration was 0.253 micrometres. Final blade reaction was zero. No damage was enabled and no topology changed.
+
+Speed is FAILED/DEFERRED, not passed: settling took 1053 and 1759 wall seconds per simulated second; the blade tests took 5541 and 11598 wall seconds per simulated second, versus the original 120 limit. These timings are different workloads, not an equal-accuracy speedup comparison. User authorized physical qualification first without relaxing accuracy. Rejected v21 acceleration experiments remain separate.
+
+Scope: prescribed blade translation, exterior-node contact sampling, original 47 cohesive groups, approved split mesh, fixed supports and uncalibrated board contact offset. This does not verify native mounted force feedback, motor work, experimental tomato accuracy, arbitrary paths, or training suitability. Robot, kitchen, grip and original research evidence were not changed.
+
+NEXT — SECTION 4: implement and independently verify progressive fracture-history updates against the original CPU law before a bounded shallow cut. Check irreversible damage, unchanged energy budgets, contact eligibility, rejected-step history and reset. Then run shallow loading with declared stops and a smaller-step repeat, followed by horizontal withdrawal. Only after that passes attempt full stroke and separation. No fracture simulation has run in this qualification.
+
+Evidence: work/disect_physical_20261109_v22/settling_qualification.json, contact_comparison_result.json, both settling and blade result/trajectory files, settled_interface_audit.json.
+
+
+
+### Section 4 detailed execution handoff — 2026-11-09
+
+Follow `DISECT_SECTION4_EXECUTION_PLAN_20261109.md` for the ordered gates and preserved limits. Physical prerequisites pass with speed deferred; progressive fracture remains unvalidated. No section 4 simulation launched during planning.
+
+
+### Section 4 Gate A verified and shallow attempt launched — 2026-11-09
+
+Section 4 progress — 9 November 2026
+
+Gate A PASS. Original progressive GPU fracture matches CPU reference on 29 opening/shear/mixed/boundary/rotation/history fixtures. Pure trial, stale commit, healing rejection, rollback, restart, reset, collapsed released frame and budget controls pass. Coupled accepted-step/reset control passes; force error 6.22e-16 N. Rigid-rotation force error 3.70e-14 relative; net internal force 3.87e-14 N. Total fracture budget remains 0.11696391110288158 J.
+
+Expanded CAD node sampling was explicitly approved by the user. It includes the 832 previously omitted cut-interface nodes, without changing force coefficients or inventing normals. Independent static force/energy/coverage and saved-probe compatibility checks pass. Dynamic cutting still needs qualification.
+
+Separation evaluator controls PASS on synthetic fixtures, including rejection of a live bridge, visible bonded gap and tiny fragments; this is not evidence of an actual slice.
+
+Gate B running: original CAD orientation; geometry-selected lateral pose; 2 mm shallow load over 40 ms, 6 mm horizontal bodyward withdrawal over 80 ms, 20 ms observation. Time step 3.125 us, independent repeat 1.5625 us required. Original stops retained; declared damage/energy/event comparison limits in shallow_plan.json. No production assets changed. Speed deferred; experiment validation pending.
+
+
+
+### Section 4 first attempt and authorized route correction — 2026-11-09
+
+SECTION 4 EXECUTION — 9 November 2026
+
+Gate A PASS: original progressive fracture law, energy budget, CPU/GPU force/history, transactional commit, reset/restart, subset eligibility and objective-force controls. Expanded interface CAD sampling explicitly approved by user; force law and coefficients unchanged. Separation evaluator passes independent synthetic positive/negative fixtures; no actual slice established.
+
+First shallow attempt v23: all 44,800 steps completed, 0.140s simulated in 2300.7 wallseconds (initialization excluded). No irreversible damage; fracture dissipation zero. Maximum eligible equivalent opening 2.1934161641513953e-05m versus1mm onset. Final blade reaction 0.5793136184511509N, so withdrawal did not unload. This is a failed cutting/withdrawal test despite finite stable execution. No smaller-step repeat was run for this nonfracturing path.
+
+Diagnosis: saved30ms loading state has5 contacted twin pairs all pushed in the same direction. Actual cutting edge is offset0.494mm laterally from interface entry. Current bodyward direction projects0.945 onto blade face normal and only0.296 onto blade length: it sweeps sideways through tissue. Original probe contact passes did not establish a deep cutting route.
+
+One bounded correction v24: actual edge centered on the prepared interface; follow settled interface cross-section, stroke8mm with same peak downward speed. Exact CAD wedge width is1.238mm at2mm insertion and2.526mm at8mm; no opening/damage is imposed. Expanded sampling includes a potential node mass5.471e-9kg, requiring conservative step0.826446us, independent halfstep0.413223us. User approved two-stage horizontal retreat:16cm along blade, then6mm bodyward; height fixed. Geometric7.8mm clearance in frozen-shape check is not a dynamic clearance pass.
+
+Dynamic manufactured partial-damage restart control PASSED; it is not blade-induced damage or a real-cut restart pass. First corrected20ms window is running; full loading and independent refinement remain required before spending time on long withdrawal. If loading ends without damage, stop and reassess, rather than continuing nonproductive retreat simulations. Speed failed/deferred, experimental validation pending; no native robot or training qualification.
+
+
+
+### Corrected startup and bounded timestep screen — 2026-11-09
+
+TIMESTEP SCREEN AND CONTINUATION
+Corrected20ms at0.826446us passed physical stops,718.635s wall. A single existing3.125us candidate completed the same window in209.703s. Position difference0.764nm, velocity0.001514mm/s, force/moment1.33425%, stored energy1.76e-7relative; no damage/separation discrepancy. This is provisional startup accuracy, not a damaged-cut convergence pass or speed qualification. Original physical thresholds and force/material laws unchanged.
+
+Continue the frozen corrected loading through40/80/120/160ms, paired independently at3.125us and1.5625us. Stop at first physical, accuracy, damage/event or energy failure. No long retreat until actual loading damage and refinement support it. User-approved two-stage horizontal retreat stays fixed; verify whole-tetrahedron clearance before bodyward stage, and unloading/observation before a shallow-case pass.
+
+
+### Section 4 contact coverage gate reopened — 2026-11-09
+
+CONTACT COVERAGE REVIEW AND PROPOSED RECOVERY — 9 November 2026
+
+VERDICT
+The earlier Gate A verdict was too broad. Constitutive, energy-budget, irreversible-history, reset/restart and point-law reference controls pass. Full knife/material contact coverage does not pass. Reopen the contact portion of Gate A; do not continue deeper loading, separation or training with the current point-only adapter.
+
+EVIDENCE
+At40ms, coarse3.125us and independent1.5625us loading agree numerically: position3.55nm, velocity0.00983mm/s, force/moment0.8985%, no damage. That numerical agreement is a component pass, not proof of correct material contact.
+
+An exact triangle/segment audit finds36 intersecting material edges, including12 whose two endpoints lie outside the CAD knife and13 inside endpoints whose nearest-point normal opposes the entry-face normal. Independent solid-angle/distance queries along seven recorded material edges confirm interior knife crossings in BOTH saved step-size runs. Six unique edges exceed the existing0.1mm penetration allowance; the deepest verified interior point is0.439351mm inside. The existing node detector reports the endpoints outside and therefore supplies no corresponding contact there. These are real edges of positive-volume material tetrahedra, not rendering lines. See material_edge_audit_result.json and edge_crossing_verification.json. The original raw results and source manifests are preserved.
+
+The current deeper continuation was terminated by the agent once this was confirmed; contact_audit_interruption.json records owned process IDs and reason. This is a deliberate contact-gate stop, not an unexplained simulator crash. Completed40ms coarse/fine states remain intact. The interrupted80ms-prefix attempt is not qualified.
+
+EXISTING IMPLEMENTATION BASIS
+The local DiSECt implementation in work/solver_comparison_20261108/vendor/DiSECt/dflex/sim.py contains cut_edge_tri_collision and eval_spring_tri_collision. It checks oriented material edges against knife triangles, including separate edge orientation below the prepared cut. Our adapter currently evaluates point SDF at material vertices. The gap concerns contact representation, not the verified bilinear fracture formula.
+
+PROPOSED SEPARATE CANDIDATE (NOT YET ADOPTED)
+Replace point-only detection on the prepared interface with contact constraints derived from oriented material edges/knife triangle entry. Preserve exact CAD geometry and orientation; existing mesh/connectivity/masses/supports; original47 cohesive laws and energy budgets; scalar normal stiffness/damping and Brown friction coefficients; fixed mount, robot/kitchen/grip and all physical stops. Keep ordinary exterior contact where applicable, with one consistent constraint per physical sample so overlapping representations do not multiply stiffness or forces.
+
+Define a consistent signed penetration and force/energy pullback on the material endpoint or fixed embedding. Use the actual CAD entry face and material bank, not an arbitrary forced normal flip or imposed crack. Do not blindly copy legacy interpolation weights: independently verify virtual work, reaction moment and energy gradient. Retain a barrier/stop against crossing to the wrong blade side even when a point has emerged outside its opposite face. Explicitly test both material banks, interposed blade, outside-endpoint crossings, grazing/feature transitions, no-contact cases, duplicate references, rigid transformations and reset/checkpoint behaviour.
+
+FIRST VALIDATION GATE
+1. Independent CPU geometric/energy reference and a separately implemented detector/force evaluator.
+2. Demonstrate detection of the saved missed-crossing fixtures and correct two-bank contact without changing material history by hand.
+3. Verify normal-force/energy consistency, force/moment balance, zero-load and duplicate suppression, irreversible fracture and state semantics; no relaxed tolerances or manufactured separation.
+4. Re-run bounded nonfracturing coupled contact with smaller-step comparison. A new contact representation is not automatically physically qualified.
+5. Only after that passes, repeat a bounded actual-damage shallow stroke, using the user-approved two-stage horizontal retreat and whole-tetrahedron clearance checks. No full stroke or learning before the roadmap gates pass.
+
+AUTHORIZATION NEEDED
+This changes contact mapping beyond the previously approved expansion of sampled nodes. Gate A item5 of DISECT_SECTION4_EXECUTION_PLAN_20261109.md says: "If a materially different contact law or physical sampling is necessary, present the concrete change and evidence before adoption." Request a decision on building/validating this candidate. Experimental validation and speed remain pending/deferred; no production adoption proposed.
+
+
+
+### Section 4 conservative edge-contact correction — 2026-11-09
+
+SECTION 4 CONTACT RECOVERY — VERIFIED COMPONENT RESULTS
+
+The user approved a separately versioned material-edge/CAD contact correction and two-stage horizontal withdrawal. Existing research/production evidence remains unchanged.
+
+Findings and rejected candidates
+- Point contact missed seven independently verified material-edge crossings in both saved 40 ms runs, with actual intrusion up to 0.439351 mm. The broader old Gate A verdict was reopened.
+- Entry-plane endpoint penalties detected the crossings but failed energy continuity at a blade corner. Rejected.
+- Uniform distributed edge quadrature preserved energy but failed final force convergence: 512/1024 differed about 26.5%; 1024/2048 about 13.0%, exceeding 5%. Rejected for physical qualification.
+- The old intended starting pose also overlapped material between vertices. Whole-material starting clearance was corrected independently; the current stroke starts 0.6 mm higher, with a certified positive 1 micrometre margin.
+
+Verified adaptive candidate
+- Integrates the unchanged scalar CAD law over exact inside portions of existing material edges. Unit contact budget per interface node, normalized over incident edges; no multiplied per-edge stiffness. Forces pull back to both physical endpoints. No mass, connectivity, material threshold, fracture-energy or grip change.
+- Detects all recorded missed crossings in both saved runs, and passes grazing/rigid/wrench controls.
+- Independent force reference: separate plane/least-squares intersections and SciPy Gauss-Kronrod integration. Actual-state force errors below 1e-8 N; actual material-coordinate energy-gradient errors below 1e-7 N. Tightened adaptive integration agrees within 0.0002 percent on tested states.
+- Positive normal damping weights retain full off-diagonal material embedding in the implicit solve; dense independent matrix/potential controls pass.
+- Separate 50 microsecond fixed and 2 micrometre moving contact tests pass at 3.125/1.5625 microseconds. Moving final position difference 1.66e-10 m, velocity 3.78e-6 m/s and nodal-force relative difference 2.59e-6. Reaction and moment also pass 5 percent limits.
+- Pure repeated trials, reset and reconstructed nonfracturing checkpoint forces pass. This does not qualify a damaged mid-cut restart.
+- Independent whole-tetrahedron intrusion certificates and cached movement bounds guard the entire material volume; unresolved or inadmissible geometry rejects the trial. The original 0.1 mm limit remains unchanged.
+
+Current bounded physical work
+A new 20 ms moving-stroke prefix is running, with a 300 s wall cap and recoverable checkpoints. No irreversible damage, successful shallow cut or separation has yet been established. See live result/progress for its actual outcome; a wall cap is not a physical pass.
+
+Scope
+Independent implementation controls and tiny contact components are passes. Gate B, full stroke/separation, post-cut stability, damaged reset/repeatability, variants and successive slices remain open. No native robot coupling, engine adoption or training. Speed remains deferred and experimental validation pending.
+
+Evidence directory: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27
+
+
+
+BOUNDED PREFIX CHECKPOINT AND CONTINUATION
+The initial window stopped at its sample-checked wall cap: 12.5 ms completed, 4000 accepted steps, 337.093 s actual stepping/logging wall time, peak RSS 2166820 KiB. All accepted physical checks passed; damage and fracture dissipation remained zero. This was not a completed 20 ms test or cutting qualification.
+
+The saved checkpoint has now resumed successfully under a finite 1200 s sample-checked wall cap. If the 20 ms prefix completes with all physical stops passed, the supervisor will launch one independent half-step repeat under an 1800 s cap, then write a component comparison. It stops on a failure or cap; it never launches a full cut/training or marks Gate B complete automatically. The checklist updates on completion or stop.
+Supervisor/status: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/pair_status.json
+
+
+20 MS ENDPOINT REVIEW
+Both coarse and fine states reached the requested 20 ms endpoint. The fine run accepted 12800 steps and saved its final requested sample before the wall-cap check labelled the run stopped. Raw results remain unchanged. A separate saved-data review passes the complete common-time component comparison: position difference 6.58e-10 m, velocity 1.04e-6 m/s, force relative difference 2.30e-5 and moment 3.79e-5. Damage/dissipation are zero in both runs. This is a contact-component pass, not Gate B or separation. No simulation is currently running.
+Next: continue from the verified 20 ms checkpoint in bounded deeper-loading segments with whole-volume and force stops, and independently refine actual damage onset before withdrawal or a full stroke.
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/bounded_pair_endpoint_review.json
+
+
+### Section 4 Gate B loading resumed — 2026-11-09
+
+User requested starting/continuing Section 4. Separate v28 job resumed from independently verified coarse/fine 20 ms checkpoints. Frozen paired targets: 24, 28, 32 and at most 40 ms; stop on a physical/refinement failure or a verified damage-loading event. Model, original fracture laws/budgets, mesh, mount and physical/refinement limits unchanged. Speed deferred and experimental validation pending. Source, commands, forecast and finite caps recorded in /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_loading_20261109_v28/execution_plan.json.
+
+The whole-volume proof now distinguishes its 80 micrometre cache target from the original 100 micrometre physical limit, with manufactured 60/90/102 micrometre controls. It may recertify closer to the existing physical limit, without changing contact forces or tolerances. The separate runner also checks requested endpoint completion before the wall cap. Raw prior evidence stays unchanged. Neither implementation correction constitutes cutting qualification.
+
+Actual loading process confirmed running; the supervisor updates the side checklist on progress/termination. No full stroke, scene change, engine adoption or training is launched by this job. Full Gate B including controlled stopping/withdrawal remains open until separately verified.
+
+
+### User requested whole Section 4 completion — 2026-11-09
+
+Continue gated work without routine approvals. Preserve all six milestone acceptance requirements; a contact component is not a cut pass. The active coarse 24 ms window completed without damage. To avoid redundant refinement of nonfracturing prefixes, the separate v29 supervisor now seeks a damage event or the first physical stop before independent half-step replay. This changes execution order only, not the material/contact force model, mesh, mount, trajectory or physical/refinement limits. Whole-volume certificate cache scheduling uses additional intermediate proof targets while retaining the original 100 micrometre hard limit; manufactured controls pass.
+
+Frozen execution/source evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/execution_plan.json and /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/source_manifest.json. Any failed physical gate requires saved-data diagnosis and a concrete scope proposal before a materially different physical model is adopted.
+
+
+### Section 4 bounded loading reassessment — 2026-11-09T10:34:20.758793+00:00
+
+SECTION 4 — STOPPED; CUTTING NOT YET QUALIFIED
+
+Independent material/history controls, adaptive contact controls and the 20 ms half-step contact comparison passed. These are component results.
+
+The latest bounded continuation accepted 25.215625 ms of the prescribed approach. No damage or separation occurred. Maximum interface opening: 0.002704 mm versus unchanged 1 mm onset. Blade load: 0.00751 N versus the unchanged 2 N stop.
+
+The next step failed its motion-reserved whole-volume certificate near 0.1 mm penetration. The detected witness remains just below the original hard limit; this does not demonstrate a hard-limit violation. Earlier certificate resolution and checkpoint-resume issues were corrected and checked before the final bounded retest.
+
+No simulation is running. All six complete Section 4 milestones remain open. Speed remains deferred and experimental validation pending.
+
+Next decision: validate a separately versioned stronger blade normal-contact enforcement candidate. This changes normal force versus overlap beyond the approved sampling correction; Gate A item 5 requires review before adoption. Preserve material/fracture laws, fixed grip and all physical stops. Restart any approved new model from a clear settled state, then pass independent contact and half-step controls before a damage-enabled cut.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/section4_gate_review.json
+Proposal: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/CONTACT_ENFORCEMENT_PROPOSAL.txt
+
+Gate A item 5 remains the authority for a materially different normal contact law. No such model change has been implemented or adopted. A successful contact study would still not complete Gates B–F. Latest segment: 284.58392954899864 s wall time, 2162312 KiB peak RSS; this is a near-limit geometry-proof workload, not a solver throughput benchmark.
+
+
+### Authorized stronger blade normal-contact candidate — 2026-11-09T10:57:19.656571+00:00
+
+The user approved building and validating the separate normal-contact enforcement proposal. v30 retains all material/fracture parameters, mesh, supports, mass, grip and the 2 N/0.1 mm stops. Normal contact stiffness is explicitly changed from 2,000 to 2,000,000 N/m per existing normalized sample budget, selected from three predeclared levels using an independent nonpenetration support fixture, not a successful cut. Normal displacement is now implicit with full embedding cross terms. Normals/edge quadrature remain frozen only within a step and are refreshed from exact CAD every step; this is not exact nonpenetration. Brown parameters and lagged tangential treatment remain unchanged.
+
+Independent CPU force/energy/Hessian/dense active-set/rigid/wrench/purity/reset/no-adhesion and mixed activation controls pass. Read-only actual CAD force scaling and energy-gradient controls pass with a separately tightened reference quadrature. The initial absolute-tolerance comparison failure remains preserved. The coarse fresh clear-start 2 ms/42 micrometre probe completed with zero damage, zero support drift/board penetration and peak sampled penetration 3.775 micrometres. Independent half-step repeat is in progress; no component comparison or cutting qualification is yet claimed. Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_contact_20261109_v30
+
+
+### Stronger-contact component comparison and 26.5 ms loaded state — 2026-11-09T11:33:54.082128+00:00
+
+Fresh clear-start 2 ms / 42 micrometre probes pass independently at 3.125/1.5625 microseconds. Across 641 shared times, force-norm discrepancy is at most 0.845%; final position difference 2.661e-7 m, velocity 1.425e-4 m/s, reaction 0.2774% and moment 0.2768%. Physical checks pass with zero damage; peak sampled penetration 3.784 micrometres. Coarse/fine stepping walls 197.99/392.08 s. These are stronger-contact component passes only.
+
+A fresh damage-enabled run accepted 8480 steps through 26.5 ms before its sample-checked wall cap (1823.51 s, peak RSS 2196064 KiB). All accepted physical checks pass. Summed blade force 0.025071756469002282 N; maximum history opening 8.247102371367079e-06 m; zero damage and dissipation. A separate saved-state whole-volume diagnostic certifies penetration <=10 micrometres, with no unresolved cells. This demonstrates progress beyond the prior near-100-micrometre certificate stop, not damage initiation or a slice.
+
+The same frozen trajectory now resumes from the preserved checkpoint toward first damage/physical stop, with a declared 80 ms observation horizon and 1800 s sample-checked wall cap. The underlying original loading duration remains 160 ms; only the checkpoint observation horizon changes. No material, mesh, grip, CAD or stop changes. A separate metadata-only runner records nominal checkpoint blade time separately from last-force evaluation time; reconstruction already used pose(step*h), so this does not alter dynamics. Gate B refinement and withdrawal, separation and all subsequent section 4 milestones remain open. Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_contact_20261109_v30/fresh_probe_review.json, saved_geometry_review.json, strong0032_result.json, resume_damage_execution.json.
+
+
+### One bounded timestep qualification passed — 2026-11-09T12:43:18.229615+00:00
+
+The authorized implicit normal-contact law is unchanged. A single 6.25 us candidate was tested against independent 3.125 us references, using the user-authorized conditional numerical adjustment without restoring a speed gate. The fresh 2 ms component passes (maximum shared force-norm error 1.607%). The full fresh 38 ms loaded prefix passes all 77 shared-time comparisons: position 9.587e-6 m, velocity 9.226e-4 m/s, net force 0.43763%, summed force 0.43763%, moment 0.43763%, zero damage/dissipation differences and all physical stops passed. Measured stepping/logging wall times: 1891.63 s candidate versus 3684.84 s reference segments (initialization excluded; one case, not training qualification). No additional coarser candidate sweep.
+
+Continue the same frozen loading path from the 38 ms candidate state at 6.25 us, stopping at first damage/physical stop/cap (80 ms horizon, 3000 s sample-checked cap). Preserve the independent 3.125 us state at 38 ms for actual-damage refinement. A nonfracturing prefix pass is not Gate B; no withdrawal/full stroke/separation/training qualification is established. Force 2 N, full-volume penetration 0.1 mm, original material/fracture laws, CAD, grip and evidence remain unchanged. Speed remains deferred and experimental validation pending. Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_timestep_20261109_v31/loaded_prefix_review.json and loading0080_execution.json.
+
+
+### Stable arithmetic repair and corrected bevel reference — 2026-11-09T14:55:30.213338+00:00
+
+SECTION 4 — FRESH CENTERED-BEVEL PILOT
+
+The prior run stopped numerically at 55.39375 ms, before failed-step history commit; no damage. Stable mathematically equivalent potential increments passed 143 high-precision controls and one-step/two-half-step replay checks, without changing force law or convergence tolerances. The legacy replay converged; the exact abort was not reproduced.
+
+The old lowest-corner offset alone does not prove a blade miss; the full bevel contacts the interface. Static cut-node force-direction controls motivated a single geometry-derived reference correction: use the finite leading-bevel midpoint and freeze the path from the initial settled interface. No online controller, support fixture, model or safety-limit change. Fresh target start, no loaded-prefix reuse.
+
+Pilot: 80 ms horizon, 3600 s sample-checked wall cap; stop on damage or physical/numerical stop. Original 47 fracture laws/energy budgets, fixed grip and 2 N / 0.1 mm stops retained. Actual-damage refinement and controlled withdrawal are still required. All six complete section milestones remain open. Speed deferred, experimental validation pending.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bevel_reference_20261109_v33
+
+
+
+### Centered-bevel pilot checkpoint — 2026-11-09T15:58:52.723197+00:00
+
+SECTION 4 — SAME FROZEN PILOT CONTINUATION
+
+First segment accepted 67 ms / 10720 steps before its checkpoint wall cap, 3645.81 s stepping/logging, peak RSS 2326028 KiB. All accepted physical checks passed, zero damage. Peak summed blade force 0.168010 N; peak sampled penetration 10.207 micrometres; maximum history 0.079571 mm versus 1 mm onset. No Gate B pass.
+
+Saved full-CAD geometry: the leading material pair has moved 0.591 mm sideways and 1.176 mm downward; both current vertices lie beside the same positive-X blade face. This is local geometry, not proof of a whole-blade miss or that the full declared stroke cannot fracture. An intentionally static hypothetical 0.461 mm recenter creates large overlap/load and does not establish opposed local opening forces. It must not be applied as an instantaneous change. No controller or fixture is implemented/requested on this evidence.
+
+Resume the same frozen input from 67 ms to the previously declared 80 ms horizon, 3600 s sample-checked cap, stopping on damage or physical/numerical failure. Material, CAD, grip, supports and 2 N / 0.1 mm stops unchanged. Actual-damage refinement and controlled withdrawal remain required. All full section milestones open; speed deferred and experimental validation pending.
+
+Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_bevel_reference_20261109_v33
+
+
+
+### User-authorized execution-strategy revision — 10 November 2026
+
+The bounded 80 ms pilot completed with all accepted guards satisfied but zero damage. Full-volume review exposed a cut-to-cut edge coverage omission (about 90 um overlap versus about 7 um adapter sampling); the hard 100 um guard was maintained. v34 corrects that omission as a separate candidate with static controls passed. The user chose strategy revision instead of automatic multi-day continuation. v35 profiling identifies CAD queries as ~91% of step cost; one equivalent-formula implementation passes local geometry/static-force and saved-solve controls with 7.45x saved-step speedup. Fresh three-case coverage/implementation/half-step controls are in progress, not yet a cutting pass. Follow the appended November 10 revision in DISECT_SECTION4_EXECUTION_PLAN_20261109.md and /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/EXECUTION_STRATEGY.txt. All six full cutting milestones remain open; no engine/physics-threshold/robot/training adoption.
+
+
+### Strategy revision and fresh component validation completed — 2026-11-09T17:34:41.127313+00:00
+
+All three fresh2 ms complete-cut-edge/query controls completed with original guards. Reference/faster-query motion/force differences are near roundoff; half-step maximum nodal-force discrepancy0.5693%, position1.8295e-7 m, velocity3.2923e-4 m/s. Same-step stepping/sampling199.74 ->55.14 s (3.62x). No damage, full stroke, withdrawal or separation qualification. v36 is prepared, not launched (45 ms horizon,900 s cap, fresh start, h3.125/ref1.5625 us, unchanged laws/2 N/0.1 mm and other stops). Revised execution strategy: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/EXECUTION_STRATEGY.txt. Evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/fresh_control_review.json. No worker running. All six full Section4 milestones remain open; speed deferred, experimental validation pending.
+
+
+### Section 4 execution outcome — 10 November 2026: 50 ms accepted, arithmetic repair, runtime reassessment
+
+The user authorized proceeding under the latest plan. The fresh v36 45 ms prefix passed all accepted guards in 551.13 s, with zero damage. Its next continuation stopped at 47.625 ms on uncertain winding arithmetic, and the legacy final sampler failed to write a complete result. Raw evidence remains unchanged. One v37 replay captured the actual point: 0.949 picometres inside the CAD surface; both original and faster float64 queries fail, while 60/100-digit winding sums agree on inside.
+
+Separate v38 repeats the same winding formula at 40/80 digits only for uncertain queries, requiring strict agreement. No geometry, force, material/fracture law, timestep or physical tolerance changed. The actual captured case, 60 independent analytical box controls, shared pre-failure prefix equivalence and the bounded 45-to-50 ms retest passed. The latter took 164.36 s, with maximum opening 0.013046 mm against 1 mm onset, zero damage/dissipation and all accepted guards. Whole-volume guarding stayed at 0.1 mm; sampled penetration is not a whole-volume maximum.
+
+Measured contact-loaded cost is 32,784 wall s/s. A constant-loaded-cost scenario for remaining motion, one-second stability and a half-step reference is about 55.5 h, before repeats/variants. Actual clear/deeper-contact costs may differ. Per the latest revision, no full multi-day campaign is launched automatically. One bounded read-only profile of the corrected 50 ms checkpoint, with no history commits, finds contact assembly ~70% of saved-step time; the old 91%-CAD-query figure no longer describes this version. Recommended next decision: one finite implementation-only contact batching candidate with independent static/equivalence/fresh-refinement controls; no model or timestep change and no open-ended optimization tree. The proposal is not an adopted implementation.
+
+No worker running. All six complete cutting milestones remain open. Gate B, separation, native robot coupling and training remain unqualified; speed deferred, experimental validation pending. Evidence: `/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_precision_sign_20261110_v38/RESULT.txt`, `section4_execution_review.json`, `controls_result.json`, `precise0050_review.json`, `loaded_profile_result.json`, `runtime_reassessment.json`. The failed attempt and replay are preserved in v36/v37.
+
+
+### Continued Section 4 authorization — 10 November 2026
+
+After the 50 ms result and runtime reassessment, the user explicitly requested continuous work until all of Section4 is finished. A single implementation-only contact batching candidate (v39) preserves the same 5,871 physical edges, 960 sampling budget, CAD, positive Gauss rules, adaptive tolerances and force law. Independent analytical/saved-CAD controls pass; full saved forces and energy agree exactly. Fresh 2 ms coarse/half-step probes and strict comparison to the prior fresh reference pass, with maximum half-step nodal-force difference 0.5693%. Same-state 50-to-50.5 ms loaded parity passes strict limits (force/moment identical; motion/history at roundoff), with measured 1.62x stepping/sampling improvement in that short segment. No full-trajectory speed claim.
+
+The new v40 campaign continues the same physical operator/path from 50.5 ms toward first damage or the 180 ms loading horizon, in 5 ms checkpoint windows. Each window has a finite cap; any physical/numerical failure or wall-cap hit stops the campaign without an automatic retry. Total loading-phase cap4 h; no new timestep, physical model, fixture, material threshold or engine. The renewed user instruction accepts continued work after the runtime warning; all scientific gates remain. First damage still requires independent actual-damage half-step, controlled stopping and authorized horizontal withdrawal before GateB. No full stroke, training or milestone completion is inferred from nonfracturing windows.
+
+Evidence: work/disect_batched_contact_20261110_v39/{controls_result.json,fresh_control_review.json}, work/disect_batched_cutting_20261110_v40/{paired_loaded_review.json,execution_contract.json,continuation_contract.json,campaign_status.json}. All prior evidence retained.
+
+
+### Section4 loading stopped before fracture — 10November2026
+
+The bounded v40 campaign accepted155.971875ms (49,911steps from the fresh state), then rejected the155.975ms trial BEFORE fracture commit because one tetrahedron would reach volume ratio0.0999979671, below the unchanged0.1 limit. Last accepted ratio0.1000025095; maximum damage0, maximum committed opening0.0633157mm against1mm onset. Blade load1.1128N stayed below2N; whole-volume proof, solver residual and force balance passed. All six complete cutting milestones remain open. No worker running. Evidence: work/disect_batched_cutting_20261110_v40/{final_campaign_review.json,load160500_rejected_volume_guard.json,final_loading_geometry_review.json,RESULT.txt}.
+
+The v39 batching change passed static, fresh/half-step and loaded-prefix controls; no physical laws changed. A1.2degree alignment proposal (v41) was screened on explicitly inadmissible frozen penetration fixtures, showed no convincing remedy to contact direction, and was discarded WITHOUT adoption or a dynamic run. Do not launch an angle sweep or imply those fixtures passed physical stops.
+
+A read-only material-parameter audit found an interpretation error in this execution's earlier30kPa/nu0.25 description. The actual stabilized stress law with kernel coefficients mu=lambda=12,000Pa has effective small-strain mu_linear=9,000Pa and lambda_linear=4,500Pa, hence E=21,000Pa and nu=1/6. Analytic and independent numerical stress tangents agree; no original forces or passes change. This is not a newly discovered numerical force bug.
+
+A single material candidate is PREPARED, NOT ADOPTED in work/disect_bulk_material_proposal_20261110_v42/{parameter_audit.json,scope_proposal.json,PROPOSAL.txt}: target E0.4MPa, nu0.3 from Jamdagni/Jia2024 TableII tomato chopping, converted to the existing stabilized kernel as mu=205128.205128Pa, lambda=358974.358974Pa. Published values are a prior for a separate sensitivity candidate, not identified parameters or independent validation for our specimen/model. Keep original47 fracture laws,1/4mm onset/failure,0.11696391110288158J budget, CAD/grip, mesh/mass/supports and every existing stop. It must requalify constitutive response, step stability, fresh settling/contact and actual damage/refinement/withdrawal. No force-limit increase or repeated material tuning is implied.
+
+The current plan freezes material parameters and requires review of this physical-model change. A genuine user scope decision is required before the candidate is implemented; experimental validation remains pending and speed deferred. The available evidence does not prove that stiffness alone causes the failure or guarantee a cut. Do not repeat the failing plunge, bypass the volume stop, or weaken fracture to manufacture success.

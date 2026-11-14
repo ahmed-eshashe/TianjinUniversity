@@ -1,0 +1,44 @@
+v07 MULTICUT COMPONENT RESULT — 2026-11-10T15:40:30.946877+00:00
+
+Outcome
+All 77 declared checks passed in the restricted unit scope. Two sequential parallel divisions produce three fragments; a partial cross-cut of the moved/rotated middle fragment leaves an intact bridge; completing that prescribed cross-cut produces four independent mechanical fragments. A fourth division and rejection of a fifth pass. Existing production setup and all 1001 manifest-protected files are unchanged.
+
+This is NOT physical tomato slicing. The cut rectangles/planes are supplied by a unit harness, and independent-motion fixtures use manufactured gaps. No blade work pays for fracture. No live knife, fragment contact, gravity/board or arbitrary tomato geometry is included. Gate 2 is a component pass only; full Gate 2, Gate 3 and RL readiness remain open.
+
+Model and representation
+12 x 12 x 12 mm tensor block, rho=1000 kg/m^3, total mass 0.001728 kg. Synthetic homogeneous neo-Hookean E=0.1 MPa, nu=0.4. These values are not calibrated tomato measurements. Quadratic reference-coordinate B-spline Galerkin mechanics uses full consistent mass, 5-point Gauss integration per axis per knot cell, and Velocity Verlet. Seven-point integration is an independent numerical refinement, not experimental validation. Gc=80 J/m^2 in the inherited contract is UNUSED by these prescribed topology tests.
+
+The 512 original samples are observations/load fixtures, not quadrature masses. Initial scalar basis count is 216. With four completed cuts there are five pieces, 576 scalar basis functions (three motion components each), and 14,000 integration samples. Child fragments retain their parent's live coefficient fields, velocity, deformation and constraints. Global archived reaction history prevents loss of parent support impulses when it is retired. See ARCHITECTURE.txt.
+
+Verified results
+- Algebra/topology: 14 checks. Final mass 0.0017279999999999997 kg. Maximum recorded event energy change 2.59e-19 J. Untouched pieces retain their state during another fragment's cut.
+- Dynamics: 28 checks, six 1 ms trials. Each primary case is repeated at half timestep and at seven-point integration. The primary step is 3.90625e-7 s; reference step 1.953125e-7 s.
+- Partial cross-cut: intact-side opening 0 m; opened-side displacement jump 0.043164 mm under a manufactured balanced opening load. Maximum energy/work imbalance 8e-14 J for work scale 3.69e-07 J. Neighboring idle speed 3.9e-12 m/s.
+- Four-piece free motion: one piece is mildly compressed, rotated and assigned a 0.02 m/s translation. Maximum energy imbalance 7.26e-12 J, linear momentum error 1.88e-20 N s, angular error 7.45e-22 N m s. Idle neighbor speed 2.07e-12 m/s.
+- Maximum primary/half-step position difference 3.5e-10 m; maximum velocity difference 1.15e-05 m/s, within the predeclared screens. Same bridge/independence classification at all tested refinements.
+- Conservative cell volume certificates pass at shared samples (primary partial bounds [0.9848471299153245, 1.016896123916251], full [0.9695464618767441, 1.032134843398963]); integration-point volume guards remain active every step. These are short-window engineering checks, not proof for later contact/large deformation.
+- Recovery/state: 35 checks. Five loaded topology events preserve complete checkpoint continuation exactly (maximum error 0 in compared fields), support reaction ledgers, history and clock. Late failure rolls back every fragment. Stale proposals, corrupted topology metadata and capacity overflow are rejected.
+- Two partial incisions in distinct connected pieces survive checkpoint/restart. A 0.3 mm end fragment with no original observation point retains its 0.0000432 kg mass and 2,000 quadrature points. That algebraic retention test does not establish a reliable 0.3 mm physical slice.
+- On the active loaded final fields, five-versus-seven-point generalized force errors are below the declared tolerance. Relative rest-force differences can exceed it because forces are effectively zero; the predeclared 1e-10 N absolute floor handles those cases. Raw values are in state_controls.json.
+
+Cost (not RL throughput)
+Primary partial: 58.52 wall seconds for 0.001 simulated second.
+Primary full: 57.41 wall seconds for 0.001 simulated second.
+All six dynamical validation trials: 653.57 seconds.
+Current algebra + dynamics + state validation: 675.92 seconds (does not include code preparation or the preserved initial algebra run).
+Dynamics process peak RSS: 410.7 MiB. Loaded-state suite peak RSS: 827.3 MiB, including multiple simultaneous saved/reference objects; not a five-piece isolated memory estimate.
+
+64-step short rest samples at a common timestep:
+cuts  pieces scalar_basis integration_points wall_seconds/sim_second
+   0       1          216               8000              34144.6
+   1       2          324              10000              43481.2
+   2       3          432              12000              52690.5
+   4       5          576              14000              63459.1
+
+These are tiny, headless, CPU no-contact tests. No interactive or RL speed claim follows. Do not scale this CPU implementation to a long tomato/robot episode. It is a short numerical reference for any future faster implementation.
+
+Remaining boundaries
+One active partial incision per connected fragment; simultaneous intersecting unfinished incisions in the same body are not represented and are explicitly rejected. Cut normals follow reference X/Y/Z only, even if the piece has rotated in world space. A live world-space blade-to-reference mapping is absent. Curved/oblique surfaces, a trimmed tomato, arbitrary online paths and paid fracture are unimplemented. Full Gate 2 also still requires a matched GPU implementation and real tool-generated independence controls. Previously passed components from older algorithms are not inherited automatically.
+
+Evidence and preservation
+qualification.json aggregates the result. Raw data: algebra_controls.json, dynamics_controls.json, state_controls.json, runs/dynamics/*, runs/state/*. The original algebra run was preserved under reports/pre_final_fingerprint_algebra before repeating it against the final stronger transaction fingerprint. Contract metadata corrected a stale copied X-only descriptor to match the already declared v07 X/Y/Z scope; no acceptance, physical or numerical threshold changed. All prior protected hashes match in preservation_check.json. Shared checklist/status changes are administrative and backed up separately.

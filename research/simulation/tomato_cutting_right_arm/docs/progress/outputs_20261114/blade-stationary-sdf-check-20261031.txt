@@ -1,0 +1,21 @@
+Stationary sequence and native SDF measurements — 31 October 2026
+
+The diagnostic completed in 3.81 seconds. Twelve stationary Newton steps at 1/1200 second covered 0.01 seconds of simulated time. All 12 steps reported zero contact; final particle positions exactly matched the initial positions. No moving blade or robot was run.
+
+Native collision SDF measurements used the model's actual texture-SDF data and the same software distance/gradient sampler referenced by installed full-surface soft contact. Probe coordinates were in unscaled blade-local metres. Independent references used authored triangles, closest-point distances, and solid-angle winding classification.
+
+Measurements at resolution 128, with explicit 0.05 m cooking padding:
+- 434 authored surface probes (vertices, edge midpoints, triangle interiors): maximum absolute SDF value 1.0086 mm; ideal reference is zero.
+- 48 off-surface probes from the 12 largest triangles, at signed face-normal offsets +/-0.25 mm and +/-1 mm: maximum signed-distance error 0.6256 mm.
+- 1 inside/outside sign disagreement among those 48 probes.
+- Maximum sampled normal angle disagreement 48.90 degrees; 0 zero/undefined native gradients.
+
+Interpretation: stationary execution passed, but SDF accuracy is NOT qualified. No numerical acceptance thresholds were selected or relaxed. The sign disagreement and measured errors require investigation before moving-contact tests; completion of the measurement routine is not an accuracy pass. The normal results cover sampled off-surface points, not sharp-edge surface normals. Floating-point winding assumes a closed authored surface; self-intersections and global contact completeness are not certified.
+
+Protection: 180-second worker budget, unchanged RAM/VRAM floors and warning/hard stops, both shared locks, owned-process-group cleanup. No warnings or monitor errors occurred; process exited 0, no live group members remained. Minimum available RAM 26.00 GB; minimum free VRAM 7.19 GiB.
+
+Validation: 9 guard tests and 4 independent sign/normal reference tests passed without native imports. Verified all 12 journal hash-chain links, final diagnostic checkpoint link, and source snapshot hashes. Checkpoint remains nonresumable. Original historical source and disabled worker remain preserved.
+
+Next step: compare SDF resolutions using identical authored geometry and query points, then investigate sign/normal mismatches before positive-contact experiments. No damage, fracture, force/work accuracy, robot coupling, cutting or learning was validated.
+
+Full evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_stationary_sdf_20261031_01

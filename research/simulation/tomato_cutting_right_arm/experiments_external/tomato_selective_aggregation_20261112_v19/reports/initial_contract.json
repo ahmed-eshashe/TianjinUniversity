@@ -1,0 +1,66 @@
+{
+  "version": "v19",
+  "start_utc": "2026-11-12T09:32:27.600131+00:00",
+  "campaign_budget_s": 7200,
+  "individual_run_cap_s": 600,
+  "material": {
+    "E_Pa": 100000.0,
+    "nu": 0.4,
+    "rho_kg_m3": 1000,
+    "law": "compressible neo-Hookean unchanged"
+  },
+  "aggregation": "Extend stable same-fragment linear bases into poorly supported cut regions. Keep all material volumes. Exact reduced inertia E.T diag(m) E; never relump after aggregation. No cross-fragment source or erasure of history.",
+  "transfer": "Mass-orthogonal state projection, with explicit measured projection errors/energy; no hidden resets, energy correction impulses or loss labelled fracture.",
+  "limits": {
+    "mass_relative": 1e-06,
+    "projection_or_numerical_energy_relative": 0.05,
+    "force_impulse_work_relative": 0.05,
+    "position_m": 0.0001,
+    "velocity_m_s": 0.005,
+    "CPU_GPU_position_m": 1e-06,
+    "CPU_GPU_velocity_m_s": 0.0001,
+    "CPU_GPU_F": 0.0001,
+    "angular_relative": 0.01,
+    "untouched_fragment_response_ratio": 0.01,
+    "J_range": [
+      0.1,
+      10
+    ],
+    "force_stop_N": 2,
+    "whole_material_penetration_m": 0.0001
+  },
+  "stage_A": "Targeted controls: reference/algebra, nonuniform state transfer, repeat previous oblique/partial/corner failures and held-out cuts, temporal refinement versus unmodified v17, independence and history transfer. Stop if neither declared threshold passes.",
+  "stage_B": "Only if A passes: equivalent GPU dynamics, matched CPU/GPU checks, bounded fixed-topology throughput with clear exclusions. No complete tomato or RL claim without contact/history/robot/reset checks.",
+  "stage_C": "Do not launch physical cutting or change engine automatically. Report retained limitations and next gating decision.",
+  "speed": {
+    "control_Hz": 50,
+    "minimum_complete_environment_steps_s": 100,
+    "preferred_steps_s": 500,
+    "candidate_material_history_contact_headroom_goal_s": [
+      200,
+      300
+    ]
+  },
+  "cases": {
+    "h_m": [
+      0.006,
+      0.003
+    ],
+    "max_cuts": 4,
+    "small_block_m": 0.012,
+    "bulk_block_m": 0.06,
+    "corner_offsets_m": [
+      0.00013,
+      1e-05,
+      1e-06,
+      1e-07
+    ],
+    "minimum_slice_cells": 4
+  },
+  "stop": "Two-hour focused cap; each run <=600 s. Preserve failures. Stop substantive accuracy failure of both declared selectors after finite timestep diagnosis, or a failed early cost screen. No accuracy relaxation or physical-law change.",
+  "change": "Keep substantially supported cut-region nodes independent; only aggregate eligible weakly supported nodes. Retain exact reduced mass, all physical material and frozen force/position/velocity/energy screens.",
+  "support_fraction_definition": "Original row-sum nodal mass / (rho*h^3). This is a declared numerical support selector, not mass scaling or material deletion.",
+  "primary_support_threshold": 1e-08,
+  "secondary_support_threshold": 1e-12,
+  "selection": "Predeclared primary 1e-8; if primary fails response equivalence, compare the more conservative 1e-12 retaining additional modes. Both must undergo the same temporal and response screens. No unbounded threshold tuning. Secondary chosen before any dynamic accuracy runs."
+}

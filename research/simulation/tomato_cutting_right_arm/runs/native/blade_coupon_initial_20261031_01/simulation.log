@@ -1,0 +1,20 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.geometry.inertia f6b4bd8 load on device 'cpu' took 1737.32 ms  (compiled)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupon_initial_worker.py", line 43, in main
+    bundle = build_native_candidate(inputs['blade'], native_execution_authorized=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_coupon.py", line 72, in build_native_candidate
+    builder.add_shape_mesh(body,mesh=mesh,cfg=shape,label='real_blade_collision')
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/builder.py", line 7852, in add_shape_mesh
+    return self.add_shape(
+           ^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/builder.py", line 7194, in add_shape
+    raise ValueError(
+ValueError: Mesh-backed shapes do not use cfg.sdf_* for SDF generation. Build and attach an SDF on the mesh via mesh.build_sdf().

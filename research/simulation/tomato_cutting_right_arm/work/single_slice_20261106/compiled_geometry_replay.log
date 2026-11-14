@@ -1,0 +1,109 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.97 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.89 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 3.03 ms  (cached)
+Module tomato_cad_pressure 27ceab5 load on device 'cuda:0' took 0.38 ms  (cached)
+Module tomato_fast_exact_cad d8995f8 load on device 'cuda:0' took 0.42 ms  (cached)
+Module tomato_cached_cad_pressure d7e1c7e load on device 'cuda:0' took 9.75 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.65 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_local_plane_partition 8d8f378 load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.72 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.35 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.92 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.47 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.96 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.54 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.29 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.55 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_master_frame_objective fdfc663 load on device 'cuda:0' took 7.51 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.63 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 1.09 ms  (cached)
+Module tomato_master_frame_coupled 082f480 load on device 'cuda:0' took 0.61 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.53 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.35 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 1.92 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.41 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 0.46 ms  (cached)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 4.77 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.80 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.44 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.51 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.56 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.62 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.43 ms  (cached)
+baseline 5376 wall 29.007559181000033
+baseline 5377 wall 57.55482483199921
+baseline 5378 wall 87.16897108599915
+baseline 5379 wall 115.52472737799872
+Module tomato_cached_local_plane_partition 8d8f378 load on device 'cuda:0' took 0.43 ms  (cached)
+optimized 5376 wall 19.92922138999893
+optimized 5377 wall 39.846885901999485
+optimized 5378 wall 60.73515475900058
+optimized 5379 wall 80.53034642000057
+{
+  "passed": false,
+  "scope": "Recorded measured-blade intervals, unchanged engine versus geometry optimization.",
+  "recorded_intervals": 4,
+  "source_checkpoint": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/robot_cut13/checkpoints/step_005375.npz",
+  "timings": [
+    {
+      "engine": "baseline",
+      "wall_s": 115.52476028799902
+    },
+    {
+      "engine": "optimized",
+      "wall_s": 80.5303793109997
+    }
+  ],
+  "comparisons": [
+    {
+      "x": 8.356931653630273e-09,
+      "v": 4.0113271889411634e-05,
+      "history": 9.604927964090848e-12,
+      "wrench": 1.8725285104048695e-05,
+      "step": 5376,
+      "eligibility_identical": true,
+      "passed": false
+    },
+    {
+      "x": 2.295824403052149e-07,
+      "v": 0.0004961078522475451,
+      "history": 1.2536275098007366e-06,
+      "wrench": 0.0003017404297882553,
+      "step": 5377,
+      "eligibility_identical": true,
+      "passed": false
+    },
+    {
+      "x": 3.284549610453602e-07,
+      "v": 0.00017517563456571905,
+      "history": 1.0776975962745183e-06,
+      "wrench": 6.255732883531095e-05,
+      "step": 5378,
+      "eligibility_identical": true,
+      "passed": false
+    },
+    {
+      "x": 2.9610298548851666e-07,
+      "v": 0.0007021199207627882,
+      "history": 2.1550517403934322e-07,
+      "wrench": 4.163834884418627e-05,
+      "step": 5379,
+      "eligibility_identical": true,
+      "passed": false
+    }
+  ],
+  "material_law_unchanged": true,
+  "all_solver_and_remap_budgets_unchanged": true
+}

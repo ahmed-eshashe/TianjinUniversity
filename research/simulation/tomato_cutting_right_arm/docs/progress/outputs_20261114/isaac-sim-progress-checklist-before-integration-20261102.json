@@ -1,0 +1,273 @@
+{
+  "updated": "2026-11-02",
+  "scope": "Proposed roadmap from completed startup diagnostics through dual-arm cutting and later learning. Counts are not time estimates.",
+  "counts": {
+    "done": 18,
+    "open": 4,
+    "todo": 10
+  },
+  "items": [
+    {
+      "id": 1,
+      "status": "done",
+      "title": "Confirm upgraded RAM and available GPU memory."
+    },
+    {
+      "id": 2,
+      "status": "done",
+      "title": "Add memory monitoring, bounded runtime and clean shutdown."
+    },
+    {
+      "id": 3,
+      "status": "done",
+      "title": "Launch Isaac Sim and complete the empty-scene startup check."
+    },
+    {
+      "id": 4,
+      "status": "done",
+      "title": "Run isolated blade/coupon initial and stationary checks."
+    },
+    {
+      "id": 5,
+      "status": "done",
+      "title": "Check blade distances/normals using precise reference queries."
+    },
+    {
+      "id": 6,
+      "status": "done",
+      "title": "Define contact coordinates, signs, weights and margin rules."
+    },
+    {
+      "id": 7,
+      "status": "done",
+      "title": "Build and check the contact snapshot adapter."
+    },
+    {
+      "id": 8,
+      "status": "done",
+      "title": "Verify actual native contact-buffer capture and overflow guards."
+    },
+    {
+      "id": 9,
+      "status": "done",
+      "title": "Generate and verify particle/edge/face contacts on an analytic box."
+    },
+    {
+      "id": 10,
+      "status": "done",
+      "title": "Check translated/rotated contact-record coordinates on that box."
+    },
+    {
+      "id": 11,
+      "status": "done",
+      "title": "Resolve force precision with separate geometry and arithmetic checks.",
+      "progress": "Six native analytic fixtures pass under reference version 2. Historical combined gate remains failed and preserved.",
+      "evidence": "analytic-force-reference-recheck-20261031.txt"
+    },
+    {
+      "id": 12,
+      "status": "done",
+      "title": "Qualify the real blade's full-surface contact path.",
+      "progress": "Authored-blade contact passes on the full tomato mesh, including force transfer, exact replay and clearing. Longer cuts remain unqualified.",
+      "evidence": "physics-materials-integration-20261101.txt",
+      "checks": [
+        "PASS \u2014 original blade geometry and finite-surface coverage",
+        "PASS \u2014 generated contact forces and exact replay"
+      ]
+    },
+    {
+      "id": 13,
+      "status": "done",
+      "title": "Verify particle/edge/face force distribution in stationary fixtures.",
+      "progress": "Six native fixtures pass force and diagonal-stiffness scatter, color gating, spectator and algebraic reaction/moment checks. No integration.",
+      "evidence": "native-particle-contact-distribution-20261031.txt"
+    },
+    {
+      "id": 14,
+      "status": "done",
+      "title": "Check dynamic momentum and work on minimal analytic fixtures.",
+      "progress": "Two fresh one-step native fixtures pass: free particle/box recoil, momentum, impulse, discrete work/energy and clear control. Newton-internal coupling only.",
+      "evidence": "dynamic-proxy-momentum-work-check-20261031.txt"
+    },
+    {
+      "id": 15,
+      "status": "done",
+      "title": "Implement and validate Newton\u2013Isaac/PhysX two-way coupling.",
+      "progress": "Component pass: full-mesh exchange with a free probe/authored blade and articulated proxy checks. Actual mounted-robot feedback is still required under 23B.",
+      "evidence": "physics-materials-integration-20261101.txt",
+      "checks": [
+        "PASS \u2014 full-mesh two-way force exchange",
+        "PASS \u2014 linear/angular balance and exact replay"
+      ]
+    },
+    {
+      "id": 16,
+      "status": "open",
+      "title": "Resolve the cohesive material solver/operator needed for cutting.",
+      "progress": "Partial after review: prescribed tensile tests pass. Cutting still needs a moving material frame, supported mixed loading and full-fruit reclosure/contact.",
+      "checks": [
+        "PASS \u2014 native force, stiffness and damage history",
+        "PASS \u2014 loading work and bulk-volume protection",
+        "LIMIT \u2014 general compression/shear and free-fragment closure remain unqualified"
+      ],
+      "evidence": "physics-materials-integration-20261101.txt",
+      "review_status": "partial",
+      "review_evidence": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 17,
+      "status": "open",
+      "title": "Validate material response against chosen reference measurements.",
+      "progress": "Pending at your request. The published curve is a provisional reference; independent measurements are still needed.",
+      "checks": [
+        "PENDING \u2014 independent experimental measurements"
+      ],
+      "evidence": "tomato-experiment-data-needed-20261101.txt"
+    },
+    {
+      "id": 18,
+      "status": "done",
+      "title": "Verify damage, separation and post-cut contact on a small coupon.",
+      "progress": "Small interface and solid coupons pass damage, separation, reclosure and replay. Whole-fruit post-cut behavior remains unqualified.",
+      "checks": [
+        "PASS \u2014 fracture budget and irreversible failure",
+        "PASS \u2014 small-coupon reclosure and reset/replay"
+      ],
+      "evidence": "physics-materials-integration-20261101.txt"
+    },
+    {
+      "id": 19,
+      "status": "done",
+      "title": "Verify robot, blade and target placement, units and coordinate frames.",
+      "progress": "The original knife is mounted in a separate robot scene using SI units. The ideal fixed joint preserves the checked frames and adds no actuator joint.",
+      "checks": [
+        "PASS \u2014 actual 36-joint robot; one active original knife",
+        "SCOPE \u2014 ideal massless mount; no finger-grasp claim"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt"
+    },
+    {
+      "id": 20,
+      "status": "open",
+      "title": "Verify target restraint/grasp and collision settings.",
+      "progress": "Partial after review: support and collision diagnostics pass. The target gravity probe covers 5 ms; full-duration settling, board contact and cutting-load support remain.",
+      "checks": [
+        "PASS \u2014 25 support nodes; slice nodes remain free",
+        "PASS \u2014 collision monitor detects a deliberate impact and clearing"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt",
+      "review_status": "partial",
+      "review_evidence": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 21,
+      "status": "done",
+      "title": "Check approach, cutting and retreat motions without target contact.",
+      "progress": "Two 8-second offset dry cycles pass approach, stroke and retreat under robot gravity. Minimum blade/target gap is 34.4 mm; blade/board clearance is 6.01 mm.",
+      "checks": [
+        "PASS \u2014 rigid mount, bounded speed and tracking",
+        "PASS \u2014 no monitored forbidden contact forces; exact replay"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt"
+    },
+    {
+      "id": 22,
+      "status": "open",
+      "title": "Verify reset restores poses, velocities, contacts and material history.",
+      "progress": "Partial after review: separate robot/material resets and 11,439-contact clearing pass. Reset after integrated, loaded cutting remains untested.",
+      "checks": [
+        "PASS \u2014 poses, velocities and both wrench queues",
+        "PASS \u2014 both target buffers, history and generated contact clearing"
+      ],
+      "evidence": "fixed-mount-robot-scene-20261101.txt",
+      "review_status": "partial",
+      "review_evidence": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 23,
+      "status": "todo",
+      "title": "Run a slow, short cut with force, penetration and work logging.",
+      "progress": "After mechanics/support prerequisites: qualify the actual contact route and mounted robot feedback, then progressive short cuts with synchronized force/work logging.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 24,
+      "status": "todo",
+      "title": "Verify meaningful separation without unstable or spurious forces.",
+      "progress": "Verify complete mechanical disconnection, withdraw the blade and observe at least one second of independent motion with stable reclosure/board contact.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 25,
+      "status": "todo",
+      "title": "Check repeatability and sensitivity to time step/contact resolution.",
+      "progress": "Check fresh/reset repeatability; refine time step, quadrature, solver and mesh separately. Report force, work, release and end-cap profile sensitivity.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 26,
+      "status": "todo",
+      "title": "Save a reproducible baseline scene, settings and results.",
+      "progress": "Freeze the reproducible single-arm scene, controller, evaluator and traces; close the loaded post-cut reset gate.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 27,
+      "status": "todo",
+      "title": "Integrate the second arm and its grasp/support role.",
+      "progress": "Keep the right fixed mount; qualify contact-based left-hand support under measured cutting loads and remove hidden fixture support.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 28,
+      "status": "todo",
+      "title": "Verify coordinated motion, mutual collisions and force transfer.",
+      "progress": "Verify support handoff, synchronized force transfer, knife\u2013hand clearance, disturbances and prechecked failure responses.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 29,
+      "status": "todo",
+      "title": "Repeat the controlled cutting baseline with both arms.",
+      "progress": "Repeat paired fixture-versus-left-support cuts with unchanged right controller, quality/load/slip metrics and reproducible reset.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 30,
+      "status": "todo",
+      "title": "Finalize observations, actions, rewards and termination conditions.",
+      "progress": "Bind the existing offline contracts to the qualified environment. Start with bounded draw/down residuals and verified observations; keep orientation locked.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 31,
+      "status": "todo",
+      "title": "Validate repeated resets and scripted baseline episodes.",
+      "progress": "Verify success/failure/abort resets, no history leakage, frozen train/development/test cases and measured rollout cost.",
+      "plan": "research-roadmap-review-20261102.html"
+    },
+    {
+      "id": 32,
+      "status": "todo",
+      "title": "Run a small training/evaluation pilot before longer experiments.",
+      "progress": "Run a budgeted baseline-versus-residual pilot, multiple seeds and paired held-out cases; use uncertainty and compute cost to decide further experiments.",
+      "plan": "research-roadmap-review-20261102.html"
+    }
+  ],
+  "current_next_step": 16,
+  "experimental_validation_user_decision": "Keep experimental validation pending \u2014 2026-11-01",
+  "robot_knife_connection_user_choice": "Fixed mount \u2014 user selected 1 November 2026",
+  "review": {
+    "date": "2026-11-02",
+    "partial_ids": [
+      16,
+      20,
+      22
+    ],
+    "experimental_pending_ids": [
+      17
+    ],
+    "report": "research-roadmap-review-20261102.html",
+    "scope": "Evidence/source review; no new native run. Historical component passes retained; broader integration gates reopened."
+  }
+}

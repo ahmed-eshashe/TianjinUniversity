@@ -1,0 +1,36 @@
+Newton–CPU PhysX particle contact on a passive hinge — 1 November 2026
+
+PASS for one actual contact exchange and one deliberate clear-control interval in each of two passive-hinge fixtures. This connects an actual Newton particle reaction to an articulated PhysX link and copies resulting rigid state back into Newton. It does not yet validate repeated jointed contact or natural separation. Checklist item 15 remains open.
+
+The locally authored, near-origin fixed-base hinge scenes and passive joint settings match the prior interface check: identity and 90-degree yaw orientations, one moving 0.02 kg link, COM 0.01 m from the Z hinge, COM Z inertia 0.0001 kg m², and no joint drive, stiffness, damping, friction or gravity. CPU PhysX owns hinge motion and constraints. Visual geometry has no PhysX collisions. No robot, real blade, remote asset or cutting material was loaded.
+
+A separate CUDA Newton model for each fixture owns one 0.01 kg particle and a kinematic box proxy of the moving link. The proxy has half-extents (0.01,0.005,0.002) m and a zero local COM matching the link. The particle begins at link-local (0.004,0.004,0) m, 1 mm inside the +Y side. Native shape/soft stiffnesses 2500/1000 N/m produce the actual fixed cache 1750 N/m; damping, friction, radius and margin are zero. The collision pipeline generated one native particle contact, not a manually inserted record.
+
+At dt=1/2400 s, actual articulation link pose and world COM twist were staged from CPU and copied exactly into both actual CUDA Newton State body arrays. Newton solved the particle for 16 iterations while the externally owned proxy stayed frozen. The native contact helper collected the final force, projected point and world reaction torque using the actual solver caches and previous-particle state. That opposite force and COM torque were sent once to the selected moving link, with positions=None and world-frame input. PhysX advanced once, and its resulting link pose/twist copied back exactly into both Newton states.
+
+Independent +Y-plane arithmetic checked final force, projected point, COM torque and soft particle position. A native force in local +Y acts on the particle, so its opposite drives negative hinge rotation. The generalized hinge effort includes both the COM force lever arm and COM torque. With world contact X lever 0.014 m in the identity fixture, effort is -0.014 times force magnitude. The measured articulation mass matrix matched effective inertia I_COM + m*r². Joint velocity/position were checked against the declared 16-substep TGS schedule. Particle linear impulse and total hinge-axis angular momentum (particle orbital contribution plus effective hinge inertia times joint velocity) were checked independently. Full free-body linear-momentum conservation is not applicable to a fixed-base constraint.
+
+For the clear control, the particle was explicitly repositioned to current-link local (0.004,0.008,0) m and its velocity explicitly reset to zero in both Newton states. The existing pipeline regenerated zero contacts, the same solver advanced a clear soft step, and no new rigid wrench was submitted. The hinge then coasted one step with unchanged joint velocity. This is a deliberate outside-particle control, not natural contact separation. Impulse balance is not asserted across that externally imposed reposition/reset.
+
+Exactly four Newton steps (two per fixture) and two shared CPU PhysX steps ran. Six link-state packet events (initial, after contact and after coast for each fixture) copied pose and COM twist exactly into both actual Newton states. All temporary worker processes exited.
+
+hinge_contact_identity: native soft force N [0.0, 1.698399543762207, 0.0]; world reaction wrench N / N m [-0.0, -1.698399543762207, -0.0, 0.0, 0.0, -0.006793597713112831]; hinge velocity -0.0971306934953 rad/s; joint position -2.15002855839e-05 rad; coast velocity change 0 rad/s.
+hinge_contact_yaw90: native soft force N [-1.6983991861343384, 2.281949349480783e-07, 0.0]; world reaction wrench N / N m [1.6983991861343384, -2.281949349480783e-07, -0.0, 0.0, 0.0, -0.006793594919145107]; hinge velocity -0.0971306487918 rad/s; joint position -2.150027467e-05 rad; coast velocity change 0 rad/s.
+
+Maximum errors across the two fixtures:
+  force_error_n: 7.31339023e-07
+  point_error_m: 2.04890993e-10
+  torque_error_nm: 2.93162021e-09
+  coast_joint_velocity_change_rad_s: 0
+  mass_matrix_error_kg_m2: 8.77501443e-11
+  joint_position_error_rad: 4.29772227e-12
+  joint_velocity_error_rad_s: 2.325045e-08
+  particle_impulse_error_ns: 1.03472891e-08
+  particle_position_error_m: 4.18440197e-10
+  hinge_axis_angular_momentum_error_nms: 1.45100265e-10
+
+Retained gates: force 2e-5 N, projected point 1e-7 m, COM torque 2e-7 N m, effective hinge inertia 1e-8 kg m², joint position 1e-6 rad, pulse joint velocity 2e-5 rad/s, coast joint velocity change 2e-6 rad/s, particle impulse 2e-7 N s, particle position 1e-7 m, hinge-axis angular momentum 2e-8 N m s. No tolerance was relaxed. Four focused reference/guard-contract tests and nine supervisor tests passed, including rotated contact equivalence, hinge-axis angular balance and rejection of clear geometry as a penetrating contact.
+
+The protected worker completed in 5.76 seconds, retaining at least 23.28 GB available RAM and 7.53 GB free GPU memory. There were no memory warnings or monitor errors and no owned live processes remained. Source snapshots/hashes were saved. Original frozen production inputs and previously pinned installed dependencies remain unchanged.
+
+Next bounded step: a repeated coupled hinge sequence with fresh collision records and natural separation, without repositioning the particle. Joint reset/replay, multi-joint dynamics, broader coordinates, contact work/energy, cutting material and the full blade collision backend remain unvalidated.

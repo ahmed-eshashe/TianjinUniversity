@@ -1,0 +1,36 @@
+{
+  "scope": "One CPU implementation candidate, same CAD, original triangle order and sign/distance formulas, unchanged point sequence and quadrature. Static candidate-contact fixture, not cutting or trajectory qualification.",
+  "passed": true,
+  "threads": 4,
+  "query_chunks": 1566,
+  "query_points": 16711,
+  "compile_wall_s_excluded": 1.808317128001363,
+  "errors": {
+    "phi_m": 7.095171482675647e-18,
+    "normal": 2.177464632213688e-09,
+    "closest_m": 2.7755575615628914e-17,
+    "face_index": 0.0,
+    "winding": 0.0
+  },
+  "inside_outside_signs_equal": true,
+  "timing_runs": [
+    {
+      "name": "reference",
+      "same_chunk_query_wall_s": 1.818435403998592
+    },
+    {
+      "name": "candidate",
+      "same_chunk_query_wall_s": 0.06533918100467417
+    }
+  ],
+  "same_chunk_query_speedup": 27.830703967172568,
+  "full_static_contact_reference_wall_s_with_query_capture": 2.1324264299983042,
+  "full_static_contact_candidate_wall_s": 0.1949690909968922,
+  "static_contact_max_force_error_N": 2.251934749786244e-12,
+  "static_contact_energy_error_J": 1.0299920638612292e-18,
+  "static_contact_moment_error_Nm": 2.0592416660747404e-12,
+  "in_place_geometry_cache_invalidation_phi_error_m": 6.6432794053154776e-18,
+  "source_checkpoint_unchanged": true,
+  "coupled_step_and_fresh_half_step_validation_pending": true,
+  "candidate_not_adopted": true
+}

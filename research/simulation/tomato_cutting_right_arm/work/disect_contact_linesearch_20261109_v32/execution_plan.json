@@ -1,0 +1,16 @@
+{
+  "updated": "2026-11-09T14:42:41.682470+00:00",
+  "scope": "One bounded saved-state line-search diagnostic and equivalent-arithmetic repair if justified; no physical model, force, material, trajectory or tolerance change.",
+  "source_checkpoint": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_timestep_20261109_v31/loading0080_final.npz",
+  "source_time_s": 0.055393750000000005,
+  "failure": "exception: Contact Newton line search failed",
+  "diagnostic": "Reproduce original solve without fracture commit; inspect residual and energy-difference trace.",
+  "candidate": "Compute convex contact/ground energy increments with nonnegative Bregman remainders instead of subtracting nearly equal large potentials; independent high-precision controls required.",
+  "retest": "One isolated step plus same-state two-half-step comparison; preserve all force/geometry/residual limits.",
+  "not_qualified": [
+    "Gate B cut",
+    "separation",
+    "native robot effort",
+    "training"
+  ]
+}

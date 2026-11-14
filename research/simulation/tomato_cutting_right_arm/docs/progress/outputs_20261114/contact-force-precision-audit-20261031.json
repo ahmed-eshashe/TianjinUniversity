@@ -1,0 +1,174 @@
+{
+  "result": "All four saved native contact forces reproduced exactly by independent rational binary32 replay with fused interpolation.",
+  "native_launches": 0,
+  "mechanical_steps": 0,
+  "new_native_force_evaluations": 0,
+  "saved_contact_replays": 4,
+  "tests_passed": 4,
+  "cases": [
+    {
+      "case": "edge_inside_vertices_outside",
+      "capture_origin_run": "analytic_force_reaction_20261031_02",
+      "fused": {
+        "soft_point_binary32_m": [
+          0.008999848738312721,
+          0.0,
+          0.0010000000474974513
+        ],
+        "penetration_binary32_m": 0.0010000000474974513,
+        "replayed_force_n": [
+          0.0,
+          0.0,
+          1.7500001192092896
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 3.608874976634979e-08
+      },
+      "separate": {
+        "soft_point_binary32_m": [
+          0.008999848738312721,
+          0.0,
+          0.0010000000474974513
+        ],
+        "penetration_binary32_m": 0.0010000000474974513,
+        "replayed_force_n": [
+          0.0,
+          0.0,
+          1.7500001192092896
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 3.608874976634979e-08
+      },
+      "original_geometry_comparison_error_n": 3.608874976634979e-08
+    },
+    {
+      "case": "face_inside_vertices_outside",
+      "capture_origin_run": "analytic_force_reaction_20261031_02",
+      "fused": {
+        "soft_point_binary32_m": [
+          0.008994003757834435,
+          0.0033971210941672325,
+          0.0010000001639127731
+        ],
+        "penetration_binary32_m": 0.0009999999310821295,
+        "replayed_force_n": [
+          0.0,
+          0.0,
+          1.7499998807907104
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 9.80216960932978e-08
+      },
+      "separate": {
+        "soft_point_binary32_m": [
+          0.008994003757834435,
+          0.0033971210941672325,
+          0.0010000001639127731
+        ],
+        "penetration_binary32_m": 0.0009999999310821295,
+        "replayed_force_n": [
+          0.0,
+          0.0,
+          1.7499998807907104
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 9.80216960932978e-08
+      },
+      "original_geometry_comparison_error_n": 9.80216960932978e-08
+    },
+    {
+      "case": "particle_inside",
+      "capture_origin_run": "analytic_force_reaction_20261031_02",
+      "fused": {
+        "soft_point_binary32_m": [
+          0.0,
+          0.0,
+          0.0010000000474974513
+        ],
+        "penetration_binary32_m": 0.0010000000474974513,
+        "replayed_force_n": [
+          0.0,
+          0.0,
+          1.7500001192092896
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 3.608874976634979e-08
+      },
+      "separate": {
+        "soft_point_binary32_m": [
+          0.0,
+          0.0,
+          0.0010000000474974513
+        ],
+        "penetration_binary32_m": 0.0010000000474974513,
+        "replayed_force_n": [
+          0.0,
+          0.0,
+          1.7500001192092896
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 3.608874976634979e-08
+      },
+      "original_geometry_comparison_error_n": 3.608874976634979e-08
+    },
+    {
+      "case": "transformed_face_inside",
+      "capture_origin_run": "analytic_collision_contacts_20261031_01",
+      "fused": {
+        "soft_point_binary32_m": [
+          0.10700001567602158,
+          -0.20313671231269836,
+          0.29600661993026733
+        ],
+        "penetration_binary32_m": 0.0009999871253967285,
+        "replayed_force_n": [
+          1.749977469444275,
+          0.0,
+          0.0
+        ],
+        "matches_recorded_force_exactly": true,
+        "error_from_independent_geometry_reference_n": 1.2233387941540386e-05
+      },
+      "separate": {
+        "soft_point_binary32_m": [
+          0.10700002312660217,
+          -0.20313671231269836,
+          0.29600661993026733
+        ],
+        "penetration_binary32_m": 0.0009999796748161316,
+        "replayed_force_n": [
+          1.7499644756317139,
+          0.0,
+          0.0
+        ],
+        "matches_recorded_force_exactly": false,
+        "error_from_independent_geometry_reference_n": 7.604246194947706e-07
+      },
+      "original_geometry_comparison_error_n": 1.2233387941540386e-05
+    }
+  ],
+  "source_and_input_sha256": {
+    "runs/native/analytic_force_reaction_20261031_02/edge_inside_vertices_outside_force_comparison.json": "ae2b389acf0d59955172c5a5e7bf3ecfbaede88d1fad70d5a5e4822ab214f2b7",
+    "runs/native/analytic_force_reaction_20261031_02/edge_inside_vertices_outside_capture.json": "b1fa49935713e67c6ff0ee2efa90eb2d4c3bd70ea43e588b6cb893e432d7434d",
+    "runs/native/analytic_force_reaction_20261031_02/face_inside_vertices_outside_force_comparison.json": "685696e4d78ceb7e89930d2f29c9b67c071e2d12a35fd7436c3c99910559e4f3",
+    "runs/native/analytic_force_reaction_20261031_02/face_inside_vertices_outside_capture.json": "d0ad035c4cd26045c2637e67adf0b55ee01b65241d12d57f9b80977c6b4677a1",
+    "runs/native/analytic_force_reaction_20261031_02/particle_inside_force_comparison.json": "5d5844dea927493053f3b56eefb2476bf4bbde158dde0bbdd817397a64ab658e",
+    "runs/native/analytic_force_reaction_20261031_02/particle_inside_capture.json": "7caa6f0e92d9b353e00c945bad7e5363735067fecde9f1f869c03bc785145796",
+    "runs/native/analytic_force_reaction_20261031_02/transformed_face_inside_force_comparison.json": "f947333fc547293f0783ab5d7911e805db03aec8bccf920939a19ca4ce908f41",
+    "runs/native/analytic_collision_contacts_20261031_01/transformed_face_inside_capture.json": "dae88b0514b5c56998f5628da9d4c2d6d229b7111f901dadde2b7d1aa70a316a",
+    "rl/tomato_contact_precision_audit.py": "8f797b6f5129897c06f75ea9a38142d9d8dda8244b49ea2b2881ddc92f4f0e1f",
+    "rl/tests/test_tomato_contact_precision_audit.py": "5aa6a12050d664254724332092be081cf3dac246af32037c30c148bb7e2aeb52",
+    "work/run_precision_audit.py": "07c66c2b35dd4aba95c1f1ea6883a1bb491785d4e99066c0b57270f9f6a911f1"
+  },
+  "finding": "Fused multiply-add interpolation explains the transformed-case discrepancy with the host geometric calculation. Fused and separately rounded interpolation differ by 7.450580596923828e-9 m along the contact normal.",
+  "original_gate": "The original 1e-5 N geometry-to-native force comparison remains FAILED; no threshold or native physics changed.",
+  "qualification": "This closes the arithmetic explanation, not a physical force/coupling acceptance gate.",
+  "limits": [
+    "Native interpolation intermediates were not recorded; matching the force is replay evidence, not direct observation of GPU instruction execution.",
+    "Replay uses recorded native rigid world point, axis-aligned unit normals, zero radius/margin and stationary frictionless fixtures only.",
+    "Transformed input capture came from the preceding collision run; all compared corners, weights, normals and host interpolated state match the force-run record exactly.",
+    "No general binary32 contact-error bound, translation invariance guarantee, moving-contact or real-blade qualification."
+  ],
+  "next_step": "Separate geometric accuracy and contact-law arithmetic checks in the diagnostic reference, then recheck their relationship before motion.",
+  "original_pinned_sources_unchanged": true
+}

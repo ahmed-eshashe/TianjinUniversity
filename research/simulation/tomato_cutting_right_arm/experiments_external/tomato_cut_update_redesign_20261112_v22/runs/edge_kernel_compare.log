@@ -1,0 +1,22 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_update_redesign_20261112_v22/cache/warp/1.17.0
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.72 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.44 ms  (cached)
+Module cached_gpu a1e6133 load on device 'cuda:0' took 482.70 ms  (compiled)
+Module edge_force_gpu a4372ee load on device 'cuda:0' took 167.09 ms  (compiled)
+Module gather_edges_40bba271 d3d76f3 load on device 'cuda:0' took 346.14 ms  (compiled)
+{'batch': 1, 'method': 'reference', 'samples_s': [0.01669928600313142, 0.018672610007342882, 0.017468081990955397], 'aggregate_material_control_steps_s': np.float64(57.247269649740524)}
+{'batch': 1, 'method': 'cached', 'samples_s': [0.018805963001796044, 0.018196343997260556, 0.016359830988221802], 'aggregate_material_control_steps_s': np.float64(54.95609448527403)}
+{'batch': 1, 'method': 'edge', 'samples_s': [0.01970951200928539, 0.018560241995146498, 0.018571775988675654], 'aggregate_material_control_steps_s': np.float64(53.84514656055302)}
+{'batch': 8, 'method': 'reference', 'samples_s': [0.0673577400011709, 0.06677546599530615, 0.06663063599262387], 'aggregate_material_control_steps_s': np.float64(119.80448029463912)}
+{'batch': 8, 'method': 'cached', 'samples_s': [0.0669370660034474, 0.06673003399919253, 0.06683033998706378], 'aggregate_material_control_steps_s': np.float64(119.70610955366297)}
+{'batch': 8, 'method': 'edge', 'samples_s': [0.09416253300150856, 0.09387488300853875, 0.09401562699349597], 'aggregate_material_control_steps_s': np.float64(85.09223685285258)}
+{'batch': 32, 'method': 'reference', 'samples_s': [0.3077367149962811, 0.30761268400237896, 0.3328874069993617], 'aggregate_material_control_steps_s': np.float64(103.98499249719589)}
+{'batch': 32, 'method': 'cached', 'samples_s': [0.3252897890051827, 0.3203636279940838, 0.30822020399500616], 'aggregate_material_control_steps_s': np.float64(99.8864952315715)}
+{'batch': 32, 'method': 'edge', 'samples_s': [0.4064715300046373, 0.4102686510013882, 0.4348626150022028], 'aggregate_material_control_steps_s': np.float64(77.99767279779736)}
+pass

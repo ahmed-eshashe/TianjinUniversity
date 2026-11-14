@@ -1,0 +1,44 @@
+SECTION 3 — PRECONTACT STUDY, 8 November 2026
+Verified checks: 3/5. Section incomplete. No shallow cut, live fracture, robot contact or training ran.
+
+MATERIAL CORRECTION (user-authorized separate version)
+The old elastic invariant used only diagonal squared deformation-gradient entries. The candidate uses all nine entries, Ic=tr(F^T F). Original results were retained. Independent energy-gradient, static rigid-rotation, translation, reset and numerical controls pass. This does not qualify rotation-rate objectivity of viscous damping or experimental material calibration.
+Primary reference: https://graphics.pixar.com/library/StableElasticity/paper.pdf
+
+INTACT SETTLING / BOARD SUPPORT
+Original explicit-friction hold stayed finite but failed late settling: 5.02mm/s. Independent diagnosis found unresolved stiff tangential ground friction. The same inherited friction law is now solved implicitly with material damping; independent scalar and coupled fixture controls pass. No friction coefficients were lowered, velocities clamped or physical damping added.
+Fresh 1s holds and half-step comparison PASS. Coarse/fine late maximum speeds: 0.096508/0.096520mm/s, limit1mm/s. Position difference 0.000382910mm; material-force relative difference 0.023130%; support difference 0.022313%.
+Finite board footprint, original25 fixed supports and separate load paths checked. No sampled board penetration or support drift. Important limit: inherited uncalibrated nodal ground law with1mm contact offset, not equivalence to original native board mechanics.
+Coarse cost769.36wall seconds/simulated second; refined1291.37. Speed gate remains FAILED. No training-throughput claim.
+
+MASS-CONSERVING CUT INPUT (user-authorized separate candidate)
+Native virtual-node preparation rejected: local nodal-mass assembly added9.115%mass. Separate conforming split passes independent volume, exterior coverage, support coordinate, manifold, paired-interface and static material checks.
+8752nodes,39280tetrahedra,604paired interface nodes. Mass0.1216712654796547kg, relative error2.22e-16. Exact source exterior retained. The two geometric material components are only a prepared interface, not a physical cutting/separation result.
+Live cohesive force/history/contact assembly is NOT implemented or qualified. Minimum positive cell volume4.582e-16m3 and nodal mass4.598e-13kg require explicit numerical assessment; do not delete cells or increase mass to force stability. Intact holds do not validate this split assembly.
+
+FRACTURE DEFINITION
+Legacy DiSECt stiffness loss is per invocation. A time-normalized interpretation and independent unit/refinement controls pass as a DEFINITION ONLY, anchored to the verified prism reference dt1e-4s. It is not adopted live and is not equivalent to original skin/pulp/cohesion.
+An offline preservation proposal maps original47 cohesive patch groups onto paired conforming faces using barycentric interpolation at original quadrature coordinates. Coordinate and affine kinematics checks pass; original area and0.1169639111J fracture budget retained. This is not active cohesive assembly, damage, closure/friction, calibration or native runtime qualification.
+Sources: https://github.com/NVlabs/DiSECt ; https://arxiv.org/abs/2105.12244
+
+ORIGINAL-CAD NONFRACTURING CONTACT
+Exact source blade74vertices/144triangles, closed manifold and host query/transform/wrench controls pass. New disclosed exterior-node contact adapter preserves inherited contact coefficients; not virtual-edge contact or complete surface collision coverage. Independent force law and active unilateral normal-dashpot coupled controls pass.
+The first15um vertical probe remained clear of the sloped CAD face and was rejected as force-free. Static signed-distance queries identified the placement error; one60um approach retry was prospectively frozen with the same physical stops, duration, forces and refinement limits. All first-attempt files retained in probe_clearance_miss/.
+Probe qualification: {
+  "scope": "Exact-original-CAD prescribed nonfracturing contact on intact FEM; node-collocated surface contact, NOT new cut-assembly/native robot/full separation qualification",
+  "both_loaded_and_unloaded": true,
+  "position_max_error_m": 2.337942440062409e-09,
+  "velocity_max_error_m_s": 7.219792722644417e-05,
+  "reaction_max_relative_or_floor_error": 0.10082186405980759,
+  "moment_max_relative_or_floor_error": 0.10229492317434145,
+  "peak_reaction_N": 0.0009527616681512483,
+  "late_reaction_max_N": 0.0,
+  "maximum_CAD_penetration_m": 3.543267984825828e-07,
+  "maximum_discrete_force_balance_error_N": 3.1509998331772184e-12,
+  "passed": false
+}
+No fracture, topology change, motor-work or mounted-robot feedback qualification inferred. Withdrawal is horizontal toward robot body, not upward.
+
+PRESERVATION / OPEN ITEMS
+Original checkpoint6925 and original v04 compiled kernel hashes verified unchanged. Earlier failures and rejected code variants retained. Experimental validation remains pending. Full separation, repeated slices, native robot contact feedback, loaded resets, autograd and learning remain unqualified.
+Reproduction: local v05/run.sh with this folder's scripts; see contracts and JSON evidence for frozen tolerances. Long holds are not repeated merely to regenerate the report.

@@ -1,0 +1,17 @@
+Blade and nonfracturing-coupon diagnostic — 31 October 2026
+
+Result: model construction achieved; stationary-step validation remains incomplete.
+
+The protected diagnostic is now connected to the launcher with both shared locks, resource monitoring, unchanged reserve thresholds, one-step limit, independent 60-second kill timer and owned-process-group cleanup. The original disabled worker, pinned historical sources and physical settings were preserved.
+
+First attempt stopped before physics on an installed Newton API mismatch: mesh-backed SDF settings must be attached via mesh.build_sdf(). A separate runtime adapter now uses that API. Installed texture SDFs require CUDA; only the isolated Newton diagnostic uses the GPU. The existing CPU PhysX robot was not changed or run. Resolution remains 128; the installed default 0.05 m SDF cooking padding is explicit and recorded in source. This padding is not blade thickness.
+
+Second attempt successfully built the authored blade (74 vertices, 144 triangles), its SDF, and the 4-particle synthetic nonfracturing block in 30.08 seconds. No geometry or material thresholds were loosened.
+
+The attempt then reached the fixed 60-second worker budget during first-use GPU contact-kernel compilation. Supervisor result: wall_timeout, child exit -9. Total supervision/cleanup time: 60.18 seconds. No live owned process-group members remained. Minimum available RAM: 25.74 GB. Minimum free VRAM: 7.20 GiB. No memory warning or monitor errors.
+
+No stationary step result was committed. SDF construction does not validate distance/normal accuracy, contact completeness or force accuracy. No tomato cutting, robot coupling or training ran.
+
+Next step: one bounded retry with unchanged limits, using the successfully compiled cache entries. Additional first-use compilation may still be needed; success is not assumed. No further native retry was launched this session.
+
+Full evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/blade_coupon_initial_20261031_02

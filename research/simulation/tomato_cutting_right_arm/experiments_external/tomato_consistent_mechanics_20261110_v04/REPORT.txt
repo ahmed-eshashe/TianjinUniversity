@@ -1,0 +1,35 @@
+CONSISTENT MECHANICS v04 — INTACT BLOCK REPAIR PASSES
+10 November 2026
+
+Outcome
+The approved numerical repair and revalidation are complete for the intact-block mechanics tests. The reproduced invisible-deformation mode is excluded; repeated transfer damping is removed; the selected timestep passes shared-time motion refinement. Material, mass, physical dimensions and limits remain unchanged. This is a separate mechanics candidate/reference, not a selected final cutting engine. Gate 3 is still open: persistent cuts, arbitrary tomato geometry and CAD contact have NOT been requalified for this formulation. The existing Isaac/DiSECt setup is unchanged.
+
+Diagnosis and numerical change
+An independent frozen-position test found that 100 APIC transfers removed 32.23% of energy from a non-affine but grid-representable velocity field, even with zero elapsed physical time. The old full-mass matrix also had a severely ill-conditioned boundary basis (condition number 3.43e13).
+The new candidate keeps generalized positions/velocities on a fitted quadratic reference basis and uses a consistent mass matrix. Particle motion and strain are reconstructed from the same displacement field. Velocity Verlet advances dynamics without recurring transfer filtering. A one-time mass-orthogonal projection removes only unresolved supplied velocity. The fitted basis reduces mass conditioning to about 3.8e3 without changing particle masses or softening material. Open/clamped knots describe interpolation support; they do not clamp physical boundaries.
+This is an explicitly different numerical discretization. It is not a claim that official CRESSim, APIC generally, or all particle methods failed.
+
+Measured results
+1. CPU algebra and independent energy derivative: pass. Force/energy directional-derivative error 2.38e-9 relative; objectivity, linear/angular momentum, adjoint external loads and fixed-point reactions pass.
+2. GPU tensor-product consistent-mass solve agrees with the independent CPU sparse solve: all tested state differences below 8e-14.
+3. Null mode: residual velocity ratio 1.67e-15 on the fitted basis; a fully representable field is preserved to 3.58e-18 m/s at initialization. No recurring numerical filter is used.
+4. Full 60 mm block, 64,000 particles, h=3 mm, spacing=1.5 mm, mass=0.216 kg: the initial 12.5/6.25 µs compression pair failed maximum velocity refinement. Its raw failure is preserved. One declared conservative timestep selection was then tested: 0.390625/0.1953125 µs.
+5. Selected compression pair, 20 ms, 20 shared samples: maximum position difference 1.36e-8 m (0.0000136 mm), below 0.1 mm; maximum velocity difference 0.3393 mm/s, below 5 mm/s. Final velocity difference is 0.1561 mm/s. The previous v03 pair differed by 23.129 mm/s at its final sample.
+6. Selected undamped compression: maximum mechanical energy error 0.000154% / 0.0000384%. No numerical-loss term is added to make this pass. The previous APIC pair removed about 87.7% of initial energy in its transfer accounting. The numerical bases and kinetic-state definitions differ; this is not an equivalence claim between trajectories.
+7. Localized supported load/unload: passes at both original and selected timestep pairs. At the selected pair maximum geometry/stored-gradient discrepancy is 0.00826 against 0.02. Support drift is below 1e-16 m; energy/work residual below 2.9e-15 J. The original independent reconstructed-cell volume guard runs at all 40 shared samples in each case.
+8. Continuous-basis whole-cell volume bounds: all 40 saved compression states from both selected runs pass, with determinant bounds 0.9466–1.0501. Both localized endpoints also pass. Bernstein derivative bounds plus interval determinant use a declared 1e-8 component rounding allowance; this is an engineering bound, not a formal verified-arithmetic proof.
+9. Independent analytical free-bar vibration: pass. Displacement error falls from 0.153% to 0.0376% with spatial refinement; velocity error falls from 1.079% to 0.550%, both below the 2% screen. This analytical UNIT fixture uses nu=0 for its known longitudinal solution; the project candidate remains nu=0.4. It is not an experimental tomato test.
+10. Loaded intact checkpoint/restart and fresh reset: pass. State differences below 3.2e-14. This does not qualify reset after contact or cutting.
+
+Cost and scope
+The accurate full-block compression runs took 31.21 / 62.57 wall seconds for 0.02 simulated seconds: approximately 1,560 / 3,128 wall seconds per simulated second. Backend arrays occupy 73.0 MB, excluding allocator, compiler, host arrays and renderer overhead. These are verification-harness measurements, not full cutting or robot timings, and they remain far below RL throughput needs. The smooth localized and analytical fixtures accept larger steps; that does not authorize a larger step during arbitrary cutting.
+The fitted tensor basis currently accepts intact ordered blocks only and explicitly rejects arbitrary/trimmed particle layouts. Its conditioning and topology do not automatically extend to a tomato or a moving cut front. No new physical cut or finished tomato has been produced in v04.
+
+Next action
+Keep v04 as a frozen mechanics reference and candidate, with production unchanged. Before adapting it to cutting, qualify a local cut-aware basis: preserve intact bridges, retain mass and existing x/v/F/energy when new degrees of freedom are introduced, keep fragment history attached to material, and reject rank-deficient or ill-conditioned cut configurations. Do not simply reconnect fragments through shared reference basis functions or discard material mass to stabilize a small cut cell. Then requalify CAD contact and the paid crack-front law under the unchanged stops. Speed needs a separate feasibility decision before this candidate can be called an RL backend; do not spend days running full tomato episodes on the present fine-step reference.
+The saved failure/passing cases now provide a concrete reference for that work. See NEXT_STEPS.txt for the bounded order. No further simulation is running.
+
+Preservation and evidence
+788 protected production/prior-evidence files match their frozen hashes. No package installation or production solver changes were made. Checklist/status metadata is updated separately and backed up.
+qualification.json is the aggregate result. Raw coarse failure remains mechanics_controls.json. Selected results: mechanics_selected_controls.json; localized_selected_controls.json; cpu_controls.json; gpu_equivalence.json; analytic_wave_controls.json; checkpoint_controls.json; basis_volume_controls.json; loaded_basis_volume_controls.json.
+Raw traces/snapshots are under runs/. Numerical derivation is physical_model.txt; source review is reports/sources.txt; preservation_check.json and manifest.json identify protected evidence.

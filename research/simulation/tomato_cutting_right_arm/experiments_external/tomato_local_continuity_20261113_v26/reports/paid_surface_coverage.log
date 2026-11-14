@@ -1,0 +1,23 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/cache/warp/1.17.0
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/tests/paid_surface_coverage.py", line 27, in <module>
+    row=dict(file=p.name,time=t,total_crack_face_area_m2=total,uncovered_area_m2=uncovered,overlap_area_m2=overlap,uncovered_relative=uncovered/max(total,1e-30),passed=uncovered<=1e-6*total+128*np.finfo(float).eps*.000216 and overlap<=1e-6*total+128*np.finfo(float).eps*.000216);rows.append(row);print(json.dumps(row),flush=True)
+                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

@@ -1,0 +1,73 @@
+{
+  "native_status": {
+    "native_success": true
+  },
+  "nodes": 1187,
+  "tets": 4950,
+  "finite_coordinates": true,
+  "tet_indices_valid": true,
+  "minimum_absolute_tet_volume": 3.559544299068462e-08,
+  "negative_tet_volumes": 0,
+  "zero_tet_volumes": 0,
+  "edge_coordinates_finite_in_0_1": true,
+  "surfaces": {
+    "triangles": {
+      "count": 847,
+      "indices_valid": true,
+      "zero_area_count": 0,
+      "duplicate_unoriented_triangles": 0,
+      "minimum_area": 2.1102567044905052e-05
+    },
+    "cut_triangles": {
+      "count": 1338,
+      "indices_valid": true,
+      "zero_area_count": 52,
+      "duplicate_unoriented_triangles": 63,
+      "minimum_area": 2.410437546741306e-34
+    },
+    "virtual_triangles": {
+      "count": 1086,
+      "indices_valid": true,
+      "zero_area_count": 28,
+      "duplicate_unoriented_triangles": 0,
+      "minimum_area": 2.410437546741306e-34
+    },
+    "above": {
+      "count": 543,
+      "indices_valid": true,
+      "zero_area_count": 14,
+      "duplicate_unoriented_triangles": 0,
+      "minimum_area": 2.410437546741306e-34
+    },
+    "below": {
+      "count": 543,
+      "indices_valid": true,
+      "zero_area_count": 14,
+      "duplicate_unoriented_triangles": 0,
+      "minimum_area": 2.410437546741306e-34
+    }
+  },
+  "paired_cut_faces": true,
+  "cut_surface_geometry": {
+    "above": {
+      "area_m2": 0.005000000000000001,
+      "expected_prism_section_area_m2": 0.005,
+      "edge_incidence_after_coordinate_merge_and_zero_area_exclusion": {
+        "1": 55,
+        "2": 766
+      },
+      "interpretation": "Geometric audit only; merging/excluding were not applied to simulation. Correct summed area alone does not establish full valid topology."
+    },
+    "below": {
+      "area_m2": 0.005000000000000001,
+      "expected_prism_section_area_m2": 0.005,
+      "edge_incidence_after_coordinate_merge_and_zero_area_exclusion": {
+        "1": 55,
+        "2": 766
+      },
+      "interpretation": "Geometric audit only; merging/excluding were not applied to simulation. Correct summed area alone does not establish full valid topology."
+    }
+  },
+  "solver_scope": "cut triangle arrays are referenced by visualization/model construction; dflex/sim.py does not reference them. Thus surface degeneracy does not prove material dynamics invalid; full mesh-validation contract remains unresolved.",
+  "qualified": false
+}

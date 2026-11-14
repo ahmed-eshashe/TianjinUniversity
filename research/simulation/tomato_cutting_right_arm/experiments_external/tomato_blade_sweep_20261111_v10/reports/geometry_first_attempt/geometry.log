@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/tests/geometry.py", line 88, in <module>
+    d=make();stale=d.propose(pose([.0003,.006,0]));d.commit(d.propose(pose([.0003,.0059,0])));fp=d.fingerprint();rejected=False
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/src/blade_sweep.py", line 82, in propose
+    if abs(delta[move])>.0011:raise RejectedEvent('normal sweep exceeds the declared per-action distance')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+integrated_cut.RejectedEvent: normal sweep exceeds the declared per-action distance

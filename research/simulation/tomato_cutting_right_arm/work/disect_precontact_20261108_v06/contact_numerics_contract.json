@@ -1,0 +1,9 @@
+{
+  "scope": "One corrective implicit-ground-friction route after preserved failed1s settling. Same physical box-regularized Coulomb friction (kf1000,mu.2), normal penalty, corrected bulk law, masses and supports. No lowered friction, artificial velocity zeroing, cutting or training.",
+  "equation": "Solve coupled (M+hC)v_new+h clamp(kf*v_new_t,+/-mu*Fn)=M*v_old+h(F_el+Fn+Mg), projected free DOFs, current geometry; normal penalty explicit at q_old; x_new=x_old+h*v_new.",
+  "solver": "Mass-scaled semismooth Newton with SPD PCG and Armijo line search; no split/friction projection after a mismatched bulk solve. True coupled residual <=1e-9 relative, with declared normalization floor1e-14 in mass-scaled units.",
+  "independent_fixture": "Four-node FEM test versus independent NumPy C and scipy root, plus one-node analytic regularized-Coulomb solution. Position <=1e-10m, velocity <=1e-8m/s, nonpositive friction power.",
+  "short_fullmesh": "From saved admissible but unsettled1s state,10ms at7.4626866e-6s versus half step. Same sampled classification; max position <=.1mm, velocity <=.005m/s, material and support resultant <=5% with1e-6N floor. This continuation alone cannot qualify fresh1s settling.",
+  "conditional_fresh_hold": "Only after independent fixture and short comparison pass, one fresh1s hold and one half-step comparison, same original final.1s <=1mm/s, cell/support/contact limits. Wall cap1800s per hold based on measured corrected explicit-friction444s/s with anticipated extra nonlinear solves. Stop on failed residual, physical admissibility or cost cap; no parameter sweep.",
+  "additional_dependencies": "Static conforming cut mesh has very small cells; these contact tests remain on intact validated FEM, not unqualified cut-assembly dynamics."
+}

@@ -1,0 +1,29 @@
+CONTACT COVERAGE REVIEW AND PROPOSED RECOVERY — 9 November 2026
+
+VERDICT
+The earlier Gate A verdict was too broad. Constitutive, energy-budget, irreversible-history, reset/restart and point-law reference controls pass. Full knife/material contact coverage does not pass. Reopen the contact portion of Gate A; do not continue deeper loading, separation or training with the current point-only adapter.
+
+EVIDENCE
+At40ms, coarse3.125us and independent1.5625us loading agree numerically: position3.55nm, velocity0.00983mm/s, force/moment0.8985%, no damage. That numerical agreement is a component pass, not proof of correct material contact.
+
+An exact triangle/segment audit finds36 intersecting material edges, including12 whose two endpoints lie outside the CAD knife and13 inside endpoints whose nearest-point normal opposes the entry-face normal. Independent solid-angle/distance queries along seven recorded material edges confirm interior knife crossings in BOTH saved step-size runs. Six unique edges exceed the existing0.1mm penetration allowance; the deepest verified interior point is0.439351mm inside. The existing node detector reports the endpoints outside and therefore supplies no corresponding contact there. These are real edges of positive-volume material tetrahedra, not rendering lines. See material_edge_audit_result.json and edge_crossing_verification.json. The original raw results and source manifests are preserved.
+
+The current deeper continuation was terminated by the agent once this was confirmed; contact_audit_interruption.json records owned process IDs and reason. This is a deliberate contact-gate stop, not an unexplained simulator crash. Completed40ms coarse/fine states remain intact. The interrupted80ms-prefix attempt is not qualified.
+
+EXISTING IMPLEMENTATION BASIS
+The local DiSECt implementation in work/solver_comparison_20261108/vendor/DiSECt/dflex/sim.py contains cut_edge_tri_collision and eval_spring_tri_collision. It checks oriented material edges against knife triangles, including separate edge orientation below the prepared cut. Our adapter currently evaluates point SDF at material vertices. The gap concerns contact representation, not the verified bilinear fracture formula.
+
+PROPOSED SEPARATE CANDIDATE (NOT YET ADOPTED)
+Replace point-only detection on the prepared interface with contact constraints derived from oriented material edges/knife triangle entry. Preserve exact CAD geometry and orientation; existing mesh/connectivity/masses/supports; original47 cohesive laws and energy budgets; scalar normal stiffness/damping and Brown friction coefficients; fixed mount, robot/kitchen/grip and all physical stops. Keep ordinary exterior contact where applicable, with one consistent constraint per physical sample so overlapping representations do not multiply stiffness or forces.
+
+Define a consistent signed penetration and force/energy pullback on the material endpoint or fixed embedding. Use the actual CAD entry face and material bank, not an arbitrary forced normal flip or imposed crack. Do not blindly copy legacy interpolation weights: independently verify virtual work, reaction moment and energy gradient. Retain a barrier/stop against crossing to the wrong blade side even when a point has emerged outside its opposite face. Explicitly test both material banks, interposed blade, outside-endpoint crossings, grazing/feature transitions, no-contact cases, duplicate references, rigid transformations and reset/checkpoint behaviour.
+
+FIRST VALIDATION GATE
+1. Independent CPU geometric/energy reference and a separately implemented detector/force evaluator.
+2. Demonstrate detection of the saved missed-crossing fixtures and correct two-bank contact without changing material history by hand.
+3. Verify normal-force/energy consistency, force/moment balance, zero-load and duplicate suppression, irreversible fracture and state semantics; no relaxed tolerances or manufactured separation.
+4. Re-run bounded nonfracturing coupled contact with smaller-step comparison. A new contact representation is not automatically physically qualified.
+5. Only after that passes, repeat a bounded actual-damage shallow stroke, using the user-approved two-stage horizontal retreat and whole-tetrahedron clearance checks. No full stroke or learning before the roadmap gates pass.
+
+AUTHORIZATION NEEDED
+This changes contact mapping beyond the previously approved expansion of sampled nodes. Gate A item5 of DISECT_SECTION4_EXECUTION_PLAN_20261109.md says: "If a materially different contact law or physical sampling is necessary, present the concrete change and evidence before adoption." Request a decision on building/validating this candidate. Experimental validation and speed remain pending/deferred; no production adoption proposed.

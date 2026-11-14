@@ -1,0 +1,13 @@
+Stationary analytic force and reaction check — 2026-10-31
+
+Result: comparison failed in the rotated/translated face fixture; tolerance unchanged.
+
+Six synthetic box cases were examined in each of two short attempts: particle contact/clear, edge contact, face contact/clear, transformed face contact. Each attempt evaluated four contact forces, with zero mechanical integration steps. The second attempt added evidence capture after the first stopped at the transformed comparison.
+
+The particle, edge and untransformed face comparisons passed; both clear fixtures produced zero contacts. In the transformed fixture, native force was 1.749977469 N and independent reference force was 1.749965236 N. Difference: 0.0000122334 N (about 7 parts per million), exceeding the original 0.000010 N threshold. Direction and contact Hessian agreed. Moment error was 0.0000000664 Nm, below its 0.000001 Nm threshold. The discrepancy is consistent with float32 coordinate/interpolation rounding but has not yet been isolated.
+
+Actual material rules gave stiffness 1750 N/m, damping 55, friction zero, and fixed stiffness (cold-start value -1). No damping force arises in these stationary fixtures. The body reaction and moment are reconstructed bookkeeping, not an independently measured body response.
+
+All 17 focused reference/guard tests passed. Both native attempts exited cleanly after the diagnostic rejected the comparison, took about four seconds, retained over 25 GB available RAM, and left no owned worker processes. Original pinned project sources remain unchanged.
+
+Next step: use the saved contact records to isolate translated float32 interpolation and transform rounding before proceeding to motion. This diagnostic does not qualify the real blade, robot coupling or cutting.

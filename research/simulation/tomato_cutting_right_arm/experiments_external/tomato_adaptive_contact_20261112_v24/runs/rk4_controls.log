@@ -1,0 +1,41 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.75 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.48 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.53 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.44 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.42 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.38 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.73 ms  (cached)
+Module rk4_contact_gpu 447f651 load on device 'cuda:0' took 0.34 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.72 ms  (cached)
+{
+  "checks": {
+    "cpu_gpu_position": true,
+    "cpu_gpu_velocity": true,
+    "cpu_gpu_F": true,
+    "cpu_gpu_support": true,
+    "cpu_gpu_impulse": true,
+    "cpu_gpu_work": true,
+    "cpu_gpu_friction": true,
+    "overforce_rejected": true,
+    "rejection_atomic": true,
+    "deep_penetration_rejected": true
+  },
+  "passed": true,
+  "same_operator_errors": [
+    1.5864918011715455e-10,
+    1.4936576611945807e-06,
+    5.233905570230235e-08
+  ],
+  "support_error_Ns": 4.2913173688795485e-12,
+  "impulse_error_Ns": 3.864745730703928e-11,
+  "work_error_J": -2.6729077060873745e-16,
+  "friction_error_J": 1.5052903552573598e-14,
+  "scope": "12 loaded sliding RK4 steps, independent double-precision CPU implementation and exact original-triangle queries; explicit overforce/penetration rejection and mechanics/work rollback"
+}

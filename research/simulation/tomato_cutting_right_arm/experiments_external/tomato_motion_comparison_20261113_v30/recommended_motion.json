@@ -1,0 +1,19 @@
+{
+  "status": "controller_comparison_complete",
+  "recommended_motion": "smooth_sync_2x",
+  "recommended_dt_s": 0.0001,
+  "motion": {
+    "kind": "smooth_sync",
+    "feed": 0.003,
+    "frequency": 0.8,
+    "amplitude": 0.02
+  },
+  "terminal_success_both_tested_timesteps": true,
+  "reduction_in_simulated_episode_duration_percent": 48.6194858774992,
+  "fine_peak_load_change_percent": 64.14222131913047,
+  "deformation_rms_change_percent": -16.49115741576377,
+  "physics_changed": false,
+  "existing_live_view_changed": false,
+  "decision": "Recommend synchronized smooth stroke for an exploratory demo: half the duration and less pre-separation RMS deformation, but higher calculated peak load than the old baseline. Do not claim lower cutting force or real-tomato validation. Fastest tested motion is close to the force stop; unsynchronized smooth cases rejected.",
+  "numerical_limit": "At 0.2ms versus 0.1ms, the recommended motion has the same failure bonds and terminal success, but peak load differs by 14.3% and maximum matched-time particle position by 1.74mm. This is approximate-model screening, not precise convergence qualification."
+}

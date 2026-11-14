@@ -1,0 +1,31 @@
+Ready: boost-preprocessor
+Ready: carb_sdk+plugins.manylinux_2_35_x86_64
+Ready: cxxopts
+Ready: doctest
+Ready: glm
+Ready: gsl
+Ready: imgui
+Ready: omni_client_library.manylinux_2_35_x86_64
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/seed_dependencies.py", line 27, in <module>
+    for result in pool.map(fetch,pkgs):
+                  ~~~~~~~~^^^^^^^^^^^^
+  File "/home/omen/miniconda3/lib/python3.14/concurrent/futures/_base.py", line 645, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/omen/miniconda3/lib/python3.14/concurrent/futures/_base.py", line 312, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/home/omen/miniconda3/lib/python3.14/concurrent/futures/_base.py", line 447, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/omen/miniconda3/lib/python3.14/concurrent/futures/_base.py", line 396, in __get_result
+    raise self._exception
+  File "/home/omen/miniconda3/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/home/omen/miniconda3/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/seed_dependencies.py", line 24, in fetch
+    if q.returncode:raise RuntimeError('Download failed: '+str(log))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Download failed: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/premake.fetch.log

@@ -1,0 +1,146 @@
+{
+  "updated": "2026-11-11T01:44:54.347539+08:00",
+  "version": "v10",
+  "status": "pass_motion_selected_geometric_topology_component_only",
+  "physical_blade_cut_qualified": false,
+  "physical_fracture": false,
+  "new_tomato_slice": false,
+  "production_adopted": false,
+  "production_changed": false,
+  "experimental_validation": "pending",
+  "rl_ready": false,
+  "passed_component_checks": 137,
+  "suites": {
+    "geometry_controls.json": {
+      "status": "pass_geometry_scope",
+      "checks_passed": 36,
+      "sha256": "619e5fcfc7b02af56857d03c778ecf2bfca9a3460663c3ae011011f1eddbd1dd",
+      "wall_s": 4.961760161000711
+    },
+    "gpu_motion_controls.json": {
+      "status": "pass_motion_generated_topology_scope",
+      "checks_passed": 87,
+      "sha256": "207cdf5484392922f115999279c09938d28908c66bc23b309db596d387bc9c9f",
+      "wall_s": 82.79171186599706
+    },
+    "algebra_controls.json": {
+      "status": "pass_restricted_unit_scope",
+      "checks_passed": 14,
+      "sha256": "118828e3bf004a1638cc8f32eba73d2b3fc6db6ecbefbfa5e422886d8ccd6808",
+      "wall_s": 1.4571776960001444
+    }
+  },
+  "mechanical_sources_unchanged_from_v09": [
+    "gpu_backend.py",
+    "integrated_cut.py",
+    "basis_volume_guard.py",
+    "gpu_kernels.py",
+    "continuous_volume.py",
+    "reference.py",
+    "block_basis.py"
+  ],
+  "modified_inherited_source": [
+    "multicut.py"
+  ],
+  "source_change_note": "multicut.py admits unions of swept rectangles, retaining the same support-release rule; mechanical force/mass/step implementations unchanged",
+  "blade_asset_sha256": "2af92da3d2ea59c14e3b1cdd918283937d037ba55cb89a9da44b928fe7493b23",
+  "blade_input": "Consecutive rigid CAD blade poses; finite straight-edge segment; no future trajectory or selected plane supplied to selector",
+  "primary_traversal": {
+    "wall_s": 21.2449801440016,
+    "material_sim_s": 0.014000000000000002,
+    "cut_count": 1,
+    "pieces": 2,
+    "GPU_rebuilds": 5,
+    "clearance": {
+      "clear": true,
+      "AABB_separation_margin_m": [
+        0.03337199956831655,
+        0.03337199956831634
+      ],
+      "scope": "Sufficient full-CAD-vs-material-convex-hull clearance, not a contact/penetration test"
+    },
+    "withdrawal_note": "Along-edge pose/clearance checked at fixed material state; no contact forces or physical withdrawal time integrated."
+  },
+  "halfstep_differences": {
+    "q": 2.687086664288074e-15,
+    "vg": 2.2889939943482318e-11,
+    "x": 1.815821798478723e-15,
+    "v": 3.7784810003049785e-12,
+    "F": 4.3714561321923223e-13
+  },
+  "restart_difference": {
+    "q": 0.0,
+    "vg": 0.0,
+    "x": 0.0,
+    "v": 0.0,
+    "F": 0.0
+  },
+  "short_CPU_GPU_difference": {
+    "q": 0.0,
+    "vg": 9.71445146547012e-16,
+    "x": 0.0,
+    "v": 1.6306400674181987e-16,
+    "F": 0.0
+  },
+  "auxiliary_opening": {
+    "primary": {
+      "gap_m": 0.00045054150085137393,
+      "material_work_J": 0.00018587019673250722,
+      "energy_error_J": -2.1229816949547287e-13,
+      "net_load_N": [
+        9.974659986866641e-18,
+        0.0,
+        0.0
+      ],
+      "opposed_load_per_piece_N": 0.4,
+      "wall_s": 1.20840604800469,
+      "note": "Auxiliary opening load after geometry-only split and kinematic withdrawal. Not fracture work or blade-driven physical separation."
+    },
+    "half": {
+      "gap_m": 0.00045054136537944615,
+      "material_work_J": 0.00018587019638045536,
+      "energy_error_J": -5.3133116396236746e-14,
+      "net_load_N": [
+        9.974659986866641e-18,
+        0.0,
+        0.0
+      ],
+      "opposed_load_per_piece_N": 0.4,
+      "wall_s": 2.397318491995975,
+      "note": "Auxiliary opening load after geometry-only split and kinematic withdrawal. Not fracture work or blade-driven physical separation."
+    }
+  },
+  "opening_halfstep_difference": {
+    "q": 4.48912307988384e-10,
+    "vg": 4.137480052196496e-05,
+    "x": 2.2206218201065164e-11,
+    "v": 1.5286075207843197e-06,
+    "F": 4.671653797139186e-08
+  },
+  "independence": {
+    "neighbor_velocity_difference_m_s": 0.0,
+    "nominal_probe_velocity_m_s": 0.011022927689594795,
+    "gap_before_probe_m": 0.00045054150085137393
+  },
+  "runtime_wall_s_per_sim_s": 1517.4985817144,
+  "timing_scope": "Single short 12 mm block geometry diagnostic, not a repeated tomato throughput benchmark",
+  "first_release_coverage_depth_m": 0.003,
+  "physical_contact_limits_exercised": false,
+  "restrictions": [
+    "Only affine-certified material maps",
+    "Reference-axis rectangular finite-edge sweeps",
+    "One unfinished incision per connected fragment",
+    "Maximum four started cuts",
+    "Geometry-only cut selection; no reaction/fracture-work law",
+    "Full-CAD withdrawal clearance is a fixed-state pose query",
+    "No tomato, board or robot integration",
+    "3 mm first support activation not a 0.1 mm crack-front resolution proof"
+  ],
+  "preservation": {
+    "protected_files": 1153,
+    "unchanged": true,
+    "evidence": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/preservation_check.json"
+  },
+  "report": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/REPORT.txt",
+  "next_proposal": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/NEXT_STEPS.txt"
+}

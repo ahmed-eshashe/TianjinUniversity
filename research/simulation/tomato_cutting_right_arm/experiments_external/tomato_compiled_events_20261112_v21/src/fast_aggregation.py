@@ -1,0 +1,99 @@
+"""Same-fragment affine extension with exact reduced local inertia.
+
+This is an isolated adaptation of aggregation principles, not AgMPM software.
+"""
+import numpy as np
+from scipy.sparse import coo_matrix,csr_matrix,diags,kron
+from scipy.sparse.csgraph import connected_components
+from scipy.linalg import cho_factor,cho_solve,eigvalsh
+from reference_v17 import compatible
+
+def full_region(body,i):
+ p=body.polys[i];corners=body.grid[body.ids[i]]
+ if len(p)!=4:return False
+ # Roundoff tolerance only; never a material-volume/mass cutoff.
+ return np.max(np.min(np.linalg.norm(p[:,None,:]-corners[None,:,:],axis=2),axis=1))<1e-14
+
+def extension(body,max_root_distance_cells=3.5,support_threshold=1e-8):
+ pcomp,ncomp=body.components();full=np.zeros(len(body.X),bool);four=np.array([i for i,p in enumerate(body.polys) if len(p)==4],int)
+ if len(four):
+  pp=np.stack([body.polys[i] for i in four]);cc=body.grid[body.ids[four]]
+  full[four]=np.max(np.min(np.linalg.norm(pp[:,:,None,:]-cc[:,None,:,:],axis=3),axis=2),axis=1)<1e-14
+ roots=np.flatnonzero(full);root_code=body.codes[roots];allow_cache={}
+ support=body.mass/(body.rho*body.config['h']**3)
+ # Retain well-supported cut nodes; only the support selector changes from v18.
+ stable=np.union1d(np.unique(body.ids[full]),np.flatnonzero(support>=support_threshold));stable_set=set(stable.tolist());incident=[set() for _ in range(len(body.u))]
+ for ids,code in zip(body.ids,body.codes):
+  for a in ids:incident[a].add(int(code))
+ chosen={};unresolved=[];root_distances=[]
+ for a in range(len(body.u)):
+  if a in stable_set:continue
+  key=(int(ncomp[a]),tuple(sorted(incident[a])))
+  if key not in allow_cache:
+   good_codes=np.array([c for c in np.unique(root_code) if all(compatible(k,int(c)) for k in key[1])],int)
+   allow_cache[key]=roots[(pcomp[roots]==ncomp[a]) & np.isin(root_code,good_codes)]
+  allowed=allow_cache[key]
+  if not len(allowed):unresolved.append(a);continue
+  dist=np.linalg.norm(body.X[allowed]-body.grid[a],axis=1);idx=int(np.argmin(dist));r=allowed[idx]
+  if dist[idx]>max_root_distance_cells*body.config['h']:unresolved.append(a);continue
+  # Root nodes already have full material support. Never chain extensions.
+  coefficients=np.r_[1.,body.grid[a]]@body.inv[r];chosen[a]=(r,coefficients);root_distances.append(float(dist[idx]))
+ masters=np.array(sorted(stable_set|set(unresolved)),int);col={a:i for i,a in enumerate(masters)};rows=[];cols=[];vals=[]
+ for a in range(len(body.u)):
+  if a in col:rows.append(a);cols.append(col[a]);vals.append(1.)
+  else:
+   r,coef=chosen[a]
+   for b,w in zip(body.ids[r],coef):
+    if w!=0:rows.append(a);cols.append(col[int(b)]);vals.append(float(w))
+ E=coo_matrix((vals,(rows,cols)),shape=(len(body.u),len(masters))).tocsr();affine=np.c_[np.ones(len(body.u)),body.grid];err=float(np.max(abs(E@affine[masters]-affine)))
+ if err>1e-10:raise ValueError(('affine extension failed',err))
+ for a,r in zip(rows,cols):
+  if ncomp[a]!=ncomp[masters[r]]:raise ValueError('cross-fragment aggregation forbidden')
+ report={'support_threshold':support_threshold,'minimum_support_fraction':float(support.min()),'full_regions':int(full.sum()),'original_nodes':len(body.u),'reduced_nodes':len(masters),'aggregated_nodes':len(chosen),'aggregated_original_inertia_fraction':float(body.mass[list(chosen)].sum()/body.mass.sum()) if chosen else 0.,'unresolved_nodes':unresolved,'max_root_distance_m':max(root_distances,default=0.),'affine_error':err,'no_cross_fragment_entries':True,'root_for_node':{str(a):int(r) for a,(r,w) in chosen.items()}}
+ return E,masters,report
+
+def strain_matrix(b):
+ B=np.zeros((6*len(b.X),3*len(b.u)))
+ for p in range(len(b.X)):
+  for k,a in enumerate(b.ids[p]):
+   x,y,z=b.G[p,k];j=3*a;r=6*p;B[r,j]+=x;B[r+1,j+1]+=y;B[r+2,j+2]+=z;B[r+3,j]+=y;B[r+3,j+1]+=x;B[r+4,j]+=z;B[r+4,j+2]+=x;B[r+5,j+1]+=z;B[r+5,j+2]+=y
+ return B*np.repeat(np.sqrt(b.V),6)[:,None]
+
+def vertex_fields(b):
+ vertices=np.concatenate(b.polys);region=np.repeat(np.arange(len(b.polys)),[len(p) for p in b.polys]);N=np.einsum('vi,vij->vj',np.c_[np.ones(len(vertices)),vertices],b.inv[region]);ids=b.ids[region]
+ return vertices+np.einsum('vi,vij->vj',N,b.u[ids]),np.einsum('vi,vij->vj',N,b.v[ids])
+
+class Aggregate:
+ def __init__(self,body,support_threshold=1e-8):
+  self.body=body.clone();self.E,self.masters,self.report=extension(self.body,support_threshold=support_threshold);self.M=(self.E.T@diags(body.mass)@self.E).tocsr();n=len(self.masters);nc,labels=connected_components(self.M,directed=False);self.blocks=[];self.factors=[]
+  order=np.argsort(labels,kind='stable');bounds=np.r_[0,np.cumsum(np.bincount(labels))];diagonal=self.M.diagonal()
+  for c in range(nc):
+   ids=order[bounds[c]:bounds[c+1]]
+   if len(ids)==1:
+    if diagonal[ids[0]]<=0:raise ValueError('nonpositive singleton mass')
+    factor=(np.array([[np.sqrt(diagonal[ids[0]])]]),True)
+   else:factor=cho_factor(self.M[ids][:,ids].toarray(),lower=True,check_finite=True)
+   self.blocks.append(ids);self.factors.append(factor)
+  self.singletons=np.array([ids[0] for ids in self.blocks if len(ids)==1],int)
+  self.single_mass=self.M.diagonal()[self.singletons]
+  self.coupled=[(ids,factor) for ids,factor in zip(self.blocks,self.factors) if len(ids)>1]
+  self.report['mass_block_sizes']=sorted([len(x) for x in self.blocks],reverse=True);self.report['max_mass_block']=max(map(len,self.blocks));self.report['mass_total_kg']=float(np.ones(n)@(self.M@np.ones(n)));self.report['mass_relative_error']=abs(self.report['mass_total_kg']-body.mass.sum())/body.mass.sum()
+  self.q=self.solve(self.E.T@(body.mass[:,None]*body.u));self.v=self.solve(self.E.T@(body.mass[:,None]*body.v));before=body.metrics();x0,v0=vertex_fields(body);self.sync();after=self.body.metrics();x1,v1=vertex_fields(self.body)
+  self.transfer={'position_m':float(np.max(np.linalg.norm(x1-x0,axis=1))),'velocity_m_s':float(np.max(np.linalg.norm(v1-v0,axis=1))),'F':float(np.max(abs(self.body.fields()[2]-body.fields()[2]))),'elastic_change_J':after['U']-before['U'],'kinetic_change_J':after['T']-before['T'],'energy_relative':abs(after['U']+after['T']-before['U']-before['T'])/max(before['U']+before['T'],1e-10),'linear_momentum_abs':float(np.linalg.norm(after['momentum']-before['momentum'])),'angular_momentum_abs':float(np.linalg.norm(after['angular']-before['angular'])),'angular_relative':float(np.linalg.norm(after['angular']-before['angular'])/max(np.linalg.norm(before['angular']),1e-12))}
+  self.report['transfer']=self.transfer
+ def solve(self,rhs):
+  out=np.empty_like(rhs)
+  if len(self.singletons):out[self.singletons]=rhs[self.singletons]/self.single_mass[:,None]
+  for ids,factor in self.coupled:out[ids]=cho_solve(factor,rhs[ids],check_finite=False)
+  return out
+ def sync(self):self.body.u=np.asarray(self.E@self.q);self.body.v=np.asarray(self.E@self.v)
+ def energy_force(self,q=None):
+  u=self.E@(self.q if q is None else q);U,f=self.body.energy_force(u);return U,np.asarray(self.E.T@f)
+ def metrics(self):
+  self.sync();m=self.body.metrics();m['reduced_T']=float(.5*np.sum(self.v*(self.M@self.v)));return m
+ def step(self,dt,external=None):
+  ext=np.zeros_like(self.q) if external is None else self.E.T@external;_,f=self.energy_force();vh=self.v+.5*dt*self.solve(f+ext);q=self.q+dt*vh;_,f=self.energy_force(q);v=vh+.5*dt*self.solve(f+ext)
+  if not np.isfinite(q).all() or not np.isfinite(v).all():raise ValueError('nonfinite aggregate state')
+  self.q,self.v=q,v;self.body.time+=dt;self.body.steps+=1;self.sync()
+ def audit(self):
+  B=strain_matrix(self.body)@kron(self.E,np.eye(3));s=np.linalg.svd(B,compute_uv=False);rank=int(np.sum(s>s[0]*1e-9));nc=len(np.unique(self.body.components()[0]));C=np.eye(6)*self.body.mu;C[:3,:3]=self.body.lam;C[:3,:3]+=np.eye(3)*2*self.body.mu;CB=np.einsum('ij,pjk->pik',C,B.reshape(-1,6,B.shape[1])).reshape(B.shape);K=B.T@CB;M=kron(self.M,np.eye(3)).toarray();eigs=eigvalsh(K,M,check_finite=True);return {'rank':rank,'expected_rank':3*len(self.masters)-6*nc,'components':nc,'linearized_stability_dt_s':float(2/np.sqrt(eigs[-1])),'min_mass_eigenvalue':float(np.linalg.eigvalsh(self.M.toarray())[0]),'max_mass_block':self.report['max_mass_block'],'nodes':len(self.masters)}

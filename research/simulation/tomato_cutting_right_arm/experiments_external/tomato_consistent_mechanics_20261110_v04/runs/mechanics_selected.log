@@ -1,0 +1,66 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp/1.17.0
+Module consistent_kernels b146b7a load on device 'cuda:0' took 0.70 ms  (cached)
+{
+  "status": "pass",
+  "checks": {
+    "compression_mass": true,
+    "compression_momentum": true,
+    "compression_angular": true,
+    "compression_energy": true,
+    "compression_half_mass": true,
+    "compression_half_momentum": true,
+    "compression_half_angular": true,
+    "compression_half_energy": true,
+    "compression_refinement": true
+  },
+  "results": {
+    "compression": {
+      "dt": 3.90625e-07,
+      "wall_s": 31.20746276799764,
+      "sim_s": 0.02,
+      "mass": 0.216,
+      "initial_energy": 0.00233244788171996,
+      "max_energy_error": 3.585795195059499e-09,
+      "energy_relative_error": 1.5373527628044205e-06,
+      "momentum_error": 3.388066288285958e-17,
+      "angular_error": 2.248897911958108e-19,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      }
+    },
+    "compression_half": {
+      "dt": 1.953125e-07,
+      "wall_s": 62.56757369499974,
+      "sim_s": 0.02,
+      "mass": 0.216,
+      "initial_energy": 0.00233244788171996,
+      "max_energy_error": 8.965046478619232e-10,
+      "energy_relative_error": 3.843621351148201e-07,
+      "momentum_error": 7.395218328354268e-17,
+      "angular_error": 2.9840992820013063e-19,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      }
+    },
+    "compression_refinement": {
+      "max_shared_time_position_m": 1.3606232738247368e-08,
+      "max_shared_time_velocity_m_s": 0.00033929404552206715,
+      "samples": 20,
+      "final_position_m": 1.3606232738247368e-08,
+      "final_velocity_m_s": 0.00015614574565685929
+    }
+  },
+  "wall_s": 97.34421410000141,
+  "scope": "Intact block mechanics only. Persistent cuts and CAD contact are not requalified."
+}

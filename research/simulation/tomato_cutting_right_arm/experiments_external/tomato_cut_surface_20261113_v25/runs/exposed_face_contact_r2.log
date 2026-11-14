@@ -1,0 +1,50 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.53 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.41 ms  (cached)
+Module exact_cad_gpu 0dcc85b load on device 'cuda:0' took 0.56 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.51 ms  (cached)
+Module parallel_partition_gpu 13af12f load on device 'cuda:0' took 1.61 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.43 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.40 ms  (cached)
+Module contact_gpu b352c7c load on device 'cuda:0' took 0.80 ms  (cached)
+Module rk4_contact_gpu 447f651 load on device 'cuda:0' took 0.36 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/tests/exposed_face_contact.py", line 14, in <module>
+    g.checked_step(20);q,v=g.state();obs=g.observe();m=g.aggregates[0].metrics();res=m['U']+m['T']+obs['contact_energy']-E0-obs['tool_work_J']+obs['friction_J'];worst_energy=max(worst_energy,abs(res));max_idle=max(max_idle,float(np.max(abs(q[right_nodes]-q0[right_nodes]))),float(np.max(abs(v[right_nodes]))));max_imp=max(max_imp,float(np.linalg.norm(m['momentum']-obs['material_impulse']-obs['support_impulse'])));row={k:v.tolist() if isinstance(v,np.ndarray) else v for k,v in obs.items()};row.update(certificate=g.last_certificate,energy_residual_J=res,t=(frame+1)*.00025);rows.append(row);states.append((q.copy(),v.copy()));(out/'progress.json').write_text(json.dumps(row,indent=2))
+    ^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/contact_gpu.py", line 159, in checked_step
+    result=self.finish();self.last_cost={'GPU_step_host_read_s':t1-t0,'whole_volume_certificate_s':t2-t1,'accepted_state_transfer_s':time.perf_counter()-t2};return result
+           ^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/contact_gpu.py", line 122, in finish
+    try:return super().finish()
+               ^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25/src/pipeline_gpu.py", line 49, in finish
+    raise ValueError(('pipeline mechanics rejected; state rolled back',int(self.bad_view[0])))
+ValueError: ('pipeline mechanics rejected; state rolled back', 4)
+{
+  "checks": {
+    "initial_whole_volume_clear": true,
+    "complete_cycle": false,
+    "positive_contact": false,
+    "force_stop": true,
+    "volume_bounds": true,
+    "independent_other_fragment": true,
+    "energy": true,
+    "impulse": true,
+    "history_preserved": true
+  },
+  "passed": false,
+  "status": "stopped",
+  "wall_s": 1.489583357993979,
+  "energy_relative": 7.440981206058127e-08,
+  "unloaded_fragment_max_motion_or_velocity": 1.4975666973865431e-10,
+  "impulse_residual_Ns": 7.254110304444912e-19,
+  "physical_cut": false,
+  "scope": "Pre-separated geometric fixture only: one newly exposed face loaded by original CAD broad side; not a fracture qualification."
+}

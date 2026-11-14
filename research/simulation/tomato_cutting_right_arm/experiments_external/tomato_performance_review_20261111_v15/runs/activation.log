@@ -1,0 +1,119 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/cache/warp/1.17.0
+Module gpu_kernels 352560d load on device 'cuda:0' took 1.40 ms  (cached)
+{
+  "status": "completed",
+  "simulated_interval_s": 5e-05,
+  "action_wall_s": 11.24130636400514,
+  "summary": {
+    "checkpoint_read": {
+      "calls": 1,
+      "inclusive_s": 0.19273052800417645,
+      "exclusive_s": 0.19273052800417645
+    },
+    "GPU_constructor": {
+      "calls": 20,
+      "inclusive_s": 2.52314665101585,
+      "exclusive_s": 2.52314665101585
+    },
+    "graph_lookup_capture": {
+      "calls": 34,
+      "inclusive_s": 0.23188820298673818,
+      "exclusive_s": 0.23188820298673818
+    },
+    "GPU_checked_chunk": {
+      "calls": 20,
+      "inclusive_s": 7.924750452984881,
+      "exclusive_s": 7.692862249998143
+    },
+    "GPU_export": {
+      "calls": 20,
+      "inclusive_s": 0.011238184000831097,
+      "exclusive_s": 0.011238184000831097
+    },
+    "continuous_volume_check": {
+      "calls": 22,
+      "inclusive_s": 0.037567920015135314,
+      "exclusive_s": 0.037567920015135314
+    },
+    "propagate": {
+      "calls": 20,
+      "inclusive_s": 10.865752369012625,
+      "exclusive_s": 0.0022857129952171817
+    },
+    "coverage_preview": {
+      "calls": 20,
+      "inclusive_s": 0.16024546798144002,
+      "exclusive_s": 0.16024546798144002
+    },
+    "trial_total": {
+      "calls": 20,
+      "inclusive_s": 11.033666589006316,
+      "exclusive_s": 0.007668752012250479
+    },
+    "CPU_fractional_mechanics": {
+      "calls": 10,
+      "inclusive_s": 0.37111048200313235,
+      "exclusive_s": 0.37111048200313235
+    },
+    "coverage_and_topology_commit_proposal": {
+      "calls": 3,
+      "inclusive_s": 0.16188455899828114,
+      "exclusive_s": 0.15968810799677158
+    },
+    "accepted_geometry_commit": {
+      "calls": 3,
+      "inclusive_s": 0.0003110739999101497,
+      "exclusive_s": 0.0003110739999101497
+    },
+    "action_total": {
+      "calls": 1,
+      "inclusive_s": 11.241298148997885,
+      "exclusive_s": 0.04543592699337751
+    },
+    "checkpoint_write": {
+      "calls": 1,
+      "inclusive_s": 0.0036245299997972324,
+      "exclusive_s": 0.0036245299997972324
+    },
+    "checkpoint_write_verified": {
+      "calls": 1,
+      "inclusive_s": 0.0036411110049812123,
+      "exclusive_s": 1.658100518397987e-05
+    }
+  },
+  "trial_groups": {
+    "accepted": {
+      "trials": 3,
+      "trial_wall_s": 3.279926457005786,
+      "GPU_microsteps": 2046,
+      "GPU_chunk_excluding_graph_s": 2.6130389040117734,
+      "GPU_setup_s": 0.425787644002412,
+      "geometry_preview_s": 0.021445403996040113
+    },
+    "discarded": {
+      "trials": 17,
+      "trial_wall_s": 7.75374013200053,
+      "GPU_microsteps": 4869,
+      "GPU_chunk_excluding_graph_s": 5.0798233459863695,
+      "GPU_setup_s": 2.097359007013438,
+      "geometry_preview_s": 0.1388000639853999
+    }
+  },
+  "checks": {
+    "exact_final_fingerprint": true,
+    "same_activations": true,
+    "fields_identical": true
+  },
+  "field_difference": {
+    "q": 0.0,
+    "vg": 0.0
+  },
+  "peak_RSS_bytes": 662069248,
+  "note": "Exact saved-case replay with timed wrappers. Categories are nested; exclusive times sum without double counting. Accepted/discarded trial wall sums include their cloning, propagation and preview. Actual commit plus diagnostics sit outside those trials. No mechanics changed."
+}

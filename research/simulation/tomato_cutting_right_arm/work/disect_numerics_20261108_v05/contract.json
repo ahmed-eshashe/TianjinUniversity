@@ -1,0 +1,58 @@
+{
+  "scope": "Section 2 only: isolated intact-bulk DiSECt numerical implementation; no contact qualification, fracture, robot coupling or training",
+  "preserved": "v04 and production checkpoint 6925, mesh connectivity and original double coordinates, physical masses, coefficients, 25 supports, gravity and ground constants",
+  "precision_route": "Float64 positions, velocities, force evaluation and rest geometry. This is a separate forward-only numerical adapter, not an installed replacement or proof of autograd support.",
+  "references": "Independent NumPy float64 constitutive forces; analytic translation/free fall and damped oscillator; refined explicit float64 intact FEM trajectory",
+  "controls": {
+    "translation_position_error_m": 1e-10,
+    "freefall_position_error_m": 1e-05,
+    "motion_velocity_error_m_s": 1e-08,
+    "oscillator_position_error_m": 1e-05,
+    "oscillator_velocity_error_m_s": 0.0001,
+    "reset": "fresh versus reset positions and velocities <=1e-12, including solver guess/state",
+    "force_relative_error": 0.001,
+    "force_absolute_floor_N": 1e-10,
+    "small_affine_strain_rates_s_inv": [
+      1e-06,
+      0.0001,
+      0.01,
+      1.0
+    ],
+    "reference_refinement_position_m": 1e-05,
+    "reference_refinement_force_relative": 0.01
+  },
+  "one_accelerated_route": "IMEX Euler: exact nonlinear elastic force explicit; corrected geometry-dependent linear viscous force implicit at current geometry; mass-weighted projected PCG enforcing fixed supports. No frozen rest damping approximation.",
+  "comparison": {
+    "duration_s": 0.02,
+    "reference_dt_s": 1.5e-07,
+    "reference_refined_dt_s": 7.5e-08,
+    "candidate_dt_s": 1.5e-05,
+    "candidate_one_refinement_if_needed_s": 7.5e-06,
+    "position_max_error_m": 0.0001,
+    "velocity_max_error_m_s": 0.005,
+    "force_global_relative_error": 0.05,
+    "force_global_absolute_floor_N": 1e-06,
+    "force_measurement": "same common sampled times; total material force and resultant fixed-support reaction at matched states; report near-zero absolute error separately",
+    "volume_ratio_min": 0.1,
+    "board_penetration_max_m": 0.0001,
+    "fixed_position_max_error_m": 1e-07,
+    "classification": "Identical finite/cell/support/ground outcomes. Fracture and separation explicitly NOT TESTED, not an inferred pass.",
+    "pcg_relative_residual_max": 1e-09,
+    "practical_short_bulk_budget_wall_s_per_sim_s": 120,
+    "timing": "setup/compile, material force, damping linear solve, state integration, ground handling, output, total; no robot stepping in isolated bulk adapter",
+    "memory": "CPU peak RSS, torch peak GPU allocated/reserved; distinguish from process-wide memory",
+    "stop": "One bounded candidate and one dt refinement if necessary; stop on failed stability, residual, comparison or explicit cost blocker. No sweeps."
+  },
+  "research_basis": "https://www.cs.cmu.edu/~baraff/papers/sig98.pdf (implicit treatment of stiff forces and constrained linear solves; this adapter is a narrower IMEX implementation, not that cloth model)",
+  "settling": "One-second settling belongs to section 3 and is not claimed by a 20ms numerical comparison.",
+  "execution_optimization_addendum": {
+    "reason": "Adaptive Python PCG candidate passes trajectory accuracy but costs 272 wall s/s, above the predeclared 120 budget. Same IMEX method; remove CPU dispatch through CUDA graph replay.",
+    "prospective": "80 PCG iterations per interval (observed adaptive max64), monitor TRUE residual over every step on GPU, same 1e-9 cap; require equivalent 20ms trajectory to adaptive candidate within 1e-10m/1e-8m_s and same original reference acceptance. No dt or physics change."
+  },
+  "algebraic_optimization_addendum": {
+    "scope": "One exact damping matvec reorganization within same IMEX route. Assemble constant deviatoric scalar CSR; gather current-geometry volumetric rank-one forces. Double precision retained, no frozen J, no approximated operator.",
+    "controls": "Independent force comparison at deformed state, translation nullspace and adaptive/gathered/graph trajectory plus allocation/reset checks required. Original accuracy and cost gates unchanged.",
+    "exit": "After this bounded algebraic optimization report cost pass or blocker; do not open another solver or integrator branch.",
+    "fused_execution": "Fuse PCG dot/vector operations into CUDA kernels; same double equations and 64-iteration cap, true residual <=1e-9 each step. Validate against adaptive trajectory and independent NumPy fixture before acceptance. This completes the one matvec/execution optimization; retain original 120 wall-s/s budget."
+  }
+}

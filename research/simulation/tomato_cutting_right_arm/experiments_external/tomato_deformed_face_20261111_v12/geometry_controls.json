@@ -1,0 +1,67 @@
+{
+  "status": "pass_finite_face_geometry",
+  "checks": {
+    "CAD_face_is_original": true,
+    "independent_static_crossing": true,
+    "front_is_shallow": true,
+    "independent_curved_field_crossing": true,
+    "curved_field_carried": true,
+    "curved_field_conservative_bounds": true,
+    "checkpoint": true,
+    "reverse_reentry_no_extra_area": true,
+    "disjoint_stroke_gap_not_filled": true,
+    "disjoint_bridge": true,
+    "large_step_rejected": true,
+    "sideways_accuracy_rejected": true,
+    "excess_curvature_rejected": true,
+    "near_miss": true,
+    "held_no_cut": true,
+    "finite_edge_retained": true
+  },
+  "results": {
+    "static": {
+      "crossing_fraction_range": [
+        0.6678603297770277,
+        0.9994256093153238
+      ],
+      "normal_offset_max_m": 7.589415207398531e-19
+    },
+    "curved_field": {
+      "chart": {
+        "axis": 0,
+        "plane": 0.00029985879482362685,
+        "rectangle": [
+          0.005955847815778942,
+          0.006,
+          -0.006,
+          0.006
+        ],
+        "front": 0.005955847815778942,
+        "stroke": {
+          "move": 1,
+          "sign": 1,
+          "start_bound": 0.006,
+          "edge_interval": [
+            -0.006,
+            0.006
+          ],
+          "segments": 1
+        },
+        "normal_offset_bound_m": 4.149798625195872e-07,
+        "front_spread_bound_m": 3.3732234597932953e-07,
+        "CAD_minimum_edge_halfwidth_m": 0.0004078506926525744,
+        "inside_actual_edge_face": true,
+        "temporal_scope": "monotone linear interpolation of endpoint coefficient fields; action subdivision required, not continuous contact proof"
+      },
+      "sample_crossing": {
+        "crossing_fraction_range": [
+          0.6958766390306509,
+          0.9993585484630212
+        ],
+        "normal_offset_max_m": 4.0838669020281556e-07
+      }
+    }
+  },
+  "wall_s": 1.5939305489955586,
+  "physical_fracture": false
+}

@@ -1,0 +1,28 @@
+FIXED-MOUNT ROBOT & SCENE CHECKS — 1 November 2026
+
+Result: checklist 19–22 complete within the bounded diagnostic scope below. First controlled cutting has not begun.
+
+The original knife is referenced into the robot articulation and connected to the right hand base by an ideal fixed joint. The source knife instance is deactivated only in the derived scene, leaving one active knife. There are still 36 actuator joints; the fixed connection adds no control degree of freedom. Only the directly connected hand-base pair is excluded by this mount; the other source collision settings and robot self-collision remain enabled.
+
+The mount is an ideal, massless rigid bracket with a 150 mm vertical palm-to-handle offset. Knife mass/inertia remain the existing provisional 0.25 kg configuration. This is neither a finger grasp nor a designed hardware bracket.
+
+FINAL NATIVE RESULT
+- 3,851 PhysX steps, 30 Newton steps; two 8.02 s commanded dry-motion cycles plus collision controls.
+- Dry route is laterally offset 90 mm from the intended cutting plane. Minimum measured blade/target AABB separation: 34.405 mm.
+- Minimum measured blade/board clearance: 6.013 mm. The plan's 12 mm clearance reduces under gravity/tracking deflection.
+- Mount relative position error: at most 1.64e-07 m. Maximum joint speed: 0.1822 rad/s. Right-arm tracking error: at most 0.02045 rad.
+- Native monitored forbidden rigid contact forces during the dry routes: zero. Explicit gate: 0.1 N.
+- Contact reporting is explicitly enabled after simulator initialization. A separate probe/floor impact measures 0.239481 N, then 0 N on both clearing steps after reset. Static floor filtering uses its actual collider path.
+- Robot reset clears joint velocities and both deliberately contaminated wrench queues. Joint and tool-pose replay differences are exactly zero.
+- Authored 25-node target fixture holds a 0.001 N tensile probe, with exact replay. A separate 5 ms, 9.81 m/s² gravity probe applies 1.1936 N total weight, holds the constrained nodes and leaves the target above the board. Gravity replay is exact.
+- A deliberate shifted-target reset challenge generates 11,439 blade contacts; restoring both target state buffers, forces and material/eligibility history clears the generated contact count to zero.
+- Final guarded process exits normally in 27.83 s, with no owned processes left and no memory warning.
+- All frozen original input/source hashes and 13 pinned installed-dependency hashes remain unchanged. 13 focused guard tests pass.
+
+SCOPE LIMITS
+The dry motion uses rest-state target geometry; Newton gravity support is checked separately for only 5 ms. Long-term settling/support, board contact in Newton, loaded cutting/force feedback, fracture and post-cut reset are later tests. The deliberate contact-reset challenge does not integrate contact forces. No training or physical grasp is claimed. Material calibration and independent experimental validation remain pending.
+
+Historical diagnostics 01/02 predate the completed collision positive control and are not final qualification. 03 stopped on a settings-reader API mismatch. 04/05 exposed control filtering/impulse issues. All remain preserved; only run 06 is final.
+
+Reproduce with the existing guarded fixed_mount mode using a fresh output directory. Fixed scene and plan: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/fixed_mount_scene_20261101_01
+Final evidence: /home/omen/Documents/Codex/2026-10-31/tomato-project-handoff/outputs/fixed-mount-robot-scene-20261101-evidence

@@ -1,0 +1,44 @@
+ISOLATED APIC REPAIR v03 — IMPLEMENTED; PHYSICAL REVALIDATION FAILED
+10 November 2026
+
+Decision
+The approved single repair attempt is complete. Stop this candidate before further cutting. The original unresolved-velocity mode is removed in the independent control, and localized deformation now agrees with the stored strain within the declared screens. However, the repaired mechanics still fail timestep consistency. Gate 3 remains unqualified. No v03 physical cut, complete slice, robot integration or RL suitability is claimed.
+
+What changed
+A separate current-spatial-grid APIC backend replaces fixed-reference pure FLIP. Position and constitutive strain use the same grid motion; external contact impulses use its adjoint instead of direct particle kicks. Affine momentum is included in diagnostics and snapshots. Numerical transfer and support losses are logged separately from material/fracture work. Proposed persistent-history keys include both local cut-side codes and reference-connected fragment IDs; that extension has only CPU/GPU consistency coverage, not full moving-fragment qualification.
+
+Existing material/constants/stops retained: E=100 kPa, nu=0.4, rho=1000 kg/m³, synthetic Gc=80 J/m², existing blade CAD/contact parameters, 2 N force stop, 0.1 mm whole-material penetration limit, and reconstructed/stored admissible volume ratios 0.1–10. The CAD and guards are preserved but were not reached in a new integrated cutting run. This is our isolated prototype, not an official CRESSim release or a calibrated tomato.
+
+Verified results
+• Independent null-mode fixture: old update moved material 0.25 µm while strain was effectively unchanged. APIC particle motion is zero to recorded precision; residual mode velocity is 5.87e-16 of its initial value. Removed energy is explicitly accounted for.
+• CPU/GPU float64 agreement passes intact, partial-code and supported five-step cases, including the fragment-key extension. These are algebra/component controls.
+• Rest, translation, rotation/affine controls, mass and linear/angular momentum checks pass in their tested scopes. Internal force agrees with an independent energy derivative.
+• Localized 512-particle load/unload at 0.78125 / 0.390625 µs passes reconstructed-volume/strain consistency and energy accounting. Maximum deformation-gradient differences are 0.000822 / 0.000563; the declared limit is 0.02. These small localized tests do not certify knife contact.
+• The 64,000-particle, 60 mm elastic compression/release test still fails. At shared t=0.02 s the final maximum velocity difference is 23.129 mm/s against the predeclared 5 mm/s screen. RMS difference is 9.216 mm/s; 75.55% of samples exceed 5 mm/s. Position difference is 0.03178 mm, within 0.1 mm. A position pass does not erase the velocity failure.
+• At the initial 12.5 / 6.25 µs pair, velocity disagreement was 25.939 mm/s. One prospectively declared 16× timestep reduction did not resolve it. No further timestep search was made.
+• The refined compression tests record 87.64% / 87.74% of initial elastic energy as numerical loss within 20 ms. Accounted-energy residuals are only 0.304% / 0.186%, but an accurately balanced dissipative ledger does not establish accurate elastic motion. No physical viscosity was introduced or calibrated. Damping is a substantial limitation, not fracture work.
+
+Gate disposition
+v01 Gates 0–2 remain historical component evidence only.
+v02 Gate 3 failure is preserved.
+v03 freeze/formulation/null-mode controls: pass within component scope.
+v03 intact mechanics: FAIL (timestep consistency; substantial numerical damping disclosed).
+v03 persistent-cut, CAD/recontact and paid crack-front requalification: NOT RUN after mechanics failure.
+Gate 3 overall: BLOCKED; Gate 4 tomato, training and production adoption: NOT STARTED.
+
+Cost and limits
+The refined compression pilots took 101.33 and 203.44 wall seconds for 0.02 simulated seconds (5,067 and 10,172 wall seconds per simulated second). This is the verification harness, including frequent state copies, checks and saved traces, not an optimized pure-solver benchmark. Tracked backend arrays were 124.4 MB; this is not total peak GPU/host memory. Each pilot stayed below the 600-second cap. These results do not establish RL performance or the speed of official CRESSim/APIC implementations.
+
+Recommended next action
+Do not run another long cut, reduce the timestep again blindly, soften the material, or relax the physical stops. If further numerical development is authorized, first use the saved intact compression fixture to audit timestep-dependent transfer damping and the spatial stress/strain discretization against an independent mechanical reference. Require converged motion and an explicitly acceptable numerical-dissipation model before another contact test. Whether a revised transfer/integrator or spatial discretization is required is unresolved; this report does not claim a selected replacement. A further formulation change is outside this completed single repair attempt and needs a revised scope. Existing Isaac/DiSECt remains the preserved working setup.
+
+Evidence
+contract.json; configs/time_refinement_attempt.json; physical_model.md
+formulation_controls.json; gpu_equivalence.json
+mechanics_controls.json; mechanics_refined_controls.json
+reports/refined_pair_saved_audit.json; reports/saved_damping_audit.json
+reports/repair_outcome.png; runs/mechanics*/ (raw traces and snapshots)
+preservation_check.json; manifest.json
+
+Preservation
+All 706 files covered by the frozen manifest match their original hashes. No dependencies were installed; no production simulator, robot, kitchen, grip or prior solver evidence was altered. Status/checklist metadata is updated separately, with before-copies in reports/checklist_before_v03. No v03 simulation worker remains running.

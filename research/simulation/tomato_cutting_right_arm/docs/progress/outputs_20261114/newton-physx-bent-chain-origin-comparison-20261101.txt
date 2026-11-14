@@ -1,0 +1,41 @@
+Bent-chain contact-origin comparison — 1 November 2026
+
+FULL SEQUENCE NOT PASSED. Translating the entire fixture near the particle/contact origin sharply reduces the particle impulse error, supporting the position-resolution explanation for the earlier failure. The comparison run stops at shared interval 11 on a DIFFERENT unchanged gate: identity joint trajectory position error 1.3003888819085319e-6 rad exceeds 1e-6 rad. The original interval-5 particle impulse failure is preserved. No tolerance was relaxed.
+
+Only a whole-fixture translation was introduced. The original two-link chain, fixed anchor and particle move together, using the negative analytic initial particle position as the translation. Joint angles remain (30,-60) degrees. Both world orientations (identity and 90-degree yaw), masses, dimensions, inertia, stiffness, damping, friction, gravity, time step, solver iterations, contact material and error limits remain as before. Each moving link is 0.02 kg and 0.02 m long, with halfway COM and diagonal COM inertia 0.0001 kg m². A 0.01 kg zero-radius particle contacts the kinematic Newton end-link box, with actual fixed penalty 1750 N/m and dt=1/2400 s. Both engines retain their previous ownership: PhysX advances the joints, Newton advances the particle, and the actual contact reaction drives the end link.
+
+The root transform, fixed anchor world position and articulation initial root position receive the same translation. Native joint defaults, analytic translated forward kinematics and coupled initial mass matrix are checked. A translation-aware wrapper subtracts the anchor offset before calling the unchanged independent planar reference, then restores world particle/contact positions. Forces, COM torques, Jacobian joint effort and dynamics remain translation-invariant. Angular momentum is correctly referenced to the translated fixed anchor, not the world origin. Host tests verify equivalent force, torque, joint response and particle motion under the translation.
+
+Native initial particle positions are within about 8.2 nm of zero in the identity fixture and 0.6 nm in yaw (including the saved small out-of-plane numerical component). The intended contact geometry is the same up to floating-point representation, not bit-identical world coordinates. This comparison changes absolute position resolution while preserving intended mechanics; it does not establish arbitrary-coordinate accuracy.
+
+Saved Newton-side particle impulse comparisons:
+
+bent_origin_identity:
+  whole-fixture translation [-0.03144486372867091, -0.006464101615137755, -0.0] m
+  initial particle position [7.855565087311334e-09, 1.9915626925381957e-09, 3.045961260994545e-10] m
+  original interval-5 error 2.1478593349e-07 N s
+  translated interval-5 error 2.58347230853e-10 N s
+  reduction factor 831.4
+  largest translated saved particle impulse error 2.58852294466e-09 N s
+  latest translated error 2.16438308097e-09 N s
+  generated phases: 9 contact intervals, 2 clear intervals
+
+bent_origin_yaw90:
+  whole-fixture translation [0.006464101615137748, -0.03144486372867091, -0.0] m
+  initial particle position [2.5149962668002956e-10, 3.821437610795897e-10, 3.045959040548496e-10] m
+  original interval-5 error 1.21592244611e-07 N s
+  translated interval-5 error 6.1827424381e-10 N s
+  reduction factor 196.7
+  largest translated saved particle impulse error 2.14681530664e-09 N s
+  latest translated error 2.14681530664e-09 N s
+  generated phases: 9 contact intervals, 2 clear intervals
+
+The translated particle errors stay below the unchanged 2e-7 N s gate in all saved Newton updates, with peaks below 2.6e-9 N s. At the original failure interval the reduction is over 800-fold for identity and over 190-fold for yaw. This strengthens the numerical-position-precision explanation; it does not identify all underlying floating-point operations or repair the installed solver.
+
+At identity interval 11, joint local position and velocity errors are 3.969478575838181e-7 rad and 1.2552111072761107e-8 rad/s. Joint trajectory position error is 1.3003888819085319e-6 rad (FAIL), while trajectory velocity error is 6.88943667337405e-7 rad/s (PASS). Particle trajectory position and velocity errors are 4.5180632509067726e-9 m and 9.307869443719734e-7 m/s (PASS). Generalized impulse error is 2.7615866861470902e-12 N m s and angular balance error 1.813363287788772e-10 N m s (PASS). The pattern motivates a joint-angle integration/precision audit; it does not yet establish the cause of this second discrepancy.
+
+Each fixture generated nine contact intervals and then two clear intervals without particle repositioning or reset. The run did not reach the required three coast intervals or finish 32 exchanges. The identity interval-11 assessment raised before yaw's interval-11 post-PhysX assessment; yaw's latest saved Newton particle update is available, but a fully assessed eleventh articulated interval for both cases is not claimed. No full natural-separation qualification is awarded.
+
+Exactly 11 shared PhysX steps, 22 Newton steps and 23 exact state-feedback echoes completed before the stop. Ten bent-reference/contract host tests and nine supervisor tests passed. The supervisor recorded exit 1 after 6.25 seconds, with no resource warnings, monitor errors or owned live processes. Available RAM stayed at least 22.81 GB and free GPU memory at least 7.58 GB. Frozen original production inputs and previously pinned installed dependencies remain unchanged. Source snapshots, authored translated USD, partial measurements and the original failure are preserved at /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/bent_origin_20261101_01.
+
+Next bounded step: audit native joint-angle integration and binary32 accumulation against the reference using the saved interval history and installed articulation solver settings. Preserve both failed native runs and all existing limits. Repeated bent-chain qualification, broad coordinate/configuration accuracy, full robot coupling, real blade collision generation and cutting material remain open.

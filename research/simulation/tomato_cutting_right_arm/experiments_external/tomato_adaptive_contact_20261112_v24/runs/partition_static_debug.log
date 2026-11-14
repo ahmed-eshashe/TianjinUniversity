@@ -1,0 +1,34 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.56 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.46 ms  (cached)
+Module partition_gpu aefa236 load on device 'cuda:0' took 3.65 ms  (cached)
+Module partition_gpu 07925e4 load on device 'cuda:0' took 7.03 ms  (cached)
+Module pullback_parallel_d48faa0e 8c0d1b5 load on device 'cuda:0' took 0.75 ms  (cached)
+Module contact_reductions b2052f3 load on device 'cuda:0' took 0.38 ms  (cached)
+{'t': 0.0095, 'tol': 0.002, 'status': 'completed', 'wall_s': 0.01870060600049328, 'force_N': [8.764899394009262e-05, -0.008695336058735847, -0.00013635629147756845], 'force_error_N': 5.378546956593178e-07, 'reference_force_N': [8.765357112514098e-05, -0.008694831116560706, -0.00013646850217351132], 'U_error_J': 7.731768005980382e-13, 'max_leaves': 5, 'leaves': 62, 'queries': 800}
+FAILED PAIRS [5432]
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/partition_static_debug.py", line 14, in <module>
+    o=g.observe();f=g.external.numpy()[:g.n];rf=np.array(ref['force']);r={'t':t,'tol':ref['relative_tol'],'status':'completed','wall_s':time.perf_counter()-start,'force_N':f.sum(0).tolist(),'force_error_N':float(np.linalg.norm(f-rf,axis=1).sum()),'reference_force_N':rf.sum(0).tolist(),'U_error_J':o['contact_energy']-ref['energy'],'max_leaves':int(g.leaves.numpy().max()),'leaves':int(g.leaves.numpy().sum()),'queries':int(g.queries.numpy().sum())};print(r,flush=True)
+      ^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/contact_gpu.py", line 136, in observe
+    with wp.ScopedStream(self.stream):self.contact_force();self.check()
+                                                           ^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/src/pipeline_gpu.py", line 27, in check
+    if self.bad_view[0]:raise ValueError(('pipeline mechanics rejected',int(self.bad_view[0])))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('pipeline mechanics rejected', 5)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_adaptive_contact_20261112_v24/tests/partition_static_debug.py", line 16, in <module>
+    counts=g.leaves.numpy();ii=np.flatnonzero(counts>=g.capacity);print('FAILED PAIRS',ii,flush=True);np.savez(w/'reports'/('failed_t'+str(t)+'_tol'+str(ref['relative_tol'])+'.npz'),counts=counts,indices=ii,B=g.Bs.numpy()[ii],values=g.vals.numpy()[ii],depths=g.depths.numpy()[ii]);traceback.print_exc();r={'t':t,'tol':ref['relative_tol'],'status':'failed','error':repr(e)}
+                                                                                                               ^
+NameError: name 'w' is not defined. Did you mean: 'W'?

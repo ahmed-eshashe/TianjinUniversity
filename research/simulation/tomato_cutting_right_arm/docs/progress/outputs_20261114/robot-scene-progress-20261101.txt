@@ -1,0 +1,23 @@
+ROBOT & SCENE — 1 November 2026
+Section in progress; not yet complete.
+
+PASSED
+- Actual 36-joint robot loads in a separate local-origin scene with the board and original knife.
+- Units are metres, Z is up, and relative source frames survive rebasing exactly to numerical precision.
+- Runtime right-arm frame error: 2.21e-07 m and 2.99e-07 rad.
+- Original blade triangle topology and float32 USD vertex representation match. The saved decimal export differs from USD by at most 1.37e-08 m; this is disclosed, not claimed bit-identical float64 geometry.
+- Robot and knife rigid reset restore positions, zero velocities and clear both dirty wrench queues.
+- The authored 25 bulk-side support nodes stay fixed; all slice nodes remain free under a 0.001 N tensile pulse. Zero gravity is used in this fixture check.
+- Both target state buffers, force accumulators, eligibility and material history clear after deliberate contamination. Three-step replay is exact.
+- Final protected run completes 2 PhysX and 6 Newton steps in 13.67 s. Normal exit, no surviving owned process, no memory warnings.
+- Frozen original production inputs and source assets remain unchanged.
+
+REMAINING
+- Choose fixed knife mount versus physical finger grasp before attaching or driving the tool.
+- Verify the assembled robot/blade/target collision path and run approach, cutting and retreat without target contact.
+- Recheck contact clearing and full reset after the tool connection is implemented.
+- Test fixed support under realistic gravity/cutting loads. The 0.001 N pulse is a narrow numerical test.
+
+No cutting, training, left-hand holding, or hardware/material calibration is claimed. Experimental validation remains pending at the user's request.
+
+Evidence: /home/omen/Documents/Codex/2026-10-31/tomato-project-handoff/outputs/robot-scene-progress-20261101-evidence

@@ -1,0 +1,427 @@
+{
+  "result": "PASS: isolated CPU PhysX state/CUDA-buffer echo and one-shot world COM wrench interface checks.",
+  "native_attempts": 1,
+  "proxy_bodies": 2,
+  "controlled_steps": 2,
+  "dt_s": 0.0008333333333333334,
+  "focused_tests_passed": 14,
+  "metrics": {
+    "max_pulse_linear_velocity_error_m_s": 2.25256879369623e-08,
+    "max_pulse_angular_velocity_error_rad_s": 9.099021549240083e-10,
+    "max_coast_linear_velocity_change_m_s": 0.0,
+    "max_coast_angular_velocity_change_rad_s": 1.0477378964424133e-09
+  },
+  "validated_scope": [
+    "Current xyzw pose and world COM linear/angular velocity write/read interfaces on CPU PhysX.",
+    "Bit-exact transfer of two pose/twist packets to CUDA Warp arrays and back; no Newton Model/State or solver connected.",
+    "Instantaneous world force and COM torque delivery for identity and rotated/nonzero-COM proxies, without double positional moment.",
+    "Linear/angular impulse matches measured synthetic mass/isotropic inertia; no stale force on the following no-input step."
+  ],
+  "limits": [
+    "Only two controlled steps and isolated synthetic bodies; no contacts or robot/articulation links.",
+    "This tests state/force plumbing, not Newton soft contact reactions, partitioned timing, shared impulse/work or a live two-engine feedback loop.",
+    "Reset, repeated episodes, substeps and arbitrary inertia/rotation are unqualified."
+  ],
+  "original_pinned_sources_unchanged": true,
+  "item_15_complete": false,
+  "item_12_complete": false,
+  "next_step": "Minimal CPU PhysX rigid / CUDA Newton particle feedback test using a declared partitioned schedule and explicit global-stream reaction, with momentum/work checks appropriate to that schedule.",
+  "supervisor": {
+    "passed": true,
+    "reason": "exited",
+    "launched": true,
+    "child_exit_code": 0,
+    "elapsed_wall_s": 3.575796351999088,
+    "remaining_live_group_members": [],
+    "warning_requested": false,
+    "samples": 16,
+    "monitor_errors": 0,
+    "min_available_ram_bytes": 23756070912,
+    "min_free_vram_bytes": 7617904640,
+    "mode": "physx_proxy",
+    "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+    "worker": {
+      "diagnostic_passed": true,
+      "shutdown_requested": true,
+      "shutdown_completion": "supervisor_must_observe_exit",
+      "physx_proxy_cases_completed": 2,
+      "controlled_steps": 2,
+      "cuda_state_echoes_completed": 2,
+      "physx_proxy_checks_passed": true,
+      "training": false,
+      "newton_contact_feedback_validated": false,
+      "robot_validated": false
+    }
+  },
+  "measurements": {
+    "cases": [
+      {
+        "id": "proxy0",
+        "readback_echo": {
+          "pose_xyzw": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "velocity_com_world": [
+            0.019999999552965164,
+            -0.009999999776482582,
+            0.029999999329447746,
+            0.10000000149011612,
+            0.20000000298023224,
+            -0.10000000149011612
+          ],
+          "com_local_pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "cuda_echo_exact": true,
+        "initial": {
+          "pose_xyzw": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "velocity_com_world": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "com_local_pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "mass_kg": 0.019999999552965164,
+        "isotropic_inertia_kg_m2": 0.0010000000474974513,
+        "packet": {
+          "newton_pose_xyzw": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "newton_velocity_com_world": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "com_world_m": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "contact_velocity_world_m_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "physx_wrench": {
+            "force_n": [
+              3.0,
+              -0.0,
+              -0.0
+            ],
+            "torque_about_com_nm": [
+              0.0,
+              0.0,
+              -0.0012000000000000001
+            ],
+            "positions": null,
+            "is_global": true
+          },
+          "native_transfer_enabled": false,
+          "scope": "Reference arithmetic only. Runtime mapping, timing, CPU/GPU transfer and integration are unvalidated."
+        },
+        "after_pulse": {
+          "pose_xyzw": [
+            5.533853982342407e-05,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            -2.213541563378385e-07,
+            1.0
+          ],
+          "velocity_com_world": [
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0009999999310821295
+          ],
+          "com_local_pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "pulse_check": {
+          "expected_velocity_com_world": [
+            0.12500000279396778,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0009999999525025511
+          ],
+          "linear_velocity_error_m_s": 2.7939677793575868e-09,
+          "angular_velocity_error_rad_s": 2.142042164303415e-11
+        },
+        "after_coast": {
+          "pose_xyzw": [
+            0.00015950518718454987,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            -6.380209356393607e-07,
+            1.0
+          ],
+          "velocity_com_world": [
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0010000000474974513
+          ],
+          "com_local_pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "coast_check": {
+          "linear_velocity_change_m_s": 0.0,
+          "angular_velocity_change_rad_s": 1.1641532182693481e-10
+        }
+      },
+      {
+        "id": "proxy1",
+        "readback_echo": {
+          "pose_xyzw": [
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.7071067690849304,
+            0.7071067690849304
+          ],
+          "velocity_com_world": [
+            0.019999999552965164,
+            -0.009999999776482582,
+            0.029999999329447746,
+            0.10000000149011612,
+            0.20000000298023224,
+            -0.10000000149011612
+          ],
+          "com_local_pose": [
+            0.009999999776482582,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "cuda_echo_exact": true,
+        "initial": {
+          "pose_xyzw": [
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.7071067690849304,
+            0.7071067690849304
+          ],
+          "velocity_com_world": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "com_local_pose": [
+            0.009999999776482582,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "mass_kg": 0.019999999552965164,
+        "isotropic_inertia_kg_m2": 0.0010000000474974513,
+        "packet": {
+          "newton_pose_xyzw": [
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.7071067690849304,
+            0.7071067690849304
+          ],
+          "newton_velocity_com_world": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "com_world_m": [
+            1.0,
+            0.00999999977648258,
+            1.0
+          ],
+          "contact_velocity_world_m_s": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "physx_wrench": {
+            "force_n": [
+              3.0,
+              -0.0,
+              -0.0
+            ],
+            "torque_about_com_nm": [
+              0.0,
+              0.0,
+              -0.001199999999999998
+            ],
+            "positions": null,
+            "is_global": true
+          },
+          "native_transfer_enabled": false,
+          "scope": "Reference arithmetic only. Runtime mapping, timing, CPU/GPU transfer and integration are unvalidated."
+        },
+        "after_pulse": {
+          "pose_xyzw": [
+            1.0000553131103516,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.7071066498756409,
+            0.7071070075035095
+          ],
+          "velocity_com_world": [
+            0.125,
+            -2.2351741790771484e-08,
+            0.0,
+            0.0,
+            0.0,
+            -0.001000000862404704
+          ],
+          "com_local_pose": [
+            0.009999999776482582,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "pulse_check": {
+          "expected_velocity_com_world": [
+            0.12500000279396778,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.0009999999525025492
+          ],
+          "linear_velocity_error_m_s": 2.25256879369623e-08,
+          "angular_velocity_error_rad_s": 9.099021549240083e-10
+        },
+        "after_coast": {
+          "pose_xyzw": [
+            1.0001602172851562,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.707106351852417,
+            0.7071073055267334
+          ],
+          "velocity_com_world": [
+            0.125,
+            -2.2351741790771484e-08,
+            0.0,
+            0.0,
+            0.0,
+            -0.0010000019101426005
+          ],
+          "com_local_pose": [
+            0.009999999776482582,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "coast_check": {
+          "linear_velocity_change_m_s": 0.0,
+          "angular_velocity_change_rad_s": 1.0477378964424133e-09
+        }
+      }
+    ],
+    "controlled_steps": 2,
+    "dt_s": 0.0008333333333333334,
+    "physics_manager": "isaaclab_physx.physics.physx_manager",
+    "physics_steps_before_pulse": 0,
+    "physics_steps_after_coast": 2,
+    "cuda_state_echoes_completed": 2,
+    "comparison_scope": "CPU PhysX synthetic bodies: pose/velocity echo 1e-6, COM echo 1e-7 m; pulse linear error 2e-5 m/s, angular 2e-6 rad/s; coast drift 2e-6.",
+    "newton_state_or_contact_solve_connected": false,
+    "robot_or_blade_loaded": false
+  }
+}

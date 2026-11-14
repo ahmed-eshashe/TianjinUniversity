@@ -1,0 +1,35 @@
+Two-joint reset and replay — 1 November 2026
+
+PASS for reset after natural separation and reset during active contact, in identity and 90-degree yaw orientations. All compared replay differences are exactly zero at recorded precision. Full coupling checklist item 15 remains open.
+
+This reuses the same near-origin passive two-joint fixture and coupled Newton/CPU PhysX reference as the preceding repeated-contact diagnostic. Each link has mass 0.02 kg, length 0.02 m, COM halfway along it, and COM diagonal inertia 0.0001 kg m². The base is fixed; gravity, actuators, damping, friction and stiffness are absent. A CUDA Newton kinematic box proxy of the end link contacts one 0.01 kg zero-radius particle. Fixed actual contact penalty is 1750 N/m and dt=1/2400 s. The independent planar reference accounts for changing coupled mass matrix, analytic Jacobian and Coriolis bias; its interval-start acceleration and 16-substep TGS position schedule are qualified only for this short, small-motion fixture.
+
+Three episodes run: a 32-interval baseline, reset after coast followed by two replay intervals, then reset while contact is active followed by a full 32-interval replay. Both full episodes have nine contact intervals and 23 natural coast intervals per orientation. The contact stream before each reset is checked: zero after coast, one during active contact.
+
+Before each reset, BOTH instantaneous and permanent wrench composers are deliberately populated with force (99,-55,33) N and COM torque (1,2,3) N m on the end link. These controls are never advanced into physics. Articulation reset must clear both queues, and both joint positions and velocities are restored to the authored initial values. Newton solver reset restores particle position and velocity in both persistent State buffers while explicitly preserving externally owned rigid state. Particle/body forces are cleared, contact matching is reset and the contact prefix invalidated. The measured reset link packet is then copied into both Newton State buffers. No model, solver, pipeline, body or state-buffer replacement is used.
+
+Four comparisons cover the two-interval prefix and complete 32-interval replay in both orientations. They compare before/after positions and velocities of both joints and the particle, contact counts, force, COM torque, end-link pose/quaternion and linear/angular COM velocity. Replay acceptance uses the existing per-field limits; observed errors are all zero. Reset link packet errors are independently checked within 1e-7. Existing interval and full-trajectory mechanics, native contact, impulse balance, natural separation, force clearing and exact state-feedback checks also run for every episode. No gate is relaxed.
+
+Maximum replay differences:
+  particle_position_m: 0
+  particle_velocity_m_s: 0
+  joint_position_rad: 0
+  joint_velocity_rad_s: 0
+  force_n: 0
+  torque_nm: 0
+  link_position_m: 0
+  link_quaternion: 0
+  link_linear_velocity_m_s: 0
+  link_angular_velocity_rad_s: 0
+
+Episode 1, hinge_sequence_identity: 2 intervals compared.
+
+Episode 1, hinge_sequence_yaw90: 2 intervals compared.
+
+Episode 2, hinge_sequence_identity: 32 intervals compared.
+
+Episode 2, hinge_sequence_yaw90: 32 intervals compared.
+
+Exactly 66 shared PhysX steps, 132 Newton steps, 138 exact actual-state feedback echoes, two reset cycles, four dirty-queue resets and four replay comparisons passed. Seventeen two-joint reference/contract tests and nine supervisor tests passed, including rejection of a stale second-joint velocity, incorrect force, contact count and link angular velocity. The protected run exited successfully after 10.81 seconds with at least 22.89 GB available RAM and 7.52 GB free GPU memory. There were no resource warnings, monitor errors or remaining owned live processes. Frozen original production inputs and previously pinned installed dependencies remain unchanged. Hashes and source snapshots are preserved. Run evidence: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/two_joint_replay_20261101_01
+
+Next bounded step: check contact transfer with the two joints starting in a bent configuration, extending coverage beyond the initially straight chain. Real robot reset, robot drives, broader motion/configurations, contact work/energy, real blade collision generation and cutting material remain unvalidated. Checklist item 22 (eventual real robot/scene reset) is not completed by this synthetic fixture.

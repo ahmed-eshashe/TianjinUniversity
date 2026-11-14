@@ -1,0 +1,145 @@
+FIRST-PHASE EXECUTION RESULT — 10 November 2026
+
+Decision: Gates 0, 1 and 2 pass within their declared COMPONENT scope.
+The early decision phase is complete, well inside its eight-hour cap.
+Continue considering this independent TLMPM backend as a research candidate.
+Do not adopt it as the tomato engine or call it ready for interactive RL.
+No Isaac/DiSECt simulation, robot, kitchen, grip or controller was changed.
+
+WHAT WAS BUILT
+A new, isolated, GPU total-Lagrangian MPM prototype with an independent NumPy
+reference. It uses installed Warp 1.17.0 and a task-local compilation cache.
+No packages or system drivers were installed. The previous public CRESSim
+source, build, results and the DiSECt evidence remain preserved. A separate
+copy of CRESSim was used for one numerical diagnostic; it is not the selected
+backend. The implementation follows the persistent ternary-code/compatible
+transfer idea in BladeMaster, with explicitly different constitutive and
+integration choices. It is not official BladeMaster code or a reproduction.
+
+GATE 0 — FREEZE AND CONTROL SENSITIVITY: PASS
+manifest.json records versions, dependencies, processes and 369 protected-file
+hashes. contract.json and architecture.md freeze scope, formulas, units,
+thresholds and stops. asset_inventory.json additionally records the existing
+robot launcher, arm scene/plan, controller and tomato assets. No old long run
+was restarted.
+The prior CRESSim absent-cutter coupling failure was reproduced at 0 and 17
+degrees, with translated grid placement, while held-tool and wide-gap
+controls isolated the pieces. A one-line correction in a separate source copy
+proved the grid-mass cutoff was a major cause of lost free translation:
+corrected wide-gap translation retains 99.99987% of the applied velocity.
+However, the absent-cutter control still transfers approximately 50.06% of
+that velocity to the other half. That diagnosis does not repair fracture.
+A separate APIC scaling concern is documented, not silently patched/adopted.
+
+GATE 1 — INTACT MECHANICS: PASS AT REFINED SETTINGS
+The provisional material is compressible neo-Hookean, E=100 kPa, nu=0.4,
+rho=1000 kg/m3, with a defined energy and its analytic stress derivative.
+It is neither calibrated tomato tissue nor the prior corotational material.
+Initial 6/3 mm grid/particle spacing failed angular momentum and dynamic
+half-step velocity screens. Temporal refinement alone did not fix angular
+drift. One preplanned numerical correction adopted 3/1.5 mm spacing and
+12.5 microsecond steps (6.25 microsecond refinement). Physical size, density,
+material and acceptance limits were not relaxed. The old failure is retained.
+
+At this setting, the 60 mm block contains 64,000 particles and weighs 0.216 kg.
+Checks passed: basis completeness; energy gradient; frame objectivity;
+CPU/GPU stress and short dynamics; unloaded rest and translation; rotated
+rest; free spin; affine compression/unload; dynamic compression release;
+mass/momentum; positive admissible volume; and half-timestep comparison.
+Free-spin angular drift: 0.354% (1% screen).
+Compression half-step maximum position difference: 0.00124 mm (0.1 mm screen).
+Maximum velocity difference: 3.31 mm/s (5 mm/s screen).
+See intact_controls.json and reports/gate1_coarse_fail.json.
+
+GATE 2 — PERSISTENT TOPOLOGY: PASS WITH EXPLICIT LIMITS
+Particles keep fixed reference coordinates and persistent ternary cut history.
+Finite, current tool sweeps assign labels; no future cutting trajectory is
+passed to the backend. Compatible nodal momentum exchanges conserve mass and
+momentum; opposing codes do not reconnect when the tool disappears. Codes
+are assigned without particle duplication or rebuilding the remainder.
+
+Verified outcomes:
+- Untouched block remains one connected body.
+- Partial score retains one connected body and transmits a probe through its
+  intact bridge. It is not prematurely divided into two global bodies.
+- Full sweep produces two mechanically independent components after withdrawal.
+- Two parallel sweeps produce three components; the middle slice is independent.
+- Two intersecting sweeps produce four independent components.
+- Four sweeps produce nine components, with 25 active logical codes.
+- Halving the timestep preserves full/partial cut labels and bridge verdicts.
+- Translated grid placement and rotated tool/material fixtures retain the split.
+- A single fragment dynamically rotates about 1.12 degrees relative to its
+  neighbor while translating; history remains unchanged and independence holds.
+- A short finite blade edge leaves surrounding material connected; a near miss
+  does not assign cuts. A fifth cut is rejected without changing the state.
+- Actual occupied-grid mass agrees with particle mass across all cut counts.
+
+The post-sweep gaps were opened by declared external test velocities and
+forward dynamics. No empty gap was substituted as the initial cutting state.
+Paired unforced/probed continuations had no tool, gravity, supports or contact
+barrier. The single-cut surface-gap estimate was approximately 4 mm. The
+untouched half's mean probe response was 0.0000039% of the imposed velocity,
+well below the 1% limit. Middle-slice and rotating-fragment supplemental
+checks also passed stricter individual-particle leakage screens.
+See persistent_cut_controls.json, gate2_supplement.json and raw snapshots.
+
+These are GEOMETRY-DRIVEN CUTTING/TRANSFER FIXTURES. They do not establish
+force-triggered fracture, cutting resistance, skin puncture, strict blade
+nonpenetration, fragment recontact, a CAD-knife cut or a finished tomato.
+Tool-driven labels are not an experimentally validated failure mechanism.
+Within-step blade rotation/curved paths and cutting already-moving pieces
+remain unqualified. The tested straight-segment envelope must not be expanded
+by interpretation. An intact bridge test is a mechanics result, not a visual
+red texture or a scripted fragment animation.
+
+MEASURED COST — THE IMPORTANT REMAINING LIMITATION
+Synchronized, warmed physics-only windows of 0.02 simulated seconds:
+  cuts       active codes       wall seconds / simulated second
+    0               1                       61.2
+    1               3                       69.9
+    2               9                       71.1
+    4              25                       88.3
+These are preliminary short windows, not repeated confidence intervals.
+They exclude setup, logging, rendering, new contact, robot coupling and RL.
+They do not establish equal physical accuracy to CRESSim or DiSECt. Compared
+with the old 8000-particle CRESSim probe, this candidate has eight times as many
+particles and eight times as many substeps, plus different mechanics/history.
+At 50 Hz, this single-environment cost is only about 0.57–0.82 transitions/s
+before adding missing components, far below the 100 transitions/s entry target.
+No real-time or efficient online-RL claim is justified.
+
+Allocated numerical arrays: approximately 108.3 MiB per instance, reserving
+81 code slots while computing on active slots. Campaign sampled GPU peak:
+1824 MiB with several test instances retained simultaneously, including CUDA
+runtime/allocator overhead; this is not single-environment GPU usage.
+Campaign host peak: approximately 1208 MiB. Resource sampling began partway
+through the campaign. More efficient memory layout and complete-loop cost
+remain future measurements, not passes.
+
+WHAT COMES NEXT
+Gate 3 must define and independently validate a physically meaningful
+irreversible cutting law and reliable tool/fragment contact, retaining the
+2 N stop and 0.1 mm penetration requirement. Recontact must not restore bonds.
+Only then may Gate 4 build and qualify the actual tomato. No physical setup
+has been adopted, no robot integration or training has started, and experimental
+validation remains pending. The measured cost is a serious unresolved issue;
+passing this phase must not be interpreted as a promise that Gates 3–6 will
+produce an RL-speed model on this laptop.
+
+PRESERVATION AND REPRODUCIBILITY
+preservation_check.json verifies all 369 initially protected files and the
+supplemental assets remain unchanged. All implementation, caches, failed and
+passed evidence are confined to this new experiment directory. The separate
+plan-execution status JSON may be updated with links; no old DiSECt checklist
+milestone is promoted by these component results.
+Tests have unique evidence directories and refuse to overwrite them. Copy to
+an explicitly new run directory before reproduction. The Python interpreter
+and compiler paths are recorded in manifest.json. Scripts and raw files are
+indexed by evidence_hashes.json. No background simulation remains running
+when this phase is reported complete.
+
+PRIMARY METHOD REFERENCE
+https://arxiv.org/html/2609.27342v1 (equations 1–9, persistent history and transfer).
+Published BladeMaster performance uses different hardware/model/settings and
+is not claimed here. Local prior CRESSim report and numerical source locations
+are linked from architecture.md and reports/cressim_numerical_diagnosis.json.

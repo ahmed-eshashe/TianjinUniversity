@@ -1,0 +1,12 @@
+{
+ "scope":"Geometry-driven topology and mechanical transfer proof on a block; no cutting resistance/contact/fracture calibration",
+ "resolution_m":{"grid":0.003,"particle":0.0015},"dt_s":0.0000125,"refined_dt_s":0.00000625,
+ "max_four_cuts":4,"tool_edge_half_length_m":0.04,"finite_current_action_duration_s":0.002,"tool_speed_m_s":0.5,
+ "mass_relative":1e-6,"independence_fraction":0.01,"probe_velocity_m_s":0.01,"probe_window_s":0.02,
+ "opening_velocity_each_side_m_s":0.02,"opening_duration_s":0.1,"minimum_surface_gap_m":0.003,
+ "cpu_gpu_position_m":1e-7,"cpu_gpu_velocity_m_s":1e-5,"cpu_gpu_F":1e-5,
+ "partial_bridge_components":1,"complete_cut_components":2,"two_parallel_components":3,"intersecting_components":4,"four_cuts_components":9,
+ "topology_oracle":"Connected components of actual occupied reference-grid logical states and compatible exchanges; particle edges use only positive weights",
+ "opening_note":"External equal/opposite normal velocity fixture applied AFTER a current-step tool sweep; free evolution generates the gap. It is not the blade-contact response. Paired baseline/probe continuations distinguish free-state drift from leakage.",
+ "failed_gate_policy":"Stop after one diagnosed correction/retest or eight-hour phase cap; no threshold relaxation"
+}

@@ -1,0 +1,44 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.95 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.95 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.76 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.67 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.31 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.69 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.90 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 5.66 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.20 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.41 ms  (cached)
+{
+  "mass_kg": 0.1216712654796547,
+  "scope": "Damage-enabled prescribed CAD shallow-cut attempt; original material/fracture laws; same complete cut-edge coverage with batched equivalent quadrature and verified higher-precision winding fallback, stronger implicit normal contact (2e6 N/m); bounded development only; no native robot qualification",
+  "stop": "window_completed",
+  "dt_s": 3.125e-06,
+  "start_step": 41760,
+  "accepted_steps": 43360,
+  "duration_s": 0.1355,
+  "window_until_s": 0.1355,
+  "completed_window": true,
+  "wall_s": 247.93978118000086,
+  "wall_scope": "Stepping and sampling; excludes initialization",
+  "peak_RSS_KiB": 2174468,
+  "peak_torch_allocated_bytes": 44421632,
+  "physical_run_completed": false,
+  "nonzero_damage": false,
+  "refinement_pending": true,
+  "gate_b_passed": false,
+  "query_precision_fallback_stats": {
+    "fallback_calls": 0,
+    "fallback_points": 0,
+    "max_distance_m": 0.0
+  }
+}

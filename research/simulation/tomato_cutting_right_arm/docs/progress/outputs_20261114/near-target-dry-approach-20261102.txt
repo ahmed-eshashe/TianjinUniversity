@@ -1,0 +1,48 @@
+NEAR-TARGET DRY APPROACH — 2 November 2026
+
+VERDICT: PASS within this nearer, noncontact approach scope. No contact or cut attempted.
+
+Executed in visible Isaac Sim: reposition from the original home to a reachable high pose aligned with the existing host candidate's prepared-plane orientation; lower to a planned20mm gap above the highest saved tomato-envelope point; withdraw; return to original home; settle. The corrected controller (per-step interpolated position, consistent velocity target, bounded native arm gravity feedforward) and existing gains/physical parameters are unchanged.
+
+This is a NEW route, not a rerun of the original90mm-offset stroke. It uses481 samples,8physics substeps per sample,dt1/240s:16.033seconds plus1second settling. Its purpose is to verify reach and tracking above the target, not exercise the old130mm stroke-amplitude check. Near-stop reach and explicit positive vertical clearance replace that inapplicable route-specific amplitude criterion; all original tracking,15mm target-separation,4mm board, mount, speed, arm-limit and monitored-contact limits are retained. The predeclared1mm peak/0.25mm settled tracking engineering targets also remain unchanged.
+
+Planning evidence and failure preservation
+The first host-only plan was rejected at an unreachable high repositioning pose, before any native launch. Version02 changes that high pose from80mm to40mm above the target envelope, retains the20mm stop and all IK/clearance requirements, and passes3848 commanded-interpolation-state checks. Its maximum IK position error is 3.241038e-08m and orientation error 4.17637379e-07rad. The failed01 report/source remains preserved. Only the passed02 route was executed natively; there was no controller or solver sweep.
+
+The conservative clearance envelope is the union of original reference tomato nodes at the scene offset and the saved supported equilibrium nodes. Neither target is physically stepped in this test. The displayed tomato remains the original stationary scene visual. The planning orientation comes from the previous host candidate and does not grant that candidate contact qualification.
+
+Measured results (independent raw readback PASS)
+Near-stop blade minimum-z minus target envelope maximum-z: 19.982634mm.
+Minimum blade/target AABB axis separation across all recorded route/settling steps: 19.982564mm >15mm.
+Maximum tool-position tracking error: 0.065712mm <1mm engineering target.
+Settled tool-position tracking error: 0.005140mm <0.25mm engineering target.
+Maximum tool orientation tracking error: 9.59551155e-05rad <0.002rad.
+Maximum right joint tracking error: 9.58442688e-05rad <original0.03rad.
+Maximum left arm hold deviation: 4.66184691e-09rad <0.002rad.
+Maximum joint speed: 0.535273015rad/s <original3rad/s.
+Final joint speed: 0.000365117827rad/s <0.002rad/s settling criterion.
+Minimum blade height above board plane: 76.979941mm.
+Minimum blade/fixture AABB axis separation: 55.263749mm.
+Minimum blade/other-robot-body AABB separation, excluding own body/directly mounted hand: 63.108740mm.
+Minimum2mm-inflated other robot-body/target AABB gap: 131.620415mm.
+Maximum knife/hand transform error: 0.162067micrometres and 3.83489906e-07rad.
+No monitored forbidden rigid-contact force during route/settling; positive probe/floor and reset/clear controls separately pass. Arm joint limits pass. Peak arm gravity feedforward 27.611538Nm with no clipping needed under unchanged effort limits.
+
+Actual joint directions and all four tool-motion phases match their commands. All recorded position/velocity/effort schedules match the declared route interpolation and bounded gravity feedforward. Actual Native tool pose agrees with FK of actual joints within 0.454016micrometres in sampled cross-checks. These values describe simulation tracking; they do not certify physical sensing or hardware accuracy. The independent audit's inherited labels “half_speed_command_sequence” and “stroke down” refer to the8-substep interpolation clock and the dry descent, respectively; they do not assert the old spatial route or a cutting stroke.
+
+Preservation and limits
+The ideal fixed knife constraint remains selected, with no physical bracket or finger grasp. No model/material, damping, mass, gravity, joint-limit or original asset change. No joint-state/tool-pose overwrite during executed motion. Clearance checks use sampled authored-bound AABBs and the board plane; these are not general swept/mesh-distance contact qualification. A visually overlapping camera projection does not override the independently measured positive gap.
+4091 PhysX steps =3 monitor setup +3848 route +240 settling;0Newton/deformable steps. The route and final paused viewport were visually inspected through native viewport stills. No video, target contact, cutting, training or renewed force/energy investigation. Protected runtime 96.71s; owned-process cleanup complete. The bounded paused inspection window ended and the saved scene is retained.
+
+Status and next decision
+Closer scripted approach/retraction is now verified at20mm nominal standoff. This does not qualify the actual contact pose, deeper stroke, blade-board interaction, mounted moving-contact force/work, live fracture or separation. Experimental validation17 and loaded/post-cut reset22 remain pending. The next stage should specify one bounded nonfracturing contact experiment and its fixture-specific measurements before running it; it must resolve or explicitly redesign the still-open mounted-contact gate without treating this dry pass as a substitute. Do not continue lowering the knife into the tomato in this task.
+
+Evidence
+Host preflight: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/near_approach_plan_20261102_02/measurements.json
+Rejected high-pose plan: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/near_approach_plan_20261102_01/failure.json
+Native measurements: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measurements.json
+Raw measured states/commands: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/measured_motion.npz
+Independent readback: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/near_approach_20261102/independent_readback01/measurements.json
+Protected completion/cleanup: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/supervisor_result.json
+Saved scene: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/inspection_scene.usda
+Near-stop viewport: /home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/near_approach_20261102_01/240_route_detail.png

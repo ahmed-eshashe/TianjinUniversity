@@ -1,0 +1,55 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/cache/warp/1.17.0
+Module __main__ 81a7625 load on device 'cuda:0' took 348.30 ms  (compiled)
+Module solver 40b6551 load on device 'cuda:0' took 0.88 ms  (cached)
+{
+  "geometry": {
+    "cases": 165,
+    "max_error_m": 3.960195423327595e-09,
+    "pass": true
+  },
+  "energy": [
+    {
+      "dt": 0.0001,
+      "energy_initial_J": 0.09184575825929642,
+      "energy_final_J": 0.09180133789777756,
+      "dissipation_J": 4.021681525046006e-05,
+      "known_symplectic_gravity_drift_J": -4.4562126105000014e-06,
+      "strain_energy_J": 4.1417421016376466e-05,
+      "relative_residual": 0.006100484672869714,
+      "bad": [
+        0
+      ],
+      "pass": true
+    },
+    {
+      "dt": 5e-05,
+      "energy_initial_J": 0.09184575825929642,
+      "energy_final_J": 0.09180359542369843,
+      "dissipation_J": 3.9599737647222355e-05,
+      "known_symplectic_gravity_drift_J": -2.2281063052500007e-06,
+      "strain_energy_J": 4.1417421016376466e-05,
+      "relative_residual": 0.008088182153764036,
+      "bad": [
+        0
+      ],
+      "pass": true
+    }
+  ],
+  "controls": {
+    "fracture_disabled_unbroken": true,
+    "disabled_cut_stop": [
+      3
+    ],
+    "exact_full_reset": true,
+    "noncohesive_recontact_outward": true,
+    "recontact_horizontal_momentum_kg_m_s": 0.0,
+    "pass": true
+  },
+  "pass": true
+}

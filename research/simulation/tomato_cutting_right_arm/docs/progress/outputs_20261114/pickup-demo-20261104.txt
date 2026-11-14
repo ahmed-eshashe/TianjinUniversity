@@ -1,0 +1,11 @@
+SCRIPTED KNIFE PICKUP — 2026-11-04
+
+The previous scene optimized only the hand pose, leaving an awkward raised elbow. This separate demo now uses a lower elbow, adjusted robot placement, and a tucked unused arm. Original counter, board and knife material references and UV maps are restored. Robot appearance uses presentation paint and dark finger surfaces.
+
+Sequence: open pregrasp with knife held by a visible ideal clamped cradle; close fingers while arm/knife stay still; verify finger closure; enable the excluded-from-articulation fixed hand joint and disable the fixture joint; lift 65 mm; hold. This is explicitly not a friction-only grasp. No tool teleport is used during pickup, attachment or lift.
+
+Native result: 2,044 physics steps passed. Lift 0.06439767777919769 m. Maximum pre-attachment knife movement 3.4819009897546493e-07 m. Finger error at attachment 0.006363272666931152 rad. All monitored unexpected rigid contacts were <=0.1 N throughout. Strict motor work and experimental validation remain pending; no cutting or video work.
+
+Open scene: /home/omen/teamwork_projects/tomato_cutting_right_arm/work/pickup_demo_20261104/pickup_scene_v02.usda
+Run motion: bash /home/omen/teamwork_projects/tomato_cutting_right_arm/work/pickup_demo_20261104/launch_pickup.sh
+The USD alone is a stopped pregrasp scene. Use the launcher for the controller.

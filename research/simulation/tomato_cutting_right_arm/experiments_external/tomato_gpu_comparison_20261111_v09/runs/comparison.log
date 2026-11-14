@@ -1,0 +1,165 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09/cache/warp/1.17.0
+field parity intact
+Module gpu_kernels 352560d load on device 'cuda:0' took 950.74 ms  (compiled)
+field parity one
+field parity two
+field parity four
+field parity partial_saved
+field parity full_saved
+field parity supported
+field parity thin
+loaded supports and topology upload
+saved trajectory partial
+partial completed
+saved trajectory full
+full completed
+saved trajectory partial_half
+partial_half completed
+saved trajectory full_half
+full_half completed
+paired cost sample 0 cuts
+cost sample completed
+paired cost sample 1 cuts
+cost sample completed
+paired cost sample 2 cuts
+cost sample completed
+paired cost sample 4 cuts
+cost sample completed
+None
+{
+  "status": "pass_restricted_GPU_comparison",
+  "checks": 208,
+  "wall_s": 42.93645517299956,
+  "costs": [
+    {
+      "cuts": 0,
+      "pieces": 1,
+      "scalar_basis_count": 216,
+      "integration_samples": 8000,
+      "step_s": 3.90625e-07,
+      "steps_per_sample": 64,
+      "CPU_checked_wall_samples_s": [
+        0.8807815929976641,
+        0.8757403890012938,
+        0.8702228260008269
+      ],
+      "GPU_checked_wall_samples_s": [
+        0.031360004999442026,
+        0.03046270800041384,
+        0.02948333200038178
+      ],
+      "GPU_raw_graph_wall_samples_s": [
+        0.033092576999479206,
+        0.031067977000930114,
+        0.029976295998494606
+      ],
+      "CPU_median_wall_s_per_sim_s": 35029.61556005175,
+      "GPU_median_wall_s_per_sim_s": 1218.5083200165536,
+      "checked_median_speedup": 28.74794942686634,
+      "CPU_topology_and_gpu_operator_preparation_s": 0.010954723999020644,
+      "sparse_packing_upload_s": 0.0180541469999298,
+      "graph_build_s": 0.026717043001553975,
+      "device_array_MiB": 13.634014129638672,
+      "memory_note": "Exact owned arrays including rollback copies; excludes CUDA context/graphs/allocator."
+    },
+    {
+      "cuts": 1,
+      "pieces": 2,
+      "scalar_basis_count": 324,
+      "integration_samples": 10000,
+      "step_s": 3.90625e-07,
+      "steps_per_sample": 64,
+      "CPU_checked_wall_samples_s": [
+        1.1085094020018005,
+        1.108977946001687,
+        1.1162083729977894
+      ],
+      "GPU_checked_wall_samples_s": [
+        0.0321374979976099,
+        0.033499886998470174,
+        0.03385379199971794
+      ],
+      "GPU_raw_graph_wall_samples_s": [
+        0.03392971699940972,
+        0.03307149299871526,
+        0.03335152799991192
+      ],
+      "CPU_median_wall_s_per_sim_s": 44359.11784006748,
+      "GPU_median_wall_s_per_sim_s": 1339.995479938807,
+      "checked_median_speedup": 33.103930949150076,
+      "CPU_topology_and_gpu_operator_preparation_s": 0.013957349998236168,
+      "sparse_packing_upload_s": 0.021427846000733553,
+      "graph_build_s": 0.02685483399545774,
+      "device_array_MiB": 16.939773559570312,
+      "memory_note": "Exact owned arrays including rollback copies; excludes CUDA context/graphs/allocator."
+    },
+    {
+      "cuts": 2,
+      "pieces": 3,
+      "scalar_basis_count": 432,
+      "integration_samples": 12000,
+      "step_s": 3.90625e-07,
+      "steps_per_sample": 64,
+      "CPU_checked_wall_samples_s": [
+        1.3348567640023248,
+        1.3357218980017933,
+        1.3794792820008297
+      ],
+      "GPU_checked_wall_samples_s": [
+        0.027106748999358388,
+        0.028101645002607256,
+        0.029253941000206396
+      ],
+      "GPU_raw_graph_wall_samples_s": [
+        0.029492183999536792,
+        0.02817381199929514,
+        0.027851462000398897
+      ],
+      "CPU_median_wall_s_per_sim_s": 53428.87592007173,
+      "GPU_median_wall_s_per_sim_s": 1124.0658001042902,
+      "checked_median_speedup": 47.53180455727292,
+      "CPU_topology_and_gpu_operator_preparation_s": 0.015294320000975858,
+      "sparse_packing_upload_s": 0.02454616800241638,
+      "graph_build_s": 0.026406961998873157,
+      "device_array_MiB": 20.275196075439453,
+      "memory_note": "Exact owned arrays including rollback copies; excludes CUDA context/graphs/allocator."
+    },
+    {
+      "cuts": 4,
+      "pieces": 5,
+      "scalar_basis_count": 576,
+      "integration_samples": 14000,
+      "step_s": 3.90625e-07,
+      "steps_per_sample": 64,
+      "CPU_checked_wall_samples_s": [
+        1.6579403530013224,
+        1.7071663300012005,
+        1.6283873909997055
+      ],
+      "GPU_checked_wall_samples_s": [
+        0.031069633001607144,
+        0.03229966700018849,
+        0.03013395599919022
+      ],
+      "GPU_raw_graph_wall_samples_s": [
+        0.032560687002842315,
+        0.031459839003218804,
+        0.030392194999876665
+      ],
+      "CPU_median_wall_s_per_sim_s": 66317.6141200529,
+      "GPU_median_wall_s_per_sim_s": 1242.7853200642858,
+      "checked_median_speedup": 53.3620835790227,
+      "CPU_topology_and_gpu_operator_preparation_s": 0.017799049001041567,
+      "sparse_packing_upload_s": 0.028918021002027672,
+      "graph_build_s": 0.02684604199748719,
+      "device_array_MiB": 23.620235443115234,
+      "memory_note": "Exact owned arrays including rollback copies; excludes CUDA context/graphs/allocator."
+    }
+  ]
+}

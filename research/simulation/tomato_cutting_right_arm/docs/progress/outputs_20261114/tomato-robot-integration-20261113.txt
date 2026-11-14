@@ -1,0 +1,84 @@
+APPROXIMATE TOMATO IN THE ORIGINAL ROBOT / KITCHEN — v31
+
+COMPLETE NATIVE CYCLE: PASSED (runs/cut03_margin)
+- The hand closes on the original handle before lift; ideal fixed attachment.
+- The tested straight blade is visibly fitted, as authorized.
+- Measured native blade motion drives the same approximate tomato material.
+- The material reaction force and moment are applied once to the native tool COM,
+  one 1 ms interval later. No desired-pose-only cutting animation is used.
+- The cut broke 1857 bonds and created two disconnected pieces, with 46.0% of
+  total mass in the smaller piece. Horizontal withdrawal and settling passed.
+- Peak summed simulated blade load: 1.3505 N (2 N stop retained).
+- Peak particle penetration: 0.0081 mm (0.1 mm stop retained).
+- Final knife/material clearance: 48.44 mm; minimum native blade/board gap: 2.759 mm.
+- Maximum fixed-mount translation drift: 0.00198 mm.
+- No training, real-tomato calibration or motor-work qualification is claimed.
+
+OTHER VERIFIED COMPONENTS
+The full dry route passed. A separate contact test with cutting disabled had no
+broken bonds or fracture work; it measured 0.07749 N and applied up to 0.07608 N to
+the native tool. Independent replay of saved actual robot blade poses created
+the same broken bonds and two pieces. All material-state arrays restored exactly.
+Robot restart uses a fresh process; an in-place loaded robot reset is not claimed.
+
+ENVIRONMENT CHANGE IN THIS SEPARATE VERSION
+The empty pickup cradle retracts 110 mm after the knife is lifted. Visible posts
+and native kinematic collision bodies move together. This is an ideal support
+mechanism, not a force-driven actuator. The original robot, kitchen, grip and
+source files remain unchanged. The tomato is still held by its bottom layer.
+The original 0.25 kg knife mass, COM and inertia are retained as an explicit tool
+approximation even though the visible blade is shorter.
+
+NUMERICAL LIMITS AND FAILED EVIDENCE
+The initial 2 ms run separated and withdrew successfully but was not quiet enough
+after 1 s, so its overall result remains failed. A longer unchanged-law settlement
+probe resolved that condition. The final controller permits up to 20 s settlement
+and requires 0.5 s continuously below the existing speed/support threshold.
+The corrected successful run needed about 1.365 s of final settlement.
+
+The first 1 ms trial hit a native board-contact problem during withdrawal despite
+positive clearance on the preceding step. The prior native contact envelope
+was 4 mm combined; the corrected envelope is 0.5 mm combined, with zero rest offset
+and the existing 1 mm geometric clearance stop. Blade/board geometry and tomato
+laws were not changed. No collision pair or physical stop was disabled to pass.
+
+Force convergence is not established. Peak-load differences across exchange
+trials were about 5–8%, and their native contact settings were not all identical.
+Saved-pose replay differed by 1.43% in peak load and 0.0947 mm in maximum position.
+The material is explicitly approximate and uncalibrated. Cosmetic skin, calyx
+and cut flesh do not establish anatomical or experimental material realism.
+
+PERFORMANCE
+The successful entry/cut/withdrawal/settling section took 366 wall seconds.
+It included 6 seconds of native entry motion and 39.225 seconds of material
+evolution. Startup, pickup and the earlier approach are additional. This is an operational robot/kitchen
+demonstration, not a qualified fast articulated-robot RL training environment.
+The earlier 137 batched material task transitions/s excludes the native robot,
+kitchen rendering and policy inference. No learned policy has been trained.
+
+RUN
+bash /home/omen/Documents/Codex/experiments/tomato_robot_integration_20261113_v31/launch_integrated.sh
+Press Play in Isaac Sim for pickup, cut and horizontal withdrawal. Pause pauses
+the controller. Close the window and launch again for a fresh episode. Opening
+the USD file alone does not run the live tomato solver/controller.
+
+Evidence is preserved in runs/, reports/, RESULT.json and each checked_sources
+archive. Failed runs remain available. Existing reference research gates remain
+pending, including experimental validation and strict motor-work qualification.
+
+VISIBLE ROBOT/KITCHEN CONFIRMATION — PASSED
+The GUI run runs/live_20261113_185712 also completed pickup, cutting, horizontal
+withdrawal and settling: two components, 1857 broken bonds, no stop, peak1.3019N,
+particle penetration0.01444mm and final knife clearance48.44mm. Its39.225simulated
+seconds took576.7wall seconds including rendering and the entry route, excluding
+the earlier pickup/approach. The corresponding headless timing also includes the
+entry route; neither timing is a clean isolated material-only benchmark.
+The original headless result above is retained separately. Both runs have the
+same final broken-bond topology. Their force difference is not a convergence test.
+
+The ready view now publishes two of the existing stationary hold steps before
+pausing, with total hold duration unchanged. A collision-free display mesh follows
+the measured native tool pose to avoid the renderer hiding nested Mesh children.
+The tested blade collider, handle, mass, inertia and fixed mount are unchanged.
+Final view shows the two cut portions still close together on their fixed bottom
+support. No artificial displacement was added to spread the pieces for display.

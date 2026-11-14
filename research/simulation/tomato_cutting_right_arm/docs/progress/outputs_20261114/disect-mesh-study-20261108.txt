@@ -1,0 +1,25 @@
+Improved mesh study v18 — completed feasibility checks
+
+User authorized a separate mesh with unchanged exterior, mass, cut plane, support coordinates, material laws and fracture budgets. Original research assets and saved checkpoints have not been replaced.
+
+Geometry and material transfer: PASS (component only).
+Exact coplanar face markers prevent TetGen from merging distinct exterior planes. The cut cap uses constrained triangulation. Independent polygon-union audits cover every exterior plane and both cut faces. All 25 support coordinates and total mass are unchanged.
+
+Mesh: 9394 nodes, 42523 tetrahedra, 480 paired interface nodes. Minimum nodal mass 2.86016339e-09 kg; worst element condition 179.421. This is an improved discretization, not a change to the constitutive model.
+
+Cohesive integration: all 47 original laws and 0.11696391110288158 J total fracture budget retained. A coarse point-assignment scheme failed its nonuniform force refinement (7.44%). Exact nearest-centroid region clipping fixes that sampling artifact; refined force difference is 2.28028e-15. Force/energy, rigid rotation, release and reset controls pass.
+
+Closure: rebuilding contact sampling on the new mesh changes the prescribed closure resultant (~58.55 N versus ~70.31 N). That alternative is not adopted. Original collision proxy points, triangles, adjacency filters and normal law are now retained and positively embedded into the new material mesh. Mapping error <7e-18 m; closure/open/reclosure controls pass. This preserves sampled contact geometry; it does not prove arbitrary deformed trajectories are equivalent across meshes.
+
+Dynamics: qualification FAILED.
+- Native new-surface contact sampling is not adopted. Faster explicit trials inverted elements: 500 us at 8 ms, 100 us at 9 ms; with preserved original collision sampling, 100 us at 13 ms.
+- Fresh implicit 500 us: last accepted state 17 ms, minimum volume ratio 0.81156, accepted residuals <=9.671e-7 N. Attempt at 17.5 ms rejected at residual 0.00420572 N (limit 1e-6 N). Total integration attempt 186.04 seconds.
+- Fresh implicit 250 us: last accepted state 16.75 ms; attempt at 17 ms rejected at residual 0.00100652 N. Total attempt 233.11 seconds.
+- Matched samples through 16.5 ms: position difference 0.02472 mm (limit 0.1 mm); internal force-vector difference 3.353% (limit 5%); velocity difference 0.01756 m/s FAILS 0.005 m/s. Neither run completes 20 ms, so this is not a timestep-convergence pass.
+- Wall time per simulated second including rejected work: 10,944 and 13,917, versus 120 required. Accepted-only coarse-run cost is about 9,952. Startup is outside this integration timing. Timings are not an equal-accuracy speedup comparison to historical runs.
+
+Conclusion: improved geometry and local constitutive/contact-transfer controls pass, but mesh improvement alone does not qualify the coupled simulator. The candidate remains isolated; it is not promoted to section 4. No long settling, blade contact, cutting, training, or video work ran.
+
+Next action: address convergence and cost of coupled contact/time integration using the saved failing interval. Preserve these mesh and mapping controls as prerequisites. A full fresh 20 ms timestep comparison, <=120 wall-seconds/sim-second performance, assembled settling, and nonfracturing blade contact must pass before section 4. Further mesh refinement alone is not supported by these results. No tolerances, material coefficients or fracture budgets were relaxed.
+
+Evidence: mesh_build.json, geometry_audit.json, piece_mass_audit.json, full_surface_result.json, quadrature_refinement_result.json, contact_remap.json, preserved_closure_control.json, implicit500us_result.json, implicit250us_result.json, timestep_comparison.json, candidate_manifest.json. Failed runs and checkpoint arrays are retained in this directory. No simulation remains running.

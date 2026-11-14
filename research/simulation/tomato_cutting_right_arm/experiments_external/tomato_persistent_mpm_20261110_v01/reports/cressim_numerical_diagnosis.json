@@ -1,0 +1,22 @@
+{
+  "one_line_change": "Replace dimensionful 1e-4 kg cutoff with occupied mass >0 in separate upstream copy",
+  "results": {
+    "far": {
+      "driven_final_pulse_fraction": 0.9999986819000001,
+      "undriven_peak_pulse_fraction": 0.0,
+      "total_z_momentum_error_fraction": 1.5433999999911463e-06
+    },
+    "held": {
+      "driven_final_pulse_fraction": 0.9999981862,
+      "undriven_peak_pulse_fraction": 0.0,
+      "total_z_momentum_error_fraction": 1.9514000000955822e-06
+    },
+    "absent": {
+      "driven_final_pulse_fraction": 0.49940118299999997,
+      "undriven_peak_pulse_fraction": 0.5005968757,
+      "total_z_momentum_error_fraction": 1.9999999999881224e-06
+    }
+  },
+  "diagnosis": "Mass cutoff is a confirmed major cause of lost free translation; correcting it does not add persistent fracture. APIC gradient scaling has units error (4/h applied to sum(w*v*distance) should be 4/h^2 for velocity gradient), so patched upstream is not the selected bulk backend. No further upstream correction attempted.",
+  "source_patch": "upstream_diagnostic/cutoff_only.patch"
+}

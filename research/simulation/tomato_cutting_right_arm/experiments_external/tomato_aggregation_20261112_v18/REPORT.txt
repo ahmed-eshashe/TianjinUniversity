@@ -1,0 +1,44 @@
+V18 AGGREGATION TRIAL — CORNER STABILITY IMPROVED, RESPONSE ACCURACY FAILED
+2026-11-12, China time
+
+Decision
+The authorized bounded trial reached a substantive Stage A accuracy rejection. Do not adopt this candidate or proceed to its GPU/history/contact stages. It removes the tested tiny-cut-region stability collapse where interior anchors exist, but it changes the original cut-block dynamic response beyond the frozen tolerances. The finite diagnosis confirms this after reducing both solvers' timesteps and on 60 mm blocks at two spatial resolutions. No RL-ready tomato, complete physical cut, new throughput result or production replacement is claimed.
+
+What was implemented
+A separate same-fragment affine extension of the preserved v17 linear tetrahedral reference. All material regions, volumes and the original neo-Hookean material constants are retained. The exact reduced inertia of the declared original lumped model is used: A^T diag(m) A. Coupled mass blocks are solved without relumping, artificial mass, material deletion or damping. Nonaffine state projection errors are explicitly measured. Read FORMULATION.txt for the numerical definition, root selection, local-path limitation and research attribution.
+
+Initial failure and bounded correction
+The initial 12 mm block had a whole cut fragment without any fully occupied root tetrahedron. That fragment remains explicitly unsupported rather than deleted or mass-scaled. On a larger 24 mm block, the initial 2.5-cell root radius also missed valid same-fragment roots at 2.62 to 2.81 cells from virtual nodes. Increasing that numerical search radius to 3.5 cells removed this issue in the tested larger fixtures. Initial failed source, logs and results are preserved. This is not a claim of arbitrary thin-fragment support.
+
+Verified component results
+- 62 algebra/component checks passed: tested strain rank, positive reduced inertia, mass, affine state projection, energy gradient, objectivity, force/torque balance, corner stability and disconnected-fragment independence. These are finite geometric unit fixtures, not physical cutting.
+- Eight initial-state projection cases passed the declared position, velocity, total-energy and angular-momentum screens: affine/smooth/localized fields on 24 mm and 60 mm blocks, including a 3 mm grid. Largest observed position change: 0.0327 mm. Largest velocity change: 4.684 mm/s. Largest total-energy change: 1.681%. Affine fields transfer to roundoff. Initial projection success does not establish subsequent dynamic accuracy.
+- Matched 24 mm corner spectra show the original linearized stability ceiling collapsing from 29.9 to 0.830 microseconds as the diagonal-plane offset decreases from 130 to 0.1 micrometres. Aggregation keeps it approximately 268.7 microseconds in those fixtures. This is an eigenvalue diagnostic, NOT a qualified integration timestep or measured GPU speedup.
+- No fully separated component is coupled to another by the extension matrix in the tested cases. Around a partial crack, current history compatibility and distance checks do not prove a material-face-adjacent local path; general crack-front behavior remains unqualified.
+
+The failed accuracy gate
+Fresh blocks start from 1% affine compression with 0.5% shear and are released without damping or contact. Compare the aggregation candidate against the preserved v17 dynamics at identical sample times. The smaller-timestep confirmation uses 6.25/3.125 microseconds for the candidate and 0.5/0.25 microseconds for the reference. Both methods pass their own timestep-halving screens in all three confirmation cases. Maximum total-energy drift is below 0.01%. Nevertheless, the methods disagree:
+
+Extent / grid / duration | Internal-force RMS discrepancy | Max material-position difference | Max material-velocity difference
+24 mm / 6 mm / 20 ms     | 121.11%                        | 0.2078 mm                        | 747.9 mm/s
+60 mm / 6 mm / 5 ms      | 44.20%                         | 0.06750 mm                       | 329.1 mm/s
+60 mm / 3 mm / 2 ms      | 32.98%                         | 0.02447 mm                       | 223.0 mm/s
+
+Frozen limits are 5% meaningful force RMS (1e-5 N near-zero floor), 0.1 mm position and 5 mm/s velocity. The 60 mm cases pass position but fail force and velocity. The largest candidate half-step force difference is only 0.231%, and the largest reference half-step force difference is 0.00623%; these are far below the model-to-model discrepancies. Reducing the timestep therefore does not resolve the central mismatch in these controls.
+
+The table measures internal nodal force of the retained reference basis, NOT knife reaction force or experimental tomato accuracy. The v17 reference is itself an uncalibrated numerical model. Disagreement rejects this candidate under the approved equivalence contract; it is not proof that all aggregation methods are physically invalid. Different durations were used for the three bounded confirmation fixtures; the rows are not a matched-duration spatial-convergence study. The finer case is sufficient to reject its short-response gate, not to establish a convergence rate.
+
+Diagnosis
+State transfer preserves affine fields and the reduced model conserves its own energy, but extending a fully occupied root's affine field constrains cut-region deformation modes. That changes the subsequent mechanical response. Stability, conservation and a visually plausible deformation are insufficient substitutes for the frozen response comparison. GPU coding would speed this changed approximation without repairing that issue.
+
+Cost observations, not a speed qualification
+CPU aggregation construction for the single diagonal-cut 60 mm controls took about 1.8 seconds at 6 mm resolution and 51–52 seconds at 3 mm resolution in the diagnostic implementation. Maximum coupled mass blocks in those cases were 125 and 159 nodes. These include reference setup work and were not timed as complete episodes; they are neither lower bounds nor optimized GPU throughput. Construction cost would require attention only after a candidate meets the mechanical gate. No v18 aggregate GPU dynamics, incremental GPU history, coupled contact, robot or actual RL rollout was implemented or benchmarked after the rejection.
+
+Recommended next action
+Preserve v17 as the existing isolated reference and preserve v18 as rejected evidence. Do not spend further work optimizing or integrating this particular extension rule. Any successor must first demonstrate acceptable cut-region response, with a declared numerical representation and a task-appropriate accuracy contract, before a further GPU implementation. A deliberately cheaper training proxy would be a separate modeling decision; this run does not silently authorize or certify one. No automatic XPBD/new-engine switch, new physical cutting campaign or training run was started.
+
+Evidence
+contract.json; FORMULATION.txt; algebra.json; projection_screen.json; corner_reference.json; dynamic_screen.json; failure_confirmation.json; qualification.json; reports/preservation.json; reports/aggregation-result.png. Initial rejections remain in early_gate.json, reports/fixture_diagnosis.json and reports/aggregation_initial.py. The checklist preserves historical passes while marking this candidate's Stage A failure; subsequent stages are not marked complete.
+
+Reproduction
+Use the existing project .venv-native Python with OPENBLAS_NUM_THREADS=1 and PYTHONDONTWRITEBYTECODE=1. Each command was capped at 600 seconds. Run tests/algebra.py, tests/projection_screen.py, tests/corner_reference.py, tests/dynamic_screen.py and tests/failure_confirmation.py in the isolated directory. tests/early_gate.py reproduces the retained unsupported small-fixture rejection. Reference GPU kernels/cache are copied into this candidate; prior experiment sources and caches are not written.

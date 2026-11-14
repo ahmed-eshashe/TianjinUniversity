@@ -1,0 +1,24 @@
+{
+  "authorized": true,
+  "authorization": "User: Validate stronger blade contact (Recommended)",
+  "updated": "2026-11-09T10:46:32.605200+00:00",
+  "normal_contact_stiffness_levels_N_per_m": [
+    20000.0,
+    200000.0,
+    2000000.0
+  ],
+  "benchmark": "Independently constrained nonpenetrating elastic support, prescribed tool; select only if final two levels converge and satisfy unchanged geometry/force tolerances. No selection on fracture outcome.",
+  "candidate": "Conservative one-sided penalty, normal displacement included implicitly through material embedding; exact CAD re-queried each step. Frozen normals/inside intervals within one step require half-step validation. Brown friction parameters unchanged, retained lagged tangential treatment explicitly disclosed.",
+  "limits": {
+    "force_N": 2,
+    "whole_volume_penetration_m": 0.0001
+  },
+  "gates": [
+    "Independent force/energy/Jacobian/dense solve/rigid/wrench/purity/reset controls",
+    "Fresh settled clear-start nonfracturing half-step test",
+    "Damage-enabled Gate B then remaining section4 gates"
+  ],
+  "speed": "deferred",
+  "experimental_validation": "pending",
+  "adopted": false
+}

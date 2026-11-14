@@ -1,0 +1,63 @@
+"""Independent adaptive surface integral of the unchanged CAD/contact law.
+
+Priority refinement controls a reported quadrature error estimate. It is not a
+replacement for the separate conservative whole-volume penetration certificate.
+"""
+import heapq,itertools,time
+import numpy as np
+from independent_cad_query import query_mesh
+from contact_law import evaluate
+RULE=np.array([[2/3,1/6,1/6],[1/6,2/3,1/6],[1/6,1/6,2/3]])
+
+def facets(a):
+ b=a.body;registry={}
+ if np.any(b.codes) or any(len(p)!=4 for p in b.polys):raise ValueError('intact surface reference only')
+ for ids in b.ids:
+  for c in itertools.combinations(ids,3):registry.setdefault(tuple(sorted(c)),[]).append(c)
+ ids=np.array([v[0] for v in registry.values() if len(v)==1]);X=b.grid[ids];area=np.linalg.norm(np.cross(X[:,1]-X[:,0],X[:,2]-X[:,0]),axis=1)/2
+ return ids,X,area
+
+def integral(a,cad,T,R,tool_velocity,relative_tol=.002,absolute_tol_N=1e-6,max_leaves=4096,max_depth=32):
+ from pathlib import Path
+ z=np.load(Path(__file__).resolve().parents[1]/"assets/blade_partition.npz");planes=z["planes"];cells=z["x"][z["tets"]];cmin=cells.min(1);cmax=cells.max(1)
+ ids,X,areas=facets(a);points=a.body.grid+a.E@a.q;vel=a.E@a.v;F=np.zeros_like(points);energy=friction=power=0.;resultant=np.zeros(3);moment=np.zeros(3);diagnostics=[];queries=0;started=time.perf_counter();bbmin=cad.vertices.min(0);bbmax=cad.vertices.max(0);seq=0
+ for face,nodes in enumerate(ids):
+  x=points[nodes];vv=vel[nodes];xlocal=(x-T)@R;A=areas[face]
+  if np.any(xlocal.max(0)<bbmin) or np.any(xlocal.min(0)>bbmax):continue
+  roots=[]
+  for ci in np.flatnonzero(np.all(xlocal.max(0)>=cmin,axis=1)&np.all(xlocal.min(0)<=cmax,axis=1)):
+   polygon=list(np.eye(3))
+   for plane in planes[ci]:
+    distance=xlocal@plane[:3]+plane[3];new=[]
+    for j,p0 in enumerate(polygon):
+     p1=polygon[(j+1)%len(polygon)];d0=p0@distance;d1=p1@distance
+     if d0<=0:new.append(p0)
+     if (d0<0<d1) or (d1<0<d0):new.append(p0+d0/(d0-d1)*(p1-p0))
+    polygon=new
+    if not polygon:break
+   roots.extend(np.array([polygon[0],polygon[k],polygon[k+1]]) for k in range(1,len(polygon)-1))
+  if not roots:continue
+  def leaf(B,depth):
+   nonlocal queries
+   p=B@x;ref=B@X[face];Ar=np.linalg.norm(np.cross(ref[1]-ref[0],ref[2]-ref[0]))/2
+   center=p.mean(0);radius=np.linalg.norm(p-center,axis=1).max()
+   q=query_mesh(cad.vertices,cad.faces,((center-T)@R)[None]);queries+=1
+   # Exact zero from a conservative Lipschitz bound (CPU float64 query).
+   if q['phi'][0]>radius+2e-9:return (np.zeros((3,3)),0.,0.,0.,np.zeros(3),0.,B,depth,True)
+   edges=np.array([[0,1],[0,2],[1,2]]);long=edges[np.linalg.norm(p[edges[:,0]]-p[edges[:,1]],axis=1).argmax()];mid=(B[long[0]]+B[long[1]])/2;left=B.copy();right=B.copy();left[long[0]]=mid;right[long[1]]=mid
+   bary=np.concatenate([RULE@B,RULE@left,RULE@right]);pos=bary@x;v=bary@vv;query=query_mesh(cad.vertices,cad.faces,(pos-T)@R);queries+=len(pos);normal=query['normal']@R.T;area=np.r_[np.full(3,Ar/3),np.full(6,Ar/6)];law=evaluate(query['phi'],normal,v-tool_velocity,area);f=law['force'];low=bary[:3].T@f[:3];high=bary[3:].T@f[3:];err=float(np.linalg.norm(high-low,axis=1).sum())
+   # Domains are already inside the exact CAD partition; no hidden outside-contact estimate.
+   U=.5*1e9*np.sum(area[3:]*np.maximum(-query['phi'][3:],0)**2);D=-np.sum(law['friction_force'][3:]*(v[3:]-tool_velocity));W=np.sum(f[3:]*tool_velocity);M=np.cross(pos[3:]-T,f[3:]).sum(0)
+   return (high,U,D,W,M,err,B,depth,False)
+  leaves={k:leaf(B,0) for k,B in enumerate(roots)};heap=[(-r[5],k) for k,r in leaves.items()];heapq.heapify(heap);total=sum(r[0] for r in leaves.values());U=sum(r[1] for r in leaves.values());D=sum(r[2] for r in leaves.values());W=sum(r[3] for r in leaves.values());M=sum(r[4] for r in leaves.values());err=sum(r[5] for r in leaves.values());seq=len(leaves);depth_max=0
+  atol=absolute_tol_N*A/areas.sum()
+  while err>atol+relative_tol*np.linalg.norm(total,axis=1).sum():
+   if len(leaves)>=max_leaves:raise ValueError(('adaptive surface capacity',face,len(leaves),err))
+   _,k=heapq.heappop(heap);old=leaves.pop(k);B,depth=old[6],old[7];depth_max=max(depth_max,depth)
+   if depth>=max_depth:raise ValueError(('unresolved adaptive contact',face,depth,err))
+   p=B@x;edges=np.array([[0,1],[0,2],[1,2]]);i,j=edges[np.linalg.norm(p[edges[:,0]]-p[edges[:,1]],axis=1).argmax()];mid=(B[i]+B[j])/2;left=B.copy();right=B.copy();left[i]=mid;right[j]=mid
+   total-=old[0];U-=old[1];D-=old[2];W-=old[3];M-=old[4];err-=old[5]
+   for child in [left,right]:
+    r=leaf(child,depth+1);leaves[seq]=r;heapq.heappush(heap,(-r[5],seq));seq+=1;total+=r[0];U+=r[1];D+=r[2];W+=r[3];M+=r[4];err+=r[5]
+  F[nodes]+=total;energy+=U;friction+=D;power+=W;moment+=M;diagnostics.append({'face':face,'leaves':len(leaves),'depth':depth_max,'estimated_force_error_N':err,'force_N':np.linalg.norm(total,axis=1).sum()})
+ return dict(force=a.E.T@F,energy=energy,friction_power=friction,tool_power=power,moment=moment,diagnostics=diagnostics,queries=queries,wall_s=time.perf_counter()-started)

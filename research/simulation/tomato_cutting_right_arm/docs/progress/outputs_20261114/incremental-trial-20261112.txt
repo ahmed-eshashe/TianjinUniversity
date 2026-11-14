@@ -1,0 +1,64 @@
+V20 — CUT-UPDATE AND GPU SPEED IMPROVEMENTS
+Completed: 2026-11-12T19:12:24.090144+08:00
+
+RESULT
+Cut geometry plus aggregate setup in the matched 60 mm diagnostic episode is 2.96x faster: 4.736 -> 1.598 seconds total across its four cut-front changes and initial setup. The complete measured material-plus-changing-geometry loop is 2.22x faster: 6.042 -> 2.724 seconds wall time for 0.2 seconds simulated time. Matched GPU fixed-geometry rates improved by 1.21-1.39x. These are useful, verified implementation improvements, but they do not make this an RL-ready cutting simulator.
+
+The current Isaac/DiSECt kitchen, robot, grip and demo remain unchanged. All 1891 protected files, including v19, match their saved hashes. No new physical tomato slice, robot run, training, material approximation or validation relaxation occurred.
+
+WORK COMPLETED
+1. Profiled the CPU geometry/setup path and three GPU kernel phases separately. The host was recomputing moments for unchanged material and repeatedly solving identical tiny connectivity/mass subproblems. GPU force gathering was the largest measured kernel cost.
+2. Added conservative region rejection, cached unchanged convex moments and history-group connectivity, and vectorized root/setup/state evaluation. Exact reduced inertia is preserved. Recomputed moments and convex clipping remain confined to affected material regions after initial geometry-cache construction; global lightweight bookkeeping still remains.
+3. Corrected a real implementation pitfall: reusing initialization centroids rather than reference ConvexHull centroids changed some tied root selections. The initial failure is preserved. A one-off exact reference-moment cache restores identical topology, root selections and aggregation matrices. Its cost is not hidden: it is counted in complete episodes and separately listed in warm-event timing.
+4. Parallelized the same nodal force sum and refined the GPU layout from one to four node groups per block. The stress law, exact coupled mass and 12.5 us integrator step are unchanged. This is the one profile-directed GPU assembly optimization; no further numerical shortcut was added after its cost result.
+5. Ran partial-to-complete geometric cutting loops with reset, GPU reconstruction and observations included. Future geometric events are only supplied as they occur.
+
+VERIFICATION
+- 27 geometry/setup controls passed: oblique, corner, aligned, partial, current-world plane, tangent, outside and tiny-region fixtures; partial-to-complete history through four cut slots; capacity stop; restart; two 60 mm comparisons. Final geometry arrays, connectivity, labels, nodal fields and exact mass agree with the reference in the reported large-block cases.
+- 8 strict GPU checks passed, including external-force change, independent environments and loaded restart.
+- 23 changing-loop checks passed. Maximum optimized/reference error across the recorded 0.2-second trajectories: position 0.01129 micrometres, velocity 0.04529 mm/s, deformation gradient 1.19859e-05. These pass the unchanged 1 micrometre / 0.1 mm/s / 1e-4 same-operator limits.
+- 3 matched large-block GPU comparisons passed; exported position/velocity/deformation gradient differences were zero at their sampled endpoints.
+The approved material-weighted norm remains available for cross-representation comparisons; it was not used to loosen these strict implementation-equivalence limits.
+
+GPU SPEED — MATCHED FIXED GEOMETRY
+RTX 5060 Laptop, 8 GiB, headless. 60 mm cube, 6 mm grid, E=100 kPa, nu=0.4, rho=1000 kg/m^3, 0.1% compression + 0.05% shear, 12.5 us substeps. Eight independent copies; 20 ms simulated/body per timed repeat. Five alternating-order repeats, synchronized, reset to identical states outside timing. Rows count material-step equivalents at a 50 Hz control rate, NOT actual RL environment steps or FPS.
+
+Case        V19/s    V20/s  Speedup
+intact      116.19   158.87    1.37x
+oblique      93.48   129.73    1.39x
+corner      102.74   123.92    1.21x
+
+Initial setup, reset, output, changing cuts, contact, fracture, robot and policy are EXCLUDED above. The material-only 200/s headroom target was not reached. Larger batch counts were evaluated for the initial parallel layout; they did not establish the 200/s target. The packed final layout was compared at batches one/eight, not claimed optimal for every GPU or batch.
+
+CHANGING-GEOMETRY LOOP — COSTS INCLUDED
+One environment, ten 50 Hz controls, four advancing partial-to-complete front events on a fixed oblique plane. One fresh reset per episode. Total simulated time 0.2 s. Material undergoes the same small initial compression/shear as the timing fixture; there is no physical knife force. Convex geometry is generated during the episode, not pre-cut at reset. A final two-component geometric topology is verified but is NOT a physically fractured slice.
+
+60 mm block phase             V19 s     V20 s
+body_reset                0.0379    0.0381
+geometry_update           3.0699    1.3306
+aggregate                 1.6656    0.2674
+GPU_setup_graph           0.7941    0.8047
+material_advance          0.3588    0.1606
+observation_export        0.0322    0.0362
+Other validation/check time 0.0837 -> 0.0864 s.
+TOTAL: 6.0422 -> 2.7240 s, 2.22x speedup.
+Single-environment diagnostic transitions: 1.66 -> 3.67/s.
+The 24 mm block improves from about 0.591 to 0.310 s for the same control count (about 1.91x). That small-block result must not be substituted for tomato-size cost.
+
+The large optimized episode includes its first geometry-cache build. Subsequent geometry events cost about 0.146, 0.367 and 0.145 s, depending on intersected material; the first costs about 0.671 s including preparation. Aggregate setup totals 0.267 s; GPU data/graph reconstruction still totals 0.805 s. No topology-update or setup cost is silently amortized away in the episode total.
+No complete batched RL benchmark was run or passed. Single-environment rates above are not directly equivalent to the project's aggregate 100/s RL threshold. However, the present serial host geometry/setup work alone costs about 1.60 s per ten controls: even free GPU stepping would leave an optimistic ceiling around 6.3 diagnostic transitions/s for this serial update schedule, before other work. A different batched/parallel update architecture would require measurement; it cannot be inferred from material-only batching.
+
+DECISION
+Preserve the speed improvements and the validated mechanics reference. The current approach remains below the intended complete-environment RL speed envelope. Do not start robot integration or long physical cuts from these numbers. The remaining cost is concentrated in convex geometry generation and rebuilding/uploading the GPU representation, with only modest material-only headroom. A further small timestep or material relaxation is neither justified nor implemented.
+
+NEXT SCOPE
+The next substantial implementation effort would be compiled/local convex geometry plus persistent GPU topology storage and incremental updates, validated against this saved reference. It needs a measured combined-loop cost before more physical cutting work. The present CPU global arrays plus rebuilt GPU graphs should not be promoted as an efficient RL backend. See NEXT_ACTION.txt for the proposed bounded decision. This trial stops after its declared equivalent optimization and combined-cost assessment, not because a background job is still running.
+
+EVIDENCE AND LIMITS
+profile.json and reports/profile_*.txt: one profile, kernel and host attribution.
+local_validation.json, gpu_validation.json, matched_cost.json, changing_loop.json: final checks and raw timing repeats.
+reports/local_before_exact_moment_cache.json: preserved root-selection mismatch before correction.
+reports/warp32_*.json, cost_packed.json: layout comparison and timing screen.
+FORMULATION.txt, src/, tests/: implementation, equations and reproducible procedures.
+preservation.json: original files unchanged.
+All v19 physical limits remain: synthetic bulk blocks, up to four geometric cuts, unresolved small-fragment time scales, unqualified general crack-front root locality, no blade contact/recontact, paid fracture, board/support, arbitrary-path tomato or experimental calibration. The 2 N force stop and 0.1 mm whole-material penetration limit are unchanged but were not exercised by this bulk-only trial.

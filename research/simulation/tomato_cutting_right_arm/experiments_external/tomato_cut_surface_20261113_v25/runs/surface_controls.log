@@ -1,0 +1,64 @@
+{
+  "checks": {
+    "intact_area": true,
+    "intact_volume": true,
+    "intact_affine": true,
+    "intact_deformed_volume": true,
+    "intact_virtual_work": true,
+    "intact_components": true,
+    "partial_area": true,
+    "partial_volume": true,
+    "partial_affine": true,
+    "partial_deformed_volume": true,
+    "partial_virtual_work": true,
+    "partial_components": true,
+    "full_area": true,
+    "full_volume": true,
+    "full_affine": true,
+    "full_deformed_volume": true,
+    "full_virtual_work": true,
+    "full_components": true,
+    "separate_faces_independent": false
+  },
+  "passed": false,
+  "cases": [
+    {
+      "case": "intact",
+      "expected_area": 0.000216,
+      "area": 0.00021600000000000002,
+      "wall_s": 0.035752572992350906,
+      "coupled_mass": [],
+      "triangles": 48,
+      "reference_area_m2": 0.00021600000000000002,
+      "volume_coverage_m3": 2.1599999999999984e-07,
+      "boundary_mapping": "current material, compatible interior faces removed, incompatible crack faces retained",
+      "fracture_authorized": false
+    },
+    {
+      "case": "partial",
+      "expected_area": 0.000252,
+      "area": 0.00025200000000000005,
+      "wall_s": 0.04131748300278559,
+      "coupled_mass": [],
+      "triangles": 96,
+      "reference_area_m2": 0.000252,
+      "volume_coverage_m3": 2.1599999999999984e-07,
+      "boundary_mapping": "current material, compatible interior faces removed, incompatible crack faces retained",
+      "fracture_authorized": false
+    },
+    {
+      "case": "full",
+      "expected_area": 0.000288,
+      "area": 0.000288,
+      "wall_s": 0.04972557800647337,
+      "coupled_mass": [],
+      "triangles": 144,
+      "reference_area_m2": 0.00028800000000000006,
+      "volume_coverage_m3": 2.1599999999999984e-07,
+      "boundary_mapping": "current material, compatible interior faces removed, incompatible crack faces retained",
+      "fracture_authorized": false
+    }
+  ],
+  "physical_cut": false,
+  "note": "Splits are geometry controls only. No fracture work or physical slice is claimed."
+}

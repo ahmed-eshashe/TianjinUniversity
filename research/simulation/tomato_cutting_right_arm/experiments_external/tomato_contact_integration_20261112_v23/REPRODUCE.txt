@@ -1,0 +1,21 @@
+ISOLATED V23 CONTACT TEST
+Python: /home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python
+Environment: OPENBLAS_NUM_THREADS=1, PYTHONDONTWRITEBYTECODE=1; NUMBA_CACHE_DIR
+and Warp cache are under this trial. No dependency installation was needed.
+
+Freeze these results; use a new copy/output version to rerun. Selected contact
+runtime is contact_gpu_precise.py over contact_gpu.py and the copied v22 runtime.
+Run one GPU process at a time, with 600-second bounds for each diagnostic:
+ tests/preflight_precise.py
+ tests/mechanics_controls_precise.py
+ tests/contact_cycle_culled.py --spacing .0000625 --dt_div 4
+ tests/contact_cycle_culled.py --spacing .00003125 --dt_div 4
+ tests/profile_contact.py --spacing .0000625 --dt_div 4
+ tests/finalize.py
+
+Earlier parallel/precise cycles retain their exact diagnostic variants in reports/
+pre_precision and raw outputs. They document rejected precision/sampling settings;
+not every historical diagnostic passed. Do not overwrite their evidence.
+The v22 bulk implementation is copied unchanged. Contact surface registration,
+force integration, support, transactions and conservative geometry are new isolated
+modules. Production Isaac/DiSECt code remains untouched.

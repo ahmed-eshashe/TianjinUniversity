@@ -1,0 +1,30 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/cache/warp/1.17.0
+Module solver 54e3d90 load on device 'cuda:0' took 0.66 ms  (cached)
+{"phase": "reposition clear of tomato", "tool": [0.0017500000540167093, 0.0035804416984319687, 0.15429282188415527], "bad": [0], "peak": 1.520809292793274, "wall": 0.03685556098935194}
+{"phase": "reposition clear of tomato", "tool": [0.0017500000540167093, 0.023580625653266907, 0.12000003457069397], "bad": [0], "peak": 1.520809292793274, "wall": 1.0529523690056521}
+{"phase": "reposition clear of tomato", "tool": [0.0017500000540167093, 0.043585434556007385, 0.12000003457069397], "bad": [0], "peak": 1.520809292793274, "wall": 2.0683641340001486}
+{"phase": "reposition clear of tomato", "tool": [0.0017500000540167093, 0.0635882169008255, 0.12000003457069397], "bad": [0], "peak": 1.520809292793274, "wall": 3.1810337860079017}
+{"phase": "rotate outside material", "tool": [0.0017500000540167093, 0.06500010192394257, 0.12000003457069397], "bad": [0], "peak": 1.520809292793274, "wall": 4.435508844006108}
+{"phase": "reposition clear of tomato", "tool": [0.0, 0.06075011193752289, 0.060007959604263306], "bad": [0], "peak": 1.520809292793274, "wall": 5.5963420009939}
+{"phase": "cut", "tool": [0.014054549857974052, 0.05999015271663666, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 6.6276687319914345}
+{"phase": "cut", "tool": [0.0003043159958906472, 0.05805449187755585, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 7.677908318990376}
+{"phase": "cut", "tool": [0.010211317799985409, 0.05614863336086273, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 8.772469154995633}
+{"phase": "cut", "tool": [0.010747610591351986, 0.05426028370857239, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 9.806280743010575}
+{"phase": "cut", "tool": [0.00012571904517244548, 0.05234958231449127, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 10.830332873010775}
+{"phase": "cut", "tool": [0.013757637701928616, 0.05041280388832092, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 11.86485632401309}
+{"phase": "cut", "tool": [0.0061960965394973755, 0.04851327836513519, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 12.948028084007092}
+{"phase": "cut", "tool": [0.002649604342877865, 0.04662157595157623, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 13.99733521201415}
+{"phase": "cut", "tool": [0.014941041357815266, 0.04469969868659973, 0.0017499967943876982], "bad": [0], "peak": 1.520809292793274, "wall": 15.022210224007722}
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/tests/second_cut.py", line 35, in <module>
+    advance(action,phase)
+  File "/home/omen/Documents/Codex/experiments/tomato_approx_rl_20261113_v28/tests/second_cut.py", line 16, in advance
+    if bad.any():raise RuntimeError('Physical stop '+str(bad))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Physical stop [2]

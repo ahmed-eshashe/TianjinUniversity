@@ -1,0 +1,5 @@
+exec(compile(open('analyze_initial.py').read().split('out={')[0],'analyze_initial.py','exec'))
+velocity=np.zeros((n,3));velocity[:,1]=-.1
+local=np.einsum('eijab,ejb->eia',C,velocity[t]);force=np.zeros((n,3));np.add.at(force,t.ravel(),-local.reshape(-1,3))
+out={'scope':'Offline exact rest-linearized damping under uniform rigid translation, no integration','uniform_velocity_m_s':[0,-.1,0],'expected_deformation_rate':0,'predicted_damping_force_norm_N':float(np.linalg.norm(force)),'predicted_max_node_damping_force_N':float(np.linalg.norm(force,axis=1).max()),'predicted_max_free_node_acceleration_m_s2':float(np.linalg.norm(force[free]/mass[free,None],axis=1).max()),'sum_damping_force_N':force.sum(0).tolist(),'interpretation':'Installed hydrostatic damping uses v1,v2,v3 without subtracting v0. A common velocity can produce self-equilibrated forces despite zero strain rate. Kernel check independently agrees for a different imposed field; causal contribution to later cell collapse is not isolated.'}
+(w/'damping_translation_check.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))

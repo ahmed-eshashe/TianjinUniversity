@@ -1,0 +1,20 @@
+Blade contact route review — 31 October 2026
+
+Source review only. No simulator imports, physics steps, new native experiments, installed-library edits or contact-backend changes were made.
+
+Finding 1: direct mesh queries are available.
+Installed Newton geometry helpers use Warp mesh closest-point/parity queries and compute signed distance directly from the authored triangles. Its legacy particle-mesh contact route also uses a direct mesh query. This offers a concrete way to test the same 562 geometry probes without a discretized texture SDF. The direct-query precision, signs, normals and cost have not yet been measured for our blade.
+
+Finding 2: full-surface contact still requires an SDF.
+The installed edge/face path minimizes the rigid shape's SDF across soft edges and triangle interiors, consumes real texture SDF descriptors for meshes, and is documented for SolverVBD. Removing the SDF is refused by the pipeline. Disabling full-surface contact leaves particle-only contacts, which do not establish coverage of a blade crossing between soft vertices. We will not treat that fallback as equivalent.
+
+Finding 3: local/adaptive SDF is not a demonstrated drop-in option.
+The inspected public mesh cooker derives one voxel spacing from the complete padded mesh bounds. A target-voxel-size option changes global spacing. Precomputed-resource ingestion exists, but does not supply automatic local refinement, region selection or multi-resolution seam/fallback logic. Cropping the mesh would change closed-surface sign and geometry; cropping the field requires correct handling of queries outside the local box, where the current sampler extrapolates. No supported complete local-domain integration has been demonstrated.
+
+Cost context: for the unchanged blade with 5 mm cooking padding, a dense float32 scalar grid at approximately 50 micrometre spacing is about 8.82 GiB; at 25 micrometres it is about 70.27 GiB. These are dense scalar estimates only, not actual sparse texture allocations, measured GPU requirements or peak cooking costs. They do not justify blindly increasing global resolution.
+
+Recommendation: next run a protected standalone direct-mesh query diagnostic against the unchanged 562 probe/reference registry. Record signed-distance and normal errors, all thin-feature classifications, failures, timing, resource samples and source hashes. Use the existing locks, three-minute watchdog and memory reserves; no physics step is needed. Query success will only establish point-query behavior. A later complete contact route still needs edge/interior crossing tests, candidate completeness, barycentric/contact-buffer consistency, and force/work validation before blade motion into material.
+
+The original blade thickness, collision geometry, radii, material/contact values and CPU PhysX robot remain unchanged. No robot cutting, fracture or training is qualified by this review.
+
+Detailed evidence stores source hashes and exact excerpts from installed Newton files: runs/source_review/blade_contact_routes_20261031/review.json

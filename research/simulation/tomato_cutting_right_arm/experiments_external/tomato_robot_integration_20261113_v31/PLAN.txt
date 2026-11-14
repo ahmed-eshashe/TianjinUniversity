@@ -1,0 +1,14 @@
+Separate approximate-model robot integration
+
+1. Preserve the existing source scene, materials, grip, backwards elbow and relaxed left arm. User authorized preserving the handle/grip and visibly using the tested straight blade. Reason: the original CAD edge is 0.8–1.1mm thick and curved; the tested 120mm straight contact blade has an ideal sharp edge. Do not invisibly substitute them.
+2. Reuse original close-before-lift pickup and fixed-mount transfer. Add a continuous inverse-kinematics route only after actual geometry is selected. No per-frame joint/root teleporting.
+3. Keep material in its existing Y-up metre frame and map to Z-up kitchen. Tissue owns knife/tomato and tomato/board interaction; native engine retains robot and scene collisions. Avoid duplicate tomato native collision.
+4. Add force-moment/impulse telemetry in a separate solver copy without changing material/contact/fracture laws. Test sign, lever arm, frame, zero load, power, clock and queue ownership.
+5. Feed material with measured native knife endpoint poses on a declared clock. Apply the interval-averaged equal-and-opposite wrench once to the mounted body COM, explicitly one interval delayed. Retain 2N load and 0.1mm particle-contact limits. No claims of native motor-work validation or whole-CAD tissue accuracy.
+6. Validate unloaded tracking/clearance, nonfracturing contact, then the demonstrated approximate cut. Preserve two-stage horizontal withdrawal: along blade until clear, then toward body.
+7. Check shorter exchange interval, actual-pose replay, resetting and restart. Report component passes separately from full integration qualification; never label a displayed force as verified motor effort.
+8. Open a separate launcher only after the actual joint motion and contact are verified; update checklist truthfully.
+
+The original research setup remains unchanged. Experimental validation and general RL qualification remain pending.
+
+Integration clearance correction: retain the original v31 cut placement and route. The empty pickup cradle now retracts 110 mm over 0.5 s after lift, with kinematic native rigid bodies and visible geometry moving together. Actual native fixture displacement is checked within 0.1 mm. This is an ideal support mechanism, not a force-driven actuator. Positive-Y relocation was rejected for cradle overlap; negative-Y relocation was rejected by actual wrist self-contact. All failed evidence is retained.

@@ -1,0 +1,73 @@
+{
+  "status": "restricted_approximate_RL_pilot_pass",
+  "updated_utc": "2026-11-13T08:06:41.463788+00:00",
+  "approximate_task_ready_for_initial_RL_trial": true,
+  "general_tomato_qualification": false,
+  "robot_RL_qualification": false,
+  "learned_policy_trained": false,
+  "experimental_validation": "pending",
+  "existing_setup_changed": false,
+  "speed_complete_task_transitions_s": 136.75874253659822,
+  "full_batched_successes": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "full_batched_failures": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "mechanics_components": true,
+  "reset_and_stops": true,
+  "state_retry": true,
+  "two_intersecting_cuts_four_pieces": true,
+  "larger_tomato_cut": true,
+  "oblique_trial": {
+    "success": false,
+    "stop": "2 N force limit",
+    "peak_N": 2.019221305847168
+  },
+  "numerical_accuracy": "Coarse/fine complete cycles separate the same bonds, but final positions differ up to 1.54 mm and peak forces by about 46%. Not detailed-solver or real-tomato equivalence.",
+  "speed_scope": "Complete approximate kinematic-blade task: from intact body through blade-generated separation, horizontal withdrawal, terminal reward and selective resets. Online scripted controller used instead of a learned policy. Original articulated robot, rendering and policy-network inference excluded. Identical starting cases at different batch offsets, not generalization evidence.",
+  "source_artifacts": [
+    "runs/full_training_benchmark_adaptive/result.json",
+    "reports/mechanics.json",
+    "reports/contact_and_reset.json",
+    "reports/adaptive_controls.json",
+    "runs/second_intersecting_cut_adaptive/result.json",
+    "runs/large_tomato_adaptive/result.json",
+    "runs/small_oblique_adaptive/result.json",
+    "reports/timestep_outcomes.json",
+    "reports/reference_differences.json",
+    "reports/full_cycle_energy.json",
+    "reports/parent_preservation.json"
+  ],
+  "visible_live_verification": {
+    "source": "viewer_status_first.json",
+    "simulated_s": 62.96,
+    "pieces": 2,
+    "bad": [
+      0
+    ],
+    "result": "completed and paused",
+    "recorded_playback": false
+  },
+  "actor_interface": {
+    "observations": 25,
+    "hidden_damage_in_actor": false,
+    "privileged_critic_dimensions": 3,
+    "evidence": "reports/interface_check.json"
+  },
+  "speed_observation_scope_note": "Full measured benchmark included the prior superset of 28 observation fields. Final actor output separates 3 hidden fields into critic info; physics/reward/reset unchanged, interface check passes."
+}

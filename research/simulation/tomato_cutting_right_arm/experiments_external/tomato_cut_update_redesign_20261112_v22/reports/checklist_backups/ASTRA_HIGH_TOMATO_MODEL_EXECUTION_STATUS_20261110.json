@@ -1,0 +1,709 @@
+{
+  "plan_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/ASTRA_HIGH_TOMATO_MODEL_EXECUTION_PLAN_20261110.md",
+  "plan_sha256": "5d7151e636ff84d0fdd446cefb4a509f658c49f39fb5237604737433566de94b",
+  "status": "compiled_geometry_and_persistent_GPU_verified_combined_speed_below_RL_target",
+  "model": "Astra",
+  "reasoning": "high",
+  "new_candidate_adopted": false,
+  "experimental_validation": "pending",
+  "existing_solver_modified": false,
+  "initial_decision_budget_focused_hours": 8,
+  "gates": [
+    {
+      "id": 0,
+      "title": "Gate 0 Freeze the experiment and remove stale assumptions",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate0.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 1,
+      "title": "Gate 1 Establish trustworthy intact mechanics",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/intact_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/mechanics.json",
+        "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/qualification.json"
+      ],
+      "scope_note": "Historical intact mechanics preserved. v09 GPU matches v07 integrated block forces and short trajectories at primary/half timesteps; no arbitrary tomato/contact qualification. v17 passes initial analytical, CPU/GPU, conservation and selected timestep controls in small linear-element blocks; no inherited tomato/contact qualification. V19 approved weighted-velocity component checks and strict GPU equivalence pass. This does not qualify physical contact, arbitrary-path cutting or a tomato. V20 preserves the tested numerical model while improving local geometric updates, setup and force assembly; strict component and changing-loop comparisons pass, without physical contact/fracture qualification. V21 compiled geometry and persistent GPU storage pass restricted component and changing-loop comparisons; no inherited physical-cut qualification."
+    },
+    {
+      "id": 2,
+      "title": "Gate 2 Prove persistent cuts on a small block",
+      "status": "v19_restricted_geometric_history_components_pass_general_cutting_pending",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/persistent_cut_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate2_supplement.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_multicut_20261110_v07/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_activation_audit_20261111_v13/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_event_front_20261111_v14/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_local_state_20261111_v16/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/history_and_cpu.json",
+        "/home/omen/Documents/Codex/experiments/tomato_aggregation_20261112_v18/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/qualification.json"
+      ],
+      "scope_note": "v14 consistent local band and event-localized release passes short action/probe/timestep comparisons, including a faster held-out motion and loaded restart. Restricted single-plane band only. Spatial convergence, growing/moving band, arbitrary paths/full cut and Gate 2 as a whole remain unqualified. v16 local approximation fails oblique cut strain-rank checks; increasing uniform sampling did not resolve every case. No general-path pass. v17 removes the tested angled-cut rank defects and passes four geometric cut fixtures, bridge/independence/restart controls. These are prescribed geometry tests, not physical blade fracture or a finished Gate 2. v18 passes 62 algebra/component checks and eight initial projection cases, but cut-region dynamic response differs beyond the frozen tolerance even after timestep refinement. No physical blade or general-path qualification is inherited. V19 approved weighted-velocity component checks and strict GPU equivalence pass. This does not qualify physical contact, arbitrary-path cutting or a tomato. V20 preserves the tested numerical model while improving local geometric updates, setup and force assembly; strict component and changing-loop comparisons pass, without physical contact/fracture qualification. V21 compiled geometry and persistent GPU storage pass restricted component and changing-loop comparisons; no inherited physical-cut qualification."
+    },
+    {
+      "id": 3,
+      "title": "Gate 3 Establish cutting resistance and reliable contact",
+      "status": "pending_after_multicut_component_proof",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/contact_fracture_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/RECOVERY_PROPOSAL.md",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/mechanics_refined_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_basis_20261110_v05/conditioning_diagnosis.json",
+        "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_multicut_20261110_v07/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/REPORT.txt"
+      ],
+      "scope_note": "Physical blade contact/reaction and irreversible fracture-work remain pending. v14 resolves the prior short-window update comparison in a restricted band but does not complete Gate 2 or establish a physical tomato cut."
+    },
+    {
+      "id": 4,
+      "title": "Gate 4 Build the reusable tomato and complete one slice",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 5,
+      "title": "Gate 5 Verify freedom to change the cutting technique",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 6,
+      "title": "Gate 6 Measure interactive and RL performance",
+      "status": "v21_combined_geometric_cost_below_RL_target",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/assessment.json",
+        "/home/omen/Documents/Codex/experiments/tomato_local_state_20261111_v16/final_cost_control.json",
+        "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/cost.json",
+        "/home/omen/Documents/Codex/experiments/tomato_aggregation_20261112_v18/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/qualification.json",
+        "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/qualification.json"
+      ],
+      "scope_note": "v15 profiles unchanged v14 tiny block; fixed-topology dynamics already far below the project speed targets. This early no-go does not assert completion of physical prerequisites or a full Gate 6 RL benchmark. v16 bulk-only best 46.61 equivalent steps/s is below 100/s and excludes evolving cuts/contact. No complete environment or RL qualification. v17 first cost gate fails: 65.04/s at intact timestep, 8.27/s at corner-cut timestep, bulk only. History update overhead measured separately. No further candidate expansion. v18 stops earlier at Stage A response accuracy; aggregate GPU throughput is not measured or claimed. V19 approved weighted-velocity component checks and strict GPU equivalence pass. This does not qualify physical contact, arbitrary-path cutting or a tomato. V19 best fixed-topology rates 99-111 equivalent steps/s, with ~1.1-1.5 s CPU geometry/aggregation events excluded; full RL entry target not passed. V20 preserves the tested numerical model while improving local geometric updates, setup and force assembly; strict component and changing-loop comparisons pass, without physical contact/fracture qualification. Full measured geometric diagnostic: 6.04 to 2.72 s wall per 0.2 s sim, one body. Batched material-only rates 124-159/s are not complete environment rates. V21 compiled geometry and persistent GPU storage pass restricted component and changing-loop comparisons; no inherited physical-cut qualification. Eight independent event streams with four host workers achieve ~17 diagnostic transitions/s including geometry/reset/output, but excluding blade/fracture/robot/policy; no RL pass."
+    },
+    {
+      "id": 7,
+      "title": "Gate 7 Connect the existing robot and verify resets",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 8,
+      "title": "Gate 8 Prepare a small learning demonstration",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "updated": "2026-11-12T19:49:29.906146+08:00",
+  "candidate_directory": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21",
+  "execution_status_path": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/status.json",
+  "simulation_running": false,
+  "runtime_qualification": "V21 one-body changing loop 2.12x faster; independent 8-body/4-worker diagnostic ~17/s, below 100/s actual RL target and excluding physical cutting/robot/policy.",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/NEXT_DECISION.txt",
+  "repair_authorization": {
+    "decision": "Repair the isolated backend and revalidate",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/reports/approved_recovery_proposal.md",
+    "result": "implemented; revalidation failed; stopped"
+  },
+  "active_candidate_qualification": {
+    "version": "v21",
+    "updated": "2026-11-12T19:49:29.906146+08:00",
+    "decision": "compiled_geometry_and_persistent_GPU_verified_combined_speed_below_RL_target",
+    "simulation_running": false,
+    "current_setup_changed": false,
+    "production_adopted": false,
+    "physical_tomato_model_completed": false,
+    "physical_cut": false,
+    "rl_ready": false,
+    "experimental_validation": "pending",
+    "passed_check_sets": {
+      "native_geometry": 27,
+      "heldout_geometry": 24,
+      "persistent_GPU": 46,
+      "combined_loop": 32
+    },
+    "strict_model_or_accuracy_change": false,
+    "one_body_cold_episode": {
+      "reference_wall_s": 2.6659129159961594,
+      "optimized_wall_s": 1.2578111460024957,
+      "speedup": 2.119485842106594,
+      "simulated_s": 0.2,
+      "controls": 10,
+      "geometric_events": 4,
+      "GPU_replacement_speedup": 16.348341441180537
+    },
+    "independent_batch": {
+      "environments": 8,
+      "host_workers": 4,
+      "wall_s": 4.690336316009052,
+      "aggregate_diagnostic_transitions_s": 17.056346199939664,
+      "template_preparation_excluded_s": 0.34440093900775537,
+      "transitions_s_if_template_counted_once": 15.889607728841241,
+      "scope": "Includes reset, four independent geometric events/body, aggregate preparation, GPU initialization/replacement, observations and conservation checks. No blade/contact/fracture/robot/policy.",
+      "no_shared_future_cut_path": true,
+      "graphs_and_storage_reused": true
+    },
+    "minimum_actual_RL_transitions_s": 100,
+    "preferred_actual_RL_transitions_s": 500,
+    "preservation": {
+      "protected_files": 1951,
+      "changed_or_missing": [],
+      "passed": true,
+      "checked_at": "2026-11-12T19:46:46.573523+08:00"
+    },
+    "report": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/REPORT.txt",
+    "next_action": "/home/omen/Documents/Codex/experiments/tomato_compiled_events_20261112_v21/NEXT_DECISION.txt"
+  },
+  "repair_authorization_v04": {
+    "decision": "User said ok do it after the proposed damping/timestep repair",
+    "result": "Intact mechanics reference/candidate passes; no production adoption"
+  },
+  "cut_basis_v05": {
+    "decision": "User requested pursue work after v04 next-step proposal",
+    "result": "Restricted unit proof completed; off-grid sampling is a demonstrated blocker; proposed integration revision not adopted"
+  },
+  "integration_v06_authorization": {
+    "decision": "Validate cut-aware integration",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_cut_integration_20261110_v06/reports/approved_scope.txt",
+    "time_budget_s": 7200,
+    "result": "Approved bounded integration repair completed; restricted component pass; no production adoption"
+  },
+  "multicut_v07_scope": {
+    "decision": "User requested continue with the next steps",
+    "scope": "Sequential reference-axis partial/full cuts; preserved fragment state; no physical knife cut",
+    "result": "77 restricted component checks pass; no physical knife cut, GPU or RL qualification"
+  },
+  "gpu_comparison_v08_v09": {
+    "authorization": "User requested GPU speed and accuracy comparison with current setup unchanged",
+    "baseline_directory": "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v08",
+    "final_directory": "/home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v09",
+    "result": "211 checks pass; full float64 physical/numerical contract unchanged; one profile-driven parallel force-sum optimization",
+    "paired_speedup_range": [
+      28.74794942686634,
+      53.3620835790227
+    ],
+    "production_adopted": false
+  },
+  "blade_motion_v10": {
+    "authorization": "Test cuts created by actual blade motion using GPU version; current setup unchanged",
+    "result": "137 component checks passed; no physical fracture or new tomato slice",
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/qualification.json",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/REPORT.txt",
+    "next_proposal": "/home/omen/Documents/Codex/experiments/tomato_blade_sweep_20261111_v10/NEXT_STEPS.txt",
+    "production_adopted": false
+  },
+  "deformed_front_v11_v12": {
+    "authorization": "User approved isolated deformation mapping and finer-front test, current setup unchanged",
+    "baseline": "/home/omen/Documents/Codex/experiments/tomato_deformed_front_20261111_v11",
+    "correction": "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12",
+    "result": "50 um geometric-front component works; actual nonuniform GPU material accepts short blade-driven partial cut; coupling refinement velocity fails",
+    "production_adopted": false,
+    "report": "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/REPORT.txt",
+    "next_proposal": "/home/omen/Documents/Codex/experiments/tomato_deformed_face_20261111_v12/NEXT_STEPS.txt"
+  },
+  "activation_audit_v13_v14": {
+    "authorization": "Continue with the next steps; one bounded diagnosis/correction, existing setup unchanged",
+    "diagnosis": "/home/omen/Documents/Codex/experiments/tomato_activation_audit_20261111_v13/qualification.json",
+    "correction": "/home/omen/Documents/Codex/experiments/tomato_event_front_20261111_v14/qualification.json",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_event_front_20261111_v14/REPORT.txt",
+    "result": "Both effects identified. Restricted corrected representation passes current component screens; speed and generality remain blockers.",
+    "new_tomato_slice": false,
+    "production_adopted": false
+  },
+  "performance_review_v15": {
+    "authorization": "User requested performance review before further development; keep current setup unchanged",
+    "assessment": "/home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/assessment.json",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/REPORT.txt",
+    "proposal": "/home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/REVISED_SCOPE_PROPOSAL.txt",
+    "decision": "NO_GO_current_formulation_for_interactive_or_online_RL_on_this_laptop",
+    "new_solver_implemented": false,
+    "optimization_implemented": false,
+    "reason": "Ideal overhead/hotspot removal cannot plausibly close measured orders-of-magnitude deficit.",
+    "existing_setup_changed": false
+  },
+  "previous_reference_qualification_v14": {
+    "version": "v14",
+    "gate0": "protected_evidence_unchanged",
+    "gate1": "same_material_and_full_mass_with_exact_initial_band_transfer_and_fractional_CPU_GPU_checks",
+    "gate2": "restricted_event_localization_accuracy_component_pass_general_path_and_spatial_refinement_pending",
+    "gate3": "physical_contact_and_paid_fracture_pending",
+    "arbitrary_tomato_shape_supported": false,
+    "physical_cut": false,
+    "rl_ready": false,
+    "passed_component_checks": 257,
+    "failed_active_component_checks": [],
+    "historical_failed_evidence_preserved": true,
+    "evidence": "/home/omen/Documents/Codex/experiments/tomato_event_front_20261111_v14/qualification.json",
+    "restriction": "one current-pose-selected reference-normal plane, a 0.3 mm tangential band, 0.05 mm knot spans, 0.1 ms nonuniform freely deforming block, one/two front-release events, geometric cuts only",
+    "performance_review": "/home/omen/Documents/Codex/experiments/tomato_performance_review_20261111_v15/assessment.json",
+    "runtime_status": "no_go_current_formulation_for_interactive_or_online_RL",
+    "new_approximation_adopted": false
+  },
+  "local_state_v16": {
+    "authorization": "User approved revised local-state approximation pilot and requested continuous work toward an RL-speed tomato, existing setup unchanged",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_local_state_20261111_v16/REPORT.txt",
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_local_state_20261111_v16/qualification.json",
+    "proposal": "/home/omen/Documents/Codex/experiments/tomato_local_state_20261111_v16/RECOVERY_PROPOSAL.txt",
+    "isolated_implementation_completed": true,
+    "production_adopted": false,
+    "existing_setup_changed": false,
+    "decision": "failed_early_mechanics_and_speed_screen",
+    "pending_scope_decision": false,
+    "resolution": "Correction approved and tested in v17; v16 frozen evidence unchanged."
+  },
+  "previous_reference_qualification_v16": {
+    "version": "v16",
+    "status": "failed_early_mechanics_and_speed_screen",
+    "rl_ready": false,
+    "physical_tomato_model_completed": false,
+    "physical_cut": false,
+    "new_production_model_adopted": false,
+    "simulation_running": false,
+    "experimental_validation": "pending",
+    "best_intact_equivalent_50Hz_steps_s": 46.60742241846727,
+    "required_actual_environment_steps_s": 100,
+    "speed_scope": "bulk_only_60mm_cube_8000points_6mm_cells_25us_step_8copies_excludes_history_contact_robot_policy",
+    "angle_rank_defect": true,
+    "mechanics_evidence": "preflight.json",
+    "higher_sampling_diagnostic": "rank_sampling.json",
+    "cost_evidence": "final_cost_control.json",
+    "proposal_status": "pending_user_scope_decision_not_implemented",
+    "proposal": "RECOVERY_PROPOSAL.txt",
+    "proposal_static_diagnostic": "proposal_rank.json",
+    "preservation": {
+      "checked": 1657,
+      "changed": [],
+      "missing": [],
+      "passed": true
+    }
+  },
+  "linear_correction_v17": {
+    "authorization": "User approved the separate linear-element correction and bounded two-hour validation on 2026-11-12",
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/qualification.json",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_linear_local_20261112_v17/REPORT.txt",
+    "component_checks_passed": 54,
+    "result": "mechanics correction works in tested fixtures; speed gate failed",
+    "existing_setup_changed": false,
+    "production_adopted": false,
+    "new_tomato_completed": false,
+    "scope_decision_pending": false
+  },
+  "previous_active_candidate_v17": {
+    "version": "v17",
+    "decision": "mechanical_correction_component_pass_speed_gate_failed",
+    "physical_tomato_model_completed": false,
+    "physical_cut": false,
+    "rl_ready": false,
+    "experimental_validation": "pending",
+    "current_setup_changed": false,
+    "production_adopted": false,
+    "simulation_running": false,
+    "component_checks_passed": 54,
+    "component_check_sets": {
+      "mechanics": "pass_initial_component_controls",
+      "refinement": "pass_dynamic_components",
+      "history_CPU": "pass_history_and_reference_components"
+    },
+    "initial_timestep_rejections_preserved": [
+      "dynamics.json",
+      "refinement.json"
+    ],
+    "selected_small_control_dt_s": {
+      "intact": 1.25e-05,
+      "oblique": 6.25e-06,
+      "diagonal": 3.125e-06,
+      "sliver10um": 3.125e-06,
+      "sliver1um": 1.5625e-06
+    },
+    "best_bulk_rates_equivalent_50Hz": {
+      "1.25e-05": 65.04282537374445,
+      "6.25e-06": 33.06065852691218,
+      "1.5625e-06": 8.271195007262836
+    },
+    "speed_requirement_aggregate_actual_environment_steps_s": 100,
+    "bench_scope": "60mm intact cube, 6000 linear material regions, 1331 nodes, 6mm grid, float32 GPU, 1/4/8 block-diagonal copies; no contact/robot/policy. Rates at converged small-fixture dt are diagnostics, not complete scene qualification.",
+    "mechanics_scope": "12mm linear-tet block, four geometric cuts, affine clipped regions, constant material law, local row-sum mass; no physical contact or paid fracture",
+    "smallest_tested_corner_offset_m": 1e-06,
+    "smallest_tested_linear_stability_dt_s": 4.582575694955839e-06,
+    "memory_backend_8copy_bytes": 8980072,
+    "next_action": "Stop this bounded candidate campaign. Preserve the mechanics correction. Any next speed strategy must address tiny-cut-region timesteps and history work explicitly, with a reviewed scope; do not automatically start another engine or physical tomato rollout."
+  },
+  "aggregation_trial_v18": {
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_aggregation_20261112_v18/qualification.json",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_aggregation_20261112_v18/REPORT.txt",
+    "decision": "aggregation_stage_A_response_accuracy_failed",
+    "protected_files_verified": 1748
+  },
+  "previous_active_candidate_v18": {
+    "version": "v18",
+    "updated": "2026-11-12T17:27:21.421759+08:00",
+    "decision": "aggregation_stage_A_response_accuracy_failed",
+    "stop_reason": "Substantive accuracy gate; not budget exhaustion. No GPU/history/contact expansion after the failed equivalence checks.",
+    "elapsed_from_contract_s": 1233.516716,
+    "budget_cap_s": 28800,
+    "physical_tomato_model_completed": false,
+    "physical_cut": false,
+    "rl_ready": false,
+    "experimental_validation": "pending",
+    "current_setup_changed": false,
+    "production_adopted": false,
+    "simulation_running": false,
+    "algebra_checks_passed": 62,
+    "projection_cases_passed": 8,
+    "stage_A": "failed_dynamic_response_equivalence",
+    "stage_B": "not_started_requires_A_pass",
+    "stage_C": "not_started_requires_A_and_B",
+    "corner_linearized_stability_improved": true,
+    "speed_qualified": false,
+    "throughput_measured": false,
+    "dynamic_confirmation": [
+      {
+        "n": 4,
+        "h_m": 0.006,
+        "extent_m": 0.024,
+        "duration_s": 0.02,
+        "aggregate_dt_s": 6.25e-06,
+        "aggregate_half_dt_s": 3.125e-06,
+        "reference_dt_s": 5e-07,
+        "reference_half_dt_s": 2.5e-07,
+        "aggregate_halfstep": {
+          "position_m": 2.883958776877161e-07,
+          "velocity_m_s": 0.0015917576818620582,
+          "force_rms_error_N": 7.608734428168926e-05,
+          "force_rms_reference_N": 0.03299465047701173,
+          "force_relative": 0.002306050925882709
+        },
+        "reference_halfstep": {
+          "position_m": 7.016915821949904e-09,
+          "velocity_m_s": 9.339351675275264e-05,
+          "force_rms_error_N": 7.135012373566157e-07,
+          "force_rms_reference_N": 0.030118452119840624,
+          "force_relative": 2.36898375294192e-05
+        },
+        "cross_model": {
+          "position_m": 0.00020777069495638408,
+          "velocity_m_s": 0.7478829468475632,
+          "force_rms_error_N": 0.03647546228203952,
+          "force_rms_reference_N": 0.030118452119840624,
+          "force_relative": 1.2110669611075795
+        },
+        "aggregate_halfstep_pass": true,
+        "reference_halfstep_pass": true,
+        "cross_model_pass": false,
+        "all_energy_residual_relative": 9.056468650129461e-05,
+        "energy_pass": true,
+        "unresolved_nodes": 0,
+        "max_mass_block": 27,
+        "wall_s": 14.924469927005703
+      },
+      {
+        "n": 10,
+        "h_m": 0.006,
+        "extent_m": 0.06,
+        "duration_s": 0.005,
+        "aggregate_dt_s": 6.25e-06,
+        "aggregate_half_dt_s": 3.125e-06,
+        "reference_dt_s": 5e-07,
+        "reference_half_dt_s": 2.5e-07,
+        "aggregate_halfstep": {
+          "position_m": 3.8282596378519936e-08,
+          "velocity_m_s": 0.000338485770239533,
+          "force_rms_error_N": 1.4564389483400404e-05,
+          "force_rms_reference_N": 0.03477503024681651,
+          "force_relative": 0.0004188174497629288
+        },
+        "reference_halfstep": {
+          "position_m": 4.283237659640401e-09,
+          "velocity_m_s": 0.00022018606697010262,
+          "force_rms_error_N": 1.0292463738434782e-06,
+          "force_rms_reference_N": 0.034736246873666755,
+          "force_relative": 2.9630327582216167e-05
+        },
+        "cross_model": {
+          "position_m": 6.749809899755426e-05,
+          "velocity_m_s": 0.3290876738286047,
+          "force_rms_error_N": 0.01535423540734443,
+          "force_rms_reference_N": 0.034736246873666755,
+          "force_relative": 0.4420234420600097
+        },
+        "aggregate_halfstep_pass": true,
+        "reference_halfstep_pass": true,
+        "cross_model_pass": false,
+        "all_energy_residual_relative": 3.362083544986239e-05,
+        "energy_pass": true,
+        "unresolved_nodes": 0,
+        "max_mass_block": 31,
+        "wall_s": 35.425710921990685
+      },
+      {
+        "n": 20,
+        "h_m": 0.003,
+        "extent_m": 0.06,
+        "duration_s": 0.002,
+        "aggregate_dt_s": 6.25e-06,
+        "aggregate_half_dt_s": 3.125e-06,
+        "reference_dt_s": 5e-07,
+        "reference_half_dt_s": 2.5e-07,
+        "aggregate_halfstep": {
+          "position_m": 7.561330432579196e-08,
+          "velocity_m_s": 0.00048518178248560436,
+          "force_rms_error_N": 8.953055247533701e-06,
+          "force_rms_reference_N": 0.007914855760724135,
+          "force_relative": 0.001131170992649218
+        },
+        "reference_halfstep": {
+          "position_m": 6.1579914599020734e-09,
+          "velocity_m_s": 0.0006237341512754981,
+          "force_rms_error_N": 4.957843101479986e-07,
+          "force_rms_reference_N": 0.007960910962546808,
+          "force_relative": 6.227733389815357e-05
+        },
+        "cross_model": {
+          "position_m": 2.4472733013433415e-05,
+          "velocity_m_s": 0.22301348102609325,
+          "force_rms_error_N": 0.0026258732574881583,
+          "force_rms_reference_N": 0.007960910962546808,
+          "force_relative": 0.32984582667008056
+        },
+        "aggregate_halfstep_pass": true,
+        "reference_halfstep_pass": true,
+        "cross_model_pass": false,
+        "all_energy_residual_relative": 4.8977803723483324e-05,
+        "energy_pass": true,
+        "unresolved_nodes": 0,
+        "max_mass_block": 65,
+        "wall_s": 102.11585217098764
+      }
+    ],
+    "preservation": {
+      "protected_files": 1748,
+      "changed": [],
+      "passed": true,
+      "checked_at": "2026-11-12T17:24:44.590448+08:00"
+    },
+    "report": "/home/omen/Documents/Codex/experiments/tomato_aggregation_20261112_v18/REPORT.txt",
+    "formulation": "/home/omen/Documents/Codex/experiments/tomato_aggregation_20261112_v18/FORMULATION.txt",
+    "next_action": "Preserve reference and rejected candidate. Do not optimize or integrate this extension rule; a successor requires a declared representation and an acceptable cut-region response before further GPU work. No automatic new engine or accuracy relaxation."
+  },
+  "selective_aggregation_v19": {
+    "authorization": "Targeted continuation and explicitly approved material-weighted velocity criterion",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/REPORT.txt",
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/qualification.json",
+    "decision": "component_accuracy_pass_material_cost_marginal_full_RL_not_qualified",
+    "existing_setup_changed": false,
+    "protected_files_verified": 1800
+  },
+  "previous_active_candidate_v19": {
+    "version": "v19",
+    "updated": "2026-11-12T18:19:34.366559+08:00",
+    "decision": "component_accuracy_pass_material_cost_marginal_full_RL_not_qualified",
+    "stage_A": "pass_component_scope_after_explicit_velocity_norm_approval",
+    "stage_B": "GPU_equivalence_pass_fixed_topology_cost_screen_complete",
+    "stage_C": "report_complete_no_physical_cut_or_engine_expansion",
+    "simulation_running": false,
+    "rl_ready": false,
+    "physical_cut": false,
+    "physical_tomato_model_completed": false,
+    "current_setup_changed": false,
+    "production_adopted": false,
+    "experimental_validation": "pending",
+    "approved_velocity_norm": {
+      "answer": "Use the material-weighted velocity check (Recommended)",
+      "recorded_at": "2026-11-12T17:54:37.279176+08:00",
+      "proposal": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/VELOCITY_CRITERION_PROPOSAL.txt",
+      "proposal_sha256": "88a01f3ae36682430f789e5bb4cc6dd5cc6eceb12119c067cfdf931cb7d44099",
+      "scope": "Only cross-representation, projection and temporal-refinement deformable-material velocity criterion changes to conservative mass-weighted RMS upper bound <=0.005 m/s. Preserve maximum pointwise velocity diagnostics. All other limits unchanged, including strict same-operator CPU/GPU tolerances."
+    },
+    "selected_support_threshold": 1e-08,
+    "selected_test_timestep_s": 1.25e-05,
+    "algebra_checks_passed": 62,
+    "dynamic_block_cases_passed": 8,
+    "history_and_larger_controls_passed": 10,
+    "strict_GPU_checks_passed": 8,
+    "accepted_small_block_metrics": {
+      "max_position_mm": 0.003439384184064218,
+      "max_weighted_velocity_mm_s": 2.8449632811405143,
+      "max_local_velocity_mm_s": 83.6477842557993,
+      "max_internal_force_RMS_error_percent": 1.562944449363183,
+      "max_energy_residual_percent": 0.04325862618616483
+    },
+    "best_fixed_topology_50Hz_equivalents_s": {
+      "intact": 111.37288379212957,
+      "oblique": 98.99958933873948,
+      "corner": 106.60113115116809
+    },
+    "paired_corner_batch8_speedup": 3.226813134804864,
+    "sustained_corner_batch8_50Hz_equivalents_s": 103.61711280072292,
+    "minimum_actual_environment_steps_s": 100,
+    "preferred_actual_environment_steps_s": 500,
+    "throughput_scope": "60 mm cube, 6 mm grid, float32 GPU, 12.5 us substeps, 0.1% compression and 0.05% shear; material only. Best rates use eight independent copies. No changing geometry, blade contact, paid fracture, observations, resets, robot, policy or rendering.",
+    "remaining_obstacles": [
+      "Material-only throughput around 100/s leaves insufficient demonstrated headroom for the complete environment.",
+      "Full CPU cut geometry rebuild plus aggregation costs roughly 1.1-1.5 s per body in measured cases; GPU reconstruction adds setup cost.",
+      "Small fragments without a compatible full root retain independent nodes and potentially small timesteps.",
+      "General crack-front root locality, temporal/spatial convergence under physical cutting, contact/recontact and paid fracture remain unqualified."
+    ],
+    "preservation": {
+      "protected_files": 1800,
+      "changed": [],
+      "missing": [],
+      "passed": true,
+      "checked_at": "2026-11-12T18:16:00.185580+08:00"
+    },
+    "report": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/REPORT.txt",
+    "next_action": "/home/omen/Documents/Codex/experiments/tomato_selective_aggregation_20261112_v19/NEXT_ACTION.txt"
+  },
+  "local_update_gpu_v20": {
+    "authorization": "User requested lower cut update costs and improved RL speed, current setup unchanged",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/REPORT.txt",
+    "qualification": "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/qualification.json",
+    "protected_files_verified": 1891
+  },
+  "previous_active_candidate_v20": {
+    "version": "v20",
+    "updated": "2026-11-12T19:12:24.090144+08:00",
+    "decision": "equivalent_speed_improvements_verified_RL_cost_gate_not_passed",
+    "simulation_running": false,
+    "current_setup_changed": false,
+    "production_adopted": false,
+    "physical_tomato_model_completed": false,
+    "physical_cut": false,
+    "rl_ready": false,
+    "experimental_validation": "pending",
+    "scope": "Implementation-only optimization of frozen v19; geometric diagnostic cutting only.",
+    "passed_check_sets": {
+      "local_geometry_setup": 27,
+      "GPU_precision": 8,
+      "changing_loop": 23,
+      "matched_GPU_comparison": 3
+    },
+    "failed_final_checks": [],
+    "historical_failures_preserved": true,
+    "matched_GPU_material_rates": [
+      {
+        "case": "intact",
+        "batch": 8,
+        "old_wall_s": [
+          0.06847927501075901,
+          0.07007891598914284,
+          0.06864914299512748,
+          0.06885500700445846,
+          0.06912434499827214
+        ],
+        "new_wall_s": [
+          0.05020897199574392,
+          0.050364416994852945,
+          0.04896490799728781,
+          0.050355100000160746,
+          0.051222670008428395
+        ],
+        "matched_speedup": 1.367388943805864,
+        "old_material_equivalents_s": 116.1861765475093,
+        "new_material_equivalents_s": 158.87169323414037,
+        "position_m": 0.0,
+        "velocity_m_s": 0.0,
+        "F": 0.0
+      },
+      {
+        "case": "oblique",
+        "batch": 8,
+        "old_wall_s": [
+          0.08625258500978816,
+          0.08405657100956887,
+          0.08409622100589331,
+          0.08557830000063404,
+          0.08842885299236514
+        ],
+        "new_wall_s": [
+          0.06141196799580939,
+          0.06172135299129877,
+          0.05773343099281192,
+          0.0616668760048924,
+          0.07233693900343496
+        ],
+        "matched_speedup": 1.3877515052626406,
+        "old_material_equivalents_s": 93.48164195760758,
+        "new_material_equivalents_s": 129.72928934109314,
+        "position_m": 0.0,
+        "velocity_m_s": 0.0,
+        "F": 0.0
+      },
+      {
+        "case": "corner",
+        "batch": 8,
+        "old_wall_s": [
+          0.07584344799397513,
+          0.07811297800799366,
+          0.07786773800035007,
+          0.07698952799546532,
+          0.07913378400553484
+        ],
+        "new_wall_s": [
+          0.06343309300427791,
+          0.06387362600071356,
+          0.06455984199419618,
+          0.06499446299858391,
+          0.07438617099251132
+        ],
+        "matched_speedup": 1.2061327226815433,
+        "old_material_equivalents_s": 102.73831249552971,
+        "new_material_equivalents_s": 123.91604057394048,
+        "position_m": 0.0,
+        "velocity_m_s": 0.0,
+        "F": 0.0
+      }
+    ],
+    "changing_geometry_loop": {
+      "extent_m": 0.06,
+      "controls": 10,
+      "simulated_duration_s": 0.2,
+      "front_events": 4,
+      "old_total_wall_s": 6.0422017609962495,
+      "new_total_wall_s": 2.7240137240005424,
+      "speedup": 2.2181245666128833,
+      "old_geometry_setup_s": 4.735504433992901,
+      "new_geometry_setup_s": 1.5979894010233693,
+      "geometry_setup_speedup": 2.963414169681122,
+      "new_single_environment_diagnostic_transitions_s": 3.6710534575845655,
+      "complete_batched_RL_rate_measured": false,
+      "remaining_cost_scope": "Includes reset, geometry, setup, observations and checks; excludes blade/contact/fracture/robot/policy."
+    },
+    "target_material_headroom_s": 200,
+    "target_minimum_actual_RL_transitions_s": 100,
+    "target_preferred_actual_RL_transitions_s": 500,
+    "next_action": "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/NEXT_ACTION.txt",
+    "report": "/home/omen/Documents/Codex/experiments/tomato_incremental_gpu_20261112_v20/REPORT.txt",
+    "preservation": {
+      "checked_at": "2026-11-12T19:09:45.440192+08:00",
+      "protected_files": 1891,
+      "changed": [],
+      "missing": [],
+      "passed": true
+    }
+  }
+}

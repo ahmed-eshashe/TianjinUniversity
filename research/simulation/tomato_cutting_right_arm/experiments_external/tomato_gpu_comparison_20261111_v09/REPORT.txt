@@ -1,0 +1,63 @@
+GPU SPEED AND ACCURACY COMPARISON — 2026-11-11T00:58:31.533900+08:00
+
+Decision
+The v09 GPU evaluator passes 211 restricted component checks (208 main comparisons and 3 extra failed-prediction/rollback controls). It preserves the current reference equations in the tested envelope and is useful for the next SHORT isolated mechanics proof. It is not an adopted production engine, a completed tomato, interactive cutting or an RL-ready simulator. All 1100 protected production/prior-evidence files are unchanged.
+
+Measured improvement
+On the RTX 5060 Laptop GPU, v08's straightforward implementation was 3.0–7.5x faster than the CPU. Profiling isolated its force accumulation: 123.446 of 135.539 ms device time in 32 substeps (91.1%). v09 distributes the SAME full float64 sum across 32 lanes and then reduces those sums deterministically. This software-only change preserves all terms and guards; no material softening, timestep increase, mass lumping, integration-order reduction or mixed precision is used. The full comparison was repeated after the change.
+
+Paired current-laptop short timings (median of 3 sequential CPU/GPU 64-step samples)
+Each sample advances 25 microseconds. Values below are normalized wall seconds per 1 simulated millisecond, not separately timed millisecond episodes. Initialization and topology construction are reported separately.
+cuts  pieces      CPU (s)     GPU v09 (s)    speedup
+   0       1       35.030           1.219      28.75x
+   1       2       44.359           1.340      33.10x
+   2       3       53.429           1.124      47.53x
+   4       5       66.318           1.243      53.36x
+
+Loaded saved trajectories: wall seconds to simulate exactly 1 millisecond
+case            saved CPU     GPU v09      speedup
+partial               58.521        1.483      39.47x
+full                  57.406        1.304      44.02x
+partial_half         116.980        2.708      43.21x
+full_half            115.169        2.413      47.74x
+
+The loaded CPU numbers are preserved v07 runs, not new same-turn runs. The paired 64-step table is the same-turn comparison. All runs are headless; neither timing includes a robot, renderer, blade contact or fracture. Primary and half-step results must not be mixed as equal-cost algorithms. Raw graph timings are included in comparison.json but the headline speedup uses checked calls including transactional backup and the GPU-to-host failure read. The loaded GPU table additionally includes state export, shared-time CPU comparison and continuous cell-volume certificates.
+
+Practical implication
+The paired GPU range is still about 1124–1340 wall seconds per simulated second for a TINY block, and the loaded primary windows take 1.3–1.5 seconds per simulated millisecond. This is a substantial reduction from the CPU reference but does not qualify useful full-tomato RL throughput. No full-size tomato runtime is inferred from these tiny tests. Do not start multi-hour training or long cutting episodes on the strength of this result.
+
+What was compared
+- Same synthetic homogeneous neo-Hookean E=100,000 Pa, nu=0.4, density=1000 kg/m^3; these are not calibrated tomato properties.
+- Same 12 mm cube, 512 observation samples, 3 mm reference knot scale, five Gauss points per axis per cell, and complete reference-cell integration. The observation cloud is not a set of mass particles.
+- Same complete consistent mass, constrained supports, energy-gradient force, Velocity Verlet, primary dt=3.90625e-7 s and half dt=1.953125e-7 s.
+- CPU sparse mass factors prepare the full inverse operator for the fixed topology; the GPU applies that operator and checks the full mass residual at each force evaluation. This is not diagonal/lumped mass. Support forces use the same reference constraint projection and separate reaction ledger.
+- Quadrature and observation volume checks, support-acceleration checks and nonfinite checks remain active each substep. A failed call rolls back the entire submitted chunk, not merely its last state. This API is a fixed-step unit runner, not a qualified policy action interface.
+- All CUDA arrays/operations use float64. The local existing Warp 1.17.0 installation and existing Python environment were reused. No dependency, driver, power mode or clock setting was installed/changed.
+
+Accuracy evidence
+Eight identical-state force cases cover intact, one/two/four completed cuts, loaded saved partial and full cross-cuts, constrained support and a thin fragment with no original observation points. Worst generalized force difference: 6.33e-15 N (relative 7.36e-12). Worst acceleration relative difference: 3.63e-11; strain-energy difference: 3.41e-18 J. Worst full-mass solve residual: 3.48e-15, versus the retained 1e-7 check.
+
+Across primary and half-step saved 1 ms trajectories, maximum observed position difference is 3.47e-17 m, velocity difference 3.92e-12 m/s and deformation-gradient component difference 4.11e-14. These are numerical agreement figures for identical uncalibrated models, not physical accuracy against real tomatoes. The partial bridge, independent-fragment, momentum, volume and energy comparisons pass. Loaded sequential CPU/GPU topology transfers and saved-state recovery pass. Eager launches and CUDA graph replay agree.
+
+A deliberately invalid load is rejected without changing state. An invalid initial volume is detected. A further deliberately excessive inward velocity begins at valid geometry, advances four substeps, then trips the volume guard. The checked call rejects and restores all positions, velocities, clocks and accumulated support impulses/moments to its pre-call state. This is a negative control, not an admissible robot action.
+
+Costs beyond rollout
+Exact owned device arrays, including rollback buffers, are about 13.6–23.6 MiB for zero through four cuts. The profiler/setup process was reported by nvidia-smi at 200 MiB including runtime/context overhead; this is a snapshot, not a peak for every workload. Main validation peak host RSS was 1029.0 MiB with many reference/validation objects alive. Normal desktop/browser graphics remained active, and short timings vary; no exclusive-GPU claim is made.
+
+CPU topology is still CPU work. The setup supplement measured roughly 0.04 s for intact assembly, 0.10–0.22 s per prescribed cut event, another 0.01–0.02 s for full-mass/operator preparation, 0.02–0.03 s for sparse packing/upload, and about 0.009 s for cached module/graph preparation at these sizes. These are small setup samples, not tomato reset or live crack-update throughput. The raw field named CPU_topology_and_gpu_operator_preparation_s in comparison.json is imprecisely named: it measures operator preparation AFTER topology exists; setup_costs.json supplies the missing topology timings. No reported rollout speedup includes hidden topology changes.
+
+Limits and next step
+This remains a custom isolated integrated-mechanics reference, not a modification/adoption of the original CRESSim or DiSECt engine. Cut geometry is prescribed and reference-axis aligned; only one partial incision per connected fragment is supported. Manufactured spatial gaps in independence fixtures are not physical knife separation. Actual finite-thickness CAD contact, blade-swept fracture selection, paid irreversible failure, arbitrary directions/curved surfaces, trimmed tomato geometry, fragment recontact, CPU/GPU topology update latency at tomato scale and RL batching remain unqualified.
+
+The next scoped proof should make a short current blade sweep select the cut patch on a small block, then test near-miss, partial bridge and moved-fragment history controls. That is Gate 2 component work, with kinematic topology separated from physical fracture. Keep this GPU backend isolated, the 2 N/0.1 mm and volume limits unchanged, and Gate 3/physical tomato/RL marked pending. Do not start a second optimization campaign or change physical rules from this timing result alone.
+
+Evidence
+comparison.json: complete main results and same-source hashes.
+rejection_control.json: valid-start late failure and complete rollback.
+profile.json: post-change device-kernel breakdown (diagnostic, not throughput).
+setup_costs.json and environment.json: setup, memory and hardware context.
+preservation_check.json: protected file hashes.
+The complete initial GPU implementation/results remain frozen in /home/omen/Documents/Codex/experiments/tomato_gpu_comparison_20261111_v08.
+
+Implementation reference
+NVIDIA Warp 1.17 runtime documentation: https://nvidia.github.io/warp/v1.17/user_guide/runtime.html . CUDA graph replay reduces repeated Python launch overhead; graphs do not remove the simulated substeps. The numerical findings above come from the local tests, not the documentation.

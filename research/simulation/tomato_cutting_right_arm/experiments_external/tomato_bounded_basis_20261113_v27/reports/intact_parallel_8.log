@@ -1,0 +1,45 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/cache/warp/1.17.0
+Module cached_gpu a1e6133 load on device 'cuda:0' took 0.52 ms  (cached)
+Module gather_2705ac1b cb46226 load on device 'cuda:0' took 0.40 ms  (cached)
+Module persistent_gpu a1e6133 load on device 'cuda:0' took 0.55 ms  (cached)
+Module rk4_contact_gpu 1c09e47 load on device 'cuda:0' took 0.42 ms  (cached)
+Module sparse_contact_gpu efec94e load on device 'cuda:0' took 0.52 ms  (cached)
+Module hierarchical_contact_gpu 804955a load on device 'cuda:0' took 0.56 ms  (cached)
+Module compact_contact_gpu ed5099e load on device 'cuda:0' took 1.57 ms  (cached)
+Module grid_quadrature b98015d load on device 'cuda:0' took 0.61 ms  (cached)
+Module supported_contact_gpu 46fd509 load on device 'cuda:0' took 0.45 ms  (cached)
+Module convex_guard_gpu 8ae904c load on device 'cuda:0' took 1.19 ms  (cached)
+{
+  "status": "completed",
+  "physical_checks_passed": true,
+  "checks": {
+    "complete": true,
+    "energy": true,
+    "reference_force": true,
+    "limits": true
+  },
+  "environments": 8,
+  "simulated_s_per_environment": 0.013000000000000001,
+  "wall_s": 7.496077780990163,
+  "setup_and_graph_s": 8.492335349001223,
+  "wall_per_simulated_s_per_environment": 576.621367768474,
+  "equivalent_50Hz_material_transitions_s": 0.6936961104095064,
+  "force_relative_error": 2.9247612062221484e-06,
+  "energy_relative": 5.7395850620408205e-05,
+  "cost": {
+    "GPU_enqueue_and_wait_s": 1.131074438948417,
+    "clearance_s": 4.377134689057129,
+    "state_observation_s": 1.9858898991078604
+  },
+  "memory": "948 MiB, 8151 MiB",
+  "complete_RL_throughput": false,
+  "physical_cut": false,
+  "rl_ready": false,
+  "scope": "Independent GPU streams, identical intact tomato approach/hold/retract trajectories. Timed complete material contact/clearance/observation loop; graph build outside timing. NO fracture updates, robot, policy, reward or reset. Equivalent transitions are only a material-loop budget estimate, not measured RL steps."
+}

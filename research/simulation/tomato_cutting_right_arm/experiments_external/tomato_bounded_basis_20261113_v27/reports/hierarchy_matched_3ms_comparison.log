@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "checks": {
+    "position": true,
+    "weighted_velocity": true,
+    "contact_force": true,
+    "cutting_force": true,
+    "fracture_work": true,
+    "all_events": true,
+    "opening_modes_retained": true,
+    "all_observed_openings_positive": false
+  },
+  "position_bound_m": 1.8215244316176834e-06,
+  "weighted_velocity_bound_m_s": 0.00010791523175584359,
+  "maximum_velocity_bound_m_s": 0.006111639133081845,
+  "force_relative": {
+    "contact_N": 0.008277087522568146,
+    "cutting_N": 0.0006692333246488563
+  },
+  "fracture_work_relative": 0.0028939000412886444,
+  "region_pairs": 709,
+  "opening_ranks": [
+    1,
+    1
+  ],
+  "events": [
+    12,
+    3
+  ],
+  "scope": "Matched physical continuation of one shallow crack; input names and duration recorded explicitly. Not a full cut, tomato or RL gate.",
+  "reference": "advance_3ms",
+  "candidate": "hierarchy_matched_3ms",
+  "duration_s": 0.0029999999999999996
+}
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_bounded_basis_20261113_v27/tests/compare_paid_candidate.py", line 31, in <module>
+    work=abs(reports[0]['paid_fracture_work_J']-reports[1]['paid_fracture_work_J'])/max(reports[1]['paid_fracture_work_J'],1e-8);checks=dict(position=position<=.0001,weighted_velocity=velocity<=.005,contact_force=cases['contact_N']<=.05,cutting_force=cases['cutting_N']<=.05,fracture_work=work<=.05,all_events=all(all(e['checks'].values()) for r in reports for e in r['events']),opening_modes_retained=ranks[1]>=ranks[0]>0,all_observed_openings_positive=all(row.get("opening_rank") is None or row["opening_rank"]>0 for row in reports[1]["rows"]));out=dict(passed=all(checks.values()),checks={k:bool(v) for k,v in checks.items()},position_bound_m=position,weighted_velocity_bound_m_s=velocity,maximum_velocity_bound_m_s=max(vupper),force_relative=cases,fracture_work_relative=work,region_pairs=pairs,opening_ranks=ranks,events=[len(r['events']) for r in reports],scope='Matched physical continuation of one shallow crack; input names and duration recorded explicitly. Not a full cut, tomato or RL gate.',reference=args.reference,candidate=args.candidate,duration_s=reports[1]['simulation_advanced_s']);(W/'reports'/(args.candidate+'_comparison.json')).write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2));assert out['passed']
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ~~~^^^^^^^^^^
+AssertionError

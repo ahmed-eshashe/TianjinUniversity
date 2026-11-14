@@ -1,0 +1,5 @@
+from full_surface import FullSurface
+import numpy as np,json,torch
+from pathlib import Path
+from scipy.spatial import cKDTree
+torch.set_num_threads(1);s=FullSurface();x=s.mesh['x'];faces=s.mesh['cut_minus'];r=FullSurface(quadrature='quadrature_refined.npz');plus=np.unique(s.mesh['tets'][s.mesh['tet_side']>0]);q=x.copy();q[plus,0]+=.0002*(1+.3*np.sin(80*x[plus,1]));q[plus,1]+=.00005*(1+.2*np.cos(100*x[plus,2]));a=s.evaluate(q);b=r.evaluate(q);fe=np.linalg.norm(a['force']-b['force'])/np.linalg.norm(b['force']);ee=abs(a['stored_energy_j']-b['stored_energy_j'])/b['stored_energy_j'];out=dict(scope='Prescribed nonuniform smooth opening, 3 versus 12 quadrature points per triangle; not a dynamic refinement',coarse_points=len(s.quad['points']),fine_points=len(r.quad['points']),force_relative_error=float(fe),energy_relative_error=float(ee),passed=bool(fe<=.05 and ee<=.05));Path(__file__).with_name('quadrature_refinement_result.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2))

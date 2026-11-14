@@ -1,0 +1,18 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.96 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 1.73 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.72 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_section4_completion_20261109_v29/loading_limit_resolution.py", line 10, in <module>
+    restored=np.load(args.resume);assert abs(float(restored['dt'])-h)<1e-15;b.x.copy_(tensor(restored['x']));b.v.copy_(tensor(restored['v']));b.fracture.load_state_dict({'history':restored['history']});start_step=int(restored['step']);step=start_step;assert start_step%sub==0
+                                                                                                                                                                                                                                                                  ^^^^^^^^^^^^^^^^^
+AssertionError

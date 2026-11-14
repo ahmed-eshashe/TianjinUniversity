@@ -1,0 +1,38 @@
+{
+  "scope": "static constitutive preflight, no dynamics, contact or topology changes",
+  "rows": [
+    {
+      "rotation_deg": 15,
+      "rest_force_norm_N": 0.028643353529493574,
+      "cuda_rest_force_norm_N": 0.028643353529493563,
+      "independent_cuda_error_N": 7.531781879695538e-15,
+      "covariance_reference_force_norm_N": 0.031206680349140203,
+      "covariance_force_error_N": 0.028645822811668244,
+      "covariance_relative_error": 0.9179388032042788,
+      "passed": false
+    },
+    {
+      "rotation_deg": 45,
+      "rest_force_norm_N": 0.2755147506134372,
+      "cuda_rest_force_norm_N": 0.27551475061343733,
+      "independent_cuda_error_N": 6.8568743205860074e-15,
+      "covariance_reference_force_norm_N": 0.0312066803491402,
+      "covariance_force_error_N": 0.2755276218661993,
+      "covariance_relative_error": 8.829123084659999,
+      "passed": false
+    },
+    {
+      "rotation_deg": 90,
+      "rest_force_norm_N": 0.8265442518403109,
+      "cuda_rest_force_norm_N": 0.8265442518403109,
+      "independent_cuda_error_N": 5.226971335054327e-15,
+      "covariance_reference_force_norm_N": 0.03120668034914021,
+      "covariance_force_error_N": 0.826586162813289,
+      "covariance_relative_error": 26.48747491131535,
+      "passed": false
+    }
+  ],
+  "passed": false,
+  "cause": "Source Ic sums only squared diagonal entries of F; the intended first invariant is tr(F.T F), the sum of all nine squared entries. This changes under rigid rotations in the current code.",
+  "primary_reference": "https://graphics.pixar.com/library/StableElasticity/paper.pdf"
+}

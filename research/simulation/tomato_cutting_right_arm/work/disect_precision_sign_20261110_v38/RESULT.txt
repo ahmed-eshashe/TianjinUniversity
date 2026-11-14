@@ -1,0 +1,21 @@
+SECTION 4 — VERIFIED THROUGH 50 MS; EXECUTION STRATEGY REASSESSMENT
+10 November 2026
+
+The fresh 45 ms prefix completed in 551.13 s with all accepted physical checks passing. The next continuation exposed a solid-angle sign cancellation at 47.625 ms; both the original and faster queries fail on the captured point. Its distance from the surface is 0.949 picometres; 60/100-digit arithmetic agrees it is inside. The raw failed attempt and diagnostic replay remain preserved in v36/v37.
+
+A separate v38 arithmetic-only fallback repeats the SAME winding sum at 40/80 digits for uncertain points. It requires tighter agreement, retains the original 1e-6 test, distance, normals, force law, geometry, material/fracture laws and all physical limits. Exact ambiguous boundaries and open-surface uncertainty still stop. The captured CAD case and 60 independently known rotated-box cases pass. Maximum analytical force error 3.62e-11 N. Ordinary-path outputs are bitwise unchanged; shared dynamic prefix differences are at GPU roundoff and within previously frozen strict implementation limits.
+
+The corrected 45-to-50 ms retest completed: 1,600 steps, 164.36 s, all accepted guards passing, zero damage or fracture dissipation. Maximum equivalent opening 0.013046 mm versus unchanged 1 mm onset. Peak summed blade load 0.044116 N versus 2 N stop. Maximum SAMPLED penetration 10.884 micrometres; this is not a whole-volume maximum. The independent whole-volume guard remained active at the unchanged 100 micrometre limit. Minimum volume ratio 0.721509; mass 0.1216712654796547 kg. Peak RSS for the retained prefix/window <=2.17 GiB. This is prescribed-blade loading, not native robot force or cutting qualification.
+
+No GPU simulation or diagnostic worker is running. Five prerequisite component groups are verified; all six complete cutting milestones remain open. Gate B still requires actual irreversible damage, controlled termination/authorized horizontal withdrawal, and independent damage-enabled half-step agreement. No full stroke, slice, training or engine adoption is qualified. Speed deferred; experimental validation pending.
+
+COST REASSESSMENT REQUIRED BY THE LATEST PLAN
+The recent loaded rate is 32,784 wall seconds per simulated second (9.11 h/s). A constant-loaded-cost scenario for the remaining motion plus one-second stability and half-step reference alone is about 55.5 hours, before repeat/reset/restart and variants. This is a planning scenario, not a guaranteed forecast: clear states may cost less and deeper contact may cost more. Do not automatically launch the full multi-day campaign.
+
+A bounded uncommitted saved-state profile at 50 ms took only three solves, restored the same immutable state and did not commit history. Warm timed solves took 0.097–0.103 s each. About 70% was contact assembly; CAD queries themselves are now about 24–28%, not the previous 91%. The existing FEM kernel is not the measured bottleneck. Cold volume checking took 0.024 s; snapshot writing 0.014 s. No new physics or optimization candidate was adopted by profiling.
+
+RECOMMENDED NEXT ACTION
+One finite implementation-only test of batching existing contact queries/quadrature, preserving edges, weights, exact CAD, force/energy law, quadrature and all tolerances. Prepare and validate it against the current operator before any use, with independent analytic force/energy checks, strict saved-state force/trajectory equivalence and the existing fresh half-step control. Use one candidate and a finite budget; report failure rather than start another optimization tree. Do not change timestep, material, fracture threshold, grip, path or engine. If this cannot materially change the cost, return the explicit runtime-versus-strategy decision before the multi-day physical campaign.
+
+Evidence directory:
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_precision_sign_20261110_v38

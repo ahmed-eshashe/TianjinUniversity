@@ -1,0 +1,12 @@
+{
+  "reason": "Linearized full-face contact eigenfrequency 49846 rad/s gives dt*omega=0.623 at old step. Explicit collision needs much finer time integration for force comparison. Freeze dt*omega<=0.025, without changing contact stiffness, material, friction or stops.",
+  "dt": 5e-07,
+  "half_dt": 2.5e-07,
+  "duration": 0.012,
+  "analytic_free_translation_to_start_s": 0.0045,
+  "absolute_end_s": 0.0165,
+  "initial_state": "Exact no-contact rigid translation x0+v*0.0045, same velocities and F=I. No loaded checkpoint mixing.",
+  "termination_basis": "Original traces already show collision, sliding and no contact with positive reconstructed gap by 0.015s; use 0.0165s end to fit single-test 600s cap. No acceptance thresholds changed.",
+  "correction_attempt": 1,
+  "max_wall_s": 600
+}

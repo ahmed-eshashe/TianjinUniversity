@@ -1,0 +1,17 @@
+from pathlib import Path
+import sys,json,numpy as np
+from scipy.interpolate import BSpline
+from scipy.sparse import kron,csr_matrix
+from numpy.polynomial.legendre import leggauss
+W=Path(__file__).resolve().parents[1];sys.path.insert(0,str(W/'src'))
+from cut_reference import CutReference,values_and_derivative
+from reference import block,energy_stress
+X=block(8,.0015);b=CutReference(X);d=b._plane_data(.0003);A=d['Wfull'].toarray();u,s,vt=np.linalg.svd(A,full_matrices=False);rank=int(np.sum(s>s[0]*1e-12));z=vt[-1].copy();z*=1e-6/np.max(abs(z));uobs=A@z;grad=np.stack([g@z for g in d['Gfull']],axis=1);F=np.tile(np.eye(3),(len(X),1,1));F[:,0,:]+=grad;E=b.vol*energy_stress(F,b.mu,b.lam)[0].sum();oldmass=float(b.mass*np.sum(uobs**2))
+# Diagnostic only: integrate polynomial inertia exactly in X using three Gauss points per subcell.
+breaks=np.unique(d['t']);g,w=leggauss(3);xq=np.concatenate([.5*((hi-lo)*g+hi+lo) for lo,hi in zip(breaks[:-1],breaks[1:])]);wx=np.concatenate([.5*(hi-lo)*w for lo,hi in zip(breaks[:-1],breaks[1:])]);Bx,Gx=values_and_derivative(d['t'],xq);By,Gy=values_and_derivative(b.meta['knots'][1],b.meta['particle_axes'][1]);Bz,Gz=values_and_derivative(b.meta['knots'][2],b.meta['particle_axes'][2]);Q=kron(kron(Bx,By),Bz,format='csr');G=[kron(kron(Gx,By),Bz,format='csr'),kron(kron(Bx,Gy),Bz,format='csr'),kron(kron(Bx,By),Gz,format='csr')];vols=np.repeat(wx,64)*b.spacing**2;M=(1000*(Q.T@Q.multiply(vols[:,None]))).toarray();e=np.linalg.eigvalsh(M);newmass=float((Q@z)@(1000*vols*(Q@z)));gq=np.stack([gg@z for gg in G],axis=1);Fq=np.tile(np.eye(3),(len(vols),1,1));Fq[:,0,:]+=gq;newstrain=float(vols@energy_stress(Fq,b.mu,b.lam)[0]);T=d['T0'];Mbase=(T.T@M@T);baseline=b.M.toarray();mismatch=float(np.linalg.norm(Mbase-baseline)/np.linalg.norm(baseline))
+loaded=Path('/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/runs/localized_selected/localized.npz')
+with np.load(loaded) as f:q0=f['q'];v0=f['vg']
+b.q=q0;b.vg=v0;b.update_state();before=b.metrics()['energy'];qfull=T@q0;vfull=T@v0;FF=np.stack([gg@qfull for gg in G],axis=2);UU=float(vols@energy_stress(FF,b.mu,b.lam)[0]);TT=float(.5*np.sum(1000*vols[:,None]*(Q@vfull)**2));after=UU+TT
+result={'scope':'Saved-data/algebraic diagnosis only; no quadrature modification adopted and no new physical run','off_grid_plane_m':.0003,'basis_columns':A.shape[1],'sample_rank':rank,'unresolved_dimensions':A.shape[1]-rank,'null_witness':{'max_sample_displacement_m':float(abs(uobs).max()),'max_strain_gradient':float(np.linalg.norm(grad,axis=1).max()),'positive_strain_energy_J':float(E),'old_inertia_measure':oldmass,'continuous_X_integrated_inertia_measure':newmass,'continuous_max_strain_gradient':float(np.linalg.norm(gq,axis=1).max()),'continuous_strain_energy_J':newstrain},'proposed_X_integration':{'sample_count':len(vols),'total_mass_kg':float(1000*vols.sum()),'mass_rank':int(np.sum(e>e[-1]*1e-12)),'mass_condition':float(e[-1]/e[0]),'base_mass_matrix_relative_change':mismatch,'loaded_saved_state_energy_before_J':before,'loaded_saved_state_energy_after_J':after,'loaded_energy_relative_change':float((after-before)/before),'warning':'The geometry and stored strain field are unchanged, but sampling changes mass and energy. Must revalidate from a fresh state; cannot splice this into old evidence.'}}
+(W/'conditioning_diagnosis.json').write_text(json.dumps(result,indent=2,allow_nan=False));print(json.dumps(result,indent=2))
+np.savez_compressed(W/'reports/off_grid_null_witness.npz',X=X,z=z,old_values=uobs,grad=grad,knots=d['t'])

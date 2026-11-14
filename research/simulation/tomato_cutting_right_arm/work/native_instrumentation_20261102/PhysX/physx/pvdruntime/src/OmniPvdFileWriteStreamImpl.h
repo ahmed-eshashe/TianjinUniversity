@@ -1,0 +1,32 @@
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
+// Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
+// SPDX-FileCopyrightText: Copyright (c) 2008-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+#ifndef OMNI_PVD_FILE_WRITE_STREAM_IMPL_H
+#define OMNI_PVD_FILE_WRITE_STREAM_IMPL_H
+
+#include "OmniPvdFileWriteStream.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include <string.h>
+
+class OmniPvdFileWriteStreamImpl : public OmniPvdFileWriteStream {
+public:
+	OmniPvdFileWriteStreamImpl();
+	~OmniPvdFileWriteStreamImpl();
+	void resetFileParams();
+	void OMNI_PVD_CALL setFileName(const char *fileName);
+	bool OMNI_PVD_CALL openFile();
+	bool OMNI_PVD_CALL closeFile();
+	uint64_t OMNI_PVD_CALL writeBytes(const uint8_t* bytes, uint64_t nbrBytes);
+	bool OMNI_PVD_CALL flush();
+	bool OMNI_PVD_CALL openStream();
+	bool OMNI_PVD_CALL closeStream();
+
+	char *mFileName;
+	FILE *mPFile;
+	bool mFileOpenAttempted;
+};
+
+#endif

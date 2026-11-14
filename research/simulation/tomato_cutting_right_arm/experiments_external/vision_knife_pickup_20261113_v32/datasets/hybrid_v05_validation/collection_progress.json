@@ -1,0 +1,28 @@
+{
+  "current": null,
+  "completed": [
+    {
+      "id": "recovery_validation_000",
+      "split": "recovery_validation",
+      "success": true,
+      "elapsed_s": 214.87811673700344,
+      "slip_m": 0.0005214318725686307,
+      "min_height_m": 0.11891652335223885
+    },
+    {
+      "id": "recovery_validation_001",
+      "split": "recovery_validation",
+      "success": false,
+      "elapsed_s": 170.23498698600451,
+      "failure": "omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/hybrid_pickup_v05.py\", line 236, in <module>\n    route(contact_T,end,args.lift_seconds,not args.freeze_lift)\n  File \"/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/hybrid_pickup_v05.py\", line 191, in route\n    tick(q,pressure)\n  File \"/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/hybrid_pickup_v05.py\", line 165, in tick\n    last=observe();last['target_q']=target[0].tolist();max_force_seen=max(max_force_seen,last['force_max_N'])\n         ^^^^^^^^^\n  File \"/home/omen/Documents/Codex/experiments/vision_knife_pickup_20261113_v32/hybrid_pickup_v05.py\", line 124, in observe\n    (out/'stop_state.json').write_text(json.dumps(dict(sim_s=step*dt,bad=bad,knife_pose=tp.tolist(),q=r.data.joint_pos.torch[0].tolist(),qd=r.data.joint_vel.torch[0].tolist(),contacts=contacts,hand_pose=hp.tolist(),target_q=target[0].tolist()),indent=2));raise ValueError(('Contact stop',bad[:5]))\n                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: ('Contact stop', [('/dual_ar5_o6/MountedKnife', '/Indoor/RZ/SM_kitchen_Board', 74.15746688842773)])\n"
+    },
+    {
+      "id": "recovery_validation_002",
+      "split": "recovery_validation",
+      "success": true,
+      "elapsed_s": 220.40896220802097,
+      "slip_m": 0.0005513336877145787,
+      "min_height_m": 0.11886842129844163
+    }
+  ]
+}

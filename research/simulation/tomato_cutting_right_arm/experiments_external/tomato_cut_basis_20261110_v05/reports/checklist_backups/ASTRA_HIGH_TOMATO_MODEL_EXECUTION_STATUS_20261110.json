@@ -1,0 +1,111 @@
+{
+  "plan_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/docs/rl/ASTRA_HIGH_TOMATO_MODEL_EXECUTION_PLAN_20261110.md",
+  "plan_sha256": "5d7151e636ff84d0fdd446cefb4a509f658c49f39fb5237604737433566de94b",
+  "status": "intact_mechanics_repair_passed_cut_contact_requalification_pending",
+  "model": "Astra",
+  "reasoning": "high",
+  "new_candidate_adopted": false,
+  "experimental_validation": "pending",
+  "existing_solver_modified": false,
+  "initial_decision_budget_focused_hours": 8,
+  "gates": [
+    {
+      "id": 0,
+      "title": "Gate 0 Freeze the experiment and remove stale assumptions",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate0.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 1,
+      "title": "Gate 1 Establish trustworthy intact mechanics",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/intact_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/qualification.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. v04 passes intact-block mechanics at its selected settings; arbitrary shapes and cuts are outside that pass."
+    },
+    {
+      "id": 2,
+      "title": "Gate 2 Prove persistent cuts on a small block",
+      "status": "pass_component_scope",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/persistent_cut_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_20261110_v01/gate2_supplement.json"
+      ],
+      "scope_note": "Historical v01 component pass preserved. A revised numerical update must repeat applicable mechanics and topology controls; not inherited physical cutting qualification."
+    },
+    {
+      "id": 3,
+      "title": "Gate 3 Establish cutting resistance and reliable contact",
+      "status": "pending_after_intact_mechanics_repair",
+      "evidence": [
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/contact_fracture_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_persistent_mpm_gate3_20261110_v02/RECOVERY_PROPOSAL.md",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/REPORT.txt",
+        "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/mechanics_refined_controls.json",
+        "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/REPORT.txt"
+      ],
+      "scope_note": "v02/v03 failures preserved. v04 repairs intact mechanics but cut topology/contact must be requalified before a new physical cut."
+    },
+    {
+      "id": 4,
+      "title": "Gate 4 Build the reusable tomato and complete one slice",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 5,
+      "title": "Gate 5 Verify freedom to change the cutting technique",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 6,
+      "title": "Gate 6 Measure interactive and RL performance",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 7,
+      "title": "Gate 7 Connect the existing robot and verify resets",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": 8,
+      "title": "Gate 8 Prepare a small learning demonstration",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "updated": "2026-11-10T21:12:09.408539+08:00",
+  "candidate_directory": "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04",
+  "execution_status_path": "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/status.json",
+  "simulation_running": false,
+  "runtime_qualification": "Not RL qualified; selected intact reference takes about 1560 wall seconds per simulated second",
+  "next_action": "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/NEXT_STEPS.txt",
+  "repair_authorization": {
+    "decision": "Repair the isolated backend and revalidate",
+    "scope": "/home/omen/Documents/Codex/experiments/tomato_apic_repair_20261110_v03/reports/approved_recovery_proposal.md",
+    "result": "implemented; revalidation failed; stopped"
+  },
+  "active_candidate_qualification": {
+    "version": "v04",
+    "gate0": "freeze_pass",
+    "gate1": "pass_intact_block_component_scope",
+    "gate2": "not_requalified_or_supported_yet",
+    "gate3": "contact_and_fracture_not_requalified",
+    "arbitrary_tomato_shape_supported": false,
+    "physical_cut": false,
+    "evidence": "/home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/qualification.json"
+  },
+  "repair_authorization_v04": {
+    "decision": "User said ok do it after the proposed damping/timestep repair",
+    "result": "Intact mechanics reference/candidate passes; no production adoption"
+  }
+}

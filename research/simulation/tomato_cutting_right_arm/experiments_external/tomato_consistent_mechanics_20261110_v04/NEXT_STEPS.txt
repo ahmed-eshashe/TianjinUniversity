@@ -1,0 +1,13 @@
+HANDOFF AFTER v04 MECHANICS REPAIR
+Status: intact-block component passes; no production adoption, Gate 3 or RL pass.
+
+Use REPORT.txt and qualification.json first. Preserve v01–v04 artifacts and the existing Isaac/DiSECt scene. Keep E=100 kPa, nu=0.4, rho=1000, synthetic Gc=80 J/m² and the 2 N / 0.1 mm / J limits. Do not import the nu=0 analytical-unit-fixture material into project work.
+
+1. Treat v04 as the intact mechanical reference. Preserve the continuous x/F relation, consistent inertia, virtual work, conservation and timestep checks when making the representation cut-aware. The GPU tensor inverse currently depends on complete tensor-block sampling; it is not available automatically after arbitrary splitting.
+2. Before another cutting trajectory, make one bounded representation/conditioning proof on the existing 512-particle block. Required cases: untouched, finite partial incision with intact bridge, full cut, translated/rotated detached fragment. These may be prescribed topology UNIT fixtures, never evidence of paid physical cutting. Verify no history reset, no unintended bridge, no mass loss, no spurious energy change when copying the previous state to new degrees of freedom, and no rebonding when separated pieces share spatial cells.
+3. Diagnose any new rank loss or unsupported basis by independent mass/gradient checks. Never silently regularize mass, delete particles, soften stiffness or accept arbitrary topology to keep a run going. A shape-aware stable basis for irregular tomato boundaries is still design work; passing a fitted box does not establish it.
+4. Only after those component tests pass, connect the existing surface force map to the generalized coordinates by its exact adjoint. Requalify near-miss, blunt press, edge/tip/spine, finite blade thickness, whole-volume penetration, friction and material recontact, with matched force/impulse/work checks.
+5. Only after contact passes, attempt one paid crack-front patch with the original transactional area/work ledger. Do not open a whole row after paying for a subcell area. A full tomato or robot episode comes later.
+6. Measure complete cost before scaling that proof. The present accurate full-block reference is around 1,560 wall seconds per simulated second, before CAD/contact and robot work. It is not an efficient RL engine. Any proposed speed change must preserve the mechanical evidence and explicitly state a new tested operating envelope; experimental validation remains pending.
+
+Suggested next decision budget: one focused two-hour cut-basis/conditioning proof, each pilot <=600 seconds, then report its viability before any long cut. This is a proposed next scope, not a running job or an instruction to adopt another engine.

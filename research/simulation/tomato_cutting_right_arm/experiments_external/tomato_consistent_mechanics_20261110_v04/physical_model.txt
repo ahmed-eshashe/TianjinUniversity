@@ -1,0 +1,27 @@
+CONSISTENT MECHANICS v04 — numerical repair under evaluation
+
+Purpose and scope
+Resolve timestep-dependent damping without reintroducing unresolved particle-motion modes. This is a separate intact-block mechanics candidate. It is a reference-coordinate Galerkin formulation with particle quadrature, not official CRESSim and not a qualified arbitrary-cut tomato. No production files or material constants change.
+
+Diagnosis
+At frozen positions and zero elapsed time, 100 APIC transfers removed 32.23% of the energy of a non-affine but grid-representable velocity field. Full-mass projection preserves that field to roundoff and removes the orthogonal unresolved component. This directly isolates the repeated-transfer effect; it does not establish that all previous dynamic differences have only this cause.
+
+Discrete mechanics
+Use a quadratic open-knot tensor-product B-spline basis N_i(X) on the unchanged physical block bounds. Open/clamped knots describe interpolation support; they impose no fixed boundary condition. Material masses remain rho*spacing^3. The mass matrix is M_ij=sum_p m_p N_i(X_p)N_j(X_p). On a complete tensor block it is a Kronecker product of the three 1D matrices. The GPU inverse applies those three inverses, equivalent to an independent CPU sparse factorization. There is no mass lumping, mass scaling, diagonal regularization, force clipping or material softening.
+
+Keep generalized positions q_i and velocities v_i as the time-dependent state. Reconstruct x_p=sum_i N_i q_i and F_p=sum_i q_i tensor grad_X N_i from the same field. Particle velocities are sum_i N_i v_i. Do not evolve an independent particle velocity that can drift into the grid's null space. Initialization may project a supplied particle velocity once, using M^-1 N^T m, with removed energy recorded. No recurring interpolation filter is applied during time integration.
+
+Potential energy U=sum_p V0_p W(F_p), with unchanged compressible neo-Hookean W. Generalized internal force is minus its exact derivative: -sum_p V0_p P(F_p) grad N_i. External particle load is mapped once by N^T. Thus force/moment and virtual-work balance follow from partition of unity and linear completeness. Physical kinetic energy is 1/2 sum_p m_p |N v|^2 = 1/2 v^T M v. Angular momentum is sum_p m_p x_p cross (N v)_p; there is no APIC affine-energy addendum.
+
+Integrate by velocity Verlet: half velocity kick, full position drift, new force evaluation, final half kick. For supported material points, S v=0 and S a=0, S=N_fixed. Apply the full-mass orthogonal constraint projection using Z=M^-1 S^T and the rank-aware inverse of S Z. Constant supports have zero work; reaction impulses and moments are recorded. Do not move supported points afterward to hide drift. Invalid determinant or solve residual rejects the update.
+
+Boundary conditioning
+The unbounded-grid full mass in the old block fixture had condition number about 3.43e13. It was used only for the algebraic projection diagnostic, never adopted for dynamics. The fitted open basis has condition number about 3.8e3 without changing material particles, box size or mass. A trimmed tomato or cut fragment will not automatically retain this conditioning: topology, visibility, rank and quadrature must be requalified. The current implementation rejects non-tensor blocks; it cannot silently substitute this block basis for a tomato.
+
+Geometry and future cutting
+The direct basis gradient is independently checked against finite-difference evaluation of the continuous deformation. The existing reconstructed-cell volume certificate is also retained for localized loading, with the same admissible range. Candidate work does not waive 2 N or 0.1 mm stops. Real CAD contact, persistent partial cuts, moving fragments, recontact, paid fracture events and reset-after-cut remain separate gates. New degrees of freedom at a cut must preserve existing x,v,F,mass and energy, and must be linked to paid fracture area. No topological pass is inherited from v01/v02/v03.
+
+References and distinction
+Jiang/Schroeder/Teran (2017), https://math.ucdavis.edu/~jteran/papers/JST17.pdf, motivates the transfer/null-mode audit; the numerical variant above is our derived candidate, not their implementation.
+Temporal and null-space filter for the material point method (2019), https://doi.org/10.1002/nme.6138, discusses separating null filtering from timestep-dependent dissipation.
+Yamaguchi et al (2021), https://doi.org/10.1002/nme.6598, documents small-support B-spline conditioning issues. The fitted basis here is not presented as their extended-B-spline method.

@@ -1,0 +1,62 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.95 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.87 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.78 ms  (cached)
+Module tomato_extended_cad_pressure 27ceab5 load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_exact_blade_queries df80afb load on device 'cuda:0' took 0.61 ms  (cached)
+Module tomato_physical_pressure 6263e09 load on device 'cuda:0' took 0.48 ms  (cached)
+Module tomato_global_pressure 3567e86 load on device 'cuda:0' took 0.53 ms  (cached)
+Module tomato_global_implicit c840c71 load on device 'cuda:0' took 0.64 ms  (cached)
+Module tomato_relative_contact 4c254c3 load on device 'cuda:0' took 0.37 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.66 ms  (cached)
+Module tomato_relative_contact_bounds 3bdec60 load on device 'cuda:0' took 0.45 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.90 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 4.64 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.25 ms  (cached)
+Module tomato_colored_contact f69d499 load on device 'cuda:0' took 0.53 ms  (cached)
+Module tomato_double_blocks 520f16f load on device 'cuda:0' took 0.44 ms  (cached)
+Module tomato_failed_safe_objective 3d40415 load on device 'cuda:0' took 3.73 ms  (cached)
+Module tomato_global_implicit d6728ad load on device 'cuda:0' took 0.59 ms  (cached)
+Module tomato_global_gn_assembly e1fb536 load on device 'cuda:0' took 0.86 ms  (cached)
+Module tomato_failed_safe_coupled e37263d load on device 'cuda:0' took 0.52 ms  (cached)
+Module _bsr_accumulate_triplet_values_5520c14c 2336fbe load on device 'cuda:0' took 0.75 ms  (cached)
+Module tomato_tangent_gn 946f5b8 load on device 'cuda:0' took 0.76 ms  (cached)
+Module warp.sparse 628f4a0 load on device 'cuda:0' took 2.02 ms  (cached)
+Module _bsr_axpy_add_block_1a95672c f729d9a load on device 'cuda:0' took 0.40 ms  (cached)
+Module tomato_grouped_pressure_assembly f2c5694 load on device 'cuda:0' took 329.10 ms  (compiled)
+Module _bsr_get_diag_kernel_7a6beb6f a1fa5c4 load on device 'cuda:0' took 0.57 ms  (cached)
+Module tomato_block_preconditioner 8154ce3 load on device 'cuda:0' took 0.48 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_dot_kernel_7cdd1072 cb8e22e load on device 'cuda:0' took 0.43 ms  (cached)
+Module _create_tiled_dot_kernels__locals__block_sum_kernel_85ad7d89 bba3435 load on device 'cuda:0' took 0.40 ms  (cached)
+Module warp.optim.linear 7055af3 load on device 'cuda:0' took 1.58 ms  (cached)
+Module make_bsr_mv_tiled_kernel__locals__bsr_mv_tiled_kernel_9765ff7f 85d5d5f load on device 'cuda:0' took 0.43 ms  (cached)
+Module warp.optim.linear 336d799 load on device 'cuda:0' took 1.57 ms  (cached)
+Module warp.optim.linear c7a369c load on device 'cuda:0' took 1.62 ms  (cached)
+Module tomato_fraction_boundary dc69ab8 load on device 'cuda:0' took 0.43 ms  (cached)
+Module tomato_global_lbfgs 20d8530 load on device 'cuda:0' took 0.72 ms  (cached)
+{'step': 0, 'sim_time_s': 0.0004166666666666667, 'wall_s': 1.2019034670011024, 'stroke_m': 8.333333333333334e-06, 'eligible': 0, 'damage_max': 0.0, 'wrench': [-0.0011547758024025797, 5.013450169948216e-05, 0.0011488792505542356, -0.00012904374359488157, 2.900197649582024e-05, -0.00013097078894978455]}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/adaptive_tangent.py", line 42, in <module>
+    packet,value,report=refresh_packet(blade,np.asarray(solid['cells']),a.particle_q.numpy()+origin,triangles,world['x'],R,t+origin,ref['com_local'],packet,padding_m=4e-5)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_adaptive_packet_refresh.py", line 46, in refresh_packet
+    high,hv,hf,he,_=evaluate_cells(evaluate,child_ids,children,reference)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_adaptive_packet_refresh.py", line 25, in evaluate_cells
+    p,areas=packet(ids,cells,reference);result=evaluator(p)
+                                               ^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_gpu_packet_refresh.py", line 17, in __call__
+    p=self.packet;p.set_cad(vertices=self.blade['vertices'],triangles=self.blade['triangles'],**packet,rotation=self.rotation,translation=self.translation,com_local=self.com,source_scope='Accepted-state remap quadrature check')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_extended_cad_pressure.py", line 16, in set_cad
+    super().set(indices=indices,barycentric=barycentric,areas=areas,closest_local=np.zeros((n,3)),normals_local=np.tile([1.,0,0],(n,1)),rotation=rotation,translation=translation,com_local=com_local,source_scope=source_scope)
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_global_pressure.py", line 36, in set
+    if any(not np.isfinite(a).all()for a in [bary,area,points,normal,R,t,com])or np.any(ids<0)or np.any(ids>=self.n)or np.any(area<=0)or np.any(bary<0)or np.max(abs(bary.sum(1)-1),initial=0)>1e-12 or np.max(abs(np.linalg.norm(normal,axis=1)-1),initial=0)>1e-10 or abs(np.linalg.det(R)-1)>1e-10 or np.max(abs(R.T@R-np.eye(3)))>1e-10:raise ValueError('Invalid positive reference-area pressure packet')
+                                                                                                                                                                                                                                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid positive reference-area pressure packet

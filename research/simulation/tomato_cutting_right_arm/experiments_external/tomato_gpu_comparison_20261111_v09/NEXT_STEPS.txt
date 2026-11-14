@@ -1,0 +1,11 @@
+HANDOFF: v09 GPU COMPARISON COMPLETE, PRODUCTION UNCHANGED
+
+Read qualification.json, REPORT.txt, contract.json and comparison.json. Preserve v01-v09. This version is an isolated GPU evaluator of the v07 integrated reference, with CPU topology assembly. It is not a validated cutting engine or RL environment.
+
+Next bounded proof: current finite blade sweep -> local material reference patch on the existing small tensor block. Use only the current and previous blade pose, not its future path. Retain the one-partial-cut-per-connected-fragment restriction and explicit rejection for unsupported orientation/crossing partials. Near miss must leave state unchanged; a finite partial sweep must preserve the bridge; moving/rotating a fragment must carry the existing cut history. Keep this kinematic topology test labeled separately from physical failure and do not manufacture an empty gap as tool-generated separation evidence.
+
+Reuse v09's unchanged mass/integration/float64 kernels and the frozen CPU reference. CPU-assisted topology reconstruction must carry q/v/strain/support history exactly and re-upload/re-capture as needed. Measure that transition cost explicitly. Do not reuse a CUDA graph built for different topology or silently reuse stale accelerations. Retain per-substep volume, finite, support and mass-residual guards plus whole-chunk rollback.
+
+Before physical cutting, complete the relevant remaining Gate 2 controls, then actual finite-thickness blade contact with continuous new surfaces and a paid irreversible fracture law. Whole-material penetration, edge/tip/spine, near miss, blunt press, horizontal withdrawal and fragment recontact still need their own tests. Preserve 2 N, 0.1 mm, volume and fracture-work requirements; no material or physical-limit change is authorized by a speedup.
+
+The CPU/GPU equivalence result is limited to the declared short 12 mm block cases. Current normalized GPU cost is roughly 1,100–1,340 wall seconds per simulated second in the paired samples. It permits short component trials but does not qualify RL or justify scaling to a full tomato episode. A future performance study must include tomato geometry, online cuts/contact, policy action rate, resets and actual batch memory, and use the same accuracy contract. Avoid another unbounded optimization branch.

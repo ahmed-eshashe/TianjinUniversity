@@ -1,0 +1,18 @@
+Real-blade contact candidate prototype — 31 October 2026
+
+PASS for three disclosed stationary geometry fixtures. The real-blade contact backend remains unqualified.
+
+The unchanged authored blade was scanned in double-precision host calculations without an SDF. Both crossing fixtures have every soft vertex outside the blade. The prototype nevertheless found interior points representable by soft-triangle barycentric weights, a closest rigid surface point, and an outward face normal. Each accepted record passed the existing reference contract, including projected gap and frame/weight checks. The translated clear control produced no accepted candidates.
+
+Results:
+• Soft-edge crossing: 11 seeds, 5 admissible sampled points (3 strictly inside the soft triangle).
+• Blade-edge through soft interior: 968 seeds, 886 admissible sampled points (885 strictly inside the soft triangle).
+• Clear control: 4 seeds, 0 admissible sampled points.
+
+These are sampled geometry candidates, not a count of physical contacts. They must not all be emitted as forces: force totals would depend on sampling density. The deepest sampled point is evidence of an interior witness, not a proven global minimum or an accepted force manifold.
+
+Method: enumerate noncoplanar edge/face intersections over all authored facets, seed the finite search with witness midpoints and a centroid, then verify closed-mesh winding sign and closest-face projection. Ambiguous surface points and non-face normal cases are excluded. Capacity saturation fails explicitly. Coplanar seeding, exact predicates and continuous collision detection are not supplied.
+
+The host-only probe completed in 6.07 seconds under a 45-second limit. Four focused seed/capacity tests passed. No native contact buffer, solver state, force or physical step was written. Original pinned files and blade geometry remain unchanged.
+
+Next: design the isolated solver contact writer and representative-contact policy, with explicit unsupported-case handling and overflow/reset checks. Then test the bridge before any motion. Checklist item 12 stays open.

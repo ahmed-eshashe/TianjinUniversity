@@ -1,0 +1,47 @@
+VISION-GUIDED KNIFE PICKUP — VERIFIED FIRST VERSION
+Updated: 2026-11-14T02:55:58.521251+08:00
+
+First vision-guided pickup passed: 3/3 validation and 7/8 fresh tests. The head camera learns the handle position/orientation; engineered motion closes the fingers and lifts with real contact, no attachment. Short knife and bounded flat-rest placements only. Blank images rejected before approach.
+
+Evidence
+- Validation: 3/3; fresh independent tests: 7/8.
+- Failed test placements (retained, never silently retried): ['recovery_test_005'].
+- Test success Wilson 95% interval: [0.5291118177871563, 0.9775825085499423]; eight tests are a small sample.
+- Maximum final relative slip among successful test holds: 0.206 mm.
+- Three seconds continuous unsupported hold; includes the latter part of lifting.
+- Whole knife clear of board; opposed thumb/finger contact; unchanged load/blade/joint stops.
+- Live blank-image check rejected before approach; no ground-truth fallback.
+- Held-out geometry probes: wider handle: 0/1; whole-tool clearance 1.97 mm, below the 3 mm requirement; longer/heavier blade: 0/1; stopped before lift because grip stability was not sustained.
+- Other resting pose: opposite-face probe stopped at 60.35 N contact load (50 N limit).
+
+What is learned
+Two handle landmarks from actual robot-head RGB-D. Fixed calibration and a flat-rest
+height prior convert these to grasp position/yaw. No sampled knife pose or reset
+parameters enter the predictor or its grasp target.
+
+What remains engineered
+Approach, descent, contact-guided finger closure, supported pinch balancing, lift,
+and hold. Simulated contact sensing informs grip readiness and safety checks.
+This is not learned full motion, an RL policy, or hardware-ready control.
+
+Scope and limits
+The main gate used a 305 mm / 175 g shortened knife, original handle, bounded planar
+placement/yaw. Single variant/rest probes do not establish any-knife/any-pose ability.
+Friction, mass distribution and finger/contact models remain uncalibrated to hardware.
+The next phase expands real-contact demonstrations and visual grasp training to wider
+positions, geometry and stable resting faces, with fresh held-out tests. Full motion
+learning and cutting-grip adjustment remain separate later skills.
+
+Evidence preservation
+Earlier full-motion students and failed v01-v06 controllers remain in their original
+folders. The earlier v03 test gate failed 2/4 and is not counted in this fresh test set.
+All frozen v07 source/checkpoint/asset/criteria hashes and four monitored original
+project source hashes match. Changes are isolated to this experiment and checklist.
+
+Documentation correction
+The frozen contract's older 'transition' field says the holding ramp begins at lift.
+The actual frozen v07 source and its 'closing_sequence' field correctly implement
+the 1.5 s supported balancing phase BEFORE lifting. No evaluation code was changed.
+
+Detailed evidence: reports/hybrid_v07_campaign.json; reports/hybrid_v07_blank_guard.json;
+datasets/hybrid_v07_validation; datasets/hybrid_v07_test; HYBRID_NOTES.txt.

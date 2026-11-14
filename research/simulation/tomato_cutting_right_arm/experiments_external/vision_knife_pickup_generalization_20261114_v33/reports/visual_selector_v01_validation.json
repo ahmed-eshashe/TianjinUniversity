@@ -1,0 +1,1225 @@
+{
+  "scope": "Offline validation images only; not pickup success",
+  "checkpoint": "/home/omen/Documents/Codex/experiments/vision_knife_pickup_generalization_20261114_v33/policies/grasp_selector_v01/best.pt",
+  "checkpoint_sha256": "66a91aa303e70dd3f3013db53c42dd1879c8540d1ce6ab4aaac9d019fd7b5ece",
+  "test_images_consumed": 0,
+  "blank_image_rejected": true,
+  "rows": [
+    {
+      "id": "validation_medium_face0_00",
+      "family": "medium",
+      "face": 0,
+      "accepted": false,
+      "reasons": [
+        "Visual grasp style uncertain"
+      ],
+      "position_error_mm": 1.3410087708239828,
+      "height_error_mm": 0.3417274367720491,
+      "orientation_error_deg": 0.5636969759081953,
+      "prediction": {
+        "accepted": false,
+        "reasons": [
+          "Visual grasp style uncertain"
+        ],
+        "pixels": [
+          [
+            365.6755065917969,
+            229.3316650390625
+          ],
+          [
+            409.5314025878906,
+            220.8213653564453
+          ]
+        ],
+        "confidence": [
+          0.21918271481990814,
+          0.24244920909404755
+        ],
+        "landmarks_world": [
+          [
+            -0.13761815681901501,
+            -0.7155695698553749,
+            0.012078729991230441
+          ],
+          [
+            -0.17256594862239238,
+            -0.6370838845873171,
+            0.012500478007715587
+          ]
+        ],
+        "landmark_distance_m": 0.08591582401000551,
+        "height_correction_m": [
+          0.0016813165275380015,
+          0.001986841205507517
+        ],
+        "hand_target_world": [
+          [
+            0.5355813247442178,
+            0.48133350677791503,
+            -0.693880897444296,
+            -0.11608539320365363
+          ],
+          [
+            0.2614085495682222,
+            -0.8758008582097011,
+            -0.405756610509043,
+            -0.6801995842935912
+          ],
+          [
+            -0.8030057377116712,
+            0.03592926400614714,
+            -0.5948872777174756,
+            0.1309785853284721
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "short",
+            0
+          ],
+          "confidence": 0.7599457502365112,
+          "probabilities": [
+            0.7599457502365112,
+            1.876853784728731e-17,
+            6.98302813210744e-15,
+            1.8802622794310395e-41,
+            0.24005429446697235,
+            0.0
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_medium_face0_01",
+      "family": "medium",
+      "face": 0,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.7870599902936761,
+      "height_error_mm": 0.051533154061589315,
+      "orientation_error_deg": 0.42263977527895963,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            363.819091796875,
+            244.91017150878906
+          ],
+          [
+            412.42645263671875,
+            242.16018676757812
+          ]
+        ],
+        "confidence": [
+          0.2768675982952118,
+          0.2320808619260788
+        ],
+        "landmarks_world": [
+          [
+            -0.09524657491171884,
+            -0.7162960658016135,
+            0.01262518036867244
+          ],
+          [
+            -0.11401170427366791,
+            -0.6332514622131713,
+            0.012740510103177671
+          ]
+        ],
+        "landmark_distance_m": 0.0851384141623501,
+        "height_correction_m": [
+          0.0022277669049799442,
+          0.0022268733009696007
+        ],
+        "hand_target_world": [
+          [
+            0.5763396727069213,
+            0.3009036768809026,
+            -0.7597957349864702,
+            -0.06713138255707014
+          ],
+          [
+            0.15170486764178595,
+            -0.9529774736201939,
+            -0.26233483929180734,
+            -0.6861946538973476
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.13137182656492416
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "medium",
+            0
+          ],
+          "confidence": 0.9999876022338867,
+          "probabilities": [
+            1.2436614269972779e-05,
+            1.117734058379257e-24,
+            5.213770925963404e-26,
+            0.0,
+            0.9999876022338867,
+            0.0
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_medium_face180_00",
+      "family": "medium",
+      "face": 180,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 1.283577296349638,
+      "height_error_mm": 0.0026308617943338053,
+      "orientation_error_deg": 0.897059660738054,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            354.3794250488281,
+            234.859130859375
+          ],
+          [
+            401.876708984375,
+            244.9672088623047
+          ]
+        ],
+        "confidence": [
+          0.2283317744731903,
+          0.21752655506134033
+        ],
+        "landmarks_world": [
+          [
+            -0.11892228441053354,
+            -0.7344676167845821,
+            0.012794904827500897
+          ],
+          [
+            -0.10395116068507548,
+            -0.651438353484411,
+            0.012957271474298482
+          ]
+        ],
+        "landmark_distance_m": 0.08436835587292248,
+        "height_correction_m": [
+          0.0023974913638085127,
+          0.002443634672090411
+        ],
+        "hand_target_world": [
+          [
+            0.5898674387877949,
+            -0.09457987504802205,
+            -0.8019420502092567,
+            -0.07558687057887108
+          ],
+          [
+            -0.08507755203377619,
+            -0.994868702504946,
+            0.05475467939877813,
+            -0.707997399547491
+          ],
+          [
+            -0.8030057377116712,
+            0.03592926400614714,
+            -0.5948872777174756,
+            0.1328742044595564
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "medium",
+            180
+          ],
+          "confidence": 0.9999997615814209,
+          "probabilities": [
+            0.0,
+            6.098937590190896e-19,
+            5.836468060416606e-22,
+            1.8804367130087485e-07,
+            0.0,
+            0.9999997615814209
+          ],
+          "offset_in_hand_m": [
+            0.0014965189837237458,
+            -0.010543484977035193,
+            -0.004857505066429305
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_medium_face180_01",
+      "family": "medium",
+      "face": 180,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.44389972872863986,
+      "height_error_mm": 0.0888502781994649,
+      "orientation_error_deg": 0.3184616954991196,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            318.4176025390625,
+            237.4766845703125
+          ],
+          [
+            366.9282531738281,
+            241.4774627685547
+          ]
+        ],
+        "confidence": [
+          0.22848276793956757,
+          0.2464316189289093
+        ],
+        "landmarks_world": [
+          [
+            -0.1032544539558351,
+            -0.7964796536641341,
+            0.012648549813206567
+          ],
+          [
+            -0.10447415800427284,
+            -0.711498429852379,
+            0.012920653966140394
+          ]
+        ],
+        "landmark_distance_m": 0.0849904119249897,
+        "height_correction_m": [
+          0.0022511363495141268,
+          0.0024070171639323235
+        ],
+        "hand_target_world": [
+          [
+            0.5952412346724438,
+            0.09774360500368545,
+            -0.7975801277780852,
+            -0.06579649333026172
+          ],
+          [
+            0.02948996011793944,
+            -0.9945628565700901,
+            -0.09987525511047404,
+            -0.7618876448806239
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.1327827181983302
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "medium",
+            180
+          ],
+          "confidence": 1.0,
+          "probabilities": [
+            0.0,
+            9.709977455762572e-25,
+            2.2819863765924014e-23,
+            3.544563043078597e-08,
+            0.0,
+            1.0
+          ],
+          "offset_in_hand_m": [
+            0.0014965189837237458,
+            -0.010543484977035193,
+            -0.004857505066429305
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_short_face0_00",
+      "family": "short",
+      "face": 0,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.627916908080886,
+      "height_error_mm": 0.21419582739429233,
+      "orientation_error_deg": 0.8274026056358332,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            349.19659423828125,
+            244.25286865234375
+          ],
+          [
+            398.073974609375,
+            255.40786743164062
+          ]
+        ],
+        "confidence": [
+          0.24537736177444458,
+          0.21872921288013458
+        ],
+        "landmarks_world": [
+          [
+            -0.09609008406615227,
+            -0.7415042147452168,
+            0.010125369075580815
+          ],
+          [
+            -0.07977993281155493,
+            -0.6575562272477449,
+            0.010357231187519078
+          ]
+        ],
+        "landmark_distance_m": 0.0855180647516213,
+        "height_correction_m": [
+          -0.00027204438811168075,
+          -0.0001564056146889925
+        ],
+        "hand_target_world": [
+          [
+            0.5886648549897415,
+            -0.10800500275412597,
+            -0.8011295824521688,
+            -0.058202758477354594
+          ],
+          [
+            -0.09303479833932894,
+            -0.9935008844324476,
+            0.06557834192706131,
+            -0.7250745319249059
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.12893028146054905
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "short",
+            0
+          ],
+          "confidence": 0.9999998807907104,
+          "probabilities": [
+            0.9999998807907104,
+            2.1538015815281142e-08,
+            1.183710054419862e-07,
+            2.714674532067773e-23,
+            2.4677071053247346e-08,
+            0.0
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_short_face0_01",
+      "family": "short",
+      "face": 0,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.5960997022319343,
+      "height_error_mm": 0.06319630715118096,
+      "orientation_error_deg": 0.839333813398508,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            368.290771484375,
+            256.06072998046875
+          ],
+          [
+            419.5383605957031,
+            257.4580078125
+          ]
+        ],
+        "confidence": [
+          0.2890598773956299,
+          0.23437941074371338
+        ],
+        "landmarks_world": [
+          [
+            -0.07119486898736227,
+            -0.7071199687705229,
+            0.010315285153523757
+          ],
+          [
+            -0.07975050339171341,
+            -0.6219765204353698,
+            0.010469341990975767
+          ]
+        ],
+        "landmark_distance_m": 0.0855723635759289,
+        "height_correction_m": [
+          -8.212831016862765e-05,
+          -4.429481123224832e-05
+        ],
+        "hand_target_world": [
+          [
+            0.5905246984627974,
+            0.18261005666705574,
+            -0.7860878753100541,
+            -0.0396448635270715
+          ],
+          [
+            0.08038884069045281,
+            -0.9825287045130177,
+            -0.16785404106071974,
+            -0.6804506227850918
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.12908129490124887
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "short",
+            0
+          ],
+          "confidence": 0.999609649181366,
+          "probabilities": [
+            0.999609649181366,
+            5.232735252047593e-12,
+            1.6475460995479807e-08,
+            3.234929397842582e-28,
+            0.0003904038167092949,
+            0.0
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_short_face180_00",
+      "family": "short",
+      "face": 180,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 1.3681466348822675,
+      "height_error_mm": 0.006729783577547055,
+      "orientation_error_deg": 0.011572141669912156,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            368.9742126464844,
+            235.72206115722656
+          ],
+          [
+            417.16827392578125,
+            244.25526428222656
+          ]
+        ],
+        "confidence": [
+          0.26250338554382324,
+          0.2851859927177429
+        ],
+        "landmarks_world": [
+          [
+            -0.12314773848439675,
+            -0.7087354499080382,
+            0.010257336596736943
+          ],
+          [
+            -0.11235109002059818,
+            -0.6248338306959276,
+            0.010404732043972631
+          ]
+        ],
+        "landmark_distance_m": 0.08459356387978174,
+        "height_correction_m": [
+          -0.00014007686695549637,
+          -0.00010890475823543966
+        ],
+        "hand_target_world": [
+          [
+            0.5934053757210904,
+            -0.044324011874523735,
+            -0.8036824261091301,
+            -0.08644622407963277
+          ],
+          [
+            -0.05524350882632827,
+            -0.9983709080093037,
+            0.01427181744669279,
+            -0.6903776221733483
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.1290200156493539
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "short",
+            180
+          ],
+          "confidence": 0.9991353154182434,
+          "probabilities": [
+            0.0004712314694188535,
+            0.9991353154182434,
+            0.0003934719134122133,
+            2.229540579934408e-10,
+            1.3484134327775704e-14,
+            6.087846498614824e-30
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_short_face180_01",
+      "family": "short",
+      "face": 180,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.3763954064060592,
+      "height_error_mm": 0.00187335672777178,
+      "orientation_error_deg": 0.8677787201226019,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            370.734130859375,
+            238.80230712890625
+          ],
+          [
+            415.99078369140625,
+            232.9578857421875
+          ]
+        ],
+        "confidence": [
+          0.22729112207889557,
+          0.2912638783454895
+        ],
+        "landmarks_world": [
+          [
+            -0.11534797154971876,
+            -0.7052339968363939,
+            0.01028969612718772
+          ],
+          [
+            -0.14229547561558875,
+            -0.6259451815919134,
+            0.010382086702740212
+          ]
+        ],
+        "landmark_distance_m": 0.08374301603281252,
+        "height_correction_m": [
+          -0.00010771733650472015,
+          -0.00013155009946785867
+        ],
+        "hand_target_world": [
+          [
+            0.5571843004297891,
+            0.39947838314493345,
+            -0.727985354766478,
+            -0.09033063230184349
+          ],
+          [
+            0.2114886298520552,
+            -0.9160382685171423,
+            -0.3408026555873857,
+            -0.6730027127524094
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.12902487274396307
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "short",
+            180
+          ],
+          "confidence": 0.9998351335525513,
+          "probabilities": [
+            1.1749869965882453e-09,
+            0.9998351335525513,
+            0.00016468120156787336,
+            1.4625139499457873e-07,
+            5.231308610437341e-24,
+            2.3007146050141177e-24
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_wide_face0_00",
+      "family": "wide",
+      "face": 0,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.8691825646379766,
+      "height_error_mm": 0.0474367511081597,
+      "orientation_error_deg": 0.2300753202626617,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            377.7126770019531,
+            262.83465576171875
+          ],
+          [
+            424.6557922363281,
+            253.80520629882812
+          ]
+        ],
+        "confidence": [
+          0.20814494788646698,
+          0.21934382617473602
+        ],
+        "landmarks_world": [
+          [
+            -0.0572859333668026,
+            -0.6908360105759657,
+            0.010370175772663637
+          ],
+          [
+            -0.08987241422154102,
+            -0.6130944671369222,
+            0.010495005692283899
+          ]
+        ],
+        "landmark_distance_m": 0.08429496956099902,
+        "height_correction_m": [
+          -2.7237691028858535e-05,
+          -1.863110992417205e-05
+        ],
+        "hand_target_world": [
+          [
+            0.5412025179078691,
+            0.4619499896330598,
+            -0.7026393396958335,
+            -0.03466715469201223
+          ],
+          [
+            0.24956285743739112,
+            -0.8861779138897506,
+            -0.39039350035789805,
+            -0.656695278811273
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.12912157206147287
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "wide",
+            0
+          ],
+          "confidence": 0.9602333307266235,
+          "probabilities": [
+            2.0157071744706344e-14,
+            4.766063543826249e-09,
+            0.9602333307266235,
+            0.03976668044924736,
+            2.3203953797096222e-30,
+            1.4470061037803245e-16
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_wide_face0_01",
+      "family": "wide",
+      "face": 0,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.7436931267993183,
+      "height_error_mm": 0.08821541928680232,
+      "orientation_error_deg": 0.3014247202615569,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            341.807373046875,
+            237.78248596191406
+          ],
+          [
+            389.9180603027344,
+            237.54977416992188
+          ]
+        ],
+        "confidence": [
+          0.19933904707431793,
+          0.19730962812900543
+        ],
+        "landmarks_world": [
+          [
+            -0.1108719867017759,
+            -0.7558946429620751,
+            0.010288988955039324
+          ],
+          [
+            -0.12319477763219533,
+            -0.6718906795897436,
+            0.0104946735466378
+          ]
+        ],
+        "landmark_distance_m": 0.08490323518409686,
+        "height_correction_m": [
+          -0.00010842450865311548,
+          -1.896325557027012e-05
+        ],
+        "hand_target_world": [
+          [
+            0.5862565321595096,
+            0.22711591518133487,
+            -0.7776385018578035,
+            -0.08051925437520537
+          ],
+          [
+            0.10716838947394394,
+            -0.9732047313177834,
+            -0.20343914873553678,
+            -0.7281487820731898
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.12908081257983767
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "wide",
+            0
+          ],
+          "confidence": 0.999982476234436,
+          "probabilities": [
+            3.464210862613726e-11,
+            2.3722288915450918e-06,
+            0.999982476234436,
+            1.5149960745475255e-05,
+            5.1330315490776675e-33,
+            2.212267717535964e-25
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_wide_face180_00",
+      "family": "wide",
+      "face": 180,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.5175274665896952,
+      "height_error_mm": 0.20351792514283762,
+      "orientation_error_deg": 0.052892239848141426,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            349.37689208984375,
+            228.85684204101562
+          ],
+          [
+            393.18994140625,
+            222.447509765625
+          ]
+        ],
+        "confidence": [
+          0.2423870861530304,
+          0.20678909122943878
+        ],
+        "landmarks_world": [
+          [
+            -0.13707648727241306,
+            -0.7448194549361259,
+            0.01014193104685962
+          ],
+          [
+            -0.16657983599081783,
+            -0.6665589507299658,
+            0.010093143059058507
+          ]
+        ],
+        "landmark_distance_m": 0.08363705210294026,
+        "height_correction_m": [
+          -0.0002554824168328196,
+          -0.00042049374314956367
+        ],
+        "hand_target_world": [
+          [
+            0.5499270458243389,
+            0.4293905365346763,
+            -0.7163825873130758,
+            -0.11311407874781099
+          ],
+          [
+            0.22969986824778213,
+            -0.9024039312427873,
+            -0.36456153856998186,
+            -0.7118323530873564
+          ],
+          [
+            -0.8030057377116713,
+            0.03592926400614715,
+            -0.5948872777174757,
+            0.12880651838195817
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "wide",
+            180
+          ],
+          "confidence": 0.9988868832588196,
+          "probabilities": [
+            4.023550842474817e-18,
+            0.00019172928296029568,
+            0.0009214492747560143,
+            0.9988868832588196,
+            4.993386947775053e-41,
+            3.780315990797867e-11
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    },
+    {
+      "id": "validation_wide_face180_01",
+      "family": "wide",
+      "face": 180,
+      "accepted": true,
+      "reasons": [],
+      "position_error_mm": 0.7594687033700214,
+      "height_error_mm": 0.04980074442925697,
+      "orientation_error_deg": 0.515011214403479,
+      "prediction": {
+        "accepted": true,
+        "reasons": [],
+        "pixels": [
+          [
+            375.3207092285156,
+            255.37498474121094
+          ],
+          [
+            425.806884765625,
+            252.3549041748047
+          ]
+        ],
+        "confidence": [
+          0.25631794333457947,
+          0.2353779673576355
+        ],
+        "landmarks_world": [
+          [
+            -0.07450375763417194,
+            -0.695489276631884,
+            0.010326263147475923
+          ],
+          [
+            -0.09383149415745085,
+            -0.6109810737602062,
+            0.010415437567864005
+          ]
+        ],
+        "landmark_distance_m": 0.08669028609821977,
+        "height_correction_m": [
+          -7.115031621651724e-05,
+          -9.819923434406519e-05
+        ],
+        "hand_target_world": [
+          [
+            0.5759418984372896,
+            0.3033890625398772,
+            -0.7591086920564298,
+            -0.04664019829151603
+          ],
+          [
+            0.1532080768973484,
+            -0.95218914335291,
+            -0.2643163264996418,
+            -0.6645581909597664
+          ],
+          [
+            -0.8030057377116712,
+            0.03592926400614714,
+            -0.5948872777174756,
+            0.12905983168666904
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "inputs": [
+          "head RGB",
+          "head depth",
+          "fixed camera calibration"
+        ],
+        "ground_truth_pose_input": false,
+        "family_or_rest_pose_input": false,
+        "flat_rest_height_prior": false,
+        "scope": "Learned visual locator and known-family/two-face grasp selector; engineered motion, not arbitrary3D grasps",
+        "grasp_style": {
+          "predicted": [
+            "wide",
+            180
+          ],
+          "confidence": 0.9970947504043579,
+          "probabilities": [
+            4.323007015985448e-17,
+            0.0009674551547504961,
+            0.0019378326833248138,
+            0.9970947504043579,
+            2.8832595231946148e-33,
+            1.1764508811573648e-10
+          ],
+          "offset_in_hand_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "labels_from_image_classifier_only": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "scope": "Same six robot-only coasting known-load profile/clear/replay fixtures under separately validatedPGS, no physical/material retuning. Actual-q geometry and explicit native COM transport retained. No target or cutting. OldTGS192step work/force failures retained.",
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_joint_state_interface_worker_pgs.py": "c31129bad8edd64ddada276b1fec31e05b9a6d0dbb0162805c1588a804335c19",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_robot_pgs.py": "aa6af27e15933fae050ce004ecb14dad959391ac945f6f30c488d10ced4b38df",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/offline/recenter_pgs_interface_readback_20261102_01/measurements.json": "d929d79c4f1ce32a084b60b94e6d1eddda348ba4892e20d0d35fa57b3c9edc04"
+  },
+  "actual_physx_steps": 192,
+  "cases": 6,
+  "loaded_robot_work_budget": "Original moving1%maxabs cumulative contactW+1e-14J",
+  "loaded_pose_velocity_work_budget": "Original moving1%maxabs cumulative contactW+1e-14J",
+  "clear_budget": "Original1e-6initialrobotK+1e-15J",
+  "force_moment_reference": "Original absolute1e-6N/1e-7Nm flags retained, same preregistered velocity-rounding allowance for moving force derivative.",
+  "gravity_work_reference": "Read actual typed active USD physicsScene gravity vector before dynamics. Record old nominal9.81 work separately; use actual stage input for the work ledger. This is input readback, not a changed gravity value.",
+  "additional_raw_records": "Native full body COM Jacobians, M and g before/after each real step, localCOM positions; do not substitute them for independently verified body channels silently.",
+  "full_23B_qualified": false,
+  "experimental_validation": "pending"
+}

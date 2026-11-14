@@ -1,0 +1,26 @@
+v07 ISOLATED SEQUENTIAL MULTICUT MECHANICS REFERENCE
+
+Scope
+A persistent fragment tree wraps the frozen v06 reference-coordinate quadratic B-spline Galerkin mechanics. It uses Gauss integration over complete reference knot cells, a full consistent mass matrix, neo-Hookean energy and Velocity Verlet. It is a custom CPU reference, not a new validated CRESSim release, DiSECt replacement, physical tomato or RL environment.
+
+Each connected fragment can have one active reference-axis incision. Local discontinuous basis functions become available only when their complete support fits inside the prescribed rectangle. Ahead of that rectangle the intact basis remains continuous. Support-sized activation can lag a geometrical blade front; no physical blade front has been implemented here.
+
+A full discontinuity already has independent mechanical states on its two sides. At completion the existing coefficient fields are partitioned into two clamped tensor domains. Position, velocity, strain, energy, mass and momentum are carried forward; no rest-state reset occurs. The children may subsequently receive further prescribed cuts. A partial incision in one fragment does not prevent a separate partial incision in another fragment. Intersecting unfinished incisions in the same connected body are rejected explicitly.
+
+The constructor's ordered 512-point cloud is an observation/load fixture, not a set of material point masses. Material integration stays complete when a thin fragment has no original observation point. Such a fragment requires its own continuous contact/render surface; the old point cloud cannot substitute for that surface.
+
+The global event ledger preserves parent/child identities, plane normal/position, activated rectangles, completion and capacity use. Four started cuts are permitted. Advancing the same partial cut does not consume a second cut. Retired parents' support impulse/moment are archived and remain in global totals. New child reaction counters start a new monitoring segment, while physical fields and constrained material observations remain carried forward.
+
+Proposals are built on temporary state and fingerprinted. Failed proposals and stale commits do not change the system. Stepping is atomic across all fragments: if a later fragment fails, already advanced fragments are restored. Checkpoints replay topology to reconstruct the representation and then restore exact live leaf fields, support ledgers and clocks. Replaying topology during loading is not rerunning physical fracture or charging energy.
+
+No separation event in this study is paid physical failure. Every event is tagged fixture_only=true and paid_fracture_area=0. The fracture parameter in the inherited contract is unused. Dynamical independence fixtures deliberately place pieces apart and apply manufactured loads/velocities to test mechanics. Those gaps and prescribed full-plane divisions are not evidence of a knife cut or valid fragment contact. No contact or dissipated-fracture-work ledger exists yet.
+
+What this study does not solve
+- A live blade selecting new fracture patches from its current swept contact.
+- Arbitrary oriented/curved cuts or two crossing unfinished incisions in one body.
+- A trimmed tomato surface, real supports/board, knife or fragment recontact.
+- A paid irreversible fracture law or calibrated tomato material.
+- GPU parity, useful RL throughput or robot integration.
+
+Preservation
+All implementation files are local copies/new files in this directory. The original Isaac/DiSECt assets, solver and v01-v06 evidence are protected by manifest.json. Shared checklist/status files are administrative updates only; their pre-update versions are under reports/checklist_backups.

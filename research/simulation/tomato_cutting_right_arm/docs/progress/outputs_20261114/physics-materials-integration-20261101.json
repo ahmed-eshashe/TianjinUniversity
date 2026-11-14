@@ -1,0 +1,3059 @@
+{
+  "date": "2026-11-01",
+  "numerical_component_milestones_complete": [
+    12,
+    15,
+    16,
+    18
+  ],
+  "experimental_validation": "pending at user request",
+  "production_full_cut_validated": false,
+  "interactive_performance_validated": false,
+  "qualification_scope": "Current saved mesh and fixed-world-frame, predominantly tensile diagnostic setup. Explicit displacement controls in the material-loading test; frozen damage during actual blade exchanges.",
+  "metrics": {
+    "full_model_cases": [
+      {
+        "id": "actual_model_rest",
+        "position_error_m": 3.725290298461914e-09,
+        "velocity_error_m_s": 8.940696716308594e-06
+      },
+      {
+        "id": "original_volume_barrier",
+        "force_error_n": 3.766278970987469e-09,
+        "hessian_error_n_m": 5.005636104726818e-06,
+        "node_gather_force_error_n": 6.915083037338658e-08,
+        "node_gather_hessian_error_n_m": 3.576601943677815e-05,
+        "ratio": 0.29999988070781025
+      },
+      {
+        "id": "all_actual_patches",
+        "probes": [
+          {
+            "opening_m": 0.0005,
+            "max_force_error_n": 3.249861185716796e-08,
+            "node_gather_force_error_n": 7.029104129114721e-08,
+            "max_damage_error": 0.0,
+            "failed_patches": 0
+          },
+          {
+            "opening_m": 0.002,
+            "max_force_error_n": 8.862487022032184e-08,
+            "node_gather_force_error_n": 8.792015770975325e-08,
+            "max_damage_error": 8.940698514869894e-08,
+            "failed_patches": 0
+          },
+          {
+            "opening_m": 0.0045,
+            "max_force_error_n": 0.0,
+            "node_gather_force_error_n": 7.102434947016817e-08,
+            "max_damage_error": 0.0,
+            "failed_patches": 47
+          }
+        ]
+      },
+      {
+        "id": "full_mesh_implicit_sequence_and_replay",
+        "intervals": 4,
+        "min_ratio": 0.9762277035679048,
+        "exact_replay": true,
+        "replay_errors": {
+          "position_m": 0.0,
+          "velocity_m_s": 0.0
+        },
+        "history_unchanged": true
+      }
+    ],
+    "topology": {
+      "nodes": 4032,
+      "springs": 33996,
+      "triangles": 5504,
+      "volume_cells": 16291,
+      "patches": 47,
+      "colors": 18,
+      "mass_kg": 0.12167126547965436,
+      "source_sha256": {
+        "runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/surface_design.json": "c5e87acf2255875ace869d5fdceb18390a9a51d5fad8e5737738e09fdd8a7f34",
+        "runs/offline/tomato_slice_refinement_01/meshes_half_spacing/bulk5/mass_stiffness_assignments.json": "e08053a4cfc9b4fe0710081be5f08eca8997d0d24fd80667ac31ab2d32f64bc8"
+      },
+      "same_bulk_law": true,
+      "frame": "fixed world X normal; no general rotating material frame"
+    },
+    "material_loading": {
+      "nodes": 4032,
+      "patches": 47,
+      "controlled_surface_nodes": 514,
+      "free_bulk_nodes": 3518,
+      "patches_increased": 47,
+      "dt_s": 0.0004166666666666667,
+      "volume_trial_clips": 311,
+      "records": [
+        {
+          "interval": 0,
+          "controlled_opening_m": 0.001,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 0.0,
+          "min_damage": 0.0,
+          "max_damage": 0.0,
+          "patches_increased": 0,
+          "energy": {
+            "kinetic_j": 1.6421330510527401e-06,
+            "potential_j": 0.029245524259857644,
+            "fracture_dissipation_j": 0.0,
+            "total_j": 0.029247166392908697
+          },
+          "cumulative_driver_work_j": 0.002857111367502024,
+          "energy_gain_above_driver_work_j": 7.014926091831325e-09,
+          "support_impulse_error_ns": 6.920382628602519e-09,
+          "min_volume_ratio": 0.8830022846503708
+        },
+        {
+          "interval": 1,
+          "controlled_opening_m": 0.00105,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 2.0232494511718269e-07,
+          "min_damage": 0.06349083036184311,
+          "max_damage": 0.06349111348390579,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 7.969562139506047e-06,
+            "potential_j": 0.03020351100314802,
+            "fracture_dissipation_j": 0.0019493639156280551,
+            "total_j": 0.03216084448091558
+          },
+          "cumulative_driver_work_j": 0.0057724259323825074,
+          "energy_gain_above_driver_work_j": -1.629461947509278e-06,
+          "support_impulse_error_ns": 2.0901965749803137e-08,
+          "min_volume_ratio": 0.6049252101134088
+        },
+        {
+          "interval": 2,
+          "controlled_opening_m": 0.0011,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 1.7608410748937153e-07,
+          "min_damage": 0.121211938560009,
+          "max_damage": 0.1212121844291687,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 1.7645810302315322e-05,
+            "potential_j": 0.0311118579727804,
+            "fracture_dissipation_j": 0.0038987945299595594,
+            "total_j": 0.03502829831304227
+          },
+          "cumulative_driver_work_j": 0.008642755979984002,
+          "energy_gain_above_driver_work_j": -4.5056774223110885e-06,
+          "support_impulse_error_ns": 2.9590493282575234e-08,
+          "min_volume_ratio": 0.49254028670158695
+        },
+        {
+          "interval": 3,
+          "controlled_opening_m": 0.00115,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 6.49009507802667e-08,
+          "min_damage": 0.173913836479187,
+          "max_damage": 0.17391395568847656,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 2.7996053022378257e-05,
+            "potential_j": 0.03197069185825313,
+            "fracture_dissipation_j": 0.005848227134265471,
+            "total_j": 0.03784691504554098
+          },
+          "cumulative_driver_work_j": 0.011464761372361833,
+          "energy_gain_above_driver_work_j": -7.894337301431187e-06,
+          "support_impulse_error_ns": 1.9150490948758583e-08,
+          "min_volume_ratio": 0.3531388510641944
+        },
+        {
+          "interval": 4,
+          "controlled_opening_m": 0.0012000000000000001,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 1.445942575672987e-07,
+          "min_damage": 0.22222363948822021,
+          "max_damage": 0.22222384810447693,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 3.719163373100274e-05,
+            "potential_j": 0.03278084007988285,
+            "fracture_dissipation_j": 0.007797658996423706,
+            "total_j": 0.04061569071003756
+          },
+          "cumulative_driver_work_j": 0.014236900062308487,
+          "energy_gain_above_driver_work_j": -1.1257362751508279e-05,
+          "support_impulse_error_ns": 2.75893182778277e-08,
+          "min_volume_ratio": 0.4989970265936654
+        },
+        {
+          "interval": 5,
+          "controlled_opening_m": 0.00125,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 1.3112924857061614e-07,
+          "min_damage": 0.266665518283844,
+          "max_damage": 0.2666657269001007,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 4.449557772109061e-05,
+            "potential_j": 0.03354288767690545,
+            "fracture_dissipation_j": 0.00974694405158516,
+            "total_j": 0.0433343273062117
+          },
+          "cumulative_driver_work_j": 0.016958574990765477,
+          "energy_gain_above_driver_work_j": -1.429569503435743e-05,
+          "support_impulse_error_ns": 4.861503774581139e-08,
+          "min_volume_ratio": 0.49990732499094054
+        },
+        {
+          "interval": 6,
+          "controlled_opening_m": 0.0013,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 4.5791017588836525e-08,
+          "min_damage": 0.3076920211315155,
+          "max_damage": 0.3076920807361603,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 4.9971903451612567e-05,
+            "potential_j": 0.03425719972922063,
+            "fracture_dissipation_j": 0.011696376444888301,
+            "total_j": 0.04600354807756055
+          },
+          "cumulative_driver_work_j": 0.01963039842637132,
+          "energy_gain_above_driver_work_j": -1.6898359291354914e-05,
+          "support_impulse_error_ns": 6.014537450525388e-08,
+          "min_volume_ratio": 0.5837557609676399
+        },
+        {
+          "interval": 7,
+          "controlled_opening_m": 0.00135,
+          "max_history_error_m": 1.1641532182693481e-10,
+          "max_damage_error": 1.2530043791425527e-07,
+          "min_damage": 0.34567925333976746,
+          "max_damage": 0.3456793427467346,
+          "patches_increased": 47,
+          "energy": {
+            "kinetic_j": 5.4199795135331696e-05,
+            "potential_j": 0.03492359206012019,
+            "fracture_dissipation_j": 0.01364580643712543,
+            "total_j": 0.04862359829238095
+          },
+          "cumulative_driver_work_j": 0.02225261341951822,
+          "energy_gain_above_driver_work_j": -1.906313761785086e-05,
+          "support_impulse_error_ns": 6.327030077382857e-08,
+          "min_volume_ratio": 0.8773590450821567
+        }
+      ],
+      "scope": "Actual full mesh in a disclosed displacement-controlled tensile fixture: paired interface nodes prescribed, other bulk nodes retain actual masses and evolve natively. Explicit all-patch eligibility. No knife eligibility detector, free-fragment reclosure, rotating-frame or experimental material qualification.",
+      "independent_absolute_energy_gate_passed": true,
+      "max_absolute_relative_energy_residual": 0.00039205526302725215
+    },
+    "probe_coupling": {
+      "records": [
+        {
+          "interval": 0,
+          "contact_count": 65,
+          "force_n": [
+            0.0038137659430503845,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            -0.0038137659430503845,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "particle_momentum_ns": [
+            1.5985040346594336e-06,
+            -1.147451558471267e-10,
+            -2.2014161894771687e-09
+          ],
+          "body_momentum_ns": [
+            -1.5890691429376602e-06,
+            0.0,
+            0.0
+          ],
+          "momentum_error_ns": 9.688992800682167e-09,
+          "particle_impulse_error_ns": 9.688992800682167e-09,
+          "body_impulse_error_ns": 0.0,
+          "min_volume_ratio": 0.9605746748735999,
+          "angular_momentum_error_nms": 2.0434383483815951e-10,
+          "body_before": {
+            "pose": [
+              -0.03739999979734421,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.037400007247924805,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "interval": 1,
+          "contact_count": 65,
+          "force_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "particle_momentum_ns": [
+            1.5941850585921683e-06,
+            -9.284042019108897e-10,
+            -6.31239858003034e-09
+          ],
+          "body_momentum_ns": [
+            -1.5890691429376602e-06,
+            0.0,
+            0.0
+          ],
+          "momentum_error_ns": 8.178074539849554e-09,
+          "particle_impulse_error_ns": 8.178074539849554e-09,
+          "body_impulse_error_ns": 0.0,
+          "min_volume_ratio": 0.9496999648309311,
+          "angular_momentum_error_nms": 8.40554759940771e-11,
+          "body_before": {
+            "pose": [
+              -0.037400007247924805,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.03740006685256958,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "interval": 2,
+          "contact_count": 0,
+          "force_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "particle_momentum_ns": [
+            1.5933445661523107e-06,
+            2.9258071684442646e-10,
+            -7.656403493029667e-09
+          ],
+          "body_momentum_ns": [
+            -1.5890691429376602e-06,
+            0.0,
+            0.0
+          ],
+          "momentum_error_ns": 8.77413024682891e-09,
+          "particle_impulse_error_ns": 8.77413024682891e-09,
+          "body_impulse_error_ns": 0.0,
+          "min_volume_ratio": 0.960492886191336,
+          "angular_momentum_error_nms": 9.628479280757302e-11,
+          "body_before": {
+            "pose": [
+              -0.03740006685256958,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.037400126457214355,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "interval": 3,
+          "contact_count": 0,
+          "force_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "particle_momentum_ns": [
+            1.5936016405175845e-06,
+            -1.73510574627352e-09,
+            -1.0747578254934453e-08
+          ],
+          "body_momentum_ns": [
+            -1.5890691429376602e-06,
+            0.0,
+            0.0
+          ],
+          "momentum_error_ns": 1.1792563953980083e-08,
+          "particle_impulse_error_ns": 1.1792563953980083e-08,
+          "body_impulse_error_ns": 0.0,
+          "min_volume_ratio": 0.9798923783616528,
+          "angular_momentum_error_nms": 1.5517444042774786e-10,
+          "body_before": {
+            "pose": [
+              -0.037400126457214355,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.03740018606185913,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "interval": 4,
+          "contact_count": 65,
+          "force_n": [
+            0.003820285201072693,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            -0.003820285201072693,
+            0.0,
+            0.0,
+            0.0,
+            4.909926631935235e-10,
+            1.1054266668697466e-09
+          ],
+          "particle_momentum_ns": [
+            3.162508094504941e-06,
+            -1.2799876140883531e-09,
+            -1.7655184647076024e-08
+          ],
+          "body_momentum_ns": [
+            -3.180854255333543e-06,
+            0.0,
+            0.0
+          ],
+          "momentum_error_ns": 2.5493637056400923e-08,
+          "particle_impulse_error_ns": 2.5493916313678955e-08,
+          "body_impulse_error_ns": 3.880510728355058e-13,
+          "min_volume_ratio": 0.9616360414990068,
+          "angular_momentum_error_nms": 8.896302967997356e-10,
+          "body_before": {
+            "pose": [
+              -0.03740018606185913,
+              0.0,
+              0.027499999850988388,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              -7.945345714688301e-05,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.037400245666503906,
+              0.0,
+              0.027499999850988388,
+              -1.01844830555243e-34,
+              2.2642349421179292e-14,
+              5.097725830328047e-14,
+              1.0
+            ],
+            "velocity": [
+              -0.00015904271276667714,
+              0.0,
+              0.0,
+              0.0,
+              2.045802693917409e-10,
+              4.605945069791062e-10
+            ]
+          }
+        },
+        {
+          "interval": 5,
+          "contact_count": 0,
+          "force_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "particle_momentum_ns": [
+            3.159659192166696e-06,
+            -2.242248845580763e-09,
+            -2.3710660013736986e-08
+          ],
+          "body_momentum_ns": [
+            -3.180854255333543e-06,
+            0.0,
+            0.0
+          ],
+          "momentum_error_ns": 3.188187229162013e-08,
+          "particle_impulse_error_ns": 3.1882130269223866e-08,
+          "body_impulse_error_ns": 3.880510728355058e-13,
+          "min_volume_ratio": 0.9631234609767136,
+          "angular_momentum_error_nms": 1.0432166884389356e-09,
+          "body_before": {
+            "pose": [
+              -0.037400245666503906,
+              0.0,
+              0.027499999850988388,
+              -1.01844830555243e-34,
+              2.2642349421179292e-14,
+              5.097725830328047e-14,
+              1.0
+            ],
+            "velocity": [
+              -0.00015904271276667714,
+              0.0,
+              0.0,
+              0.0,
+              2.045802693917409e-10,
+              4.605945069791062e-10
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.03740030527114868,
+              0.0,
+              0.027499999850988388,
+              3.851859888774472e-34,
+              6.526324484090393e-14,
+              1.4693445299449742e-13,
+              1.0
+            ],
+            "velocity": [
+              -0.00015904271276667714,
+              0.0,
+              0.0,
+              1.3726334991331552e-30,
+              2.045802832695287e-10,
+              4.605945069791062e-10
+            ]
+          }
+        },
+        {
+          "interval": 6,
+          "contact_count": 65,
+          "force_n": [
+            0.0012712553143501282,
+            3.7358241107297035e-16,
+            -1.659324929166833e-16
+          ],
+          "wrench": [
+            -0.0012712553143501282,
+            -3.7358241107297035e-16,
+            1.659324929166833e-16,
+            8.747567213022696e-24,
+            1.87063906031959e-10,
+            4.881755112998154e-10
+          ],
+          "particle_momentum_ns": [
+            3.76697275290885e-06,
+            -4.297322644494418e-09,
+            -2.2524065273837164e-08
+          ],
+          "body_momentum_ns": [
+            -3.7105439696460964e-06,
+            -1.5565934397859628e-19,
+            6.91385390599433e-20
+          ],
+          "momentum_error_ns": 6.090983564978668e-08,
+          "particle_impulse_error_ns": 6.09094761472699e-08,
+          "body_impulse_error_ns": 3.880510728355058e-13,
+          "min_volume_ratio": 0.9621321448733037,
+          "angular_momentum_error_nms": 1.2074165690055055e-09,
+          "body_before": {
+            "pose": [
+              -0.03740030527114868,
+              0.0,
+              0.027499999850988388,
+              3.851859888774472e-34,
+              6.526324484090393e-14,
+              1.4693445299449742e-13,
+              1.0
+            ],
+            "velocity": [
+              -0.00015904271276667714,
+              0.0,
+              0.0,
+              1.3726334991331552e-30,
+              2.045802832695287e-10,
+              4.605945069791062e-10
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.03740036487579346,
+              -1.722792245439562e-21,
+              0.027499999850988388,
+              1.6053627570038692e-28,
+              1.1651066938490884e-13,
+              2.6540407241718023e-13,
+              1.0
+            ],
+            "velocity": [
+              -0.0001855271984823048,
+              -7.782967198929814e-18,
+              3.4569269529971647e-18,
+              3.6448170333119754e-24,
+              2.8252350459112563e-10,
+              6.640007987890328e-10
+            ]
+          }
+        },
+        {
+          "interval": 7,
+          "contact_count": 0,
+          "force_n": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "wrench": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "particle_momentum_ns": [
+            3.7637007910539103e-06,
+            -2.9114336266401106e-09,
+            -2.440823238521916e-08
+          ],
+          "body_momentum_ns": [
+            -3.7105439696460964e-06,
+            -1.5565934397859628e-19,
+            6.91385390599433e-20
+          ],
+          "momentum_error_ns": 5.856522787553162e-08,
+          "particle_impulse_error_ns": 5.8564875660590095e-08,
+          "body_impulse_error_ns": 3.880510728355058e-13,
+          "min_volume_ratio": 0.9750141947403813,
+          "angular_momentum_error_nms": 1.1176930416357792e-09,
+          "body_before": {
+            "pose": [
+              -0.03740036487579346,
+              -1.722792245439562e-21,
+              0.027499999850988388,
+              1.6053627570038692e-28,
+              1.1651066938490884e-13,
+              2.6540407241718023e-13,
+              1.0
+            ],
+            "velocity": [
+              -0.0001855271984823048,
+              -7.782967198929814e-18,
+              3.4569269529971647e-18,
+              3.6448170333119754e-24,
+              2.8252350459112563e-10,
+              6.640007987890328e-10
+            ]
+          },
+          "body_after": {
+            "pose": [
+              -0.03740042448043823,
+              -4.965695675816887e-21,
+              0.027499999850988388,
+              4.239772994453171e-28,
+              1.7536972850458465e-13,
+              4.037375902349316e-13,
+              1.0
+            ],
+            "velocity": [
+              -0.0001855271984823048,
+              -7.782967198929814e-18,
+              3.4569269529971647e-18,
+              3.644809539133376e-24,
+              2.8252350459112563e-10,
+              6.640007987890328e-10
+            ]
+          }
+        }
+      ],
+      "newton_steps": 8,
+      "physx_steps": 8,
+      "exact_feedback_echoes": 9,
+      "dt_s": 0.0004166666666666667,
+      "nodes": 4032,
+      "springs": 33996,
+      "patches": 47,
+      "scope": "Actual full tomato assembly plus synthetic dynamic probe. Real blade and robot are separate qualification."
+    },
+    "blade": {
+      "replay_comparisons": [
+        {
+          "interval": 0,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 1,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 2,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 3,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 4,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 5,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 6,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        },
+        {
+          "interval": 7,
+          "particle_position_error_m": 0.0,
+          "particle_velocity_error_m_s": 0.0,
+          "force_error_n": 0.0,
+          "body_pose_error": 0.0,
+          "body_velocity_error": 0.0
+        }
+      ],
+      "reset_checks": [
+        {
+          "dirty_queues_cleared": true,
+          "contact_count": 0,
+          "material_history_zero": true
+        },
+        {
+          "dirty_queues_cleared": true,
+          "contact_count": 0,
+          "material_history_zero": true
+        }
+      ],
+      "clear_control": {
+        "contacts": 0,
+        "particle_max_speed_m_s": 8.940696716308594e-06,
+        "blade_velocity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "newton_steps": 17,
+      "physx_steps": 17,
+      "exact_feedback_echoes": 20,
+      "max_soft_edge_m": 0.006192408899297146,
+      "nodes": 4032,
+      "triangles": 5504,
+      "rigid_tetrahedra": 137,
+      "material_frame": "fixed world X; no damage eligibility in this contact qualification",
+      "reference_area_m2": 1e-06,
+      "pressure_stiffness_n_m3": 1750000000.0,
+      "solid_cell_certificate": {
+        "positive_cells": 137,
+        "oriented_boundary_identical": true,
+        "volume_m3": 4.577378124134869e-05
+      },
+      "quadrature_measure": "reference material area, three-point degree-2 Gaussian rule with bounded refinement",
+      "central_entry_z_local_m": -0.024355095265335767,
+      "initial_entry_overlap_m": 0.00025,
+      "bulk_model_unchanged": true,
+      "cohesive_history_frozen": true,
+      "scope": "Actual authored blade and complete saved tomato geometry in free dynamics. Synthetic contact/material/mass/inertia. Short contact exchange; not a full cut, robot or independent experiment.",
+      "intervals": [
+        {
+          "interval": 0,
+          "generated_contacts": 13056,
+          "clipped_candidates": 13056,
+          "quadrature": {
+            "level": 3,
+            "checks": [
+              {
+                "level": 1,
+                "points": 816,
+                "force_difference_n": 0.1264932291015514,
+                "relative_difference": 0.1976407391349855
+              },
+              {
+                "level": 2,
+                "points": 3264,
+                "force_difference_n": 0.02423710448062022,
+                "relative_difference": 0.03824564525847374
+              },
+              {
+                "level": 3,
+                "points": 13056,
+                "force_difference_n": 0.004472328383902761,
+                "relative_difference": 0.007056377053416928
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 8.854833572120856e-06,
+          "force_n": [
+            0.08599047194275516,
+            -0.005093328683832249,
+            -0.10038216620598894
+          ],
+          "wrench": [
+            -0.08599047194275516,
+            0.005093328683832249,
+            0.10038216620598894,
+            0.00026077211459871793,
+            0.002058067008552736,
+            0.00010474199651965425
+          ],
+          "momentum_error_ns": 1.385789499565294e-08,
+          "particle_impulse_error_ns": 1.384942193570527e-08,
+          "body_impulse_error_ns": 9.043843120930914e-12,
+          "angular_momentum_error_nms": 5.719868245316273e-10,
+          "min_volume_ratio": 0.9038656287006046,
+          "blade_before": {
+            "pose": [
+              -0.02250000089406967,
+              0.0,
+              0.0714491605758667,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022500397637486458,
+              2.348812166985681e-08,
+              0.07144961506128311,
+              1.202562671664964e-08,
+              9.490867114436696e-08,
+              4.830225108776176e-09,
+              1.0
+            ],
+            "velocity": [
+              -0.0017914680065587163,
+              0.00010611104517010972,
+              0.002091295551508665,
+              0.00010865508374990895,
+              0.0008575277170166373,
+              4.364249616628513e-05
+            ]
+          }
+        },
+        {
+          "interval": 1,
+          "generated_contacts": 9984,
+          "clipped_candidates": 9984,
+          "quadrature": {
+            "level": 3,
+            "checks": [
+              {
+                "level": 1,
+                "points": 624,
+                "force_difference_n": 0.005455528184996319,
+                "relative_difference": 0.09203189299532136
+              },
+              {
+                "level": 2,
+                "points": 2496,
+                "force_difference_n": 0.0017430193423335308,
+                "relative_difference": 0.029345231285243207
+              },
+              {
+                "level": 3,
+                "points": 9984,
+                "force_difference_n": 0.00029822318190697236,
+                "relative_difference": 0.005020844023431757
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 2.5157753906305614e-06,
+          "force_n": [
+            0.010686806295899657,
+            -0.0006186780864309953,
+            -0.011016687761477129
+          ],
+          "wrench": [
+            -0.010686806295899657,
+            0.0006186780864309953,
+            0.011016687761477129,
+            3.832011421786856e-05,
+            0.00025590299821942657,
+            1.2602920136928492e-05
+          ],
+          "momentum_error_ns": 3.730376180456719e-08,
+          "particle_impulse_error_ns": 3.727956227577398e-08,
+          "body_impulse_error_ns": 2.4690105836022007e-11,
+          "angular_momentum_error_nms": 9.284535575253272e-10,
+          "min_volume_ratio": 0.7821533293296953,
+          "blade_before": {
+            "pose": [
+              -0.022500397637486458,
+              2.348812166985681e-08,
+              0.07144961506128311,
+              1.202562671664964e-08,
+              9.490867114436696e-08,
+              4.830225108776176e-09,
+              1.0
+            ],
+            "velocity": [
+              -0.0017914680065587163,
+              0.00010611104517010972,
+              0.002091295551508665,
+              0.00010865508374990895,
+              0.0008575277170166373,
+              4.364249616628513e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250119298696518,
+              7.055411543888113e-08,
+              0.07145054638385773,
+              3.642925250346707e-08,
+              2.8536138074741757e-07,
+              1.4503600098692004e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0020141098648309708,
+              0.00011900020035682246,
+              0.0023208106867969036,
+              0.0001246218162123114,
+              0.0009641541983000934,
+              4.8893693019635975e-05
+            ]
+          }
+        },
+        {
+          "interval": 2,
+          "generated_contacts": 73728,
+          "clipped_candidates": 73728,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 288,
+                "force_difference_n": 0.00116853563524983,
+                "relative_difference": 0.1801485895174183
+              },
+              {
+                "level": 2,
+                "points": 1152,
+                "force_difference_n": 0.00041875961695819416,
+                "relative_difference": 0.06438838029810862
+              },
+              {
+                "level": 3,
+                "points": 4608,
+                "force_difference_n": 0.00043476493866627267,
+                "relative_difference": 0.06684935480281166
+              },
+              {
+                "level": 4,
+                "points": 18432,
+                "force_difference_n": 0.00011917630628839754,
+                "relative_difference": 0.018350659385341635
+              },
+              {
+                "level": 5,
+                "points": 73728,
+                "force_difference_n": 6.701791935521881e-05,
+                "relative_difference": 0.010321809685861971
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 6.404937320467403e-07,
+          "force_n": [
+            0.011261371133657605,
+            -0.0007339382901924137,
+            -0.014227341818696835
+          ],
+          "wrench": [
+            -0.011261371133657605,
+            0.0007339382901924137,
+            0.014227341818696835,
+            4.737409172038628e-05,
+            0.0002690621510689652,
+            1.9740506885201124e-05
+          ],
+          "momentum_error_ns": 5.832958093475727e-08,
+          "particle_impulse_error_ns": 5.830938617597941e-08,
+          "body_impulse_error_ns": 2.4069641095882143e-11,
+          "angular_momentum_error_nms": 1.1129154715258198e-09,
+          "min_volume_ratio": 0.7106325800524173,
+          "blade_before": {
+            "pose": [
+              -0.02250119298696518,
+              7.055411543888113e-08,
+              0.07145054638385773,
+              3.642925250346707e-08,
+              2.8536138074741757e-07,
+              1.4503600098692004e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0020141098648309708,
+              0.00011900020035682246,
+              0.0023208106867969036,
+              0.0001246218162123114,
+              0.0009641541983000934,
+              4.8893693019635975e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022502083331346512,
+              1.2352211342658848e-07,
+              0.0714515820145607,
+              6.457682388827379e-08,
+              4.986347335034225e-07,
+              2.5600131792202774e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.002248721197247505,
+              0.00013429063255898654,
+              0.002617213409394026,
+              0.00014436113997362554,
+              0.0010762631427496672,
+              5.711892299586907e-05
+            ]
+          }
+        },
+        {
+          "interval": 3,
+          "generated_contacts": 23040,
+          "clipped_candidates": 23040,
+          "quadrature": {
+            "level": 4,
+            "checks": [
+              {
+                "level": 1,
+                "points": 360,
+                "force_difference_n": 0.0014025058440658865,
+                "relative_difference": 0.15969763799544928
+              },
+              {
+                "level": 2,
+                "points": 1440,
+                "force_difference_n": 0.0005783945136389838,
+                "relative_difference": 0.06577704586772876
+              },
+              {
+                "level": 3,
+                "points": 5760,
+                "force_difference_n": 0.0002135972702281257,
+                "relative_difference": 0.02429102819911348
+              },
+              {
+                "level": 4,
+                "points": 23040,
+                "force_difference_n": 5.42274575493602e-05,
+                "relative_difference": 0.0061721203008286004
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 7.682392826947264e-07,
+          "force_n": [
+            0.018324551053839965,
+            -0.0011939488788342343,
+            -0.024472755119894364
+          ],
+          "wrench": [
+            -0.018324551053839965,
+            0.0011939488788342343,
+            0.024472755119894364,
+            7.196552445717016e-05,
+            0.00043737537069567125,
+            3.138727431324184e-05
+          ],
+          "momentum_error_ns": 7.666938969160042e-08,
+          "particle_impulse_error_ns": 7.661401645997078e-08,
+          "body_impulse_error_ns": 6.40753302534439e-11,
+          "angular_momentum_error_nms": 1.3321529072030889e-09,
+          "min_volume_ratio": 0.7077193941029377,
+          "blade_before": {
+            "pose": [
+              -0.022502083331346512,
+              1.2352211342658848e-07,
+              0.0714515820145607,
+              6.457682388827379e-08,
+              4.986347335034225e-07,
+              2.5600131792202774e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.002248721197247505,
+              0.00013429063255898654,
+              0.002617213409394026,
+              0.00014436113997362554,
+              0.0010762631427496672,
+              5.711892299586907e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250310219824314,
+              1.8498251108667318e-07,
+              0.0714527815580368,
+              9.797079769668926e-08,
+              7.430259074681089e-07,
+              3.8947352010154646e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0026304814964532852,
+              0.0001591646287124604,
+              0.0031270640902221203,
+              0.0001743468747008592,
+              0.001258502365089953,
+              7.019699842203408e-05
+            ]
+          }
+        },
+        {
+          "interval": 4,
+          "generated_contacts": 26112,
+          "clipped_candidates": 26112,
+          "quadrature": {
+            "level": 4,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.0029090989435609843,
+                "relative_difference": 0.17813706779790847
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.0007408987966655004,
+                "relative_difference": 0.045368528789685794
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.0003652149056210017,
+                "relative_difference": 0.02247554123873074
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.0001324289101786363,
+                "relative_difference": 0.008157151647672365
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.123451381280755e-06,
+          "force_n": [
+            0.023565977696376323,
+            -0.0014905117136099488,
+            -0.03150680342898456
+          ],
+          "wrench": [
+            -0.023565977696376323,
+            0.0014905117136099488,
+            0.03150680342898456,
+            8.943849095969894e-05,
+            0.0005625572369355086,
+            3.876456440899782e-05
+          ],
+          "momentum_error_ns": 9.820569369854148e-08,
+          "particle_impulse_error_ns": 9.8139824469271e-08,
+          "body_impulse_error_ns": 6.617153537600013e-11,
+          "angular_momentum_error_nms": 1.2587895946570128e-09,
+          "min_volume_ratio": 0.7419564668745362,
+          "blade_before": {
+            "pose": [
+              -0.02250310219824314,
+              1.8498251108667318e-07,
+              0.0714527815580368,
+              9.797079769668926e-08,
+              7.430259074681089e-07,
+              3.8947352010154646e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0026304814964532852,
+              0.0001591646287124604,
+              0.0031270640902221203,
+              0.0001743468747008592,
+              0.001258502365089953,
+              7.019699842203408e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022504305467009544,
+              2.581746798568929e-07,
+              0.0714542344212532,
+              1.3841756185684062e-07,
+              1.0311564437870402e-06,
+              5.535937575018579e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0031214412301778793,
+              0.00019021701882593334,
+              0.003783456515520811,
+              0.0002116129908245057,
+              0.0014929010067135096,
+              8.634892583359033e-05
+            ]
+          }
+        },
+        {
+          "interval": 5,
+          "generated_contacts": 104448,
+          "clipped_candidates": 104448,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.003239293799171446,
+                "relative_difference": 0.17798398068745394
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.0006105881080360091,
+                "relative_difference": 0.033534569237763094
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.001272233087733092,
+                "relative_difference": 0.06987327136846634
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.0002622517333235189,
+                "relative_difference": 0.014418020705366822
+              },
+              {
+                "level": 5,
+                "points": 104448,
+                "force_difference_n": 4.598394047071902e-05,
+                "relative_difference": 0.0025301418594750906
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.181515211856413e-06,
+          "force_n": [
+            0.02377540288553666,
+            -0.001419485594989147,
+            -0.029388286557196365
+          ],
+          "wrench": [
+            -0.02377540288553666,
+            0.001419485594989147,
+            0.029388286557196365,
+            8.156956057845646e-05,
+            0.000568192408640386,
+            3.544107108479159e-05
+          ],
+          "momentum_error_ns": 1.0954726922692572e-07,
+          "particle_impulse_error_ns": 1.0944240491207828e-07,
+          "body_impulse_error_ns": 1.088025226590907e-10,
+          "angular_momentum_error_nms": 1.3790115022496172e-09,
+          "min_volume_ratio": 0.7812977725197877,
+          "blade_before": {
+            "pose": [
+              -0.022504305467009544,
+              2.581746798568929e-07,
+              0.0714542344212532,
+              1.3841756185684062e-07,
+              1.0311564437870402e-06,
+              5.535937575018579e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0031214412301778793,
+              0.00019021701882593334,
+              0.003783456515520811,
+              0.0002116129908245057,
+              0.0014929010067135096,
+              8.634892583359033e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250571735203266,
+              3.439777742642036e-07,
+              0.0714559406042099,
+              1.8626522546583146e-07,
+              1.3683800261787837e-06,
+              7.498312015741249e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0036167632788419724,
+              0.00021978953736834228,
+              0.004395714495331049,
+              0.0002456003858242184,
+              0.0017296484438702464,
+              0.00010111607844009995
+            ]
+          }
+        },
+        {
+          "interval": 6,
+          "generated_contacts": 104448,
+          "clipped_candidates": 104448,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.003763808126013236,
+                "relative_difference": 0.2198576323644745
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.00101981689631849,
+                "relative_difference": 0.05957118980647036
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.0007663395516518467,
+                "relative_difference": 0.04489043819155554
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.00021154461215985474,
+                "relative_difference": 0.012392890214177959
+              },
+              {
+                "level": 5,
+                "points": 104448,
+                "force_difference_n": 1.399290752043115e-05,
+                "relative_difference": 0.0008202512667908718
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.1432059685420687e-06,
+          "force_n": [
+            0.023837513931138875,
+            -0.0013294575850953101,
+            -0.02735571460403036
+          ],
+          "wrench": [
+            -0.023837513931138875,
+            0.0013294575850953101,
+            0.02735571460403036,
+            7.481321353916383e-05,
+            0.0005703258910909093,
+            3.354024058243313e-05
+          ],
+          "momentum_error_ns": 1.2756217720852598e-07,
+          "particle_impulse_error_ns": 1.2747521006021493e-07,
+          "body_impulse_error_ns": 1.0051563691440065e-10,
+          "angular_momentum_error_nms": 1.552111697751687e-09,
+          "min_volume_ratio": 0.8103147173272983,
+          "blade_before": {
+            "pose": [
+              -0.02250571735203266,
+              3.439777742642036e-07,
+              0.0714559406042099,
+              1.8626522546583146e-07,
+              1.3683800261787837e-06,
+              7.498312015741249e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0036167632788419724,
+              0.00021978953736834228,
+              0.004395714495331049,
+              0.0002456003858242184,
+              0.0017296484438702464,
+              0.00010111607844009995
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022507334128022194,
+              4.4168763224661234e-07,
+              0.0714578926563263,
+              2.4088200234473334e-07,
+              1.755024413796491e-06,
+              9.75957021864815e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.004113379400223494,
+              0.0002474866050761193,
+              0.004965624306350946,
+              0.00027677242178469896,
+              0.0019672848284244537,
+              0.00011509116302477196
+            ]
+          }
+        },
+        {
+          "interval": 7,
+          "generated_contacts": 104448,
+          "clipped_candidates": 104448,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.002822831616762372,
+                "relative_difference": 0.17316255514426468
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.0007293816938442668,
+                "relative_difference": 0.044742873443647274
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.0010767763077832676,
+                "relative_difference": 0.06631359479173814
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.0002563047778176964,
+                "relative_difference": 0.0157846073102959
+              },
+              {
+                "level": 5,
+                "points": 104448,
+                "force_difference_n": 0.00014499841830890712,
+                "relative_difference": 0.00893995044352238
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.11041936437785e-06,
+          "force_n": [
+            0.02410997613957388,
+            -0.0012692843158940883,
+            -0.026310366424546774
+          ],
+          "wrench": [
+            -0.02410997613957388,
+            0.0012692843158940883,
+            0.026310366424546774,
+            7.156309320120448e-05,
+            0.0005773160965670973,
+            3.347280744771976e-05
+          ],
+          "momentum_error_ns": 1.1757695455810024e-07,
+          "particle_impulse_error_ns": 1.1750655629462485e-07,
+          "body_impulse_error_ns": 7.125337590360441e-11,
+          "angular_momentum_error_nms": 1.5402887705637757e-09,
+          "min_volume_ratio": 0.8271132640722451,
+          "blade_before": {
+            "pose": [
+              -0.022507334128022194,
+              4.4168763224661234e-07,
+              0.0714578926563263,
+              2.4088200234473334e-07,
+              1.755024413796491e-06,
+              9.75957021864815e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.004113379400223494,
+              0.0002474866050761193,
+              0.004965624306350946,
+              0.00027677242178469896,
+              0.0019672848284244537,
+              0.00011509116302477196
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250915952026844,
+              5.506603883986827e-07,
+              0.07146008312702179,
+              3.0184304478098056e-07,
+              2.1914986518822843e-06,
+              1.2311664931985433e-07,
+              1.0
+            ],
+            "velocity": [
+              -0.00461566774174571,
+              0.0002739301125984639,
+              0.0055137560702860355,
+              0.0003065901983063668,
+              0.002207833342254162,
+              0.00012903811875730753
+            ]
+          }
+        },
+        {
+          "interval": 0,
+          "generated_contacts": 13056,
+          "clipped_candidates": 13056,
+          "quadrature": {
+            "level": 3,
+            "checks": [
+              {
+                "level": 1,
+                "points": 816,
+                "force_difference_n": 0.1264932291015514,
+                "relative_difference": 0.1976407391349855
+              },
+              {
+                "level": 2,
+                "points": 3264,
+                "force_difference_n": 0.02423710448062022,
+                "relative_difference": 0.03824564525847374
+              },
+              {
+                "level": 3,
+                "points": 13056,
+                "force_difference_n": 0.004472328383902761,
+                "relative_difference": 0.007056377053416928
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 8.854833572120856e-06,
+          "force_n": [
+            0.08599047194275516,
+            -0.005093328683832249,
+            -0.10038216620598894
+          ],
+          "wrench": [
+            -0.08599047194275516,
+            0.005093328683832249,
+            0.10038216620598894,
+            0.00026077211459871793,
+            0.002058067008552736,
+            0.00010474199651965425
+          ],
+          "momentum_error_ns": 1.385789499565294e-08,
+          "particle_impulse_error_ns": 1.384942193570527e-08,
+          "body_impulse_error_ns": 9.043843120930914e-12,
+          "angular_momentum_error_nms": 5.719868245316273e-10,
+          "min_volume_ratio": 0.9038656287006046,
+          "blade_before": {
+            "pose": [
+              -0.02250000089406967,
+              0.0,
+              0.0714491605758667,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "velocity": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022500397637486458,
+              2.348812166985681e-08,
+              0.07144961506128311,
+              1.202562671664964e-08,
+              9.490867114436696e-08,
+              4.830225108776176e-09,
+              1.0
+            ],
+            "velocity": [
+              -0.0017914680065587163,
+              0.00010611104517010972,
+              0.002091295551508665,
+              0.00010865508374990895,
+              0.0008575277170166373,
+              4.364249616628513e-05
+            ]
+          }
+        },
+        {
+          "interval": 1,
+          "generated_contacts": 9984,
+          "clipped_candidates": 9984,
+          "quadrature": {
+            "level": 3,
+            "checks": [
+              {
+                "level": 1,
+                "points": 624,
+                "force_difference_n": 0.005455528184996319,
+                "relative_difference": 0.09203189299532136
+              },
+              {
+                "level": 2,
+                "points": 2496,
+                "force_difference_n": 0.0017430193423335308,
+                "relative_difference": 0.029345231285243207
+              },
+              {
+                "level": 3,
+                "points": 9984,
+                "force_difference_n": 0.00029822318190697236,
+                "relative_difference": 0.005020844023431757
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 2.5157753906305614e-06,
+          "force_n": [
+            0.010686806295899657,
+            -0.0006186780864309953,
+            -0.011016687761477129
+          ],
+          "wrench": [
+            -0.010686806295899657,
+            0.0006186780864309953,
+            0.011016687761477129,
+            3.832011421786856e-05,
+            0.00025590299821942657,
+            1.2602920136928492e-05
+          ],
+          "momentum_error_ns": 3.730376180456719e-08,
+          "particle_impulse_error_ns": 3.727956227577398e-08,
+          "body_impulse_error_ns": 2.4690105836022007e-11,
+          "angular_momentum_error_nms": 9.284535575253272e-10,
+          "min_volume_ratio": 0.7821533293296953,
+          "blade_before": {
+            "pose": [
+              -0.022500397637486458,
+              2.348812166985681e-08,
+              0.07144961506128311,
+              1.202562671664964e-08,
+              9.490867114436696e-08,
+              4.830225108776176e-09,
+              1.0
+            ],
+            "velocity": [
+              -0.0017914680065587163,
+              0.00010611104517010972,
+              0.002091295551508665,
+              0.00010865508374990895,
+              0.0008575277170166373,
+              4.364249616628513e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250119298696518,
+              7.055411543888113e-08,
+              0.07145054638385773,
+              3.642925250346707e-08,
+              2.8536138074741757e-07,
+              1.4503600098692004e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0020141098648309708,
+              0.00011900020035682246,
+              0.0023208106867969036,
+              0.0001246218162123114,
+              0.0009641541983000934,
+              4.8893693019635975e-05
+            ]
+          }
+        },
+        {
+          "interval": 2,
+          "generated_contacts": 73728,
+          "clipped_candidates": 73728,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 288,
+                "force_difference_n": 0.00116853563524983,
+                "relative_difference": 0.1801485895174183
+              },
+              {
+                "level": 2,
+                "points": 1152,
+                "force_difference_n": 0.00041875961695819416,
+                "relative_difference": 0.06438838029810862
+              },
+              {
+                "level": 3,
+                "points": 4608,
+                "force_difference_n": 0.00043476493866627267,
+                "relative_difference": 0.06684935480281166
+              },
+              {
+                "level": 4,
+                "points": 18432,
+                "force_difference_n": 0.00011917630628839754,
+                "relative_difference": 0.018350659385341635
+              },
+              {
+                "level": 5,
+                "points": 73728,
+                "force_difference_n": 6.701791935521881e-05,
+                "relative_difference": 0.010321809685861971
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 6.404937320467403e-07,
+          "force_n": [
+            0.011261371133657605,
+            -0.0007339382901924137,
+            -0.014227341818696835
+          ],
+          "wrench": [
+            -0.011261371133657605,
+            0.0007339382901924137,
+            0.014227341818696835,
+            4.737409172038628e-05,
+            0.0002690621510689652,
+            1.9740506885201124e-05
+          ],
+          "momentum_error_ns": 5.832958093475727e-08,
+          "particle_impulse_error_ns": 5.830938617597941e-08,
+          "body_impulse_error_ns": 2.4069641095882143e-11,
+          "angular_momentum_error_nms": 1.1129154715258198e-09,
+          "min_volume_ratio": 0.7106325800524173,
+          "blade_before": {
+            "pose": [
+              -0.02250119298696518,
+              7.055411543888113e-08,
+              0.07145054638385773,
+              3.642925250346707e-08,
+              2.8536138074741757e-07,
+              1.4503600098692004e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0020141098648309708,
+              0.00011900020035682246,
+              0.0023208106867969036,
+              0.0001246218162123114,
+              0.0009641541983000934,
+              4.8893693019635975e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022502083331346512,
+              1.2352211342658848e-07,
+              0.0714515820145607,
+              6.457682388827379e-08,
+              4.986347335034225e-07,
+              2.5600131792202774e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.002248721197247505,
+              0.00013429063255898654,
+              0.002617213409394026,
+              0.00014436113997362554,
+              0.0010762631427496672,
+              5.711892299586907e-05
+            ]
+          }
+        },
+        {
+          "interval": 3,
+          "generated_contacts": 23040,
+          "clipped_candidates": 23040,
+          "quadrature": {
+            "level": 4,
+            "checks": [
+              {
+                "level": 1,
+                "points": 360,
+                "force_difference_n": 0.0014025058440658865,
+                "relative_difference": 0.15969763799544928
+              },
+              {
+                "level": 2,
+                "points": 1440,
+                "force_difference_n": 0.0005783945136389838,
+                "relative_difference": 0.06577704586772876
+              },
+              {
+                "level": 3,
+                "points": 5760,
+                "force_difference_n": 0.0002135972702281257,
+                "relative_difference": 0.02429102819911348
+              },
+              {
+                "level": 4,
+                "points": 23040,
+                "force_difference_n": 5.42274575493602e-05,
+                "relative_difference": 0.0061721203008286004
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 7.682392826947264e-07,
+          "force_n": [
+            0.018324551053839965,
+            -0.0011939488788342343,
+            -0.024472755119894364
+          ],
+          "wrench": [
+            -0.018324551053839965,
+            0.0011939488788342343,
+            0.024472755119894364,
+            7.196552445717016e-05,
+            0.00043737537069567125,
+            3.138727431324184e-05
+          ],
+          "momentum_error_ns": 7.666938969160042e-08,
+          "particle_impulse_error_ns": 7.661401645997078e-08,
+          "body_impulse_error_ns": 6.40753302534439e-11,
+          "angular_momentum_error_nms": 1.3321529072030889e-09,
+          "min_volume_ratio": 0.7077193941029377,
+          "blade_before": {
+            "pose": [
+              -0.022502083331346512,
+              1.2352211342658848e-07,
+              0.0714515820145607,
+              6.457682388827379e-08,
+              4.986347335034225e-07,
+              2.5600131792202774e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.002248721197247505,
+              0.00013429063255898654,
+              0.002617213409394026,
+              0.00014436113997362554,
+              0.0010762631427496672,
+              5.711892299586907e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250310219824314,
+              1.8498251108667318e-07,
+              0.0714527815580368,
+              9.797079769668926e-08,
+              7.430259074681089e-07,
+              3.8947352010154646e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0026304814964532852,
+              0.0001591646287124604,
+              0.0031270640902221203,
+              0.0001743468747008592,
+              0.001258502365089953,
+              7.019699842203408e-05
+            ]
+          }
+        },
+        {
+          "interval": 4,
+          "generated_contacts": 26112,
+          "clipped_candidates": 26112,
+          "quadrature": {
+            "level": 4,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.0029090989435609843,
+                "relative_difference": 0.17813706779790847
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.0007408987966655004,
+                "relative_difference": 0.045368528789685794
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.0003652149056210017,
+                "relative_difference": 0.02247554123873074
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.0001324289101786363,
+                "relative_difference": 0.008157151647672365
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.123451381280755e-06,
+          "force_n": [
+            0.023565977696376323,
+            -0.0014905117136099488,
+            -0.03150680342898456
+          ],
+          "wrench": [
+            -0.023565977696376323,
+            0.0014905117136099488,
+            0.03150680342898456,
+            8.943849095969894e-05,
+            0.0005625572369355086,
+            3.876456440899782e-05
+          ],
+          "momentum_error_ns": 9.820569369854148e-08,
+          "particle_impulse_error_ns": 9.8139824469271e-08,
+          "body_impulse_error_ns": 6.617153537600013e-11,
+          "angular_momentum_error_nms": 1.2587895946570128e-09,
+          "min_volume_ratio": 0.7419564668745362,
+          "blade_before": {
+            "pose": [
+              -0.02250310219824314,
+              1.8498251108667318e-07,
+              0.0714527815580368,
+              9.797079769668926e-08,
+              7.430259074681089e-07,
+              3.8947352010154646e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0026304814964532852,
+              0.0001591646287124604,
+              0.0031270640902221203,
+              0.0001743468747008592,
+              0.001258502365089953,
+              7.019699842203408e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022504305467009544,
+              2.581746798568929e-07,
+              0.0714542344212532,
+              1.3841756185684062e-07,
+              1.0311564437870402e-06,
+              5.535937575018579e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0031214412301778793,
+              0.00019021701882593334,
+              0.003783456515520811,
+              0.0002116129908245057,
+              0.0014929010067135096,
+              8.634892583359033e-05
+            ]
+          }
+        },
+        {
+          "interval": 5,
+          "generated_contacts": 104448,
+          "clipped_candidates": 104448,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.003239293799171446,
+                "relative_difference": 0.17798398068745394
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.0006105881080360091,
+                "relative_difference": 0.033534569237763094
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.001272233087733092,
+                "relative_difference": 0.06987327136846634
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.0002622517333235189,
+                "relative_difference": 0.014418020705366822
+              },
+              {
+                "level": 5,
+                "points": 104448,
+                "force_difference_n": 4.598394047071902e-05,
+                "relative_difference": 0.0025301418594750906
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.181515211856413e-06,
+          "force_n": [
+            0.02377540288553666,
+            -0.001419485594989147,
+            -0.029388286557196365
+          ],
+          "wrench": [
+            -0.02377540288553666,
+            0.001419485594989147,
+            0.029388286557196365,
+            8.156956057845646e-05,
+            0.000568192408640386,
+            3.544107108479159e-05
+          ],
+          "momentum_error_ns": 1.0954726922692572e-07,
+          "particle_impulse_error_ns": 1.0944240491207828e-07,
+          "body_impulse_error_ns": 1.088025226590907e-10,
+          "angular_momentum_error_nms": 1.3790115022496172e-09,
+          "min_volume_ratio": 0.7812977725197877,
+          "blade_before": {
+            "pose": [
+              -0.022504305467009544,
+              2.581746798568929e-07,
+              0.0714542344212532,
+              1.3841756185684062e-07,
+              1.0311564437870402e-06,
+              5.535937575018579e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0031214412301778793,
+              0.00019021701882593334,
+              0.003783456515520811,
+              0.0002116129908245057,
+              0.0014929010067135096,
+              8.634892583359033e-05
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250571735203266,
+              3.439777742642036e-07,
+              0.0714559406042099,
+              1.8626522546583146e-07,
+              1.3683800261787837e-06,
+              7.498312015741249e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0036167632788419724,
+              0.00021978953736834228,
+              0.004395714495331049,
+              0.0002456003858242184,
+              0.0017296484438702464,
+              0.00010111607844009995
+            ]
+          }
+        },
+        {
+          "interval": 6,
+          "generated_contacts": 104448,
+          "clipped_candidates": 104448,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.003763808126013236,
+                "relative_difference": 0.2198576323644745
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.00101981689631849,
+                "relative_difference": 0.05957118980647036
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.0007663395516518467,
+                "relative_difference": 0.04489043819155554
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.00021154461215985474,
+                "relative_difference": 0.012392890214177959
+              },
+              {
+                "level": 5,
+                "points": 104448,
+                "force_difference_n": 1.399290752043115e-05,
+                "relative_difference": 0.0008202512667908718
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.1432059685420687e-06,
+          "force_n": [
+            0.023837513931138875,
+            -0.0013294575850953101,
+            -0.02735571460403036
+          ],
+          "wrench": [
+            -0.023837513931138875,
+            0.0013294575850953101,
+            0.02735571460403036,
+            7.481321353916383e-05,
+            0.0005703258910909093,
+            3.354024058243313e-05
+          ],
+          "momentum_error_ns": 1.2756217720852598e-07,
+          "particle_impulse_error_ns": 1.2747521006021493e-07,
+          "body_impulse_error_ns": 1.0051563691440065e-10,
+          "angular_momentum_error_nms": 1.552111697751687e-09,
+          "min_volume_ratio": 0.8103147173272983,
+          "blade_before": {
+            "pose": [
+              -0.02250571735203266,
+              3.439777742642036e-07,
+              0.0714559406042099,
+              1.8626522546583146e-07,
+              1.3683800261787837e-06,
+              7.498312015741249e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.0036167632788419724,
+              0.00021978953736834228,
+              0.004395714495331049,
+              0.0002456003858242184,
+              0.0017296484438702464,
+              0.00010111607844009995
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.022507334128022194,
+              4.4168763224661234e-07,
+              0.0714578926563263,
+              2.4088200234473334e-07,
+              1.755024413796491e-06,
+              9.75957021864815e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.004113379400223494,
+              0.0002474866050761193,
+              0.004965624306350946,
+              0.00027677242178469896,
+              0.0019672848284244537,
+              0.00011509116302477196
+            ]
+          }
+        },
+        {
+          "interval": 7,
+          "generated_contacts": 104448,
+          "clipped_candidates": 104448,
+          "quadrature": {
+            "level": 5,
+            "checks": [
+              {
+                "level": 1,
+                "points": 408,
+                "force_difference_n": 0.002822831616762372,
+                "relative_difference": 0.17316255514426468
+              },
+              {
+                "level": 2,
+                "points": 1632,
+                "force_difference_n": 0.0007293816938442668,
+                "relative_difference": 0.044742873443647274
+              },
+              {
+                "level": 3,
+                "points": 6528,
+                "force_difference_n": 0.0010767763077832676,
+                "relative_difference": 0.06631359479173814
+              },
+              {
+                "level": 4,
+                "points": 26112,
+                "force_difference_n": 0.0002563047778176964,
+                "relative_difference": 0.0157846073102959
+              },
+              {
+                "level": 5,
+                "points": 104448,
+                "force_difference_n": 0.00014499841830890712,
+                "relative_difference": 0.00893995044352238
+              }
+            ],
+            "clear": false
+          },
+          "covered_area_m2": 1.11041936437785e-06,
+          "force_n": [
+            0.02410997613957388,
+            -0.0012692843158940883,
+            -0.026310366424546774
+          ],
+          "wrench": [
+            -0.02410997613957388,
+            0.0012692843158940883,
+            0.026310366424546774,
+            7.156309320120448e-05,
+            0.0005773160965670973,
+            3.347280744771976e-05
+          ],
+          "momentum_error_ns": 1.1757695455810024e-07,
+          "particle_impulse_error_ns": 1.1750655629462485e-07,
+          "body_impulse_error_ns": 7.125337590360441e-11,
+          "angular_momentum_error_nms": 1.5402887705637757e-09,
+          "min_volume_ratio": 0.8271132640722451,
+          "blade_before": {
+            "pose": [
+              -0.022507334128022194,
+              4.4168763224661234e-07,
+              0.0714578926563263,
+              2.4088200234473334e-07,
+              1.755024413796491e-06,
+              9.75957021864815e-08,
+              1.0
+            ],
+            "velocity": [
+              -0.004113379400223494,
+              0.0002474866050761193,
+              0.004965624306350946,
+              0.00027677242178469896,
+              0.0019672848284244537,
+              0.00011509116302477196
+            ]
+          },
+          "blade_after": {
+            "pose": [
+              -0.02250915952026844,
+              5.506603883986827e-07,
+              0.07146008312702179,
+              3.0184304478098056e-07,
+              2.1914986518822843e-06,
+              1.2311664931985433e-07,
+              1.0
+            ],
+            "velocity": [
+              -0.00461566774174571,
+              0.0002739301125984639,
+              0.0055137560702860355,
+              0.0003065901983063668,
+              0.002207833342254162,
+              0.00012903811875730753
+            ]
+          }
+        }
+      ]
+    },
+    "geometry": {
+      "geometry_only": true,
+      "solid_cell_certificate": {
+        "positive_cells": 137,
+        "oriented_boundary_identical": true,
+        "volume_m3": 4.577378124134869e-05
+      },
+      "query_count": 128,
+      "distance_error_m": 2.5875162472724367e-17,
+      "normal_error": 4.740805259984582e-12,
+      "cell_file_sha256": "e6e4b4411e409ec292d70b820dc16b3090dda14d8592dbcbc6fe7a2a9a7fcb5f",
+      "newton_steps": 0,
+      "quadrature_reference_area_m2": 1e-06,
+      "contact_stiffness_density_n_m3": 1750000000.0,
+      "scope": "Six generated soft-triangle/blade intersection cases, 128 native field queries; no solver steps or force qualification.",
+      "cases": [
+        {
+          "id": "wide:edge_through_authored_blade_face",
+          "reversed": false,
+          "generated_candidates": 3
+        },
+        {
+          "id": "wide:edge_through_authored_blade_face",
+          "reversed": true,
+          "generated_candidates": 3
+        },
+        {
+          "id": "authored_blade_edge_through_soft_interior",
+          "reversed": false,
+          "generated_candidates": 117
+        },
+        {
+          "id": "authored_blade_edge_through_soft_interior",
+          "reversed": true,
+          "generated_candidates": 117
+        },
+        {
+          "id": "wide:translated_clear_negative_control",
+          "reversed": false,
+          "generated_candidates": 0
+        },
+        {
+          "id": "wide:translated_clear_negative_control",
+          "reversed": true,
+          "generated_candidates": 0
+        }
+      ]
+    }
+  },
+  "runs": {
+    "full_model_20261101_07": {
+      "supervisor": {
+        "passed": true,
+        "reason": "exited",
+        "launched": true,
+        "child_exit_code": 0,
+        "elapsed_wall_s": 6.247210044000894,
+        "remaining_live_group_members": [],
+        "warning_requested": false,
+        "samples": 28,
+        "monitor_errors": 0,
+        "min_available_ram_bytes": 22905638912,
+        "min_free_vram_bytes": 7698644992,
+        "mode": "full_model",
+        "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+        "worker": {
+          "shutdown_requested": true,
+          "diagnostic_passed": true,
+          "full_model_passed": true,
+          "newton_steps": 9,
+          "controlled_steps": 9,
+          "full_model_cases": 4,
+          "material_probes": 4
+        }
+      },
+      "measurement_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_model_20261101_07/full_model_measurements.json",
+      "launch_manifest": {
+        "command": [
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_model_worker.py",
+          "--output",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_model_20261101_07"
+        ],
+        "worker_wall_budget_s": 180,
+        "cleanup_grace_s": 2,
+        "startup_available_ram_bytes": 24636792832,
+        "startup_free_vram_bytes": 7848591360,
+        "authorization": "User approved stepwise protected startup and blade/coupon initial-state diagnostics, 2026-10-31",
+        "mode": "full_model",
+        "source_sha256": {
+          "rl/tomato_native_full_model.py": "9d0e771f4f36115ec66114c930e42ffbcfe5b329452cf7b565f3e7811eea7339",
+          "rl/tomato_native_volume_steps.py": "c0cea1a9218a56b660cae8da236750a8a1d40bbd2c0a774bca70e9cd45df4d14",
+          "rl/tomato_coupon_runtime_builder.py": "e6c438673c4666813f0ee39f462d7f29c5752c4248b152b741a332f00f089ac0",
+          "rl/tomato_native_group_cohesion.py": "3890db7b761ea1b4def2491e4500cc2f966a1ee1ccbef8984580b6c90c066fa5",
+          "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+          "rl/tomato_surface_cohesion.py": "dee13dca5180af8bf048b94b32f31935f9f0838f1e9ef62782b5bff46940cf55",
+          "rl/tomato_native_full_gather.py": "1e9776b114524469873f18bb90107814f0ee5c4452f80b269aab40efe0b3a186",
+          "rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+          "rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131",
+          "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+          "rl/tomato_full_model_worker.py": "b7a5e7a972827aa8515ed4712c1e96ea78af256cffb5c49127118b30e02ca43e",
+          "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+          "rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c"
+        },
+        "training": false,
+        "checkpoint_resumable": false
+      }
+    },
+    "full_damage_20261101_06": {
+      "supervisor": {
+        "passed": true,
+        "reason": "exited",
+        "launched": true,
+        "child_exit_code": 0,
+        "elapsed_wall_s": 19.933915915000398,
+        "remaining_live_group_members": [],
+        "warning_requested": false,
+        "samples": 91,
+        "monitor_errors": 0,
+        "min_available_ram_bytes": 23041396736,
+        "min_free_vram_bytes": 7725907968,
+        "mode": "full_damage",
+        "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+        "worker": {
+          "shutdown_requested": true,
+          "diagnostic_passed": true,
+          "full_damage_passed": true,
+          "newton_steps": 8,
+          "controlled_steps": 8,
+          "full_damage_intervals": 8
+        }
+      },
+      "measurement_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_damage_20261101_06/full_damage_measurements.json",
+      "launch_manifest": {
+        "command": [
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_damage_worker.py",
+          "--output",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_damage_20261101_06"
+        ],
+        "worker_wall_budget_s": 180,
+        "cleanup_grace_s": 2,
+        "startup_available_ram_bytes": 24797433856,
+        "startup_free_vram_bytes": 7889485824,
+        "authorization": "User approved stepwise protected startup and blade/coupon initial-state diagnostics, 2026-10-31",
+        "mode": "full_damage",
+        "source_sha256": {
+          "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+          "rl/tomato_native_full_model.py": "9d0e771f4f36115ec66114c930e42ffbcfe5b329452cf7b565f3e7811eea7339",
+          "rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+          "rl/tomato_coupon_runtime_builder.py": "e6c438673c4666813f0ee39f462d7f29c5752c4248b152b741a332f00f089ac0",
+          "rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131",
+          "rl/tomato_native_full_gather.py": "1e9776b114524469873f18bb90107814f0ee5c4452f80b269aab40efe0b3a186",
+          "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+          "rl/tomato_surface_cohesion.py": "dee13dca5180af8bf048b94b32f31935f9f0838f1e9ef62782b5bff46940cf55",
+          "rl/tomato_native_group_cohesion.py": "3890db7b761ea1b4def2491e4500cc2f966a1ee1ccbef8984580b6c90c066fa5",
+          "rl/tomato_full_damage_worker.py": "4f0b1bb1fd4ebc4c339535bbb4295018258eff15116bf092b53da83b80f89a92",
+          "rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c",
+          "rl/tomato_native_volume_steps.py": "c0cea1a9218a56b660cae8da236750a8a1d40bbd2c0a774bca70e9cd45df4d14",
+          "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62"
+        },
+        "training": false,
+        "checkpoint_resumable": false
+      }
+    },
+    "full_coupling_20261101_03": {
+      "supervisor": {
+        "passed": true,
+        "reason": "exited",
+        "launched": true,
+        "child_exit_code": 0,
+        "elapsed_wall_s": 10.407930286999544,
+        "remaining_live_group_members": [],
+        "warning_requested": false,
+        "samples": 47,
+        "monitor_errors": 0,
+        "min_available_ram_bytes": 22665793536,
+        "min_free_vram_bytes": 7648313344,
+        "mode": "full_coupling",
+        "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+        "worker": {
+          "shutdown_requested": true,
+          "diagnostic_passed": true,
+          "full_coupling_passed": true,
+          "newton_steps": 8,
+          "controlled_steps": 8,
+          "cuda_state_echoes": 9
+        }
+      },
+      "measurement_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_coupling_20261101_03/full_coupling_measurements.json",
+      "launch_manifest": {
+        "command": [
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_coupling_worker.py",
+          "--output",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_coupling_20261101_03"
+        ],
+        "worker_wall_budget_s": 180,
+        "cleanup_grace_s": 2,
+        "startup_available_ram_bytes": 24685064192,
+        "startup_free_vram_bytes": 7892631552,
+        "authorization": "User approved stepwise protected startup and blade/coupon initial-state diagnostics, 2026-10-31",
+        "mode": "full_coupling",
+        "source_sha256": {
+          "rl/tomato_surface_cohesion.py": "dee13dca5180af8bf048b94b32f31935f9f0838f1e9ef62782b5bff46940cf55",
+          "rl/tomato_coupon_runtime_builder.py": "e6c438673c4666813f0ee39f462d7f29c5752c4248b152b741a332f00f089ac0",
+          "rl/tomato_native_full_model.py": "9d0e771f4f36115ec66114c930e42ffbcfe5b329452cf7b565f3e7811eea7339",
+          "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+          "rl/tomato_native_group_cohesion.py": "3890db7b761ea1b4def2491e4500cc2f966a1ee1ccbef8984580b6c90c066fa5",
+          "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+          "rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+          "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+          "rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131",
+          "rl/tomato_native_full_gather.py": "1e9776b114524469873f18bb90107814f0ee5c4452f80b269aab40efe0b3a186",
+          "rl/tomato_full_coupling_worker.py": "553e245e8d30da4a1e0e0cea61edddefb36936e5b49ccddc79a64e9462836488",
+          "rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c",
+          "rl/tomato_native_volume_steps.py": "c0cea1a9218a56b660cae8da236750a8a1d40bbd2c0a774bca70e9cd45df4d14"
+        },
+        "training": false,
+        "checkpoint_resumable": false
+      }
+    },
+    "full_blade_20261101_08": {
+      "supervisor": {
+        "passed": true,
+        "reason": "exited",
+        "launched": true,
+        "child_exit_code": 0,
+        "elapsed_wall_s": 101.18721662200005,
+        "remaining_live_group_members": [],
+        "warning_requested": false,
+        "samples": 462,
+        "monitor_errors": 0,
+        "min_available_ram_bytes": 22132699136,
+        "min_free_vram_bytes": 7566524416,
+        "mode": "full_blade",
+        "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+        "worker": {
+          "shutdown_requested": true,
+          "diagnostic_passed": true,
+          "full_blade_passed": true,
+          "newton_steps": 17,
+          "controlled_steps": 17,
+          "cuda_state_echoes": 20,
+          "full_blade_intervals": 16
+        }
+      },
+      "measurement_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_blade_20261101_08/full_blade_measurements.json",
+      "launch_manifest": {
+        "command": [
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_blade_worker.py",
+          "--output",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/full_blade_20261101_08"
+        ],
+        "worker_wall_budget_s": 300,
+        "cleanup_grace_s": 2,
+        "startup_available_ram_bytes": 24730132480,
+        "startup_free_vram_bytes": 7891582976,
+        "authorization": "User approved stepwise protected startup and blade/coupon initial-state diagnostics, 2026-10-31",
+        "mode": "full_blade",
+        "source_sha256": {
+          "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+          "rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+          "rl/tomato_full_blade_worker.py": "f6dc6b9122b19c37448459d25238c5dab165e2117c48b58b6d50388895f48d72",
+          "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+          "rl/tomato_exact_blade_coverage.py": "e04d79ee64e49c0b535a424058cbc2853d7639d0a9045df61329cb291fb8ff8c",
+          "rl/tomato_deterministic_contact_solver.py": "806177a4fbe4c22bd21ebb5e7ad0b06fcaa75d563c1a3e562b0526400bac419f",
+          "rl/tomato_native_full_gather.py": "1e9776b114524469873f18bb90107814f0ee5c4452f80b269aab40efe0b3a186",
+          "rl/tomato_surface_cohesion.py": "dee13dca5180af8bf048b94b32f31935f9f0838f1e9ef62782b5bff46940cf55",
+          "rl/tomato_coupon_runtime_builder.py": "e6c438673c4666813f0ee39f462d7f29c5752c4248b152b741a332f00f089ac0",
+          "work/exact_blade_cells.json": "e6e4b4411e409ec292d70b820dc16b3090dda14d8592dbcbc6fe7a2a9a7fcb5f",
+          "rl/tomato_blade_quadrature.py": "c9cc9eed1d149f9cc64e1bc8c148a4e5b3293799278f86b2e298869fe3f246b5",
+          "rl/tomato_native_volume_steps.py": "c0cea1a9218a56b660cae8da236750a8a1d40bbd2c0a774bca70e9cd45df4d14",
+          "rl/tomato_mesh_weighted_contact.py": "3fda8fb870a4a2edc191e37515627c60c60f4249c31a1aaec8e982988f41db89",
+          "rl/tomato_native_full_model.py": "9d0e771f4f36115ec66114c930e42ffbcfe5b329452cf7b565f3e7811eea7339",
+          "rl/tomato_native_group_cohesion.py": "3890db7b761ea1b4def2491e4500cc2f966a1ee1ccbef8984580b6c90c066fa5",
+          "rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+          "rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c",
+          "rl/tomato_exact_blade_queries.py": "b73eaf8d2d50c8a403f723da6969b8db8af40ad20f020b32f7e8a69dacb53476",
+          "rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131"
+        },
+        "training": false,
+        "checkpoint_resumable": false
+      }
+    },
+    "exact_blade_geometry_20261101_02": {
+      "supervisor": {
+        "passed": true,
+        "reason": "exited",
+        "launched": true,
+        "child_exit_code": 0,
+        "elapsed_wall_s": 4.4767132150009274,
+        "remaining_live_group_members": [],
+        "warning_requested": false,
+        "samples": 20,
+        "monitor_errors": 0,
+        "min_available_ram_bytes": 23167356928,
+        "min_free_vram_bytes": 7728005120,
+        "mode": "exact_blade_geometry",
+        "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+        "worker": {
+          "shutdown_requested": true,
+          "diagnostic_passed": true,
+          "exact_blade_passed": false,
+          "exact_blade_geometry_passed": true,
+          "newton_steps": 0,
+          "controlled_steps": 0,
+          "exact_blade_cases": 6,
+          "blade_field_queries": 128
+        }
+      },
+      "measurement_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/exact_blade_geometry_20261101_02/exact_blade_geometry_measurements.json",
+      "launch_manifest": {
+        "command": [
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_worker.py",
+          "--output",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/exact_blade_geometry_20261101_02",
+          "--geometry-only"
+        ],
+        "worker_wall_budget_s": 180,
+        "cleanup_grace_s": 2,
+        "startup_available_ram_bytes": 24748449792,
+        "startup_free_vram_bytes": 7891582976,
+        "authorization": "User approved stepwise protected startup and blade/coupon initial-state diagnostics, 2026-10-31",
+        "mode": "exact_blade_geometry",
+        "source_sha256": {
+          "rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131",
+          "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+          "rl/tomato_deterministic_contact_solver.py": "806177a4fbe4c22bd21ebb5e7ad0b06fcaa75d563c1a3e562b0526400bac419f",
+          "rl/tomato_exact_blade_worker.py": "2f18faa1ab7f674d2a8ae0ca235ce5bdebc0fbe3f39b9204a7d989a67ba8c8b6",
+          "rl/tomato_mesh_weighted_contact.py": "3fda8fb870a4a2edc191e37515627c60c60f4249c31a1aaec8e982988f41db89",
+          "rl/tomato_exact_blade_queries.py": "b73eaf8d2d50c8a403f723da6969b8db8af40ad20f020b32f7e8a69dacb53476",
+          "rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+          "rl/tomato_coupon_runtime_builder.py": "e6c438673c4666813f0ee39f462d7f29c5752c4248b152b741a332f00f089ac0",
+          "rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c",
+          "rl/tomato_blade_quadrature.py": "c9cc9eed1d149f9cc64e1bc8c148a4e5b3293799278f86b2e298869fe3f246b5",
+          "work/exact_blade_cells.json": "e6e4b4411e409ec292d70b820dc16b3090dda14d8592dbcbc6fe7a2a9a7fcb5f",
+          "rl/tomato_exact_blade_coverage.py": "e04d79ee64e49c0b535a424058cbc2853d7639d0a9045df61329cb291fb8ff8c",
+          "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9"
+        },
+        "training": false,
+        "checkpoint_resumable": false
+      }
+    },
+    "group_material_20261101_03": {
+      "supervisor": {
+        "passed": true,
+        "reason": "exited",
+        "launched": true,
+        "child_exit_code": 0,
+        "elapsed_wall_s": 3.3692823740002495,
+        "remaining_live_group_members": [],
+        "warning_requested": false,
+        "samples": 15,
+        "monitor_errors": 0,
+        "min_available_ram_bytes": 23195680768,
+        "min_free_vram_bytes": 7728005120,
+        "mode": "group_material",
+        "scope": "Isolated diagnostic only; no robot/cutting/training validation",
+        "worker": {
+          "shutdown_requested": true,
+          "diagnostic_passed": true,
+          "group_checks_passed": true,
+          "newton_steps": 1,
+          "controlled_steps": 1,
+          "group_probes": 4,
+          "group_cases_completed": 6,
+          "material_calibrated": false
+        }
+      },
+      "measurement_path": "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/group_material_20261101_03/group_material_measurements.json",
+      "launch_manifest": {
+        "command": [
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/.venv-native/bin/python",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_group_material_worker.py",
+          "--output",
+          "/home/omen/teamwork_projects/tomato_cutting_right_arm/runs/native/group_material_20261101_03"
+        ],
+        "worker_wall_budget_s": 180,
+        "cleanup_grace_s": 2,
+        "startup_available_ram_bytes": 24681537536,
+        "startup_free_vram_bytes": 7891582976,
+        "authorization": "User approved stepwise protected startup and blade/coupon initial-state diagnostics, 2026-10-31",
+        "mode": "group_material",
+        "source_sha256": {
+          "rl/tomato_bonds.py": "9e0d61c5c64852e760330284d45bc60c81c7e732370b703a1fec973729863087",
+          "rl/tomato_cohesive_adapter_reference.py": "ee74a49115ebaf5960796a6cca217e4b4491bb9734588cd27af3433bd86b5577",
+          "rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c",
+          "rl/tomato_native_group_cohesion.py": "3890db7b761ea1b4def2491e4500cc2f966a1ee1ccbef8984580b6c90c066fa5",
+          "rl/tomato_coupon_runtime_builder.py": "e6c438673c4666813f0ee39f462d7f29c5752c4248b152b741a332f00f089ac0",
+          "rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131",
+          "rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+          "rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+          "rl/tomato_group_material_worker.py": "b958924d3eef6c42d9da4ca17a530474c52d32f2ee638c2ee14cc27bd03401d5",
+          "rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+          "rl/tomato_cohesive_evolution_reference.py": "487e510f9d9269999d473b6a4ba7cd79d26062ad04a186f291801f56677af1df"
+        },
+        "training": false,
+        "checkpoint_resumable": false
+      }
+    }
+  },
+  "source_sha256": {
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/guard_benchmark.py": "39d375425df4e5105020c81cc4e70a3857ef4d229a7aac085207bfadca22356c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/offline_tomato_patch_sweep.py": "610eecf82da3603166c36968a02aad7c9e672135c629c6610f35957e573f218d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_cohesive_adapter_reference.py": "5589373e0f21e72d44364f566dda3b2ba8a8926228fc2007035627ab4bf1c8b2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_cohesive_assembly.py": "56a622d1e65bd0418c5438e35ce30abd47c453b7ff9b5b205c18a9ff84ef5ffc",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_cohesive_backend_binding.py": "a24f21f5086bd05eda5573cb8b157259b29de98894edf1be24b9b0ab58039969",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_cohesive_evolution_reference.py": "dbbcd51f2b71eff8bfbad11e49e781965f01d1951316f1b0d8ca2db103a1c453",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_exact_blade_coverage.py": "5aee54aba746bca7a81cc8915eb7612f256e81c80ee613aa283a0b9eea0bb59f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_isaac_startup_guard.py": "ad3792f6abb1057b9ca5a8490cdc3a3ad5f1e12a31eb6d88c0dba8f8dc06dbba",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_material_contract.py": "cd684f8e3ec8a8562e4682af653de703ed3bc3ec565342f04f2cbc887250fb36",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tests/test_tomato_volume_steps.py": "29bcb68f5f0522ae896b46d8c2cfd7f7ae142b3b07f09afdaedfec35785985e3",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_blade_damage.py": "cdd98d1dda9cbd7b0827736d1661b2758e19d7eaec420537eb136139129445e0",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_blade_quadrature.py": "c9cc9eed1d149f9cc64e1bc8c148a4e5b3293799278f86b2e298869fe3f246b5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_blade_record_roundtrip_worker.py": "f13dc020d73f9ef127d2a51a05f0dadafdf6b0311fae3e934a740f4fcdea537b",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_bonds.py": "9e0d61c5c64852e760330284d45bc60c81c7e732370b703a1fec973729863087",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cohesive_adapter_reference.py": "ee74a49115ebaf5960796a6cca217e4b4491bb9734588cd27af3433bd86b5577",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_cohesive_evolution_reference.py": "487e510f9d9269999d473b6a4ba7cd79d26062ad04a186f291801f56677af1df",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_reference.py": "e4f8d5920b813da226ada951752fddc9424e4d77fa6044e3615c62196f0aa899",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_contact_snapshot.py": "a8e77abe24e58d12369751e07eec91abfacceef136407c3933fd4b795924dd4a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupled_contact.py": "c538d86a06159545c555d839558b355985dbf26568d9842ce6867e3a0ae037bb",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupon_segment.py": "64b611105989f13b48595819109713902d59da26a271f960241b69fab2ba3cf2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_coupon_trajectory.py": "30ad4221891aabc209267e3cbcd0f47e13c61442faeacc98865a4d9591989ebd",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_deterministic_contact_solver.py": "806177a4fbe4c22bd21ebb5e7ad0b06fcaa75d563c1a3e562b0526400bac419f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_coverage.py": "e04d79ee64e49c0b535a424058cbc2853d7639d0a9045df61329cb291fb8ff8c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_queries.py": "b73eaf8d2d50c8a403f723da6969b8db8af40ad20f020b32f7e8a69dacb53476",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_exact_blade_worker.py": "2f18faa1ab7f674d2a8ae0ca235ce5bdebc0fbe3f39b9204a7d989a67ba8c8b6",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_blade_worker.py": "f6dc6b9122b19c37448459d25238c5dab165e2117c48b58b6d50388895f48d72",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_coupling_worker.py": "553e245e8d30da4a1e0e0cea61edddefb36936e5b49ccddc79a64e9462836488",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_damage_worker.py": "4f0b1bb1fd4ebc4c339535bbb4295018258eff15116bf092b53da83b80f89a92",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_model_worker.py": "b7a5e7a972827aa8515ed4712c1e96ea78af256cffb5c49127118b30e02ca43e",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_group_material_worker.py": "b958924d3eef6c42d9da4ca17a530474c52d32f2ee638c2ee14cc27bd03401d5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_half_step_reaction.py": "6add6848db06f9aa33aa868c81c0dfe57b15285d7fc5c24d7f59eb117ed25f4c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_guard.py": "da400e3eac07c79574e44acfc8a6594548bcd53b56917ad4fd6732162044629b",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_isaac_startup_worker.py": "3402a01c5650fb4b2471cd96cb46cc089ca8674f9b79e64776cefc1c51df673d",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_kinematic_interval.py": "591dd36df614140790761141da1c629cd0909328ec892f4606978525e43317ff",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_layout.py": "10a115828a2cc1ca8c4af0b817e746537c5526569e7b81a96466adfd6669eef2",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_mesh_contact_contract.py": "6b07677a41f42cdba3994e5fa9e96c9e94bfd38f08a43cccb96dbdee41096c74",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_mesh_double_query.py": "f26037952c91b610450c1e59d9acd536e913fc58dcddfeb1471f625bf0123ac9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_mesh_weighted_contact.py": "3fda8fb870a4a2edc191e37515627c60c60f4249c31a1aaec8e982988f41db89",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_coupon.py": "d9c2df40393bb870b92c8ddf144557bded4170d4162a0d087710282b48607f57",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_full_gather.py": "1e9776b114524469873f18bb90107814f0ee5c4452f80b269aab40efe0b3a186",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_full_model.py": "9d0e771f4f36115ec66114c930e42ffbcfe5b329452cf7b565f3e7811eea7339",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_group_cohesion.py": "3890db7b761ea1b4def2491e4500cc2f966a1ee1ccbef8984580b6c90c066fa5",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_launch_contract.py": "cb871c9bbb0900a5ccbea9e6610e5b627e5b9f8230d267f8ef68f2b9f15b38ed",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_step.py": "a6ffa8eee4dbc07292c29ed9c626c0cda296ee0b6b260086c0421eeb2179ec23",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_volume_steps.py": "c0cea1a9218a56b660cae8da236750a8a1d40bbd2c0a774bca70e9cd45df4d14",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_native_worker.py": "50bcbe9922288177f95d5bd00e1484e7b0de0464c5791784f07b2061faa4fa4f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_nonlinear_checks.py": "bada0d08fdfb8091bc264e7f9653a4c6000f3e473e4bef43c012855a89d5c8d6",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_owned_contact_capture.py": "0b2092fc847389e33141529ed39860d8698619fed765cc9f64ffa721a223ca17",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_preupgrade_guard.py": "e402433fd0a945f297ea12d5faacb8584e15f941d4dbe8f9e50a891d26fee131",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_reaction_metadata.py": "fa892e8cf48752ecb2a654d17601f9ef17d2f73e07a54a3ee93dd9cd286e886c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_sdf_diagnostics.py": "2b08b0bc513d05b495683d4e5a606a345e0b4c0ec3592c546890a83e7e3e707a",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_sdf_native_probe.py": "015ff740ae8333b230e2c08ee9a3ddf3aae7c11606b76217ec2e1e1b7944b6e9",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_soft_contact_observer.py": "e73772356601cdb5bdbd28b773b027c4b04cd703910b5d5460b8711a16ac7d15",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_surface_cohesion.py": "dee13dca5180af8bf048b94b32f31935f9f0838f1e9ef62782b5bff46940cf55",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_triangle_distance.py": "427318789e9a52bf554b42ac1f4caedb0c294e35b59eebbfd0c89fe80aff467c",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_volume_protection.py": "5769d60db13ced2ed7d176f1e0e06587ed68c18d87fef68c79ed980a6e9c2c62",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_volume_step_reference.py": "d5fc8072cced82fb9dbd0516c637375f1c6e9dd97be7f0bd819427e198e6eb30",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_wrench_contract.py": "c7aed519065021006a98397ca01efa98206c9a8cf5f2be4eeca2c88f41ca6118",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/build_exact_blade_cells.py": "e5362f32708991db4d14f245a2656f7ed0a5428576ccaa5c39f0d4c276271d9f",
+    "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/exact_blade_cells.json": "e6e4b4411e409ec292d70b820dc16b3090dda14d8592dbcbc6fe7a2a9a7fcb5f",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/particle_vbd_kernels.py": "7bd167d0b81e6bbb51c73a65dbfea7a86652788fed5388ed85266281450d838d"
+  },
+  "launch_sources_match_current": {
+    "full_model_20261101_07": {
+      "rl/tomato_native_full_model.py": true,
+      "rl/tomato_native_volume_steps.py": true,
+      "rl/tomato_coupon_runtime_builder.py": true,
+      "rl/tomato_native_group_cohesion.py": true,
+      "rl/tomato_isaac_startup_worker.py": true,
+      "rl/tomato_surface_cohesion.py": true,
+      "rl/tomato_native_full_gather.py": true,
+      "rl/tomato_isaac_startup_guard.py": true,
+      "rl/tomato_preupgrade_guard.py": true,
+      "rl/tomato_volume_protection.py": true,
+      "rl/tomato_full_model_worker.py": true,
+      "rl/tomato_sdf_native_probe.py": true,
+      "rl/guard_benchmark.py": true
+    },
+    "full_damage_20261101_06": {
+      "rl/tomato_sdf_native_probe.py": true,
+      "rl/tomato_native_full_model.py": true,
+      "rl/tomato_isaac_startup_guard.py": true,
+      "rl/tomato_coupon_runtime_builder.py": true,
+      "rl/tomato_preupgrade_guard.py": true,
+      "rl/tomato_native_full_gather.py": true,
+      "rl/tomato_isaac_startup_worker.py": true,
+      "rl/tomato_surface_cohesion.py": true,
+      "rl/tomato_native_group_cohesion.py": true,
+      "rl/tomato_full_damage_worker.py": true,
+      "rl/guard_benchmark.py": true,
+      "rl/tomato_native_volume_steps.py": true,
+      "rl/tomato_volume_protection.py": true
+    },
+    "full_coupling_20261101_03": {
+      "rl/tomato_surface_cohesion.py": true,
+      "rl/tomato_coupon_runtime_builder.py": true,
+      "rl/tomato_native_full_model.py": true,
+      "rl/tomato_isaac_startup_worker.py": true,
+      "rl/tomato_native_group_cohesion.py": true,
+      "rl/tomato_sdf_native_probe.py": true,
+      "rl/tomato_isaac_startup_guard.py": true,
+      "rl/tomato_volume_protection.py": true,
+      "rl/tomato_preupgrade_guard.py": true,
+      "rl/tomato_native_full_gather.py": true,
+      "rl/tomato_full_coupling_worker.py": true,
+      "rl/guard_benchmark.py": true,
+      "rl/tomato_native_volume_steps.py": true
+    },
+    "full_blade_20261101_08": {
+      "rl/tomato_isaac_startup_worker.py": true,
+      "rl/tomato_isaac_startup_guard.py": true,
+      "rl/tomato_full_blade_worker.py": true,
+      "rl/tomato_sdf_native_probe.py": true,
+      "rl/tomato_exact_blade_coverage.py": true,
+      "rl/tomato_deterministic_contact_solver.py": true,
+      "rl/tomato_native_full_gather.py": true,
+      "rl/tomato_surface_cohesion.py": true,
+      "rl/tomato_coupon_runtime_builder.py": true,
+      "work/exact_blade_cells.json": true,
+      "rl/tomato_blade_quadrature.py": true,
+      "rl/tomato_native_volume_steps.py": true,
+      "rl/tomato_mesh_weighted_contact.py": true,
+      "rl/tomato_native_full_model.py": true,
+      "rl/tomato_native_group_cohesion.py": true,
+      "rl/tomato_volume_protection.py": true,
+      "rl/guard_benchmark.py": true,
+      "rl/tomato_exact_blade_queries.py": true,
+      "rl/tomato_preupgrade_guard.py": true
+    },
+    "exact_blade_geometry_20261101_02": {
+      "rl/tomato_preupgrade_guard.py": true,
+      "rl/tomato_isaac_startup_worker.py": true,
+      "rl/tomato_deterministic_contact_solver.py": true,
+      "rl/tomato_exact_blade_worker.py": true,
+      "rl/tomato_mesh_weighted_contact.py": true,
+      "rl/tomato_exact_blade_queries.py": true,
+      "rl/tomato_isaac_startup_guard.py": true,
+      "rl/tomato_coupon_runtime_builder.py": true,
+      "rl/guard_benchmark.py": true,
+      "rl/tomato_blade_quadrature.py": true,
+      "work/exact_blade_cells.json": true,
+      "rl/tomato_exact_blade_coverage.py": true,
+      "rl/tomato_sdf_native_probe.py": true
+    },
+    "group_material_20261101_03": {
+      "rl/tomato_bonds.py": true,
+      "rl/tomato_cohesive_adapter_reference.py": true,
+      "rl/guard_benchmark.py": true,
+      "rl/tomato_native_group_cohesion.py": true,
+      "rl/tomato_coupon_runtime_builder.py": true,
+      "rl/tomato_preupgrade_guard.py": true,
+      "rl/tomato_isaac_startup_guard.py": true,
+      "rl/tomato_isaac_startup_worker.py": true,
+      "rl/tomato_group_material_worker.py": true,
+      "rl/tomato_sdf_native_probe.py": true,
+      "rl/tomato_cohesive_evolution_reference.py": true
+    }
+  },
+  "original_frozen_sources_unchanged": true,
+  "previously_pinned_installed_dependencies_unchanged": true,
+  "pinned_dependency_sha256": {
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/solver_vbd.py": "2eaf20bde0cfa436bdaad375b689f5e562130667801ceb3e6098343f4418bc13",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/vbd/rigid_vbd_kernels.py": "c88eb7b4357e0f36d563ffd0ffe29b780543acfacbb2c17a2dc33f0f5026bdf3",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/solvers/coupled/interface.py": "c8d1f160d4ffcac22841e870f3cd0375c7aad30f799549052692097ab4a1fdb9",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager.py": "44418a13b42bb424f02a605d7df6f047c5ddc9e7ab104ed743684845d8f9a951",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/physics/physx_manager_cfg.py": "b28ec403c4d534101eab541aff92952b96eb63f0526b0dc0a53277638ca732b2",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/sim/schemas/schemas_cfg.py": "8edeec841a59745b92528a9c12cf1abacea0b63b9a5dbfc0ccad7a64bea61779",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object.py": "0fd17152d133805412776d8cc90eebe85159a383a2e052dafc2eafdd14e54390",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/collide.py": "dcc29f631d22dbf4c689e7424e1be67a22b5cc147e4b728a0845c92db760a44b",
+    "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/newton/_src/sim/contacts.py": "84d3ccff76e8c2c10706dff557459aab57474e73aad1a1ef8a429c36fe51fea1",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/rigid_object/rigid_object_data.py": "6e03c85172da8712bdebc6e19c89cea7868afb02f9e96259c82a281cca4270b4",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation.py": "c4f6a86bc0b42ba4fe35beb92e9e001620c82931447c0ac185d585b7b8d2659c",
+    "/home/omen/IsaacLab/source/isaaclab_physx/isaaclab_physx/assets/articulation/articulation_data.py": "9f25446dff165278af62147c50d5153cc1a1236ccc308cb83a316892cdeb54bf",
+    "/home/omen/IsaacLab/source/isaaclab/isaaclab/utils/wrench_composer.py": "16914d155c28e0d02ab7135b2627112042bd420b023bfabd9eae1dc3c69960ce"
+  },
+  "focused_tests": {
+    "results": [
+      {
+        "pattern": "test_tomato_cohesive*.py",
+        "tests": 18,
+        "passed": true,
+        "output": "..................\n----------------------------------------------------------------------\nRan 18 tests in 0.039s\n\nOK\n"
+      },
+      {
+        "pattern": "test_tomato_material_contract.py",
+        "tests": 9,
+        "passed": true,
+        "output": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.000s\n\nOK\n"
+      },
+      {
+        "pattern": "test_tomato_coupled_energy_audit.py",
+        "tests": 2,
+        "passed": true,
+        "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.016s\n\nOK\n"
+      },
+      {
+        "pattern": "test_tomato_isaac_startup_guard.py",
+        "tests": 11,
+        "passed": true,
+        "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 1.764s\n\nOK\n"
+      },
+      {
+        "pattern": "test_tomato_exact_blade_coverage.py",
+        "tests": 6,
+        "passed": true,
+        "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.004s\n\nOK\n"
+      },
+      {
+        "pattern": "test_tomato_volume_steps.py",
+        "tests": 4,
+        "passed": true,
+        "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+      }
+    ],
+    "total": 50,
+    "passed": true
+  },
+  "known_limits": [
+    "Coefficients, blade mass/inertia and pressure stiffness remain synthetic.",
+    "Arbitrary material rotation and compression-plus-shear fracture remain unsupported.",
+    "Free preloaded opening/reclosure stress attempts are preserved as failures; full free-fragment self-contact and full cuts remain unqualified.",
+    "The artificial 0.7-metre soft-facet integration case retains its precision failure. Qualification uses the actual mesh, whose largest tested boundary edge is about 6.19 mm.",
+    "Swept/fast contact, long-run behavior, robot drives and interactive performance are later checks."
+  ]
+}

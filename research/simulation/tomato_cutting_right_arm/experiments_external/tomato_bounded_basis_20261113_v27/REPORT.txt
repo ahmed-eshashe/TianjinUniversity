@@ -1,0 +1,94 @@
+v27 execution result — objective not achieved
+13 November 2026
+
+User objective: a visible, physically checked tomato model fast enough for RL.
+Outcome: NOT achieved. Awaiting a genuine accuracy/scope decision; no simulation
+is left running. No policy training, production scene change or video work ran.
+
+Implementation delivered in this isolated directory
+1. Conservative original-CAD clearance proof on GPU, with all original
+   material volume retained and unresolved checks rejected. Hierarchical
+   material-volume exclusion avoids work on volume definitely outside the knife.
+2. Exact original-triangle spatial index and hierarchical material contact
+   search; sparse active-face force/ledger operations. These retain the original
+   triangle geometry and force law, rather than replacing the CAD with an SDF.
+3. Device-resident material clearance between substep blocks, transactional
+   rollback, and final observations without repeatedly moving full geometry
+   to the CPU. Unresolved resident checks reject; CPU fallback is not silently
+   treated as success.
+4. Less redundant cut-transaction work: geometry/area affordability before
+   rebuilding the mechanical representation; cached immutable geometry; fewer
+   redundant force evaluations and diagnostic writes.
+5. Corrected affine coalescence. Matching geometry/history alone was not enough
+   to justify merging coefficients. New coalescence preserves the ENTIRE prior
+   admissible field space. This prevents silent crack closure even when saved
+   displacements and energy errors are very small.
+
+Evidence
+- reports/hierarchy_coverage.json: 80 original-versus-hierarchical face-search
+  cases, intact tomato and actual cracked state, varied poses and deformations.
+- reports/grid_candidates_controls.json: 2,882 exact CAD-distance controls
+  against an independent CPU query; maximum error 1.24e-17 m.
+- reports/proof_boundary_controls.json: 120 regular/sliver boundary controls,
+  including valid shallow contact, deep rejection and excess-motion rejection.
+- reports/resident_clearance_controls.json: 32 volume-search coverage cases,
+  plus rejected-action rollback of position, velocity and all physics ledgers
+  on intact and cracked material states.
+- reports/resident_response_comparison.json: nine intact runs match original
+  force history and final actual material fields, tool work and friction work.
+  These are 13 ms approach/hold/retract tests, not cuts or RL episodes.
+- reports/previous_space_controls.json: previous-space preservation, correct
+  elastic rank and positive inertia on two states. This is not a complete
+  arbitrary-path or multi-cut qualification.
+- reports/space_guard_matched_3ms_comparison.json: 3 ms shallow-crack comparison:
+  conservative position error bound 1.83 micrometres; material-weighted velocity
+  bound 0.245 mm/s; maximum local velocity bound 22.0 mm/s (reported separately,
+  acceptance uses the previously approved weighted criterion); contact-force
+  error 0.698%, cutting-force error 0.0521%, paid fracture-work error 0.187%.
+
+Timing and scope
+A. Full-shape intact tomato: 4448 material regions, 989 mechanical coefficients,
+   21806 boundary triangles; nominal background spacing 6 mm. Original exterior,
+   homogeneous effective material, fixed bottom support. This is not the complete
+   robot/board scene and is not experimentally calibrated.
+   13 ms intact pilot: old host loop 4.906 s; optimized host loop 1.301 s.
+   Separate single-instance resident pilot: 0.415 s, setup/compile excluded.
+B. Eight independent GPU-stream instances: 8 x 13 ms / 3.098 s total wall time.
+   Equivalent 50 Hz MATERIAL-loop budget = 1.679 transitions/s. No actions,
+   rewards, cutting, robot or resets. The minimum target remains 100 COMPLETE
+   environment transitions/s. These numbers are not a general impossibility
+   bound on batching or other algorithms. They do fail to demonstrate the
+   requested speed on the current implementation. GPU use reported 1044 MiB
+   including desktop/driver allocation, not a process-only memory measurement.
+C. Matched 3 ms small-coupon crack continuation: 33.583 s -> 4.681 s. The geometry
+   is a 6 mm cube with 3 mm parent cells, not a whole tomato. The short comparison
+   cannot establish full-trajectory accuracy or a complete slice.
+
+Rejected / unresolved
+- 62.5 and 125 microsecond material steps failed the mechanics guard; rejected.
+- A 1 ms cut-update trial transiently lost all detected crack-opening modes.
+  Low force/work errors had missed this. Its former incomplete comparison is
+  preserved under a superseded filename; the corrected comparison rejects it.
+  The previous-space guard is now required. A later correction passes only
+  the explicitly measured mechanics and short-continuation scope.
+- Continued corrected cutting stops at global time 9.525 ms; the next interval
+  cannot certify whole-material clearance within the unchanged 0.1 mm limit.
+  A sampled depth around 95 micrometres plus motion and covering uncertainty
+  does NOT prove that the physical limit was exceeded. Do not mislabel this
+  unresolved certificate as a measured penetration violation.
+- No full cut, independent physical tomato slice, fragment recontact, complete
+  reset/controller loop, complete RL throughput or qualified live demo exists
+  for this candidate. The shallow coupon trajectory itself is not a complete-
+  slice trajectory. Its results are component evidence only.
+
+Preservation and next decision
+reports/parent_preservation_final.json verifies all 210 frozen v26 artifacts
+unchanged. All new code and runs are isolated here. Only the authorized progress
+checklists/shared status outside this experiment were updated. The current
+Isaac/DiSECt setup and experimental-validation-pending status remain unchanged.
+
+NEXT_SCOPE_DECISION.txt contains the concrete choice between an explicitly
+approximate training model and continued unchanged-physics research. The user
+has been asked because an approximate model changes the existing 5% response
+agreement requirement. No such scope change has been implemented or inferred
+from silence. No completion-time or future speed guarantee is justified.

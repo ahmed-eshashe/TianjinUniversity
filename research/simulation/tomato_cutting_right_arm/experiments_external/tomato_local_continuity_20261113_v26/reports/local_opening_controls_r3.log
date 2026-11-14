@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/tests/local_opening_controls.py", line 34, in <module>
+    b=Body(n=2,h=.003);b.split(normal,.00013,front=(direction,start+depth));entry=audit(b);entry['front_advance_m']=depth;cases.append(entry)
+                                                                                  ^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/tests/local_opening_controls.py", line 11, in audit
+    a=Aggregate(b);b=a.body;s=Surface(a);positive=np.flatnonzero(b.codes%3==1);negative=np.flatnonzero(b.codes%3==2);jumps=[];paired_area=0.;checked=0
+      ^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/src/local_continuity.py", line 83, in __init__
+    start=time.perf_counter();before=body.metrics();x0,v0=vertex_fields(body);self.body,clipped=loosen(body);b=self.body;self.E,self.masters,self.report,self.constraints=elimination(b,clipped);self.M=(self.E.T@diags(b.mass)@self.E).tocsr();n=len(self.masters);nc,labels=connected_components(self.M,directed=False);self.order=np.argsort(labels,kind='stable');sizes=np.bincount(labels);self.bounds=np.r_[0,np.cumsum(sizes)];self.singletons=self.order[self.bounds[:-1][sizes==1]];self.single_mass=self.M.diagonal()[self.singletons];self.coupled=[]
+                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/Documents/Codex/experiments/tomato_local_continuity_20261113_v26/src/local_continuity.py", line 70, in elimination
+    if legacy_error>1e-10:raise ValueError(('constraints remove valid original fields',legacy_error))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('constraints remove valid original fields', 0.5)

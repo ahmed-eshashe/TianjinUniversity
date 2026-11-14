@@ -1,0 +1,9 @@
+NEXT AFTER V22 — COMPLETE-LOOP INTEGRATION, NOT TRAINING YET
+
+1. Preserve this frozen numerical/runtime baseline. The selected implementation is pipeline_gpu -> active_gpu -> cached_gpu plus compiled_body/fast_aggregation/fast_data. Keep the production Isaac/DiSECt setup separate.
+2. Identify the existing physical blade-contact and fracture implementation to integrate. Preserve its approved constitutive, failure/work, contact, support and stop rules; do not treat geometric splitting as paid fracture. If a required physical law is missing, explicitly define that scope before adding a new law or relaxing its criteria.
+3. Connect only one isolated environment first. Validate actual state-driven blade contact, fracture work, force feedback, recontact, board/support, stopping and reset. Retain the 2 N and 0.1 mm limits. Compare observations and complete physical trajectories against the existing reference.
+4. Measure that complete environment with independent histories, realistic action updates, reset, robot/policy and output costs. Report fixed-size and changed-size preparation separately. Retain the 100 actual transitions/s entry gate and 500/s preferred target.
+5. Start a small learning-interface pilot only after physical and complete-loop speed gates pass. The present component benchmark has limited headroom and cannot establish how much contact/fracture overhead is affordable.
+
+Current result: repeated geometric updates pass the preliminary speed screen; actual RL and physical tomato/cutting qualification remain pending. No future cut path is baked into resets. General curved cutting, unlimited slicing/dicing, changed sizes, tomato skin/anatomy and experimental realism are not established by this trial.

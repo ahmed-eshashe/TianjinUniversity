@@ -1,0 +1,39 @@
+{
+  "status": "pass_finer_time_reference",
+  "checks": {
+    "primary_volume": true,
+    "primary_mass": true,
+    "primary_energy": true,
+    "half_volume": true,
+    "half_mass": true,
+    "half_energy": true,
+    "continuous_position": true,
+    "continuous_velocity": true,
+    "material_work": true
+  },
+  "results": {
+    "primary": {
+      "dt_s": 2.44140625e-08,
+      "sim_s": 0.0001,
+      "wall_s": 2.9502654850002727,
+      "work_J": 4.481264119565467e-08,
+      "energy_residual_J": -4.0178268950433644e-12,
+      "GPU_bytes": 24980344
+    },
+    "half": {
+      "dt_s": 1.220703125e-08,
+      "sim_s": 0.0001,
+      "wall_s": 5.2044996509939665,
+      "work_J": 4.481264005796711e-08,
+      "energy_residual_J": -1.0007468261184616e-12,
+      "GPU_bytes": 24980344
+    },
+    "comparison": {
+      "whole_field_position_bound_m": 8.790049628646439e-10,
+      "whole_field_velocity_bound_m_s": 0.0027158239132538337,
+      "work_relative": 2.5387648742462312e-08
+    }
+  },
+  "wall_s": 8.838670236000326,
+  "physical_fracture": false
+}

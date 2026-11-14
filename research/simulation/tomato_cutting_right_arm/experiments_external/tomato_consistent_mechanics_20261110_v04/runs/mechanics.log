@@ -1,0 +1,186 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/Documents/Codex/experiments/tomato_consistent_mechanics_20261110_v04/cache/warp/1.17.0
+Module consistent_kernels b146b7a load on device 'cuda:0' took 270.70 ms  (compiled)
+{
+  "status": "fail",
+  "checks": {
+    "compression_mass": true,
+    "compression_momentum": true,
+    "compression_angular": true,
+    "compression_energy": true,
+    "compression_half_mass": true,
+    "compression_half_momentum": true,
+    "compression_half_angular": true,
+    "compression_half_energy": true,
+    "compression_refinement": false,
+    "rest_mass": true,
+    "rest_momentum": true,
+    "rest_angular": true,
+    "rest_energy": true,
+    "rest_position": true,
+    "translation_mass": true,
+    "translation_momentum": true,
+    "translation_angular": true,
+    "translation_energy": true,
+    "translation_position": true,
+    "rotated_rest_mass": true,
+    "rotated_rest_momentum": true,
+    "rotated_rest_angular": true,
+    "rotated_rest_energy": true,
+    "rotated_rest_position": true,
+    "spin_mass": true,
+    "spin_momentum": true,
+    "spin_angular": true,
+    "spin_energy": true,
+    "localized_geometry": true,
+    "localized_energy": true,
+    "localized_support": true,
+    "localized_half_geometry": true,
+    "localized_half_energy": true,
+    "localized_half_support": true,
+    "localized_refinement": true
+  },
+  "results": {
+    "compression": {
+      "dt": 1.25e-05,
+      "wall_s": 1.7688982260006014,
+      "sim_s": 0.02,
+      "mass": 0.216,
+      "initial_energy": 0.00233244788171996,
+      "max_energy_error": 3.5635278589096243e-06,
+      "energy_relative_error": 0.001527805995940136,
+      "momentum_error": 6.902536008464576e-17,
+      "angular_error": 3.6989664871988515e-20,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      }
+    },
+    "compression_half": {
+      "dt": 6.25e-06,
+      "wall_s": 2.617073417000938,
+      "sim_s": 0.02,
+      "mass": 0.216,
+      "initial_energy": 0.00233244788171996,
+      "max_energy_error": 8.959730024727525e-07,
+      "energy_relative_error": 0.000384134200594466,
+      "momentum_error": 3.793847447270061e-17,
+      "angular_error": 6.907389169394697e-20,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      }
+    },
+    "compression_refinement": {
+      "max_shared_time_position_m": 1.2238696757860777e-05,
+      "max_shared_time_velocity_m_s": 0.31213026493122853,
+      "samples": 20,
+      "final_position_m": 5.919938243967177e-06,
+      "final_velocity_m_s": 0.31213026493122853
+    },
+    "rest": {
+      "dt": 1.25e-05,
+      "wall_s": 8.73082454300311,
+      "sim_s": 0.1,
+      "mass": 0.216,
+      "initial_energy": 2.9253385428340546e-17,
+      "max_energy_error": 7.101908348181718e-17,
+      "energy_relative_error": 2.4277218667831253,
+      "momentum_error": 2.4109870490255158e-29,
+      "angular_error": 9.29629893848874e-31,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      },
+      "rigid_error": 1.8430569550106114e-16
+    },
+    "translation": {
+      "dt": 1.25e-05,
+      "wall_s": 8.746933132999402,
+      "sim_s": 0.1,
+      "mass": 0.216,
+      "initial_energy": 5.670000000002926e-05,
+      "max_energy_error": 8.412053605771908e-17,
+      "energy_relative_error": 1.4836073378778776e-12,
+      "momentum_error": 3.444097318033084e-15,
+      "angular_error": 8.674671366750947e-19,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      },
+      "rigid_error": 1.909443480236231e-16
+    },
+    "rotated_rest": {
+      "dt": 1.25e-05,
+      "wall_s": 1.7670429620011419,
+      "sim_s": 0.02,
+      "mass": 0.216,
+      "initial_energy": -5.857368161924623e-17,
+      "max_energy_error": 2.2321430418145398e-17,
+      "energy_relative_error": 22321430418145.4,
+      "momentum_error": 4.413017895776367e-30,
+      "angular_error": 5.749743089474682e-20,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      },
+      "rigid_error": 9.633574061331544e-17
+    },
+    "spin": {
+      "dt": 1.25e-05,
+      "wall_s": 0.8790044630004559,
+      "sim_s": 0.01,
+      "mass": 0.216,
+      "initial_energy": 6.475950000002926e-05,
+      "max_energy_error": 2.1848842179927885e-15,
+      "energy_relative_error": 3.373843556531167e-11,
+      "momentum_error": 2.141512819170864e-17,
+      "angular_error": 2.9517404227141276e-17,
+      "memory": {
+        "array_bytes": 72968932,
+        "particles": 64000,
+        "control_points": 10648
+      }
+    },
+    "localized": {
+      "wall_s": 1.5360178880000603,
+      "max_F_difference": 0.008258199927038502,
+      "strain_ratio_min": 0.6698172476681935,
+      "strain_ratio_max": 0.9087042809447742,
+      "max_energy_error": 2.9559385354009003e-12,
+      "work_scale": 1.54114581274151e-06,
+      "final_work": 3.1621325444502784e-08,
+      "min_geometry_J_bound": 0.9953646588499195,
+      "support_drift": 1.9949319973733282e-17,
+      "numerical_filter_loss": 0
+    },
+    "localized_half": {
+      "wall_s": 2.954058522998821,
+      "max_F_difference": 0.008258171020010583,
+      "strain_ratio_min": 0.6698452787709626,
+      "strain_ratio_max": 0.9087067302159266,
+      "max_energy_error": 7.389911919498796e-13,
+      "work_scale": 1.5411595929089438e-06,
+      "final_work": 3.162111504526565e-08,
+      "min_geometry_J_bound": 0.9953646381029341,
+      "support_drift": 1.5612511283791264e-17,
+      "numerical_filter_loss": 0
+    },
+    "localized_refinement": {
+      "position_m": 7.643499408073932e-10,
+      "velocity_m_s": 2.6927631102003433e-06
+    }
+  },
+  "wall_s": 35.191093976001866,
+  "scope": "Intact block mechanics only. Persistent cuts and CAD contact are not requalified."
+}

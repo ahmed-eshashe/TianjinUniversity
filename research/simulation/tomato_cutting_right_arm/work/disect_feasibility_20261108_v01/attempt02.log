@@ -1,0 +1,24 @@
+Using cached kernels
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/example.py", line 11, in <module>
+    from cutting import load_settings,SlicingMotion,CuttingSim
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/cutting/__init__.py", line 10, in <module>
+    from .cutting_sim import *
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/cutting/cutting_sim.py", line 25, in <module>
+    from cutting.urdf_loader import load_urdf
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/cutting/urdf_loader.py", line 12, in <module>
+    import dflex as df
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/dflex/__init__.py", line 15, in <module>
+    kernel_init()
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/dflex/sim.py", line 47, in kernel_init
+    kernels = df.compile()
+              ^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/dflex/adjoint.py", line 1886, in compile
+    module = import_module("kernels", build_path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_feasibility_20261108_v01/DiSECt/dflex/adjoint.py", line 1736, in import_module
+    file, path, description = imp.find_module(module_name, [path])
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/imp.py", line 297, in find_module
+    raise ImportError(_ERR_MSG.format(name), name=name)
+ImportError: No module named 'kernels'

@@ -1,0 +1,28 @@
+/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_compiled_polygon_ops.py:47: NumbaPerformanceWarning: '@' is faster on contiguous arrays, called on (Array(float64, 1, 'A', False, aligned=True), Array(float64, 2, 'C', False, aligned=True))
+  dc=normal@(current@soft-anchor);ip=dp<=0.;ic=dc<=0.
+{'checkpoint': '/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/robot_cut13/checkpoints/step_005375.npz', 'reference_s': 2.368875580999884, 'compiled_s': 4.4100695779998205, 'reference_samples': 9963, 'compiled_samples': 9963, 'area_difference_m2': np.float64(0.0), 'corners_identical': True, 'maximum_barycentric_difference': 0.0, 'maximum_sample_area_difference_m2': 0.0, 'passed': np.True_}
+{'checkpoint': '/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/robot_cut14/checkpoints/step_005400.npz', 'reference_s': 2.2440002509993064, 'compiled_s': 0.412591861000692, 'reference_samples': 9921, 'compiled_samples': 9921, 'area_difference_m2': np.float64(0.0), 'corners_identical': True, 'maximum_barycentric_difference': 0.0, 'maximum_sample_area_difference_m2': 0.0, 'passed': np.True_}
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/single_slice_20261106/check_compiled_coverage.py", line 18, in <module>
+    (w/'compiled_coverage_check.json').write_text(json.dumps(dict(passed=all(p['passed']for p in results),scope='Geometry arithmetic only; material replay required before adoption',results=results),indent=2))
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

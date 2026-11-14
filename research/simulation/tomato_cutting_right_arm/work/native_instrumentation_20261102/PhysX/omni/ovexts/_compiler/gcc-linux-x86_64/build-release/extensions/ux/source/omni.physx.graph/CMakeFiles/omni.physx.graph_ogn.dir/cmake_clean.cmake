@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "../../../../ogn/include/OgnPhysXGenerateContactsDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateComputeBoundsOverlapsDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateComputeGeometryBoundsDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateComputeGeometryOverlapsDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateComputeGeometryPenetrationsDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateComputeGeometryRaycastHitsDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateComputeMeshIntersectingFacesDatabase.h"
+  "../../../../ogn/include/OgnPhysXImmediateGenerateGeometryContactsDatabase.h"
+  "../../../../ogn/include/OgnPhysXOnContactEventAdvancedDatabase.h"
+  "../../../../ogn/include/OgnPhysXOnContactEventBasicDatabase.h"
+  "../../../../ogn/include/OgnPhysXOnTriggerColliderDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryOverlapBoxAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryOverlapBoxAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryOverlapPrimAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryOverlapPrimAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryOverlapSphereAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryOverlapSphereAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryRaycastAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryRaycastAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQueryRaycastClosestDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepBoxAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepBoxAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepBoxClosestDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepPrimAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepPrimAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepPrimClosestDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepSphereAllDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepSphereAnyDatabase.h"
+  "../../../../ogn/include/OgnPhysXSceneQuerySweepSphereClosestDatabase.h"
+  "../../../../ogn/include/OgnVehicleGetDriveStateDatabase.h"
+  "../../../../ogn/include/OgnVehicleGetWheelStateDatabase.h"
+  "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/native_instrumentation_20261102/PhysX/omni/ovexts/_build/linux-x86_64/release/extsPhysics/omni.physx.graph/omni/physxgraph/ogn/OgnPhysXPropertyQueryRigidBodyDatabase.py"
+  "CMakeFiles/omni.physx.graph_ogn"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang )
+  include(CMakeFiles/omni.physx.graph_ogn.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

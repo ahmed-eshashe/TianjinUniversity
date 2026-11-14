@@ -1,0 +1,56 @@
+Using cached kernels
+Using log folder at "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/disect_log".
+Converted Young's modulus 40000.0 and Poisson's ratio 0.45 to Lame parameters mu = 13793.103448275862 and lambda = 124137.9310344828
+PyMAPDL Result
+Title       : Cutting_v5--Static Structural (B5)
+Units       : User Defined
+Version     : 20.2
+Cyclic      : False
+Result Sets : 1
+Nodes       : 1011
+Elements    : 4666
+
+
+Available Results:
+ENS : Nodal stresses
+ENG : Element energies and volume
+EEL : Nodal elastic strains
+EUL : Element euler angles
+EPT : Nodal temperatures
+NSL : Nodal displacements
+RF  : Nodal reaction forces
+
+ANSYS Mesh
+  Number of Nodes:              1011
+  Number of Elements:           4666
+  Number of Element Types:      2
+  Number of Node Components:    1
+  Number of Element Components: 0
+
+Loaded mesh with 1011 vertices and 4536 tets.
+Creating free-floating knife
+cut_meshing_cpp took 6.23 ms
+Saved log file to meshing_log.txt
+304 cut springs have been inserted.
+/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_mesh_validation_20261108_v02/DiSECt/dflex/model.py:2225: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:254.)
+  m.shape_transform = torch.tensor(transform_flatten_list(self.shape_transform), dtype=torch.float32, device=adapter)
+self.cut_edge_indices: (608, 2)
+self.cut_spring_indices: (304, 2)
+self.cut_virtual_tri_indices: (1058, 3)
+self.cut_edge_indices: (608, 2)
+self.cut_spring_indices: (304, 2)
+self.cut_virtual_tri_indices: (1058, 3)
+{
+  "example": "examples/basic_cutting.py, same settings and slicing motion, headless forward-only",
+  "setup_wall_s": 8.729543109002407,
+  "wall_s": 8.539692399004707,
+  "simulated_s": 5.000000000001686,
+  "wall_s_per_sim_s": 1.7079384798003656,
+  "nodes": 1187,
+  "tetrahedra": 4950,
+  "peak_gpu_allocated_bytes": 9580032,
+  "peak_gpu_reserved_bytes": 23068672,
+  "peak_rss_kib": 1306192,
+  "full_example_completed": true,
+  "separation_caveat": "Zero-stiffness count is interface damage, not independently verified detached connectivity."
+}

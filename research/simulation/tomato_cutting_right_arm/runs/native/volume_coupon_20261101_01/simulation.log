@@ -1,0 +1,43 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793534957.457757   37558 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793534957.457787   37558 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T12:09:17Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module warp._src.coloring 811e0ea load on device 'cpu' took 1606.54 ms  (compiled)
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.24 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.73 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 3.15 ms  (cached)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 1: invalid argument (in function wp_memset_device, /builds/omniverse/warp/warp/native/warp.cu:1295)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 1: invalid argument (in function wp_memset_device, /builds/omniverse/warp/warp/native/warp.cu:1295)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 2: out of memory (in function wp_alloc_device_async, /builds/omniverse/warp/warp/native/warp.cu:814)
+Warp CUDA error 101: invalid device ordinal (in function radix_sort_temp_size, /builds/omniverse/warp/warp/native/sort.cu:215)
+Warp CUDA error 1: invalid argument (in function wp_memset_device, /builds/omniverse/warp/warp/native/warp.cu:1295)
+Module tomato_native_group_cohesion 6aac9ea load on device 'cuda:0' took 0.71 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 6383.70 ms  (compiled)
+Module newton._src.solvers.vbd.particle_vbd_kernels 6a3ffcd load on device 'cuda:0' took 2.12 ms  (cached)
+Module newton._src.solvers.vbd.particle_vbd_kernels fa8d30f load on device 'cuda:0' took 2.00 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_volumetric_coupon_worker.py", line 55, in main
+    release=sout.particle_qd.numpy()[4:];err=float(np.max(np.abs(release-np.array([.1,0.,0.]))));count,cd=counts_checked()
+                                                                                                          ^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_volumetric_coupon_worker.py", line 50, in counts_checked
+    number=getattr(info,name+'_count').numpy();capacity=getattr(info,name+'_buffer_sizes').numpy()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'array' object has no attribute 'vertex_colliding_triangles_count'

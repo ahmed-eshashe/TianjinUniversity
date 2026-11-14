@@ -1,0 +1,42 @@
+Package 'physxsdk' at version '5.9.1.21bc7b56-release-omni-110.3-linux-x86_64' is missing from local storage.
+Extracting: physxsdk@5.9.1.21bc7b56-release-omni-110.3-linux-x86_64.zip (1.188 GiB)
+No continuous progress report because this is not a proper terminal. Be patient ...
+Traceback (most recent call last):
+  File "/home/omen/.cache/packman/packman-common/8.2.1/run.py", line 20, in <module>
+    packman.main.main_with_exception_handler(sys.argv[1:])
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/main.py", line 2761, in main_with_exception_handler
+    main(argv)
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/main.py", line 2733, in main
+    ret = args.func(**vars(args))
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/utils.py", line 515, in wrapper_message_block
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/main.py", line 369, in install_cmd
+    install_with_variable_file(
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/main.py", line 398, in install_with_variable_file
+    return pull_dependencies(
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/main.py", line 1326, in pull_dependencies
+    packager.install_package(target_filename, install_path, passphrase)
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/packager.py", line 415, in install_package
+    archivezip.extract_archive_to_folder(package_path, install_path)
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/archivezip.py", line 221, in extract_archive_to_folder
+    _extract_file(zip_file, file_info, output_folder)
+  File "/home/omen/.cache/packman/packman-common/8.2.1/packman/archivezip.py", line 180, in _extract_file
+    zip.extract(file_info, path=extract_dir)
+  File "/home/omen/.cache/packman/python/3.12.13-nv1-manylinux_2_35-x86_64/lib/python3.12/zipfile/__init__.py", line 1752, in extract
+    return self._extract_member(member, path, pwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/.cache/packman/python/3.12.13-nv1-manylinux_2_35-x86_64/lib/python3.12/zipfile/__init__.py", line 1828, in _extract_member
+    shutil.copyfileobj(source, target)
+  File "/home/omen/.cache/packman/python/3.12.13-nv1-manylinux_2_35-x86_64/lib/python3.12/shutil.py", line 203, in copyfileobj
+    while buf := fsrc_read(length):
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/omen/.cache/packman/python/3.12.13-nv1-manylinux_2_35-x86_64/lib/python3.12/zipfile/__init__.py", line 1008, in read
+    data = self._read1(n)
+           ^^^^^^^^^^^^^^
+  File "/home/omen/.cache/packman/python/3.12.13-nv1-manylinux_2_35-x86_64/lib/python3.12/zipfile/__init__.py", line 1084, in _read1
+    data = self._decompressor.decompress(data, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+zlib.error: Error -3 while decompressing data: invalid code lengths set

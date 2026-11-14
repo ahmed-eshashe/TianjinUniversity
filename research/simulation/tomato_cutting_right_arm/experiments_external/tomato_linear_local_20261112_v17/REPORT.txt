@@ -1,0 +1,49 @@
+V17 LINEAR-ELEMENT CORRECTION — COMPONENT MECHANICS PASS, SPEED GATE FAIL
+Date: 2026-11-12 (China time)
+
+The approved separate correction was implemented and tested. It resolves the v16 angled-cut strain-rank defect in the tested fixtures. The new implementation is not fast enough for the project's 100 aggregate 50 Hz environment-transitions/s entry screen, even before contact and robot work. The bounded campaign stops at that measured decision gate, within its two-hour limit. No full tomato, physical slice, training run or production solver change is claimed.
+
+What the correction is
+This is a new lumped virtual-node linear tetrahedral FEM implementation. It is not official CRESSim or BladeMaster, and it is not the project's DiSECt backend. Linear displacement and strain fields persist; clipped material polyhedra retain their volume and first moment. Elastic energy and forces are integrated exactly for each declared constant-strain region. Inertia is the explicitly approved local row-sum approximation. The material law remains compressible neo-Hookean, E=100 kPa, nu=0.4, rho=1000 kg/m^3. CPU reference uses float64; GPU candidate uses float32. No damping, material softening, mass floor or removal of tiny material was introduced.
+
+Verified components: 54 checks
+1. Mass, affine position/strain/energy, frame objectivity, force/torque balance and finite-difference energy/force consistency pass. Energy-gradient relative discrepancy: 2.44e-9.
+2. Intact and eight aligned/oblique/partial/corner-cut fixtures have the expected strain-operator rank. Extra non-rigid zero-strain modes found in v16 are absent in these tests. This is finite tested coverage, not proof for all possible cuts.
+3. Geometric cut-state transfers preserve position, velocity and F exactly in the tested mappings, with mass/energy/momenta differing only by recorded roundoff. Partial fixtures retain one connected body; completed, parallel, cross and fourth-cut fixtures produce 2, 3, 6 and 12 components. The fifth history slot is rejected without state damage.
+4. A localized-force independence unit probe yields no response in the other disconnected fragment. This omits surface contact and does not qualify actual blade withdrawal or fragment recontact.
+5. Loaded checkpoint continuation matches the uninterrupted GPU continuation exactly. A current-coordinate plane pulls back correctly into a translated/deformed fixture.
+6. CPU/GPU comparisons over 2 ms pass for intact, oblique and 1 micrometre corner-offset states. Worst reported F-entry discrepancy is below 9e-7; position/velocity differences remain within the frozen screens.
+7. At selected timesteps, 20 ms free-release comparisons pass position <=0.1 mm, point velocity <=5 mm/s, meaningful RMS nodal internal-force discrepancy <=5% (1e-5 N near-zero floor), and energy residual <=5%. The initial 25 microsecond trial failed and is retained; timestep selection halved it without relaxing criteria. These internal-force comparisons are not external tool force/work qualification.
+8. No-load 0.1 s translation error is 0.238 micrometres. Linear momentum relative error is 2.24e-8; the free-rotation angular-momentum control is 1.37e-6 relative.
+
+The remaining bottleneck
+Arbitrary near-corner clipping creates very small virtual nodal masses. No material was discarded to hide that. In the 1 micrometre diagonal-offset fixture the minimum virtual mass is approximately 2.31e-21 kg and the small-state linear stability ceiling is 4.58 microseconds. The accepted accuracy timestep is 1.5625 microseconds, compared with 12.5 microseconds for the intact block. An offset near a mesh corner is not necessarily a thin requested tomato slice; an otherwise ordinary cut can produce tiny numerical regions locally. Smaller offsets than tested remain unqualified.
+
+Selected timesteps for small-fixture accuracy
+Intact: 12.5 us. Oblique: 6.25 us. Diagonal: 3.125 us. 10 um corner offset: 3.125 us. 1 um corner offset: 1.5625 us. Accepted energy residuals are at most 0.094%; accepted meaningful internal-force RMS differences are at most 1.47%. CPU/GPU agreement alone was not used to choose these timesteps.
+
+Measured speed on the RTX 5060 Laptop GPU
+Bulk diagnostic: 60 mm intact cube, 6 mm reference cells, 6000 linear material regions, 1331 logical nodes per body, one/four/eight independent copies. Each warm timing advances 20 ms per copy; three synchronized repeats per case. This uses a different spatial/inertia approximation from both v14 and v16, so these are not matched-accuracy speedup factors.
+
+Timestep | Best bulk-only 50 Hz step equivalents/s | Batch
+12.5 us  | 65.04                                  | 8
+6.25 us  | 33.06                                  | 8
+1.5625 us| 8.27                                   | 8
+
+All bars/rates measure fixed-topology intact cubes at these timestep settings. They are optimistic cost diagnostics, not actual cut episodes or RL samples. Full environment target: at least 100 aggregate actual transitions/s. Contact, fracture work, robot, policy, reset and rendering are excluded. The eight-copy backend arrays use about 9.0 MB, excluding CUDA context/graphs and other environment memory.
+
+Changing-history diagnostic
+At a loaded state, prescribed partial and complete oblique geometric events were timed for one/four/eight independent bodies, including cut-state transfer and GPU reconstruction. Unprofiled history update cost is about 0.69-0.71 s per body per event. The one-body partial event had profiling instrumentation and took 1.14 s, so it must not be compared directly as uninstrumented throughput. Rebuilding GPU state and advancing the following 1 ms cost about 0.023 s for one body and 0.054 s for eight bodies.
+
+The deliberately dense two-event/2 ms fixture gives about 0.053-0.071 aggregate 50 Hz step equivalents/s. This is NOT a normal episode-average estimate: it isolates frequent topology work. The profile identifies repeated convex volume/centroid calculations, compatibility-graph construction and clipping as substantial costs. Reusing unchanged geometry would reduce some CPU work, but even zero history cost would leave the tested bulk dynamics below the target. No further optimization branch was launched after this decision gate failed.
+
+What is not established
+Physical blade/contact/material-work fracture; whole-material nonpenetration <=0.1 mm and the 2 N force stop in coupled cutting; surface recontact; spatial convergence at tomato resolution; arbitrary curved paths; the actual tomato exterior or size variants; a complete tomato slice; full robot throughput; RL capability; experimental tomato calibration. Geometric unit splits must not be called physical cutting or a finished tomato model.
+
+Decision and next useful work
+Preserve the corrected mechanics as an isolated component reference. Do not expand this version into a full tomato or start another long cutting run. A subsequent speed strategy must explicitly address both the tiny-region timestep and history-update cost. Kernel optimization alone has not been demonstrated to close that gap. Removing small pieces, adding mass, suppressing deformation modes or softening the material would change the model and is not authorized by this result. No automatic switch to a different engine or new approximation was made.
+
+All 1691 protected files were hash-verified unchanged. The existing robot, kitchen, hand/knife attachment, Isaac/DiSECt setup and earlier evidence remain preserved. The checklist is updated separately. No simulation is left running at the end of the trial.
+
+Reproduction and evidence
+Existing project .venv-native Python, OPENBLAS_NUM_THREADS=1 and PYTHONDONTWRITEBYTECODE=1. Read contract.json and FORMULATION.txt first. Run tests/mechanics.py, tests/refinement.py, tests/history_and_cpu.py and tests/cost.py. tests/dynamics.py reproduces the retained initial timestep rejection. Each launch was bounded to 600 seconds; the campaign had a two-hour cap. Exact results: mechanics.json, dynamics.json, refinement.json, history_and_cpu.json, cost.json, qualification.json and reports/preservation.json. GPU comparison and geometric events are component controls, not physical qualification.

@@ -1,0 +1,18 @@
+Loading user config located at: '/home/omen/miniconda3/envs/isaaclab_6/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1793538418.122620   48038 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1793538418.122651   48038 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-01T13:06:58Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-11-01T13:07:02Z [4,439ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x63c4d6aff7b0. Client: carb.scripting-python.plugin
+[INFO]: Registered backend 'physx' for factory RigidObject.
+2026-11-01T13:07:03Z [4,705ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_full_blade_worker.py", line 90, in main
+    if pe>1e-7 or ve>2e-5 or bpe>1e-7 or bve>2e-5 or fe>.01*scale+1e-5:raise ValueError('Full authored-blade replay exceeds mechanical gates: '+str(comparisons[-1]))
+                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Full authored-blade replay exceeds mechanical gates: {'interval': 5, 'particle_position_error_m': 2.2351741790771484e-08, 'particle_velocity_error_m_s': 2.682209014892578e-05, 'force_error_n': 1.5647947065061108e-06, 'body_pose_error': 1.9326762412674725e-11, 'body_velocity_error': 4.470348358154297e-08}
+[INFO]: SimulationContext cleared

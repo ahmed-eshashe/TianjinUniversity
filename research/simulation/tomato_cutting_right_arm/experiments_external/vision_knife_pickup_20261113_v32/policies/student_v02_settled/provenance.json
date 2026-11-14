@@ -1,0 +1,35 @@
+{
+  "training": [
+    "datasets/teacher_v02/train_000/demonstration.npz",
+    "datasets/teacher_v02/train_001/demonstration.npz",
+    "datasets/teacher_v02/train_002/demonstration.npz",
+    "datasets/teacher_v02/train_003/demonstration.npz",
+    "datasets/teacher_v02/train_004/demonstration.npz",
+    "datasets/teacher_v02/train_005/demonstration.npz",
+    "datasets/teacher_v02/train_006/demonstration.npz",
+    "datasets/teacher_v02/train_007/demonstration.npz",
+    "datasets/teacher_v02/train_009/demonstration.npz",
+    "datasets/teacher_v02/train_010/demonstration.npz",
+    "datasets/teacher_v02/train_011/demonstration.npz"
+  ],
+  "validation": [
+    "datasets/teacher_v02/validation_000/demonstration.npz",
+    "datasets/teacher_v02/validation_001/demonstration.npz"
+  ],
+  "excluded": [
+    "datasets/teacher_v02/train_008/demonstration.npz",
+    "datasets/teacher_v02/validation_002/demonstration.npz"
+  ],
+  "test_episodes_used": false,
+  "source_sha256": "f5541609cbc4cd56f10c9e6ed235527ad5e410a3ca7b417a90237d9d87961a79",
+  "actor_inputs": [
+    "current RGB-D",
+    "initial RGB-D memory",
+    "q",
+    "qd",
+    "joint command memory",
+    "previous action"
+  ],
+  "preprocessing": "Discard startup frames before 0.5 simulated second. Use settled head image as initial visual memory; initial renderer pose lag was independently observed.",
+  "success_claim": "None: offline training only. Fresh closed-loop physical evaluation required."
+}

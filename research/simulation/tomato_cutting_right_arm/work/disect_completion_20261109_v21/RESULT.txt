@@ -1,0 +1,8 @@
+2026-11-09: speed qualification deferred by explicit user decision
+
+The user chose: "Defer speed; finish physical qualification first".
+The120wall-seconds/simulated-second target is still failed, not passed or removed from the research/training requirements. It no longer blocks this authorized physical-qualification continuation. No accuracy, contact, stability, force-balance or fracture threshold was relaxed. Full section4 cutting still requires physical prerequisites.
+
+v21 execution study: batched solve without adequate preconditioning fell back on every step; rejected. A GPU multigrid preconditioner plus full solve graph completed20ms in59.704s;1247 graph accepts and353 original-solver fallbacks. Same-state comparison with v20 passes (position1.41e-15m, velocity3.30e-12m/s, internal force4.03e-11relative), but runtime2985s/s is worse than1019s/s. Not adopted. Task-local pyamg5.4.1 installed in v21/deps only. Original simulation environments and production assets unchanged.
+
+Proceed using the verified v20 GPU IMEX operator at12.5us and6.25us. First: fresh full1s split-assembly hold, sampled support/volume/force-balance checks, final0.1s speed<=1mm/s; then independent half-step hold and same unchanged comparison. Next: original-CAD nonfracturing load and horizontal withdrawal on the settled split assembly, with reaction/moment refinement. No engine adoption or training suitability claim. Section4 remains pending physical evidence.

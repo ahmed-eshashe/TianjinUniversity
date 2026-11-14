@@ -1,0 +1,33 @@
+Current integration status (13 November 2026)
+
+User approved preserving the original handle and grip, with the tested straight blade visibly fitted. Original source scene/model hashes remain unchanged. All new work is in v31.
+
+Current scene_plan.json is the original v31 anchor [0.04, -0.02, 0], 120mm negative blade-axis horizontal withdrawal followed by 60mm bodyward withdrawal. Positive-Y placement was rejected offline for cradle overlap; negative-Y placement was rejected by native wrist self-contact. Do not use v02/v03 scenes from those trials.
+
+Robot worker now retracts the empty pickup cradle 110mm over 0.5s AFTER closing, attaching and lifting. The posts are kinematic rigid bodies; visible and collision geometry move together. Native transforms verify retraction. This is an ideal support actuator, disclosed in README, not a force-driven actuator model.
+
+Verified:
+- reports/interface_checks.json: force/moment/frame/power and clock tests pass.
+- runs/dry04: full actual robot route including withdrawal passed; min blade-board gap 2.8145mm, maximum mount translation drift 1.98 micrometres.
+- runs/contact02: cutting disabled, 0 broken bonds and zero fracture work, load 0.07749N, applied native COM force max0.07608N, no stop. A 0.1s hold followed first load>=0.05N.
+- runs/cut01: coupled 2ms-exchange cut produced 2 components, 1857 broken bonds, peak1.28877N, horizontal withdrawal gave48.225mm clearance. End marked FAIL because 1s settling was insufficient (max speed0.03742m/s >0.03). Actual board support remained valid. Do not rewrite this failed result.
+- cut01 actual_pose_replay.json: independent replay same broken bonds/2 components; max position difference0.09469mm, peak difference1.434%, pass. Reset restores saved material arrays exactly.
+- reports/settling_probe.json: keeping original material/damping/limits, saved final state required12.2 additional seconds to satisfy supported/slow for0.5s continuously. Hence new worker allows up to20s settling, stopping after0.5s quiet. No velocity criterion relaxation.
+
+Finer exchange trial runs/cut02_fine:
+- Cut again made2 components and1857 broken bonds; peak1.393709N (~8.14% higher than2ms).
+- Failed during horizontal withdrawal at material time32.470s, native knife/board contact impulse2804N. Previous eight measured blade geometries had2.815–2.825mm POSITIVE board clearance and exchanged wrenches were zero. Native blade and board each had2mm contactOffset, combined speculative range4mm. On failing step blade was driven into board by native contact solve. Failed evidence and exact sources are preserved in checked_sources (hashes match source_manifest.json).
+- Physics force convergence is NOT qualified: 1ms vs2ms peak differs~8%; do not claim precise real-tomato forces.
+
+CURRENT RUN: runs/cut03_margin, log cut03_margin.log. Native worker uses --headless --mode cut --exchange .001. It adds only numerical contact-envelope correction: blade and board contactOffset0.25mm each, restOffset0; same geometry and1mm actual blade-board clearance stop. Tomato force/contact/fracture laws unchanged. Source manifest records this version. Aim: pass full native cut, horizontal withdrawal and natural settling.
+
+NEXT:
+1. Monitor cut03_margin to completion. Preserve any failure; no limits removed.
+2. If full integration passes, archive exact checked sources per manifest. Compare cut force/topology vs earlier runs; acknowledge8% exchange sensitivity, no RL whole-robot throughput claim.
+3. Launch separate interactive GUI using launch_integrated.sh (set default exchange to validated .001). No other Isaac process should run. Use subprocess.Popen with start_new_session=True and DISPLAY=:1. Ready scene waits for Play, then pickup/cut. Existing launcher remains untouched.
+4. Inspect ready.png rendering; appearance.py reuses v29 smooth surface, mapped Y-up to Z-up under /FastTomatoFrame. Live material surface only updates from particle state. Original root tomato is hidden.
+5. Final report/README, source-preservation hashes, checklist update. Current checklist stage9.9 is in_progress; only complete the approximate integration item, not old reference/DiSECt/training gates.
+
+The full robot/kitchen is currently much slower than the standalone batched material pilot. No learned policy or complete articulated-robot RL environment is qualified. Fixed knife mount and fixed bottom-layer tomato support remain explicit. Experimental validation pending.
+
+FINAL: Headless and visible complete cycles passed. See RESULT.txt. Original sources verified unchanged. No training or full-robot RL speed qualification.

@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-08",
+  "scope": "Bounded DiSECt feasibility study stopped at full mesh-validation gate. No tomato dynamics, robot integration or training.",
+  "decision": "Retain DiSECt for restricted isolated feasibility work; do not integrate yet.",
+  "compatibility": {
+    "native_memory_lifetime_repair": "Copy edge endpoints by value before vertex vector growth; native mesher now returns true.",
+    "shutdown": "gdb stack in Torch autograd graph destruction; explicitly disable Torch gradient recording for forward-only motion. Two full runs exit 0. This is not gradient/backward compatibility qualification.",
+    "preliminary_import_attempts": "attempt01 and attempt02 failed before physics because copied generated-kernel cache lacked kernels.so; copied unchanged binary from prior benchmark, hash recorded.",
+    "full_mesh_validation": "OPEN: cut-surface degenerate and duplicate faces retained and independently counted; no silent filtering/threshold change."
+  },
+  "runs": [
+    {
+      "id": "01",
+      "exit_code": 0,
+      "simulated_s": 5.000000000001686,
+      "setup_wall_s": 14.970443305006484,
+      "stepping_wall_s": 11.416322067001602,
+      "wall_s_per_sim_s": 2.2832644133995506,
+      "peak_rss_kib": 1306460,
+      "peak_torch_gpu_allocated_bytes": 9584128,
+      "peak_torch_gpu_reserved_bytes": 23068672,
+      "all_sampled_finite": true,
+      "final_minimum_signed_tet_ratio": 0.994166910648346,
+      "final_inverted_tets": 0,
+      "remaining_nonzero_cut_springs": 2,
+      "peak_force_resultant_model_N": 1.5253085199102494,
+      "peak_sum_contact_force_magnitudes_model_N": 63.28418731689453
+    },
+    {
+      "id": "02",
+      "exit_code": 0,
+      "simulated_s": 5.000000000001686,
+      "setup_wall_s": 8.680041872998117,
+      "stepping_wall_s": 8.535984545000247,
+      "wall_s_per_sim_s": 1.7071969089994738,
+      "peak_rss_kib": 1305044,
+      "peak_torch_gpu_allocated_bytes": 9584128,
+      "peak_torch_gpu_reserved_bytes": 23068672,
+      "all_sampled_finite": true,
+      "final_minimum_signed_tet_ratio": 0.9941787123680115,
+      "final_inverted_tets": 0,
+      "remaining_nonzero_cut_springs": 2,
+      "peak_force_resultant_model_N": 1.5249311176485392,
+      "peak_sum_contact_force_magnitudes_model_N": 63.264892578125
+    }
+  ],
+  "repeat_max_position_difference_m": 0.00029425567481666803,
+  "repeat_max_spring_stiffness_difference": 2.3765954971313477,
+  "tomato_source_exported": true,
+  "tomato_cut_passed": false,
+  "robot_integrated_cut_passed": false,
+  "experimental_validation": "pending",
+  "original_run": "paused at checkpoint 6925, not resumed",
+  "next_action": "One focused mesh-preparation validation/fix using analytic prism and tomato exterior. Keep material springs/connectivity unchanged; validate complete cut-face coverage and nondegenerate unique triangles. Inspect original tomato cells for FEM conformity before dynamics. If this needs broad remesher development, report replacement mesh options before work."
+}

@@ -1,0 +1,46 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.94 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.83 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.75 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.68 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.72 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.69 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.87 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 6.00 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.21 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.42 ms  (cached)
+{
+  "scope": "Adaptive contact purity/reset/recomputed checkpoint and moving-component wrench controls",
+  "repeat_trial_history_pure": true,
+  "reset_clears_contact_and_history": true,
+  "repeat_force_error_N": 0.0,
+  "recomputed_checkpoint_force_error_N": 0.0,
+  "moving_component_reaction_relative": 6.345450656865416e-07,
+  "moving_component_moment_relative": 6.057906146981621e-07,
+  "final_whole_volume_certificate": {
+    "passed": true,
+    "lower_bound_m": -7.993693419853772e-05,
+    "recertified": true,
+    "certificate": {
+      "passed": true,
+      "unresolved_cells": 0,
+      "depth": 15,
+      "query_count": 2156,
+      "lower_bound_m": -7.993693419853772e-05,
+      "minimum_sample_SDF_m": 0.0,
+      "wall_s": 0.24927567899976566
+    }
+  },
+  "passed": true,
+  "damaged_cut_restart_qualified": false,
+  "gate_b_passed": false
+}

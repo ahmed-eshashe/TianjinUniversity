@@ -1,0 +1,30 @@
+// SPDX-FileCopyrightText: Copyright (c) 2018-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: Apache-2.0
+
+#include "UsdPCH.h"
+
+#include "SceneQueryShared.h"
+#include <omni/fabric/FabricTypes.h>
+
+namespace omni
+{
+namespace physx
+{
+namespace graph
+{
+
+static omni::physx::IPhysxSceneQuery* gPhysXSceneQuery;
+   
+omni::physx::IPhysxSceneQuery* getPhysXSceneQuery()
+{
+    return gPhysXSceneQuery;
+}
+
+void setPhysXSceneQuery(omni::physx::IPhysxSceneQuery* pPhysXSceneQuery)
+{
+    gPhysXSceneQuery = pPhysXSceneQuery;
+}
+
+} // namespace graph
+} // namespace physx
+} // namespace omni

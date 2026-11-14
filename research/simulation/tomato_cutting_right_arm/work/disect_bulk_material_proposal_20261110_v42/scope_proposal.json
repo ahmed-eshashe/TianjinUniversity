@@ -1,0 +1,50 @@
+{
+  "status": "prepared_for_scope_review_not_adopted",
+  "trigger": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_batched_cutting_20261110_v40/load160500_rejected_volume_guard.json",
+  "change": "Replace ONLY the separately versioned bulk elastic coefficients with a literature-inspired E=0.4MPa, nu=0.3 candidate, using the independently checked stabilized-law parameter conversion.",
+  "current_actual_small_strain": {
+    "kernel_mu_Pa": 12000.0,
+    "kernel_lambda_Pa": 12000.0,
+    "effective_lame_mu_Pa": 9000.0,
+    "effective_lame_lambda_Pa": 4500.0,
+    "Young_modulus_Pa": 21000.0,
+    "Poisson_ratio": 0.16666666666666666,
+    "numerical_shear_tangent_Pa": 9000.00000000075,
+    "numerical_axial_cross_tangent_Pa": 4500.000000007276,
+    "stress_at_identity_max_Pa": 0.0
+  },
+  "candidate_actual_small_strain": {
+    "kernel_mu_Pa": 205128.20512820513,
+    "kernel_lambda_Pa": 358974.35897435894,
+    "effective_lame_mu_Pa": 153846.15384615384,
+    "effective_lame_lambda_Pa": 230769.23076923075,
+    "Young_modulus_Pa": 400000.0,
+    "Poisson_ratio": 0.3,
+    "numerical_shear_tangent_Pa": 153846.15384616668,
+    "numerical_axial_cross_tangent_Pa": 230769.23078042455,
+    "stress_at_identity_max_Pa": 0.0
+  },
+  "authority_needed": "The frozen starting point and execution discipline in DISECT_SECTION4_EXECUTION_PLAN_20261109.md preserve original constitutive parameters and require review for a physical-model/scope change.",
+  "physical_hypothesis": "The current trial compresses a small region to the volume stop before cohesive damage. Greater bulk stiffness may redistribute load toward the interface; this is unproven and must be tested, not tuned until cutting succeeds.",
+  "preserve": [
+    "original knife CAD and orientation, fixed knife-to-palm mounting and scene",
+    "mesh, exterior, total mass, 25 support coordinates, board/contact model",
+    "all47 original fracture laws, onset1mm/failure4mm, total fracture budget0.11696391110288158J",
+    "2N blade-force stop,0.1mm whole-volume/board penetration stop, minvolume>0.1, support/board/residual/force-balance limits",
+    "all original evidence; speed deferred; experimental validation pending"
+  ],
+  "validation_order": [
+    "Independent analytic stress/energy/objectivity and CPU/GPU constitutive checks with new coefficients; verify effective E/nu rather than treating stored coefficients as ordinary Lame constants.",
+    "Independent stable-step bound on approved mesh, then one declared candidate timestep plus half-step; no numerical tolerance relaxation or open-ended parameter sweep.",
+    "Fresh settling/support and original-CAD load/unload checks with half-step comparison; never reuse the old material loaded checkpoint.",
+    "One frozen bounded shallow loading/stop/horizontal-withdrawal test with real contact-driven damage and independent half-step before GateB.",
+    "Stop and report failure, including force/volume limit hits; no further material tuning or force-limit increase is authorized by approving this one candidate."
+  ],
+  "publication": "Jamdagni & Jia, IEEE T-RO40(2024), TableII, tomato chopping: E0.4MPa and nu0.3",
+  "paper_url": "https://faculty.sites.iastate.edu/jia/files/inline-files/TRO24.pdf",
+  "local_primary_paper": "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/review_20261102/TRO24.pdf",
+  "limitations": "Different specimen, geometry, support, constitutive implementation and parameter-fitting context. Published values are a prior for a separately validated sensitivity candidate, not identified parameters or experimental validation of our tomato.",
+  "no_success_guarantee": true,
+  "no_experimental_validation_claim": true,
+  "created_utc": "2026-11-09T20:49:08.373139+00:00"
+}

@@ -1,0 +1,16 @@
+Bounded numerical candidate, no new material law. Original geometry, coefficients,
+full-surface approved cohesive law, original closure potential, board normal law,
+fixed supports and gravity remain. Damage disabled for unloaded qualification.
+
+Backward-Euler variational solve: inertia plus bulk/cohesive/closure potentials,
+lagged-geometry viscous quadratic and lagged-normal board friction dissipation.
+Closure forces evaluated in float64 using the same existing stencil potential;
+float32 conservative broadphase remains. This precision change must be checked.
+
+First test: maximum 20 ms simulation, 180 s wall budget, dt 0.5 ms.
+Physical stops: finite state, sampled determinant ratio >0.1, no board penetration
+>0.1 mm, exact supports. A step must satisfy free force residual <=1e-6 N norm.
+Compare same-time saved small-step reference: position <=0.1 mm, velocity
+<=0.005 m/s, material/internal force <=5% with prior floor. Runtime ceiling120
+wall seconds / simulated second remains. Failure is not permission to relax it.
+No cutting or model-law changes. One finite solver candidate; no blind sweeps.

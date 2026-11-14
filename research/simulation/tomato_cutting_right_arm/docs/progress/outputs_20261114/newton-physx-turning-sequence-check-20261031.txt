@@ -1,0 +1,37 @@
+Newton–CPU PhysX repeated turning contact — 31 October 2026
+
+PASS for two persistent off-centre analytic fixtures over 16 exchanges each. Checklist item 15 remains in progress.
+
+The identity-oriented fixture had zero local COM offset; the second began rotated 90 degrees about Y with local COM (0.002, -0.001, 0.0005) m. Both began at rest, with a particle at body-local (0.004, 0.003, 0.001) m inside a box whose top face was at local z=0.002 m. Newton owned each 0.01 kg soft particle and PhysX owned each 0.02 kg rigid body. Inertia was the same explicitly specified synthetic isotropic 0.0001 kg m² used in the previous test. Gravity, damping, friction, contact radius/margin and PhysX collisions were disabled. No robot or blade was loaded.
+
+Exactly 32 Newton steps and 16 shared CPU PhysX steps were taken, dt=1/1200 s, for 0.0133333 seconds per fixture. The same solver, collision pipeline, contact buffers and pair of Newton states were reused. Each interval copied CPU PhysX link pose and world COM velocity into both Newton body states exactly, generated fresh contacts, froze the proxy during the soft solve, collected the native contact force with the actual solver caches, and sent the world force/torque about the updated COM once to PhysX with positions=None. Updated PhysX pose/twist copied back exactly before state swap. Newton used 16 particle iterations with fixed native stiffness 1750 N/m. PhysX TGS used 16 force substeps with zero velocity iterations, explicitly specified and read back.
+
+Each fixture generated contacts for four intervals, then separated naturally and coasted for 12 intervals. No reset, teleport or artificial separation was used. No new wrench was submitted after contact cleared; the composer and backend had to discard the last reaction. Both linear and angular coast velocities stayed within the existing gates. Updated collision normals matched the current body orientation. Contact force, surface point and COM torque matched an independent moving-plane reference at every active interval.
+
+The independent reference includes incoming particle velocity, the moving/rotating pose sampled at the start of each frozen-proxy soft solve, updated world COM/lever arm, constant-force isotropic TGS rigid substeps, and sequential quaternion increments. A separate full reference trajectory starts from each initial state. Particle and rigid linear impulses and rigid spin impulse are accumulated independently from the measured force/torque stream. Total angular-momentum increments include the finite-step orbital splitting term caused by the TGS body translation schedule; this is not a claim of exact physical conservation for the partitioned scheme. This test does not extend the earlier work/energy qualification to general rotating contacts.
+
+identity_turning: active-contact normal change=0.000211417167; coast steps=12; final angular velocity rad/s=[-0.08509539067745209, 0.11346052587032318, 3.5082530630559106e-11]
+rotated_offset_com_turning: active-contact normal change=0.000189054879; coast steps=12; final angular velocity rad/s=[-1.8752491115492376e-08, 0.05673866719007492, 0.11347663402557373]
+
+Maximum errors over all 32 fixture intervals:
+  force_error_n: 1.49526393e-06
+  torque_error_nm: 1.5155445e-08
+  point_error_m: 5.34814882e-09
+  linear_velocity_error_m_s: 8.75138044e-08
+  angular_velocity_error_rad_s: 1.88044153e-07
+  position_error_m: 5.79444088e-09
+  particle_velocity_error_m_s: 2.26882808e-06
+  rotation_error_rad: 7.76046229e-08
+  trajectory_position_error_m: 4.50096863e-08
+  trajectory_particle_velocity_error_m_s: 2.7508873e-06
+  trajectory_angular_velocity_error_rad_s: 8.87063948e-07
+  trajectory_rotation_error_rad: 4.48201612e-07
+  cumulative_linear_impulse_error_ns: 2.71044732e-08
+  cumulative_angular_impulse_error_nms: 7.86287987e-11
+  angular_balance_error_kg_m2_s: 4.88395978e-11
+
+Gates: force 2e-5 N; COM torque 2e-7 N m; point/particle/COM position and accumulated trajectory 1e-7 m; particle/COM velocity 2e-5 m/s; rigid angular velocity 2e-6 rad/s; per-step/full-trajectory orientation 1e-6 rad; accumulated linear impulse 2e-7 N s; angular impulse/balance 2e-8 N m s. Every fixture had to change its active-contact normal by at least 1e-5 and provide at least three cleared-contact coast steps. No tolerances were relaxed. Four focused host-reference/guard-contract tests and nine existing supervisor tests passed.
+
+The protected run completed in 6.48 seconds, retaining at least 22.61 GB available RAM and 7.47 GB free GPU memory. No memory warning or resource-monitor error occurred; no owned live processes remained. Source snapshots/hashes were saved. Original frozen project inputs and previously pinned installed dependencies remain unchanged.
+
+Next bounded step: reset these isolated coupled fixtures and replay the same short trajectory, verifying particle/rigid state and contact/solver history do not leak between runs. Anisotropic inertia, robot articulations, general rotating-contact energy, time-step sensitivity, long-run stability, material cutting and the real blade collision backend remain unvalidated.

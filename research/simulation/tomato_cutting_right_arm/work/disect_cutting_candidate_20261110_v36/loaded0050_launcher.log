@@ -1,0 +1,40 @@
+Warp 1.17.0 initialized:
+   CUDA Toolkit 12.9, Driver 13.2
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5060 Laptop GPU" (8 GiB, sm_120, mempool enabled)
+   Kernel cache:
+     /home/omen/.cache/warp/1.17.0
+Module newton._src.utils.mesh 92b663b load on device 'cpu' took 0.96 ms  (cached)
+Module newton._src.geometry.bvh 58a3a49 load on device 'cuda:0' took 0.83 ms  (cached)
+Module newton._src.geometry.kernels d546c9d load on device 'cuda:0' took 2.83 ms  (cached)
+/home/omen/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/utils/cpp_extension.py:2356: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Module progressive_gpu 6880048 load on device 'cuda:0' took 0.65 ms  (cached)
+Module tomato_canonical_self_contact e06a69a load on device 'cuda:0' took 6.46 ms  (cached)
+Module newton._src.geometry.kernels 30923ae load on device 'cuda:0' took 2.67 ms  (cached)
+Module tomato_embedded_self_contact eefc015 load on device 'cuda:0' took 0.89 ms  (cached)
+Module tomato_mollified_self_contact 268902c load on device 'cuda:0' took 5.89 ms  (cached)
+Module tomato_fast_mollified_contact 7b587bd load on device 'cuda:0' took 1.24 ms  (cached)
+Module closure_gpu 074b62e load on device 'cuda:0' took 0.41 ms  (cached)
+Traceback (most recent call last):
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py", line 88, in <module>
+    if abs(rows[-1]['sim_s']-step*h)>1e-12:sample(step*h)
+                                           ^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_cutting_candidate_20261110_v36/loading.py", line 36, in sample
+    q,v=b.arrays();tr,vel=pose(t);ev,bd=b.contact(q,v,tr,vel);fd=np.zeros_like(q) if bd is None else -bd.apply(tensor(v)).cpu().numpy();force=ev['force']+fd;reaction=-force.sum(0);com=b.cad.com_local@b.cad.rotation.T+tr;moment=-np.cross(q-com,force).sum(0);hist=b.fracture.state_dict()['history'];qv=q[tt[:,1:]]-q[tt[:,0]][:,None];vol=np.linalg.det(qv)/iv.cpu().numpy();world=q@mapping['rotation'].T+mapping['translation'];margin=-np.max(world[:,:2]@mapping['halfspaces'][:,:2].T+mapping['halfspaces'][:,2]);diss=b.fracture.dissipation(b.fracture.history[:,0]).sum().item();row=dict(sim_s=t,finite=bool(np.isfinite(q).all() and np.isfinite(v).all()),reaction_N=reaction.tolist(),moment_Nm=moment.tolist(),force_norm_N=float(np.linalg.norm(reaction)),sum_force_N=float(np.linalg.norm(force,axis=1).sum()),CAD_penetration_m=ev['maximum_penetration_m'],active_nodes=ev['active_nodes'],minimum_volume_ratio=float(vol.min()),board_penetration_m=float(max(0,-q[:,1].min())),fixed_error_m=float(np.max(abs(q[fixed]-m['x'][fixed]))),board_edge_margin_m=float(margin),maximum_speed_m_s=float(np.linalg.norm(v,axis=1).max()),damage_max=float(hist[:,1].max()),damaged_groups=int((hist[:,1]>0).sum()),failed_groups=int((hist[:,1]>=1).sum()),maximum_opening_m=float(hist[:,0].max()),fracture_dissipation_J=diss,max_solver_residual=max_res,max_force_balance_N=max_ledger,wall_s=time.perf_counter()-start)
+                                        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_normal_contact_20261109_v30/implicit_blade.py", line 30, in contact
+    ev=c.evaluate(q,v,cad.vertices@cad.rotation.T+translation,cad.triangles,
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_adaptive_contact_20261109_v27/adaptive_contact.py", line 56, in evaluate
+    phi=query_mesh(vertices,faces,q[i]+middle[:,None]*(q[j]-q[i]))['phi']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/rl/tomato_compiled_blade_query.py", line 41, in query_mesh
+    values=_query(np.asarray(vertices,dtype=float),np.asarray(faces,dtype=np.int64),p)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/omen/teamwork_projects/tomato_cutting_right_arm/work/disect_execution_strategy_20261110_v35/fast_cad_query.py", line 51, in fast_query
+    if values[-1].any():raise ValueError('Uncertain solid-angle sign')
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Uncertain solid-angle sign

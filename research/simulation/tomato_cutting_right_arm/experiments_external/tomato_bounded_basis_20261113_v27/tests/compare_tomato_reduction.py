@@ -1,0 +1,12 @@
+from pathlib import Path
+import sys,os,json,numpy as np
+from scipy.sparse import coo_matrix
+W=Path(__file__).resolve().parents[1];sys.path.insert(0,str(W/'src'));os.environ['NUMBA_CACHE_DIR']=str(W/'cache/numba')
+from compiled_body import Body
+from fast_aggregation import Aggregate
+base=Path('/home/omen/Documents/Codex/experiments/tomato_cut_surface_20261113_v25');old=W/'runs/tomato_gpu_proof';new=W/'runs/tomato_reduction';a=Aggregate(Body.restore(base/'states/tomato_baseline.npz'));b=a.body;X=b.poly_vertices;owner=np.repeat(np.arange(len(b.polys)),np.diff(b.poly_ptr));N=np.einsum('pi,pij->pj',np.c_[np.ones(len(X)),X],b.inv[owner]);Q0=coo_matrix((N.ravel(),(np.repeat(np.arange(len(X)),4),b.ids[owner].ravel())),shape=(len(X),len(b.u)));Q=(Q0@a.E).tocsr();x=np.load(old/'trajectory.npz');y=np.load(new/'trajectory.npz');r0=json.loads((old/'result.json').read_text());r1=json.loads((new/'result.json').read_text());maxv=maxp=weighted=0.;errors={k:float(np.max(abs(x[k]-y[k]))) for k in ['q','v']}
+for i in range(len(x['q'])):
+ d=np.linalg.norm(Q@(x['v'][i]-y['v'][i]),axis=1);region=np.maximum.reduceat(d,b.poly_ptr[:-1]);weighted=max(weighted,float(np.sqrt(b.V@region**2/b.V.sum())));maxv=max(maxv,float(d.max()));maxp=max(maxp,float(np.linalg.norm(Q@(x['q'][i]-y['q'][i]),axis=1).max()))
+for k,floor in [('sum_force_N',1e-4),('tool_work_J',1e-8),('friction_J',1e-8)]:
+ u=np.array([r[k] for r in r0['rows']]);v=np.array([r[k] for r in r1['rows']]);errors[k]=float(np.max(abs(u-v))/max(abs(u).max(),floor))
+checks=dict(actual_material_position=maxp<1e-6,actual_material_velocity=maxv<1e-4,force=errors['sum_force_N']<.05,work=errors['tool_work_J']<.05,friction=errors['friction_J']<.05);out=dict(passed=all(checks.values()),checks=checks,actual_material_max_position_m=maxp,actual_material_max_velocity_m_s=maxv,material_weighted_velocity_bound_m_s=weighted,raw_coordinate_errors=errors,reference_wall_s=r0['wall_s'],candidate_wall_s=r1['wall_s'],speedup=r0['wall_s']/r1['wall_s'],scope='Same 13 ms intact tomato CAD-contact trajectory. Actual material fields evaluated at EVERY material-polyhedron vertex; affine convexity bounds all interior points. Virtual coefficients outside material are separately reported, not mislabelled physical velocity. Single-run timing, not complete RL throughput.');(W/'reports/tomato_reduction_comparison.json').write_text(json.dumps(out,indent=2));print(json.dumps(out,indent=2));assert out['passed']

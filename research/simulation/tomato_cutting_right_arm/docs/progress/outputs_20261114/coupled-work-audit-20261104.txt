@@ -1,0 +1,24 @@
+COUPLED ROBOT WORK AUDIT — 2026-11-04
+
+Verdict: saved-data audit complete; full motor-work validation NOT PASSED. No simulation was run. Current aligned drive trace cannot independently close the complete robot ledger.
+
+Method
+Used all120explicitly aligned intervals from native_clock_controls_20261104/robot_on01. Verified native DOF/body order, armature agreement and scene hash against the previously passed static body-inertia reference. Computed body COM translational/rotational kinetic energy plus rotor energy, gravitational potential change, and signed local drive-row impulse midpoint work. Inertias were rotated using link axes, not principal COM orientation. Feedforward work was evaluated using two endpoint-based estimates only; neither is certified.
+
+Measured/descriptive totals over the capture
+Kinetic-energy change: +0.0000131459273266J.
+Gravitational-potential change: +0.00638162264357J.
+Local drive-row impulse work: -0.0000202655010482J (not independently qualified as coupled system motor work).
+Feedforward torque times joint displacement: +0.00641790479528J.
+Feedforward torque times midpoint velocity and dt: +0.00683703217437J.
+Those feedforward estimates differ by0.000419127379087J (419.127microJ).
+Using the displacement estimate leaves a signed unclosed balance of-0.00000287072333588J (-2.871microJ); maximum interval magnitude11.462microJ. Using midpoint velocity leaves-421.998microJ. Choosing the smaller residual would not validate it. These values are descriptive; neither an uncertainty bound nor permission to relax the original work budget.
+
+Specific missing information
+Source inspection locates joint actuation in applyTgsSubstepForces: jointForce*stepDt is combined with body-force response and stored as a deferred articulated impulse. The current recorder samples a later drive row, not this application stage or a full before/after generalized velocity state. Scalar single-joint closure does not prove multi-joint row work equals total physical work. Damping, constraints, integration and rotor terms also require consistent stage accounting. Do not assign the residual to damping, subtract it as a correction, or label transmitted joint load as motor torque.
+
+Recommended next bounded implementation
+Extend the observation-only backend to record actual external/feedforward application and corresponding state/flush/integration boundaries, without introducing an extra solver flush. First validate a coupled two-joint analytic control, then verify recording off/on equivalence before another full-robot qualification attempt. The detailed observation contract is missing_observation_contract.json. Repeating the existing capture without this addition is not justified.
+
+Scope
+Original controller, fixed knife mount and installed physics remain unchanged. Prior passes/failures preserved. Experimental validation pending. No contact, cutting, training or video. Full force/work gates remain intact.

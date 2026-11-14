@@ -1,0 +1,38 @@
+Handoff after v10 — bounded proposal, not an already executed physical test
+
+Completed: the GPU reference accepts finite blade-motion-selected partial/full
+geometric cuts; bridges, state transfer, save/restart and independent pieces pass
+within the declared affine/reference-axis block scope.
+
+Recommended next step: prepare one isolated deformed-material intersection and
+crack-front representation candidate before adding physical knife resistance.
+Keep the current Isaac/DiSECt environment, robot, knife and grip unchanged.
+
+1. Freeze v10 and retain its CPU/GPU mechanical comparison as the reference.
+   State explicitly whether proposed local enrichment changes inertia, integration
+   or constitutive response. If it changes the accepted numerical/physical contract,
+   present that concrete proposal for the roadmap's scope review before adopting it.
+2. First solve the mapping problem on analytically known, unevenly deformed block
+   fields: identify the material traversed by the finite edge, certify ambiguity
+   rejection, preserve bridges and ensure unvisited gaps never become cut. Retain
+   exact world/reference history through a moving and rotated fragment.
+3. Demonstrate a local crack-front representation whose activation error is
+   quantified against the 0.1 mm spatial requirement. The current 3 mm support
+   delay cannot be hidden by loosening tests or assigning a gap. Do not start with
+   global high-resolution refinement or long full-tomato runs.
+4. Recheck full mass, displacement, velocity, deformation gradient, energy,
+   rank/conditioning and fragment independence before/after each local insertion.
+   Repeat half-step/pose subdivision and loaded restart/rollback controls.
+5. Only if those components pass, prepare the finite-CAD contact and irreversible
+   failure/work study required by Gate 3. Keep the 2 N force stop, 0.1 mm whole-
+   material penetration limit, volume guards and explicit energy accounting.
+   Auxiliary opening forces must never be reported as cutting resistance.
+
+Time discipline: use a fresh two-hour component budget with a small diagnostic
+first; retain and report a substantive failure rather than expanding branches.
+Report cost per simulated second including rebuild/export and actual resolution.
+Do not infer RL readiness from GPU/CPU speedup alone.
+
+These are proposed follow-up tasks. No non-affine mapping, local-front revision,
+physical knife contact, tomato cutting, robot change or training was executed
+as part of v10.

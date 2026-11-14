@@ -1,0 +1,50 @@
+Sun Nov  8 21:30:16 2026    work/disect_completion_20261108_v14/profile.dat
+
+         18983014 function calls (18789744 primitive calls) in 55.532 seconds
+
+   Ordered by: cumulative time
+   List reduced from 11742 to 40 due to restriction <40>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+   5082/1    0.166    0.000   55.555   55.555 {built-in method builtins.exec}
+        1    0.053    0.053   55.555   55.555 recovery.py:1(<module>)
+        9    0.506    0.056   27.758    3.084 iterative.py:582(gmres)
+     1559    0.015    0.000   27.212    0.017 _interface.py:227(matvec)
+     1559    0.004    0.000   27.190    0.017 _interface.py:616(_matvec)
+      784    0.082    0.000   20.045    0.026 recovery.py:77(mv)
+      775    0.006    0.000   19.815    0.026 recovery.py:83(counted)
+      881   16.084    0.018   16.084    0.018 {method 'cpu' of 'torch._C.TensorBase' objects}
+        1    0.001    0.001   12.786   12.786 closure_runtime.py:7(__init__)
+        1    0.000    0.000   12.741   12.741 tomato_fast_mollified_contact.py:53(__init__)
+        1    0.006    0.006   12.741   12.741 tomato_mollified_self_contact.py:94(__init__)
+        1    0.078    0.078   12.735   12.735 tomato_embedded_self_contact.py:66(__init__)
+      376    0.013    0.000   12.238    0.033 __init__.py:1(<module>)
+      784    0.260    0.000    7.370    0.009 recovery.py:85(precondition)
+        1    1.688    1.688    7.316    7.316 tomato_collision_local_filters.py:14(local_filter_maps)
+     2352    7.083    0.003    7.083    0.003 {method 'solve' of 'SuperLU' objects}
+  5502/11    0.015    0.000    5.989    0.544 <frozen importlib._bootstrap>:1165(_find_and_load)
+  2824/11    0.011    0.000    5.989    0.544 <frozen importlib._bootstrap>:1120(_find_and_load_unlocked)
+  2713/13    0.009    0.000    5.987    0.461 <frozen importlib._bootstrap>:666(_load_unlocked)
+  6236/26    0.003    0.000    5.987    0.230 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
+  2612/13    0.005    0.000    5.986    0.460 <frozen importlib._bootstrap_external>:934(exec_module)
+      930    0.022    0.000    5.293    0.006 __init__.py:364(grad)
+      930    0.007    0.000    5.228    0.006 graph.py:815(_engine_run_backward)
+      930    5.219    0.006    5.219    0.006 {method 'run_backward' of 'torch._C._EngineBase' objects}
+       28    0.000    0.000    5.042    0.180 linsolve.py:328(splu)
+       28    5.038    0.180    5.038    0.180 {built-in method scipy.sparse.linalg._dsolve._superlu.gstrf}
+        9    0.002    0.000    4.930    0.548 recovery.py:73(<listcomp>)
+  977/112    0.001    0.000    4.855    0.043 {built-in method builtins.__import__}
+   216437    0.196    0.000    4.492    0.000 fromnumeric.py:71(_wrapreduction)
+   324138    4.353    0.000    4.353    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+    30135    0.021    0.000    4.047    0.000 fromnumeric.py:2421(all)
+ 2680/328    0.004    0.000    3.690    0.011 <frozen importlib._bootstrap>:1207(_handle_fromlist)
+        1    0.000    0.000    2.612    2.612 closure_runtime.py:1(<module>)
+        1    0.000    0.000    2.279    2.279 tomato_fast_mollified_contact.py:1(<module>)
+        1    0.000    0.000    2.273    2.273 tomato_mollified_self_contact.py:1(<module>)
+     6892    0.101    0.000    1.741    0.000 builder.py:9614(add_triangle)
+        9    0.010    0.001    1.717    0.191 contact_energy.py:51(cache_hessian)
+        1    0.000    0.000    1.704    1.704 solver_vbd.py:281(__init__)
+        1    0.000    0.000    1.704    1.704 solver_vbd.py:803(_init_particle_system)
+        1    0.010    0.010    1.703    1.703 tri_mesh_collision.py:371(__init__)
+
+
